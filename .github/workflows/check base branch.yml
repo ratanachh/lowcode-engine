@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 判断用户是否有写仓库权限
+      # Check whether the user has write permission on the repository
       - name: 'Check User Permission'
         uses: 'lannonbr/repo-permission-check-action@2.0.0'
         with:
@@ -26,8 +26,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            感谢你的 PR，根据引擎的 [研发协作流程](https://lowcode-engine.cn/site/docs/participate/flow)，请将目标合入分支设置为 **develop**。
-
-            Thanks in advance, according to the [Contribution Guideline](https://lowcode-engine.cn/site/docs/participate/flow), please set the base branch to **develop**.
+            Thanks for your PR. According to the [Contribution Guideline](https://lowcode-engine.cn/site/docs/participate/flow), please set the base branch to **develop**.
 
             @${{ github.event.pull_request.user.login }}

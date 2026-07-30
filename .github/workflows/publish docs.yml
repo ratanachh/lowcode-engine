@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           ref: 'develop'
-          node-version: '16'
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
       - run: cd docs && npm install
       - run: |

@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 判断用户是否有写仓库权限
+      # Check whether the user has write permission on the repository
       - name: 'Check User Permission'
         uses: 'lannonbr/repo-permission-check-action@2.0.0'
         with:
