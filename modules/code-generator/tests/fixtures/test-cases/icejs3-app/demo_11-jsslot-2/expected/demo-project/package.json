@@ -11,9 +11,9 @@
     "intl-messageformat": "^9.3.6",
     "@alifd/next": "1.26.15",
     "@ice/runtime": "~1.1.0",
-    "@alilc/lowcode-datasource-engine": "^1.0.0",
+    "@rchh/lowcode-datasource-engine": "npm:@alilc/lowcode-datasource-engine@^1.0.0",
     "undefined": "*",
-    "@alilc/antd-lowcode-materials": "0.11.0",
+    "@rchh/antd-lowcode-materials": "npm:@alilc/antd-lowcode-materials@0.11.0",
     "@alife/mc-assets-1935": "0.1.43",
     "@alife/container": "0.3.7"
   },

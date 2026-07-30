@@ -1,5 +1,5 @@
 {
-  "name": "@alilc/lowcode-code-generator",
+  "name": "@rchh/lowcode-code-generator",
   "version": "1.1.7",
   "description": "出码引擎 for LowCode Engine",
   "license": "MIT",
@@ -41,9 +41,9 @@
     "test:cov": "jest --coverage",
     "test:update-snapshots": "cross-env UPDATE_EXPECTED=true jest -u",
     "analyze:standalone": "ANALYZE=true node scripts/build-standalone",
-    "release:beta": "standard-version -t @alilc/lowcode-code-generator\\@ -r patch --prerelease beta && git push --follow-tags && npm publish --tag beta",
-    "release:patch": "standard-version -t @alilc/lowcode-code-generator\\@ -r patch && git push --follow-tags && npm publish",
-    "release:minor": "standard-version -t @alilc/lowcode-code-generator\\@ -r minor && git push --follow-tags && npm publish",
+    "release:beta": "standard-version -t @rchh/lowcode-code-generator\\@ -r patch --prerelease beta && git push --follow-tags && npm publish --tag beta",
+    "release:patch": "standard-version -t @rchh/lowcode-code-generator\\@ -r patch && git push --follow-tags && npm publish",
+    "release:minor": "standard-version -t @rchh/lowcode-code-generator\\@ -r minor && git push --follow-tags && npm publish",
     "prepublishOnly": "npm run build",
     "demo": "node bin/lowcode-code-generator.js -i example-schema.json -o demo -s icejs"
   },
@@ -62,7 +62,7 @@
     "**/*.{js,jsx,ts,tsx}": "eslint"
   },
   "dependencies": {
-    "@alilc/lowcode-types": "^1.0.0",
+    "@rchh/lowcode-types": "file:../../packages/types",
     "@babel/generator": "^7.12.11",
     "@babel/parser": "^7.12.11",
     "@babel/runtime": "^7.12.5",
@@ -151,5 +151,6 @@
     "url": "https://github.com/alibaba/lowcode-engine/tree/main/modules/code-generator"
   },
   "bugs": "https://github.com/alibaba/lowcode-engine/issues",
-  "homepage": "https://github.com/alibaba/lowcode-engine/#readme"
+  "homepage": "https://github.com/alibaba/lowcode-engine/#readme",
+  "peerDependencies": {}
 }

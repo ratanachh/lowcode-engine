@@ -23,9 +23,9 @@ sidebar_position: 1
 ## 如何使用
 ### 1) 通过命令行快速体验
 
-欢迎使用命令行工具快速体验：`npx @alilc/lowcode-code-generator -i example-schema.json -o generated -s icejs3`
+欢迎使用命令行工具快速体验：`npx @rchh/lowcode-code-generator -i example-schema.json -o generated -s icejs3`
 
---其中 example-schema.json 可以从[这里下载](https://alifd.alicdn.com/npm/@alilc/lowcode-code-generator@latest/example-schema.json)
+--其中 example-schema.json 可以从[这里下载](https://alifd.alicdn.com/npm/@rchh/lowcode-code-generator@latest/example-schema.json)
 
 ### 2) 通过设计器插件快速体验
 
@@ -33,7 +33,7 @@ sidebar_position: 1
 2. 注册插件：
 
 ```typescript
-import { plugins } from '@alilc/lowcode-engine';
+import { plugins } from '@rchh/lowcode-engine';
 import CodeGenPlugin from '@alilc/lowcode-plugin-code-generator';
 
 // 在你的初始化函数中：
@@ -49,11 +49,11 @@ await plugins.register(CodeGenPlugin, { disableCodeGenActionBtn: true });
 
 此代码生成器一开始就是为服务端出码设计的，你可以直接这样来在 node.js 环境中使用：
 
-1. 安装依赖： `npm install --save @alilc/lowcode-code-generator`
+1. 安装依赖： `npm install --save @rchh/lowcode-code-generator`
 2. 引入代码生成器：
 
 ```javascript
-import CodeGenerator from '@alilc/lowcode-code-generator';
+import CodeGenerator from '@rchh/lowcode-code-generator';
 ```
 
 3. 创建项目构建器：
@@ -94,11 +94,11 @@ await CodeGenerator.publishers.zip().publish({
 
 随着现在电脑性能和浏览器技术的发展，出码其实已经不必非得在服务端做了，借助于 Web Worker 特性，可以在浏览器中进行出码：
 
-1. 安装依赖： `npm install --save @alilc/lowcode-code-generator`
+1. 安装依赖： `npm install --save @rchh/lowcode-code-generator`
 2. 引入代码生成器：
 
 ```javascript
-import * as CodeGenerator from '@alilc/lowcode-code-generator/standalone-loader';
+import * as CodeGenerator from '@rchh/lowcode-code-generator/standalone-loader';
 ```
 
 3. 【可选】提前初始化代码生成器：
@@ -128,6 +128,6 @@ console.log(result); // 出码结果 (默认是递归结构描述的，可以传
 所以您可以通过添加自己的插件或替换掉默认内置的插件来实现您的自定义功能。
 为了方便自定义出码方案，出码模块还提供自定义出码方案的脚手架功能，即执行下面脚本即可生成一个自定义出码方案：
 ```shell
-npx @alilc/lowcode-code-generator init-solution <your-solution-name>
+npx @rchh/lowcode-code-generator init-solution <your-solution-name>
 ```
 里面内置了一个示例的插件 (在 `src/plugins/example.ts`中)，您可以根据注释引导来完善相关插件，从而组合生成您的专属出码方案 (`src/index.ts`)。您所生成的出码方案可以发布成 NPM 包，从而能按上文 1~4 中的使用方案进行使用。

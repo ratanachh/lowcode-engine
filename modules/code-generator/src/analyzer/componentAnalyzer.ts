@@ -1,4 +1,4 @@
-import type { IPublicTypeNodeSchema, IPublicTypeCompositeObject } from '@alilc/lowcode-types';
+import type { IPublicTypeNodeSchema, IPublicTypeCompositeObject } from '@rchh/lowcode-types';
 import type { TComponentAnalyzer } from '../types';
 
 import { handleSubNodes } from '../utils/schema';

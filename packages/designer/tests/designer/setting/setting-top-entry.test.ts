@@ -1,5 +1,5 @@
 import '../../fixtures/window';
-import { Editor, Setters } from '@alilc/lowcode-editor-core';
+import { Editor, Setters } from '@rchh/lowcode-editor-core';
 import { Node } from '../../../src/document/node/node';
 import { Designer } from '../../../src/designer/designer';
 import settingSchema from '../../fixtures/schema/setting';

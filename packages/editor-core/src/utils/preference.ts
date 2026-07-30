@@ -1,6 +1,6 @@
 import store from 'store';
 import { getLogger } from './logger';
-import { IPublicModelPreference } from '@alilc/lowcode-types';
+import { IPublicModelPreference } from '@rchh/lowcode-types';
 
 const logger = getLogger({ level: 'warn', bizName: 'Preference' });
 const STORAGE_KEY_PREFIX = 'ale';

@@ -7,7 +7,7 @@ import { Page, Table } from '@alilc/lowcode-components';
 
 import { createHttpHandler as __$$createHttpRequestHandler } from '@alilc/lowcode-datasource-http-handler';
 
-import { create as __$$createDataSourceEngine } from '@alilc/lowcode-datasource-engine/runtime';
+import { create as __$$createDataSourceEngine } from '@rchh/lowcode-datasource-engine/runtime';
 
 import { isMiniApp as __$$isMiniApp } from 'universal-env';
 

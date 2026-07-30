@@ -7,7 +7,7 @@ import {
   IPublicTypeLocationDetail,
   IPublicTypeLocationData,
   IPublicModelLocateEvent,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 
 export interface Point {
   clientX: number;
@@ -24,14 +24,14 @@ export type Rects = DOMRect[] & {
 };
 
 /**
- * @deprecated use same function in @alilc/lowcode-utils
+ * @deprecated use same function in @rchh/lowcode-utils
  */
 export function isLocationData(obj: any): boolean {
   return obj && obj.target && obj.detail;
 }
 
 /**
- * @deprecated use same function in @alilc/lowcode-utils
+ * @deprecated use same function in @rchh/lowcode-utils
  */
 export function isLocationChildrenDetail(obj: any): boolean {
   return obj && obj.type === IPublicTypeLocationDetailType.Children;

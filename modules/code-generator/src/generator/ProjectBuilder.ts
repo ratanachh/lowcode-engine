@@ -1,4 +1,4 @@
-import { ResultDir, ResultFile, IPublicTypeProjectSchema } from '@alilc/lowcode-types';
+import { ResultDir, ResultFile, IPublicTypeProjectSchema } from '@rchh/lowcode-types';
 
 import {
   IModuleBuilder,

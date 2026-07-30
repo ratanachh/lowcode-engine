@@ -1,4 +1,4 @@
-import { IPublicModelPluginContext, IPublicTypePlugin } from '@alilc/lowcode-types';
+import { IPublicModelPluginContext, IPublicTypePlugin } from '@rchh/lowcode-types';
 import { nodeCommand } from './node-command';
 import { historyCommand } from './history-command';
 

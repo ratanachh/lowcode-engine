@@ -33,12 +33,12 @@ const pluginFactory: BuilderComponentPluginFactory<unknown> = () => {
             linkAfter: [COMMON_CHUNK_NAME.ExternalDepsImport],
           });
           nextStyleAddedMap[dep.exportName] = true;
-        } else if (dep.package === '@alilc/lowcode-materials' && !lowcodeMaterialsStyleAdded) {
+        } else if (dep.package === '@rchh/lowcode-materials' && !lowcodeMaterialsStyleAdded) {
           chunks.push({
             type: ChunkType.STRING,
             fileType: FileType.JSX,
             name: COMMON_CHUNK_NAME.InternalDepsImport,
-            content: 'import \'@alilc/lowcode-materials/lib/style\';',
+            content: 'import \'@rchh/lowcode-materials/lib/style\';',
             linkAfter: [COMMON_CHUNK_NAME.ExternalDepsImport],
           });
           lowcodeMaterialsStyleAdded = true;

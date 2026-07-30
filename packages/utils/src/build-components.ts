@@ -1,5 +1,5 @@
 import { ComponentType, forwardRef, createElement, FunctionComponent } from 'react';
-import { IPublicTypeNpmInfo, IPublicTypeComponentSchema, IPublicTypeProjectSchema } from '@alilc/lowcode-types';
+import { IPublicTypeNpmInfo, IPublicTypeComponentSchema, IPublicTypeProjectSchema } from '@rchh/lowcode-types';
 import { isESModule } from './is-es-module';
 import { isReactComponent, acceptsRef, wrapReactClass } from './is-react';
 import { isObject } from './is-object';

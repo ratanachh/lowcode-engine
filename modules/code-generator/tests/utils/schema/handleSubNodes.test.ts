@@ -1,4 +1,4 @@
-import { IPublicTypeNodeData } from '@alilc/lowcode-types';
+import { IPublicTypeNodeData } from '@rchh/lowcode-types';
 import { handleSubNodes } from '../../../src/utils/schema';
 import SCHEMA_WITH_SLOT from './data/schema-with-slot.json';
 

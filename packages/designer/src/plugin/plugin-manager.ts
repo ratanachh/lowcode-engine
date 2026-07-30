@@ -1,5 +1,5 @@
-import { engineConfig } from '@alilc/lowcode-editor-core';
-import { getLogger } from '@alilc/lowcode-utils';
+import { engineConfig } from '@rchh/lowcode-editor-core';
+import { getLogger } from '@rchh/lowcode-utils';
 import {
   ILowCodePluginRuntime,
   ILowCodePluginManager,
@@ -18,7 +18,7 @@ import {
   IPublicTypePluginRegisterOptions,
   IPublicTypePreferenceValueType,
   IPublicTypePlugin,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 
 const logger = getLogger({ level: 'warn', bizName: 'designer:pluginManager' });
 

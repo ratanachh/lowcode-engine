@@ -1,6 +1,6 @@
 import { IEventBus, createModuleEventBus } from '../event-bus';
 import { obx, computed } from '../utils/obx';
-import { Logger } from '@alilc/lowcode-utils';
+import { Logger } from '@rchh/lowcode-utils';
 
 const logger = new Logger({ level: 'warn', bizName: 'globalLocale' });
 

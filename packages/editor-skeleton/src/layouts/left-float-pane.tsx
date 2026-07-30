@@ -1,9 +1,9 @@
 import { Component, Fragment } from 'react';
 import classNames from 'classnames';
-import { observer, Focusable } from '@alilc/lowcode-editor-core';
+import { observer, Focusable } from '@rchh/lowcode-editor-core';
 import { Area } from '../area';
 import { Panel } from '../widget/panel';
-import { IPublicApiProject, IPublicTypePanelConfig } from '@alilc/lowcode-types';
+import { IPublicApiProject, IPublicTypePanelConfig } from '@rchh/lowcode-types';
 
 @observer
 export default class LeftFloatPane extends Component<{ area: Area<IPublicTypePanelConfig, Panel> }> {

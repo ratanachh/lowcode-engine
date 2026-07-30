@@ -1,6 +1,6 @@
 {
   "plugins": [
-    "@alilc/build-plugin-lce",
+    "@rchh/build-plugin-lce",
     "@alilc/lowcode-test-mate/plugin/index.ts"
   ],
   "babelPlugins": [

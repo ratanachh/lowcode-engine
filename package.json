@@ -54,7 +54,7 @@
     "yarn": "^1.22.17",
     "rimraf": "^3.0.2",
     "@types/react-router": "5.1.18",
-    "@alilc/build-plugin-lce": "^0.0.5",
+    "@rchh/build-plugin-lce": "npm:@alilc/build-plugin-lce@^0.0.5",
     "babel-jest": "^26.5.2",
     "@alilc/lowcode-test-mate": "^1.0.1"
   },
@@ -67,7 +67,8 @@
   },
   "resolutions": {
     "typescript": "4.6.2",
-    "react-error-overlay": "6.0.9"
+    "react-error-overlay": "6.0.9",
+    "@types/node": "16.18.96"
   },
   "repository": "git@github.com:alibaba/lowcode-engine.git"
 }

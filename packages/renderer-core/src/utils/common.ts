@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable no-new-func */
 import logger from './logger';
-import { IPublicTypeRootSchema, IPublicTypeNodeSchema, IPublicTypeJSSlot } from '@alilc/lowcode-types';
-import { isI18nData, isJSExpression } from '@alilc/lowcode-utils';
+import { IPublicTypeRootSchema, IPublicTypeNodeSchema, IPublicTypeJSSlot } from '@rchh/lowcode-types';
+import { isI18nData, isJSExpression } from '@rchh/lowcode-utils';
 import { isEmpty } from 'lodash';
 import IntlMessageFormat from 'intl-messageformat';
 import pkg from '../../package.json';

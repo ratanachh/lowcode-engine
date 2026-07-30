@@ -4,9 +4,9 @@ import React from 'react';
 
 import { Switch } from '@alifd/next';
 
-import { createJsonpHandler as __$$createJsonpRequestHandler } from '@alilc/lowcode-datasource-jsonp-handler';
+import { createJsonpHandler as __$$createJsonpRequestHandler } from '@rchh/lowcode-datasource-jsonp-handler';
 
-import { create as __$$createDataSourceEngine } from '@alilc/lowcode-datasource-engine/runtime';
+import { create as __$$createDataSourceEngine } from '@rchh/lowcode-datasource-engine/runtime';
 
 import '@alifd/next/lib/switch/style';
 

@@ -1,3 +1,3 @@
-import { IPublicTypeWidgetBaseConfig as innerIWidgetBaseConfig } from '@alilc/lowcode-types';
+import { IPublicTypeWidgetBaseConfig as innerIWidgetBaseConfig } from '@rchh/lowcode-types';
 
 export type IWidgetBaseConfig = innerIWidgetBaseConfig;

@@ -1,4 +1,4 @@
-import { IPublicTypeSetterConfig } from '@alilc/lowcode-types';
+import { IPublicTypeSetterConfig } from '@rchh/lowcode-types';
 import { isCustomView } from './is-custom-view';
 import { isObject } from '../is-object';
 

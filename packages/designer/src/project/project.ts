@@ -1,16 +1,16 @@
-import { obx, computed, makeObservable, action, IEventBus, createModuleEventBus } from '@alilc/lowcode-editor-core';
+import { obx, computed, makeObservable, action, IEventBus, createModuleEventBus } from '@rchh/lowcode-editor-core';
 import { IDesigner } from '../designer';
 import { DocumentModel, isDocumentModel } from '../document';
 import type { IDocumentModel } from '../document';
-import { IPublicEnumTransformStage } from '@alilc/lowcode-types';
+import { IPublicEnumTransformStage } from '@rchh/lowcode-types';
 import type {
   IBaseApiProject,
   IPublicTypeProjectSchema,
   IPublicTypeRootSchema,
   IPublicTypeComponentsMap,
   IPublicTypeSimulatorRenderer,
-} from '@alilc/lowcode-types';
-import { isLowCodeComponentType, isProCodeComponentType } from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-types';
+import { isLowCodeComponentType, isProCodeComponentType } from '@rchh/lowcode-utils';
 import { ISimulatorHost } from '../simulator';
 
 export interface IProject extends Omit<IBaseApiProject<

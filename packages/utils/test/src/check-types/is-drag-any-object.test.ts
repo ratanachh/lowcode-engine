@@ -1,5 +1,5 @@
 import { isDragAnyObject } from '../../../src/check-types/is-drag-any-object';
-import { IPublicEnumDragObjectType } from '@alilc/lowcode-types';
+import { IPublicEnumDragObjectType } from '@rchh/lowcode-types';
 
 describe('isDragAnyObject', () => {
   it('should return false if obj is null', () => {

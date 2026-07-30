@@ -1,5 +1,5 @@
 // 仅使用类型
-import { IPublicModelNode } from '@alilc/lowcode-types';
+import { IPublicModelNode } from '@rchh/lowcode-types';
 import { MouseEvent } from 'react';
 
 export const getClosestNode = <Node extends IPublicModelNode = IPublicModelNode>(

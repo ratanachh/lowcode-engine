@@ -6,7 +6,7 @@ import {
   InterpretDataSourceConfig,
   isJSExpression,
   isJSFunction,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import changeCase from 'change-case';
 
 import { CLASS_DEFINE_CHUNK_NAME, COMMON_CHUNK_NAME } from '../../../const/generator';
@@ -73,7 +73,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
           const handlerFactoryExportName = `create${changeCase.pascal(dsType)}Handler`;
           const handlerPkgName =
             cfg.dataSourceHandlersPackageMap?.[dsType] ||
-            `@alilc/lowcode-datasource-${changeCase.kebab(dsType)}-handler`;
+            `@rchh/lowcode-datasource-${changeCase.kebab(dsType)}-handler`;
 
           next.chunks.push({
             type: ChunkType.STRING,
@@ -91,7 +91,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
     }
 
     const datasourceEnginePackageName =
-      cfg.datasourceConfig?.enginePackage || '@alilc/lowcode-datasource-engine';
+      cfg.datasourceConfig?.enginePackage || '@rchh/lowcode-datasource-engine';
     next.chunks.push({
       type: ChunkType.STRING,
       fileType: FileType.JSX,

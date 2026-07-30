@@ -2,7 +2,7 @@ import '../../fixtures/window';
 import {
   Editor,
   Setters as InnerSetters,
-} from '@alilc/lowcode-editor-core';
+} from '@rchh/lowcode-editor-core';
 import { SettingTopEntry } from '../../../src/designer/setting/setting-top-entry';
 import { SettingPropEntry } from '../../../src/designer/setting/setting-prop-entry';
 import { Node } from '../../../src/document/node/node';

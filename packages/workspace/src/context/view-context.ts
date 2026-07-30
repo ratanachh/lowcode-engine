@@ -1,5 +1,5 @@
-import { computed, makeObservable, obx } from '@alilc/lowcode-editor-core';
-import { IPublicEditorViewConfig, IPublicEnumPluginRegisterLevel, IPublicTypeEditorView } from '@alilc/lowcode-types';
+import { computed, makeObservable, obx } from '@rchh/lowcode-editor-core';
+import { IPublicEditorViewConfig, IPublicEnumPluginRegisterLevel, IPublicTypeEditorView } from '@rchh/lowcode-types';
 import { flow } from 'mobx';
 import { IWorkspace } from '../workspace';
 import { BasicContext, IBasicContext } from './base-context';

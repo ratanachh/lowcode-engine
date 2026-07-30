@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { pipe } from 'fp-ts/function';
-import { IPublicTypeNodeSchema, isNodeSchema, IPublicTypeNodeDataType, IPublicTypeCompositeValue } from '@alilc/lowcode-types';
+import { IPublicTypeNodeSchema, isNodeSchema, IPublicTypeNodeDataType, IPublicTypeCompositeValue } from '@rchh/lowcode-types';
 
 import {
   IScope,

@@ -26,7 +26,7 @@ get(key: string, defaultValue?: any): any;
 ```
 **示例**
 ```typescript
-import { config } from '@alilc/lowcode-engine';
+import { config } from '@rchh/lowcode-engine';
 
 config.get('keyA', true);
 config.get('keyB', { a: 1 });
@@ -45,7 +45,7 @@ set(key: string, value: any): void;
 ```
 **示例**
 ```typescript
-import { config } from '@alilc/lowcode-engine';
+import { config } from '@rchh/lowcode-engine';
 
 config.set('keyC', 1);
 ```
@@ -65,7 +65,7 @@ has(key: string): boolean;
 
 **示例**
 ```typescript
-import { config } from '@alilc/lowcode-engine';
+import { config } from '@rchh/lowcode-engine';
 
 config.has('keyD');
 ```
@@ -83,7 +83,7 @@ setConfig(config: { [key: string]: any }): void;
 ```
 **示例**
 ```typescript
-import { config } from '@alilc/lowcode-engine';
+import { config } from '@rchh/lowcode-engine';
 
 config.setConfig({ keyA: false, keyB: 2 });
 ```
@@ -108,7 +108,7 @@ getPreference(): IPublicModelPreference;
 示例
 
 ```javascript
-import { config } from '@alilc/lowcode-engine';
+import { config } from '@rchh/lowcode-engine';
 
 const panelName = 'outline-master-pane';
 
@@ -136,7 +136,7 @@ onceGot(key: string): Promise<any>;
 ```
 **示例**
 ```typescript
-import { config } from '@alilc/lowcode-engine';
+import { config } from '@rchh/lowcode-engine';
 
 config.onceGot('keyA').then(value => {
   console.log(`The value of keyA is ${value}`);
@@ -162,7 +162,7 @@ const value = await config.onceGot('keyA');
 ```
 **示例**
 ```typescript
-import { config } from '@alilc/lowcode-engine';
+import { config } from '@rchh/lowcode-engine';
 
 config.onGot('keyA', (value) => {
   console.log(`The value of keyA is ${value}`);

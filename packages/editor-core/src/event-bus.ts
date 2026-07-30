@@ -1,5 +1,5 @@
-import { IPublicApiEvent } from '@alilc/lowcode-types';
-import { Logger } from '@alilc/lowcode-utils';
+import { IPublicApiEvent } from '@rchh/lowcode-types';
+import { Logger } from '@rchh/lowcode-utils';
 import EventEmitter from 'events';
 
 const logger = new Logger({ level: 'warn', bizName: 'event-bus' });

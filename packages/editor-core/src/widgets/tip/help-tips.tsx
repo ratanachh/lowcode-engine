@@ -1,4 +1,4 @@
-import { IPublicTypeHelpTipConfig, IPublicTypeTipConfig } from '@alilc/lowcode-types';
+import { IPublicTypeHelpTipConfig, IPublicTypeTipConfig } from '@rchh/lowcode-types';
 import { Tip } from './tip';
 import { Icon } from '@alifd/next';
 import { IconProps } from '@alifd/next/types/icon';

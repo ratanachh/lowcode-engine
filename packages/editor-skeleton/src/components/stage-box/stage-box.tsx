@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { observer } from '@alilc/lowcode-editor-core';
+import { observer } from '@rchh/lowcode-editor-core';
 import StageChain from './stage-chain';
 import Stage from './stage';
 import { ISkeleton } from '../../skeleton';

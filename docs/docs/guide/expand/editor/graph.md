@@ -108,7 +108,7 @@ x6Designer为图实例暴露出来的一些接口，可基于此进行一些图�
 
 ## 开发物料
 ```bash
-npm init @alilc/element your-material-demo
+npm init @rchh/element your-material-demo
 ```
 ![image.png](https://img.alicdn.com/imgextra/i3/O1CN01DCCqO82ADuhS8ztCt_!!6000000008170-2-tps-546-208.png)
 
@@ -132,7 +132,7 @@ npm run lowcode:build
 物料想要支持被项目动态inject调试，须在build.lowcode.js中加入
 ```javascript
 [
-  '@alilc/build-plugin-alt',
+  '@rchh/build-plugin-alt',
   {
     type: 'component',
     inject: true,
@@ -147,7 +147,7 @@ npm run lowcode:build
 npm run lowcode:dev
 ```
 #### 项目侧
-通过@alilc/lce-graph-core加载物料的天然支持了debug，因此无须特殊处理。
+通过@rchh/lce-graph-core加载物料的天然支持了debug，因此无须特殊处理。
 若项目中自行加载，则参考 https://lowcode-engine.cn/site/docs/guide/expand/editor/cli
 项目访问地址后拼接query "?debug"即可进入物料调试
 ![image.png](https://img.alicdn.com/imgextra/i2/O1CN01ke58hT1aRoYJzkutk_!!6000000003327-2-tps-5120-2790.png)

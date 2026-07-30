@@ -1,5 +1,5 @@
 {
-  "name": "@alilc/lowcode-material-parser",
+  "name": "@rchh/lowcode-material-parser",
   "version": "1.0.3",
   "description": "material parser for Ali lowCode engine",
   "main": "lib/index.js",
@@ -16,6 +16,8 @@
     "@types/lodash": "^4.14.149",
     "@types/node": "^14.6.0",
     "@types/prop-types": "^15.7.3",
+    "@types/react": "^17.0.52",
+    "@types/react-dom": "^17.0.17",
     "copy-webpack-plugin": "^9.1.0",
     "copyfiles": "^2.4.1",
     "eslint": "^8.12.0",

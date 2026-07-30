@@ -1,13 +1,13 @@
 import {
   INode,
   ISettingField,
-} from '@alilc/lowcode-designer';
-import { IShellModelFactory, IPublicModelNode } from '@alilc/lowcode-types';
+} from '@rchh/lowcode-designer';
+import { IShellModelFactory, IPublicModelNode } from '@rchh/lowcode-types';
 import { IPublicModelSettingField } from '../../../types/src/shell/model/setting-field';
 import {
   Node,
   SettingField,
-} from '@alilc/lowcode-shell';
+} from '@rchh/lowcode-shell';
 class ShellModelFactory implements IShellModelFactory {
   createNode(node: INode | null | undefined): IPublicModelNode | null {
     return Node.create(node);

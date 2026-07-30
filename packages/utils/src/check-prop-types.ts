@@ -1,7 +1,7 @@
 import * as ReactIs from 'react-is';
 import { default as ReactPropTypesSecret } from 'prop-types/lib/ReactPropTypesSecret';
 import { default as factoryWithTypeCheckers } from 'prop-types/factoryWithTypeCheckers';
-import { IPublicTypePropType } from '@alilc/lowcode-types';
+import { IPublicTypePropType } from '@rchh/lowcode-types';
 import { isRequiredPropType } from './check-types/is-required-prop-type';
 import { Logger } from './logger';
 

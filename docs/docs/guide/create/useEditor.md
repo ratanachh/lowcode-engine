@@ -14,11 +14,11 @@ sidebar_position: 0
 2. 确保为 npm [设置了可以访问的 npm 源，保证安装过程无网络问题](https://npmmirror.com/)
 3. 安装官方命令行工具
    ```bash
-   npm install -g @alilc/create-element@latest
+   npm install -g @rchh/create-element@latest
    ```
 4. 通过命令行工具创建
    ```bash
-   npm init @alilc/element editor-project-name
+   npm init @rchh/element editor-project-name
    ```
    这时会看到一个选项列表
 
@@ -26,7 +26,7 @@ sidebar_position: 0
 
    选择`编辑器`，并填写对应的问题，即可完成创建。
 
-   > 注 @alilc/create-element 版本需 >= 1.0.4，若看不到`编辑器`选项，请重新执行步骤 3
+   > 注 @rchh/create-element 版本需 >= 1.0.4，若看不到`编辑器`选项，请重新执行步骤 3
 5. 进入创建后的目录
    ```bash
    cd editor-project-name
@@ -54,13 +54,13 @@ sidebar_position: 0
 
 ```html
 <!-- 低代码引擎的页面框架样式 -->
-<link rel="stylesheet" href="https://uipaas-assets.com/prod/npm/@alilc/lowcode-engine/1.0.18/dist/css/engine-core.css" />
+<link rel="stylesheet" href="https://uipaas-assets.com/prod/npm/@rchh/lowcode-engine/1.0.18/dist/css/engine-core.css" />
 <!-- Fusion Next 控件样式 -->
 <link rel="stylesheet" href="https://g.alicdn.com/code/lib/alifd__next/1.23.24/next.min.css">
 <!-- 低代码引擎的页面主题样式，可以替换为 theme-lowcode-dark -->
 <link rel="stylesheet" href="https://alifd.alicdn.com/npm/@alifd/theme-lowcode-light/0.2.0/next.min.css">
 <!-- 低代码引擎官方扩展的样式 -->
-<link rel="stylesheet" href="https://uipaas-assets.com/prod/npm/@alilc/lowcode-engine-ext/1.0.5/dist/css/engine-ext.css" />
+<link rel="stylesheet" href="https://uipaas-assets.com/prod/npm/@rchh/lowcode-engine-ext/1.0.5/dist/css/engine-ext.css" />
 
 <!-- React，可替换为 production 包 -->
 <script src="https://g.alicdn.com/code/lib/react/16.14.0/umd/react.development.js"></script>
@@ -76,12 +76,12 @@ sidebar_position: 0
 <!-- Fusion Next 的主包，低代码编辑器的依赖 -->
 <script src="https://g.alicdn.com/code/lib/alifd__next/1.23.24/next.min.js"></script>
 <!-- 低代码引擎的主包 -->
-<script crossorigin="anonymous" src="https://uipaas-assets.com/prod/npm/@alilc/lowcode-engine/1.0.18/dist/js/engine-core.js"></script>
+<script crossorigin="anonymous" src="https://uipaas-assets.com/prod/npm/@rchh/lowcode-engine/1.0.18/dist/js/engine-core.js"></script>
 <!-- 低代码引擎官方扩展的主包 -->
-<script crossorigin="anonymous" src="https://uipaas-assets.com/prod/npm/@alilc/lowcode-engine-ext/1.0.5/dist/js/engine-ext.js"></script>
+<script crossorigin="anonymous" src="https://uipaas-assets.com/prod/npm/@rchh/lowcode-engine-ext/1.0.5/dist/js/engine-ext.js"></script>
 ```
 > 注：如果 unpkg 的服务比较缓慢，您可以使用官方 CDN 来获得确定版本的低代码引擎，如对于引擎的 1.0.18 版本，可用以下官方 CDN 替代
-> - [https://uipaas-assets.com/prod/npm/@alilc/lowcode-engine/1.0.18/dist/js/engine-core.js](https://uipaas-assets.com/prod/npm/@alilc/lowcode-engine/1.0.18/dist/js/engine-core.js)
+> - [https://uipaas-assets.com/prod/npm/@rchh/lowcode-engine/1.0.18/dist/js/engine-core.js](https://uipaas-assets.com/prod/npm/@rchh/lowcode-engine/1.0.18/dist/js/engine-core.js)
 
 
 ### 配置打包
@@ -95,8 +95,8 @@ sidebar_position: 0
     "react-dom": "var window.ReactDOM",
     "prop-types": "var window.PropTypes",
     "@alifd/next": "var window.Next",
-    "@alilc/lowcode-engine": "var window.AliLowCodeEngine",
-    "@alilc/lowcode-engine-ext": "var window.AliLowCodeEngineExt",
+    "@rchh/lowcode-engine": "var window.AliLowCodeEngine",
+    "@rchh/lowcode-engine-ext": "var window.AliLowCodeEngineExt",
     "moment": "var window.moment",
     "lodash": "var window._"
   }
@@ -120,13 +120,13 @@ window.AliLowCodeEngine.init(document.getElementById('lce-container'), {
 // package.json
 {
   "devDependencies": {
-    "@alilc/lowcode-engine": "^1.0.0"
+    "@rchh/lowcode-engine": "^1.0.0"
   }
 }
 ```
 ```javascript
 // src/index.tsx
-import { init } from '@alilc/lowcode-engine';
+import { init } from '@rchh/lowcode-engine';
 
 init(document.getElementById('lce-container'), {
   enableCondition: true,

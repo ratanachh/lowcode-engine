@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { isValidElement } from 'react';
-import { isElement } from '@alilc/lowcode-utils';
-import { IPublicTypePropConfig } from '@alilc/lowcode-types';
+import { isElement } from '@rchh/lowcode-utils';
+import { IPublicTypePropConfig } from '@rchh/lowcode-types';
 
 export const primitiveTypes = [
   'string',

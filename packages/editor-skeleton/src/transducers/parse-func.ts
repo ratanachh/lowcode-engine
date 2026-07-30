@@ -1,5 +1,5 @@
-import { IPublicTypeTransformedComponentMetadata } from '@alilc/lowcode-types';
-import { isPlainObject, isJSFunction, getLogger } from '@alilc/lowcode-utils';
+import { IPublicTypeTransformedComponentMetadata } from '@rchh/lowcode-types';
+import { isPlainObject, isJSFunction, getLogger } from '@rchh/lowcode-utils';
 
 const leadingFnRe = /^function/;
 const leadingFnNameRe = /^\w+\s*\(/;

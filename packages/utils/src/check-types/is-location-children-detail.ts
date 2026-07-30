@@ -1,4 +1,4 @@
-import { IPublicTypeLocationChildrenDetail, IPublicTypeLocationDetailType } from '@alilc/lowcode-types';
+import { IPublicTypeLocationChildrenDetail, IPublicTypeLocationDetailType } from '@rchh/lowcode-types';
 import { isObject } from '../is-object';
 
 export function isLocationChildrenDetail(obj: any): obj is IPublicTypeLocationChildrenDetail {

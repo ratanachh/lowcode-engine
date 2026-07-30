@@ -20,7 +20,7 @@ import {
   IPublicEnumPluginRegisterLevel,
   IPublicApiCommonUI,
   IPublicApiCommand,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import PluginContext from './plugin-context';
 
 export type PluginPreference = Map<string, Record<string, IPublicTypePreferenceValueType>>;

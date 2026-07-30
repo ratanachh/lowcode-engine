@@ -1,4 +1,4 @@
-import { ResultDir } from '@alilc/lowcode-types';
+import { ResultDir } from '@rchh/lowcode-types';
 import { createResultDir } from '../../../../../utils/resultHelper';
 import { runFileGenerator } from '../../../../../utils/templateHelper';
 

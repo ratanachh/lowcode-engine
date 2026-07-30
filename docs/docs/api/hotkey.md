@@ -54,7 +54,7 @@ hotkey.bind(['command+s', 'command+c'], (e) => {
 ```typescript
 import {
   hotkey,
-} from '@alilc/lowcode-engine';
+} from '@rchh/lowcode-engine';
 
 function saveSchema(schema) {
   // 保存 schema 相关操作

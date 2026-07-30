@@ -1,6 +1,6 @@
-import { ISkeleton } from '@alilc/lowcode-editor-skeleton';
-import { IPublicTypeEditorView, IPublicResourceData, IPublicResourceTypeConfig, IBaseModelResource, IPublicEnumPluginRegisterLevel } from '@alilc/lowcode-types';
-import { Logger } from '@alilc/lowcode-utils';
+import { ISkeleton } from '@rchh/lowcode-editor-skeleton';
+import { IPublicTypeEditorView, IPublicResourceData, IPublicResourceTypeConfig, IBaseModelResource, IPublicEnumPluginRegisterLevel } from '@rchh/lowcode-types';
+import { Logger } from '@rchh/lowcode-utils';
 import { BasicContext, IBasicContext } from './context/base-context';
 import { ResourceType, IResourceType } from './resource-type';
 import { IWorkspace } from './workspace';

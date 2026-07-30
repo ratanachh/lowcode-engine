@@ -42,16 +42,16 @@ setAssets(assets: IPublicTypeAssetsJson): void;
 **示例**
 直接在项目中引用 npm 包
 ```javascript
-import { material } from '@alilc/lowcode-engine';
-import assets from '@alilc/mc-assets-<siteId>/assets.json';
+import { material } from '@rchh/lowcode-engine';
+import assets from '@rchh/mc-assets-<siteId>/assets.json';
 
 material.setAssets(assets);
 ```
 
 通过接口动态引入资产包
 ```typescript
-import { material, plugins } from '@alilc/lowcode-engine';
-import { IPublicModelPluginContext } from '@alilc/lowcode-types';
+import { material, plugins } from '@rchh/lowcode-engine';
+import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 
 // 动态加载 assets
 plugins.register((ctx: IPublicModelPluginContext) => {
@@ -87,7 +87,7 @@ getAssets(): IPublicTypeAssetsJson;
 
 **示例**
 ```typescript
-import { material } from '@alilc/lowcode-engine';
+import { material } from '@rchh/lowcode-engine';
 
 material.getAssets();
 ```
@@ -108,9 +108,9 @@ loadIncrementalAssets(incrementalAssets: IPublicTypeAssetsJson): Promise<void>;
 
 **示例**
 ```typescript
-import { material } from '@alilc/lowcode-engine';
-import assets1 from '@alilc/mc-assets-<siteId>/assets.json';
-import assets2 from '@alilc/mc-assets-<siteId>/assets.json';
+import { material } from '@rchh/lowcode-engine';
+import assets1 from '@rchh/mc-assets-<siteId>/assets.json';
+import assets2 from '@rchh/mc-assets-<siteId>/assets.json';
 
 material.setAssets(assets1);
 material.loadIncrementalAssets(assets2);
@@ -119,7 +119,7 @@ material.loadIncrementalAssets(assets2);
 更新特定物料的描述文件
 
 ```typescript
-import { material } from '@alilc/lowcode-engine';
+import { material } from '@rchh/lowcode-engine';
 material.loadIncrementalAssets({
   version: '',
   components: [
@@ -149,7 +149,7 @@ addBuiltinComponentAction(action: IPublicTypeComponentAction): void;
 **示例**
 新增设计扩展位，并绑定事件
 ```typescript
-import { material } from '@alilc/lowcode-engine';
+import { material } from '@rchh/lowcode-engine';
 
 material.addBuiltinComponentAction({
   name: 'myIconName',
@@ -188,7 +188,7 @@ removeBuiltinComponentAction(name: string): void;
 
 **示例**
 ```typescript
-import { material } from '@alilc/lowcode-engine';
+import { material } from '@rchh/lowcode-engine';
 
 material.removeBuiltinComponentAction('myIconName');
 ```
@@ -225,7 +225,7 @@ modifyBuiltinComponentAction(
 **示例**
 给原始的 remove 扩展时间添加执行前后的日志
 ```typescript
-import { material } from '@alilc/lowcode-engine';
+import { material } from '@rchh/lowcode-engine';
 
 material.modifyBuiltinComponentAction('remove', (action) => {
   const originAction = action.content.action;
@@ -253,7 +253,7 @@ addContextMenuOption(action: IPublicTypeContextMenuAction): void;
 示例
 
 ```typescript
-import { IPublicEnumContextMenuType } from '@alilc/lowcode-types';
+import { IPublicEnumContextMenuType } from '@rchh/lowcode-types';
 
 material.addContextMenuOption({
   name: 'parentItem',
@@ -337,7 +337,7 @@ getComponentMeta(componentName: string): IPublicModelComponentMeta | null;
 
 **示例**
 ```typescript
-import { material } from '@alilc/lowcode-engine';
+import { material } from '@rchh/lowcode-engine';
 
 material.getComponentMeta('Input');
 ```
@@ -358,7 +358,7 @@ material.getComponentMeta('Input');
 
 **示例**
 ```typescript
-import { material } from '@alilc/lowcode-engine';
+import { material } from '@rchh/lowcode-engine';
 
 material.getComponentMetasMap();
 ```
@@ -396,7 +396,7 @@ registerMetadataTransducer(
 **示例**
 给每一个组件的配置添加高级配置面板，其中有一个是否渲染配置项
 ```typescript
-import { material } from '@alilc/lowcode-engine'
+import { material } from '@rchh/lowcode-engine'
 
 function addonCombine(metadata: TransformedComponentMetadata) {
   const { componentName, configure = {} } = metadata;
@@ -441,8 +441,8 @@ material.registerMetadataTransducer(addonCombine, 1, 'parse-func');
 删除高级 Tab
 
 ```typescript
-import { material } from '@alilc/lowcode-engine';
-import { IPublicTypeFieldConfig } from '@alilc/lowcode-types';
+import { material } from '@rchh/lowcode-engine';
+import { IPublicTypeFieldConfig } from '@rchh/lowcode-types';
 
 material.registerMetadataTransducer((transducer) => {
   const combined: IPublicTypeFieldConfig[] = [];
@@ -477,7 +477,7 @@ getRegisteredMetadataTransducers(): IPublicTypeMetadataTransducer[];
 
 **示例**
 ```typescript
-import { material } from '@alilc/lowcode-engine'
+import { material } from '@rchh/lowcode-engine'
 
 material.getRegisteredMetadataTransducers();
 ```
@@ -498,7 +498,7 @@ onChangeAssets(fn: () => void): IPublicTypeDisposable;
 
 **示例**
 ```typescript
-import { material } from '@alilc/lowcode-engine';
+import { material } from '@rchh/lowcode-engine';
 
 material.onChangeAssets(() => {
   console.log('asset changed');

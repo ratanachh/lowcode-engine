@@ -1,4 +1,4 @@
-import { IPublicEnumTransitionType } from '@alilc/lowcode-types';
+import { IPublicEnumTransitionType } from '@rchh/lowcode-types';
 import { runInAction } from 'mobx';
 import EventEmitter from 'events';
 

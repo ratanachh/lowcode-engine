@@ -1,5 +1,5 @@
-import { ILowCodePluginRuntime } from '@alilc/lowcode-designer';
-import { IPublicModelPluginInstance } from '@alilc/lowcode-types';
+import { ILowCodePluginRuntime } from '@rchh/lowcode-designer';
+import { IPublicModelPluginInstance } from '@rchh/lowcode-types';
 import { pluginInstanceSymbol } from '../symbols';
 
 export class PluginInstance implements IPublicModelPluginInstance {

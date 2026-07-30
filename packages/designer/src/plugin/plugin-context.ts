@@ -1,5 +1,5 @@
 /* eslint-disable no-multi-assign */
-import { engineConfig, createModuleEventBus } from '@alilc/lowcode-editor-core';
+import { engineConfig, createModuleEventBus } from '@rchh/lowcode-editor-core';
 import {
   IPublicApiHotkey,
   IPublicApiProject,
@@ -20,7 +20,7 @@ import {
   IPublicEnumPluginRegisterLevel,
   IPublicModelWindow,
   IPublicApiCommonUI,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import {
   IPluginContextOptions,
   ILowCodePluginContextApiAssembler,

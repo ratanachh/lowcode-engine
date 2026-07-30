@@ -15,7 +15,7 @@ import {
   editorCabinSymbol,
   skeletonCabinSymbol,
   simulatorRenderSymbol,
-} from '@alilc/lowcode-shell';
+} from '@rchh/lowcode-shell';
 
 export default {
   projectSymbol,

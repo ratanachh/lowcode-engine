@@ -1,6 +1,6 @@
-import { createContextMenu, parseContextMenuAsReactNode, parseContextMenuProperties } from '@alilc/lowcode-utils';
-import { engineConfig } from '@alilc/lowcode-editor-core';
-import { IPublicModelPluginContext, IPublicTypeContextMenuAction } from '@alilc/lowcode-types';
+import { createContextMenu, parseContextMenuAsReactNode, parseContextMenuProperties } from '@rchh/lowcode-utils';
+import { engineConfig } from '@rchh/lowcode-editor-core';
+import { IPublicModelPluginContext, IPublicTypeContextMenuAction } from '@rchh/lowcode-types';
 import React, { useCallback } from 'react';
 
 export function ContextMenu({ children, menus, pluginContext }: {

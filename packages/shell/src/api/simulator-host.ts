@@ -1,8 +1,8 @@
 import {
   BuiltinSimulatorHost,
-} from '@alilc/lowcode-designer';
+} from '@rchh/lowcode-designer';
 import { simulatorHostSymbol, nodeSymbol } from '../symbols';
-import { IPublicApiSimulatorHost, IPublicModelNode, IPublicModelSimulatorRender } from '@alilc/lowcode-types';
+import { IPublicApiSimulatorHost, IPublicModelNode, IPublicModelSimulatorRender } from '@rchh/lowcode-types';
 import { SimulatorRender } from '../model/simulator-render';
 
 export class SimulatorHost implements IPublicApiSimulatorHost {

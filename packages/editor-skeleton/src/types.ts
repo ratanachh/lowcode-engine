@@ -6,7 +6,7 @@ import {
   IPublicTypePanelDockProps,
   IPublicTypePanelConfigProps,
   IPublicTypePanelConfig,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import { IWidget } from './widget/widget';
 
 export interface WidgetConfig extends IPublicTypeWidgetBaseConfig {

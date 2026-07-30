@@ -1,9 +1,9 @@
-import { uniqueId } from '@alilc/lowcode-utils';
-import { createModuleEventBus, IEventBus, makeObservable, obx } from '@alilc/lowcode-editor-core';
+import { uniqueId } from '@rchh/lowcode-utils';
+import { createModuleEventBus, IEventBus, makeObservable, obx } from '@rchh/lowcode-editor-core';
 import { Context, IViewContext } from './context/view-context';
 import { IWorkspace } from './workspace';
 import { IResource } from './resource';
-import { IPublicModelWindow, IPublicTypeDisposable } from '@alilc/lowcode-types';
+import { IPublicModelWindow, IPublicTypeDisposable } from '@rchh/lowcode-types';
 
 interface IWindowCOnfig {
   title: string | undefined;

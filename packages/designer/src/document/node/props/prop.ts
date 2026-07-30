@@ -1,7 +1,7 @@
-import { untracked, computed, obx, engineConfig, action, makeObservable, mobx, runInAction } from '@alilc/lowcode-editor-core';
-import { GlobalEvent, IPublicEnumTransformStage } from '@alilc/lowcode-types';
-import type { IPublicTypeCompositeValue, IPublicTypeJSSlot, IPublicTypeSlotSchema, IPublicModelProp } from '@alilc/lowcode-types';
-import { uniqueId, isPlainObject, hasOwnProperty, compatStage, isJSExpression, isJSSlot, isNodeSchema } from '@alilc/lowcode-utils';
+import { untracked, computed, obx, engineConfig, action, makeObservable, mobx, runInAction } from '@rchh/lowcode-editor-core';
+import { GlobalEvent, IPublicEnumTransformStage } from '@rchh/lowcode-types';
+import type { IPublicTypeCompositeValue, IPublicTypeJSSlot, IPublicTypeSlotSchema, IPublicModelProp } from '@rchh/lowcode-types';
+import { uniqueId, isPlainObject, hasOwnProperty, compatStage, isJSExpression, isJSSlot, isNodeSchema } from '@rchh/lowcode-utils';
 import { valueToSource } from './value-to-source';
 import { IPropParent } from './props';
 import type { IProps } from './props';

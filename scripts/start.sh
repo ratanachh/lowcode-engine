@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pkgName="@alilc/lowcode-ignitor"
+pkgName="@rchh/lowcode-ignitor"
 
 if [ "$1" ]; then
   pkgName="$1"

@@ -1,8 +1,8 @@
 import { MouseEvent as ReactMouseEvent, PureComponent } from 'react';
-import { isFormEvent, canClickNode, isShaken } from '@alilc/lowcode-utils';
+import { isFormEvent, canClickNode, isShaken } from '@rchh/lowcode-utils';
 import { Tree } from '../controllers/tree';
 import TreeNodeView from './tree-node';
-import { IPublicEnumDragObjectType, IPublicModelNode } from '@alilc/lowcode-types';
+import { IPublicEnumDragObjectType, IPublicModelNode } from '@rchh/lowcode-types';
 import TreeNode from '../controllers/tree-node';
 
 function getTreeNodeIdByEvent(e: ReactMouseEvent, stop: Element): null | string {

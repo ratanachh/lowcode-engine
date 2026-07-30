@@ -1,5 +1,5 @@
-import { obx } from '@alilc/lowcode-editor-core';
-import { IPublicTypePluginConfig, IPublicTypeLiveTextEditingConfig } from '@alilc/lowcode-types';
+import { obx } from '@rchh/lowcode-editor-core';
+import { IPublicTypePluginConfig, IPublicTypeLiveTextEditingConfig } from '@rchh/lowcode-types';
 import { INode, Prop } from '../../document';
 
 const EDITOR_KEY = 'data-setter-prop';

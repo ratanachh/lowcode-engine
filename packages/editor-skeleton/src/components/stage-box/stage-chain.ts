@@ -1,5 +1,5 @@
 import { Stage as StageWidget } from '../../widget/stage';
-import { createModuleEventBus, IEventBus } from '@alilc/lowcode-editor-core';
+import { createModuleEventBus, IEventBus } from '@rchh/lowcode-editor-core';
 
 export default class StageChain {
   private emitter: IEventBus;

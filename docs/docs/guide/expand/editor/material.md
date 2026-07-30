@@ -45,7 +45,7 @@ export interface RemoteComponentDescription {
 这份资产包里的物料是我们内部沉淀出的，用户可以通过这套资产包体验引擎提供的搭建、配置能力。
 **_在项目中正常注册资产包：_**
 ```typescript
-import { material } from '@alilc/lowcode-engine';
+import { material } from '@rchh/lowcode-engine';
 // 以任何方式引入 assets
 material.setAssets(assets);
 ```
@@ -60,8 +60,8 @@ material.setAssets(assets);
 详细参考：[低代码生态脚手架 & 调试机制](https://lowcode-engine.cn/site/docs/guide/expand/editor/cli)
 
 ```typescript
-import { material } from '@alilc/lowcode-engine';
-import Inject, { injectAssets } from '@alilc/lowcode-plugin-inject';
+import { material } from '@rchh/lowcode-engine';
+import Inject, { injectAssets } from '@rchh/lowcode-plugin-inject';
 await material.setAssets(await injectAssets(assets));
 ```
 
@@ -93,7 +93,7 @@ await material.setAssets(await injectAssets(assets));
 
 - @alifd/pro-layout：布局组件，放在`window.AlifdProLayoutMeta`，[meta 文件地址](https://alifd.alicdn.com/npm/@alifd/pro-layout@1.0.1-beta.5/build/lowcode/meta.js)；
 - @alifd/fusion-ui：精选组件，放在`window.AlifdFusionUiMeta`，[meta 文件地址](https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5-beta.1/build/lowcode/meta.js)；
-- @alilc/lowcode-materials：原子组件，放在 `window.AlilcLowcodeMaterialsMeta`，[meta 文件地址](https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.1/build/lowcode/meta.js)；
+- @rchh/lowcode-materials：原子组件，放在 `window.AlilcLowcodeMaterialsMeta`，[meta 文件地址](https://alifd.alicdn.com/npm/@rchh/lowcode-materials@1.0.1/build/lowcode/meta.js)；
 
 **_引擎中，会尝试调用对应 meta 文件，并注入到全局：_**
 ```tsx
@@ -119,7 +119,7 @@ document.head.appendChild(script);
 ### 新开发组件
 #### 组件项目初始化
 ```bash
-npm init @alilc/element your-material-name
+npm init @rchh/element your-material-name
 ```
 #### 选择组件类型
 > 组件 -> <组件组织方式>
@@ -270,8 +270,8 @@ npm publish
 
 ### 在项目中引入资产包
 ```typescript
-import { material, plugins } from '@alilc/lowcode-engine';
-import { IPublicModelPluginContext } from '@alilc/lowcode-types';
+import { material, plugins } from '@rchh/lowcode-engine';
+import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 
 // 动态加载 assets
 plugins.register((ctx: IPublicModelPluginContext) => {

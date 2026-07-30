@@ -1,5 +1,5 @@
-import { makeObservable, obx, IEventBus, createModuleEventBus } from '@alilc/lowcode-editor-core';
-import { IPublicModelDetecting } from '@alilc/lowcode-types';
+import { makeObservable, obx, IEventBus, createModuleEventBus } from '@rchh/lowcode-editor-core';
+import { IPublicModelDetecting } from '@rchh/lowcode-types';
 import type { IDocumentModel } from '../document/document-model';
 import type { INode } from '../document/node/node';
 

@@ -3,16 +3,16 @@ import {
   Editor,
   globalContext,
   Hotkey as InnerHotkey,
-} from '@alilc/lowcode-editor-core';
+} from '@rchh/lowcode-editor-core';
 import { Designer } from '../../src/designer/designer';
 import formSchema from '../fixtures/schema/form';
 import { fireEvent } from '@testing-library/react';
 import { builtinHotkey } from '../../../engine/src/inner-plugins/builtin-hotkey';
 import { shellModelFactory } from '../../../engine/src/modules/shell-model-factory';
-import { ILowCodePluginContextPrivate, LowCodePluginManager } from '@alilc/lowcode-designer';
-import { IPublicApiPlugins } from '@alilc/lowcode-types';
-import { Logger, Project, Canvas } from '@alilc/lowcode-shell';
-import { Workspace } from '@alilc/lowcode-workspace';
+import { ILowCodePluginContextPrivate, LowCodePluginManager } from '@rchh/lowcode-designer';
+import { IPublicApiPlugins } from '@rchh/lowcode-types';
+import { Logger, Project, Canvas } from '@rchh/lowcode-shell';
+import { Workspace } from '@rchh/lowcode-workspace';
 
 const editor = new Editor();
 const workspace = new Workspace();

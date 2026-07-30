@@ -1,4 +1,4 @@
-export * from '@alilc/lowcode-datasource-types';
+export * from '@rchh/lowcode-datasource-types';
 export * from './editor';
 export * from './activity';
 export * from './code-intermediate';

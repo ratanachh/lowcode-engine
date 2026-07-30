@@ -1,10 +1,10 @@
 import { get as lodashGet } from 'lodash';
-import { isPlainObject } from '@alilc/lowcode-utils';
+import { isPlainObject } from '@rchh/lowcode-utils';
 import {
   IPublicTypeEngineOptions,
   IPublicModelEngineConfig,
   IPublicModelPreference,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import { getLogger } from './utils/logger';
 import Preference from './utils/preference';
 

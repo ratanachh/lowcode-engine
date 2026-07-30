@@ -1,4 +1,4 @@
-import { IPublicModelClipboard } from '@alilc/lowcode-types';
+import { IPublicModelClipboard } from '@rchh/lowcode-types';
 
 function getDataFromPasteEvent(event: ClipboardEvent) {
   const { clipboardData } = event;

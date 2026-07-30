@@ -1,6 +1,6 @@
-import { Editor } from '@alilc/lowcode-editor-core';
-import { IPublicEnumTransformStage } from '@alilc/lowcode-types';
-import { isPlainObject, isVariable, isJSBlock } from '@alilc/lowcode-utils';
+import { Editor } from '@rchh/lowcode-editor-core';
+import { IPublicEnumTransformStage } from '@rchh/lowcode-types';
+import { isPlainObject, isVariable, isJSBlock } from '@rchh/lowcode-utils';
 import '../fixtures/window';
 import { Designer } from '../../src/designer/designer';
 import { DocumentModel } from '../../src/document/document-model';

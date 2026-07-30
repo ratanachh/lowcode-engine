@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { IPublicTypeAssetsJson, IPublicTypeComponentDescription, IPublicTypePackage, IPublicTypeRemoteComponentDescription } from '@alilc/lowcode-types';
+import { IPublicTypeAssetsJson, IPublicTypeComponentDescription, IPublicTypePackage, IPublicTypeRemoteComponentDescription } from '@rchh/lowcode-types';
 
 // TODO: 该转换逻辑未来需要消化掉
 export function assetsTransform(assets: IPublicTypeAssetsJson) {

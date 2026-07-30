@@ -1,8 +1,8 @@
 import {
   IModalNodesManager as InnerModalNodesManager,
   INode as InnerNode,
-} from '@alilc/lowcode-designer';
-import { IPublicModelModalNodesManager, IPublicModelNode } from '@alilc/lowcode-types';
+} from '@rchh/lowcode-designer';
+import { IPublicModelModalNodesManager, IPublicModelNode } from '@rchh/lowcode-types';
 import { Node as ShellNode } from './node';
 import { nodeSymbol, modalNodesManagerSymbol } from '../symbols';
 

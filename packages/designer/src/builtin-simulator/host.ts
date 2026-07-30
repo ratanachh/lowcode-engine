@@ -12,7 +12,7 @@ import {
   makeObservable,
   createModuleEventBus,
   IEventBus,
-} from '@alilc/lowcode-editor-core';
+} from '@rchh/lowcode-editor-core';
 
 import {
   ISimulatorHost,
@@ -40,7 +40,7 @@ import {
   isDragNodeObject,
   isLocationData,
   Logger,
-} from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-utils';
 import {
   isShaken,
   ILocateEvent,
@@ -64,7 +64,7 @@ import {
   IPublicTypeLocationDetailType,
   IPublicTypeRect,
   IPublicModelNode,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import { BuiltinSimulatorRenderer } from './renderer';
 import { clipboard } from '../designer/clipboard';
 import { LiveEditing } from './live-editing/live-editing';

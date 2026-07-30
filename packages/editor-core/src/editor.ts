@@ -13,11 +13,11 @@ import {
   IPublicTypeComponentDescription,
   IPublicTypeRemoteComponentDescription,
   GlobalEvent,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import { engineConfig } from './config';
 import { globalLocale } from './intl';
 import { obx } from './utils';
-import { IPublicTypeAssetsJson, AssetLoader } from '@alilc/lowcode-utils';
+import { IPublicTypeAssetsJson, AssetLoader } from '@rchh/lowcode-utils';
 import { assetsTransform } from './utils/assets-transform';
 
 EventEmitter.defaultMaxListeners = 100;

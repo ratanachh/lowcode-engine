@@ -1,6 +1,6 @@
 import React from 'react';
 import { isCustomView } from '../../../src/check-types/is-custom-view';
-import { IPublicTypeCustomView } from '@alilc/lowcode-types';
+import { IPublicTypeCustomView } from '@rchh/lowcode-types';
 
 describe('isCustomView', () => {
   test('should return true when obj is a valid React element', () => {

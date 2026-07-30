@@ -10,7 +10,7 @@ sidebar_position: 5
 #### init API
 
 ```javascript
-import { init } from '@alilc/lowcode-engine';
+import { init } from '@rchh/lowcode-engine';
 
 init(document.getElementById('engine'), {
   enableCondition: false,
@@ -22,7 +22,7 @@ init(document.getElementById('engine'), {
 #### config API
 
 ```javascript
-import { config } from '@alilc/lowcode-engine';
+import { config } from '@rchh/lowcode-engine';
 
 config.set('enableCondition', false)
 ```
@@ -48,7 +48,7 @@ config.set('enableCondition', false)
 
 引擎默认支持的 device 类型有 `default`、`mobile`、`iphonex`、`iphone6`。
 
-插件 `@alilc/lowcode-plugin-simulator-select` 支持的 device 类型有 `default`、`phone`、`tablet`、`desktop`。
+插件 `@rchh/lowcode-plugin-simulator-select` 支持的 device 类型有 `default`、`phone`、`tablet`、`desktop`。
 
 如果需要自定义的 device 类型，需要补充 device 类型对应的样式，例如 device 为 phone 时，需要补充样式如下：
 

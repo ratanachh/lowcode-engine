@@ -1,5 +1,5 @@
 import '../../fixtures/window';
-import { Editor } from '@alilc/lowcode-editor-core';
+import { Editor } from '@rchh/lowcode-editor-core';
 import { Designer } from '../../../src/designer/designer';
 import { BemToolsManager } from '../../../src/builtin-simulator/bem-tools/manager';
 import { shellModelFactory } from '../../../../engine/src/modules/shell-model-factory';

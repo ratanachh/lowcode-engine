@@ -1,6 +1,6 @@
 import { isEqual } from 'lodash';
 import { globalContext } from './di';
-import { IPublicTypeHotkeyCallback, IPublicTypeHotkeyCallbackConfig, IPublicTypeHotkeyCallbacks, IPublicApiHotkey } from '@alilc/lowcode-types';
+import { IPublicTypeHotkeyCallback, IPublicTypeHotkeyCallbackConfig, IPublicTypeHotkeyCallbacks, IPublicApiHotkey } from '@rchh/lowcode-types';
 
 interface KeyMap {
   [key: number]: string;

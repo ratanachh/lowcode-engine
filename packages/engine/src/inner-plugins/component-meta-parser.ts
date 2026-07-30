@@ -1,4 +1,4 @@
-import { IPublicModelPluginContext } from '@alilc/lowcode-types';
+import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 
 export const componentMetaParser = (designer: any) => {
   const fun = (ctx: IPublicModelPluginContext) => {

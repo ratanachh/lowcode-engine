@@ -7,7 +7,7 @@ sidebar_position: 0
 ### 简单示例
 
 ```jsx
-import ReactRenderer from '@alilc/lowcode-react-renderer';
+import ReactRenderer from '@rchh/lowcode-react-renderer';
 import ReactDOM from 'react-dom';
 import { Button } from '@alifd/next';
 
@@ -47,12 +47,12 @@ ReactDOM.render((
 
 **step 1：在设计器中获取组件列表**
 ```typescript
-import { material, project } from '@alilc/lowcode-engine';
+import { material, project } from '@rchh/lowcode-engine';
 const packages = material.getAssets().packages
 ```
 **step 2：在设计器中获取当前配置页面的 schema**
 ```typescript
-import { material, project } from '@alilc/lowcode-engine';
+import { material, project } from '@rchh/lowcode-engine';
 
 const schema = project.exportSchema();
 ```
@@ -82,9 +82,9 @@ const { componentsMap: componentsMapArray, componentsTree } = projectSchema;
 import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
 import { Loading } from '@alifd/next';
-import { buildComponents, assetBundle, AssetLevel, AssetLoader } from '@alilc/lowcode-utils';
-import ReactRenderer from '@alilc/lowcode-react-renderer';
-import { injectComponents } from '@alilc/lowcode-plugin-inject';
+import { buildComponents, assetBundle, AssetLevel, AssetLoader } from '@rchh/lowcode-utils';
+import ReactRenderer from '@rchh/lowcode-react-renderer';
+import { injectComponents } from '@rchh/lowcode-plugin-inject';
 
 const SamplePreview = () => {
   const [data, setData] = useState({});
@@ -276,7 +276,7 @@ export default {
 ```
 
 ```typescript
-import ReactRenderer from '@alilc/lowcode-react-renderer';
+import ReactRenderer from '@rchh/lowcode-react-renderer';
 import ReactDOM from 'react-dom';
 import { Button } from '@alifd/next';
 import schema from './schema'

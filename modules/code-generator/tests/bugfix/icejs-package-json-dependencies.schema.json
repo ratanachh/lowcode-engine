@@ -2,14 +2,14 @@
   "version": "1.0.0",
   "componentsMap": [
     {
-      "package": "@alilc/lowcode-materials",
+      "package": "@rchh/lowcode-materials",
       "version": "^1.0.0",
       "exportName": "Page",
       "destructuring": true,
       "componentName": "Page"
     },
     {
-      "package": "@alilc/lowcode-materials",
+      "package": "@rchh/lowcode-materials",
       "version": "^1.0.0",
       "exportName": "Typography",
       "destructuring": true,

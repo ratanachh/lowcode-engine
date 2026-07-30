@@ -5,14 +5,14 @@ import {
   globalContext,
   Hotkey as InnerHotkey,
   Setters as InnerSetters,
-} from '@alilc/lowcode-editor-core';
-import { Workspace as InnerWorkspace } from '@alilc/lowcode-workspace';
+} from '@rchh/lowcode-editor-core';
+import { Workspace as InnerWorkspace } from '@rchh/lowcode-workspace';
 import {
   AssetType,
-} from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-utils';
 import {
   IPublicEnumDragObjectType,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import { Project } from '../../src/project/project';
 import pageMetadata from '../fixtures/component-metadata/page';
 import { Designer } from '../../src/designer/designer';
@@ -22,11 +22,11 @@ import { getMockDocument, getMockWindow, getMockEvent, delayObxTick } from '../u
 import { BuiltinSimulatorHost } from '../../src/builtin-simulator/host';
 import { fireEvent } from '@testing-library/react';
 import { shellModelFactory } from '../../../engine/src/modules/shell-model-factory';
-import { Setters, Workspace } from '@alilc/lowcode-shell';
-import { ILowCodePluginContextApiAssembler, ILowCodePluginContextPrivate, LowCodePluginManager } from '@alilc/lowcode-designer';
+import { Setters, Workspace } from '@rchh/lowcode-shell';
+import { ILowCodePluginContextApiAssembler, ILowCodePluginContextPrivate, LowCodePluginManager } from '@rchh/lowcode-designer';
 import {
   Skeleton as InnerSkeleton,
-} from '@alilc/lowcode-editor-skeleton';
+} from '@rchh/lowcode-editor-skeleton';
 
 describe('Host 测试', () => {
   let editor: Editor;

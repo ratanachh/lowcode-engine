@@ -1,5 +1,5 @@
-import { isLocationChildrenDetail } from '@alilc/lowcode-utils';
-import { IPublicModelDropLocation, IPublicModelNode } from '@alilc/lowcode-types';
+import { isLocationChildrenDetail } from '@rchh/lowcode-utils';
+import { IPublicModelDropLocation, IPublicModelNode } from '@rchh/lowcode-types';
 
 
 const IndentSensitive = 15;

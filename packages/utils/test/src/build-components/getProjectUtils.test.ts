@@ -7,7 +7,7 @@ describe('get project utils', () => {
   it('get utils with destructuring true', () => {
     expect(getProjectUtils(
       {
-        '@alilc/utils': {
+        '@rchh/utils': {
           destructuring: true,
           sampleUtil,
           sampleUtil2,
@@ -16,7 +16,7 @@ describe('get project utils', () => {
       [{
         name: 'sampleUtils',
         npm: {
-          package: '@alilc/utils'
+          package: '@rchh/utils'
         }
       }]
     )).toEqual({
@@ -28,12 +28,12 @@ describe('get project utils', () => {
   it('get utils with name', () => {
     expect(getProjectUtils(
       {
-        '@alilc/utils': sampleUtil
+        '@rchh/utils': sampleUtil
       },
       [{
         name: 'sampleUtil',
         npm: {
-          package: '@alilc/utils'
+          package: '@rchh/utils'
         }
       }]
     )).toEqual({

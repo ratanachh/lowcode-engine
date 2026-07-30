@@ -7,7 +7,7 @@ sidebar_position: 2
 
 ## npm 包与仓库信息
 
-- npm 包：@alilc/lowcode-material-parser
+- npm 包：@rchh/lowcode-material-parser
 - 仓库：[https://github.com/alibaba/lowcode-engine](https://github.com/alibaba/lowcode-engine) 下的 modules/material-parser
 
 ## 原理

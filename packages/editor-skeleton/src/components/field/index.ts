@@ -1,5 +1,5 @@
 import { ReactNode, createElement } from 'react';
-import { IPublicTypeTitleContent } from '@alilc/lowcode-types';
+import { IPublicTypeTitleContent } from '@rchh/lowcode-types';
 import './index.less';
 import { Field, PopupField, EntryField, PlainField } from './fields';
 

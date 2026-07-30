@@ -1,10 +1,10 @@
 import { Component, ReactElement } from 'react';
-import { observer, obx, Title, makeObservable } from '@alilc/lowcode-editor-core';
+import { observer, obx, Title, makeObservable } from '@rchh/lowcode-editor-core';
 import { Designer } from '../designer';
 import { isDragNodeObject } from '../dragon';
 import { isSimulatorHost } from '../../simulator';
 import './ghost.less';
-import { IPublicTypeI18nData, IPublicTypeNodeSchema, IPublicModelDragObject } from '@alilc/lowcode-types';
+import { IPublicTypeI18nData, IPublicTypeNodeSchema, IPublicModelDragObject } from '@rchh/lowcode-types';
 
 type offBinding = () => any;
 

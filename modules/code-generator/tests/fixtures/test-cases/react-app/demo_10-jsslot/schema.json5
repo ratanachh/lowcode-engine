@@ -6,7 +6,7 @@
       componentName: 'Slot',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'Button',
       main: 'dist/antd-lowcode.esm.js',
@@ -23,7 +23,7 @@
       componentName: 'AliAutoDivDefault',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'Typography',
       main: 'dist/antd-lowcode.esm.js',
@@ -32,7 +32,7 @@
       componentName: 'Typography.Text',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'Typography',
       main: 'dist/antd-lowcode.esm.js',
@@ -41,7 +41,7 @@
       componentName: 'Typography.Link',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'Modal',
       main: 'dist/antd-lowcode.esm.js',
@@ -49,7 +49,7 @@
       componentName: 'Modal',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'Select',
       main: 'dist/antd-lowcode.esm.js',
@@ -57,7 +57,7 @@
       componentName: 'Select',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'Form',
       main: 'dist/antd-lowcode.esm.js',
@@ -66,7 +66,7 @@
       componentName: 'Form.Item',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'Input',
       main: 'dist/antd-lowcode.esm.js',
@@ -74,7 +74,7 @@
       componentName: 'Input',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'Form',
       main: 'dist/antd-lowcode.esm.js',
@@ -118,7 +118,7 @@
       componentName: 'AliAutoSearchTableDefault',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'ConfigProvider',
       main: 'dist/antd-lowcode.esm.js',
@@ -126,7 +126,7 @@
       componentName: 'ConfigProvider',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'Empty',
       main: 'dist/antd-lowcode.esm.js',
@@ -147,7 +147,7 @@
       componentName: 'Page',
     },
     {
-      package: '@alilc/antd-lowcode-materials',
+      package: '@rchh/antd-lowcode-materials',
       version: '0.9.4',
       exportName: 'Tooltip',
       main: 'dist/antd-lowcode.esm.js',

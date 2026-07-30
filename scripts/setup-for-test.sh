@@ -7,7 +7,7 @@ find ./packages -type f -name "package-lock.json" -exec rm -f {} \;
 lerna bootstrap
 
 lerna exec --stream \
-  --scope @alilc/lowcode-editor-core \
-  --scope @alilc/lowcode-types \
-  --scope @alilc/lowcode-utils \
+  --scope @rchh/lowcode-editor-core \
+  --scope @rchh/lowcode-types \
+  --scope @rchh/lowcode-utils \
   -- npm run build

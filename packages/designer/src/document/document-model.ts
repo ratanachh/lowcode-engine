@@ -7,7 +7,7 @@ import {
   wrapWithEventSwitch,
   createModuleEventBus,
   IEventBus,
-} from '@alilc/lowcode-editor-core';
+} from '@rchh/lowcode-editor-core';
 import {
   IPublicTypeNodeData,
   IPublicTypeNodeSchema,
@@ -19,13 +19,13 @@ import {
   IPublicEnumTransformStage,
   IPublicTypeOnChangeOptions,
   IPublicTypeDisposable,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import type {
   IPublicTypeRootSchema,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import type {
   IDropLocation,
-} from '@alilc/lowcode-designer';
+} from '@rchh/lowcode-designer';
 import {
   uniqueId,
   isPlainObject,
@@ -36,7 +36,7 @@ import {
   isDragNodeObject,
   isDragNodeDataObject,
   isNode,
-} from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-utils';
 import { IProject } from '../project';
 import { ISimulatorHost } from '../simulator';
 import type { IComponentMeta } from '../component-meta';

@@ -14,7 +14,7 @@ sidebar_position: 2
 
 ## 自动生成物料描述
 
-可以使用官方提供的 `@alilc/lowcode-material-parser` 解析本地组件，自动生成物料描述。把物料描述放到资产包定义中，就能让低代码引擎理解如何制作物料。详见上一个章节“物料扩展”。
+可以使用官方提供的 `@rchh/lowcode-material-parser` 解析本地组件，自动生成物料描述。把物料描述放到资产包定义中，就能让低代码引擎理解如何制作物料。详见上一个章节“物料扩展”。
 
 下面以某个组件代码片段为例：
 ```typescript
@@ -55,7 +55,7 @@ export default class FusionForm extends PureComponent {
 引入 parse 工具自动解析
 
 ```typescript
-import parse from '@alilc/lowcode-material-parser';
+import parse from '@rchh/lowcode-material-parser';
 (async () => {
   const result = await parse({ entry: '/path/to/component' });
   console.log(JSON.stringify(result, null, 2));
@@ -465,7 +465,7 @@ import parse from '@alilc/lowcode-material-parser';
 }
 
 // BackwardSetter
-import { SettingTarget, DynamicSetter } from '@alilc/lowcode-types';
+import { SettingTarget, DynamicSetter } from '@rchh/lowcode-types';
 const BackwardSetter: DynamicSetter = (target: SettingTarget) => {
   return {
     componentName: (

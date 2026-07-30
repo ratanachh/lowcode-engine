@@ -1,8 +1,8 @@
 import { PureComponent } from 'react';
 import { ResourceView } from './resource-view';
-import { engineConfig, observer } from '@alilc/lowcode-editor-core';
+import { engineConfig, observer } from '@rchh/lowcode-editor-core';
 import { EditorWindow } from '../window';
-import { BuiltinLoading } from '@alilc/lowcode-designer';
+import { BuiltinLoading } from '@rchh/lowcode-designer';
 import { DesignerView } from '../inner-plugins/webview';
 
 @observer

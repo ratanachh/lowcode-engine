@@ -6,7 +6,7 @@
       "componentName": "Page"
     },
     {
-      "package": "@alilc/antd-lowcode-materials",
+      "package": "@rchh/antd-lowcode-materials",
       "version": "0.18.0",
       "exportName": "Typography",
       "main": "dist/antd-lowcode.esm.js",

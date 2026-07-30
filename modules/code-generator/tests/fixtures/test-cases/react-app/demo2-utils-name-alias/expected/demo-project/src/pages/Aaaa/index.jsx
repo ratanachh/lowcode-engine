@@ -6,9 +6,9 @@ import { Page } from '@alilc/b6-page';
 
 import { Text } from '@alilc/b6-text';
 
-import { createUrlParamsHandler as __$$createUrlParamsRequestHandler } from '@alilc/lowcode-datasource-url-params-handler';
+import { createUrlParamsHandler as __$$createUrlParamsRequestHandler } from '@rchh/lowcode-datasource-url-params-handler';
 
-import { create as __$$createDataSourceEngine } from '@alilc/lowcode-datasource-engine/runtime';
+import { create as __$$createDataSourceEngine } from '@rchh/lowcode-datasource-engine/runtime';
 
 import utils from '../../utils';
 

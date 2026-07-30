@@ -1,5 +1,5 @@
 /**
- * @deprecated use same function from '@alilc/lowcode-utils' instead
+ * @deprecated use same function from '@rchh/lowcode-utils' instead
  */
 export function isProjectSchema(data: any): boolean {
   return data && data.componentsTree;

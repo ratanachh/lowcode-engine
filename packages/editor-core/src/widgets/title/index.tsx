@@ -1,7 +1,7 @@
 import { Component, isValidElement, ReactNode } from 'react';
 import classNames from 'classnames';
-import { createIcon, isI18nData, isTitleConfig } from '@alilc/lowcode-utils';
-import { IPublicTypeI18nData, IPublicTypeTitleConfig, IPublicTypeTitleProps } from '@alilc/lowcode-types';
+import { createIcon, isI18nData, isTitleConfig } from '@rchh/lowcode-utils';
+import { IPublicTypeI18nData, IPublicTypeTitleConfig, IPublicTypeTitleProps } from '@rchh/lowcode-types';
 import { intl } from '../../intl';
 import { Tip } from '../tip';
 import './title.less';

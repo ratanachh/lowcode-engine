@@ -1,4 +1,4 @@
-import { IPublicTypeProjectSchema } from '@alilc/lowcode-types';
+import { IPublicTypeProjectSchema } from '@rchh/lowcode-types';
 import { SchemaParser } from '../../../src';
 import SCHEMA_WITH_SLOT from './data/schema-with-slot.json';
 

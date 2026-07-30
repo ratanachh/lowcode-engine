@@ -1,7 +1,7 @@
 import { createContext, ReactNode, Component, PureComponent } from 'react';
 import { Drawer, ConfigProvider } from '@alifd/next';
-import { uniqueId } from '@alilc/lowcode-utils';
-import { IEventBus, createModuleEventBus } from '@alilc/lowcode-editor-core';
+import { uniqueId } from '@rchh/lowcode-utils';
+import { IEventBus, createModuleEventBus } from '@rchh/lowcode-editor-core';
 import './style.less';
 
 export interface PopupExtProps {

@@ -1,11 +1,11 @@
 import { Component } from 'react';
-import { TipContainer, engineConfig, observer } from '@alilc/lowcode-editor-core';
+import { TipContainer, engineConfig, observer } from '@rchh/lowcode-editor-core';
 import { WindowView } from '../view/window-view';
 import classNames from 'classnames';
 import { SkeletonContext } from '../skeleton-context';
-import { EditorConfig, PluginClassSet } from '@alilc/lowcode-types';
+import { EditorConfig, PluginClassSet } from '@rchh/lowcode-types';
 import { Workspace } from '../workspace';
-import { BottomArea, LeftArea, LeftFixedPane, LeftFloatPane, MainArea, SubTopArea, TopArea } from '@alilc/lowcode-editor-skeleton';
+import { BottomArea, LeftArea, LeftFixedPane, LeftFloatPane, MainArea, SubTopArea, TopArea } from '@rchh/lowcode-editor-skeleton';
 
 @observer
 export class Workbench extends Component<{

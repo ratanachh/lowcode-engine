@@ -8,7 +8,7 @@ import {
   isJSFunction,
   isJSSlot,
   IPublicTypeJSSlot,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import _ from 'lodash';
 
 import { IScope, CompositeValueGeneratorOptions, CodeGeneratorError } from '../types';

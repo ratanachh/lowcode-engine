@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { IPublicApiSetters, IPublicModelSettingField, IPublicTypeCustomView, IPublicTypeRegisteredSetter } from '@alilc/lowcode-types';
-import { createContent, isCustomView } from '@alilc/lowcode-utils';
+import { IPublicApiSetters, IPublicModelSettingField, IPublicTypeCustomView, IPublicTypeRegisteredSetter } from '@rchh/lowcode-types';
+import { createContent, isCustomView } from '@rchh/lowcode-utils';
 
 const settersMap = new Map<string, IPublicTypeRegisteredSetter & {
   type: string;

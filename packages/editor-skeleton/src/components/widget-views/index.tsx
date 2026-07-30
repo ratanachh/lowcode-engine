@@ -1,6 +1,6 @@
 import { Component, ReactElement } from 'react';
 import classNames from 'classnames';
-import { Title, observer, HelpTip } from '@alilc/lowcode-editor-core';
+import { Title, observer, HelpTip } from '@rchh/lowcode-editor-core';
 import { DockProps } from '../../types';
 import { PanelDock } from '../../widget/panel-dock';
 import { composeTitle } from '../../widget/utils';

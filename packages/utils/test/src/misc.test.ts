@@ -12,7 +12,7 @@ import {
   isRegExp,
   shouldUseVariableSetter,
 } from '../../src/misc';
-import { IPublicModelComponentMeta } from '@alilc/lowcode-types';
+import { IPublicModelComponentMeta } from '@rchh/lowcode-types';
 
 describe('isVariable', () => {
   it('should return true for a variable object', () => {

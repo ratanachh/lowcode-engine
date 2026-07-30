@@ -1,5 +1,5 @@
 /**
- * @deprecated use same function from '@alilc/lowcode-utils' instead
+ * @deprecated use same function from '@rchh/lowcode-utils' instead
  */
 export function isPlainObject(value: any): value is Record<string, unknown> {
   if (typeof value !== 'object') {

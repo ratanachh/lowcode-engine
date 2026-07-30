@@ -1261,16 +1261,16 @@ export interface ComponentDescription { // 组件描述协议，通过 npm 中�
       "library": "Next"
     },
     {
-      "package": "@alilc/lowcode-materials",
+      "package": "@rchh/lowcode-materials",
       "version": "1.0.0",
       "library": "AlilcLowcodeMaterials",
       "urls": [
-        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.0/dist/AlilcLowcodeMaterials.js",
-        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.0/dist/AlilcLowcodeMaterials.css"
+        "https://alifd.alicdn.com/npm/@rchh/lowcode-materials@1.0.0/dist/AlilcLowcodeMaterials.js",
+        "https://alifd.alicdn.com/npm/@rchh/lowcode-materials@1.0.0/dist/AlilcLowcodeMaterials.css"
       ],
       "editUrls": [
-        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.0/build/lowcode/view.js",
-        "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.0/build/lowcode/view.css"
+        "https://alifd.alicdn.com/npm/@rchh/lowcode-materials@1.0.0/build/lowcode/view.js",
+        "https://alifd.alicdn.com/npm/@rchh/lowcode-materials@1.0.0/build/lowcode/view.css"
       ]
     },
     {

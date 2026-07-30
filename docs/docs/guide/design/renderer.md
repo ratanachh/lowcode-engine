@@ -10,7 +10,7 @@ sidebar_position: 4
 
 ## npm 包与仓库信息
 
-- React 框架渲染 npm 包：@alilc/lowcode-react-renderer
+- React 框架渲染 npm 包：@rchh/lowcode-react-renderer
 - 仓库：[https://github.com/alibaba/lowcode-engine](https://github.com/alibaba/lowcode-engine) 下的
    - packages/renderer-core
    - packages/react-renderer

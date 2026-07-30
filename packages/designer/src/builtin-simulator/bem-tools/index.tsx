@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { observer, engineConfig } from '@alilc/lowcode-editor-core';
+import { observer, engineConfig } from '@rchh/lowcode-editor-core';
 import { BorderDetecting } from './border-detecting';
 import { BorderContainer } from './border-container';
 import { BuiltinSimulatorHost } from '../host';

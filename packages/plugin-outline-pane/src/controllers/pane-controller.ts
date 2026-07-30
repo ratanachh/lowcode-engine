@@ -5,7 +5,7 @@ import {
   isDragNodeObject,
   isDragAnyObject,
   isLocationChildrenDetail,
-} from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-utils';
 import {
   IPublicModelDragObject,
   IPublicTypeScrollable,
@@ -17,7 +17,7 @@ import {
   IPublicModelScroller,
   IPublicModelScrollTarget,
   IPublicModelLocateEvent,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import TreeNode from './tree-node';
 import { IndentTrack } from '../helper/indent-track';
 import DwellTimer from '../helper/dwell-timer';

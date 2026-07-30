@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { TipContainer, observer } from '@alilc/lowcode-editor-core';
+import { TipContainer, observer } from '@rchh/lowcode-editor-core';
 import classNames from 'classnames';
 import { ISkeleton } from '../skeleton';
 import TopArea from './top-area';
@@ -12,7 +12,7 @@ import BottomArea from './bottom-area';
 import RightArea from './right-area';
 import './workbench.less';
 import { SkeletonContext } from '../context';
-import { EditorConfig, PluginClassSet } from '@alilc/lowcode-types';
+import { EditorConfig, PluginClassSet } from '@rchh/lowcode-types';
 
 @observer
 export class Workbench extends Component<{

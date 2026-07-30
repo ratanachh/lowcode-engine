@@ -12,7 +12,7 @@ import {
   IPublicTypePropsMap,
   IPublicTypeNodeData,
   IPublicTypeNpmInfo,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import {
   IPageMeta,
   CodeGeneratorError,

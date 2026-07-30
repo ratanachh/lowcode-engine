@@ -1,14 +1,14 @@
 import {
   ILowCodePluginManager,
-} from '@alilc/lowcode-designer';
-import { globalContext } from '@alilc/lowcode-editor-core';
+} from '@rchh/lowcode-designer';
+import { globalContext } from '@rchh/lowcode-editor-core';
 import {
   IPublicApiPlugins,
   IPublicModelPluginInstance,
   IPublicTypePlugin,
   IPublicTypePluginRegisterOptions,
   IPublicTypePreferenceValueType,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import { PluginInstance as ShellPluginInstance } from '../model';
 import { pluginsSymbol } from '../symbols';
 

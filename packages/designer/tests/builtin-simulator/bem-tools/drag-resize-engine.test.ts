@@ -1,5 +1,5 @@
 import '../../fixtures/window';
-import { Editor, globalContext } from '@alilc/lowcode-editor-core';
+import { Editor, globalContext } from '@rchh/lowcode-editor-core';
 import { Project } from '../../../src/project/project';
 import { DocumentModel } from '../../../src/document/document-model';
 import { Designer } from '../../../src/designer/designer';

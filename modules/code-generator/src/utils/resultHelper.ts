@@ -1,4 +1,4 @@
-import { ResultFile, ResultDir } from '@alilc/lowcode-types';
+import { ResultFile, ResultDir } from '@rchh/lowcode-types';
 import nm from 'nanomatch';
 
 import { CodeGeneratorError } from '../types/error';

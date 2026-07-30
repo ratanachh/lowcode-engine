@@ -1,5 +1,5 @@
-import { IProp as InnerProp } from '@alilc/lowcode-designer';
-import { IPublicTypeCompositeValue, IPublicEnumTransformStage, IPublicModelProp, IPublicModelNode } from '@alilc/lowcode-types';
+import { IProp as InnerProp } from '@rchh/lowcode-designer';
+import { IPublicTypeCompositeValue, IPublicEnumTransformStage, IPublicModelProp, IPublicModelNode } from '@rchh/lowcode-types';
 import { propSymbol } from '../symbols';
 import { Node as ShellNode } from './node';
 

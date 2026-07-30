@@ -19,13 +19,13 @@ test(testCaseBaseName, async () => {
 
   // 里面有的数据源则应该生成对应的 dependencies
   expect(generatedPackageJson.dependencies).toMatchObject({
-    '@alilc/lowcode-datasource-engine': '^1.0.0',
-    '@alilc/lowcode-datasource-fetch-handler': '^1.0.0',
+    '@rchh/lowcode-datasource-engine': '^1.0.0',
+    '@rchh/lowcode-datasource-fetch-handler': '^1.0.0',
   });
 
   // 里面没有的，则不应该生成对应的 dependencies
   expect(generatedPackageJson.dependencies).not.toMatchObject({
-    '@alilc/lowcode-datasource-url-params-handler': '^1.0.0',
+    '@rchh/lowcode-datasource-url-params-handler': '^1.0.0',
     '@alilc/lowcode-datasource-mtop-handler': '^1.0.0',
     '@alilc/lowcode-datasource-mopen-handler': '^1.0.0',
   });

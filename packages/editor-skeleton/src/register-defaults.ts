@@ -1,7 +1,7 @@
 import parseJSFunc from './transducers/parse-func';
 import parseProps from './transducers/parse-props';
 import addonCombine from './transducers/addon-combine';
-import { IPublicModelPluginContext } from '@alilc/lowcode-types';
+import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 
 export const registerDefaults = (ctx: IPublicModelPluginContext) => {
   const { material } = ctx;

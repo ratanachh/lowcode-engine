@@ -59,7 +59,7 @@ PanelDock 是以面板的形式展示在设计器的左侧区域的。其中主�
 
 接入可以参考代码
 ```javascript
-import { skeleton } from "@alilc/lowcode-engine";
+import { skeleton } from "@rchh/lowcode-engine";
 
 skeleton.add({
   area: "leftArea", // 插件区域
@@ -91,7 +91,7 @@ Widget 形式是直接渲染在当前编辑器的对应位置上。如 demo 中�
 接入可以参考代码：
 
 ```javascript
-import { skeleton } from "@alilc/lowcode-engine";
+import { skeleton } from "@rchh/lowcode-engine";
 // 注册 logo 面板
 skeleton.add({
   area: "topArea",
@@ -114,7 +114,7 @@ skeleton.add({
 一个图标的表现形式，可以用于语言切换、跳转到外部链接、打开一个 widget 等场景。
 
 ```javascript
-import { skeleton } from "@alilc/lowcode-engine";
+import { skeleton } from "@rchh/lowcode-engine";
 
 skeleton.add({
   area: "leftArea",
@@ -339,7 +339,7 @@ registerConfigTransducer(transducer: IPublicTypeConfigTransducer, level: number,
 使用示例
 
 ```typescript
-import { IPublicModelPluginContext, IPublicTypeSkeletonConfig } from '@alilc/lowcode-types';
+import { IPublicModelPluginContext, IPublicTypeSkeletonConfig } from '@rchh/lowcode-types';
 
 function updatePanelWidth(config: IPublicTypeSkeletonConfig) {
   if (config.type === 'PanelDock') {
@@ -471,7 +471,7 @@ onHideWidget(listener: (paneName?: string, panel?: IPublicModelSkeletonItem) => 
 ## 使用示例
 
 ```typescript
-import { skeleton } from '@alilc/lowcode-engine';
+import { skeleton } from '@rchh/lowcode-engine';
 
 skeleton.add({
 	name: 'logo',
@@ -536,7 +536,7 @@ skeleton.disableWidget('sourceEditor');
 ```
 ### bottomArea 示例
 ```typescript
-import { skeleton } from '@alilc/lowcode-engine';
+import { skeleton } from '@rchh/lowcode-engine';
 
 skeleton.add({
   name: 'bottomAreaPanelName',

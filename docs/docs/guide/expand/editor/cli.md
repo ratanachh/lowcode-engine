@@ -17,18 +17,18 @@ sidebar_position: 10
 ### 脚手架初始化
 
 ```bash
-npm init @alilc/element your-element-name
+npm init @rchh/element your-element-name
 ```
 不写 your-element-name 的情况下，则在当前目录创建。
 
 > 注 1：如遇错误提示 `sh: create-element: command not found` 可先执行下述命令
 ```bash
-npm install -g @alilc/create-element
+npm install -g @rchh/create-element
 ```
 
 > 注 2：觉得安装速度比较慢的同学，可以设置 npm 国内镜像，如
 ```bash
-npm init @alilc/element your-element-name --registry=https://registry.npmmirror.com
+npm init @rchh/element your-element-name --registry=https://registry.npmmirror.com
 ```
 
 选择对应的元素类型，并填写对应的问题，即可完成创建。
@@ -69,7 +69,7 @@ npm publish
   {
     "plugins": [
       [
-        "@alilc/build-plugin-alt",
+        "@rchh/build-plugin-alt",
         {
           "type": "plugin",
           "inject": true, // 开启注入调试
@@ -82,7 +82,7 @@ npm publish
   }
   ```
 
-2. 组件需先安装 @alilc/build-plugin-alt，再将组件内的 `build.lowcode.js`文件修改如下
+2. 组件需先安装 @rchh/build-plugin-alt，再将组件内的 `build.lowcode.js`文件修改如下
   ```javascript
   const { library } = require('./build.json');
 
@@ -100,7 +100,7 @@ npm publish
         },
       ],
       [
-        '@alilc/build-plugin-alt',
+        '@rchh/build-plugin-alt',
         {
           type: 'component',
           inject: true,
@@ -122,15 +122,15 @@ npm publish
 
 > 如果你的低代码项目 fork 自官方 demo，那么项目侧的准备已经就绪，不用再看以下内容~
 
-1. 安装 @alilc/lowcode-plugin-inject
+1. 安装 @rchh/lowcode-plugin-inject
   ```bash
-  npm i @alilc/lowcode-plugin-inject  --save-dev
+  npm i @rchh/lowcode-plugin-inject  --save-dev
   ```
 
 2. 在引擎初始化侧引入插件
   ```typescript
-  import Inject, { injectAssets } from '@alilc/lowcode-plugin-inject';
-  import { IPublicModelPluginContext } from '@alilc/lowcode-types';
+  import Inject, { injectAssets } from '@rchh/lowcode-plugin-inject';
+  import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 
   export default async () => {
     // 注意 Inject 插件必须在其他插件前注册，且所有插件的注册必须 await
@@ -151,7 +151,7 @@ npm publish
 
 3. 在 saveSchema 时过滤掉插入的 url，避免影响渲染态
   ```typescript
-  import { filterPackages } from '@alilc/lowcode-plugin-inject';
+  import { filterPackages } from '@rchh/lowcode-plugin-inject';
   export const saveSchema = async () => {
     // ...
     const packages = await filterPackages(editor.get('assets').packages);
@@ -165,7 +165,7 @@ npm publish
 
 4. 如果希望预览态也可以注入调试组件，则需要在 preview 逻辑里插入组件
   ```javascript
-  import { injectComponents } from '@alilc/lowcode-plugin-inject';
+  import { injectComponents } from '@rchh/lowcode-plugin-inject';
 
   async function init() {
     // 在传递给 ReactRenderer 前，先通过 injectComponents 进行处理

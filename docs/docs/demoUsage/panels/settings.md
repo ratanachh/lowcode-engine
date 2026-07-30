@@ -135,7 +135,7 @@ bindFunction = () => {
 我们需要在低代码引擎中注册 Setter，这样就可以通过 AltStringSetter 的名字在物料中使用了。
 ```javascript
 import AltStringSetter from './AltStringSetter';
-import { setters } from '@alilc/lowcode-engine';
+import { setters } from '@rchh/lowcode-engine';
 setters.registerSetter({
 	AltStringSetter: {
 		component: AltStringSetter,

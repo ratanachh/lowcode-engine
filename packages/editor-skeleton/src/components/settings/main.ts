@@ -1,5 +1,5 @@
-import { Node, Designer, Selection, SettingTopEntry } from '@alilc/lowcode-designer';
-import { Editor, obx, computed, makeObservable, action, IEventBus, createModuleEventBus } from '@alilc/lowcode-editor-core';
+import { Node, Designer, Selection, SettingTopEntry } from '@rchh/lowcode-designer';
+import { Editor, obx, computed, makeObservable, action, IEventBus, createModuleEventBus } from '@rchh/lowcode-editor-core';
 
 function generateSessionId(nodes: Node[]) {
   return nodes

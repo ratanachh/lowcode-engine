@@ -1,11 +1,11 @@
-# `@alilc/plugin-command`
+# `@rchh/plugin-command`
 
 > TODO: description
 
 ## Usage
 
 ```
-const pluginCommand = require('@alilc/plugin-command');
+const pluginCommand = require('@rchh/plugin-command');
 
 // TODO: DEMONSTRATE API
 ```

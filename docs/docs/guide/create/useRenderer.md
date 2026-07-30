@@ -71,7 +71,7 @@ async function getSchemaAndComponents() {
 拿到 schema 和 components 以后，您可以借由资产包数据和页面数据来完成页面的渲染：
 ```tsx
 import React from 'react';
-import ReactRenderer from '@alilc/lowcode-react-renderer';
+import ReactRenderer from '@rchh/lowcode-react-renderer';
 
 const SamplePreview = () => {
   return (

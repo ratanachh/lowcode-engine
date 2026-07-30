@@ -1,5 +1,5 @@
 import '../fixtures/window';
-import { Editor, globalContext, Setters } from '@alilc/lowcode-editor-core';
+import { Editor, globalContext, Setters } from '@rchh/lowcode-editor-core';
 import { Project } from '../../src/project/project';
 import { DocumentModel } from '../../src/document/document-model';
 import { Designer } from '../../src/designer/designer';
@@ -11,7 +11,7 @@ import pageMetadata from '../fixtures/component-metadata/page';
 import divMetadata from '../fixtures/component-metadata/div';
 import { delayObxTick } from '../utils';
 import { fireEvent } from '@testing-library/react';
-import { IPublicEnumDragObjectType, IPublicEnumTransformStage } from '@alilc/lowcode-types';
+import { IPublicEnumDragObjectType, IPublicEnumTransformStage } from '@rchh/lowcode-types';
 import { shellModelFactory } from '../../../engine/src/modules/shell-model-factory';
 
 const mockNode = {

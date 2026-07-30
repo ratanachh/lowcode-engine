@@ -1,10 +1,10 @@
 import { Overlay } from '@alifd/next';
 import React, { MouseEvent } from 'react';
-import { Title, observer } from '@alilc/lowcode-editor-core';
-import { canClickNode } from '@alilc/lowcode-utils';
+import { Title, observer } from '@rchh/lowcode-editor-core';
+import { canClickNode } from '@rchh/lowcode-utils';
 import './index.less';
 
-import { INode } from '@alilc/lowcode-designer';
+import { INode } from '@rchh/lowcode-designer';
 
 const { Popup } = Overlay;
 

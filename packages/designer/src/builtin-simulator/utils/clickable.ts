@@ -1,4 +1,4 @@
-import { getClosestNode, canClickNode } from '@alilc/lowcode-utils';
+import { getClosestNode, canClickNode } from '@rchh/lowcode-utils';
 import { INode } from '../../document';
 
 /**

@@ -1,5 +1,5 @@
 import { isJSSlot } from '../../../src/check-types/is-jsslot';
-import { IPublicTypeJSSlot } from '@alilc/lowcode-types';
+import { IPublicTypeJSSlot } from '@rchh/lowcode-types';
 
 describe('isJSSlot', () => {
   it('should return true when input is of type IPublicTypeJSSlot', () => {

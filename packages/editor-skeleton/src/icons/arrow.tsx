@@ -1,5 +1,5 @@
 
-import { SVGIcon, IconProps } from '@alilc/lowcode-utils';
+import { SVGIcon, IconProps } from '@rchh/lowcode-utils';
 
 export function IconArrow(props: IconProps) {
   return (

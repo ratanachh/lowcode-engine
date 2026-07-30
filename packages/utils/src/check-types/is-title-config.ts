@@ -1,4 +1,4 @@
-import { IPublicTypeTitleConfig } from '@alilc/lowcode-types';
+import { IPublicTypeTitleConfig } from '@rchh/lowcode-types';
 import { isI18nData } from './is-i18n-data';
 import { isPlainObject } from '../is-plain-object';
 

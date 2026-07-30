@@ -1,5 +1,5 @@
-import { INode as InnerNode, INodeChildren } from '@alilc/lowcode-designer';
-import { IPublicTypeNodeData, IPublicEnumTransformStage, IPublicModelNodeChildren, IPublicModelNode } from '@alilc/lowcode-types';
+import { INode as InnerNode, INodeChildren } from '@rchh/lowcode-designer';
+import { IPublicTypeNodeData, IPublicEnumTransformStage, IPublicModelNodeChildren, IPublicModelNode } from '@rchh/lowcode-types';
 import { Node as ShellNode } from './node';
 import { nodeSymbol, nodeChildrenSymbol } from '../symbols';
 

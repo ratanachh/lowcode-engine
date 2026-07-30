@@ -9,7 +9,7 @@ import * as path from 'path';
 import { getErrorMessage } from '../utils/errors';
 import CodeGenerator from '..';
 import type { IProjectBuilder } from '..';
-import type { IPublicTypeProjectSchema } from '@alilc/lowcode-types';
+import type { IPublicTypeProjectSchema } from '@rchh/lowcode-types';
 
 /**
  * 执行出码 CLI 命令
@@ -96,7 +96,7 @@ async function getProjectBuilderFactory(
 
   const solutionPackageName = isLocalSolution(solution)
     ? solution
-    : `${solution.startsWith('@') ? solution : `@alilc/lowcode-solution-${solution}`}`;
+    : `${solution.startsWith('@') ? solution : `@rchh/lowcode-solution-${solution}`}`;
 
   if (!isLocalSolution(solution)) {
     if (!quiet) {

@@ -1,7 +1,7 @@
 import {
   IDocumentModel as InnerDocumentModel,
   INode as InnerNode,
-} from '@alilc/lowcode-designer';
+} from '@rchh/lowcode-designer';
 import {
   IPublicTypeCompositeValue,
   IPublicTypeNodeSchema,
@@ -18,7 +18,7 @@ import {
   IPublicTypePropsList,
   IPublicModelSettingTopEntry,
   IPublicModelExclusiveGroup,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import { Prop as ShellProp } from './prop';
 import { Props as ShellProps } from './props';
 import { DocumentModel as ShellDocumentModel } from './document-model';

@@ -1,4 +1,4 @@
-import { IPublicTypeComponentSchema } from "@alilc/lowcode-types";
+import { IPublicTypeComponentSchema } from "@rchh/lowcode-types";
 
 export function isComponentSchema(schema: any): schema is IPublicTypeComponentSchema {
   if (typeof schema === 'object') {

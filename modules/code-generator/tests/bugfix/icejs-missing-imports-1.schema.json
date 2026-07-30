@@ -11,7 +11,7 @@
       "componentName": "AliAutoSearchSelectDefault"
     },
     {
-      "package": "@alilc/antd-lowcode-materials",
+      "package": "@rchh/antd-lowcode-materials",
       "version": "0.17.0",
       "exportName": "Form",
       "main": "dist/antd-lowcode.esm.js",
@@ -20,7 +20,7 @@
       "componentName": "Form.Item"
     },
     {
-      "package": "@alilc/antd-lowcode-materials",
+      "package": "@rchh/antd-lowcode-materials",
       "version": "0.17.0",
       "exportName": "Col",
       "main": "dist/antd-lowcode.esm.js",
@@ -28,7 +28,7 @@
       "componentName": "Col"
     },
     {
-      "package": "@alilc/antd-lowcode-materials",
+      "package": "@rchh/antd-lowcode-materials",
       "version": "0.17.0",
       "exportName": "Select",
       "main": "dist/antd-lowcode.esm.js",
@@ -36,7 +36,7 @@
       "componentName": "Select"
     },
     {
-      "package": "@alilc/antd-lowcode-materials",
+      "package": "@rchh/antd-lowcode-materials",
       "version": "0.17.0",
       "exportName": "Button",
       "main": "dist/antd-lowcode.esm.js",
@@ -44,7 +44,7 @@
       "componentName": "Button"
     },
     {
-      "package": "@alilc/antd-lowcode-materials",
+      "package": "@rchh/antd-lowcode-materials",
       "version": "0.17.0",
       "exportName": "Row",
       "main": "dist/antd-lowcode.esm.js",
@@ -52,7 +52,7 @@
       "componentName": "Row"
     },
     {
-      "package": "@alilc/antd-lowcode-materials",
+      "package": "@rchh/antd-lowcode-materials",
       "version": "0.17.0",
       "exportName": "Form",
       "main": "dist/antd-lowcode.esm.js",
@@ -105,7 +105,7 @@
       "componentName": "NextBlockCell"
     },
     {
-      "package": "@alilc/antd-lowcode-materials",
+      "package": "@rchh/antd-lowcode-materials",
       "version": "0.17.0",
       "exportName": "Typography",
       "main": "dist/antd-lowcode.esm.js",
@@ -114,7 +114,7 @@
       "componentName": "Typography.Text"
     },
     {
-      "package": "@alilc/antd-lowcode-materials",
+      "package": "@rchh/antd-lowcode-materials",
       "version": "0.17.0",
       "exportName": "Tag",
       "main": "dist/antd-lowcode.esm.js",

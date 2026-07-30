@@ -11,7 +11,7 @@ import {
   Hotkey as InnerHotkey,
   IEditor,
   Command as InnerCommand,
-} from '@alilc/lowcode-editor-core';
+} from '@rchh/lowcode-editor-core';
 import {
   IPublicTypeEngineOptions,
   IPublicModelDocumentModel,
@@ -21,7 +21,7 @@ import {
   IPublicApiWorkspace,
   IPublicEnumPluginRegisterLevel,
   IPublicModelPluginContext,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import {
   Designer,
   LowCodePluginManager,
@@ -29,16 +29,16 @@ import {
   ILowCodePluginContextApiAssembler,
   PluginPreference,
   IDesigner,
-} from '@alilc/lowcode-designer';
+} from '@rchh/lowcode-designer';
 import {
   Skeleton as InnerSkeleton,
   registerDefaults,
-} from '@alilc/lowcode-editor-skeleton';
+} from '@rchh/lowcode-editor-skeleton';
 import {
   Workspace as InnerWorkspace,
   Workbench as WorkSpaceWorkbench,
   IWorkspace,
-} from '@alilc/lowcode-workspace';
+} from '@rchh/lowcode-workspace';
 
 import {
   Hotkey,
@@ -55,8 +55,8 @@ import {
   Config,
   CommonUI,
   Command,
-} from '@alilc/lowcode-shell';
-import { isPlainObject } from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-shell';
+import { isPlainObject } from '@rchh/lowcode-utils';
 import './modules/live-editing';
 import * as classes from './modules/classes';
 import symbols from './modules/symbols';
@@ -66,8 +66,8 @@ import { defaultPanelRegistry } from './inner-plugins/default-panel-registry';
 import { shellModelFactory } from './modules/shell-model-factory';
 import { builtinHotkey } from './inner-plugins/builtin-hotkey';
 import { defaultContextMenu } from './inner-plugins/default-context-menu';
-import { CommandPlugin } from '@alilc/lowcode-plugin-command';
-import { OutlinePlugin } from '@alilc/lowcode-plugin-outline-pane';
+import { CommandPlugin } from '@rchh/lowcode-plugin-command';
+import { OutlinePlugin } from '@rchh/lowcode-plugin-outline-pane';
 
 export * from './modules/skeleton-types';
 export * from './modules/designer-types';

@@ -1,3 +1,3 @@
-import { Logger } from '@alilc/lowcode-utils';
+import { Logger } from '@rchh/lowcode-utils';
 
 export default new Logger({ level: 'warn', bizName: 'renderer' });

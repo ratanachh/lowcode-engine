@@ -1,6 +1,6 @@
 import * as systemFs from 'fs';
 import { join } from 'path';
-import { ResultDir, ResultFile } from '@alilc/lowcode-types';
+import { ResultDir, ResultFile } from '@rchh/lowcode-types';
 
 export interface IFileSystem {
   existsSync: typeof systemFs.existsSync;

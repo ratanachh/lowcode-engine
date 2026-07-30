@@ -1,11 +1,11 @@
 import { ReactInstance, Fragment, Component, createElement } from 'react';
 import { Router, Route, Switch } from 'react-router';
 import cn from 'classnames';
-import { Node } from '@alilc/lowcode-designer';
-import LowCodeRenderer from '@alilc/lowcode-react-renderer';
+import { Node } from '@rchh/lowcode-designer';
+import LowCodeRenderer from '@rchh/lowcode-react-renderer';
 import { observer } from 'mobx-react';
-import { getClosestNode, isFromVC, isReactComponent } from '@alilc/lowcode-utils';
-import { GlobalEvent } from '@alilc/lowcode-types';
+import { getClosestNode, isFromVC, isReactComponent } from '@rchh/lowcode-utils';
+import { GlobalEvent } from '@rchh/lowcode-types';
 import { SimulatorRendererContainer, DocumentInstance } from './renderer';
 import { host } from './host';
 import { isRendererDetached } from './utils/misc';

@@ -1,10 +1,10 @@
 import { INode } from '../document/node/node';
-import { obx, IEventBus, createModuleEventBus } from '@alilc/lowcode-editor-core';
+import { obx, IEventBus, createModuleEventBus } from '@rchh/lowcode-editor-core';
 import {
   IPublicTypeActiveTarget,
   IPublicModelActiveTracker,
-} from '@alilc/lowcode-types';
-import { isNode } from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-types';
+import { isNode } from '@rchh/lowcode-utils';
 
 export interface IActiveTracker extends Omit< IPublicModelActiveTracker, 'track' | 'onChange' > {
   _target: ActiveTarget | INode;

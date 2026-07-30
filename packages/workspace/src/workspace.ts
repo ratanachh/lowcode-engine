@@ -1,12 +1,12 @@
-import { IDesigner, ILowCodePluginManager, LowCodePluginManager } from '@alilc/lowcode-designer';
-import { createModuleEventBus, Editor, IEditor, IEventBus, makeObservable, obx } from '@alilc/lowcode-editor-core';
-import { IPublicApiPlugins, IPublicApiWorkspace, IPublicEnumPluginRegisterLevel, IPublicResourceList, IPublicTypeDisposable, IPublicTypeResourceType, IShellModelFactory } from '@alilc/lowcode-types';
+import { IDesigner, ILowCodePluginManager, LowCodePluginManager } from '@rchh/lowcode-designer';
+import { createModuleEventBus, Editor, IEditor, IEventBus, makeObservable, obx } from '@rchh/lowcode-editor-core';
+import { IPublicApiPlugins, IPublicApiWorkspace, IPublicEnumPluginRegisterLevel, IPublicResourceList, IPublicTypeDisposable, IPublicTypeResourceType, IShellModelFactory } from '@rchh/lowcode-types';
 import { BasicContext } from './context/base-context';
 import { EditorWindow, WINDOW_STATE } from './window';
 import type { IEditorWindow } from './window';
 import { IResource, Resource } from './resource';
 import { IResourceType, ResourceType } from './resource-type';
-import { ISkeleton } from '@alilc/lowcode-editor-skeleton';
+import { ISkeleton } from '@rchh/lowcode-editor-skeleton';
 
 enum EVENT {
   CHANGE_WINDOW = 'change_window',

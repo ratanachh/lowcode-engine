@@ -1,4 +1,4 @@
-import { IPublicTypeLocationData } from '@alilc/lowcode-types';
+import { IPublicTypeLocationData } from '@rchh/lowcode-types';
 import { isObject } from '../is-object';
 
 export function isLocationData(obj: any): obj is IPublicTypeLocationData {

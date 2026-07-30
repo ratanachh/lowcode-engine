@@ -1,5 +1,5 @@
-import { isLocationChildrenDetail } from '@alilc/lowcode-utils';
-import { IPublicModelPluginContext, IPublicTypeActiveTarget, IPublicModelNode, IPublicTypeDisposable, IPublicEnumPluginRegisterLevel } from '@alilc/lowcode-types';
+import { isLocationChildrenDetail } from '@rchh/lowcode-utils';
+import { IPublicModelPluginContext, IPublicTypeActiveTarget, IPublicModelNode, IPublicTypeDisposable, IPublicEnumPluginRegisterLevel } from '@rchh/lowcode-types';
 import TreeNode from './tree-node';
 import { Tree } from './tree';
 import EventEmitter from 'events';

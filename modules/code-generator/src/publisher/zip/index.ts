@@ -1,4 +1,4 @@
-import { ResultDir } from '@alilc/lowcode-types';
+import { ResultDir } from '@rchh/lowcode-types';
 import { PublisherFactory, IPublisher, IPublisherFactoryParams, PublisherError } from '../../types';
 import { getErrorMessage } from '../../utils/errors';
 import { isNodeProcess, writeZipToDisk, generateProjectZip } from './utils';

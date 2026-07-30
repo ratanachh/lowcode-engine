@@ -1,6 +1,6 @@
 import { Pane } from './views/pane';
 import { IconOutline } from './icons/outline';
-import { IPublicModelPluginContext, IPublicModelDocumentModel } from '@alilc/lowcode-types';
+import { IPublicModelPluginContext, IPublicModelDocumentModel } from '@rchh/lowcode-types';
 import { MasterPaneName, BackupPaneName } from './helper/consts';
 import { TreeMaster } from './controllers/tree-master';
 import { PaneController } from './controllers/pane-controller';

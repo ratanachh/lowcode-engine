@@ -3,10 +3,10 @@ import '../../fixtures/window';
 import {
   Editor,
   Setters as InnerSetters,
-} from '@alilc/lowcode-editor-core';
+} from '@rchh/lowcode-editor-core';
 import {
   Setters,
-} from '@alilc/lowcode-shell';
+} from '@rchh/lowcode-shell';
 import { SettingTopEntry } from '../../../src/designer/setting/setting-top-entry';
 import { SettingField } from '../../../src/designer/setting/setting-field';
 import { Node } from '../../../src/document/node/node';

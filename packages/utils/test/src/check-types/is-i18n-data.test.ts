@@ -1,5 +1,5 @@
 import { isI18nData } from '../../../src/check-types/is-i18n-data';
-import { IPublicTypeI18nData } from "@alilc/lowcode-types";
+import { IPublicTypeI18nData } from "@rchh/lowcode-types";
 
 describe('isI18nData', () => {
   it('should return true for valid i18n data', () => {

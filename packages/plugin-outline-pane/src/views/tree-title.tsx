@@ -1,7 +1,7 @@
 import { KeyboardEvent, FocusEvent, Fragment, PureComponent } from 'react';
 import classNames from 'classnames';
-import { createIcon } from '@alilc/lowcode-utils';
-import { IPublicApiEvent } from '@alilc/lowcode-types';
+import { createIcon } from '@rchh/lowcode-utils';
+import { IPublicApiEvent } from '@rchh/lowcode-types';
 import TreeNode from '../controllers/tree-node';
 import { IconLock, IconUnlock, IconArrowRight, IconEyeClose, IconEye, IconCond, IconLoop, IconRadioActive, IconRadio, IconSetting, IconDelete } from '../icons';
 

@@ -16,7 +16,7 @@ import { COMMON_CHUNK_NAME } from '../../../const/generator';
 
 import { createReactNodeGenerator } from '../../../utils/nodeToJSX';
 import { Scope } from '../../../utils/Scope';
-import { IPublicTypeJSExpression } from '@alilc/lowcode-types';
+import { IPublicTypeJSExpression } from '@rchh/lowcode-types';
 import { generateExpression } from '../../../utils/jsExpression';
 import { transformJsExpr } from '../../../core/jsx/handlers/transformJsExpression';
 import { transformThis2Context } from '../../../core/jsx/handlers/transformThis2Context';

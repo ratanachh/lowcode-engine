@@ -11,7 +11,7 @@ import {
   IPublicTypeCompositeValue,
   isNodeSchema,
   isJSFunction,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import { CodeGeneratorError } from '../types/error';
 import { isJSExpressionFn } from './common';
 

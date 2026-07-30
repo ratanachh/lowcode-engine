@@ -1,6 +1,6 @@
 import { Component, Fragment } from 'react';
 import { Button, Icon } from '@alifd/next';
-import { action, makeObservable } from '@alilc/lowcode-editor-core';
+import { action, makeObservable } from '@rchh/lowcode-editor-core';
 import { IconFix } from '../../icons/fix';
 import { IconFloat } from '../../icons/float';
 import { Panel } from '../../widget/panel';

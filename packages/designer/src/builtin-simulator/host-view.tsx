@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { observer } from '@alilc/lowcode-editor-core';
+import { observer } from '@rchh/lowcode-editor-core';
 import { BuiltinSimulatorHost, BuiltinSimulatorProps } from './host';
 import { BemTools } from './bem-tools';
 import { Project } from '../project';

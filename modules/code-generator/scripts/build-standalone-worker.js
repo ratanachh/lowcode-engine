@@ -22,7 +22,7 @@ const buildConfig = {
         resourceRegExp: /^fs$/,
         contextRegExp: /./,
       },
-      // @alilc/lowcode-types 中误依赖了 react，这里忽略下
+      // @rchh/lowcode-types 中误依赖了 react，这里忽略下
       {
         resourceRegExp: /^react$/,
         contextRegExp: /./,

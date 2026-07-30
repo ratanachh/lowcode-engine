@@ -305,14 +305,14 @@ describe('build-component', () => {
     expect(
       buildComponents(
         {
-          '@alilc/button': {
+          '@rchh/button': {
             Button,
           }
         },
         {
           Button: {
             componentName: 'Button',
-            package: '@alilc/button',
+            package: '@rchh/button',
             destructuring: true,
             exportName: 'Button',
             subName: 'Button',
@@ -329,7 +329,7 @@ describe('build-component', () => {
     expect(
       buildComponents(
         {
-          '@alilc/button': {
+          '@rchh/button': {
             __esModule: true,
             default: Button,
           }
@@ -337,7 +337,7 @@ describe('build-component', () => {
         {
           Button: {
             componentName: 'Button',
-            package: '@alilc/button',
+            package: '@rchh/button',
           }
         },
         () => {},
@@ -351,14 +351,14 @@ describe('build-component', () => {
     expect(
       buildComponents(
         {
-          '@alilc/button': {
+          '@rchh/button': {
             WrapButton,
           }
         },
         {
           WrapButton: {
             componentName: 'WrapButton',
-            package: '@alilc/button',
+            package: '@rchh/button',
             destructuring: true,
             exportName: 'WrapButton',
             subName: 'WrapButton',
@@ -375,12 +375,12 @@ describe('build-component', () => {
     expect(
       buildComponents(
         {
-          '@alilc/button': Button
+          '@rchh/button': Button
         },
         {
           Button: {
             componentName: 'Button',
-            package: '@alilc/button',
+            package: '@rchh/button',
             destructuring: false,
           }
         },
@@ -395,7 +395,7 @@ describe('build-component', () => {
     expect(
       buildComponents(
         {
-          '@alilc/button': {
+          '@rchh/button': {
             Button,
             ButtonGroup,
           }
@@ -403,14 +403,14 @@ describe('build-component', () => {
         {
           Button: {
             componentName: 'Button',
-            package: '@alilc/button',
+            package: '@rchh/button',
             destructuring: true,
             exportName: 'Button',
             subName: 'Button',
           },
           ButtonGroup: {
             componentName: 'ButtonGroup',
-            package: '@alilc/button',
+            package: '@rchh/button',
             destructuring: true,
             exportName: 'ButtonGroup',
             subName: 'ButtonGroup',
@@ -428,21 +428,21 @@ describe('build-component', () => {
     expect(
       buildComponents(
         {
-          '@alilc/button': {
+          '@rchh/button': {
             ButtonGroup,
           }
         },
         {
           Button: {
             componentName: 'Button',
-            package: '@alilc/button',
+            package: '@rchh/button',
             destructuring: true,
             exportName: 'ButtonGroup',
             subName: 'ButtonGroup.Button',
           },
           ButtonGroup: {
             componentName: 'ButtonGroup',
-            package: '@alilc/button',
+            package: '@rchh/button',
             destructuring: true,
             exportName: 'ButtonGroup',
             subName: 'ButtonGroup',
@@ -460,19 +460,19 @@ describe('build-component', () => {
     expect(
       buildComponents(
         {
-          '@alilc/button': ButtonGroup,
+          '@rchh/button': ButtonGroup,
         },
         {
           Button: {
             componentName: 'Button',
-            package: '@alilc/button',
+            package: '@rchh/button',
             destructuring: true,
             exportName: 'Button',
             subName: 'Button',
           },
           ButtonGroup: {
             componentName: 'ButtonGroup',
-            package: '@alilc/button',
+            package: '@rchh/button',
             destructuring: true,
             exportName: 'default',
             subName: 'default',
@@ -490,7 +490,7 @@ describe('build-component', () => {
     expect(
       buildComponents(
         {
-          '@alilc/button': Button,
+          '@rchh/button': Button,
         },
         {
           Button: null,
@@ -600,12 +600,12 @@ describe('build div component', () => {
   it('build div component', () => {
     const components = buildComponents(
       {
-        '@alilc/div': 'div'
+        '@rchh/div': 'div'
       },
       {
         div: {
           componentName: 'div',
-          package: '@alilc/div'
+          package: '@rchh/div'
         }
       },
       () => {},

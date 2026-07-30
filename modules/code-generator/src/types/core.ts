@@ -5,7 +5,7 @@ import {
   IPublicTypeJSONObject, IPublicTypeJSSlot, IPublicTypeNodeDataType,
   IPublicTypeProjectSchema, ResultDir,
   ResultFile,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 
 import type { ProjectBuilderInitOptions } from '../generator/ProjectBuilder';
 import { IScopeBindings } from '../utils/ScopeBindings';

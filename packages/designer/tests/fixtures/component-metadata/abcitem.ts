@@ -1,4 +1,4 @@
-import { IPublicTypeComponentMetadata } from "@alilc/lowcode-types";
+import { IPublicTypeComponentMetadata } from "@rchh/lowcode-types";
 export default {
   componentName: 'Abc.Item',
   npm: {

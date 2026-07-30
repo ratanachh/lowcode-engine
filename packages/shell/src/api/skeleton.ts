@@ -1,11 +1,11 @@
-import { globalContext } from '@alilc/lowcode-editor-core';
+import { globalContext } from '@rchh/lowcode-editor-core';
 import {
   ISkeleton,
   SkeletonEvents,
-} from '@alilc/lowcode-editor-skeleton';
+} from '@rchh/lowcode-editor-skeleton';
 import { skeletonSymbol } from '../symbols';
-import { IPublicApiSkeleton, IPublicModelSkeletonItem, IPublicTypeConfigTransducer, IPublicTypeDisposable, IPublicTypeSkeletonConfig, IPublicTypeWidgetConfigArea } from '@alilc/lowcode-types';
-import { getLogger } from '@alilc/lowcode-utils';
+import { IPublicApiSkeleton, IPublicModelSkeletonItem, IPublicTypeConfigTransducer, IPublicTypeDisposable, IPublicTypeSkeletonConfig, IPublicTypeWidgetConfigArea } from '@rchh/lowcode-types';
+import { getLogger } from '@rchh/lowcode-utils';
 import { SkeletonItem } from '../model/skeleton-item';
 
 const innerSkeletonSymbol = Symbol('skeleton');

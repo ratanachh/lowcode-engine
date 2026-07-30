@@ -2,7 +2,7 @@ import * as parser from '@babel/parser';
 import generate from '@babel/generator';
 import traverse from '@babel/traverse';
 import * as t from '@babel/types';
-import { IPublicTypeJSExpression, IPublicTypeJSFunction, isJSExpression, isJSFunction } from '@alilc/lowcode-types';
+import { IPublicTypeJSExpression, IPublicTypeJSFunction, isJSExpression, isJSFunction } from '@rchh/lowcode-types';
 import { CodeGeneratorError, IScope } from '../types';
 import { transformExpressionLocalRef, ParseError } from './expressionParser';
 import { isJSExpressionFn } from './common';

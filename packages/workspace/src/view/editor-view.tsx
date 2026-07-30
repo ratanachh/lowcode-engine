@@ -1,8 +1,8 @@
-import { BuiltinLoading } from '@alilc/lowcode-designer';
-import { engineConfig, observer } from '@alilc/lowcode-editor-core';
+import { BuiltinLoading } from '@rchh/lowcode-designer';
+import { engineConfig, observer } from '@rchh/lowcode-editor-core';
 import {
   Workbench,
-} from '@alilc/lowcode-editor-skeleton';
+} from '@rchh/lowcode-editor-skeleton';
 import { PureComponent } from 'react';
 import { Context } from '../context/view-context';
 

@@ -1,4 +1,4 @@
-import { ISettingField, isSettingField } from '@alilc/lowcode-designer';
+import { ISettingField, isSettingField } from '@rchh/lowcode-designer';
 import {
   IPublicTypeCompositeValue,
   IPublicTypeFieldConfig,
@@ -11,12 +11,12 @@ import {
   IPublicTypeSetValueOptions,
   IPublicModelSettingField,
   IPublicTypeDisposable,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import { settingFieldSymbol } from '../symbols';
 import { Node as ShellNode } from './node';
 import { SettingTopEntry, SettingTopEntry as ShellSettingTopEntry } from './setting-top-entry';
 import { ComponentMeta as ShellComponentMeta } from './component-meta';
-import { isCustomView } from '@alilc/lowcode-utils';
+import { isCustomView } from '@rchh/lowcode-utils';
 
 export class SettingField implements IPublicModelSettingField {
   private readonly [settingFieldSymbol]: ISettingField;

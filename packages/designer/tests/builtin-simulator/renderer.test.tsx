@@ -2,7 +2,7 @@ import React from 'react';
 import set from 'lodash/set';
 import cloneDeep from 'lodash/cloneDeep';
 import '../fixtures/window';
-import { Editor } from '@alilc/lowcode-editor-core';
+import { Editor } from '@rchh/lowcode-editor-core';
 import { Project } from '../../src/project/project';
 import { Node } from '../../src/document/node/node';
 import TestRenderer from 'react-test-renderer';

@@ -84,8 +84,8 @@ executeTransaction(fn: () => void, type: IPublicEnumTransitionType): void;
 
 **示例**
 ```typescript
-import { common } from '@alilc/lowcode-engine';
-import { IPublicEnumTransitionType } from '@alilc/lowcode-types';
+import { common } from '@rchh/lowcode-engine';
+import { IPublicEnumTransitionType } from '@rchh/lowcode-types';
 
 common.utils.startTransaction(() => {
   node1.setProps();
@@ -135,7 +135,7 @@ createIntl(instance: string | object): {
 **示例**
 
 ```typescript
-import { common } from '@alilc/lowcode-engine';
+import { common } from '@rchh/lowcode-engine';
 import enUS from './en-US.json';
 import zhCN from './zh-CN.json';
 

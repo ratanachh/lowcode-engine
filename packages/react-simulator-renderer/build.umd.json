@@ -10,7 +10,7 @@
     "react-dom": "var window.ReactDOM",
     "prop-types": "var window.PropTypes",
     "@alifd/next": "var Next",
-    "@alilc/lowcode-engine-ext": "var window.AliLowCodeEngineExt",
+    "@rchh/lowcode-engine-ext": "var window.AliLowCodeEngineExt",
     "moment": "var moment",
     "lodash": "var _"
   },

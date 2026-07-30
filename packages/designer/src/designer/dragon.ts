@@ -1,4 +1,4 @@
-import { obx, makeObservable, IEventBus, createModuleEventBus } from '@alilc/lowcode-editor-core';
+import { obx, makeObservable, IEventBus, createModuleEventBus } from '@rchh/lowcode-editor-core';
 import {
   IPublicTypeDragNodeObject,
   IPublicTypeDragAnyObject,
@@ -9,8 +9,8 @@ import {
   IPublicModelDragon,
   IPublicModelLocateEvent,
   IPublicModelSensor,
-} from '@alilc/lowcode-types';
-import { setNativeSelection, cursor } from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-types';
+import { setNativeSelection, cursor } from '@rchh/lowcode-utils';
 import { INode, Node } from '../document';
 import { ISimulatorHost, isSimulatorHost } from '../simulator';
 import { IDesigner } from './designer';
@@ -26,21 +26,21 @@ export interface ILocateEvent extends IPublicModelLocateEvent {
 }
 
 /**
- * @deprecated use same function in @alilc/lowcode-utils
+ * @deprecated use same function in @rchh/lowcode-utils
  */
 export function isDragNodeObject(obj: any): obj is IPublicTypeDragNodeObject {
   return obj && obj.type === IPublicEnumDragObjectType.Node;
 }
 
 /**
- * @deprecated use same function in @alilc/lowcode-utils
+ * @deprecated use same function in @rchh/lowcode-utils
  */
 export function isDragNodeDataObject(obj: any): obj is IPublicTypeDragNodeDataObject {
   return obj && obj.type === IPublicEnumDragObjectType.NodeData;
 }
 
 /**
- * @deprecated use same function in @alilc/lowcode-utils
+ * @deprecated use same function in @rchh/lowcode-utils
  */
 export function isDragAnyObject(obj: any): obj is IPublicTypeDragAnyObject {
   return obj && obj.type !== IPublicEnumDragObjectType.NodeData && obj.type !== IPublicEnumDragObjectType.Node;

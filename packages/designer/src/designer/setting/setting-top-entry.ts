@@ -1,6 +1,6 @@
-import { IPublicTypeCustomView, IPublicModelEditor, IPublicModelSettingTopEntry, IPublicApiSetters } from '@alilc/lowcode-types';
-import { isCustomView } from '@alilc/lowcode-utils';
-import { computed, IEventBus, createModuleEventBus } from '@alilc/lowcode-editor-core';
+import { IPublicTypeCustomView, IPublicModelEditor, IPublicModelSettingTopEntry, IPublicApiSetters } from '@rchh/lowcode-types';
+import { isCustomView } from '@rchh/lowcode-utils';
+import { computed, IEventBus, createModuleEventBus } from '@rchh/lowcode-editor-core';
 import { ISettingEntry } from './setting-entry-type';
 import { ISettingField, SettingField } from './setting-field';
 import { INode } from '../../document';

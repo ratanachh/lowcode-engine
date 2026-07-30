@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { IPublicModelPluginContext, IPublicEnumPluginRegisterLevel, IPublicModelWindow, IPublicModelEditorView } from '@alilc/lowcode-types';
+import { IPublicModelPluginContext, IPublicEnumPluginRegisterLevel, IPublicModelWindow, IPublicModelEditorView } from '@rchh/lowcode-types';
 
 /**
  * 高阶组件（HOC）：为组件提供 view 插件上下文。

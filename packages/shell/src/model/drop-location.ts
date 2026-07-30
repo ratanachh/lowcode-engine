@@ -1,9 +1,9 @@
 import {
   IDropLocation as InnerDropLocation,
-} from '@alilc/lowcode-designer';
+} from '@rchh/lowcode-designer';
 import { dropLocationSymbol } from '../symbols';
 import { Node as ShellNode } from './node';
-import { IPublicModelDropLocation, IPublicTypeLocationDetail, IPublicModelLocateEvent } from '@alilc/lowcode-types';
+import { IPublicModelDropLocation, IPublicTypeLocationDetail, IPublicModelLocateEvent } from '@rchh/lowcode-types';
 
 export class DropLocation implements IPublicModelDropLocation {
   private readonly [dropLocationSymbol]: InnerDropLocation;

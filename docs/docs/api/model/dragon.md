@@ -11,7 +11,7 @@ sidebar_position: 99
 
 ### 对应接口
 ```typescript
-import { IPublicModelDragon } from '@alilc/lowcode-types';
+import { IPublicModelDragon } from '@rchh/lowcode-types';
 ```
 
 ### 支持版本

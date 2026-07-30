@@ -1,4 +1,4 @@
-# @alilc/lowcode-material-parser
+# @rchh/lowcode-material-parser
 
 > 入料模块
 

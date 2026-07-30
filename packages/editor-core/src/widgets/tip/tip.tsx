@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { IPublicTypeTipConfig } from '@alilc/lowcode-types';
-import { uniqueId } from '@alilc/lowcode-utils';
+import { IPublicTypeTipConfig } from '@rchh/lowcode-types';
+import { uniqueId } from '@rchh/lowcode-utils';
 import { postTip } from './tip-handler';
 
 export class Tip extends Component<IPublicTypeTipConfig> {

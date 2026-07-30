@@ -1,11 +1,11 @@
 import { ReactNode, createElement } from 'react';
-import { makeObservable, obx } from '@alilc/lowcode-editor-core';
-import { createContent, uniqueId } from '@alilc/lowcode-utils';
-import { getEvent } from '@alilc/lowcode-shell';
+import { makeObservable, obx } from '@rchh/lowcode-editor-core';
+import { createContent, uniqueId } from '@rchh/lowcode-utils';
+import { getEvent } from '@rchh/lowcode-shell';
 import { WidgetConfig } from '../types';
 import { ISkeleton } from '../skeleton';
 import { WidgetView } from '../components/widget-views';
-import { IPublicTypeTitleContent, IPublicTypeWidgetBaseConfig } from '@alilc/lowcode-types';
+import { IPublicTypeTitleContent, IPublicTypeWidgetBaseConfig } from '@rchh/lowcode-types';
 
 export interface IWidget {
   readonly name: string;

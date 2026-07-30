@@ -6,8 +6,8 @@ import {
   IPublicModelPluginContext,
   IPublicTypeDragNodeDataObject,
   IPublicTypeNodeSchema,
-} from '@alilc/lowcode-types';
-import { isProjectSchema } from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-types';
+import { isProjectSchema } from '@rchh/lowcode-utils';
 import { Message } from '@alifd/next';
 import { intl } from '../locale';
 

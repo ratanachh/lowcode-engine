@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { isFormEvent, isNodeSchema, isNode } from '@alilc/lowcode-utils';
+import { isFormEvent, isNodeSchema, isNode } from '@rchh/lowcode-utils';
 import {
   IPublicModelPluginContext,
   IPublicEnumTransformStage,
@@ -8,7 +8,7 @@ import {
   IPublicTypeNodeData,
   IPublicEnumDragObjectType,
   IPublicTypeDragNodeObject,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 
 function insertChild(
   container: IPublicModelNode,

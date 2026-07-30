@@ -1,5 +1,5 @@
 import { IPublicModelWindow } from '../model';
-import { IPublicApiPlugins, IPublicApiSkeleton, IPublicModelResource, IPublicResourceList, IPublicTypeDisposable, IPublicTypeResourceType } from '@alilc/lowcode-types';
+import { IPublicApiPlugins, IPublicApiSkeleton, IPublicModelResource, IPublicResourceList, IPublicTypeDisposable, IPublicTypeResourceType } from '@rchh/lowcode-types';
 
 export interface IPublicApiWorkspace<
   Plugins = IPublicApiPlugins,

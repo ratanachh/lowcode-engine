@@ -1,5 +1,5 @@
-import { IPublicModelPluginContext, IPublicTypeNodeSchema, IPublicTypePlugin, IPublicTypePropType } from '@alilc/lowcode-types';
-import { isNodeSchema } from '@alilc/lowcode-utils';
+import { IPublicModelPluginContext, IPublicTypeNodeSchema, IPublicTypePlugin, IPublicTypePropType } from '@rchh/lowcode-types';
+import { isNodeSchema } from '@rchh/lowcode-utils';
 
 const sampleNodeSchema: IPublicTypePropType = {
   type: 'shape',

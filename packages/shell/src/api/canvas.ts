@@ -9,11 +9,11 @@ import {
   IPublicModelDragon,
   IPublicModelActiveTracker,
   IPublicModelClipboard,
-} from '@alilc/lowcode-types';
+} from '@rchh/lowcode-types';
 import {
   ScrollTarget as InnerScrollTarget,
   IDesigner,
-} from '@alilc/lowcode-designer';
+} from '@rchh/lowcode-designer';
 import { editorSymbol, designerSymbol, nodeSymbol } from '../symbols';
 import {
   Dragon as ShellDragon,

@@ -1,4 +1,4 @@
-import { checkPropTypes } from '@alilc/lowcode-utils/src/check-prop-types';
+import { checkPropTypes } from '@rchh/lowcode-utils/src/check-prop-types';
 import { nodeSchemaPropType } from '../src/node-command';
 
 describe('nodeSchemaPropType', () => {

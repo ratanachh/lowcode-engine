@@ -1,6 +1,6 @@
 import { skeletonItemSymbol } from '../symbols';
-import { IPublicModelSkeletonItem } from '@alilc/lowcode-types';
-import { Dock, IWidget, Panel, PanelDock, Stage, Widget } from '@alilc/lowcode-editor-skeleton';
+import { IPublicModelSkeletonItem } from '@rchh/lowcode-types';
+import { Dock, IWidget, Panel, PanelDock, Stage, Widget } from '@rchh/lowcode-editor-skeleton';
 
 export class SkeletonItem implements IPublicModelSkeletonItem {
   private [skeletonItemSymbol]: IWidget | Widget | Panel | Stage | Dock | PanelDock;

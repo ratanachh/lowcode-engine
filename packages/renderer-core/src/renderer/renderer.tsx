@@ -5,7 +5,7 @@ import { isFileSchema, isEmpty } from '../utils';
 import baseRendererFactory from './base';
 import divFactory from '../components/Div';
 import { IRenderComponent, IRendererProps, IRendererState } from '../types';
-import { IPublicTypeNodeSchema, IPublicTypeRootSchema } from '@alilc/lowcode-types';
+import { IPublicTypeNodeSchema, IPublicTypeRootSchema } from '@rchh/lowcode-types';
 import logger from '../utils/logger';
 
 export default function rendererFactory(): IRenderComponent {

@@ -12,7 +12,7 @@ import {
   Tooltip,
   Icon,
   Empty,
-} from '@alilc/antd-lowcode-materials/dist/antd-lowcode.esm.js';
+} from '@rchh/antd-lowcode-materials/dist/antd-lowcode.esm.js';
 
 import {
   AliAutoDiv,

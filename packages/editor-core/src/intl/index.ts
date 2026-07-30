@@ -1,9 +1,9 @@
 import { ReactNode, Component, createElement } from 'react';
 import { IntlMessageFormat } from 'intl-messageformat';
 import { globalLocale } from './global-locale';
-import { isI18nData } from '@alilc/lowcode-utils';
+import { isI18nData } from '@rchh/lowcode-utils';
 import { observer } from '../utils';
-import { IPublicTypeI18nData } from '@alilc/lowcode-types';
+import { IPublicTypeI18nData } from '@rchh/lowcode-types';
 
 function generateTryLocales(locale: string) {
   const tries = [locale, locale.replace('-', '_')];

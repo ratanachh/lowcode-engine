@@ -1,5 +1,5 @@
 import { ComponentType } from 'react';
-import { obx, computed, autorun, makeObservable, IReactionPublic, IReactionOptions, IReactionDisposer } from '@alilc/lowcode-editor-core';
+import { obx, computed, autorun, makeObservable, IReactionPublic, IReactionOptions, IReactionDisposer } from '@rchh/lowcode-editor-core';
 import {
   IPublicTypeProjectSchema,
   IPublicTypeComponentMetadata,
@@ -17,8 +17,8 @@ import {
   IPublicTypeLocationData,
   IPublicEnumTransformStage,
   IPublicModelLocateEvent,
-} from '@alilc/lowcode-types';
-import { mergeAssets, IPublicTypeAssetsJson, isNodeSchema, isDragNodeObject, isDragNodeDataObject, isLocationChildrenDetail, Logger } from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-types';
+import { mergeAssets, IPublicTypeAssetsJson, isNodeSchema, isDragNodeObject, isDragNodeDataObject, isLocationChildrenDetail, Logger } from '@rchh/lowcode-utils';
 import { IProject, Project } from '../project';
 import { Node, DocumentModel, insertChildren, INode, ISelection } from '../document';
 import { ComponentMeta, IComponentMeta } from '../component-meta';

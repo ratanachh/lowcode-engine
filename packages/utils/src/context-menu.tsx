@@ -1,6 +1,6 @@
 import { Menu, Icon } from '@alifd/next';
-import { IPublicEnumContextMenuType, IPublicModelNode, IPublicModelPluginContext, IPublicTypeContextMenuAction, IPublicTypeContextMenuItem } from '@alilc/lowcode-types';
-import { Logger } from '@alilc/lowcode-utils';
+import { IPublicEnumContextMenuType, IPublicModelNode, IPublicModelPluginContext, IPublicTypeContextMenuAction, IPublicTypeContextMenuItem } from '@rchh/lowcode-types';
+import { Logger } from '@rchh/lowcode-utils';
 import classNames from 'classnames';
 import React from 'react';
 import './context-menu.scss';

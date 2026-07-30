@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import type { IPublicTypeProjectSchema } from '@alilc/lowcode-types';
+import type { IPublicTypeProjectSchema } from '@rchh/lowcode-types';
 import CodeGen from './standalone';
 
 declare const self: any;

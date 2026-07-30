@@ -1,6 +1,6 @@
-import { obx, computed, makeObservable, runInAction, IEventBus, createModuleEventBus } from '@alilc/lowcode-editor-core';
-import { GlobalEvent, IPublicApiSetters, IPublicModelEditor, IPublicModelSettingField, IPublicTypeFieldExtraProps, IPublicTypeSetValueOptions } from '@alilc/lowcode-types';
-import { uniqueId, isJSExpression } from '@alilc/lowcode-utils';
+import { obx, computed, makeObservable, runInAction, IEventBus, createModuleEventBus } from '@rchh/lowcode-editor-core';
+import { GlobalEvent, IPublicApiSetters, IPublicModelEditor, IPublicModelSettingField, IPublicTypeFieldExtraProps, IPublicTypeSetValueOptions } from '@rchh/lowcode-types';
+import { uniqueId, isJSExpression } from '@rchh/lowcode-utils';
 import { ISettingEntry } from './setting-entry-type';
 import { INode } from '../../document';
 import type { IComponentMeta } from '../../component-meta';

@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { observer } from '@alilc/lowcode-editor-core';
+import { observer } from '@rchh/lowcode-editor-core';
 import { BuiltinSimulatorHost } from '../host';
 import {
   DropLocation,
@@ -8,8 +8,8 @@ import {
 import { ISimulatorHost } from '../../simulator';
 import { INode } from '../../document';
 import './insertion.less';
-import { IPublicTypeNodeData, IPublicTypeNodeSchema, IPublicTypeLocationChildrenDetail, IPublicTypeRect } from '@alilc/lowcode-types';
-import { isLocationChildrenDetail } from '@alilc/lowcode-utils';
+import { IPublicTypeNodeData, IPublicTypeNodeSchema, IPublicTypeLocationChildrenDetail, IPublicTypeRect } from '@rchh/lowcode-types';
+import { isLocationChildrenDetail } from '@rchh/lowcode-utils';
 
 interface InsertionData {
   edge?: DOMRect;

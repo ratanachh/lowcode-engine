@@ -24,7 +24,7 @@ sidebar_position: 0
 ### 配置物料
 通过配置注入物料，这里的配置是物料中心根据物料资产包协议生成的，后面“物料扩展”章节会有详细说明。
 ```typescript
-import { material } from '@alilc/lowcode-engine';
+import { material } from '@rchh/lowcode-engine';
 // 假设您已把物料配置在本地
 import assets from './assets.json';
 
@@ -34,8 +34,8 @@ material.setAssets(assets);
 
 也可以通过异步加载物料中心上的物料。
 ```typescript
-import { material, plugins } from '@alilc/lowcode-engine';
-import { IPublicModelPluginContext } from '@alilc/lowcode-types';
+import { material, plugins } from '@rchh/lowcode-engine';
+import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 
 // 动态加载 assets
 plugins.register((ctx: IPublicModelPluginContext) => {
@@ -58,9 +58,9 @@ plugins.register((ctx: IPublicModelPluginContext) => {
 ### 配置插件
 可以通过 npm 包的方式引入社区插件，配置如下所示：
 ```typescript
-import { plugins } from '@alilc/lowcode-engine';
-import { IPublicModelPluginContext } from '@alilc/lowcode-types';
-import PluginIssueTracker from '@alilc/lowcode-plugin-issue-tracker';
+import { plugins } from '@rchh/lowcode-engine';
+import { IPublicModelPluginContext } from '@rchh/lowcode-types';
+import PluginIssueTracker from '@rchh/lowcode-plugin-issue-tracker';
 
 // 注册一个提 issue 组件到您的编辑器中，方位默认在左栏下侧
 plugins.register(PluginIssueTracker)
@@ -71,7 +71,7 @@ plugins.register(PluginIssueTracker)
 ### 配置设置器
 低代码引擎默认内置了设置器（详见“配置设置器”章节）。您可以通过 npm 包的方式引入自定义的设置器，配置如下所示：
 ```typescript
-import { setters } from '@alilc/lowcode-engine';
+import { setters } from '@rchh/lowcode-engine';
 // 假设您自定义了一个 setter
 import MuxMonacoEditorSetter from './components/setters/MuxMonacoEditorSetter';
 

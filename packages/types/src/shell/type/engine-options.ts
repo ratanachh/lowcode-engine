@@ -1,4 +1,4 @@
-import { RequestHandlersMap } from '@alilc/lowcode-datasource-types';
+import { RequestHandlersMap } from '@rchh/lowcode-datasource-types';
 import { ComponentType } from 'react';
 
 export interface IPublicTypeEngineOptions {

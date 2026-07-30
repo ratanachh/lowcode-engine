@@ -1,5 +1,5 @@
 import { Component } from '../simulator';
-import { IPublicTypeComponentInstance, IPublicTypeSimulatorRenderer } from '@alilc/lowcode-types';
+import { IPublicTypeComponentInstance, IPublicTypeSimulatorRenderer } from '@rchh/lowcode-types';
 
 export type BuiltinSimulatorRenderer = IPublicTypeSimulatorRenderer<Component, IPublicTypeComponentInstance>;
 

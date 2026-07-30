@@ -1,4 +1,4 @@
-import { IPublicTypeProjectSchema } from '@alilc/lowcode-types';
+import { IPublicTypeProjectSchema } from '@rchh/lowcode-types';
 import { isObject } from '../is-object';
 
 export function isProjectSchema(data: any): data is IPublicTypeProjectSchema {

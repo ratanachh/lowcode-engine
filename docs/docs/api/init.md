@@ -22,7 +22,7 @@ function init(container?: Element, options?: IPublicTypeEngineOptions): void
 
 ## 使用示例
 ```typescript
-import { init } from '@alilc/lowcode-engine';
+import { init } from '@rchh/lowcode-engine';
 
 init(document.getElementById('engine'), {
   enableCondition: false,
@@ -31,7 +31,7 @@ init(document.getElementById('engine'), {
 
 ### 默认打开移动端画布
 ```typescript
-import { init } from '@alilc/lowcode-engine';
+import { init } from '@rchh/lowcode-engine';
 
 init({
   device: 'mobile',
@@ -40,7 +40,7 @@ init({
 
 ### 使用 utils 第三方工具扩展
 ```json
-import { init } from '@alilc/lowcode-engine';
+import { init } from '@rchh/lowcode-engine';
 
 init({
   device: 'mobile',

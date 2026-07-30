@@ -1,6 +1,6 @@
 import '../../fixtures/window';
 import { DocumentModel, isDocumentModel, isPageSchema } from '../../../src/document/document-model';
-import { Editor } from '@alilc/lowcode-editor-core';
+import { Editor } from '@rchh/lowcode-editor-core';
 import { Project } from '../../../src/project/project';
 import { Designer } from '../../../src/designer/designer';
 import formSchema from '../../fixtures/schema/form';

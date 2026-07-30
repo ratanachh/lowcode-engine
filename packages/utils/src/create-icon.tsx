@@ -1,6 +1,6 @@
 import { isValidElement, ReactNode, createElement, cloneElement } from 'react';
 import { Icon } from '@alifd/next';
-import { IPublicTypeIconType } from '@alilc/lowcode-types';
+import { IPublicTypeIconType } from '@rchh/lowcode-types';
 import { isReactComponent } from './is-react';
 import { isESModule } from './is-es-module';
 

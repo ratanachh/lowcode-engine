@@ -1,9 +1,9 @@
 import '../../../fixtures/window';
-import { Editor, engineConfig } from '@alilc/lowcode-editor-core';
+import { Editor, engineConfig } from '@rchh/lowcode-editor-core';
 import { Designer } from '../../../../src/designer/designer';
 import { DocumentModel } from '../../../../src/document/document-model';
 import { Prop, isProp, isValidArrayIndex } from '../../../../src/document/node/props/prop';
-import { GlobalEvent, IPublicEnumTransformStage } from '@alilc/lowcode-types';
+import { GlobalEvent, IPublicEnumTransformStage } from '@rchh/lowcode-types';
 import { shellModelFactory } from '../../../../../engine/src/modules/shell-model-factory';
 
 const slotNodeImportMockFn = jest.fn();

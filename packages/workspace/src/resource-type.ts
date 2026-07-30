@@ -1,4 +1,4 @@
-import { IPublicTypeResourceType } from '@alilc/lowcode-types';
+import { IPublicTypeResourceType } from '@rchh/lowcode-types';
 
 export interface IResourceType extends Omit<IPublicTypeResourceType, 'resourceName' | 'resourceType'> {
   name: string;

@@ -1,5 +1,5 @@
-import { IPublicModelNode, IPublicTypeComponentAction, IPublicTypeMetadataTransducer } from '@alilc/lowcode-types';
-import { engineConfig } from '@alilc/lowcode-editor-core';
+import { IPublicModelNode, IPublicTypeComponentAction, IPublicTypeMetadataTransducer } from '@rchh/lowcode-types';
+import { engineConfig } from '@rchh/lowcode-editor-core';
 import { intlNode } from './locale';
 import {
   IconLock,

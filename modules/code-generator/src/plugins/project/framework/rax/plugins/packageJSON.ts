@@ -1,4 +1,4 @@
-import { IPublicTypeNpmInfo, PackageJSON } from '@alilc/lowcode-types';
+import { IPublicTypeNpmInfo, PackageJSON } from '@rchh/lowcode-types';
 import { COMMON_CHUNK_NAME } from '../../../../../const/generator';
 
 import {

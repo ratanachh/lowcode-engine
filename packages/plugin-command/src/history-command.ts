@@ -1,4 +1,4 @@
-import { IPublicModelPluginContext, IPublicTypePlugin } from '@alilc/lowcode-types';
+import { IPublicModelPluginContext, IPublicTypePlugin } from '@rchh/lowcode-types';
 
 export const historyCommand: IPublicTypePlugin = (ctx: IPublicModelPluginContext) => {
   const { command, project } = ctx;

@@ -1,5 +1,5 @@
 import CodeGen from '../../../../src';
-import { ResultDir } from '@alilc/lowcode-types';
+import { ResultDir } from '@rchh/lowcode-types';
 
 describe('public/publisher/disk/disk', () => {
   // standalone 模式下没有 disk publisher

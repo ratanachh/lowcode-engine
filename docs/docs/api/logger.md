@@ -46,7 +46,7 @@ log(...args: any | any[]): void;
 ## 输出示例
 
 ```typescript
-import { Logger } from '@alilc/lowcode-utils';
+import { Logger } from '@rchh/lowcode-utils';
 const logger = new Logger({ level: 'warn', bizName: 'myPlugin:moduleA' });
 logger.log('Awesome Low-Code Engine');
 ```

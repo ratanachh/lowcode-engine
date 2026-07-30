@@ -1,9 +1,9 @@
-import { globalContext } from '@alilc/lowcode-editor-core';
+import { globalContext } from '@rchh/lowcode-editor-core';
 import {
   IDesigner,
   isComponentMeta,
-} from '@alilc/lowcode-designer';
-import { IPublicTypeAssetsJson, getLogger } from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-designer';
+import { IPublicTypeAssetsJson, getLogger } from '@rchh/lowcode-utils';
 import {
   IPublicTypeComponentAction,
   IPublicTypeComponentMetadata,
@@ -15,8 +15,8 @@ import {
   IPublicTypeDisposable,
   IPublicTypeContextMenuAction,
   IPublicTypeContextMenuItem,
-} from '@alilc/lowcode-types';
-import { Workspace as InnerWorkspace } from '@alilc/lowcode-workspace';
+} from '@rchh/lowcode-types';
+import { Workspace as InnerWorkspace } from '@rchh/lowcode-workspace';
 import { editorSymbol, designerSymbol } from '../symbols';
 import { ComponentMeta as ShellComponentMeta } from '../model';
 import { ComponentType } from 'react';

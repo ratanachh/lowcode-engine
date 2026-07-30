@@ -1,6 +1,6 @@
-import { IPublicModelEngineConfig, IPublicModelPreference, IPublicTypeDisposable } from '@alilc/lowcode-types';
+import { IPublicModelEngineConfig, IPublicModelPreference, IPublicTypeDisposable } from '@rchh/lowcode-types';
 import { configSymbol } from '../symbols';
-import { IEngineConfig } from '@alilc/lowcode-editor-core';
+import { IEngineConfig } from '@rchh/lowcode-editor-core';
 
 export class Config implements IPublicModelEngineConfig {
   private readonly [configSymbol]: IEngineConfig;

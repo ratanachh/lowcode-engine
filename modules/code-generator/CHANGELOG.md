@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [1.0.7-beta.2](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.3...@alilc/lowcode-code-generator@1.0.7-beta.2) (2022-11-24)
+### [1.0.7-beta.2](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.3...@rchh/lowcode-code-generator@1.0.7-beta.2) (2022-11-24)
 
 ### Bug Fixes
 
@@ -12,16 +12,16 @@ All notable changes to this project will be documented in this file. See [standa
 * add support for jsx expression ([453e069](https://github.com/alibaba/lowcode-engine/commit/453e0699ece06d98e59227e23248baf1de4082aa))
 * 修复生成的 icejs 项目不支持 constants 的问题, fixes [#1259](https://github.com/alibaba/lowcode-engine/issues/1259) ([a079fbc](https://github.com/alibaba/lowcode-engine/commit/a079fbc256f8275e8a69eb6d8abb6f6b08179578))
 * 修正 react 框架出码中在严格模式对 methods 和 context 的处理 ([b1a6100](https://github.com/alibaba/lowcode-engine/commit/b1a61006bba4292790899c7c49c9c611a9384472))
-### [1.0.7-beta.1](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.7-beta.0...@alilc/lowcode-code-generator@1.0.7-beta.1) (2022-10-26)
+### [1.0.7-beta.1](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.7-beta.0...@rchh/lowcode-code-generator@1.0.7-beta.1) (2022-10-26)
 
 
 ### Bug Fixes
 
 * fix empty string lost when generate variable ([2cf74cd](https://github.com/alibaba/lowcode-engine/commit/2cf74cd04b4f48a3501d37329d39784f6964366a))
 
-### [1.0.7-beta.0](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.6-beta.0...@alilc/lowcode-code-generator@1.0.7-beta.0) (2022-10-25)
+### [1.0.7-beta.0](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.6-beta.0...@rchh/lowcode-code-generator@1.0.7-beta.0) (2022-10-25)
 
-### [1.0.6-beta.0](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.3...@alilc/lowcode-code-generator@1.0.6-beta.0) (2022-10-25)
+### [1.0.6-beta.0](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.3...@rchh/lowcode-code-generator@1.0.6-beta.0) (2022-10-25)
 
 
 ### Features
@@ -157,21 +157,21 @@ All notable changes to this project will be documented in this file. See [standa
 * use uppercase resize trigger names based on material spec ([7fda0ef](https://github.com/alibaba/lowcode-engine/commit/7fda0efe131e0e2e3141849cf3f87307e7ce1b36))
 * when designMode is not design, the hidden attribute does not take effect ([3dd0b6d](https://github.com/alibaba/lowcode-engine/commit/3dd0b6d0a86267e3029c176ff49aff793ce3e186))
 
-### [1.0.4](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.4-beta.0...@alilc/lowcode-code-generator@1.0.4) (2022-04-12)
+### [1.0.4](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.4-beta.0...@rchh/lowcode-code-generator@1.0.4) (2022-04-12)
 
 
 ### Bug Fixes
 
 * 🐛 解决 react 中 jsx 出码的时候对于循环数据漏包 __$evalArray 的问题 ([eb4cc69](https://github.com/alibaba/lowcode-engine/commit/eb4cc693f5dbcae54546c569eb8fa331d074e062))
 
-### [1.0.4-beta.1](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.4-beta.0...@alilc/lowcode-code-generator@1.0.4-beta.1) (2022-04-11)
+### [1.0.4-beta.1](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.4-beta.0...@rchh/lowcode-code-generator@1.0.4-beta.1) (2022-04-11)
 
 
 ### Bug Fixes
 
 * 🐛 解决 react 中 jsx 出码的时候对于循环数据漏包 __$evalArray 的问题 ([987f4ce](https://github.com/alibaba/lowcode-engine/commit/987f4cea54ef8a75d0b63a0268b5a20b2938b8a7))
 
-### [1.0.4-beta.0](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.3...@alilc/lowcode-code-generator@1.0.4-beta.0) (2022-04-10)
+### [1.0.4-beta.0](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.3...@rchh/lowcode-code-generator@1.0.4-beta.0) (2022-04-10)
 
 
 ### Features
@@ -188,7 +188,7 @@ All notable changes to this project will be documented in this file. See [standa
 * fix unnecessary props calculation ([f1fed75](https://github.com/alibaba/lowcode-engine/commit/f1fed75f39be8289ede1ec558b04428a69e25b5f))
 * 修正 react 框架出码中在严格模式对 methods 和 context 的处理 ([79db4ac](https://github.com/alibaba/lowcode-engine/commit/79db4ac97f34f24b7f7460fb3fc67521967f8cc5))
 
-### [1.0.3](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.2...@alilc/lowcode-code-generator@1.0.3) (2022-03-29)
+### [1.0.3](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.2...@rchh/lowcode-code-generator@1.0.3) (2022-03-29)
 
 
 ### Features
@@ -209,16 +209,16 @@ All notable changes to this project will be documented in this file. See [standa
 * variable binding lost after modify the mock value ([ef95b56](https://github.com/alibaba/lowcode-engine/commit/ef95b5683273d8302bde1582de8afe3d87a808d8))
 * Workbench should receive the original skeleton other than shell skeleton ([d5c3ca1](https://github.com/alibaba/lowcode-engine/commit/d5c3ca1068ce2c2140980bd059d0da333574dc34))
 
-### [1.0.2](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.2-beta.1...@alilc/lowcode-code-generator@1.0.2) (2022-03-08)
+### [1.0.2](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.2-beta.1...@rchh/lowcode-code-generator@1.0.2) (2022-03-08)
 
-### [1.0.2-beta.1](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.2-beta.0...@alilc/lowcode-code-generator@1.0.2-beta.1) (2022-03-08)
+### [1.0.2-beta.1](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.2-beta.0...@rchh/lowcode-code-generator@1.0.2-beta.1) (2022-03-08)
 
 
 ### Bug Fixes
 
 * 🐛 补充 icejs 模板中缺失的依赖包 ([a94553e](https://github.com/alibaba/lowcode-engine/commit/a94553e503d439b67478df6a34950d9e3d15a063))
 
-### [1.0.2-beta.0](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.0...@alilc/lowcode-code-generator@1.0.2-beta.0) (2022-03-08)
+### [1.0.2-beta.0](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.0...@rchh/lowcode-code-generator@1.0.2-beta.0) (2022-03-08)
 
 
 ### Features
@@ -246,7 +246,7 @@ All notable changes to this project will be documented in this file. See [standa
 * lint&fix auto generated types.ts ([7dde970](https://github.com/alibaba/lowcode-engine/commit/7dde9701c7960b29523abddf32421cdbac47016d))
 * The outline tree does not display the loop flag when the loop is an empty array ([191e284](https://github.com/alibaba/lowcode-engine/commit/191e284f2fa190c2b3aecb4df31849b2bdc99d38))
 
-### [1.0.1](https://github.com/alibaba/lowcode-engine/compare/@alilc/lowcode-code-generator@1.0.0...@alilc/lowcode-code-generator@1.0.1) (2022-03-08)
+### [1.0.1](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.0...@rchh/lowcode-code-generator@1.0.1) (2022-03-08)
 
 
 ### Features

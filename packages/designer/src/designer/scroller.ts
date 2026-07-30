@@ -1,5 +1,5 @@
-import { isElement } from '@alilc/lowcode-utils';
-import { IPublicModelScrollTarget, IPublicTypeScrollable, IPublicModelScroller } from '@alilc/lowcode-types';
+import { isElement } from '@rchh/lowcode-utils';
+import { IPublicModelScrollTarget, IPublicTypeScrollable, IPublicModelScroller } from '@rchh/lowcode-types';
 
 export interface IScrollTarget extends IPublicModelScrollTarget {
 }

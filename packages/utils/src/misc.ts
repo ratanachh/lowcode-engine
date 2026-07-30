@@ -1,7 +1,7 @@
 
 import { isI18NObject } from './is-object';
 import { get } from 'lodash';
-import { IPublicEnumTransformStage, IPublicModelComponentMeta } from '@alilc/lowcode-types';
+import { IPublicEnumTransformStage, IPublicModelComponentMeta } from '@rchh/lowcode-types';
 import { Logger } from './logger';
 
 const logger = new Logger({ level: 'warn', bizName: 'utils' });

@@ -2,10 +2,10 @@ import {
   IDocumentModel as InnerDocumentModel,
   INode as InnerNode,
   ISelection,
-} from '@alilc/lowcode-designer';
+} from '@rchh/lowcode-designer';
 import { Node as ShellNode } from './node';
 import { selectionSymbol } from '../symbols';
-import { IPublicModelSelection, IPublicModelNode, IPublicTypeDisposable } from '@alilc/lowcode-types';
+import { IPublicModelSelection, IPublicModelNode, IPublicTypeDisposable } from '@rchh/lowcode-types';
 
 export class Selection implements IPublicModelSelection {
   private readonly [selectionSymbol]: ISelection;

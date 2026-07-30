@@ -1,8 +1,8 @@
 import { ISimulatorHost } from '../../simulator';
 import { Designer, Point } from '../../designer';
-import { cursor } from '@alilc/lowcode-utils';
+import { cursor } from '@rchh/lowcode-utils';
 import { makeEventsHandler } from '../../utils/misc';
-import { createModuleEventBus, IEventBus } from '@alilc/lowcode-editor-core';
+import { createModuleEventBus, IEventBus } from '@rchh/lowcode-editor-core';
 
 // 拖动缩放
 export default class DragResizeEngine {

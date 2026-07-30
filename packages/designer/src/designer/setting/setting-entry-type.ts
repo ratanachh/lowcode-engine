@@ -1,4 +1,4 @@
-import { IPublicApiSetters, IPublicModelEditor } from '@alilc/lowcode-types';
+import { IPublicApiSetters, IPublicModelEditor } from '@rchh/lowcode-types';
 import { IDesigner } from '../designer';
 import { INode } from '../../document';
 import { ISettingField } from './setting-field';

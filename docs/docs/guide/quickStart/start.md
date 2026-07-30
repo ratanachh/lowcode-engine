@@ -157,7 +157,7 @@ Demo 根据**不同的设计器所需要的物料不同**，分为了下面的 8
 
 ```javascript
 import * as React from 'react';
-import { IPublicModelPluginContext } from '@alilc/lowcode-types';
+import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 
 const LowcodePluginPluginDemo = (ctx: IPublicModelPluginContext) => {
   return {
@@ -220,7 +220,7 @@ export default LowcodePluginPluginDemo;
 初始化
 
 ```bash
-npm init @alilc/element your-plugin-name
+npm init @rchh/element your-plugin-name
 ```
 
 选择设计器插件（plugin）
@@ -262,7 +262,7 @@ npm run start
 ### 初始化物料
 
 ```bash
-npm init @alilc/element your-material-demo
+npm init @rchh/element your-material-demo
 ```
 
 选择组件/物料栏
@@ -298,7 +298,7 @@ npm run lowcode:dev
 #### 在 Demo 中调试
 
 ```bash
-npm i @alilc/build-plugin-alt
+npm i @rchh/build-plugin-alt
 ```
 
 修改 build.lowcode.js
@@ -309,7 +309,7 @@ npm i @alilc/build-plugin-alt
 
 ```javascript
 [
-  '@alilc/build-plugin-alt',
+  '@rchh/build-plugin-alt',
   {
     type: 'component',
     inject: true,

@@ -3,8 +3,8 @@ import {
   IPublicTypeLocationChildrenDetail,
   IPublicModelNode,
   IPublicTypeDisposable,
-} from '@alilc/lowcode-types';
-import { isI18nData, isLocationChildrenDetail, uniqueId } from '@alilc/lowcode-utils';
+} from '@rchh/lowcode-types';
+import { isI18nData, isLocationChildrenDetail, uniqueId } from '@rchh/lowcode-utils';
 import EventEmitter from 'events';
 import { Tree } from './tree';
 import { IOutlinePanelPluginContext } from './tree-master';

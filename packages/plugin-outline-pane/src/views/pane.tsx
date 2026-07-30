@@ -6,7 +6,7 @@ import './style.less';
 import Filter from './filter';
 import { TreeMaster } from '../controllers/tree-master';
 import { Tree } from '../controllers/tree';
-import { IPublicTypeDisposable } from '@alilc/lowcode-types';
+import { IPublicTypeDisposable } from '@rchh/lowcode-types';
 
 export class Pane extends PureComponent<{
   treeMaster: TreeMaster;

@@ -1,4 +1,4 @@
-import { IPublicTypeComponentSchema, IPublicTypeProjectSchema } from '@alilc/lowcode-types';
+import { IPublicTypeComponentSchema, IPublicTypeProjectSchema } from '@rchh/lowcode-types';
 import { isComponentSchema } from './is-component-schema';
 import { isObject } from '../is-object';
 

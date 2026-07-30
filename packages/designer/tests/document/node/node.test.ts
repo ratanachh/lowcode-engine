@@ -5,9 +5,9 @@ import {
   Editor,
   globalContext,
   Setters as InnerSetters,
-} from '@alilc/lowcode-editor-core';
+} from '@rchh/lowcode-editor-core';
 import { Project } from '../../../src/project/project';
-import { Workspace as InnerWorkspace } from '@alilc/lowcode-workspace';
+import { Workspace as InnerWorkspace } from '@rchh/lowcode-workspace';
 import { DocumentModel } from '../../../src/document/document-model';
 import {
   isRootNode,
@@ -27,8 +27,8 @@ import rootHeaderMetadata from '../../fixtures/component-metadata/root-header';
 import rootContentMetadata from '../../fixtures/component-metadata/root-content';
 import rootFooterMetadata from '../../fixtures/component-metadata/root-footer';
 import { shellModelFactory } from '../../../../engine/src/modules/shell-model-factory';
-import { isNode } from '@alilc/lowcode-utils';
-import { Setters } from '@alilc/lowcode-shell';
+import { isNode } from '@rchh/lowcode-utils';
+import { Setters } from '@rchh/lowcode-shell';
 
 describe('Node 方法测试', () => {
   let editor: Editor;

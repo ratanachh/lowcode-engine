@@ -9,9 +9,9 @@ import {
   ComponentType,
 } from 'react';
 import classNames from 'classnames';
-import { observer, computed, Tip, engineConfig } from '@alilc/lowcode-editor-core';
-import { createIcon, isReactComponent, isActionContentObject } from '@alilc/lowcode-utils';
-import { IPublicTypeActionContentObject } from '@alilc/lowcode-types';
+import { observer, computed, Tip, engineConfig } from '@rchh/lowcode-editor-core';
+import { createIcon, isReactComponent, isActionContentObject } from '@rchh/lowcode-utils';
+import { IPublicTypeActionContentObject } from '@rchh/lowcode-types';
 import { BuiltinSimulatorHost } from '../host';
 import { INode, OffsetObserver } from '../../designer';
 import NodeSelector from '../node-selector';

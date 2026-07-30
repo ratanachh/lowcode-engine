@@ -3,7 +3,7 @@ import {
   getNodeSchemaById,
   applyActivities,
 } from '../../src/schema';
-import { ActivityType } from '@alilc/lowcode-types';
+import { ActivityType } from '@rchh/lowcode-types';
 
 describe('compatibleLegaoSchema', () => {
   it('should handle null input', () => {

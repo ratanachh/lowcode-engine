@@ -1,5 +1,5 @@
 import { transactionManager } from '../../src/transaction-manager';
-import { IPublicEnumTransitionType } from '@alilc/lowcode-types';
+import { IPublicEnumTransitionType } from '@rchh/lowcode-types';
 
 const type = IPublicEnumTransitionType.REPAINT;
 

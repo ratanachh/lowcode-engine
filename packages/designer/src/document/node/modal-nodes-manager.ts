@@ -1,7 +1,7 @@
 import { INode } from './node';
 import { DocumentModel } from '../document-model';
-import { IPublicModelModalNodesManager } from '@alilc/lowcode-types';
-import { createModuleEventBus, IEventBus } from '@alilc/lowcode-editor-core';
+import { IPublicModelModalNodesManager } from '@rchh/lowcode-types';
+import { createModuleEventBus, IEventBus } from '@rchh/lowcode-editor-core';
 
 export function getModalNodes(node: INode) {
   if (!node) return [];

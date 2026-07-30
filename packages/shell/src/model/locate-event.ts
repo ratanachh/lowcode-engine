@@ -1,7 +1,7 @@
-import { ILocateEvent } from '@alilc/lowcode-designer';
+import { ILocateEvent } from '@rchh/lowcode-designer';
 import { locateEventSymbol } from '../symbols';
 import { DragObject } from './drag-object';
-import { IPublicModelLocateEvent, IPublicModelDragObject } from '@alilc/lowcode-types';
+import { IPublicModelLocateEvent, IPublicModelDragObject } from '@rchh/lowcode-types';
 
 export default class LocateEvent implements IPublicModelLocateEvent {
   private readonly [locateEventSymbol]: ILocateEvent;

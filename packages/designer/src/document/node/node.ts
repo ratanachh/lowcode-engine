@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { obx, computed, autorun, makeObservable, runInAction, wrapWithEventSwitch, action, createModuleEventBus, IEventBus } from '@alilc/lowcode-editor-core';
+import { obx, computed, autorun, makeObservable, runInAction, wrapWithEventSwitch, action, createModuleEventBus, IEventBus } from '@rchh/lowcode-editor-core';
 import {
   IPublicTypeNodeSchema,
   IPublicTypePropsMap,
@@ -17,9 +17,9 @@ import {
   IPublicEnumTransformStage,
   IPublicTypeDisposable,
   IBaseModelNode,
-} from '@alilc/lowcode-types';
-import { compatStage, isDOMText, isJSExpression, isNode, isNodeSchema } from '@alilc/lowcode-utils';
-import { ISettingTopEntry } from '@alilc/lowcode-designer';
+} from '@rchh/lowcode-types';
+import { compatStage, isDOMText, isJSExpression, isNode, isNodeSchema } from '@rchh/lowcode-utils';
+import { ISettingTopEntry } from '@rchh/lowcode-designer';
 import { Props, getConvertedExtraKey, IProps } from './props/props';
 import type { IDocumentModel } from '../document-model';
 import { NodeChildren, INodeChildren } from './node-children';

@@ -1,8 +1,8 @@
-import { IPublicTypeContextMenuAction, IPublicEnumContextMenuType, IPublicTypeContextMenuItem, IPublicApiMaterial, IPublicModelPluginContext } from '@alilc/lowcode-types';
+import { IPublicTypeContextMenuAction, IPublicEnumContextMenuType, IPublicTypeContextMenuItem, IPublicApiMaterial, IPublicModelPluginContext } from '@rchh/lowcode-types';
 import { IDesigner, INode } from './designer';
-import { createContextMenu, parseContextMenuAsReactNode, parseContextMenuProperties, uniqueId } from '@alilc/lowcode-utils';
+import { createContextMenu, parseContextMenuAsReactNode, parseContextMenuProperties, uniqueId } from '@rchh/lowcode-utils';
 import { Menu } from '@alifd/next';
-import { engineConfig } from '@alilc/lowcode-editor-core';
+import { engineConfig } from '@rchh/lowcode-editor-core';
 import './context-menu-actions.scss';
 
 export interface IContextMenuActions {

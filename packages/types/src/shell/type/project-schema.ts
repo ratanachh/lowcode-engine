@@ -1,4 +1,4 @@
-import { InterpretDataSource as DataSource } from '@alilc/lowcode-datasource-types';
+import { InterpretDataSource as DataSource } from '@rchh/lowcode-datasource-types';
 import { IPublicTypeJSONObject, IPublicTypeRootSchema, IPublicTypeI18nMap, IPublicTypeAppConfig, IPublicTypeComponentsMap, IPublicTypeJSExpression, IPublicTypeJSFunction, IPublicTypeNpmInfo } from './';
 
 export interface IPublicTypeInternalUtils {

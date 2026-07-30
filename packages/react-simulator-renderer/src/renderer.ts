@@ -16,11 +16,11 @@ import {
   isPlainObject,
   AssetLoader,
   getProjectUtils,
-} from '@alilc/lowcode-utils';
-import { IPublicTypeComponentSchema, IPublicEnumTransformStage, IPublicTypeNodeInstance, IPublicTypeProjectSchema } from '@alilc/lowcode-types';
+} from '@rchh/lowcode-utils';
+import { IPublicTypeComponentSchema, IPublicEnumTransformStage, IPublicTypeNodeInstance, IPublicTypeProjectSchema } from '@rchh/lowcode-types';
 // just use types
-import { BuiltinSimulatorRenderer, Component, IDocumentModel, INode } from '@alilc/lowcode-designer';
-import LowCodeRenderer from '@alilc/lowcode-react-renderer';
+import { BuiltinSimulatorRenderer, Component, IDocumentModel, INode } from '@rchh/lowcode-designer';
+import LowCodeRenderer from '@rchh/lowcode-react-renderer';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import Slot from './builtin-components/slot';
 import Leaf from './builtin-components/leaf';

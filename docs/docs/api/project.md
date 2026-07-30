@@ -204,8 +204,8 @@ addPropsTransducer(
 **示例**
 在保存的时候删除每一个组件的 props.hidden
 ```typescript
-import { project } from '@alilc/lowcode-engine';
-import { IPublicTypeCompositeObject, IPublicEnumTransformStage, IPublicModelPluginContext } from '@alilc/lowcode-types';
+import { project } from '@rchh/lowcode-engine';
+import { IPublicTypeCompositeObject, IPublicEnumTransformStage, IPublicModelPluginContext } from '@rchh/lowcode-types';
 
 export const DeleteHiddenTransducer = (ctx: IPublicModelPluginContext) => {
   return {
@@ -259,7 +259,7 @@ setI18n(value: object): void;
 
 ```typescript
 // shims.d.ts
-declare module '@alilc/lowcode-types' {
+declare module '@rchh/lowcode-types' {
   export interface IPublicTypeAppConfig {
     customProp: CustomPropType
   }
