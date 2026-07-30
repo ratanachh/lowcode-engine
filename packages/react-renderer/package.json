@@ -13,7 +13,7 @@
     "test": "build-scripts test --config build.test.json",
     "start": "build-scripts start",
     "build": "build-scripts build",
-    "build:umd": "NODE_OPTIONS=--max_old_space_size=8192 build-scripts build --config build.umd.json"
+    "build:umd": "NODE_OPTIONS='--max_old_space_size=8192 --openssl-legacy-provider --no-experimental-strip-types' build-scripts build --config build.umd.json"
   },
   "keywords": [
     "lowcode",

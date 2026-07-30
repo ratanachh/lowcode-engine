@@ -8,17 +8,20 @@ on:
     branches:
       - main
 
+env:
+  NODE_OPTIONS: --openssl-legacy-provider --no-experimental-strip-types
+
 jobs:
   upload-designer-codecov:
     runs-on: ubuntu-latest
     # if: ${{ github.event.pull_request.head.repo.full_name == 'alibaba/lowcode-engine' }}
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: install
         run: npm i && npm run setup:skip-build
@@ -40,11 +43,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: install
         run: npm i && npm run setup:skip-build
@@ -66,11 +69,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: install
         run: npm i && npm run setup:skip-build
@@ -93,11 +96,11 @@ jobs:
     # if: ${{ github.event.pull_request.head.repo.full_name == 'alibaba/lowcode-engine' }}
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: install
         run: npm i && npm run setup:skip-build

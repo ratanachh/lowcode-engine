@@ -1,5 +1,5 @@
 {
   "plugins": [
-    "@alilc/lowcode-test-mate/plugin/index.ts"
+    "../../scripts/plugins/lowcode-test-mate.js"
   ]
 }

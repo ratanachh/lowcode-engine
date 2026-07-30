@@ -7,6 +7,9 @@ on:
         description: 'publish command'
         required: true
 
+env:
+  NODE_OPTIONS: --openssl-legacy-provider --no-experimental-strip-types
+
 jobs:
   publish-engine:
     runs-on: ubuntu-latest
@@ -14,11 +17,11 @@ jobs:
       contains(github.ref, 'refs/heads/release/') &&
       github.actor == 'ratanachh'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
       - run: npm install && npm run setup
       - run: |

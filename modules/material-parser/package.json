@@ -14,7 +14,7 @@
     "@types/jest": "^26.0.18",
     "@types/js-yaml": "^3.12.2",
     "@types/lodash": "^4.14.149",
-    "@types/node": "^14.6.0",
+    "@types/node": "16.18.96",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17.0.17",
@@ -67,7 +67,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=24"
   },
   "repository": {
     "type": "http",

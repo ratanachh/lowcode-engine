@@ -12,8 +12,8 @@
   ],
   "scripts": {
     "test": "build-scripts test --config build.test.json",
-    "build": "NODE_OPTIONS=--max_old_space_size=8192 build-scripts build",
-    "build:umd": "NODE_OPTIONS=--max_old_space_size=8192 build-scripts build --config build.umd.json",
+    "build": "NODE_OPTIONS='--max_old_space_size=8192 --openssl-legacy-provider --no-experimental-strip-types' build-scripts build",
+    "build:umd": "NODE_OPTIONS='--max_old_space_size=8192 --openssl-legacy-provider --no-experimental-strip-types' build-scripts build --config build.umd.json",
     "test:cov": "build-scripts test --config build.test.json --jest-coverage"
   },
   "dependencies": {

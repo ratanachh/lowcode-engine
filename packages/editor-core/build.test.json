@@ -1,7 +1,7 @@
 {
   "plugins": [
     "@rchh/build-plugin-lce",
-    "@alilc/lowcode-test-mate/plugin/index.ts"
+    "../../scripts/plugins/lowcode-test-mate.js"
   ],
   "babelPlugins": [
     ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
