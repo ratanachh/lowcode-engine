@@ -13,7 +13,7 @@ import { LowCodePluginRuntime } from './plugin';
 import LowCodePluginContext from './plugin-context';
 import { invariant } from '../utils';
 import sequencify from './sequencify';
-import semverSatisfies from 'semver/functions/satisfies';
+import { satisfies as semverSatisfies } from 'semver';
 import {
   IPublicTypePluginRegisterOptions,
   IPublicTypePreferenceValueType,

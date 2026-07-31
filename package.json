@@ -68,7 +68,8 @@
   "resolutions": {
     "typescript": "4.6.2",
     "react-error-overlay": "6.0.9",
-    "@types/node": "16.18.96"
+    "@types/node": "16.18.96",
+    "semver": "^7.3.5"
   },
   "repository": "git@github.com:alibaba/lowcode-engine.git"
 }
