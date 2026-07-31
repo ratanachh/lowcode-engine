@@ -1,91 +1,93 @@
 ---
-title: 设置器设计
+title: Setter Design
 sidebar_position: 6
 ---
 
-设置器，又称为 Setter，是作为物料属性和用户交互的重要途径，在编辑器日常使用中有着非常重要的作用，本文重点介绍 Setter 的设计原理和使用方式，帮助用户更好的理解 Setter。
+Setters are an important way for material properties to interact with users. They play a vital role in day-to-day editor use. This article focuses on setter design principles and usage to help you understand setters better.
 
-在编辑器的右边区域，Setter 的区块就展现在这里，如下图：
+In the right area of the editor, setter blocks appear as shown below:
 
 ![image.png](https://img.alicdn.com/imgextra/i4/O1CN01qEjjoQ24QNkD42wzl_!!6000000007385-2-tps-3836-1730.png)
 
-其中包含 属性、样式、事件、高级：
+They include Properties, Style, Events, and Advanced:
 
-- 属性：展示该物料常规的属性；
-- 样式：展示该物料样式的属性；
-- 事件：如果该物料有声明事件，则会出现事件面板，用于绑定事件；
-- 高级：两个逻辑相关的属性，**条件渲染**和**循环。**
-## npm 包与仓库信息
+- Properties: shows the material's regular properties;
+- Style: shows the material's style properties;
+- Events: if the material declares events, an events panel appears for binding events;
+- Advanced: two logic-related properties, **conditional rendering** and **loop.**
 
-- npm 包：@rchh/lowcode-engine-ext
-- 仓库：[https://github.com/alibaba/lowcode-engine-ext](https://github.com/alibaba/lowcode-engine-ext)
+## npm package and repository
 
-## 设置器模块原理
+- npm package: @rchh/lowcode-engine-ext
+- Repository: [https://github.com/alibaba/lowcode-engine-ext](https://github.com/alibaba/lowcode-engine-ext)
+
+## Setter module principles
 
 ![image.png](https://img.alicdn.com/imgextra/i2/O1CN01EAmitQ1U5TUws63AV_!!6000000002466-2-tps-1534-964.png)
 
-设置面板依赖于以下三块抽象
+The settings panel depends on three abstractions:
 
-- 编辑器上下文 `editor`，主要包含：消息通知、插件引用等
-- 设置对象 `settingTarget`，主要包含：选中的节点、是否同一值、值的储存等
-- 设置列 `settingField`，主要和当前设置视图相关，包含视图的 `ref`、以及设置对象 `settingTarget`
+- Editor context `editor`, mainly including: message notifications, plugin references, etc.
+- Setting object `settingTarget`, mainly including: selected nodes, whether values are the same, value storage, etc.
+- Setting field `settingField`, mainly related to the current settings view, including the view's `ref` and setting object `settingTarget`
 
-### SettingTarget 抽象
+### SettingTarget abstraction
 
-如果不是多选，可以直接暴露 `Node` 给到这，但涉及多选编辑的时候，大家的值通常是不一样的，设置的时候需要批量设置进去，这里主要封装这些逻辑，把多选编辑的复杂性屏蔽掉。
+If it is not multi-select, you can expose `Node` directly. When multi-select editing is involved, values are often different and need to be set in batch. This abstraction wraps that logic and hides multi-select complexity.
 
-所选节点所构成的**设置对象**抽象如下：
+The **setting object** abstraction for selected nodes:
 
 ```typescript
 interface SettingTarget {
-  // 所设置的节点集，至少一个
+  // Nodes being configured, at least one
   readonly nodes: Node[];
-  // 所有属性值数据
+  // All property value data
   readonly props: object;
-  // 设置属性值
+  // Set a property value
   setPropValue(propName: string, value: any): void;
-  // 获取属性值
+  // Get a property value
   getPropValue(propName: string): any;
-  // 设置多个属性值，替换原有值
+  // Set multiple property values, replacing existing values
   setProps(data: object): void;
-  // 设置多个属性值，和原有值合并
+  // Set multiple property values, merging with existing values
   mergeProps(data: object): void;
-  // 绑定属性值发生变化时
+  // Bind when property values change
   onPropsChange(fn: () => void): () => void;
 }
 ```
 
-基于设置对象所派生的**设置目标属性**抽象如下：
+The **setting target property** abstraction derived from the setting object:
 
 ```typescript
 interface SettingTargetProp extends SettingTarget {
-  // 当前属性名称
+  // Current property name
   readonly propName: string;
-  // 当前属性值
+  // Current property value
   value: any;
-  // 是否设置对象的值一致
+  // Whether values are the same across the setting object
   isSameValue(): boolean;
-  // 是否是空值
+  // Whether the value is empty
   isEmpty(): boolean;
-  // 设置属性值
+  // Set property value
   setValue(value: any): void;
-  // 移除当前设置
+  // Remove current setting
   remove(): void;
 }
 ```
 
-### SettingField 抽象
+### SettingField abstraction
+
 ![image.png](https://img.alicdn.com/imgextra/i2/O1CN01D855j01j8sg9GdtJr_!!6000000004504-2-tps-2022-402.png)
 
 ```typescript
 interface SettingField extends SettingTarget {
-  // 当前 Field 设置的目标属性，为 group 时此值为空
+  // Target property for this Field; empty when this is a group
   readonly prop?: SettingTargetProp;
 
-  // 当前设置项的 ref 引用
+  // ref for the current setting item
   readonly ref?: ReactInstance;
 
-  // 属性配置描述传入的配置
+  // Configuration from the property config description
   readonly config: SettingConfig;
   // others....
 }

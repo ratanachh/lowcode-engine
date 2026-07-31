@@ -20,7 +20,7 @@ export class Setters implements IPublicApiSetters {
     if (workspace.isActive) {
       return untracked(() => {
         if (!workspace.window?.innerSetters) {
-          logger.error('setter api 调用时机出现问题，请检查');
+          logger.error('setter api called at the wrong time, please check');
           return this[innerSettersSymbol];
         }
         return workspace.window.innerSetters;
@@ -35,7 +35,7 @@ export class Setters implements IPublicApiSetters {
   }
 
   /**
-   * 获取指定 setter
+   * Get a setter by name
    * @param type
    * @returns
    */
@@ -44,7 +44,7 @@ export class Setters implements IPublicApiSetters {
   };
 
   /**
-   * 获取已注册的所有 settersMap
+   * Get all registered settersMap
    * @returns
    */
   getSettersMap = (): Map<string, IPublicTypeRegisteredSetter & {
@@ -54,7 +54,7 @@ export class Setters implements IPublicApiSetters {
   };
 
   /**
-   * 注册一个 setter
+   * Register a setter
    * @param typeOrMaps
    * @param setter
    * @returns

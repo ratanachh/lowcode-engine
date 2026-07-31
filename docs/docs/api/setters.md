@@ -1,34 +1,39 @@
 ---
-title: setters - 设置器 API
+title: setters - Setter API
 sidebar_position: 10
 ---
-> **@types** [IPublicApiSetters](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/setters.ts)<br/>
-> **@since** v1.0.0
 
-## 模块简介
-负责注册设置器、管理设置器的 API。注册自定义设置器之后可以在物料中进行使用。
+> **@types** [IPublicApiSetters](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/setters.ts)<br/> > **@since** v1.0.0
 
-## 方法
+## Module Overview
+
+API for registering and managing setters. After registering custom setters, they can be used in material definitions.
+
+## Methods
+
 ### getSetter
-获取指定 setter
+
+Get a setter by type
 
 ```typescript
 /**
- * 获取指定 setter
+ * Get a setter by type
  * get setter by type
  * @param type
  * @returns
  */
 getSetter(type: string): IPublicTypeRegisteredSetter | null;
 ```
-相关类型：[IPublicTypeRegisteredSetter](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/registerd-setter.ts)
+
+Related type: [IPublicTypeRegisteredSetter](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/registerd-setter.ts)
 
 ### getSettersMap
-获取已注册的所有 settersMap
+
+Get all registered setters map
 
 ```typescript
 /**
- * 获取已注册的所有 settersMap
+ * Get all registered setters map
  * get map of all registered setters
  * @returns
  */
@@ -37,14 +42,15 @@ getSettersMap(): Map<string, IPublicTypeRegisteredSetter & {
 }>;
 ```
 
-相关类型：[IPublicTypeRegisteredSetter](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/registerd-setter.ts)
+Related type: [IPublicTypeRegisteredSetter](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/registerd-setter.ts)
 
 ### registerSetter
-注册一个 setter
+
+Register a setter
 
 ```typescript
 /**
- * 注册一个 setter
+ * Register a setter
  * register a setter
  * @param typeOrMaps
  * @param setter
@@ -56,12 +62,15 @@ registerSetter(
 ): void;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicTypeRegisteredSetter](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/registerd-setter.ts)
 - [IPublicTypeCustomView](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/custom-view.ts)
 
-## 使用示例
-### 注册官方内置 Setter 到设计器中
+## Usage Examples
+
+### Register built-in setters in the designer
+
 ```typescript
 import { setters, skeleton } from '@rchh/lowcode-engine';
 import { setterMap, pluginMap } from '@rchh/lowcode-engine-ext';
@@ -71,10 +80,10 @@ const SetterRegistry = (ctx: IPublicModelPluginContext) => {
   return {
     name: 'ext-setters-registry',
     async init() {
-      // 注册 setterMap
+      // Register setterMap
       setters.registerSetter(setterMap);
-      // 注册插件
-      // 注册事件绑定面板
+      // Register plugins
+      // Register event binding panel
       skeleton.add({
         area: 'centerArea',
         type: 'Widget',
@@ -83,7 +92,7 @@ const SetterRegistry = (ctx: IPublicModelPluginContext) => {
         props: {},
       });
 
-      // 注册变量绑定面板
+      // Register variable binding panel
       skeleton.add({
         area: 'centerArea',
         type: 'Widget',
@@ -93,27 +102,29 @@ const SetterRegistry = (ctx: IPublicModelPluginContext) => {
       });
     },
   };
-}
+};
 
 SetterRegistry.pluginName = 'SetterRegistry';
 await plugins.register(SetterRegistry);
 ```
 
-### 开发自定义 Setter
-AltStringSetter 代码如下：
-```typescript
-import * as React from "react";
-import { Input } from "@alifd/next";
+### Develop a custom Setter
 
-import "./index.scss";
+AltStringSetter code:
+
+```typescript
+import * as React from 'react';
+import { Input } from '@alifd/next';
+
+import './index.scss';
 interface AltStringSetterProps {
-  // 当前值
+  // Current value
   value: string;
-  // 默认值
+  // Default value
   initialValue: string;
-  // setter 唯一输出
+  // Setter output callback
   onChange: (val: string) => void;
-  // AltStringSetter 特殊配置
+  // AltStringSetter-specific config
   placeholder: string;
 }
 export default class AltStringSetter extends React.PureComponent<AltStringSetterProps> {
@@ -124,15 +135,15 @@ export default class AltStringSetter extends React.PureComponent<AltStringSetter
     }
   }
 
-  // 声明 Setter 的 title
- 	static displayName = 'AltStringSetter';
+  // Declare Setter displayName
+  static displayName = 'AltStringSetter';
 
   render() {
     const { onChange, value, placeholder } = this.props;
     return (
       <Input
         value={value}
-        placeholder={placeholder || ""}
+        placeholder={placeholder || ''}
         onChange={(val: any) => onChange(val)}
       ></Input>
     );
@@ -140,7 +151,7 @@ export default class AltStringSetter extends React.PureComponent<AltStringSetter
 }
 ```
 
-开发完毕之后，注册 AltStringSetter 到设计器中：
+After development, register AltStringSetter in the designer:
 
 ```typescript
 import AltStringSetter from './AltStringSetter';
@@ -148,7 +159,9 @@ import { setters } from '@rchh/lowcode-engine';
 const { registerSetter } = setters;
 registerSetter('AltStringSetter', AltStringSetter);
 ```
-注册之后，我们就可以在物料中使用了，其中核心配置如下：
+
+After registration, use it in material definitions. Core configuration:
+
 ```typescript
 {
   "props": {
@@ -162,7 +175,9 @@ registerSetter('AltStringSetter', AltStringSetter);
   }
 }
 ```
-完整配置如下：
+
+Full configuration:
+
 ```typescript
 {
   "componentName": "Message",
@@ -171,8 +186,8 @@ registerSetter('AltStringSetter', AltStringSetter);
     {
       "name": "title",
       "propType": "string",
-      "description": "标题",
-      "defaultValue": "标题"
+      "description": "Title",
+      "defaultValue": "Title"
     },
     {
       "name": "type",
@@ -187,7 +202,7 @@ registerSetter('AltStringSetter', AltStringSetter);
           "loading"
         ]
       },
-      "description": "反馈类型",
+      "description": "Feedback type",
       "defaultValue": "success"
     }
   ],

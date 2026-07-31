@@ -40,7 +40,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
     if (ir.lifeCycles) {
       const { lifeCycles } = ir;
       const chunks = Object.keys(lifeCycles).map<ICodeChunk | null>((lifeCycleName) => {
-        // 过滤掉非法数据（有些场景下会误传入空字符串或 null)
+        // Filter invalid data (some scenarios incorrectly pass empty string or null)
         if (
           !isJSFunction(lifeCycles[lifeCycleName]) &&
           !isJSExpressionFn(lifeCycles[lifeCycleName]) &&
@@ -50,7 +50,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
         }
 
         let normalizeName;
-        // constructor会取到对象的构造函数
+        // constructor would resolve to the object's constructor
         if (lifeCycleName === 'constructor') {
           normalizeName = lifeCycleName;
         } else {

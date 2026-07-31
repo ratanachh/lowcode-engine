@@ -12,14 +12,11 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
-        <h2>欢迎光临 低代码引擎文档站</h2>
+        <h2>Welcome to the Low-Code Engine Docs</h2>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/guide/quickStart/start"
-          >
-            快速开始
+          <Link className="button button--secondary button--lg" to="/docs/guide/quickStart/start">
+            Quick Start
           </Link>
         </div>
       </div>
@@ -30,10 +27,7 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={`${siteConfig.title}`}
-      description=""
-    >
+    <Layout title={`${siteConfig.title}`} description="">
       <HomepageHeader />
     </Layout>
   );

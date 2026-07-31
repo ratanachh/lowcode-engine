@@ -53,7 +53,7 @@ function mergeNodeGeneratorConfig(
 }
 
 export function isPureString(v: string) {
-  // FIXME: 目前的方式不够严谨
+  // FIXME: Current approach is not rigorous enough
   return (v[0] === "'" && v[v.length - 1] === "'") || (v[0] === '"' && v[v.length - 1] === '"');
 }
 
@@ -95,11 +95,11 @@ function generateAttr(
   }
 
   pieces = pieces.map((p) => {
-    // FIXME: 在经过 generateCompositeType 处理过之后，其实已经无法通过传入值的类型判断传出值是否为纯字面值字符串了（可能包裹了加工函数之类的）
-    //        因此这个处理最好的方式是对传出值做语法分析，判断以哪种模版产出 Attr 值
+    // FIXME: After generateCompositeType, you can no longer tell from the input type whether the output is a pure literal string (it may be wrapped)
+    //        Best approach is to parse the output and choose the Attr value template accordingly
     let newValue: string;
     if (p.value && isPureString(p.value)) {
-      // 似乎多次一举，目前的诉求是处理多种引号类型字符串的 case，正确处理转义
+      // May look redundant; the goal is handling strings with different quote types and correct escaping
       const content = getStaticExprValue<string>(p.value);
       newValue = JSON.stringify(encodeJsxStringNode(content));
     } else {
@@ -137,8 +137,8 @@ function generateAttrs(
           pieces = pieces.concat(generateAttr(prop.name, prop.value, scope, config));
         }
 
-        // TODO: 处理 spread 场景（<Xxx {...(something)}/>)
-        // 这种在 schema 里面怎么描述
+        // TODO: Handle spread case (<Xxx {...(something)}/>)
+        // How is this described in the schema?
       });
     }
   }
@@ -240,18 +240,18 @@ function generateNodeSchema(
   return linkPieces(pieces);
 }
 
-// TODO: 生成文档
-// 为包裹的代码片段生成子上下文，集成父级上下文，并传入子级上下文新增内容。（如果存在多级上下文怎么处理？）
-// 创建新的上下文，并从作用域中取对应同名变量塞到作用域里面？
+// TODO: Generate docs
+// Build a child context for wrapped snippets, merging parent context and child additions. (How to handle multi-level context?)
+// Create a new context and push same-named variables from the scope into it?
 // export function createSubContext() {}
 
 /**
- * JSX 生成逻辑插件。在 React 代码模式下生成 loop 相关的逻辑代码
+ * JSX generation plugin: emit loop-related logic in React code mode
  * @type NodePlugin Extended
  *
  * @export
- * @param {IPublicTypeNodeSchema} nodeItem 当前 UI 节点
- * @returns {CodePiece[]} 实现功能的相关代码片段
+ * @param {IPublicTypeNodeSchema} nodeItem Current UI node
+ * @returns {CodePiece[]} Related code pieces that implement the feature
  */
 export function generateReactLoopCtrl(
   nodeItem: IPublicTypeNodeSchema,
@@ -265,21 +265,21 @@ export function generateReactLoopCtrl(
     const loopItemName = nodeItem.loopArgs?.[0] || 'item';
     const loopIndexName = nodeItem.loopArgs?.[1] || 'index';
 
-    // 新建作用域
+    // Create a new scope
     const subScope = scope.createSubScope([loopItemName, loopIndexName]);
     const pieces: CodePiece[] = next ? next(nodeItem, subScope, config) : [];
 
-    // 生成循环变量表达式
+    // Generate loop variable expression
     const loopDataExpr = pipe(
       nodeItem.loop,
-      // 将 JSExpression 转换为 JS 表达式代码:
+      // Convert JSExpression to JS expression code:
       (expr) => generateCompositeType(expr, scope, {
           handlers: config?.handlers,
-          tolerateEvalErrors: false, // 这个内部不需要包 try catch, 下面会统一加的
+          tolerateEvalErrors: false, // No try/catch needed inside; wrapping is added below
         }),
-      // 将 this.xxx 转换为 __$$context.xxx:
+      // Convert this.xxx to __$$context.xxx:
       (expr) => transformThis2Context(expr, scope, { ignoreRootScope: true }),
-      // 如果要容忍错误，则包一层 try catch (基于助手函数 __$$evalArray)
+      // If errors should be tolerated, wrap with try/catch (via helper __$$evalArray)
       (expr) => (tolerateEvalErrors ? `__$$evalArray(() => (${expr}))` : expr),
     );
 
@@ -300,12 +300,12 @@ export function generateReactLoopCtrl(
 }
 
 /**
- * JSX 生成逻辑插件。在 React 代码模式下生成 condition 相关的逻辑代码
+ * JSX generation plugin: emit condition-related logic in React code mode
  * @type NodePlugin
  *
  * @export
- * @param {IPublicTypeNodeSchema} nodeItem 当前 UI 节点
- * @returns {CodePiece[]} 实现功能的相关代码片段
+ * @param {IPublicTypeNodeSchema} nodeItem Current UI node
+ * @returns {CodePiece[]} Related code pieces that implement the feature
  */
 export function generateConditionReactCtrl(
   nodeItem: IPublicTypeNodeSchema,
@@ -335,12 +335,12 @@ export function generateConditionReactCtrl(
 }
 
 /**
- * JSX 生成逻辑插件。在 React 代码模式下，如果 Node 生成结果是一个表达式，则对其进行 { Expression } 包装
+ * JSX generation plugin: in React mode, wrap expression node output with { Expression }
  * @type NodePlugin
  *
  * @export
- * @param {IPublicTypeNodeSchema} nodeItem 当前 UI 节点
- * @returns {CodePiece[]} 实现功能的相关代码片段
+ * @param {IPublicTypeNodeSchema} nodeItem Current UI node
+ * @returns {CodePiece[]} Related code pieces that implement the feature
  */
 export function generateReactExprInJS(
   nodeItem: IPublicTypeNodeSchema,

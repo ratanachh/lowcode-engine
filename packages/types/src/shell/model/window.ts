@@ -7,44 +7,44 @@ export interface IPublicModelWindow<
   Resource = IPublicModelResource
 > {
 
-  /** 窗口 id */
+  /** Window id */
   id: string;
 
-  /** 窗口标题 */
+  /** Window title */
   title?: string;
 
-  /** 窗口 icon */
+  /** Window icon */
   icon?: ReactElement;
 
-  /** 窗口资源类型 */
+  /** Window resource type */
   resource?: Resource;
 
   /**
-   * 窗口当前视图
+   * Current window view
    * @since v1.1.7
    */
   currentEditorView: IPublicModelEditorView | null;
 
   /**
-   * 窗口全部视图实例
+   * All view instances of the window
    * @since v1.1.7
    */
   editorViews: IPublicModelEditorView[];
 
-  /** 当前窗口导入 schema */
+  /** Import schema into the current window */
   importSchema(schema: IPublicTypeNodeSchema): void;
 
-  /** 修改当前窗口视图类型 */
+  /** Change the current window view type */
   changeViewType(viewName: string): void;
 
-  /** 调用当前窗口视图保存钩子 */
+  /** Call the current window view save hook */
   save(): Promise<any>;
 
-  /** 窗口视图变更事件 */
+  /** Window view change event */
   onChangeViewType(fn: (viewName: string) => void): IPublicTypeDisposable;
 
   /**
-   * 窗口视图保存事件
+   * Window view save event
    * @since 1.1.7
    */
   onSave(fn: () => void): IPublicTypeDisposable;

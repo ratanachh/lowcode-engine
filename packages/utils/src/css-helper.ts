@@ -2,7 +2,7 @@
  * just for legao
  * @author: jiushen
  */
-// 需要通过 Env 来判断是否需要
+// Need to decide via Env whether required
 
 import { some } from 'lodash';
 
@@ -12,7 +12,7 @@ const RE_CAMEL = /[A-Z]/g;
 const RE_HYPHEN = /[-\s]+(.)?/g;
 const PROPS_REG = /([^:]*):\s?(.*)/i;
 
-// 给 css 分组
+// Group CSS
 function groupingCss(css: string) {
   let stackLength = 0;
   let startIndex = 0;
@@ -119,7 +119,7 @@ function toCss(runtime) {
         Array.isArray(runtime.extra) && css.push(runtime.extra.join('\n'));
         return;
       }
-      // 只需要对这四种做兼容
+      // Only these four need compatibility handling
       const prefix = pseudoMap.indexOf(pseudo) > -1 ? ':' : '';
       css.push(
         `:root${pseudo === 'default' ? '' : `${prefix}${pseudo}`} {

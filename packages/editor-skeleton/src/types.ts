@@ -53,7 +53,7 @@ export function isDockConfig(obj: any): obj is DockConfig {
   return obj && /Dock$/.test(obj.type);
 }
 
-// 按钮弹窗扩展
+// Button dialog extension
 export interface DialogDockConfig extends IDockBaseConfig {
   type: 'DialogDock';
   dialogProps?: {

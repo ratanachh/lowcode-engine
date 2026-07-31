@@ -61,47 +61,47 @@ export interface ILocationLike {
 
 export type IRendererAppHelper = Partial<{
 
-  /** 全局公共函数 */
+  /** Global shared utilities */
   utils: Record<string, any>;
 
-  /** 全局常量 */
+  /** Global constants */
   constants: Record<string, any>;
 
-  /** react-router 的 location 实例 */
+  /** react-router location instance */
   location: ILocationLike;
 
-  /** react-router 的 history 实例 */
+  /** react-router history instance */
   history: IHistoryLike;
 
-  /** @deprecated 已无业务使用 */
+  /** @deprecated no longer used by any business */
   match: any;
 
-  /** @experimental 内部使用 */
+  /** @experimental internal use */
   logParams: Record<string, any>;
 
-  /** @experimental 内部使用 */
+  /** @experimental internal use */
   addons: Record<string, any>;
 
-  /** @experimental 内部使用 */
+  /** @experimental internal use */
   requestHandlersMap: Record<string, RequestHandler<{
     data: unknown;
   }>>;
 }>;
 
 /**
- * 渲染模块可用配置
+ * Public renderer configuration
  *
- * @see @todo @承虎
+ * @see @todo @ChengHu
  */
 export interface IRendererProps {
 
-  /** 符合低代码搭建协议的数据 */
+  /** Data conforming to the low-code builder protocol */
   schema: IPublicTypeRootSchema | IPublicTypeNodeSchema;
 
-  /** 组件依赖的实例 */
+  /** Component dependency instances */
   components: Record<string, IGeneralComponent>;
 
-  /** CSS 类名 */
+  /** CSS class name */
   className?: string;
 
   /** style */
@@ -110,54 +110,54 @@ export interface IRendererProps {
   /** id */
   id?: string | number;
 
-  /** 语言 */
+  /** Locale */
   locale?: string;
 
   /**
-   * 多语言语料
-   * 配置规范参见《低代码搭建组件描述协议》https://lowcode-engine.cn/lowcode 中 2.6 国际化多语言支持
+   * i18n messages
+   * See the Low-Code Component Description Protocol at https://lowcode-engine.cn/lowcode section 2.6 Internationalization
    * */
   messages?: Record<string, any>;
 
-  /** 主要用于设置渲染模块的全局上下文，里面定义的内容可以在低代码中通过 this 来访问，比如 this.utils */
+  /** Used to set the renderer's global context; defined members can be accessed in low-code via this, e.g. this.utils */
   appHelper?: IRendererAppHelper;
 
   /**
-   * 配置规范参见《低代码搭建组件描述协议》https://lowcode-engine.cn/lowcode
-   * 主要在搭建场景中使用，用于提升用户搭建体验。
+   * See the Low-Code Component Description Protocol at https://lowcode-engine.cn/lowcode
+   * Primarily used in the builder to improve the authoring experience.
    *
-   * > 在生产环境下不需要设置
+   * > Not required in production
    */
   componentsMap?: { [key: string]: any };
 
-  /** 设计模式，可选值：live、design */
+  /** Design mode; optional values: live, design */
   designMode?: string;
 
-  /** 渲染模块是否挂起，当设置为 true 时，渲染模块最外层容器的 shouldComponentUpdate 将始终返回false，在下钻编辑或者多引擎渲染的场景会用到该参数。 */
+  /** Whether the renderer is suspended; when true, the outermost container's shouldComponentUpdate always returns false. Used in drill-down editing or multi-engine rendering scenarios. */
   suspended?: boolean;
 
-  /** 组件获取 ref 时触发的钩子 */
+  /** Hook fired when the component receives a ref */
   onCompGetRef?: (schema: IPublicTypeNodeSchema, ref: any) => void;
 
-  /** 组件 ctx 更新回调 */
+  /** Callback when component ctx updates */
   onCompGetCtx?: (schema: IPublicTypeNodeSchema, ref: any) => void;
 
-  /** 传入的 schema 是否有变更 */
+  /** Whether the incoming schema has changed */
   getSchemaChangedSymbol?: () => boolean;
 
-  /** 设置 schema 是否有变更 */
+  /** Set whether the schema has changed */
   setSchemaChangedSymbol?: (symbol: boolean) => void;
 
-  /** 自定义创建 element 的钩子 */
+  /** Custom hook for creating elements */
   customCreateElement?: (Component: any, props: any, children: any) => any;
 
-  /** 渲染类型，标识当前模块是以什么类型进行渲染的 */
+  /** Render type identifying how the current module is rendered */
   rendererName?: 'LowCodeRenderer' | 'PageRenderer' | string;
 
-  /** 当找不到组件时，显示的组件 */
+  /** Component shown when a component cannot be found */
   notFoundComponent?: IGeneralComponent;
 
-  /** 当组件渲染异常时，显示的组件 */
+  /** Component shown when rendering throws */
   faultComponent?: IGeneralComponent;
 
   /**  */
@@ -165,18 +165,18 @@ export interface IRendererProps {
     [prop: string]: IGeneralComponent;
   };
 
-  /** 设备信息 */
+  /** Device info */
   device?: string;
 
   /**
    * @default true
-   * JSExpression 是否只支持使用 this 来访问上下文变量
+   * Whether JSExpression only supports accessing context variables via this
    */
   thisRequiredInJSE?: boolean;
 
   /**
    * @default false
-   * 当开启组件未找到严格模式时，渲染模块不会默认给一个容器组件
+   * When component-not-found strict mode is enabled, the renderer will not fall back to a default container component
    */
   enableStrictNotFoundMode?: boolean;
 }
@@ -187,7 +187,7 @@ export interface IRendererState {
 }
 
 /**
- * 渲染内部模块可用配置
+ * Internal renderer configuration
  */
 export interface IBaseRendererProps {
   locale?: string;
@@ -210,7 +210,7 @@ export interface IBaseRendererProps {
   getNode?: any;
 
   /**
-   * 设备类型，默认值：'default'
+   * Device type, default: 'default'
    */
   device?: 'default' | 'mobile' | string;
   componentName?: string;

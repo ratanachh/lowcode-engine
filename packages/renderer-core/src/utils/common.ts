@@ -128,11 +128,11 @@ export function getValue(obj: any, path: string, defaultValue = {}) {
 }
 
 /**
- * 用于处理国际化字符串
- * @param {*} key 语料标识
- * @param {*} values 字符串模版变量
- * @param {*} locale 国际化标识，例如 zh-CN、en-US
- * @param {*} messages 国际化语言包
+ * Handle internationalized strings
+ * @param {*} key message key
+ * @param {*} values string template variables
+ * @param {*} locale locale id, e.g. zh-CN, en-US
+ * @param {*} messages i18n message pack
  */
 export function getI18n(key: string, values = {}, locale = 'zh-CN', messages: Record<string, any> = {}) {
   if (!messages || !messages[locale] || !messages[locale][key]) {
@@ -143,8 +143,8 @@ export function getI18n(key: string, values = {}, locale = 'zh-CN', messages: Re
 }
 
 /**
- * 判断当前组件是否能够设置ref
- * @param {*} Comp 需要判断的组件
+ * Determine whether the component can accept a ref
+ * @param {*} Comp component to check
  */
 export function canAcceptsRef(Comp: any) {
   const hasSymbol = typeof Symbol === 'function' && Symbol.for;
@@ -195,7 +195,7 @@ export function transformStringToFunction(str: string) {
 }
 
 /**
- * 对象类型JSExpression，支持省略this
+ * Object-form JSExpression that allows omitting this
  * @param str expression in string form
  * @param self scope object
  * @returns funtion
@@ -232,7 +232,7 @@ function parseExpression(a: any, b?: any, c = false) {
     tarStr = tarStr.replace(/this(\W|$)/g, (_a: any, b: any) => `__self${b}`);
     tarStr = contextArr.join('\n') + tarStr;
 
-    // 默认调用顶层窗口的parseObj, 保障new Function的window对象是顶层的window对象
+    // By default call top-window parseObj so new Function runs with the top window context
     if (inSameDomain() && (window.parent as any).__newFunc) {
       return (window.parent as any).__newFunc(tarStr)(self);
     }
@@ -286,7 +286,7 @@ export function isVariable(obj: any) {
 }
 
 /**
- * 将 i18n 结构，降级解释为对 i18n 接口的调用
+ * Downgrade an i18n structure into calls to the i18n API
  * @param i18nInfo object
  * @param self context
  */
@@ -333,7 +333,7 @@ export function parseData(schema: unknown, self: any, options: IParseOptions = {
   } else if (typeof schema === 'function') {
     return schema.bind(self);
   } else if (typeof schema === 'object') {
-    // 对于undefined及null直接返回
+    // Return undefined/null as-is
     if (!schema) {
       return schema;
     }

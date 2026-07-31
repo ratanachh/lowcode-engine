@@ -80,7 +80,7 @@ function getBodyStatements(content: string) {
 }
 
 /**
- * 是否是广义上的 JSFunction
+ * Whether it is a JSFunction in the broad sense
  * @param value
  * @returns
  */

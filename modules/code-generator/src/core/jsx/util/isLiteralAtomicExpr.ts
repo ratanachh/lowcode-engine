@@ -1,5 +1,5 @@
 /**
- * 判断是否是原子类型的表达式
+ * Whether the expression is an atomic literal
  */
 export function isLiteralAtomicExpr(expr: string): boolean {
   return (

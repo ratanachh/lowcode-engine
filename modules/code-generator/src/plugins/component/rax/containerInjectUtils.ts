@@ -32,7 +32,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
       type: ChunkType.STRING,
       fileType: cfg.fileType,
       name: COMMON_CHUNK_NAME.InternalDepsImport,
-      // TODO: 下面这个路径有没有更好的方式来获取？而非写死
+      // TODO: Is there a better way to obtain the path below instead of hardcoding?
       content: `
         import __$$projectUtils${useRef ? ', { RefsManager }' : ''} from '../../utils';
       `,

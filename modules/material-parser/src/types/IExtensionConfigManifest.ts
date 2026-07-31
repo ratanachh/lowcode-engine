@@ -1,13 +1,14 @@
 import { ComponentMeta } from '../core';
+
 /**
- * 扩展点：配置 manifest
- * （物料化场景）
+ * Extension point: configure manifest
+ * (materialization scenario)
  */
 export type IExtensionConfigManifest = (params: {
-  manifestObj: ComponentMeta; // manifest 配置对象
-  manifestFilePath: string; // manifest 文件默认路径
+  manifestObj: ComponentMeta; // manifest config object
+  manifestFilePath: string; // default manifest file path
 }) => Promise<{
-  manifestJSON: string; // manifest 文件内容
-  manifestFilePath: string; // manifest 文件路径
-  manifestObj: ComponentMeta; // manifest 文件对象
+  manifestJSON: string; // manifest file content
+  manifestFilePath: string; // manifest file path
+  manifestObj: ComponentMeta; // manifest file object
 }>;

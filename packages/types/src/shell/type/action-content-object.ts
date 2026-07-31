@@ -2,22 +2,22 @@ import { IPublicModelNode } from '../model';
 import { IPublicTypeIconType, TipContent } from './';
 
 /**
- * 动作描述
+ * Action description
  */
 export interface IPublicTypeActionContentObject {
 
   /**
-   * 图标
+   * Icon
    */
   icon?: IPublicTypeIconType;
 
   /**
-   * 描述
+   * Description
    */
   title?: TipContent;
 
   /**
-   * 执行动作
+   * Execute action
    */
   action?: (currentNode: IPublicModelNode) => void;
 }

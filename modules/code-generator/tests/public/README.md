@@ -1,1 +1,1 @@
-# 这里测试的都是对外公开的 API，必须要保持稳定性
+# These tests cover the public API and must remain stable.

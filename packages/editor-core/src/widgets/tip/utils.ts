@@ -118,7 +118,7 @@ export function resolvePosition(popup: any, target: any, arrow: any, bounds: any
 
   const edge = resolveEdge(popup, target, arrow, bounds);
 
-  // 选择方向
+  // Choose direction
   const dir = resolveDirection(popup, target, edge, bounds, prefers);
 
   let top;
@@ -126,7 +126,7 @@ export function resolvePosition(popup: any, target: any, arrow: any, bounds: any
   let arrowTop;
   let arrowLeft;
 
-  // 或得该方位上横向 或 纵向的 偏移
+  // Get horizontal or vertical offset for that placement
   if (dir === 'top' || dir === 'bottom') {
     if (dir === 'top') {
       top = target.top - popup.extraOffset - popup.height;
@@ -134,7 +134,7 @@ export function resolvePosition(popup: any, target: any, arrow: any, bounds: any
       top = target.bottom + popup.extraOffset;
     }
 
-    // 解决横向偏移
+    // Fix horizontal offset
     const offset = arrow.width > target.width ? (arrow.width - target.width) / 2 : 0;
     const minLeft = target.left + arrow.width - offset - popup.width;
     const maxLeft = target.right - arrow.width + offset;
@@ -161,7 +161,7 @@ export function resolvePosition(popup: any, target: any, arrow: any, bounds: any
       left = target.right + popup.extraOffset;
     }
 
-    // 解决纵向偏移
+    // Fix vertical offset
     const offset = arrow.width > target.height ? (arrow.width - target.height) / 2 : 0;
     const minTop = target.top + arrow.width - offset - popup.height;
     const maxTop = target.bottom - arrow.width + offset;

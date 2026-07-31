@@ -3,13 +3,13 @@ import { IPublicModelNode, IPublicModelSimulatorRender } from '../model';
 export interface IPublicApiSimulatorHost {
 
   /**
-   * 获取 contentWindow
+   * Get contentWindow
    * @experimental unstable api, pay extra caution when trying to use it
    */
   get contentWindow(): Window | undefined;
 
   /**
-   * 获取 contentDocument
+   * Get contentDocument
    * @experimental unstable api, pay extra caution when trying to use it
    */
   get contentDocument(): Document | undefined;
@@ -20,7 +20,7 @@ export interface IPublicApiSimulatorHost {
   get renderer(): IPublicModelSimulatorRender | undefined;
 
   /**
-   * 设置若干用于画布渲染的变量，比如画布大小、locale 等。
+   * Set several variables for canvas rendering, such as canvas size, locale, etc.
    * set config for simulator host, eg. device locale and so on.
    * @param key
    * @param value
@@ -28,7 +28,7 @@ export interface IPublicApiSimulatorHost {
   set(key: string, value: any): void;
 
   /**
-   * 获取模拟器中设置的变量，比如画布大小、locale 等。
+   * Get the variables set in the simulator, such as canvas size, locale, etc.
    * set config value by key
    * @param key
    * @returns
@@ -36,7 +36,7 @@ export interface IPublicApiSimulatorHost {
   get(key: string): any;
 
   /**
-   * 滚动到指定节点
+   * Scroll to specified node
    * scroll to specific node
    * @param node
    * @since v1.1.0
@@ -44,7 +44,7 @@ export interface IPublicApiSimulatorHost {
   scrollToNode(node: IPublicModelNode): void;
 
   /**
-   * 刷新渲染画布
+   * Refresh the render canvas
    * make simulator render again
    */
   rerender(): void;

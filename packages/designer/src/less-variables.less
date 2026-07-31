@@ -1,5 +1,5 @@
 /*
- * 基础的 DPL 定义使用了 kuma base 的定义，参考：
+ * Base DPL definitions reuse kuma-base variables; see:
  * https://github.com/uxcore/kuma-base/tree/master/variables
  */
 
@@ -75,11 +75,11 @@
 @gray-lighter: #ccc; // N2_1
 
 @brand-secondary: #2c2f33; // B2_3
-// 补色
+// Complementary color
 @brand-complement: #00b3e8; // B3_1
-// 复合
+// Composite
 @brand-comosite: #00c587; // B3_2
-// 浓度
+// Intensity
 @brand-deep: #73461d; // B3_3
 
 // F1-1
@@ -113,7 +113,7 @@
 // F4-1-7 A10
 @brand-link-alpha-7: rgba(102, 188, 92, 0.1);
 
-// 文本色
+// Text color
 @text-primary-color: @dark-alpha-3;
 @text-secondary-color: @normal-alpha-3;
 @text-thirdary-color: @dark-alpha-4;
@@ -128,9 +128,9 @@
   * ===========================================================
   */
 
-@box-shadow-1: 0 1px 4px 0 rgba(31, 56, 88, 0.15); // 1 级阴影，物体由原来存在于底面的物体展开，物体和底面关联紧密
-@box-shadow-2: 0 2px 10px 0 rgba(31, 56, 88, 0.15); // 2 级阴影，hover状态，物体层级较高
-@box-shadow-3: 0 4px 15px 0 rgba(31, 56, 88, 0.15); // 3 级阴影，当物体层级高于所有界面元素，弹窗用
+@box-shadow-1: 0 1px 4px 0 rgba(31, 56, 88, 0.15); // Level-1 shadow: object expands from the surface; tightly related to the base
+@box-shadow-2: 0 2px 10px 0 rgba(31, 56, 88, 0.15); // Level-2 shadow: hover state; higher stacking level
+@box-shadow-3: 0 4px 15px 0 rgba(31, 56, 88, 0.15); // Level-3 shadow: above all UI elements; for dialogs
 
 /**
   * ===========================================================

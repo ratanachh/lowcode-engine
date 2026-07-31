@@ -38,20 +38,20 @@ const pluginFactory: BuilderComponentPluginFactory<RaxFrameworkOptions> = (cfg) 
         lint: 'npm run eslint && npm run stylelint',
       },
       dependencies: {
-        // 数据源相关的依赖:
+        // Data source related dependencies:
         ...buildDataSourceDependencies(ir, cfg?.datasourceConfig),
 
-        // 环境判断
+        // Environment checks
         'universal-env': '^3.2.0',
 
-        // 国际化相关依赖:
+        // i18n related dependencies:
         'intl-messageformat': '^9.3.6',
 
-        // 基础库
+        // Base libraries
         rax: '^1.1.0',
         'rax-document': '^0.1.6',
 
-        // 其他组件库
+        // Other component libraries
         ...npmDeps.reduce<Record<string, string>>(
           (acc, npm) => ({
             ...acc,

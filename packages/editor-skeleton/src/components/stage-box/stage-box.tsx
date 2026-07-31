@@ -53,9 +53,9 @@ export default class StageBox extends Component<StageBoxProps> {
     const { shell } = this;
 
     /**
-     * 向上层递归寻找 target
-     * @param node 节点
-     * @returns 节点的 dataset.stageTarget 信息
+     * Recursively search ancestors for target
+     * @param node node
+     * @returns the node's dataset.stageTarget value
      */
     const getTarget = (node: HTMLElement | null): null | string => {
       if (!node || !shell?.contains(node) || (node.nodeName === 'A' && node.getAttribute('href'))) {

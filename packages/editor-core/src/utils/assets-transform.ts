@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { IPublicTypeAssetsJson, IPublicTypeComponentDescription, IPublicTypePackage, IPublicTypeRemoteComponentDescription } from '@rchh/lowcode-types';
 
-// TODO: 该转换逻辑未来需要消化掉
+// TODO: this transform logic should be absorbed later
 export function assetsTransform(assets: IPublicTypeAssetsJson) {
   const { components, packages } = assets;
   const packageMaps = (packages || []).reduce((acc: Record<string, IPublicTypePackage>, cur: IPublicTypePackage) => {

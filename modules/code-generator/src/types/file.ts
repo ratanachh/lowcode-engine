@@ -1,14 +1,15 @@
 /**
- * 扁平文件信息（层级结构隐含在 pathName 中）
+ * Flat file info (hierarchy is implied by pathName)
  */
 export interface FlattenFile {
+
   /**
-   * 文件路径
+   * File path
    */
   pathName: string;
 
   /**
-   * 文件内容
+   * File content
    */
   content: string | Buffer;
 }

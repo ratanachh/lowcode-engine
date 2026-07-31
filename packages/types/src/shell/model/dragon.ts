@@ -8,13 +8,13 @@ export interface IPublicModelDragon<
 > {
 
   /**
-   * 是否正在拖动
+   * Whether a drag is in progress
    * is dragging or not
    */
   get dragging(): boolean;
 
   /**
-   * 绑定 dragstart 事件
+   * Bind the dragstart event
    * bind a callback function which will be called on dragging start
    * @param func
    * @returns
@@ -22,7 +22,7 @@ export interface IPublicModelDragon<
   onDragstart(func: (e: LocateEvent) => any): IPublicTypeDisposable;
 
   /**
-   * 绑定 drag 事件
+   * Bind the drag event
    * bind a callback function which will be called on dragging
    * @param func
    * @returns
@@ -30,7 +30,7 @@ export interface IPublicModelDragon<
   onDrag(func: (e: LocateEvent) => any): IPublicTypeDisposable;
 
   /**
-   * 绑定 dragend 事件
+   * Bind the dragend event
    * bind a callback function which will be called on dragging end
    * @param func
    * @returns
@@ -38,32 +38,32 @@ export interface IPublicModelDragon<
   onDragend(func: (o: { dragObject: IPublicModelDragObject; copy?: boolean }) => any): IPublicTypeDisposable;
 
   /**
-   * 设置拖拽监听的区域 shell，以及自定义拖拽转换函数 boost
+   * Set the drag-listen shell region and custom boost transform function
    * set a html element as shell to dragon as monitoring target, and
    * set boost function which is used to transform a MouseEvent to type
    * IPublicTypeDragNodeDataObject.
-   * @param shell 拖拽监听的区域
-   * @param boost 拖拽转换函数
+   * @param shell region to listen for drag
+   * @param boost drag transform function
    */
   from(shell: Element, boost: (e: MouseEvent) => IPublicTypeDragNodeDataObject | null): any;
 
   /**
-   * 发射拖拽对象
+   * Launch a drag object
    * boost your dragObject for dragging(flying)
    *
-   * @param dragObject 拖拽对象
-   * @param boostEvent 拖拽初始时事件
+   * @param dragObject drag object
+   * @param boostEvent initial drag event
    */
   boost(dragObject: IPublicTypeDragObject, boostEvent: MouseEvent | DragEvent, fromRglNode?: Node): void;
 
   /**
-   * 添加投放感应区
+   * Add a drop sensor zone
    * add sensor area
    */
   addSensor(sensor: any): void;
 
   /**
-   * 移除投放感应
+   * Remove a drop sensor
    * remove sensor area
    */
   removeSensor(sensor: any): void;

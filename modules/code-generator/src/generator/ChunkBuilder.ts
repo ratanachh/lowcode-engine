@@ -72,7 +72,7 @@ export const groupChunks = (chunks: ICodeChunk[]): ICodeChunk[][] => {
 };
 
 /**
- * 代码片段构建器
+ * Code chunk builder
  *
  * @export
  * @class ChunkBuilder

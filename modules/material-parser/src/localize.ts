@@ -8,7 +8,7 @@ import { IMaterializeOnlineOptions, IMaterializeOnlinePackageAndVersionOptions }
 const log = debug.extend('localize');
 
 /**
- * 创建组件包
+ * Create component package
  *
  * @private
  * @param {{
@@ -24,7 +24,7 @@ export async function createFakePackage(params: {
   pkgVersion: string;
   npmClient?: string;
 }): Promise<void> {
-  // 创建临时组件包
+  // Create temporary component package
   const { workDir } = params;
   const pkgJsonFilePath = join(workDir, 'package.json');
   await ensureFile(pkgJsonFilePath);
@@ -47,16 +47,16 @@ export async function createFakePackage(params: {
     ),
   );
 
-  // 安装依赖
+  // Install dependencies
   const npmClient = params.npmClient || 'tnpm';
   await spawn(npmClient, ['i'], { stdio: 'inherit', cwd: workDir } as any);
 }
 
 /**
- * 创建临时目录
+ * Create temporary directory
  *
  * @private
- * @returns {Promise<string>} 返回临时文件夹路径
+ * @returns {Promise<string>} Returns the temporary folder path
  * @memberof LocalGenerator
  */
 export async function createworkDir(tempDir?: string): Promise<string> {
@@ -68,7 +68,7 @@ export async function createworkDir(tempDir?: string): Promise<string> {
 }
 
 /**
- * 分离物料组件名称和版本号
+ * Split material component name and version
  *
  * @private
  * @param {string} pkgNameWithVersion
@@ -89,13 +89,13 @@ export function getPkgNameAndVersion(pkgNameWithVersion: string): { [key: string
   };
 }
 
-// 将问题转化为本地物料化场景
+// Convert the problem into a local materialization scenario
 export default async function localize(options: IMaterializeOnlineOptions): Promise<{
   workDir: string;
   moduleDir: string;
   entry?: string;
 }> {
-  // 创建临时目录
+  // Create temporary directory
   const workDir = await createworkDir(options.tempDir);
   await ensureDir(workDir);
   let { name, version = 'latest' } = options as IMaterializeOnlinePackageAndVersionOptions;
@@ -104,7 +104,7 @@ export default async function localize(options: IMaterializeOnlineOptions): Prom
     name = pkgNameAndVersion.name;
     version = pkgNameAndVersion.version;
   }
-  // 创建组件包
+  // Create component package
   await createFakePackage({
     pkgName: name,
     pkgVersion: version,

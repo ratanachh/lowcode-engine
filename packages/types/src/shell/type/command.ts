@@ -1,56 +1,56 @@
 import { IPublicTypePropType } from './prop-types';
 
-// 定义命令处理函数的参数类型
+// Define parameter types for command handlers
 export interface IPublicTypeCommandHandlerArgs {
   [key: string]: any;
 }
 
-// 定义命令参数的接口
+// Define the command parameter interface
 export interface IPublicTypeCommandParameter {
 
   /**
-   * 参数名称
+   * Parameter name
    */
   name: string;
 
   /**
-   * 参数类型或详细类型描述
+   * Parameter type or detailed type description
    */
   propType: string | IPublicTypePropType;
 
   /**
-   * 参数描述
+   * Parameter description
    */
   description: string;
 
   /**
-   * 参数默认值（可选）
+   * Parameter default value (optional)
    */
   defaultValue?: any;
 }
 
-// 定义单个命令的接口
+// Define the interface for a single command
 export interface IPublicTypeCommand {
 
   /**
-   * 命令名称
-   * 命名规则：commandName
-   * 使用规则：commandScope:commandName (commandScope 在插件 meta 中定义，用于区分不同插件的命令)
+   * Command name
+   * Naming rule: commandName
+   * Usage: commandScope:commandName (commandScope is defined in plugin meta to distinguish commands across plugins)
    */
   name: string;
 
   /**
-   * 命令参数
+   * Command parameters
    */
   parameters?: IPublicTypeCommandParameter[];
 
   /**
-   * 命令描述
+   * Command description
    */
   description?: string;
 
   /**
-   * 命令处理函数
+   * Command handler
    */
   handler: (args: any) => void;
 }

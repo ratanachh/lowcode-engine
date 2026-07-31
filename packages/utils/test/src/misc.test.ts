@@ -275,7 +275,7 @@ describe('compatStage', () => {
     const result = compatStage(2);
     expect(result).toBe('serilize');
     expect(warnSpy).toHaveBeenCalledWith(
-      'stage 直接指定为数字的使用方式已经过时，将在下一版本移除，请直接使用 IPublicEnumTransformStage.Render|Serilize|Save|Clone|Init|Upgrade'
+      'Specifying stage as a number is deprecated and will be removed next version; use IPublicEnumTransformStage.Render|Serilize|Save|Clone|Init|Upgrade'
     );
     warnSpy.mockRestore();
   });

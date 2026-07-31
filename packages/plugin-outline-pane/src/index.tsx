@@ -95,7 +95,7 @@ export const OutlinePlugin = (ctx: IPublicModelPluginContext, options: any) => {
         index: 1,
       });
 
-      // 处理 master pane 和 backup pane 切换
+      // Handle switching between master pane and backup pane
       const switchPanes = () => {
         const isDragging = canvas.dragon?.dragging;
         const hasVisibleTreeBoard = showingPanes.backupPane || showingPanes.masterPane;
@@ -155,12 +155,12 @@ export const OutlinePlugin = (ctx: IPublicModelPluginContext, options: any) => {
 OutlinePlugin.meta = {
   eventPrefix: 'OutlinePlugin',
   preferenceDeclaration: {
-    title: '大纲树插件配置',
+    title: 'Outline tree plugin config',
     properties: [
       {
         key: 'extraTitle',
         type: 'object',
-        description: '副标题',
+        description: 'Subtitle',
       },
     ],
   },

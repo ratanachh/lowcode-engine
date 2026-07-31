@@ -1,64 +1,71 @@
 ---
-title: 研发协作流程
+title: Development Collaboration Workflow
 sidebar_position: 2
 ---
-## 代码风格
-引擎项目配置了 eslint 和 stylelint，在每次 git commit 前都会检查代码风格，假如有报错，请修改后再提交。（**严禁 -n 提交，-n 也逃脱不了 github workflow 的 lint 检查，放弃吧，骚年~**）
 
-## 测试机制
-每次提交代码前，务必本地跑一次单元测试，通过后再提交 MR。
+## Code Style
 
-假如涉及新的功能，需要**补充相应的单元测试**，目前引擎核心模块的单测覆盖率都在 80%+，假如降低了覆盖率，将会不予以通过。
+The engine project uses eslint and stylelint. Code style is checked on every git commit. If there are errors, fix them before committing. (**Do not use `-n` to skip hooks — GitHub workflow lint checks will still catch you. Give up, young one~**)
 
-跑单测流程：
+## Testing
 
-1. 项目根目录下执行 npm run build
-2. 只改了一个包，比如 designer，则在 designer 目录下，执行 npm test
-3. （or）改了多个包，则在根目录下执行 npm test
-## commit 风格
-几点要求：
+Before each commit, run unit tests locally and only submit your MR after they pass.
 
-1. commit message 格式遵循 [ConvensionalCommits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
+If you add new functionality, **add corresponding unit tests**. Core engine modules currently have 80%+ unit test coverage. Lowering coverage will cause the change to be rejected.
+
+Running unit tests:
+
+1. Run `npm run build` at the project root
+2. If you changed only one package, e.g. designer, run `npm test` in that package directory
+3. (Or) If you changed multiple packages, run `npm test` at the root
+
+## Commit Style
+
+Requirements:
+
+1. Commit messages must follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
 
    <img src="https://img.alicdn.com/imgextra/i3/O1CN01M9UzVM1iqYpyxECdV_!!6000000004464-2-tps-2070-594.png" width="700"/>
-2. 请按照一个 bugfix / feature 对应一个 commit，假如不是，请 rebase 后再提交 MR，不要一堆无用的、试验性的 commit。
 
-好处：从引擎的整体 commit 历史来看，会很清晰，**每个 commit 完成一件确定的事，changelog 也能自动生成**。另外，假如因为某个 commit 导致了 bug，也很容易通过 rebase drop 等方式快速修复。
+2. One bugfix / feature per commit. If not, rebase before submitting your MR — avoid piles of useless or experimental commits.
 
-## 分支用途
+Benefits: The engine's commit history stays clear — **each commit does one definite thing, and the changelog can be generated automatically**. If a commit introduces a bug, it is also easy to fix quickly via rebase drop and similar approaches.
 
-- main 分支，最稳定的分支，跟 npm latest 包的内容保持一致
-- develop 分支，开发分支，拥有最新的、已经验证过的 feature / bugfix，Pull Request 的**目标合入分支**
-- release 分支
-   - 正式发布分支，命名规则为 release/x.y.z，一般从 develop 拉出来进行发布，x.y.z 为待发布的版本号
-   - beta 发布分支，命名规则为 release/x.y.z-beta(\.\d+)?，可以快速验证修改，发布 npm beta 版本。
+## Branch Usage
 
-验证通过后，因为 beta 发布分支上会存在无用的 commit（比如 lerna 修改 package.json 这种），所以不直接 PR 到 develop，而是从 develop 拉分支，从 beta 发布分支 cherry pick 有用的 commit 到新分支，然后 PR 到 develop。
+- **main**: The most stable branch; matches npm `latest` packages
+- **develop**: Development branch with the latest verified features and bugfixes; the **target branch for Pull Requests**
+- **release** branches
+  - Official release branches named `release/x.y.z`, usually cut from develop for release; `x.y.z` is the version to publish
+  - Beta release branches named `release/x.y.z-beta(\.\d+)?` for quick validation and npm beta publishes
 
-## 引擎发布机制
+After beta validation, beta release branches often contain useless commits (e.g. lerna package.json changes), so they are not merged directly into develop. Instead, branch from develop, cherry-pick useful commits from the beta release branch onto the new branch, then open a PR to develop.
 
-日常迭代先从 develop 拉分支，然后自测、单测通过后，提交 PR 到 develop 分支，由发布负责人基于 develop 拉 release/1.0.z 分支~
+## Engine Release Process
 
-### 版本规划
+For day-to-day work, branch from develop, self-test and pass unit tests, then open a PR to develop. The release owner cuts a `release/1.0.z` branch from develop~
 
-> 此处是理想节奏，实际情况可能会有调整
+### Version Planning
 
-- 日常迭代 2 周，一般月中或月底，发版日两天前发最后一个 beta 版本，原则上不接受新 pr，灰度 2 天后，发正式版。
-- 特殊情况紧急迭代随时发
-- 大 Feature 迭代，每年 2 - 4 次
+> This is the ideal cadence; actual timing may vary
 
+- Regular iteration every 2 weeks, usually mid-month or end of month. The last beta goes out two days before release day; new PRs are generally not accepted. After a 2-day gray period, the stable release ships.
+- Emergency iterations can ship at any time
+- Major feature releases, 2–4 times per year
 
-### 发布步骤
-> **发布需要权限，如果提 PR 之后着急发布可以**[**加入贡献者交流群**](../participate/#核心贡献者交流)**。**
+### Release Steps
 
-#### 发正式版
-步骤如下（以发布 1.0.0 版本为例）：
+> **Publishing requires permissions. If you need a release soon after your PR is merged, you can [join the contributor discussion group](../participate/#join-the-contributor-group).**
+
+#### Stable Release
+
+Steps (example: releasing version 1.0.0):
 
 1. git checkout develop
    ```bash
    git checkout develop
    ```
-2. 创建 release 分支
+2. Create the release branch
    ```bash
    git checkout -b release/1.0.0
    ```
@@ -66,31 +73,32 @@ sidebar_position: 2
    ```bash
    npm run build
    ```
-4. 发布到 npm
+4. Publish to npm
    ```bash
    npm run pub
    ```
-5. 同步到 tnpm 源 & alifd CDN & uipaas CDN（此步骤将发布在 npm 源的包同步到阿里内网源，因为 alifd cdn 将依赖内网 npm 源）
+5. Sync to tnpm, alifd CDN, and uipaas CDN (this syncs npm packages to Alibaba's internal registry; alifd CDN depends on the internal npm source)
    ```bash
    tnpm run sync
    tnpm run syncOss
    ```
-6. 更新[发布日志](https://github.com/alibaba/lowcode-engine/releases)
-7. 合并 release/x.x.x 到 main 分支
-8. 合并 main 分支到 develop 分支
+6. Update the [release notes](https://github.com/alibaba/lowcode-engine/releases)
+7. Merge `release/x.x.x` into main
+8. Merge main into develop
 
-如果是发布 beta 版本，步骤如下（以发布 1.0.1 版本为例）：
+For beta releases, steps (example: releasing version 1.0.1):
 
-#### 发某 y 位版本首个 beta，如 1.1.0-beta.0
-1. 拉 develop 分支
+#### First beta for a minor (y) version, e.g. 1.1.0-beta.0
+
+1. Check out develop
    ```bash
    git checkout develop
    ```
-   更新到最新（如需）
+   Pull latest if needed
    ```bash
    git pull
    ```
-2. 拉 release 分支，此处以 1.1.0 版本做示例
+2. Create the release branch; example for version 1.1.0
    ```bash
    git checkout -b release/1.1.0-beta
    git push --set-upstream origin release/1.1.0-beta
@@ -99,26 +107,27 @@ sidebar_position: 2
    ```bash
    npm run build
    ```
-4. 发布，此处需有 @alilc scope 发包权限
+4. Publish; requires `@alilc` scope publish permission
    ```bash
    npm run pub:preminor
    ```
-5. 同步到 tnpm 源 & alifd CDN & uipaas CDN
+5. Sync to tnpm, alifd CDN, and uipaas CDN
    ```bash
    tnpm run sync
    tnpm run syncOss
    ```
 
-#### 发某 z 位版本首个 beta，如 1.0.1-beta.0
-1. 拉 develop 分支
+#### First beta for a patch (z) version, e.g. 1.0.1-beta.0
+
+1. Check out develop
    ```bash
    git checkout develop
    ```
-   更新到最新（如需）
+   Pull latest if needed
    ```bash
    git pull
    ```
-2. 拉 release 分支，此处以 1.0.1 版本做示例
+2. Create the release branch; example for version 1.0.1
    ```bash
    git checkout -b release/1.0.1-beta
    git push --set-upstream origin release/1.0.1-beta
@@ -127,22 +136,23 @@ sidebar_position: 2
    ```bash
    npm run build
    ```
-4. 发布，此处需有 @alilc scope 发包权限
+4. Publish; requires `@alilc` scope publish permission
    ```bash
    npm run pub:prepatch
    ```
-5. 同步到 tnpm 源 & alifd CDN & uipaas CDN
+5. Sync to tnpm, alifd CDN, and uipaas CDN
    ```bash
    tnpm run sync
    tnpm run syncOss
    ```
 
-#### 发某版本非首个 beta，如 1.0.1-beta.0 -> 1.0.1-beta.1
-1. 切换到 release 分支
+#### Non-first beta for a version, e.g. 1.0.1-beta.0 -> 1.0.1-beta.1
+
+1. Switch to the release branch
    ```bash
    git checkout release/1.0.1-beta
    ```
-2. 更新到 develop 分支最新代码
+2. Rebase onto latest develop
    ```bash
    git rebase origin/develop
    ```
@@ -150,38 +160,37 @@ sidebar_position: 2
    ```bash
    npm run build
    ```
-4. 发布，此处需有 @alilc scope 发包权限 ***此处命令与发首个 beta 时有变化***
+4. Publish; requires `@alilc` scope publish permission **_command differs from first beta_**
    ```bash
    npm run pub:prerelease
    ```
-5. 同步到 tnpm 源 & alifd CDN & uipaas CDN
+5. Sync to tnpm, alifd CDN, and uipaas CDN
    ```bash
    tnpm run sync
    tnpm run syncOss
    ```
 
+## DEMO Release Process
 
-
-## DEMO 发布机制
-1. **修改版本号**
-   手动修改 package.json 的版本号
+1. **Update the version**
+   Manually update the version in package.json
 2. **build**
    ```bash
    npm run build
    ```
-3. publish（此步骤需要 npm 发包权限）
+3. publish (requires npm publish permission)
    ```bash
    npm run pub
    ```
-   如发 beta 版
+   For beta:
    ```bash
    npm publish --tag beta
    ```
-4. 同步到 tnpm 源 & alifd CDN & uipaas CDN
+4. Sync to tnpm, alifd CDN, and uipaas CDN
    ```bash
    tnpm run sync
    tnpm run syncOss
    ```
 
-**官网生效**
-需要在通过阿里内部系统更新 demo 版本
+**Site goes live**
+The demo version must be updated through Alibaba's internal systems for the official site to reflect the change.

@@ -3,38 +3,36 @@ title: PluginInstance
 sidebar_position: 12
 ---
 
-> **@types** [IPublicModelPluginInstance](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/plugin-instance.ts)<br/>
-> **@since** v1.1.0
+> **@types** [IPublicModelPluginInstance](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/plugin-instance.ts)<br/> > **@since** v1.1.0
 
+## Overview
 
-## 基本介绍
+Plugin instance
 
-插件实例
-
-## 属性
+## Properties
 
 ### pluginName
 
-插件名字
+Plugin name
 
 `@type {string}`
 
 ### dep
 
-插件依赖
+Plugin dependencies
 
 `@type {string[]}`
 
 ### disabled
 
-插件是否禁用
+Whether the plugin is disabled
 
 `@type {boolean}`
 
 ### meta
 
-插件 meta 信息
+Plugin meta information
 
 `@type {IPublicTypePluginMeta}`
 
-相关类型：[IPublicTypePluginMeta](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/plugin-meta.ts)
+Related types: [IPublicTypePluginMeta](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/plugin-meta.ts)

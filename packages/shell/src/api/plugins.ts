@@ -75,7 +75,7 @@ export class Plugins implements IPublicApiPlugins {
       get(target, prop, receiver) {
         const _target = target[pluginsSymbol];
         if (_target.pluginsMap.has(prop as string)) {
-          // 禁用态的插件，直接返回 undefined
+          // Disabled plugin: return undefined directly
           if (_target.pluginsMap.get(prop as string)!.disabled) {
             return undefined;
           }

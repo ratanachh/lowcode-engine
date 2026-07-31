@@ -23,29 +23,36 @@ interface IIceJsPackageJSON extends PackageJSON {
   originTemplate: string;
 }
 
-export type IceJsPackageJsonPluginConfig = {
+export interface IceJsPackageJsonPluginConfig {
+
   /**
-   * 数据源配置
+   * Data source configuration
    */
   datasourceConfig?: {
-    /** 数据源引擎的版本 */
+
+    /** Data source engine version */
     engineVersion?: string;
-    /** 数据源引擎的包名 */
+
+    /** Data source engine package name */
     enginePackage?: string;
-    /** 数据源 handlers 的版本 */
+
+    /** Data source handlers version */
     handlersVersion?: {
       [key: string]: string;
     };
-    /** 数据源 handlers 的包名 */
+
+    /** Data source handlers package name */
     handlersPackages?: {
       [key: string]: string;
     };
   };
-  /** 包名 */
+
+  /** Package name */
   packageName?: string;
-  /** 版本 */
+
+  /** Version */
   packageVersion?: string;
-};
+}
 
 const pluginFactory: BuilderComponentPluginFactory<IceJsPackageJsonPluginConfig> = (cfg) => {
   const plugin: BuilderComponentPlugin = async (pre: ICodeStruct) => {
@@ -69,7 +76,7 @@ const pluginFactory: BuilderComponentPluginFactory<IceJsPackageJsonPluginConfig>
         '@ice/store': '^1.4.3',
         '@loadable/component': '^5.15.2',
 
-        // 数据源相关的依赖:
+        // Data source related dependencies:
         ...buildDataSourceDependencies(ir, cfg?.datasourceConfig),
       },
       devDependencies: {

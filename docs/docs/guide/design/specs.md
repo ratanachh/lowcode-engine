@@ -1,89 +1,94 @@
 ---
-title: 协议栈简介
+title: Protocol Stack Introduction
 sidebar_position: 1
 ---
-## 什么是低代码协议
-低代码引擎体系基于三份协议来构建，分别是 [《低代码引擎搭建协议规范》](/site/docs/specs/lowcode-spec)、[《低代码引擎物料协议规范》](/site/docs/specs/material-spec)和[《低代码引擎资产包协议规范》](/site/docs/specs/assets-spec), 它们保障了低代码领域的标准化，成为了生态建设和流通的基石。
+
+## What are low-code protocols
+
+The low-code engine system is built on three protocols: the [Low-Code Engine Building Protocol Specification](/site/docs/specs/lowcode-spec), the [Low-Code Engine Material Protocol Specification](/site/docs/specs/material-spec), and the [Low-Code Engine Asset Bundle Protocol Specification](/site/docs/specs/assets-spec). They standardize the low-code domain and become the foundation for ecosystem building and circulation.
 
 ![image.png](https://img.alicdn.com/imgextra/i3/O1CN01axsOyW1s01YgXnT8z_!!6000000005703-2-tps-1888-1000.png)
 
-## 为什么需要协议
+## Why protocols are needed
 
-首先，我们做一个不恰当的类比，我们将低代码引擎和 JavaScript 语言做一下类别。还记得之前，大家都被浏览器兼容性支配的恐惧，特别是 IE 和其他浏览器，对上层 API 实现的不一致，导致一份代码需要运行在两端需要做适配。当浏览器 / JavaScript 相关的标准出现之后，各个浏览器进行了 API 的统一，使得我们终于可以从这部分工作中解放出来（PS：Babel 对于语言特性的转换是另一个方面的问题）。
+First, an imperfect analogy: compare the low-code engine to the JavaScript language. Remember the fear of browser compatibility, especially IE vs. other browsers, where inconsistent upper-layer API implementations meant one codebase needed adaptation to run on both sides. After browser/JavaScript standards emerged, browsers unified APIs and freed us from much of that work (PS: Babel's transformation of language features is a separate issue).
 
-而在《低代码引擎搭建协议规范》出现之前，低代码领域也有类似的问题。
+Before the Low-Code Engine Building Protocol Specification, the low-code domain had similar problems.
 
-### 概念不通
+### Inconsistent terminology
 
-在交流的过程中，一些对于搭建产品的术语的不一致，导致了一些沟通成本，不管是在文章分享、技术分享、交流会上，都会有这个问题。
+Inconsistent terms for building products during communication created overhead in articles, tech talks, and meetups.
 
-### 物料孤岛
+### Material silos
 
-由于低代码产品实现的方式不同，物料的消费方式也各不相同。这里分为两种物料，低代码物料和 ProCode 物料。
+Because low-code products were implemented differently, materials were consumed differently. There are two kinds: low-code materials and ProCode materials.
 
-对于低代码物料来说，A 平台创建的物料无法使用到 B 平台上，如果想在 B 平台实现同样的物料，需要按照 B 平台的标准搭建一份物料。
+For low-code materials, materials created on platform A cannot be used on platform B. To achieve the same material on B, you must build it again to B's standard.
 
-对于 ProCode 物料来说，需要在低代码平台进行消费，是需要进行转换的，包括搭建配置项的生成、物料搭建视图等，可能还需要特殊的描述文件进行描述。由于这一层没有统一，同一份 ProCode 物料每接入一个低代码，可能需要的描述文件格式不同，转换的代码不同，使用的工具也不同。
+For ProCode materials, consuming them on a low-code platform requires conversion, including generating build configuration, material build views, and sometimes special description files. Without unification at this layer, the same ProCode material may need different description formats, conversion code, and tools for each low-code platform it joins.
 
-### 生态隔离
+### Ecosystem isolation
 
-不同低代码平台的生态体系也不相同，有的低代码平台的物料生态不错，有的低代码平台的搭建体验生态不错。但是这些利好的生态，都是无法互通的，甚至就算知道了代码也无法复用，因为底层是不一致的。对于阿里巴巴集团来说，每一个平台都创建一份自己的生态，这并不是利好的。
+Different low-code platforms also have different ecosystems. Some have strong material ecosystems; others have strong building experience ecosystems. But these benefits cannot interoperate. Even with source code, reuse is hard because the underlying implementations differ. For a large organization, each platform building its own ecosystem is not ideal.
 
-### 低水平重复建设
+### Low-level repeated work
 
-大家可能觉得，以上问题对于自己造轮子来说，其实也是有利的，因为自己得到了技术上的成长。
+You might think these problems help when building your own wheel because you grow technically.
 
-但是对于低代码的平台方，实际上更多的工作，在物料的转化、物料的生成、搭建体验的小优化、部分其他平台生态的实现。这些的技术深度其实并不高，属于低水平重复建设部分。
+For low-code platform teams, much work goes into material conversion, material generation, small building-experience tweaks, and reimplementing parts of other platforms' ecosystems. That work is not deeply technical; it is low-level repeated construction.
 
-### 价值不高
+### Low value
 
-如果每个业务都要从 0 开始做，做自己的平台，会花费大量的时间来构建底层基础设施，对业务本身而言并不是一件好事；而且前端领域的底层基础设施都大同小异，不同团队重复构建造成了极大的资源浪费。
+If every business starts from zero and builds its own platform, a lot of time goes into underlying infrastructure, which is not good for the business itself. Frontend infrastructure is largely similar across teams, and duplicate builds waste resources.
 
-这样的建设，会导致从 0 到 1 都需要花费大量的时间，往往在内部人力不足、投入有限时，产品很容易在未发展壮大的时候就面临了死亡相关的决策。
+Such construction means spending a long time from 0 to 1. When internal staffing is limited, products often face shutdown decisions before they grow.
 
-设想一下，如果可以开发一份全集团低代码平台都可以使用的物料，是否更有成就感呢？如果可以基于已有生态进行低代码平台的快速落地，而不是花费 1-2 年搭建一个可用的低代码平台，再验证市场。在快速的验证之后，再进行更深入的打磨，这其中的思考和技术含量是否更优于之前的模式呢？
+Imagine developing one material usable across all group low-code platforms—is that more rewarding? Imagine quickly launching a low-code platform on an existing ecosystem instead of spending 1–2 years building a usable platform before validating the market, then refining after fast validation—is that a better model?
 
-以 2019 年的阿里巴巴的情况举例，不同平台的低代码物料但不限于：
+Using Alibaba in 2019 as an example, low-code materials across platforms included but were not limited to:
 
-1. vc-deep — vc 协议 + Deep 组件库 (阿里巴巴企业智能团队基于 Fusion Next 定制)；
-2. Iceluna 协议 + Fusion Next；
-3. AIMake 物料；
-4. vc-fusion-basic + 业务改造 — vc 协议 + Fusion Next(各业务 Fork 定制)；
-5. vision 魔改 + vc 协议扩展 + fusion 业务组件；
-6. vc 协议 + antd；
+1. vc-deep — vc protocol + Deep component library (Alibaba Enterprise Intelligence team customized on Fusion Next);
+2. Iceluna protocol + Fusion Next;
+3. AIMake materials;
+4. vc-fusion-basic + business customization — vc protocol + Fusion Next (forked and customized by business units);
+5. vision fork + vc protocol extension + fusion business components;
+6. vc protocol + antd;
 
-可以看到，各个搭建平台都需要维护一套自己的基础组件库，这是非常不合理的，对基础组件库的维护会分散开发同学完成业务目标的精力。
+Each building platform had to maintain its own base component library, which was unreasonable and split developers' focus away from business goals.
 
-建立统一的低代码领域标准化，是百利而无一害的。于是，在阿里巴巴集团 2020 年进行了讨论，建立了搭建治理&物料流通战役，此战役便产出了上文中的协议规范，成为了低代码引擎和其生态的基础。
+Establishing unified low-code domain standards is beneficial. In 2020, Alibaba discussed this and launched a building governance and material circulation initiative, which produced the protocol specifications above and became the foundation of the low-code engine and its ecosystem.
 
-## 协议的作用
+## Role of protocols
 
-基于统一的协议，我们完成业务组件、区块、模板等各类物料的标准统一，各类中后台研发系统生产的物料可借助物料中心进行跨系统流通，通过丰富物料生态的共享提升各平台研发系统的效率。同时完成低代码引擎的标准统一以及低代码搭建中台能力的输出，帮助业务方快速孵化本业务域中后台研发系统。
+Based on unified protocols, we standardize business components, blocks, templates, and other materials. Materials produced by various mid/back-office R&D systems can circulate across systems through a material center, improving efficiency via a shared material ecosystem. We also unify low-code engine standards and output mid-platform building capabilities, helping business units quickly incubate domain-specific mid/back-office R&D systems.
 
-### 打破物料孤岛
+### Breaking material silos
 
-#### 物料中心
+#### Material center
 
-这里以阿里集团的前端物料中间建设为例，在《低代码引擎物料协议规范》落地之后，建立了阿里巴巴各个中后台研发平台沟通、对话的基础，物料流通的先决条件已经成熟，这个时候我们还需要一个统一的物料源，用于管理物料的上传、存储、检索、分发，一个典型的中心化架构，类似 npm 的管理，这便是我们物料中心。
+Using Alibaba's frontend material infrastructure as an example: after the Low-Code Engine Material Protocol Specification landed, it created a basis for communication across mid/back-office R&D platforms. Prerequisites for material circulation were in place; we also needed a unified material source for upload, storage, search, and distribution—a centralized architecture similar to npm. That is the material center.
 
-Fusion Market 是物料中心的前身，它提供了业务组件的存储、文档展示和全局透出的功能，由于 fusion 体系在集团内的广泛使用，Fusion Market 沉淀了不少的业务组件，但是这个项目却一直不温不火，只看到业务组件数量的增加，却未看到物料流通起来。其中一个原因是，没有阿里巴巴前端委员会的背书，规范很难统一，规范如果不统一，物料就很难流通；
+Fusion Market was a predecessor. It provided storage, documentation, and global exposure for business components. Because the Fusion system was widely used in the group, Fusion Market accumulated many business components, but the project stayed quiet—component count grew, yet materials did not circulate. One reason was lack of endorsement from the Alibaba frontend committee; without unified standards, materials could not flow.
 
-在规范成立之后，物料中心也将有了建设的基础，最终于 2019 年建立了物料中心，提供了物料流通的平台能力。
+After standards were established, the material center had a foundation. It was built in 2019 and provided platform capabilities for material circulation.
 
-#### 低代码基础物料
+#### Low-code base materials
 
-就像 AntD、Element 之于源码研发模式，在低代码研发模式下各个搭建平台也需要一套统一的、开箱即用的低代码基础组件库。基于低代码描述协议完成了两份低代码基础物料的建设，即“Fusion 低代码基础组件库”和“AntD 低代码基础组件库”。
+Like Ant Design and Element for source-code development, low-code building platforms need a unified, out-of-the-box low-code base component library. Two base material libraries were built on the low-code description protocol: the "Fusion low-code base component library" and the "Ant Design low-code base component library".
 
-#### 源码组件低代码化
+#### Source-code component low-code conversion
 
-将源码组件一键转化为低代码物料，符合低代码物料规范，可以在低代码平台进行流通。
-### 低代码物料中心
+Convert source-code components into low-code materials in one step, conforming to the low-code material specification so they can circulate on low-code platforms.
 
-当低代码物料积累到一定的量级之后，所有的搭建平台的业务物料越来越多。这些物料通过低代码物料中心进行统一的管理和消费。
-### 设置器生态的基础
+### Low-code material center
 
-Snippet(组件默认搭建 schema ) 由《低代码引擎搭建协议规范》定义，低代码引擎会按照规范对组件进行渲染，Configure 由《低代码引擎物料协议规范》定义，它描述了组件的 props 以及每个 prop 对应的设置器 (Prop 配置面板)，低代码引擎提供了 20+ 个内置设置器，但如果我们组件的 props 超出了引擎内置设置器的范围，就需要我们自己来开发对应设置器。
-设置器最终也慢慢形成了自己的生态，这使得开发物料更加容易，可以使用已有的生态中的设置器，进行物料配置描述。
-### 低代码引擎实现标准
+When low-code materials reach a certain scale, business materials across building platforms grow. These materials are managed and consumed uniformly through the low-code material center.
 
-低代码引擎是以上生态的消费端，它是实现了标准协议的低代码引擎。这是不可或缺的部分，低代码引擎这里就相当于一个标准浏览器，一方面给其他的低代码平台提供了一个 Demo，其他平台可以参考低代码引擎进行实现，满足官方协议，便也可以消费相关的物料生态和其他生态。
+### Foundation of the setter ecosystem
+
+Snippet (default build schema for components) is defined by the Low-Code Engine Building Protocol Specification; the low-code engine renders components according to the spec. Configure is defined by the Low-Code Engine Material Protocol Specification; it describes component props and the setter for each prop (prop configuration panel). The low-code engine provides 20+ built-in setters. If component props exceed built-in setters, you need to develop corresponding setters yourself.
+Setters gradually formed their own ecosystem, making material development easier by reusing existing setters in material configuration descriptions.
+
+### Low-code engine implementation standard
+
+The low-code engine is the consumer of the ecosystem above. It is a low-code engine that implements the standard protocols. This part is essential. The low-code engine is like a standards-compliant browser: other platforms can reference it, implement to the official protocols, and then consume the material ecosystem and other ecosystems.

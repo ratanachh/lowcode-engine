@@ -1,12 +1,14 @@
 import { IPublicTypeNpmInfo } from './npm-info';
 
 export interface IPublicTypeLowCodeComponent {
+
   /**
-   * 研发模式
+   * Development mode
    */
   devMode: 'lowCode';
+
   /**
-   * 组件名称
+   * Component name
    */
   componentName: string;
 }

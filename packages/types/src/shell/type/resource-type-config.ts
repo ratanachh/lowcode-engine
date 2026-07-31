@@ -3,39 +3,39 @@ import { IPublicTypeEditorView } from './editor-view';
 
 export interface IPublicResourceTypeConfig {
 
-  /** 资源描述 */
+  /** Resource description */
   description?: string;
 
-  /** 资源 icon 标识 */
+  /** Resource icon identifier */
   icon?: React.ReactElement | React.FunctionComponent | React.ComponentClass;
 
   /**
-   * 默认视图类型
+   * Default view type
    * @deprecated
    */
   defaultViewType?: string;
 
-  /** 默认视图类型 */
+  /** Default view type */
   defaultViewName: string;
 
-  /** 资源视图 */
+  /** Resource views */
   editorViews: IPublicTypeEditorView[];
 
   init?: () => void;
 
-  /** save 钩子 */
+  /** save hook */
   save?: (schema: {
     [viewName: string]: any;
   }) => Promise<void>;
 
-  /** import 钩子 */
+  /** import hook */
   import?: (schema: any) => Promise<{
     [viewName: string]: any;
   }>;
 
-  /** 默认标题 */
+  /** Default title */
   defaultTitle?: string;
 
-  /** resourceType 类型为 'webview' 时渲染的地址 */
+  /** URL rendered when resourceType is 'webview' */
   url?: () => Promise<string>;
 }

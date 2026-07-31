@@ -39,7 +39,7 @@ export default function addonRendererFactory(): IBaseRenderComponent {
         });
         return;
       }
-      // 注册插件
+      // Register plugins
       this.addonKey = props.config.addonKey;
       this.appHelper.addons = this.appHelper.addons || {};
       this.appHelper.addons[this.addonKey] = this;
@@ -51,7 +51,7 @@ export default function addonRendererFactory(): IBaseRenderComponent {
 
     async componentWillUnmount() {
       super.componentWillUnmount?.apply(this, [...arguments] as any);
-      // 注销插件
+      // Unregister plugins
       const config = this.props.config || {};
       if (config && this.appHelper.addons) {
         delete this.appHelper.addons[config.addonKey];
@@ -67,7 +67,7 @@ export default function addonRendererFactory(): IBaseRenderComponent {
       const { __schema } = this.props;
 
       if (this.__checkSchema(__schema)) {
-        return '插件 schema 结构异常！';
+        return 'Invalid addon schema structure!';
       }
 
       this.__debug(`${AddonRenderer.displayName} render - ${__schema.fileName}`);

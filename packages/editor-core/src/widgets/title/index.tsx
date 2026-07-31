@@ -7,11 +7,11 @@ import { Tip } from '../tip';
 import './title.less';
 
 /**
- * 根据 keywords 将 label 分割成文字片段
- * 示例：title = '自定义页面布局'，keywords = '页面'，返回结果为 ['自定义', '页面', '布局']
+ * Split label into text segments based on keywords
+ * Example: title = 'Custom page layout', keywords = 'page', returns ['Custom ', 'page', ' layout']
  * @param label title
- * @param keywords 关键字
- * @returns 文字片段列表
+ * @param keywords keywords
+ * @returns list of text segments
  */
  function splitLabelByKeywords(label: string, keywords: string): string[] {
   const len = keywords.length;
@@ -47,10 +47,10 @@ export class Title extends Component<IPublicTypeTitleProps> {
     const url = title && (title.docUrl || title.url);
     if (url) {
       window.open(url);
-      // 防止触发行操作（如折叠面板）
+      // Prevent triggering row actions (e.g. collapse panel)
       e.stopPropagation();
     }
-    // TODO: 操作交互冲突，目前 mixedSetter 仅有 2 个 setter 注册时用到了 onClick
+    // TODO: interaction conflict; currently mixedSetter only uses onClick when exactly 2 setters are registered
     onClick && onClick(e);
   }
 

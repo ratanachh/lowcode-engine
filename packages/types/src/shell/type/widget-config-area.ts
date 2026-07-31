@@ -1,5 +1,5 @@
 /**
- * 所有可能的停靠位置
+ * All possible dock areas
  */
 export type IPublicTypeWidgetConfigArea = 'leftArea' | 'left' | 'rightArea' |
   'right' | 'topArea' | 'subTopArea' | 'top' |

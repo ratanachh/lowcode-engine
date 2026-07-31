@@ -1,30 +1,37 @@
 ---
-title: demo 使用相关 API
+title: Demo Usage APIs
 sidebar_position: 2
 ---
-## 数据源相关
-### 请求数据源
-```javascript
-// 请求 userList（userList 在数据源面板中定义）
 
-this.dataSourceMap['userList'].load({
-	data: {}
-}).then(res => {})
-  .catch(error => {});
+## Data sources
+
+### Request a data source
+
+```javascript
+// Request userList (defined in the data source panel)
+
+this.dataSourceMap['userList']
+  .load({
+    data: {},
+  })
+  .then((res) => {})
+  .catch((error) => {});
 ```
 
-### 获取数据源的值
+### Read data source values
+
 ```javascript
 const { userList } = this.state;
 ```
 
-### 手动修改数据源值
+### Update data source values manually
+
 ```javascript
-// 获取数据源面板中定义的值
+// Read value defined in the data source panel
 const { user } = this.state;
 
-// 修改 state 值
+// Update state
 this.setState({
-	user: {}
+  user: {},
 });
 ```

@@ -20,7 +20,7 @@ export default async function scan(
     mainFilePath: '',
   };
   log('options', options);
-  // 入口文件路径
+  // Entry file path
   const entryFilePath = options.entry;
   const stats = lstatSync(entryFilePath);
   if (

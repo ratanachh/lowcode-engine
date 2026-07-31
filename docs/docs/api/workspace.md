@@ -1,112 +1,111 @@
 ---
-title: workspace - 应用级 API
+title: workspace - Application-level API
 sidebar_position: 10
 ---
 
-> **[@experimental](./#experimental)**<br/>
-> **@types** [IPublicApiWorkspace](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/workspace.ts)<br/>
-> **@since** v1.1.0
+> **[@experimental](./#experimental)**<br/> > **@types** [IPublicApiWorkspace](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/workspace.ts)<br/> > **@since** v1.1.0
 
-## 模块简介
+## Module Overview
 
-通过该模块可以开发应用级低代码设计器。
+Use this module to build application-level low-code designers.
 
-## 变量
+## Variables
 
 ### isActive
 
-是否启用 workspace 模式
+Whether workspace mode is enabled
 
 ### window
 
-当前设计器窗口模型
+Current designer window model
 
 ```typescript
 get window(): IPublicModelWindow
 ```
 
-关联模型 [IPublicModelWindow](./model/window)
+Related model: [IPublicModelWindow](./model/window)
 
 ### plugins
 
-应用级别的插件注册
+Application-level plugin registration
 
 ```typescript
 get plugins(): IPublicApiPlugins
 ```
 
-关联模型 [IPublicApiPlugins](./plugins)
+Related model: [IPublicApiPlugins](./plugins)
 
 ### skeleton
 
-应用级别的面板管理
+Application-level panel management
 
 ```typescript
 get skeleton(): IPublicApiSkeleton
 ```
 
-关联模型 [IPublicApiSkeleton](./skeleton)
+Related model: [IPublicApiSkeleton](./skeleton)
 
 ### windows
 
-当前设计器的编辑窗口
+Editor windows in the current designer
 
 ```typescript
 get window(): IPublicModelWindow[]
 ```
 
-关联模型 [IPublicModelWindow](./model/window)
+Related model: [IPublicModelWindow](./model/window)
 
 ### resourceList
 
-当前设计器的资源列表数据
+Resource list data for the current designer
 
 ```
 get resourceList(): IPublicModelResource;
 ```
 
-关联模型 [IPublicModelResource](./model/resource)
+Related model: [IPublicModelResource](./model/resource)
 
-## 方法
+## Methods
 
 ### registerResourceType
-注册资源
+
+Register a resource type
 
 ```typescript
-/** 注册资源 */
+/** Register a resource type */
 registerResourceType(resourceTypeModel: IPublicTypeResourceType): void;
 ```
 
-相关类型：[IPublicTypeResourceType](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/resource-type.ts)
+Related type: [IPublicTypeResourceType](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/resource-type.ts)
 
 ### setResourceList
 
-设置设计器资源列表数据
+Set designer resource list data
 
 ```typescript
 setResourceList(resourceList: IPublicResourceList) {}
 ```
 
-相关类型：[IPublicResourceData](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/resource-list.ts)
+Related type: [IPublicResourceData](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/resource-list.ts)
 
 ### openEditorWindow
 
-打开视图窗口
+Open an editor window
 
 ```typescript
 /**
- * 打开视图窗口
+ * Open an editor window
  * @deprecated
  */
 openEditorWindow(resourceName: string, id: string, extra: Object, viewName?: string, sleep?: boolean): Promise<void>;
 
-/** 打开视图窗口 */
+/** Open an editor window */
 openEditorWindow(resource: Resource, sleep?: boolean): Promise<void>;
 ```
 
 ### openEditorWindowById
 
-通过视图 id 打开窗口
+Open a window by view id
 
 ```typescript
 openEditorWindowById(id: string): void;
@@ -114,59 +113,58 @@ openEditorWindowById(id: string): void;
 
 ### removeEditorWindow
 
-移除视图窗口
+Remove an editor window
 
 ```typescript
 /**
- * 移除视图窗口
+ * Remove an editor window
  * @deprecated
  */
 removeEditorWindow(resourceName: string, id: string): void;
 
 /**
- * 移除视图窗口
+ * Remove an editor window
  */
 removeEditorWindow(resource: Resource): void;
 ```
 
 ### removeEditorWindowById
 
-通过视图 id 移除窗口
+Remove a window by view id
 
 ```typescript
 removeEditorWindowById(id: string): void;
 ```
 
-## 事件
+## Events
 
 ### onChangeWindows
 
-窗口新增/删除的事件
+Window add/remove event
 
 ```typescript
 function onChangeWindows(fn: () => void): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+Related type: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onChangeActiveWindow
 
-active 窗口变更事件
+Active window change event
 
 ```typescript
 function onChangeActiveWindow(fn: () => void): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
-
+Related type: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onResourceListChange
 
-设计器资源列表数据变更事件
+Designer resource list change event
 
 ```typescript
 onResourceListChange(fn: (resourceList: IPublicResourceList): void): (): IPublicTypeDisposable;
 ```
 
-- 相关类型：[IPublicResourceOptions](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/resource-options.ts)
-- 相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+- Related type: [IPublicResourceOptions](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/resource-options.ts)
+- Related type: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)

@@ -24,5 +24,5 @@ describe("isProjectSchema", () => {
     expect(isProjectSchema(undefined)).toBe(false);
   });
 
-  // 更多的测试用例...
+  // more test cases...
 });

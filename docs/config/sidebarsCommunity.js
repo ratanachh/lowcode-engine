@@ -6,7 +6,7 @@ module.exports = {
     },
     {
       type: 'link',
-      label: '生态资源',
+      label: 'Ecosystem Resources',
       href: 'https://github.com/lowcode-workspace/awesome-lowcode-engine',
     },
   ],

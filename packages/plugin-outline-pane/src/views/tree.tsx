@@ -152,7 +152,7 @@ export default class TreeView extends PureComponent<{
         }
         // todo: remove rootNodes id
         selection?.remove(focusNode.id);
-        // 获得顶层 nodes
+        // Get top-level nodes
         if (selection) {
           nodes = selection.getTopNodes();
         }

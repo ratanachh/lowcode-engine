@@ -1,7 +1,7 @@
 {
   "name": "@rchh/lowcode-engine-docs",
   "version": "1.2.31",
-  "description": "低代码引擎版本化文档",
+  "description": "Low-Code Engine versioned documentation",
   "license": "MIT",
   "files": [
     "build"

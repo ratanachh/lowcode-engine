@@ -3,26 +3,23 @@ title: Window
 sidebar_position: 12
 ---
 
-> **[@experimental](./#experimental)**<br/>
-> **@types** [IPublicModelWindow](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/window.ts)<br/>
-> **@since** v1.1.0
+> **[@experimental](./#experimental)**<br/> > **@types** [IPublicModelWindow](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/window.ts)<br/> > **@since** v1.1.0
 
+## Overview
 
-## 基本介绍
+Low-code designer window model
 
-低代码设计器窗口模型
-
-## 属性
+## Properties
 
 ### id
 
-窗口唯一 id
+Unique window id
 
 `@type {string}`
 
 ### title
 
-窗口标题
+Window title
 
 `@type {string}`
 
@@ -32,76 +29,80 @@ sidebar_position: 12
 
 ### resource
 
-窗口对应资源
+Resource associated with the window
 
 `@type {IPublicModelResource}`
 
-关联模型 [IPublicModelResource](./resource)
+Related model: [IPublicModelResource](./resource)
 
 ### currentEditorView
-窗口当前视图
+
+Current view of the window
 
 `@type {IPublicModelEditorView}`
 
-关联模型 [IPublicModelEditorView](./editor-view)
+Related model: [IPublicModelEditorView](./editor-view)
 
 **@since v1.1.7**
 
 ### editorViews
 
-窗口所有视图
+All views of the window
 
 `@type {IPublicModelEditorView[]}`
 
-关联模型 [IPublicModelEditorView](./editor-view)
+Related model: [IPublicModelEditorView](./editor-view)
 
 **@since v1.1.7**
 
-## 方法
+## Methods
 
 ### importSchema
-当前窗口导入 schema, 会调用当前窗口对应资源的 import 钩子
+
+Import schema into the current window; invokes the import hook of the resource associated with the window
 
 ```typescript
-function importSchema(schema: IPublicTypeNodeSchema): void
+function importSchema(schema: IPublicTypeNodeSchema): void;
 ```
 
-相关类型：[IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
+Related types: [IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
 
 ### changeViewType
-修改当前窗口视图类型
+
+Change the current window view type
 
 ```typescript
-function changeViewType(viewName: string): void
+function changeViewType(viewName: string): void;
 ```
 
 ### save
-当前窗口的保存方法，会调用当前窗口对应资源的 save 钩子
+
+Save the current window; invokes the save hook of the resource associated with the window
 
 ```typescript
 function save(): Promise(void)
 ```
 
-## 事件
+## Events
 
 ### onChangeViewType
 
-窗口视图变更事件
+Window view change event
 
 ```
 onChangeViewType(fn: (viewName: string) => void): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+Related types: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onSave
 
-窗口视图保存事件
+Window save event
 
 ```
 onSave(fn: () => void): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+Related types: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 **@since v1.1.7**

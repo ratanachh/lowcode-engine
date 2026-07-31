@@ -2,37 +2,37 @@
 title: SimulatorRender
 sidebar_position: 6
 ---
-> **@types** [IPublicModelSimulatorRender](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/simulator-render.ts)<br/>
-> **@since** v1.0.0
 
-## 基本介绍
+> **@types** [IPublicModelSimulatorRender](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/simulator-render.ts)<br/> > **@since** v1.0.0
 
-画布节点选中模型
+## Overview
 
-## 属性
+Canvas simulator render model
+
+## Properties
+
 ### components
 
-画布组件列表
+Canvas component list
 
 ```typescript
 /**
-  * 画布组件列表
+  * Canvas component list
   */
 components: {
   [key: string]: any;
 }
 ```
 
-## 方法
+## Methods
 
 ### rerender
 
-触发画布重新渲染
+Trigger canvas re-render
 
 ```typescript
 /**
- * 触发画布重新渲染
+ * Trigger canvas re-render
  */
 rerender: () => void;
 ```
-

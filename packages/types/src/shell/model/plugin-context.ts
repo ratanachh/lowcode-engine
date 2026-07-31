@@ -20,7 +20,7 @@ import { IPublicModelEngineConfig, IPublicModelWindow } from './';
 export interface IPublicModelPluginContext {
 
   /**
-   * 可通过该对象读取插件初始化配置
+   * Read plugin init config via this object
    * by using this, init options can be accessed from inside plugin
    */
   preference: IPluginPreferenceMananger;
@@ -113,7 +113,7 @@ export interface IPublicModelPluginContext {
   get command(): IPublicApiCommand;
 
   /**
-   * 插件注册层级
+   * Plugin registration level
    * @since v1.1.7
    */
   get registerLevel(): IPublicEnumPluginRegisterLevel;

@@ -6,10 +6,10 @@ export function isElementNode(domNode: Element) {
 }
 
 /**
- * 判断节点是否在 viewport 内，判断依据：只要节点有一部分在 viewport 内，都算 true，其余情况 false
- * @param domNode 待检测的节点
- * @param viewport 画布 viewport
- * @returns 是否在 viewport 内
+ * Check whether a node is inside the viewport; true if any part overlaps, otherwise false
+ * @param domNode node to check
+ * @param viewport canvas viewport
+ * @returns whether inside viewport
  */
 export function isDOMNodeVisible(domNode: Element, viewport: Viewport) {
   const domNodeRect = domNode.getBoundingClientRect();

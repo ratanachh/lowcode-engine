@@ -74,9 +74,9 @@ export const liveEditingSaveHander: SaveHandler = {
   },
 };
 // TODO:
-// 非文本编辑
-//  国际化数据，改变当前
-//  JSExpression, 改变 mock 或 弹出绑定变量
+// Non-text editing
+//  i18n data: change the current locale value
+//  JSExpression: change mock or open variable binding
 
 LiveEditing.addLiveEditingSpecificRule(liveEditingRule);
 LiveEditing.addLiveEditingSaveHandler(liveEditingSaveHander);

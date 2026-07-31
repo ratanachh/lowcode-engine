@@ -51,7 +51,7 @@ function insertChildren(
 }
 
 /**
- * 获得合适的插入位置
+ * Find a suitable insertion position
  */
 function getSuitableInsertion(
   pluginContext: IPublicModelPluginContext,
@@ -172,7 +172,7 @@ function getSuitablePlaceForNode(targetNode: IPublicModelNode, node: IPublicMode
   };
 
   const focusNode = document?.focusNode;
-  // 如果节点是模态框，插入到根节点下
+  // If the node is a modal, insert under the root
   if (node?.componentMeta?.isModal) {
     return { container: focusNode, ref };
   }
@@ -220,7 +220,7 @@ function getSuitablePlaceForNode(targetNode: IPublicModelNode, node: IPublicMode
   return null;
 }
 
-// 注册默认的 setters
+// Register default setters
 export const builtinHotkey = (ctx: IPublicModelPluginContext) => {
   return {
     init() {
@@ -441,8 +441,8 @@ export const builtinHotkey = (ctx: IPublicModelPluginContext) => {
         if (!selected || selected.length < 1) {
           return;
         }
-        // TODO: 此处需要增加判断当前节点是否可被操作移动，原ve里是用 node.canOperating()来判断
-        // TODO: 移动逻辑也需要重新梳理，对于移动目标位置的选择，是否可以移入，需要增加判断
+        // TODO: add a check whether the current node can be moved; the old VE used node.canOperating()
+        // TODO: rethink move logic; add checks for choosing the drop target and whether move-in is allowed
 
         const firstNode = selected[0];
         const parent = firstNode?.parent;
@@ -475,8 +475,8 @@ export const builtinHotkey = (ctx: IPublicModelPluginContext) => {
         if (!selected || selected.length < 1) {
           return;
         }
-        // TODO: 此处需要增加判断当前节点是否可被操作移动，原ve里是用 node.canOperating()来判断
-        // TODO: 移动逻辑也需要重新梳理，对于移动目标位置的选择，是否可以移入，需要增加判断
+        // TODO: add a check whether the current node can be moved; the old VE used node.canOperating()
+        // TODO: rethink move logic; add checks for choosing the drop target and whether move-in is allowed
 
         const firstNode = selected[0];
         const parent = firstNode?.parent;
@@ -517,8 +517,8 @@ export const builtinHotkey = (ctx: IPublicModelPluginContext) => {
         if (!selected || selected.length < 1) {
           return;
         }
-        // TODO: 此处需要增加判断当前节点是否可被操作移动，原 ve 里是用 node.canOperating() 来判断
-        // TODO: 移动逻辑也需要重新梳理，对于移动目标位置的选择，是否可以移入，需要增加判断
+        // TODO: add a check whether the current node can be moved; the old VE used node.canOperating()
+        // TODO: rethink move logic; add checks for choosing the drop target and whether move-in is allowed
 
         const firstNode = selected[0];
         const parent = firstNode?.parent;

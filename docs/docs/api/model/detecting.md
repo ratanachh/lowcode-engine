@@ -2,85 +2,88 @@
 title: Detecting
 sidebar_position: 6
 ---
-> **@types** [IPublicModelDetecting](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/detecting.ts)<br/>
-> **@since** v1.0.0
 
-## 基本介绍
+> **@types** [IPublicModelDetecting](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/detecting.ts)<br/> > **@since** v1.0.0
 
-画布节点悬停模型
+## Overview
 
-## 属性
+Canvas node hover model
+
+## Properties
 
 ### current
 
-当前 hover 的节点
+Currently hovered node
 
 `@type {IPublicModelNode | null}`
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 **@since v1.0.16**
 
 ### enable
 
-是否启用
+Whether hover detection is enabled
 
 `@type {boolean}`
 
+## Methods
 
-## 方法
 ### capture
 
-hover 指定节点
+Hover the specified node
 
 ```typescript
 /**
- * hover 指定节点
+ * Hover the specified node
  * capture node with nodeId
- * @param id 节点 id
+ * @param id node id
  */
 capture(id: string): void;
 ```
 
 ### release
 
-hover 离开指定节点
+Leave hover on the specified node
 
 ```typescript
 /**
- * hover 离开指定节点
+ * Leave hover on the specified node
  * release node with nodeId
- * @param id 节点 id
+ * @param id node id
  */
 release(id: string): void;
 ```
 
 ### leave
 
-清空 hover 态
+Clear all hover state
 
 ```typescript
 /**
- * 清空 hover 态
+ * Clear hover state
  * clear all hover state
  */
 leave(): void;
 ```
 
-## 事件
+## Events
+
 ### onDetectingChange
-hover 节点变化事件
+
+Event fired when the hovered node changes
 
 ```typescript
 /**
- * hover 节点变化事件
+ * Hover node change event
  * set callback which will be called when hovering object changed.
  * @since v1.1.0
  */
 onDetectingChange(fn: (node: IPublicModelNode | null) => void): IPublicTypeDisposable;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 - [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 

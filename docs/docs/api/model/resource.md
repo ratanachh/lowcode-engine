@@ -3,56 +3,54 @@ title: Resource
 sidebar_position: 13
 ---
 
-> **[@experimental](./#experimental)**<br/>
-> **@types** [IPublicModelResource](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/resource.ts)<br/>
-> **@since** v1.1.0
+> **[@experimental](./#experimental)**<br/> > **@types** [IPublicModelResource](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/resource.ts)<br/> > **@since** v1.1.0
 
-## 属性
+## Properties
 
 ### title
 
-资源标题
+Resource title
 
 `@type {string}`
 
 ### id
 
-资源 id
+Resource id
 
 `@type {string}`
 
 ### name
 
-资源名字
+Resource name
 
 `@type {string}`
 
 ### type
 
-资源类型
+Resource type
 
 `@type {string}`
 
 ### category
 
-资源分类
+Resource category
 
 `@type {string}`
 
 ### icon
 
-资源 icon
+Resource icon
 
 `@type {ReactElement}`
 
 ### options
 
-资源配置信息
+Resource configuration options
 
 `@type {Object}`
 
 ### config
 
-资源配置信息
+Resource configuration
 
 `@type {Object}`

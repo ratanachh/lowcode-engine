@@ -1,26 +1,30 @@
 ---
-title: init - 初始化 API
+title: init - Initialization API
 sidebar_position: 0
 ---
 
 > **@since** v1.0.0
 
+## Module Overview
 
-## 模块简介
-提供 init 等方法
-## 方法
+Provides methods such as `init`.
+
+## Methods
+
 #### init
-初始化引擎
 
-**方法定义**
+Initialize the engine
+
+**Method signature**
+
 ```typescript
-function init(container?: Element, options?: IPublicTypeEngineOptions): void
+function init(container?: Element, options?: IPublicTypeEngineOptions): void;
 ```
 
-[**初始化引擎配置参数列表**](./configOptions)
+[**Engine initialization configuration options**](./configOptions)
 
+## Usage Examples
 
-## 使用示例
 ```typescript
 import { init } from '@rchh/lowcode-engine';
 
@@ -29,7 +33,8 @@ init(document.getElementById('engine'), {
 });
 ```
 
-### 默认打开移动端画布
+### Open mobile canvas by default
+
 ```typescript
 import { init } from '@rchh/lowcode-engine';
 
@@ -38,7 +43,8 @@ init({
 });
 ```
 
-### 使用 utils 第三方工具扩展
+### Extend with third-party utils
+
 ```json
 import { init } from '@rchh/lowcode-engine';
 
@@ -52,5 +58,5 @@ init({
 });
 ```
 
-在引擎中即可这样使用。
+You can then use it in the engine like this.
 ![image.png](https://img.alicdn.com/imgextra/i4/O1CN01FWvu051OxAEYrHBy5_!!6000000001771-2-tps-3584-1796.png)

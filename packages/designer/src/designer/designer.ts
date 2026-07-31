@@ -90,7 +90,7 @@ export interface IDesigner {
   createOffsetObserver(nodeInstance: INodeSelector): OffsetObserver | null;
 
   /**
-   * 创建插入位置，考虑放到 dragon 中
+   * Create insert location; consider moving into dragon
    */
   createLocation(locationData: IPublicTypeLocationData<INode>): DropLocation;
 
@@ -281,7 +281,7 @@ export class Designer implements IDesigner {
       this.selectionDispose = undefined;
     }
     const { currentSelection } = this;
-    // TODO: 避免选中 Page 组件，默认选中第一个子节点；新增规则 或 判断 Live 模式
+    // TODO: avoid selecting Page; default to first child; add rule or check Live mode
     if (
       currentSelection &&
       currentSelection.selected.length === 0 &&
@@ -309,7 +309,7 @@ export class Designer implements IDesigner {
   }
 
   /**
-   * 创建插入位置，考虑放到 dragon 中
+   * Create insert location; consider moving into dragon
    */
   createLocation(locationData: IPublicTypeLocationData<INode>): DropLocation {
     const loc = new DropLocation(locationData);
@@ -326,7 +326,7 @@ export class Designer implements IDesigner {
   }
 
   /**
-   * 清除插入位置
+   * Clear insert location
    */
   clearLocation() {
     if (this._dropLocation && this._dropLocation.document) {
@@ -370,7 +370,7 @@ export class Designer implements IDesigner {
   }
 
   /**
-   * 获得合适的插入位置
+   * Get a suitable insert location
    * @deprecated
    */
   getSuitableInsertion(
@@ -422,7 +422,7 @@ export class Designer implements IDesigner {
       }
       if (props.simulatorProps !== this.props.simulatorProps) {
         this._simulatorProps = props.simulatorProps;
-        // 重新 setupSelection
+        // Re-run setupSelection
         if (props.simulatorProps?.designMode !== this.props.simulatorProps?.designMode) {
           this.setupSelection();
         }
@@ -465,20 +465,20 @@ export class Designer implements IDesigner {
     }
 
     if (components) {
-      // 合并 assets
+      // Merge assets
       let assets = this.editor.get('assets') || {};
       let newAssets = mergeAssets(assets, incrementalAssets);
-      // 对于 assets 存在需要二次网络下载的过程，必须 await 等待结束之后，再进行事件触发
+      // Assets may need a second network fetch; await completion before emitting events
       await this.editor.set('assets', newAssets);
     }
-    // TODO: 因为涉及修改 prototype.view，之后在 renderer 里修改了 vc 的 view 获取逻辑后，可删除
+    // TODO: touches prototype.view; remove after renderer updates vc view lookup
     this.refreshComponentMetasMap();
-    // 完成加载增量资源后发送事件，方便插件监听并处理相关逻辑
+    // Emit event after incremental assets load so plugins can react
     this.editor.eventBus.emit('designer.incrementalAssetsReady');
   }
 
   /**
-   * 刷新 componentMetasMap，可间接触发模拟器里的 buildComponents
+   * Refresh componentMetasMap; may indirectly trigger simulator buildComponents
    */
   refreshComponentMetasMap() {
     this._componentMetasMap = new Map(this._componentMetasMap);
@@ -500,7 +500,7 @@ export class Designer implements IDesigner {
   }
 
   /**
-   * 提供给模拟器的参数
+   * Parameters provided to the simulator
    */
   @computed get projectSimulatorProps(): any {
     return {

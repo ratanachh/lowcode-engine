@@ -1,11 +1,11 @@
 ---
-title: config options - 配置列表
+title: config options - Configuration Reference
 sidebar_position: 5
 ---
 
 > **@types** [IPublicTypeEngineOptions](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/engine-options.ts)<br/>
 
-## 配置方式
+## Configuration Methods
 
 #### init API
 
@@ -24,33 +24,32 @@ init(document.getElementById('engine'), {
 ```javascript
 import { config } from '@rchh/lowcode-engine';
 
-config.set('enableCondition', false)
+config.set('enableCondition', false);
 ```
 
 [**config api**](./config)
 
-## 配置详情
+## Configuration Details
 
-> 源码详见 [IPublicTypeEngineOptions](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/engine-options.ts)
+> See source: [IPublicTypeEngineOptions](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/engine-options.ts)
 
+### Canvas
 
-### 画布
-
-#### locale - 语言
+#### locale - Language
 
 `@type {string}`、`@default {zh-CN}`
 
-语言
+Language
 
-#### device - 设备类型
+#### device - Device type
 
 `@type {string}`
 
-引擎默认支持的 device 类型有 `default`、`mobile`、`iphonex`、`iphone6`。
+Built-in device types: `default`, `mobile`, `iphonex`, `iphone6`.
 
-插件 `@rchh/lowcode-plugin-simulator-select` 支持的 device 类型有 `default`、`phone`、`tablet`、`desktop`。
+Device types supported by plugin `@rchh/lowcode-plugin-simulator-select`: `default`, `phone`, `tablet`, `desktop`.
 
-如果需要自定义的 device 类型，需要补充 device 类型对应的样式，例如 device 为 phone 时，需要补充样式如下：
+For custom device types, add corresponding styles. For example, when device is `phone`:
 
 ```css
 .lc-simulator-device-phone {
@@ -67,28 +66,27 @@ config.set('enableCondition', false)
 
 `@type {string}`
 
-指定初始化的 deviceClassName，挂载到画布的顶层节点上
+Initial `deviceClassName` applied to the canvas root node
 
 #### appHelper
 
-与 react-renderer 的 appHelper 一致，https://lowcode-engine.cn/site/docs/guide/expand/runtime/renderer#apphelper
-
+Same as react-renderer `appHelper`: https://lowcode-engine.cn/site/docs/guide/expand/runtime/renderer#apphelper
 
 #### enableCondition
 
 `@type {boolean}`
 
-是否开启 condition 的能力，默认在设计器中不管 condition 是啥都正常展示
+Whether to enable condition support; by default the designer shows components regardless of condition value
 
 #### disableAutoRender
 
 `@type {boolean}` `@default {false}`
 
-关闭画布自动渲染，在资产包多重异步加载的场景有效
+Disable automatic canvas rendering; useful when asset packages load asynchronously in multiple stages
 
-#### renderEnv - 渲染器类型
+#### renderEnv - Renderer type
 
-渲染器类型
+Renderer type
 
 `@type {string}`、`@default {react}`
 
@@ -96,45 +94,45 @@ config.set('enableCondition', false)
 
 `@type {string[]}`
 
-设置 simulator 相关的 url
+URLs related to the simulator
 
 #### enableStrictNotFoundMode
 
 `@type {boolean}` `@default {false}`
 
-当开启组件未找到严格模式时，渲染模块不会默认给一个容器组件
+When strict component-not-found mode is enabled, the renderer does not fall back to a default container component
 
-### 编排
+### Orchestration
 
-#### focusNodeSelector - 指定根组件
+#### focusNodeSelector - Specify root component
 
-配置指定节点为根组件
+Configure a specific node as the root component
 
-类型定义
+Type definition
 
 ```typescript
   focusNodeSelector?: (rootNode: IPublicModelNode) => Node;
 ```
 
-#### supportVariableGlobally - 全局变量配置
+#### supportVariableGlobally - Global variable configuration
 
 `@type {boolean}` `@default {false}`
 
-设置所有属性支持变量配置
+Enable variable binding for all properties
 
-开启拖拽组件时，即将被放入的容器是否有视觉反馈
+Visual feedback on the container about to receive a dragged component
 
-#### customizeIgnoreSelectors - 点击忽略
+#### customizeIgnoreSelectors - Click ignore
 
-配置画布中，需要屏蔽点击事件的元素，即配置的元素默认点击行为均不生效。
+Elements in the canvas whose click events should be ignored — configured elements do not respond to clicks by default.
 
-类型定义:
+Type definition:
 
 ```typescript
   customizeIgnoreSelectors?: (defaultIgnoreSelectors: string[], e: MouseEvent) => string[];
 ```
 
-默认值:
+Default:
 
 ```javascript
 () => {
@@ -158,141 +156,140 @@ config.set('enableCondition', false)
     '.next-breadcrumb-item',
     '.next-calendar-header',
     '.next-calendar-table',
-    '.editor-container', // 富文本组件
-  ]
-}
+    '.editor-container', // Rich text component
+  ];
+};
 ```
 
 #### enableCanvasLock
 
 `@type {boolean}` `@default {false}`
 
-打开画布的锁定操作
+Enable canvas lock operations
 
 #### enableLockedNodeSetting
 
 `@type {boolean}` `@default {false}`
 
-容器锁定后，容器本身是否可以设置属性，仅当画布锁定特性开启时生效
+Whether locked containers can still have their properties edited; only applies when canvas lock is enabled
 
 #### enableMouseEventPropagationInCanvas
 
 `@type {boolean}` `@default {false}`
 
-鼠标事件（mouseover、mouseleave、mousemove）在画布中是否允许冒泡，默认不允许。
+Whether mouse events (mouseover, mouseleave, mousemove) bubble in the canvas; disabled by default.
 
 #### enableReactiveContainer
 
 `@type {boolean}` `@default {false}`
 
-#### enableContextMenu - 开启右键菜单
+#### enableContextMenu - Enable context menu
 
 `@type {boolean}` `@default {false}`
 
-是否开启右键菜单
+Whether to enable the context menu
 
 #### disableDetecting
 
 `@type {boolean}` `@default {false}`
 
-关闭拖拽组件时的虚线响应，性能考虑
-
+Disable dashed-line feedback when dragging components (for performance)
 
 #### disableDefaultSettingPanel
 
 `@type {boolean}` `@default {false}`
 
-禁止默认的设置面板
+Disable the default settings panel
 
 #### disableDefaultSetters
 
 `@type {boolean}` `@default {false}`
 
-禁止默认的设置器
+Disable default setters
 
 #### stayOnTheSameSettingTab
 
 `@type {boolean}` `@default {false}`
 
-当选中节点切换时，是否停留在相同的设置 tab 上
+When the selected node changes, stay on the same settings tab
 
 #### hideSettingsTabsWhenOnlyOneItem
 
 `@type {boolean}` `@default {false}`
 
-是否在只有一个 item 的时候隐藏设置 tabs
+Hide settings tabs when there is only one item
 
 #### hideComponentAction
 
 `@type {boolean}` `@default {false}`
 
-隐藏设计器辅助层
+Hide the designer auxiliary layer
 
 #### thisRequiredInJSE
 
 `@type {boolean}` `@default {true}`
 
-JSExpression 是否只支持使用 this 来访问上下文变量，假如需要兼容原来的 'state.xxx'，则设置为 false
+Whether JSExpression only allows accessing context variables via `this`; set to `false` to support legacy `'state.xxx'` access
 
-### 应用级设计器
+### Application-level designer
 
-#### enableWorkspaceMode - 应用级设计模式
+#### enableWorkspaceMode - Application-level design mode
 
 `@type {boolean}` `@default {false}`
 
-开启应用级设计模式
+Enable application-level design mode
 
 #### enableAutoOpenFirstWindow
 
 `@type {boolean}` `@default {true}`
 
-应用级设计模式下，自动打开第一个窗口
+In application-level design mode, automatically open the first window
 
 #### workspaceEmptyComponent
 
-应用级设计模式下，当窗口为空时，展示的占位组件
+Placeholder component shown when a window is empty in application-level design mode
 
-### 定制组件
+### Custom components
 
 #### faultComponent
 
-组件渲染错误时的占位组件
+Placeholder component when component rendering fails
 
 #### notFoundComponent
 
-组件不存在时的占位组件
+Placeholder component when a component is not found
 
-#### loadingComponent - loading 组件
+#### loadingComponent - Loading component
 
-自定义 loading 组件
+Custom loading component
 
-### 插件
+### Plugins
 
 #### defaultSettingPanelProps
 
-内置设置面板插件的 panelProps
+`panelProps` for the built-in settings panel plugin
 
 #### defaultOutlinePaneProps
 
-内置大纲树面板插件的 panelProps
+`panelProps` for the built-in outline tree panel plugin
 
-### 其他
+### Other
 
 #### enableStrictPluginMode
 
 `@type {boolean}`
 
-开启严格插件模式，默认值：STRICT_PLUGIN_MODE_DEFAULT , 严格模式下，插件将无法通过 engineOptions 传递自定义配置项
+Enable strict plugin mode. Default: `STRICT_PLUGIN_MODE_DEFAULT`. In strict mode, plugins cannot receive custom options via `engineOptions`.
 
 #### requestHandlersMap
 
-数据源引擎的请求处理器映射
+Request handler map for the data source engine
 
 #### customPluginTransducer
 
-插件处理中间件，方便提供插件调试能力
+Plugin processing middleware for plugin debugging
 
-类型定义
+Type definition
 
 ```typescript
 customPluginTransducer: async (originPlugin: IPublicTypePlugin, ctx: IPublicModelPluginContext, options): IPublicTypePlugin;
@@ -302,5 +299,4 @@ customPluginTransducer: async (originPlugin: IPublicTypePlugin, ctx: IPublicMode
 
 `@type {object}`
 
-大纲树插件面板默认 props
-
+Default props for the outline tree plugin panel

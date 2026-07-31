@@ -2,22 +2,22 @@
 title: ModalNodesManager
 sidebar_position: 7
 ---
-> **@types** [IPublicModelModalNodesManager](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/modal-nodes-manager.ts)<br/>
-> **@since** v1.0.0
 
-## 基本介绍
+> **@types** [IPublicModelModalNodesManager](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/modal-nodes-manager.ts)<br/> > **@since** v1.0.0
 
-模态节点管理器模型
+## Overview
 
-## 方法
+Modal nodes manager model
+
+## Methods
 
 ### setNodes
 
-设置模态节点，触发内部事件
+Set modal nodes and trigger internal events
 
 ```typescript
 /**
- * 设置模态节点，触发内部事件
+ * Set modal node and trigger internal events
  * set modal nodes, trigger internal events
  */
 setNodes(): void;
@@ -25,39 +25,39 @@ setNodes(): void;
 
 ### getModalNodes
 
-获取模态节点（们）
+Get modal node(s)
 
 ```typescript
 /**
- * 获取模态节点（们）
+ * Get modal node(s)
  * get modal nodes
  */
 getModalNodes(): IPublicModelNode[];
 ```
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### getVisibleModalNode
 
-获取当前可见的模态节点
+Get the currently visible modal node
 
 ```typescript
 /**
- * 获取当前可见的模态节点
+ * Get the currently visible modal node
  * get current visible modal node
  */
 getVisibleModalNode(): IPublicModelNode | null;
 ```
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### hideModalNodes
 
-隐藏模态节点（们）
+Hide modal node(s)
 
 ```typescript
 /**
- * 隐藏模态节点（们）
+ * Hide modal node(s)
  * hide modal nodes
  */
 hideModalNodes(): void;
@@ -65,30 +65,30 @@ hideModalNodes(): void;
 
 ### setVisible
 
-设置指定节点为可见态
+Set the specified node to visible
 
 ```typescript
 /**
- * 设置指定节点为可见态
+ * Set the specified node as visible
  * set specific model node as visible
  * @param node IPublicModelNode
  */
 setVisible(node: IPublicModelNode): void;
 ```
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### setInvisible
 
-设置指定节点为不可见态
+Set the specified node to invisible
 
 ```typescript
 /**
- * 设置指定节点为不可见态
+ * Set the specified node as invisible
  * set specific model node as invisible
  * @param node IPublicModelNode
  */
 setInvisible(node: IPublicModelNode): void;
 ```
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)

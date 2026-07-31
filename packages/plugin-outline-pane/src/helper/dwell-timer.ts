@@ -1,9 +1,8 @@
 import { isLocationChildrenDetail } from '@rchh/lowcode-utils';
 import { IPublicModelNode, IPublicModelDropLocation, IPublicModelLocateEvent } from '@rchh/lowcode-types';
 
-
 /**
- * 停留检查计时器
+ * Dwell check timer
  */
 export default class DwellTimer {
   private timer: number | undefined;

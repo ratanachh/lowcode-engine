@@ -2,7 +2,7 @@ import { getClosestNode, canClickNode } from '@rchh/lowcode-utils';
 import { INode } from '../../document';
 
 /**
- * 获取离当前节点最近的可点击节点
+ * Get the nearest clickable node from the current node
  * @param currentNode
  * @param event
  */
@@ -12,11 +12,11 @@ export const getClosestClickableNode = (
 ) => {
   let node = currentNode;
   while (node) {
-    // 判断当前节点是否可点击
+    // Check whether the current node is clickable
     let canClick = canClickNode(node, event);
     // eslint-disable-next-line no-loop-func
     const lockedNode = getClosestNode(node!, (n) => {
-      // 假如当前节点就是 locked 状态，要从当前节点的父节点开始查找
+      // If the current node is locked, start searching from its parent
       return !!(node?.isLocked ? n.parent?.isLocked : n.isLocked);
     });
     if (lockedNode && lockedNode.getId() !== node.getId()) {
@@ -25,7 +25,7 @@ export const getClosestClickableNode = (
     if (canClick) {
       break;
     }
-    // 对于不可点击的节点，继续向上找
+    // For non-clickable nodes, keep walking upward
     node = node.parent;
   }
   return node;

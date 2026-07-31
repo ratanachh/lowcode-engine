@@ -1,7 +1,7 @@
 import { IPublicTypeContainerSchema } from './';
 
 /**
- * 低代码业务组件容器
+ * Low-code business component container
  * @see https://lowcode-engine.cn/lowcode
  */
 

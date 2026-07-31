@@ -95,7 +95,7 @@ export class DraggableLineView extends Component<{ panel: Panel }> {
       containerRef.style.width = `${width}px`;
     }
 
-    // 抛出事件，对于有些需要 panel 插件随着 度变化进行再次渲染的，由panel插件内部监听事件实现
+    // Emit an event so panel plugins that need to re-render on width changes can listen internally
     const editor = this.props.panel.skeleton.editor;
     editor?.eventBus.emit('dockpane.drag', width);
   }
@@ -103,13 +103,13 @@ export class DraggableLineView extends Component<{ panel: Panel }> {
   onDragChange(type: 'start' | 'end') {
     const editor = this.props.panel.skeleton.editor;
     editor?.eventBus.emit('dockpane.dragchange', type);
-    // builtinSimulator 屏蔽掉 鼠标事件
+    // builtinSimulator blocks mouse events
     editor?.eventBus.emit('designer.builtinSimulator.disabledEvents', type === 'start');
   }
 
   render() {
-    // left fixed 下不允许改变宽度
-    // 默认 关闭，通过配置开启
+    // Width resizing is not allowed under left fixed
+    // Disabled by default; enable via config
     const enableDrag = this.props.panel.config.props?.enableDrag;
     const isRightArea = this.props.panel.config?.area === 'rightArea';
     if (isRightArea || !enableDrag || this.props.panel?.parent?.name === 'leftFixedArea') {
@@ -127,7 +127,7 @@ export class DraggableLineView extends Component<{ panel: Panel }> {
         onDragEnd={() => this.onDragChange('end')}
         maxIncrement={500}
         maxDecrement={0}
-        // TODO: 优化
+        // TODO: optimize
         // maxIncrement={dock.getMaxWidth() - this.cachedSize.width}
         // maxDecrement={this.cachedSize.width - dock.getWidth()}
       />
@@ -248,14 +248,14 @@ export class PanelView extends Component<{
 @observer
 export class TabsPanelView extends Component<{
   container: WidgetContainer<Panel>;
-  // shouldHideSingleTab: 一个布尔值，用于控制当 Tabs 组件只有一个标签时是否隐藏该标签。
+  // shouldHideSingleTab: boolean controlling whether Tabs hides the tab bar when there is only one tab.
   shouldHideSingleTab?: boolean;
 }> {
   render() {
     const { container } = this.props;
     const titles: ReactElement[] = [];
     const contents: ReactElement[] = [];
-    // 如果只有一个标签且 shouldHideSingleTab 为 true，则不显示 Tabs
+    // If there is only one tab and shouldHideSingleTab is true, do not render Tabs
     if (this.props.shouldHideSingleTab && container.items.length === 1) {
       contents.push(<PanelView key={container.items[0].id} panel={container.items[0]} hideOperationRow hideDragLine />);
     } else {

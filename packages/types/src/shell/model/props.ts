@@ -11,64 +11,64 @@ export interface IBaseModelProps<
   get id(): string;
 
   /**
-   * 返回当前 props 的路径
+   * Returns the path to the current props
    * return path of current props
    */
   get path(): string[];
 
   /**
-   * 返回所属的 node 实例
+   * Returns the node instance it belongs to
    */
   get node(): IPublicModelNode | null;
 
   /**
-   * 获取指定 path 的属性模型实例
+   * Get the prop model instance at a specified path
    * get prop by path
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * @param path prop path; supports formats like a / a.b / a.0
    */
   getProp(path: string): Prop | null;
 
   /**
-   * 获取指定 path 的属性模型实例值
+   * Get the value of the prop model instance at a specified path
    * get value of prop by path
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * @param path prop path; supports formats like a / a.b / a.0
    */
   getPropValue(path: string): any;
 
   /**
-   * 获取指定 path 的属性模型实例，
-   *  注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
+   * Get the prop model instance at a specified path;
+   *  Note: on export, unlike normal props, this prop is not under props but at the same level as props
    * get extra prop by path
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * @param path prop path; supports formats like a / a.b / a.0
    */
   getExtraProp(path: string): Prop | null;
 
   /**
-   * 获取指定 path 的属性模型实例值
-   *  注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
+   * Get the value of the prop model instance at a specified path
+   *  Note: on export, unlike normal props, this prop is not under props but at the same level as props
    * get value of extra prop by path
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * @param path prop path; supports formats like a / a.b / a.0
    */
   getExtraPropValue(path: string): any;
 
   /**
-   * 设置指定 path 的属性模型实例值
+   * Set the value of the prop model instance at a specified path
    * set value of prop by path
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param value 值
+   * @param path prop path; supports formats like a / a.b / a.0
+   * @param value value
    */
   setPropValue(path: string, value: IPublicTypeCompositeValue): void;
 
   /**
-   * 设置指定 path 的属性模型实例值
+   * Set the value of the prop model instance at a specified path
    * set value of extra prop by path
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param value 值
+   * @param path prop path; supports formats like a / a.b / a.0
+   * @param value value
    */
   setExtraPropValue(path: string, value: IPublicTypeCompositeValue): void;
 
   /**
-   * 当前 props 是否包含某 prop
+   * Whether the current props contain a certain prop
    * check if the specified key is existing or not.
    * @param key
    * @since v1.1.0
@@ -76,7 +76,7 @@ export interface IBaseModelProps<
   has(key: string): boolean;
 
   /**
-   * 添加一个 prop
+   * add a prop
    * add a key with given value
    * @param value
    * @param key
@@ -86,4 +86,4 @@ export interface IBaseModelProps<
 
 }
 
-export interface IPublicModelProps extends IBaseModelProps<IPublicModelProp> {};
+export type IPublicModelProps = IBaseModelProps<IPublicModelProp>;

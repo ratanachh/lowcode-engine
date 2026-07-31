@@ -34,7 +34,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
 
     const state = ir.state || {};
     const fields = Object.keys(state).map<string>((stateName) => {
-      // TODO: 这里用什么 handlers?
+      // TODO: Which handlers to use here?
       const value = generateCompositeType(state[stateName], scope);
       return `${JSON.stringify(stateName)}: ${value}`;
     });

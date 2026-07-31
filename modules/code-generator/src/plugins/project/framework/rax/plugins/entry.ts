@@ -27,10 +27,10 @@ import './global.${cfg?.globalStylesFileType || 'css'}';
       linkAfter: [],
     });
 
-    // 应用配置
+    // App configuration
     const appConfig = cfg?.appConfig || {};
     Object.assign(appConfig, {
-      // 路由配置
+      // Route configuration
       router: {
         mode: 'hash',
         ...appConfig.router,

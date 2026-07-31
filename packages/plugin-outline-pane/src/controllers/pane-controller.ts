@@ -134,10 +134,10 @@ export class PaneController implements IPublicModelSensor, ITreeBoard, IPublicTy
       e.target = document.elementFromPoint(e.canvasX!, e.canvasY!);
     }
 
-    // documentModel : 目标文档
+    // documentModel: target document
     e.documentModel = this.pluginContext.project.getCurrentDocument();
 
-    // 事件已订正
+    // Event corrected
     e.fixed = true;
     return e;
   }
@@ -163,7 +163,7 @@ export class PaneController implements IPublicModelSensor, ITreeBoard, IPublicTy
       return canMove;
     });
 
-    // 如果拖拽的是 Node 才需要后面的判断，拖拽 data 不需要
+    // Subsequent checks are only needed when dragging a Node; dragging data does not need them
     if (isDragNodeObject(dragObject) && (!operationalNodes || operationalNodes.length === 0)) {
       return;
     }
@@ -369,7 +369,7 @@ export class PaneController implements IPublicModelSensor, ITreeBoard, IPublicTy
     }
 
     if (node.isSlotNode) {
-      // 是个插槽根节点
+      // This is a slot root node
       if (!treeNode.isContainer() && !treeNode.hasSlots()) {
         return canvas.createLocation({
           target: node.parent!,
@@ -482,7 +482,7 @@ export class PaneController implements IPublicModelSensor, ITreeBoard, IPublicTy
     const isContainer = treeNode.isContainer();
 
     if (container.isSlotNode && !treeNode.expanded) {
-      // 未展开，直接定位到内部第一个节点
+      // If collapsed, jump directly to the first inner node
       if (isSlotContainer) {
         detail.index = null;
         detail.focus = { type: 'slots' };
@@ -504,7 +504,7 @@ export class PaneController implements IPublicModelSensor, ITreeBoard, IPublicTy
           focusSlots = true;
           items = treeNode.slots;
         } else if (!isContainer) {
-          // 不在 slots 范围，又不是 container 的情况，高亮 slots 区
+          // Outside slots and not a container: highlight the slots area
           detail.index = null;
           detail.focus = { type: 'slots' };
           detail.valid = false;

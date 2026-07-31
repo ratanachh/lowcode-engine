@@ -2,7 +2,7 @@ import { IPublicTypeNodeData } from './node-data';
 import { IPublicTypeNodeSchema } from './node-schema';
 
 /**
- * Slot schema 描述
+ * Slot schema description
  */
 export interface IPublicTypeSlotSchema extends IPublicTypeNodeSchema {
   componentName: 'Slot';

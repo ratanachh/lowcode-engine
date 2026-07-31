@@ -65,7 +65,7 @@ export class ComponentActions {
             newNode?.select();
             const { isRGL, rglNode } = node?.getRGL();
             if (isRGL) {
-              // 复制 layout 信息
+              // Copy layout info
               const layout: any = rglNode?.getPropValue('layout') || [];
               const curLayout = layout.filter((item: any) => item.i === node.getPropValue('fieldId'));
               if (curLayout && curLayout[0]) {
@@ -74,7 +74,7 @@ export class ComponentActions {
                   i: newNode?.getPropValue('fieldId'),
                 });
                 rglNode?.setPropValue('layout', layout);
-                // 如果是磁贴块复制，则需要滚动到影响位置
+                // For magnet-block copy, scroll to the affected position
                 setTimeout(() => newNode?.document?.project?.simulatorHost?.scrollToNode(newNode), 10);
               }
             }
@@ -86,7 +86,7 @@ export class ComponentActions {
     {
       name: 'lock',
       content: {
-        icon: IconLock, // 锁定 icon
+        icon: IconLock, // Lock icon
         title: intlNode('lock'),
         /* istanbul ignore next */
         action(node: IPublicModelNode) {
@@ -102,7 +102,7 @@ export class ComponentActions {
     {
       name: 'unlock',
       content: {
-        icon: IconUnlock, // 解锁 icon
+        icon: IconUnlock, // Unlock icon
         title: intlNode('unlock'),
         /* istanbul ignore next */
         action(node: IPublicModelNode) {

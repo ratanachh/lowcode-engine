@@ -35,5 +35,5 @@ describe('isJSExpression', () => {
     expect(result).toBe(false);
   });
 
-  // 添加其他需要的测试
+  // additional tests
 });

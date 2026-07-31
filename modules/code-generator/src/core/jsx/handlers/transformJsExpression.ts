@@ -19,7 +19,7 @@ export function transformJsExpr(
 
   const exprAst = parseExpression(expr);
 
-  // 对于下面这些比较安全的字面值，可以直接返回对应的表达式，而非包一层
+  // For these relatively safe literals, return the expression directly without wrapping
   if (isSimpleStraightLiteral(exprAst)) {
     return expr;
   }
@@ -31,7 +31,7 @@ export function transformJsExpr(
   }
 
   switch (exprAst.type) {
-    // 对于直接写个函数的，则不用再包下，因为这样不会抛出异常的
+    // For a bare function, no wrapping is needed since it will not throw
     case 'ArrowFunctionExpression':
     case 'FunctionExpression':
       return transformThis2Context(exprAst, scope, {
@@ -42,7 +42,7 @@ export function transformJsExpr(
       break;
   }
 
-  // 其他的都需要包一层
+  // Everything else needs wrapping
   return `__$$eval(() => (${transformThis2Context(exprAst, scope, {
     ignoreRootScope: dontTransformThis2ContextAtRootScope,
   })}))`;

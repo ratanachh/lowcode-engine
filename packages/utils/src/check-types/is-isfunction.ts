@@ -9,7 +9,7 @@ interface InnerJsFunction {
 }
 
 /**
- *  内部版本 的 { type: 'JSExpression', source: '', value: '', extType: 'function' } 能力上等同于 JSFunction
+ *  Internal { type: 'JSExpression', source: '', value: '', extType: 'function' } is equivalent to JSFunction
  */
 export function isInnerJsFunction(data: any): data is InnerJsFunction {
   if (!isObject(data)) {

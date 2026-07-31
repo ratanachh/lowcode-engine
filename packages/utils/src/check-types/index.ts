@@ -1,4 +1,4 @@
-// 此模块存放 @rchh/lowcode-types 中类型相关判断工具
+// Type-guard helpers for @rchh/lowcode-types
 export * from './is-action-content-object';
 export * from './is-custom-view';
 export * from './is-dom-text';

@@ -13,7 +13,7 @@ function isActionRef(props: any): boolean {
 }
 
 /**
- * 将「乐高版本」协议升级成 JSExpression / JSSlot 等标准协议的结构
+ * Upgrade legacy Lego protocol structures to standard JSExpression / JSSlot, etc.
  * @param props
  * @returns
  */
@@ -23,7 +23,7 @@ export function compatibleLegaoSchema(props: any): any {
   }
 
   if (Array.isArray(props)) {
-    return props.map(k => compatibleLegaoSchema(k));
+    return props.map((k) => compatibleLegaoSchema(k));
   }
 
   if (!isPlainObject(props)) {
@@ -68,7 +68,7 @@ export function compatibleLegaoSchema(props: any): any {
     if (/^__slot__/.test(key) && props[key] === true) {
       return;
     }
-    // TODO: 先移除，目前没有业务使用
+    // TODO: remove for now; no known usage
     // if (key === 'dataSource') {
     //   newProps[key] = props[key];
     //   return;
@@ -84,7 +84,7 @@ export function getNodeSchemaById(schema: IPublicTypeNodeSchema, nodeId: string)
     return schema;
   }
   const { children, props } = schema;
-  // 查找 children
+  // Look up children
   if (Array.isArray(children)) {
     for (const child of children) {
       found = getNodeSchemaById(child as IPublicTypeNodeSchema, nodeId);
@@ -92,7 +92,7 @@ export function getNodeSchemaById(schema: IPublicTypeNodeSchema, nodeId: string)
     }
   }
   if (isPlainObject(props)) {
-    // 查找 props，主要是 slot 类型
+    // Look up props, mainly slot types
     found = getNodeSchemaFromPropsById(props, nodeId);
     if (found) return found;
   }
@@ -100,16 +100,16 @@ export function getNodeSchemaById(schema: IPublicTypeNodeSchema, nodeId: string)
 
 function getNodeSchemaFromPropsById(props: any, nodeId: string): IPublicTypeNodeSchema | undefined {
   let found: IPublicTypeNodeSchema | undefined;
-  for (const [_key, value] of Object.entries(props)) {
+  for (const [, value] of Object.entries(props)) {
     if (isJSSlot(value)) {
-      // value 是数组类型 { type: 'JSSlot', value: IPublicTypeNodeSchema[] }
+      // value is an array: { type: 'JSSlot', value: IPublicTypeNodeSchema[] }
       if (Array.isArray(value.value)) {
         for (const child of value.value) {
           found = getNodeSchemaById(child as IPublicTypeNodeSchema, nodeId);
           if (found) return found;
         }
       }
-      // value 是对象类型 { type: 'JSSlot', value: IPublicTypeNodeSchema }
+      // value is an object: { type: 'JSSlot', value: IPublicTypeNodeSchema }
       found = getNodeSchemaById(value.value as IPublicTypeNodeSchema, nodeId);
       if (found) return found;
     } else if (isPlainObject(value)) {
@@ -144,7 +144,7 @@ export function applyActivities(pivotSchema: IPublicTypeRootSchema, activities: 
         } else if (!found.children) {
           found.children = [schema];
         }
-        // TODO: 是 JSExpression / DOMText
+        // TODO: JSExpression / DOMText
       }
     } else if (activity.type === ActivityType.DELETED) {
       const { payload } = activity;

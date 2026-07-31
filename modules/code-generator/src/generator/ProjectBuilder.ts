@@ -26,28 +26,28 @@ interface IModuleInfo {
 
 export interface ProjectBuilderInitOptions {
 
-  /** 项目模板 */
+  /** Project template */
   template: IProjectTemplate;
 
-  /** 项目插件 */
+  /** Project plugins */
   plugins: IProjectPlugins;
 
-  /** 模块后置处理器 */
+  /** Module post-processors */
   postProcessors: PostProcessor[];
 
-  /** Schema 解析器 */
+  /** Schema parser */
   schemaParser?: ISchemaParser;
 
-  /** 项目级别的前置处理器 */
+  /** Project-level pre-processors */
   projectPreProcessors?: ProjectPreProcessor[];
 
-  /** 项目级别的后置处理器 */
+  /** Project-level post-processors */
   projectPostProcessors?: ProjectPostProcessor[];
 
-  /** 是否处于严格模式 */
+  /** Whether in strict mode */
   inStrictMode?: boolean;
 
-  /** 一些额外的上下文数据 */
+  /** Extra context data */
   extraContextData?: Record<string, unknown>;
 
   /**
@@ -58,28 +58,28 @@ export interface ProjectBuilderInitOptions {
 }
 
 export class ProjectBuilder implements IProjectBuilder {
-  /** 项目模板 */
+  /** Project template */
   private template: IProjectTemplate;
 
-  /** 项目插件 */
+  /** Project plugins */
   private plugins: IProjectPlugins;
 
-  /** 模块后置处理器 */
+  /** Module post-processors */
   private postProcessors: PostProcessor[];
 
-  /** Schema 解析器 */
+  /** Schema parser */
   private schemaParser: ISchemaParser;
 
-  /** 项目级别的前置处理器 */
+  /** Project-level pre-processors */
   private projectPreProcessors: ProjectPreProcessor[];
 
-  /** 项目级别的后置处理器 */
+  /** Project-level post-processors */
   private projectPostProcessors: ProjectPostProcessor[];
 
-  /** 是否处于严格模式 */
+  /** Whether in strict mode */
   readonly inStrictMode: boolean;
 
-  /** 一些额外的上下文数据 */
+  /** Extra context data */
   readonly extraContextData: IContextData;
 
   constructor(builderOptions: ProjectBuilderInitOptions) {

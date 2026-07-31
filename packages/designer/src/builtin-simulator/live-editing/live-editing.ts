@@ -69,10 +69,10 @@ export class LiveEditing {
     let matched: (IPublicTypePluginConfig & { propElement?: HTMLElement }) | undefined | null;
     if (liveTextEditing) {
       if (propTarget) {
-        // 已埋点命中 data-setter-prop="proptarget", 从 liveTextEditing 读取配置（mode|onSaveContent）
+        // Hit data-setter-prop="proptarget"; read config (mode|onSaveContent) from liveTextEditing
         matched = liveTextEditing.find(config => config.propTarget == propTarget);
       } else {
-        // 执行 embedTextEditing selector 规则，获得第一个节点 是否 contains e.target，若匹配，读取配置
+        // Run embedTextEditing selector; if first node contains e.target, read config
         matched = liveTextEditing.find(config => {
           if (!config.selector) {
             return false;
@@ -94,9 +94,9 @@ export class LiveEditing {
     }
 
     // if (!propTarget) {
-    //   // 自动纯文本编辑满足一下情况：
-    //   //  1. children 内容都是 Leaf 且都是文本（一期）
-    //   //  2. DOM 节点是单层容器，子集都是文本节点 (已满足)
+    //   // Auto plain-text editing when:
+    //   //  1. all children are Leaf and text (phase 1)
+    //   //  2. DOM is a single-level container whose children are text nodes (already met)
     //   const isAllText = node.children?.every(item => {
     //     return item.isLeaf() && item.getProp('children')?.type === 'literal';
     //   });
@@ -110,12 +110,12 @@ export class LiveEditing {
         return;
       }
 
-      // 进入编辑
-      //  1. 设置 contentEditable="plaintext|..."
-      //  2. 添加类名
+      // Enter editing
+      //  1. set contentEditable="plaintext|..."
+      //  2. add class name
       //  3. focus & cursor locate
-      //  4. 监听 blur 事件
-      //  5. 设置编辑锁定：disable hover | disable select | disable canvas drag
+      //  4. listen for blur
+      //  5. edit lock: disable hover | disable select | disable canvas drag
 
       const onSaveContent = matched?.onSaveContent || saveHandlers.find(item => item.condition(prop))?.onSaveContent || defaultSaveContent;
 

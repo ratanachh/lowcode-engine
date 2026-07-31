@@ -14,59 +14,59 @@ export interface IScrollable extends IPublicTypeScrollable {
 export interface IViewport extends IScrollable {
 
   /**
-   * 视口大小
+   * Viewport size
    */
   width: number;
   height: number;
 
   /**
-   * 内容大小
+   * Content size
    */
   contentWidth: number | AutoFit;
   contentHeight: number | AutoFit;
 
   /**
-   * 内容缩放
+   * Content scale
    */
   scale: number;
 
   /**
-   * 视口矩形维度
+   * Viewport rect bounds
    */
   readonly bounds: DOMRect;
 
   /**
-   * 内容矩形维度
+   * Content rect bounds
    */
   readonly contentBounds: DOMRect;
 
   /**
-   * 视口滚动对象
+   * Viewport scroll object
    */
   readonly scrollTarget?: ScrollTarget;
 
   /**
-   * 是否滚动中
+   * Whether scrolling
    */
   readonly scrolling: boolean;
 
   /**
-   * 内容当前滚动 X
+   * Content current scroll X
    */
   readonly scrollX: number;
 
   /**
-   * 内容当前滚动 Y
+   * Content current scroll Y
    */
   readonly scrollY: number;
 
   /**
-   * 全局坐标系转化为本地坐标系
+   * Convert global coordinates to local
    */
   toLocalPoint(point: Point): Point;
 
   /**
-   * 本地坐标系转化为全局坐标系
+   * Convert local coordinates to global
    */
   toGlobalPoint(point: Point): Point;
 }
@@ -77,13 +77,13 @@ export interface DropContainer {
 }
 
 /**
- * 模拟器控制进程协议
+ * Simulator control process protocol
  */
 export interface ISimulatorHost<P = object> extends IPublicModelSensor<INode> {
   readonly isSimulator: true;
 
   /**
-   * 获得边界维度等信息
+   * Get boundary dimensions and related info
    */
   readonly viewport: IViewport;
   readonly contentWindow?: Window;
@@ -98,14 +98,14 @@ export interface ISimulatorHost<P = object> extends IPublicModelSensor<INode> {
   // themesAsset
   // componentsAsset
   // simulatorUrl //
-  // utils, dataSource, constants 模拟
+  // Simulate utils, dataSource, constants
   //
   // later:
   // layout: ComponentName
-  // 获取区块代码，通过 components 传递，可异步获取
-  // 设置 simulator Props
+  // Get block code via components; may be async
+  // Set simulator Props
   setProps(props: P): void;
-  // 设置单个 Prop
+  // Set a single Prop
   set(key: string, value: any): void;
 
   setSuspense(suspensed: boolean): void;
@@ -113,54 +113,54 @@ export interface ISimulatorHost<P = object> extends IPublicModelSensor<INode> {
   // #region ========= drag and drop helpers =============
 
   /**
-   * 设置文字拖选
+   * Enable text drag-select
    */
   setNativeSelection(enableFlag: boolean): void;
 
   /**
-   * 设置拖拽态
+   * Set dragging state
    */
   setDraggingState(state: boolean): void;
 
   /**
-   * 设置拷贝态
+   * Set copying state
    */
   setCopyState(state: boolean): void;
 
   /**
-   * 清除所有态：拖拽态、拷贝态
+   * Clear all states: dragging and copying
    */
   clearState(): void;
 
   // #endregion
 
   /**
-   * 滚动视口到节点
+   * Scroll viewport to node
    */
   scrollToNode(node: INode, detail?: any): void;
 
   /**
-   * 描述组件
+   * Describe component
    */
   generateComponentMetadata(componentName: string): IPublicTypeComponentMetadata;
 
   /**
-   * 根据组件信息获取组件类
+   * Get component class from component info
    */
   getComponent(componentName: string): Component | any;
 
   /**
-   * 根据节点获取节点的组件实例
+   * Get component instance for a node
    */
   getComponentInstances(node: INode): IPublicTypeComponentInstance[] | null;
 
   /**
-   * 根据 schema 创建组件类
+   * Create component class from schema
    */
   createComponent(schema: IPublicTypeNodeSchema): Component | null;
 
   /**
-   * 根据节点获取节点的组件运行上下文
+   * Get component runtime context for a node
    */
   getComponentContext(node: INode): object | null;
 
@@ -179,7 +179,7 @@ export interface ISimulatorHost<P = object> extends IPublicModelSensor<INode> {
   rerender(): void;
 
   /**
-   * 销毁
+   * Destroy
    */
   purge(): void;
 
@@ -191,7 +191,7 @@ export function isSimulatorHost(obj: any): obj is ISimulatorHost {
 }
 
 /**
- * 组件类定义
+ * Component class definition
  */
 export type Component = ComponentType<any> | object;
 

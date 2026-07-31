@@ -15,7 +15,7 @@ export class Selection implements IPublicModelSelection {
   }
 
   /**
-   * 返回选中的节点 id
+   * Return selected node id(s)
    */
   get selected(): string[] {
     return this[selectionSymbol].selected;
@@ -30,7 +30,7 @@ export class Selection implements IPublicModelSelection {
   }
 
   /**
-   * 选中指定节点（覆盖方式）
+   * Select node(s) (replace selection)
    * @param id
    */
   select(id: string): void {
@@ -38,7 +38,7 @@ export class Selection implements IPublicModelSelection {
   }
 
   /**
-   * 批量选中指定节点们
+   * Select multiple nodes in batch
    * @param ids
    */
   selectAll(ids: string[]): void {
@@ -46,7 +46,7 @@ export class Selection implements IPublicModelSelection {
   }
 
   /**
-   * 移除选中的指定节点
+   * Remove a node from selection
    * @param id
    */
   remove(id: string): void {
@@ -54,14 +54,14 @@ export class Selection implements IPublicModelSelection {
   }
 
   /**
-   * 清除所有选中节点
+   * Clear all selected nodes
    */
   clear(): void {
     this[selectionSymbol].clear();
   }
 
   /**
-   * 判断是否选中了指定节点
+   * Whether the given node is selected
    * @param id
    * @returns
    */
@@ -70,7 +70,7 @@ export class Selection implements IPublicModelSelection {
   }
 
   /**
-   * 选中指定节点（增量方式）
+   * Select a node (additive)
    * @param id
    */
   add(id: string): void {
@@ -78,7 +78,7 @@ export class Selection implements IPublicModelSelection {
   }
 
   /**
-   * 获取选中的节点实例
+   * Get selected node instance(s)
    * @returns
    */
   getNodes(): IPublicModelNode[] {
@@ -94,7 +94,7 @@ export class Selection implements IPublicModelSelection {
   }
 
   /**
-   * 获取选区的顶层节点
+   * Get top-level nodes of the selection
    * for example:
    *  getNodes() returns [A, subA, B], then
    *  getTopNodes() will return [A, B], subA will be removed

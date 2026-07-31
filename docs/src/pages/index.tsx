@@ -6,7 +6,7 @@ export default function ToIndex(): JSX.Element {
     <BrowserOnly>
       {() => {
         /**
-         * 跳转到首页
+         * Redirect to the home page
          */
         window.location.href = '/index';
         return <></>;

@@ -31,8 +31,8 @@ export interface PluginConfig extends RaxFrameworkOptions {
   fileType?: string;
 
   /**
-   * 数据源的 handlers 的映射配置
-   * @deprecated 请使用 datasourceConfig.handlersPackages 来配置
+   * Data source handlers mapping config
+   * @deprecated Please configure via datasourceConfig.handlersPackages
    */
   dataSourceHandlersPackageMap?: Record<string, string>;
 }
@@ -138,8 +138,8 @@ _defineDataSourceConfig() {
       ...dataSourceConfig,
       list: [
         ...dataSourceItems.map((item) => ({
-          // 数据源引擎默认的 errorHandler 是空的，而且并不会触发组件重新渲染……
-          // 这会导致页面状态不能正常展示，故这里处理下:
+          // The data source engine default errorHandler is empty and does not trigger re-render...
+          // That can leave page state incorrect; handle it here:
           errorHandler: {
             type: 'JSFunction',
             value: `function (err){

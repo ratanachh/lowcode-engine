@@ -6,10 +6,10 @@ const leadingFnNameRe = /^\w+\s*\(/;
 const logger = getLogger({ level: 'warn', bizName: 'skeleton:transducers' });
 
 /**
- * 将函数字符串转成函数，支持几种类型
- *   类型一：() => {} / val => {}
- *   类型二：setValue() {}
- *   类型三：function() {} / function setValue() {}
+ * Convert a function string into a function; supports several forms
+ *   Form 1: () => {} / val => {}
+ *   Form 2: setValue() {}
+ *   Form 3: function() {} / function setValue() {}
  * @param str
  * @returns
  */

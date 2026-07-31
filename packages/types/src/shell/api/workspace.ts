@@ -8,71 +8,71 @@ export interface IPublicApiWorkspace<
   Resource = IPublicModelResource,
 > {
 
-  /** 是否启用 workspace 模式 */
+  /** Whether workspace mode is enabled */
   isActive: boolean;
 
-  /** 当前设计器窗口 */
+  /** Current designer window */
   window: ModelWindow | null;
 
   plugins: Plugins;
 
   skeleton: Skeleton;
 
-  /** 当前设计器的编辑窗口 */
+  /** Current designer editor window */
   windows: ModelWindow[];
 
-  /** 获取资源树列表 */
+  /** Get the resource tree list */
   get resourceList(): IPublicModelResource[];
 
-  /** 设置资源树列表 */
+  /** Set the resource tree list */
   setResourceList(resourceList: IPublicResourceList): void;
 
-  /** 资源树列表更新事件 */
+  /** Resource tree list update event */
   onResourceListChange(fn: (resourceList: IPublicResourceList) => void): IPublicTypeDisposable;
 
-  /** 注册资源 */
+  /** Register a resource */
   registerResourceType(resourceTypeModel: IPublicTypeResourceType): void;
 
   /**
-   * 打开视图窗口
+   * Open a view window
    * @deprecated
    */
   openEditorWindow(resourceName: string, id: string, extra: Object, viewName?: string, sleep?: boolean): Promise<void>;
 
-  /** 打开视图窗口 */
+  /** Open a view window */
   openEditorWindow(resource: Resource, sleep?: boolean): Promise<void>;
 
-  /** 通过视图 id 打开窗口 */
+  /** Open a window by view id */
   openEditorWindowById(id: string): void;
 
   /**
-   * 移除视图窗口
+   * Remove a view window
    * @deprecated
    */
   removeEditorWindow(resourceName: string, id: string): void;
 
   /**
-   * 移除视图窗口
+   * Remove a view window
    */
   removeEditorWindow(resource: Resource): void;
 
-  /** 通过视图 id 移除窗口 */
+  /** Remove a window by view id */
   removeEditorWindowById(id: string): void;
 
-  /** 窗口新增/删除的事件 */
+  /** Window added/removed event */
   onChangeWindows(fn: () => void): IPublicTypeDisposable;
 
-  /** active 窗口变更事件 */
+  /** Active window change event */
   onChangeActiveWindow(fn: () => void): IPublicTypeDisposable;
 
   /**
-   * active 视图变更事件
+   * Active view change event
    * @since v1.1.7
    */
   onChangeActiveEditorView(fn: () => void): IPublicTypeDisposable;
 
   /**
-   * window 下的所有视图 renderer ready 事件
+   * All views under the window are renderer-ready event
    * @since v1.1.7
    */
   onWindowRendererReady(fn: () => void): IPublicTypeDisposable;

@@ -112,7 +112,7 @@ class DesignerCabin implements IPublicApiCommonDesignerCabin {
   }
 
   /**
-   * 是否是 SettingField 实例
+   * Whether this is a SettingField instance
    * @deprecated use same function from @rchh/lowcode-utils directly
    */
   isSettingField(obj: any): boolean {
@@ -120,8 +120,8 @@ class DesignerCabin implements IPublicApiCommonDesignerCabin {
   }
 
   /**
-   * 转换类型枚举对象，包含 init / upgrade / render 等类型
-   * [参考](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/transform-stage.ts)
+   * Transform stage enum object, including init / upgrade / render, etc.
+   * [Reference](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/transform-stage.ts)
    * @deprecated use { TransformStage } from '@rchh/lowcode-types' instead
    */
   get TransformStage() {
@@ -301,7 +301,7 @@ class EditorCabin implements IPublicApiCommonEditorCabin {
   }
 
   /**
-   * Title 组件
+   * Title component
    * @experimental unstable API, pay extra caution when trying to use this
    */
   get Title() {
@@ -309,7 +309,7 @@ class EditorCabin implements IPublicApiCommonEditorCabin {
   }
 
   /**
-   * Tip 组件
+   * Tip component
    * @experimental unstable API, pay extra caution when trying to use this
    */
   get Tip() {
@@ -434,7 +434,7 @@ export class Common implements IPublicApiCommon {
   }
 
   /**
-   * 历史原因导致此处设计不合理，慎用。
+   * Historical design quirk; use with caution.
    * this load of crap will be removed in some future versions, don`t use it.
    * @deprecated
    */
@@ -443,7 +443,7 @@ export class Common implements IPublicApiCommon {
   }
 
   /**
-   * 历史原因导致此处设计不合理，慎用。
+   * Historical design quirk; use with caution.
    * this load of crap will be removed in some future versions, don`t use it.
    * @deprecated use canvas api instead
    */
@@ -456,7 +456,7 @@ export class Common implements IPublicApiCommon {
   }
 
   /**
-   * 历史原因导致此处设计不合理，慎用。
+   * Historical design quirk; use with caution.
    * this load of crap will be removed in some future versions, don`t use it.
    * @deprecated use { TransformStage } from '@rchh/lowcode-types' instead
    */

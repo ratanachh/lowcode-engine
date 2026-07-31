@@ -37,7 +37,7 @@ interface DataSource {
 }
 
 /**
- * 判断是否是数据源类型
+ * Whether it is a data source type
  */
 function isDataSource(v: unknown): v is DataSource {
   return typeof v === 'object' && v != null && (v as Partial<DataSource>).type === 'DataSource';
@@ -58,11 +58,11 @@ function generateObject(
   options: CompositeValueGeneratorOptions = {},
 ): string {
   if (value.type === 'i18n') {
-    // params 可能会绑定变量，这里需要处理下
+    // params may bind variables; handle that here
     if (value.params && typeof value.params === 'object') {
       return `this._i18nText(${generateUnknownType(_.omit(value, 'type'), scope, options)})`;
     }
-    return `this._i18nText(${JSON.stringify(_.omit(value, 'type'))})`; // TODO: 优化：这里可以考虑提取成个常量...
+    return `this._i18nText(${JSON.stringify(_.omit(value, 'type'))})`; // TODO: Optimization: consider extracting this as a constant...
   }
 
   const body = Object.keys(value)
@@ -77,7 +77,7 @@ function generateObject(
 }
 
 function generateString(value: string): string {
-  // 有的字符串里面会有特殊字符，比如换行或引号之类的，这里我们借助 JSON 的字符串转义功能来做下转义并加上双引号
+  // Some strings contain special characters (newlines, quotes, etc.); use JSON string escaping and wrap with double quotes
   return JSON.stringify(value);
 }
 
@@ -126,8 +126,8 @@ function generateUnknownType(
     return generateArray(value, scope, options);
   }
 
-  // FIXME: 这个是临时方案
-  // 在遇到 type variable 私有类型时，转换为 JSExpression
+  // FIXME: This is a temporary solution
+  // When encountering the private type "variable", convert to JSExpression
   if (isVariable(value)) {
     const transValue: IPublicTypeJSExpression = {
       type: 'JSExpression',
@@ -216,8 +216,8 @@ function generateUnknownType(
   throw new CodeGeneratorError('Meet unknown composite value type');
 }
 
-// 这一层曾经是对产出做最外层包装的，但其实包装逻辑不应该属于这一层
-// 这一层先不去掉，做冗余，方便后续重构
+// This layer once wrapped the outermost output, but wrapping should not belong here
+// Keep this layer for now as redundancy for later refactor
 export function generateCompositeType(
   value: IPublicTypeCompositeValue,
   scope: IScope,

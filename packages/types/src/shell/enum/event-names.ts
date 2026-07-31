@@ -1,5 +1,5 @@
 /**
- * 所有公开可用的事件名定义
+ * Definitions of all publicly available event names
  * All public event names
  * names should be like 'namespace.modelName.whatHappened'
  *

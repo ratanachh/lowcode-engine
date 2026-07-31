@@ -16,14 +16,14 @@ export class SettingTopEntry implements IPublicModelSettingTopEntry {
   }
 
   /**
-   * 返回所属的节点实例
+   * Return the owning node instance
    */
   get node(): IPublicModelNode | null {
     return ShellNode.create(this[settingTopEntrySymbol].getNode());
   }
 
   /**
-   * 获取子级属性对象
+   * Get child setting props
    * @param propName
    * @returns
    */
@@ -39,7 +39,7 @@ export class SettingTopEntry implements IPublicModelSettingTopEntry {
   }
 
   /**
-   * 获取指定 propName 的值
+   * Get value by propName
    * @param propName
    * @returns
    */
@@ -48,7 +48,7 @@ export class SettingTopEntry implements IPublicModelSettingTopEntry {
   }
 
   /**
-   * 设置指定 propName 的值
+   * Set value by propName
    * @param propName
    * @param value
    */

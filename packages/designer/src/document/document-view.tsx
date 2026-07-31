@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import classNames from 'classnames';
 import { observer } from '@rchh/lowcode-editor-core';
-import { DocumentModel, IDocumentModel } from './document-model';
+import { IDocumentModel } from './document-model';
 import { BuiltinSimulatorHostView } from '../builtin-simulator';
 
 @observer
@@ -16,7 +16,7 @@ export class DocumentView extends Component<{ document: IDocumentModel }> {
           'lc-document-hidden': document.suspensed,
         })}
       >
-        {/* 这一层将来做缩放用途 */}
+        {/* This layer is reserved for future scaling */}
         <div className="lc-simulator-shell">
           <Simulator {...simulatorProps} />
         </div>

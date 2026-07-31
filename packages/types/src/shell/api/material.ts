@@ -5,27 +5,27 @@ import { ComponentType } from 'react';
 export interface IPublicApiMaterial {
 
   /**
-   * 获取组件 map 结构
+   * Get component map structure
    * get map of components
    */
   get componentsMap(): { [key: string]: IPublicTypeNpmInfo | ComponentType<any> | object } ;
 
   /**
-   * 设置「资产包」结构
+   * Set up the "asset package" structure
    * set data for Assets
    * @returns void
    */
   setAssets(assets: IPublicTypeAssetsJson): Promise<void>;
 
   /**
-   * 获取「资产包」结构
+   * Get the "asset package" structure
    * get AssetsJson data
    * @returns IPublicTypeAssetsJson
    */
   getAssets(): IPublicTypeAssetsJson | undefined;
 
   /**
-   * 加载增量的「资产包」结构，该增量包会与原有的合并
+   * Load the incremental "asset package" structure, which will be merged with the original one
    * load Assets incrementally, and will merge this with exiting assets
    * @param incrementalAssets
    * @returns
@@ -33,7 +33,7 @@ export interface IPublicApiMaterial {
   loadIncrementalAssets(incrementalAssets: IPublicTypeAssetsJson): void;
 
   /**
-   * 注册物料元数据管道函数，在物料信息初始化时执行。
+   * Register the material metadata pipeline function and execute it when the material information is initialized.
    * register transducer to process component meta, which will be
    * excuted during component meta`s initialization
    * @param transducer
@@ -47,14 +47,14 @@ export interface IPublicApiMaterial {
   ): void;
 
   /**
-   * 获取所有物料元数据管道函数
+   * Get all material metadata pipeline function
    * get all registered metadata transducers
    * @returns {IPublicTypeMetadataTransducer[]}
    */
   getRegisteredMetadataTransducers(): IPublicTypeMetadataTransducer[];
 
   /**
-   * 获取指定名称的物料元数据
+   * Get the material metadata of the specified name
    * get component meta by component name
    * @param componentName
    * @returns
@@ -69,13 +69,13 @@ export interface IPublicApiMaterial {
   isComponentMeta(obj: any): boolean;
 
   /**
-   * 获取所有已注册的物料元数据
+   * Get all registered material metadata
    * get map of all component metas
    */
   getComponentMetasMap(): Map<string, IPublicModelComponentMeta>;
 
   /**
-   * 在设计器辅助层增加一个扩展 action
+   * Add an extension action to the designer auxiliary layer
    *
    * add an action button in canvas context menu area
    * @param action
@@ -99,14 +99,14 @@ export interface IPublicApiMaterial {
   addBuiltinComponentAction(action: IPublicTypeComponentAction): void;
 
   /**
-   * 移除设计器辅助层的指定 action
+   * Remove a specified action from the designer helper layer
    * remove a builtin action button from canvas context menu area
    * @param name
    */
   removeBuiltinComponentAction(name: string): void;
 
   /**
-   * 修改已有的设计器辅助层的指定 action
+   * Modify an existing action on the designer helper layer
    * modify a builtin action button in canvas context menu area
    * @param actionName
    * @param handle
@@ -117,32 +117,32 @@ export interface IPublicApiMaterial {
     ): void;
 
   /**
-   * 监听 assets 变化的事件
+   * Listen for assets change events
    * add callback for assets changed event
    * @param fn
    */
   onChangeAssets(fn: () => void): IPublicTypeDisposable;
 
   /**
-   * 刷新 componentMetasMap，可触发模拟器里的 components 重新构建
+   * Refresh componentMetasMap; may trigger component rebuild in the simulator
    * @since v1.1.7
    */
   refreshComponentMetasMap(): void;
 
   /**
-   * 添加右键菜单项
+   * Add a context-menu item
    * @param action
    */
   addContextMenuOption(action: IPublicTypeContextMenuAction): void;
 
   /**
-   * 删除特定右键菜单项
+   * Remove a specific context-menu item
    * @param name
    */
   removeContextMenuOption(name: string): void;
 
   /**
-   * 调整右键菜单项布局
+   * Adjust context-menu item layout
    * @param actions
    */
   adjustContextMenuLayout(fn: (actions: IPublicTypeContextMenuItem[]) => IPublicTypeContextMenuItem[]): void;

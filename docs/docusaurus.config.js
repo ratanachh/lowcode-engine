@@ -20,8 +20,8 @@ const config = {
   projectName: 'lowcode-engine', // Usually your repo name.
 
   i18n: {
-    defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
 
   plugins: [
@@ -39,44 +39,42 @@ const config = {
   presets: [
     [
       'classic',
-      ({
+      {
         docs: {
           sidebarPath: require.resolve('./config/sidebars.js'),
           // lastVersion: 'current',
-          editUrl:
-            'https://github.com/alibaba/lowcode-engine/tree/develop/docs/',
+          editUrl: 'https://github.com/alibaba/lowcode-engine/tree/develop/docs/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      },
     ],
   ],
 
-  themeConfig:
-    ({
-      docs: {
-        sidebar: {
-          hideable: true,
-        },
+  themeConfig: {
+    docs: {
+      sidebar: {
+        hideable: true,
       },
-      navbar,
-      footer: {
-        // style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} 阿里巴巴集团, Inc. Built with Docusaurus.`,
-      },
-      // 主题切换
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-      },
-      // 语雀文档导出的图片，会进行 referrer 校验，这里设置关闭，不然加载不了语雀的图片
-      metadata: [{ name: 'referrer', content: 'no-referrer' }],
-      tableOfContents: {
-        minHeadingLevel: 2,
-        maxHeadingLevel: 6,
-      },
-    }),
+    },
+    navbar,
+    footer: {
+      // style: 'dark',
+      copyright: `Copyright © ${new Date().getFullYear()} Alibaba Group, Inc. Built with Docusaurus.`,
+    },
+    // Theme switcher
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
+    },
+    // Images exported from Yuque check referrer; disable it so those images can load
+    metadata: [{ name: 'referrer', content: 'no-referrer' }],
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 6,
+    },
+  },
 
   themes: [
     [

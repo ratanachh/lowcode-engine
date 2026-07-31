@@ -744,7 +744,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (
       return next;
     }
 
-    // 创建 methods.jsx
+    // Create methods.jsx
     next.chunks.push({
       type: ChunkType.STRING,
       subModule: 'methods',
@@ -754,7 +754,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (
       linkAfter: [],
     });
 
-    // 引入对应的模块
+    // Import the corresponding modules
     next.chunks.push({
       type: ChunkType.STRING,
       fileType: cfg.fileType,
@@ -763,7 +763,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (
       linkAfter: [...DEFAULT_LINK_AFTER[COMMON_CHUNK_NAME.InternalDepsImport]],
     });
 
-    // 将导出的东东都放到 class 上实例方法部分
+    // Put exported items onto the class as instance methods
     next.chunks.push({
       type: ChunkType.STRING,
       fileType: cfg.fileType,
@@ -786,7 +786,7 @@ export default pluginFactory;
     {
       file: 'tests/basic.test.ts',
       content: `test('basic functions should be ok', () => {
-  // 这里放一些单元测试
+  // Put some unit tests here
   expect(0).toBe(0);
 });
 `,

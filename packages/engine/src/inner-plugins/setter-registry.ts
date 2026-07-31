@@ -1,6 +1,6 @@
 import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 
-// 注册默认的 setters
+// Register default setters
 export const setterRegistry = (ctx: IPublicModelPluginContext) => {
   return {
     init() {

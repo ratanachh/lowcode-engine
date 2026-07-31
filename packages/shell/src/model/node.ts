@@ -42,7 +42,7 @@ export class Node implements IPublicModelNode {
   private _id: string;
 
   /**
-   * 节点 id
+   * Node id
    */
   get id() {
     return this._id;
@@ -56,7 +56,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 节点标题
+   * Node title
    */
   get title(): string | IPublicTypeI18nData | ReactElement {
     return this[nodeSymbol].title;
@@ -64,14 +64,14 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 是否为「容器型」节点
+   * Whether this is a container node
    */
   get isContainer(): boolean {
     return this[nodeSymbol].isContainerNode;
   }
 
   /**
-   * 是否为「容器型」节点
+   * Whether this is a container node
    */
   get isContainerNode(): boolean {
     return this[nodeSymbol].isContainerNode;
@@ -79,14 +79,14 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 是否为根节点
+   * Whether this is the root node
    */
   get isRoot(): boolean {
     return this[nodeSymbol].isRootNode;
   }
 
   /**
-   * 是否为根节点
+   * Whether this is the root node
    */
   get isRootNode(): boolean {
     return this[nodeSymbol].isRootNode;
@@ -94,14 +94,14 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 是否为空节点（无 children 或者 children 为空）
+   * Whether this is an empty node (no children or empty children)
    */
   get isEmpty(): boolean {
     return this[nodeSymbol].isEmptyNode;
   }
 
   /**
-   * 是否为空节点（无 children 或者 children 为空）
+   * Whether this is an empty node (no children or empty children)
    */
   get isEmptyNode(): boolean {
     return this[nodeSymbol].isEmptyNode;
@@ -109,14 +109,14 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 是否为 Page 节点
+   * Whether this is a Page node
    */
   get isPage(): boolean {
     return this[nodeSymbol].isPageNode;
   }
 
   /**
-   * 是否为 Page 节点
+   * Whether this is a Page node
    */
   get isPageNode(): boolean {
     return this[nodeSymbol].isPageNode;
@@ -124,14 +124,14 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 是否为 Component 节点
+   * Whether this is a Component node
    */
   get isComponent(): boolean {
     return this[nodeSymbol].isComponentNode;
   }
 
   /**
-   * 是否为 Component 节点
+   * Whether this is a Component node
    */
   get isComponentNode(): boolean {
     return this[nodeSymbol].isComponentNode;
@@ -139,14 +139,14 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 是否为「模态框」节点
+   * Whether this is a modal node
    */
   get isModal(): boolean {
     return this[nodeSymbol].isModalNode;
   }
 
   /**
-   * 是否为「模态框」节点
+   * Whether this is a modal node
    */
   get isModalNode(): boolean {
     return this[nodeSymbol].isModalNode;
@@ -154,14 +154,14 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 是否为插槽节点
+   * Whether this is a slot node
    */
   get isSlot(): boolean {
     return this[nodeSymbol].isSlotNode;
   }
 
   /**
-   * 是否为插槽节点
+   * Whether this is a slot node
    */
   get isSlotNode(): boolean {
     return this[nodeSymbol].isSlotNode;
@@ -169,14 +169,14 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 是否为父类/分支节点
+   * Whether this is a parent/branch node
    */
   get isParental(): boolean {
     return this[nodeSymbol].isParentalNode;
   }
 
   /**
-   * 是否为父类/分支节点
+   * Whether this is a parent/branch node
    */
   get isParentalNode(): boolean {
     return this[nodeSymbol].isParentalNode;
@@ -184,14 +184,14 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 是否为叶子节点
+   * Whether this is a leaf node
    */
   get isLeaf(): boolean {
     return this[nodeSymbol].isLeafNode;
   }
 
   /**
-   * 是否为叶子节点
+   * Whether this is a leaf node
    */
   get isLeafNode(): boolean {
     return this[nodeSymbol].isLeafNode;
@@ -203,49 +203,49 @@ export class Node implements IPublicModelNode {
   readonly isNode = true;
 
   /**
-   * 获取当前节点的锁定状态
+   * Get lock state of current node
    */
   get isLocked(): boolean {
     return this[nodeSymbol].isLocked;
   }
 
   /**
-   * 下标
+   * Index
    */
   get index() {
     return this[nodeSymbol].index;
   }
 
   /**
-   * 图标
+   * Icon
    */
   get icon(): IPublicTypeIconType {
     return this[nodeSymbol].icon;
   }
 
   /**
-   * 节点所在树的层级深度，根节点深度为 0
+   * Depth in the tree; root depth is 0
    */
   get zLevel(): number {
     return this[nodeSymbol].zLevel;
   }
 
   /**
-   * 节点 componentName
+   * Node componentName
    */
   get componentName(): string {
     return this[nodeSymbol].componentName;
   }
 
   /**
-   * 节点的物料元数据
+   * Node component metadata
    */
   get componentMeta(): IPublicModelComponentMeta | null {
     return ShellComponentMeta.create(this[nodeSymbol].componentMeta);
   }
 
   /**
-   * 获取节点所属的文档模型对象
+   * Get the document model that owns this node
    * @returns
    */
   get document(): IPublicModelDocumentModel | null {
@@ -253,7 +253,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 获取当前节点的前一个兄弟节点
+   * Get previous sibling
    * @returns
    */
   get prevSibling(): IPublicModelNode | null {
@@ -261,7 +261,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 获取当前节点的后一个兄弟节点
+   * Get next sibling
    * @returns
    */
   get nextSibling(): IPublicModelNode | null {
@@ -269,7 +269,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 获取当前节点的父亲节点
+   * Get parent node
    * @returns
    */
   get parent(): IPublicModelNode | null {
@@ -277,7 +277,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 获取当前节点的孩子节点模型
+   * Get children model
    * @returns
    */
   get children(): IPublicModelNodeChildren | null {
@@ -285,35 +285,35 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 节点上挂载的插槽节点们
+   * Slot nodes mounted on this node
    */
   get slots(): IPublicModelNode[] {
     return this[nodeSymbol].slots.map((node: InnerNode) => Node.create(node)!);
   }
 
   /**
-   * 当前节点为插槽节点时，返回节点对应的属性实例
+   * When this is a slot node, return the corresponding prop instance
    */
   get slotFor(): IPublicModelProp | null | undefined {
     return ShellProp.create(this[nodeSymbol].slotFor);
   }
 
   /**
-   * 返回节点的属性集
+   * Return node props
    */
   get props(): IPublicModelProps | null {
     return ShellProps.create(this[nodeSymbol].props);
   }
 
   /**
-   * 返回节点的属性集
+   * Return node props
    */
   get propsData(): IPublicTypePropsMap | IPublicTypePropsList | null {
     return this[nodeSymbol].propsData;
   }
 
   /**
-   * 获取符合搭建协议 - 节点 schema 结构
+   * Get node schema conforming to the lowcode protocol
    */
   get schema(): IPublicTypeNodeSchema {
     return this[nodeSymbol].schema;
@@ -334,12 +334,12 @@ export class Node implements IPublicModelNode {
     if (!node) {
       return null;
     }
-    // @ts-ignore 直接返回已挂载的 shell node 实例
+    // @ts-ignore Return the mounted shell node instance directly
     if (isShellNode(node)) {
       return (node as any)[shellNodeSymbol];
     }
     const shellNode = new Node(node);
-    // @ts-ignore 挂载 shell node 实例
+    // @ts-ignore Mount shell node instance
     // eslint-disable-next-line no-param-reassign
     node[shellNodeSymbol] = shellNode;
     return shellNode;
@@ -353,14 +353,14 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 获取节点实例对应的 dom 节点
+   * Get DOM element for this node instance
    */
   getDOMNode() {
     return (this[nodeSymbol] as any).getDOMNode();
   }
 
   /**
-   * 执行新增、删除、排序等操作
+   * Perform add / remove / sort operations
    * @param remover
    * @param adder
    * @param sorter
@@ -374,7 +374,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 返回节点的尺寸、位置信息
+   * Return node size and position
    * @returns
    */
   getRect(): DOMRect | null {
@@ -382,7 +382,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 是否有挂载插槽节点
+   * Whether slot nodes are mounted
    * @returns
    */
   hasSlots(): boolean {
@@ -390,7 +390,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 是否设定了渲染条件
+   * Whether a render condition is set
    * @returns
    */
   hasCondition(): boolean {
@@ -398,7 +398,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 是否设定了循环数据
+   * Whether loop data is set
    * @returns
    */
   hasLoop(): boolean {
@@ -426,7 +426,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 设置节点锁定状态
+   * Set node lock state
    * @param flag
    */
   lock(flag?: boolean): void {
@@ -445,8 +445,8 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 获取指定 path 的属性模型实例
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * Get prop model instance at path
+   * @param path Prop path, supports a / a.b / a.0, etc.
    * @returns
    */
   getProp(path: string, createIfNone = true): IPublicModelProp | null {
@@ -454,8 +454,8 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 获取指定 path 的属性模型实例值
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * Get prop model value at path
+   * @param path Prop path, supports a / a.b / a.0, etc.
    * @returns
    */
   getPropValue(path: string) {
@@ -463,10 +463,10 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 获取指定 path 的属性模型实例，
-   *  注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param createIfNone 当没有属性的时候，是否创建一个属性
+   * Get prop model instance at path;
+   *  Note: on export, unlike normal props, this is not under props but sibling to props
+   * @param path Prop path, supports a / a.b / a.0, etc.
+   * @param createIfNone Whether to create the prop when missing
    * @returns
    */
   getExtraProp(path: string, createIfNone?: boolean): IPublicModelProp | null {
@@ -474,9 +474,9 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 获取指定 path 的属性模型实例，
-   *  注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * Get prop model instance at path;
+   *  Note: on export, unlike normal props, this is not under props but sibling to props
+   * @param path Prop path, supports a / a.b / a.0, etc.
    * @returns
    */
   getExtraPropValue(path: string): any {
@@ -484,9 +484,9 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 设置指定 path 的属性模型实例值
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param value 值
+   * Set prop model value at path
+   * @param path Prop path, supports a / a.b / a.0, etc.
+   * @param value Value
    * @returns
    */
   setPropValue(path: string, value: IPublicTypeCompositeValue): void {
@@ -494,9 +494,9 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 设置指定 path 的属性模型实例值
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param value 值
+   * Set prop model value at path
+   * @param path Prop path, supports a / a.b / a.0, etc.
+   * @param value Value
    * @returns
    */
   setExtraPropValue(path: string, value: IPublicTypeCompositeValue): void {
@@ -504,7 +504,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 导入节点数据
+   * Import node data
    * @param data
    */
   importSchema(data: IPublicTypeNodeSchema): void {
@@ -512,7 +512,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 导出节点数据
+   * Export node data
    * @param stage
    * @param options
    * @returns
@@ -525,7 +525,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 在指定位置之前插入一个节点
+   * Insert a node before the given position
    * @param node
    * @param ref
    * @param useMutator
@@ -543,7 +543,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 在指定位置之后插入一个节点
+   * Insert a node after the given position
    * @param node
    * @param ref
    * @param useMutator
@@ -561,9 +561,9 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 替换指定节点
-   * @param node 待替换的子节点
-   * @param data 用作替换的节点对象或者节点描述
+   * Replace the given node
+   * @param node Child node to replace
+   * @param data Replacement node instance or node schema
    * @returns
    */
   replaceChild(node: IPublicModelNode, data: any): IPublicModelNode | null {
@@ -571,7 +571,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 将当前节点替换成指定节点描述
+   * Replace current node with the given node schema
    * @param schema
    */
   replaceWith(schema: IPublicTypeNodeSchema): any {
@@ -579,14 +579,14 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 选中当前节点实例
+   * Select current node instance
    */
   select(): void {
     this[nodeSymbol].select();
   }
 
   /**
-   * 设置悬停态
+   * Set hover state
    * @param flag
    */
   hover(flag = true): void {
@@ -594,7 +594,7 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 删除当前节点实例
+   * Delete current node instance
    */
   remove(): void {
     this[nodeSymbol].remove();
@@ -602,7 +602,7 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 设置为磁贴布局节点
+   * Set as RGL / tile layout node
    */
   set isRGLContainer(flag: boolean) {
     this[nodeSymbol].isRGLContainerNode = flag;
@@ -610,7 +610,7 @@ export class Node implements IPublicModelNode {
 
   /**
    * @deprecated
-   * 获取磁贴布局节点设置状态
+   * Get tile layout node setting state
    * @returns Boolean
    */
   get isRGLContainer() {
@@ -618,14 +618,14 @@ export class Node implements IPublicModelNode {
   }
 
   /**
-   * 设置为磁贴布局节点
+   * Set as RGL / tile layout node
    */
   set isRGLContainerNode(flag: boolean) {
     this[nodeSymbol].isRGLContainerNode = flag;
   }
 
   /**
-   * 获取磁贴布局节点设置状态
+   * Get tile layout node setting state
    * @returns Boolean
    */
   get isRGLContainerNode() {

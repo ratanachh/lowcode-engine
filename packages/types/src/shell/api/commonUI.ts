@@ -33,31 +33,31 @@ export interface IPublicApiCommonUI {
   Divider: typeof Divider;
 
   /**
-   * Title 组件
+   * Title component
    */
   get Tip(): React.ComponentClass<IPublicTypeTipConfig>;
 
   /**
-   * HelpTip 组件
+   * HelpTip component
    */
   get HelpTip(): React.VFC<{
     help: IPublicTypeHelpTipConfig;
 
     /**
-     * 方向
+     * direction
      * @default 'top'
      */
     direction: IPublicTypeTipConfig['direction'];
 
     /**
-     * 大小
+     * size
      * @default 'small'
      */
     size: IconProps['size'];
   }>;
 
   /**
-   * Tip 组件
+   * Tip component
    */
   get Title(): React.ComponentClass<{
     title: IPublicTypeTitleContent | undefined;

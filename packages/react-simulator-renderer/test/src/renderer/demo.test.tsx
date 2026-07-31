@@ -16,9 +16,9 @@ describe('Base', () => {
   });
 
   it('should be render Text', () => {
-    // 更新 _componentsMap 值
+    // Update _componentsMap
     (rendererContainer as any)._componentsMap.Text = Text;//  = host.designer.componentsMap;
-    // 更新 components 列表
+    // Update components list
     (rendererContainer as any).buildComponents();
 
     expect(!!(rendererContainer.components as any).Text).toBeTruthy();

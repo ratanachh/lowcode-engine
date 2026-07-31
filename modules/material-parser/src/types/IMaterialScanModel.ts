@@ -1,23 +1,32 @@
 /**
- * 对应扫描阶段的产物
+ * Output of the scan stage
  */
 export interface IMaterialScanModel {
-  /** 当前包名 */
+
+  /** Current package name */
   pkgName: string;
-  /** 当前包版本 */
+
+  /** Current package version */
   pkgVersion: string;
-  /** 在ts场景下，使用entry */
+
+  /** In TS scenarios, use entry */
   useEntry?: boolean;
-  /** main文件相对路径 */
+
+  /** Relative path of the main file */
   mainFilePath: string;
-  /** module文件相对路径 */
+
+  /** Relative path of the module file */
   moduleFilePath?: string;
-  /** typings文件相对路径 */
+
+  /** Relative path of the typings file */
   typingsFilePath?: string;
-  /** main文件绝对路径 */
+
+  /** Absolute path of the main file */
   mainFileAbsolutePath: string;
-  /** module文件绝对路径 */
+
+  /** Absolute path of the module file */
   moduleFileAbsolutePath?: string;
-  /** typings文件绝对路径 */
+
+  /** Absolute path of the typings file */
   typingsFileAbsolutePath?: string;
 }

@@ -25,7 +25,7 @@ export class Prop implements IPublicModelProp {
   }
 
   /**
-   * key 值
+   * Key
    * get key of prop
    */
   get key(): string | number | undefined {
@@ -33,14 +33,14 @@ export class Prop implements IPublicModelProp {
   }
 
   /**
-   * 返回当前 prop 的路径
+   * Return path of current prop
    */
   get path(): string[] {
     return this[propSymbol].path;
   }
 
   /**
-   * 返回所属的节点实例
+   * Return the owning node instance
    */
   get node(): IPublicModelNode | null {
     return ShellNode.create(this[propSymbol].getNode());
@@ -61,7 +61,7 @@ export class Prop implements IPublicModelProp {
   }
 
   /**
-   * 设置值
+   * Set value
    * @param val
    */
   setValue(val: IPublicTypeCompositeValue): void {
@@ -69,7 +69,7 @@ export class Prop implements IPublicModelProp {
   }
 
   /**
-   * 获取值
+   * Get value
    * @returns
    */
   getValue(): any {
@@ -77,14 +77,14 @@ export class Prop implements IPublicModelProp {
   }
 
   /**
-   * 移除值
+   * Remove value
    */
   remove(): void {
     this[propSymbol].remove();
   }
 
   /**
-   * 导出值
+   * Export value
    * @param stage
    * @returns
    */

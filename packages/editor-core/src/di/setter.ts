@@ -108,7 +108,7 @@ export class Setters implements ISetters {
       setter = setter.component;
     }
 
-    // Fusion 的表单组件都是通过 'value' in props 来判断是否使用 defaultValue
+    // Fusion form components decide defaultValue usage via 'value' in props
     if ('value' in props && typeof props.value === 'undefined') {
       delete props.value;
     }

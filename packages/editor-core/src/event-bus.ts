@@ -17,7 +17,7 @@ export class EventBus implements IEventBus {
   private readonly name?: string;
 
   /**
-   * 内核触发的事件名
+   * Engine-emitted event name
    */
   readonly names = [];
 
@@ -43,9 +43,9 @@ export class EventBus implements IEventBus {
   }
 
   /**
-   * 监听事件
-   * @param event 事件名称
-   * @param listener 事件回调
+   * Listen to an event
+   * @param event event name
+   * @param listener event callback
    */
   on(event: string, listener: (...args: any[]) => void): () => void {
     this.eventEmitter.on(event, listener);
@@ -64,9 +64,9 @@ export class EventBus implements IEventBus {
   }
 
   /**
-   * 取消监听事件
-   * @param event 事件名称
-   * @param listener 事件回调
+   * Remove event listener
+   * @param event event name
+   * @param listener event callback
    */
   off(event: string, listener: (...args: any[]) => void) {
     this.eventEmitter.off(event, listener);
@@ -74,9 +74,9 @@ export class EventBus implements IEventBus {
   }
 
   /**
-   * 触发事件
-   * @param event 事件名称
-   * @param args 事件参数
+   * Emit an event
+   * @param event event name
+   * @param args event arguments
    * @returns
    */
   emit(event: string, ...args: any[]) {

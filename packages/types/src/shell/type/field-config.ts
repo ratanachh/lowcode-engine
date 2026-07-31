@@ -1,12 +1,12 @@
 import { IPublicTypeTitleContent, IPublicTypeSetterType, IPublicTypeFieldExtraProps, IPublicTypeDynamicSetter } from './';
 
 /**
- * 属性面板配置
+ * Property panel configuration
  */
 export interface IPublicTypeFieldConfig extends IPublicTypeFieldExtraProps {
 
   /**
-   * 面板配置隶属于单个 field 还是分组
+   * Whether panel config belongs to a single field or a group
    */
   type?: 'field' | 'group';
 
@@ -22,7 +22,7 @@ export interface IPublicTypeFieldConfig extends IPublicTypeFieldExtraProps {
   title?: IPublicTypeTitleContent;
 
   /**
-   * 单个属性的 setter 配置
+   * Setter config for a single prop
    *
    * the field body contains when .type = 'field'
    */
@@ -35,7 +35,7 @@ export interface IPublicTypeFieldConfig extends IPublicTypeFieldExtraProps {
 
   /**
    * extra props for field
-   * 其他配置属性（不做流通要求）
+   * Other config props (not required for interchange)
    */
   extraProps?: IPublicTypeFieldExtraProps;
 

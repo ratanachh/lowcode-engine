@@ -64,7 +64,7 @@ export class Canvas implements IPublicApiCanvas {
   }
 
   /**
-   * 创建插入位置，考虑放到 dragon 中
+   * Create insertion location; consider moving into dragon
    */
   createLocation(locationData: IPublicTypeLocationData): IPublicModelDropLocation {
     return new DropLocation(this[designerSymbol].createLocation({

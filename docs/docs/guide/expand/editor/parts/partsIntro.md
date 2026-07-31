@@ -1,18 +1,19 @@
 ---
-title: 介绍
+title: Introduction
 sidebar_position: 1
 ---
-## 介绍
+
+## Introduction
+
 ![](https://gw.alicdn.com/imgextra/i2/O1CN01Gyq6AZ1nOENPTVXX7_!!6000000005079-2-tps-256-104.png)
 
+**Parts** is a next-generation material R&D and integration tool built on the open-source low-code engine. On one hand, it serves as a showcase for how components in the open-source ecosystem come together to form productivity when building a low-code platform. On the other, it can produce materials required by low-code platforms.
 
-「Parts·造物」是基于开源低代码引擎打造的次时代物料研发和集成工具，一方面作为低代码引擎搭建低代码平台的一个样板展示开源生态下的各个组件如何集合在一起形成生产力，另一方面也可以生产低代码平台所需的物料。
+Currently, **Parts** provides two main product features:
 
-目前「Parts·造物」主要提供两大产品功能：
-   1. React 组件导入低代码引擎：通过在线可视化的「物料描述」配置，任意工具开发的 React 组件都可以快速完成对低代码引擎的适配，导入到低代码引擎项目中进行使用。不必额外开发新的组件。
-   2. 低代码生产组件：通过低代码的形式生产组件，极低上手门槛，提供丰富的原子组件用于组合，完善的调试预览和组件生命周期控制。生产的组件既可以在低代码引擎项目中使用，也可以出码后在普通源码项目中使用。
+1.  **React component import for the low-code engine**: Through online visual "material description" configuration, React components developed with any tool can be quickly adapted for the low-code engine and used in low-code engine projects—without developing new components.
+2.  **Low-code component production**: Produce components through low-code with a very low learning curve, rich atomic components for composition, and complete debug preview and component lifecycle control. Produced components can be used in low-code engine projects or exported as code for use in ordinary source code projects.
 
-
-## 联系我们
+## Contact Us
 
 <img src="https://img.alicdn.com/imgextra/i2/O1CN01UF88Xi1jC5SZ6m4wt_!!6000000004511-2-tps-750-967.png" width="300" />

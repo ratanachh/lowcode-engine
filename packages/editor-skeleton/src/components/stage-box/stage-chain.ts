@@ -28,7 +28,7 @@ export default class StageChain {
   }
 
   /**
-   * 回到最开始
+   * Go back to the beginning
    */
   stageBackToRoot() {
     let rootStage = this.stage.getPrevious();

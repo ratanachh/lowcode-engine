@@ -1,27 +1,31 @@
 import { IPublicTypeNodeSchema } from './';
 
 /**
- * 可用片段
+ * Available snippets
  *
- * 内容为组件不同状态下的低代码 schema (可以有多个)，用户从组件面板拖入组件到设计器时会向页面 schema 中插入 snippets 中定义的组件低代码 schema
+ * Low-code schemas for different component states (may be multiple); when dragged from the panel into the designer, these snippet schemas are inserted into the page schema
  */
 export interface IPublicTypeSnippet {
+
   /**
-   * 组件分类 title
+   * Component category title
    */
   title?: string;
+
   /**
-   * snippet 截图
+   * Snippet screenshot
    */
   screenshot?: string;
+
   /**
-   * snippet 打标
+   * Snippet badge/label
    *
-   * @deprecated 暂未使用
+   * @deprecated not used yet
    */
   label?: string;
+
   /**
-   * 待插入的 schema
+   * Schema to insert
    */
   schema?: IPublicTypeNodeSchema;
 }

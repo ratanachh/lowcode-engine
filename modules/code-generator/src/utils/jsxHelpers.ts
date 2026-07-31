@@ -1,5 +1,5 @@
 /**
- * 去掉 JS 表达式的 "{...}" 的封装, 如:
+ * Unwrap the "{...}" wrapper of a JS expression, e.g.:
  *  {<xxx />} => <xxx />
  */
 export function unwrapJsExprQuoteInJsx(jsxExpr: string): string {

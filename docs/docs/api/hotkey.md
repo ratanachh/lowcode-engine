@@ -1,24 +1,26 @@
 ---
-title:  hotkey - 快捷键 API
+title: hotkey - Hotkey API
 sidebar_position: 10
 ---
 
-> **@types** [IPublicApiHotkey](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/hotkey.ts)<br/>
-> **@since** v1.0.0
+> **@types** [IPublicApiHotkey](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/hotkey.ts)<br/> > **@since** v1.0.0
 
-## 模块简介
-绑定快捷键 API，可以自定义项目快捷键使用。
+## Module Overview
 
-## 方法
+Hotkey binding API for custom project shortcuts.
+
+## Methods
+
 ### bind
-绑定快捷键
+
+Bind a hotkey
 
 ```typescript
 /**
- * 绑定快捷键
+ * Bind a hotkey
  * bind hotkey/hotkeys,
- * @param combos 快捷键，格式如：['command + s'] 、['ctrl + shift + s'] 等
- * @param callback 回调函数
+ * @param combos Hotkey combos, e.g. ['command + s'], ['ctrl + shift + s']
+ * @param callback Callback function
  * @param action
  * @returns
  */
@@ -28,36 +30,39 @@ bind(
     action?: string,
   ): IPublicTypeDisposable;
 ```
-相关 types
+
+Related types
+
 - [IPublicTypeHotkeyCallback](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/hotkey-callback.ts)
 - [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
+## Usage Examples
 
-## 使用示例
-### 基础示例
+### Basic example
+
 ```typescript
 hotkey.bind('command+s', (e) => {
   e.preventDefault();
-  // command+s 快捷键按下时需要执行的逻辑
+  // Logic to run when command+s is pressed
 });
 ```
 
-### 同时绑定多个快捷键
+### Bind multiple hotkeys at once
+
 ```typescript
 hotkey.bind(['command+s', 'command+c'], (e) => {
   e.preventDefault();
-  // command+s 或者 command+c 快捷键按下时需要执行的逻辑
+  // Logic to run when command+s or command+c is pressed
 });
 ```
 
-### 保存快捷键配置
+### Save hotkey configuration
+
 ```typescript
-import {
-  hotkey,
-} from '@rchh/lowcode-engine';
+import { hotkey } from '@rchh/lowcode-engine';
 
 function saveSchema(schema) {
-  // 保存 schema 相关操作
+  // Schema save logic
 }
 
 const saveSampleHotKey = (ctx: IPublicModelPluginContext) => {
@@ -70,7 +75,7 @@ const saveSampleHotKey = (ctx: IPublicModelPluginContext) => {
       });
     },
   };
-}
+};
 
 saveSampleHotKey.pluginName = 'saveSampleHotKey';
 plugins.register(saveSampleHotKey);

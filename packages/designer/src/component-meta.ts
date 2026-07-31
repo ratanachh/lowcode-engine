@@ -201,7 +201,7 @@ export class ComponentMeta implements IComponentMeta {
       this.prototype = (metadata as any).prototype;
     }
     if (!npm && !Object.keys(others).length) {
-      // 没有注册的组件，只能删除，不支持复制、移动等操作
+      // Unregistered components can only be deleted; no copy/move etc.
       _metadata = {
         componentName,
         configure: {
@@ -219,7 +219,7 @@ export class ComponentMeta implements IComponentMeta {
     this._npm = npm || this._npm;
     this._componentName = componentName;
 
-    // 额外转换逻辑
+    // Extra conversion logic
     this._transformedMetadata = this.transformMetadata(_metadata);
 
     const { title } = this._transformedMetadata;
@@ -341,7 +341,7 @@ export class ComponentMeta implements IComponentMeta {
   }
 
   checkNestingUp(my: INode | IPublicTypeNodeData, parent: INode) {
-    // 检查父子关系，直接约束型，在画布中拖拽直接掠过目标容器
+    // Check parent-child constraints; skip target container while dragging on canvas
     if (this.parentWhitelist) {
       return this.parentWhitelist(
         parent.internalToShellNode(),
@@ -352,7 +352,7 @@ export class ComponentMeta implements IComponentMeta {
   }
 
   checkNestingDown(my: INode, target: INode | IPublicTypeNodeSchema | IPublicTypeNodeSchema[]): boolean {
-    // 检查父子关系，直接约束型，在画布中拖拽直接掠过目标容器
+    // Check parent-child constraints; skip target container while dragging on canvas
     if (this.childWhitelist) {
       const _target: any = !Array.isArray(target) ? [target] : target;
       return _target.every((item: Node | IPublicTypeNodeSchema) => {

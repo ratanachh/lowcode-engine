@@ -1,31 +1,36 @@
 ---
-title: plugins - 插件 API
+title: plugins - Plugin API
 sidebar_position: 2
 ---
-> **@types** [IPublicApiPlugins](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/plugins.ts)<br/>
-> **@since** v1.0.0
 
-## 模块简介
-插件管理器，提供编排模块中管理插件的能力。
+> **@types** [IPublicApiPlugins](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/plugins.ts)<br/> > **@since** v1.0.0
 
-## 方法
+## Module Overview
+
+Plugin manager providing plugin management in the orchestration module.
+
+## Methods
+
 ### register
-注册插件
+
+Register a plugin
 
 ```typescript
 async function register(
   plugin: IPublicTypePlugin,
   options?: IPublicTypePluginRegisterOptions,
-): Promise<void>
+): Promise<void>;
 ```
-相关 types:
+
+Related types:
+
 - [IPublicTypePlugin](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/plugin.ts)
 - [IPublicTypePluginRegisterOptions](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/plugin-register-options.ts)
 
-其中第一个参数 plugin 通过低代码工具链的插件脚手架生成编写模板，开发者可以参考[这个章节](/site/docs/guide/expand/editor/cli)进行创建
+The first `plugin` parameter is typically authored from the low-code toolchain plugin scaffold template. See [this section](/site/docs/guide/expand/editor/cli) for creation.
 
+#### Simple example
 
-#### 简单示例
 ```typescript
 import { plugins } from '@rchh/lowcode-engine';
 import { IPublicModelPluginContext } from '@rchh/lowcode-types';
@@ -35,7 +40,7 @@ const builtinPluginRegistry = (ctx: IPublicModelPluginContext) => {
     async init() {
       const { skeleton } = ctx;
 
-      // 注册组件面板
+      // Register component panel
       const componentsPane = skeleton.add({
         area: 'leftArea',
         type: 'PanelDock',
@@ -45,20 +50,22 @@ const builtinPluginRegistry = (ctx: IPublicModelPluginContext) => {
         props: {
           align: 'top',
           icon: 'zujianku',
-          description: '组件库',
+          description: 'Component library',
         },
       });
       componentsPane?.disable?.();
       project.onSimulatorRendererReady(() => {
         componentsPane?.enable?.();
-      })
+      });
     },
   };
-}
+};
 builtinPluginRegistry.pluginName = 'builtinPluginRegistry';
 await plugins.register(builtinPluginRegistry);
 ```
-#### 使用 exports 示例
+
+#### Using exports example
+
 ```typescript
 import { plugins } from '@rchh/lowcode-engine';
 import { IPublicModelPluginContext } from '@rchh/lowcode-types';
@@ -66,31 +73,34 @@ import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 const PluginA = (ctx: IPublicModelPluginContext) => {
   return {
     async init() {},
-    exports() { return { x: 1, } },
+    exports() {
+      return { x: 1 };
+    },
   };
-}
+};
 PluginA.pluginName = 'PluginA';
 
 const PluginB = (ctx: IPublicModelPluginContext) => {
   return {
     async init() {
-      // 获取 pluginA 的导出值
+      // Get PluginA exports
       console.log(ctx.plugins.PluginA.x); // => 1
     },
   };
-}
+};
 PluginA.pluginName = 'pluginA';
 PluginB.pluginName = 'PluginB';
 PluginB.meta = {
   dependencies: ['PluginA'],
-}
+};
 await plugins.register(PluginA);
 await plugins.register(PluginB);
 ```
-> 注：ctx 是在插件中获取引擎 API 的唯一渠道，具体定义参见 [IPublicModelPluginContext](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/plugin-context.ts)
 
+> Note: `ctx` is the only way to access engine APIs from a plugin. See [IPublicModelPluginContext](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/plugin-context.ts) for the full definition.
 
-#### 设置兼容引擎版本示例
+#### Engine version compatibility example
+
 ```typescript
 import { plugins } from '@rchh/lowcode-engine';
 import { IPublicModelPluginContext } from '@rchh/lowcode-types';
@@ -105,12 +115,14 @@ const BuiltinPluginRegistry = (ctx: IPublicModelPluginContext) => {
 BuiltinPluginRegistry.pluginName = 'BuiltinPluginRegistry';
 BuiltinPluginRegistry.meta = {
   engines: {
-    lowcodeEngine: '^1.0.0', // 插件需要配合 ^1.0.0 的引擎才可运行
+    lowcodeEngine: '^1.0.0', // Plugin requires engine ^1.0.0
   },
 }
 await plugins.register(BuiltinPluginRegistry);
 ```
-#### 设置插件参数版本示例
+
+#### Plugin options example
+
 ```typescript
 import { plugins } from '@rchh/lowcode-engine';
 import { IPublicModelPluginContext } from '@rchh/lowcode-types';
@@ -118,20 +130,19 @@ import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 const BuiltinPluginRegistry = (ctx: IPublicModelPluginContext, options: any) => {
   return {
     async init() {
-      // 直接传值方式：
-      //   通过 register(xxx, options) 传入
-      //   通过 options 取出
-
-      // 引擎初始化时也可以设置某插件的全局配置项：
-      //   通过 engine.init(..., preference) 传入
-      //   通过 ctx.preference.getValue() 取出
+      // Direct value passing:
+      //   Passed via register(xxx, options)
+      //   Retrieved via options
+      // Global plugin config can also be set at engine init:
+      //   Passed via engine.init(..., preference)
+      //   Retrieved via ctx.preference.getValue()
     },
   };
-}
+};
 BuiltinPluginRegistry.pluginName = 'BuiltinPluginRegistry';
 BuiltinPluginRegistry.meta = {
   preferenceDeclaration: {
-    title: 'pluginA 的参数定义',
+    title: 'PluginA option definitions',
     properties: [
       {
         key: 'key1',
@@ -155,46 +166,46 @@ BuiltinPluginRegistry.meta = {
       },
     ],
   },
-}
+};
 
 await plugins.register(BuiltinPluginRegistry, { key1: 'abc', key5: 'willNotPassToPlugin' });
 ```
 
 ### get
 
-获取指定插件
+Get a plugin by name
 
 ```typescript
 /**
- * 获取指定插件
+ * Get a plugin by name
  * get plugin instance by name
  */
 get(pluginName: string): IPublicModelPluginInstance | null;
 ```
 
-关联模型 [IPublicModelPluginInstance](./model/plugin-instance)
+Related model: [IPublicModelPluginInstance](./model/plugin-instance)
 
 ### getAll
 
-获取所有的插件实例
+Get all plugin instances
 
 ```typescript
 /**
- * 获取所有的插件实例
+ * Get all plugin instances
  * get all plugin instances
  */
 getAll(): IPublicModelPluginInstance[];
 ```
 
-关联模型 [IPublicModelPluginInstance](./model/plugin-instance)
+Related model: [IPublicModelPluginInstance](./model/plugin-instance)
 
 ### has
 
-判断是否有指定插件
+Check whether a plugin exists
 
 ```typescript
 /**
- * 判断是否有指定插件
+ * Check whether a plugin exists
  * check if plugin with certain name exists
  */
 has(pluginName: string): boolean;
@@ -202,11 +213,11 @@ has(pluginName: string): boolean;
 
 ### delete
 
-删除指定插件
+Delete a plugin by name
 
 ```typescript
 /**
- * 删除指定插件
+ * Delete a plugin by name
  * delete plugin instance by name
  */
 delete(pluginName: string): void;
@@ -214,11 +225,11 @@ delete(pluginName: string): void;
 
 ### getPluginPreference
 
-引擎初始化时可以提供全局配置给到各插件，通过这个方法可以获得本插件对应的配置
+Global config can be provided to plugins at engine init; use this method to get config for a specific plugin
 
 ```typescript
 /**
- * 引擎初始化时可以提供全局配置给到各插件，通过这个方法可以获得本插件对应的配置
+ * Global config can be provided to plugins at engine init; use this method to get config for a specific plugin
  * use this to get preference config for this plugin when engine.init() called
  */
 getPluginPreference(
@@ -226,14 +237,16 @@ getPluginPreference(
   ): Record<string, IPublicTypePreferenceValueType> | null | undefined;
 ```
 
-## 相关类型定义
+## Related Type Definitions
 
 - [IPublicModelPluginContext](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/plugin-context.ts)
 - [IPublicTypePluginConfig](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/plugin-config.ts)
 - [IPublicModelPluginInstance](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/plugin-instance.ts)
 
-## 插件元数据工程转化示例
+## Plugin Metadata Project Transformation Example
+
 your-plugin/package.json
+
 ```json
 {
 	"name": "@rchh/lowcode-plugin-debug",
@@ -248,7 +261,9 @@ your-plugin/package.json
   }
 }
 ```
-转换后的结构：
+
+Transformed structure:
+
 ```typescript
 const debug = (ctx: IPublicModelPluginContext, options: any) => {
 	return {};

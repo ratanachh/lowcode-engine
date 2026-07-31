@@ -44,8 +44,8 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
 
     const { tolerateEvalErrors = true, evalErrorsHandler = '' } = next.contextData;
 
-    // 这里会将内部的一些子上下文的访问(this.xxx)转换为 __$$context.xxx 的形式
-    // 与 Rax 所不同的是，这里不会将最顶层的 this 转换掉
+    // Converts nested sub-context access (this.xxx) to __$$context.xxx
+    // Unlike Rax, the top-level this is not converted here
     const customHandlers: HandlerSet<string> = {
       expression(input: IPublicTypeJSExpression, scope: IScope, config) {
         return transformJsExpr(generateExpression(input, scope), scope, {

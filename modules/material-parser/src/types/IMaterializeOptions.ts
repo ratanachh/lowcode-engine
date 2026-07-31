@@ -1,98 +1,106 @@
 import { Expand } from './Basic';
 import { DSLType } from './DSLType';
+
 /**
- * 通用入料配置项
+ * Common materialization options
  * @interface IMaterializeCommonOptions
  */
 export interface IMaterializeCommonOptions {
+
   /**
-   * 当 accesser=online 时，配置要使用的 npm client，如：tnpm、cnpm、yarn、npm
+   * When accesser=online, configure the npm client to use, e.g. tnpm, cnpm, yarn, npm
    */
   npmClient?: string;
+
   /**
-   * 当前dsl类型，可选值包括'react' | 'rax'
+   * Current DSL type; optional values include 'react' | 'rax'
    */
   dslType?: DSLType;
 }
 
 /**
- * 本地入料配置项
+ * Local materialization options
  * @interface IMaterializeOnlineOptions
  */
 export interface IMaterializeLocalOptions extends IMaterializeCommonOptions {
+
   /**
-   * 接入渠道
-   * （local：表示本地物料工作台方式接入，online：表示在线 npm 包接入）
+   * Access channel
+   * (local: local material workbench; online: online npm package)
    * @type {('local' | 'online')}
    * @memberof IMaterializeOptions
    */
   accesser: 'local';
 
   /**
-   * 组件文件(夹)路径或包名
-   * 形如：
-   *  本地路径：/usr/project/src/container/DemoMaterial
-   *  包名：@ali/demo-material@0.0.1
+   * Component file/folder path or package name
+   * Examples:
+   *  Local path: /usr/project/src/container/DemoMaterial
+   *  Package name: @ali/demo-material@0.0.1
    */
   entry: string;
 
   /**
-   * 组件根目录，当entry为文件路径的时候，可以用root来指定根目录，当entry为文件夹时，root默认为entry
-   * 形如：
-   *  相对路径：./
-   *  绝对路径：/usr/project/src/container/DemoMaterial
+   * Component root directory; when entry is a file path, use root to specify the root; when entry is a folder, root defaults to entry
+   * Examples:
+   *  Relative path: ./
+   *  Absolute path: /usr/project/src/container/DemoMaterial
    */
   root?: string;
 }
 
 /**
- * 在线入料配置项
+ * Online materialization options
  * @interface IMaterializeOnlineOptions
  */
 export interface IMaterializeOnlineCommonOptions {
+
   /**
-   * 接入渠道
-   * （local：表示本地物料工作台方式接入，online：表示在线 npm 包接入）
+   * Access channel
+   * (local: local material workbench; online: online npm package)
    * @type {('local' | 'online')}
    * @memberof IMaterializeOptions
    */
   accesser: 'online';
+
   /**
-   * 临时工作目录，用来存放下载的npm包，可为绝对路径或相对路径
+   * Temporary working directory for downloaded npm packages; absolute or relative path
    */
   tempDir?: string;
 }
 
 /**
- * 只通过entry指定包名&版本号，无需内部路径
+ * Specify package name & version via entry only; no internal path needed
  */
 export interface IMaterializeOnlineEntryOptions {
+
   /**
-   * npm包名&版本号，此时无需指定内部路径，会从package.json自动解析
-   * 形如：
-   *   包名&版本号：@ali/demo-material@0.0.1
+   * npm package name & version; no internal path needed; parsed automatically from package.json
+   * Examples:
+   *   Package name & version: @ali/demo-material@0.0.1
    */
   entry: string;
 }
 
 export interface IMaterializeOnlinePackageAndVersionOptions {
+
   /**
-   * npm包内部相对路径
-   * 形如：
-   *   相对路径：lib/index.js
+   * Relative path inside the npm package
+   * Examples:
+   *   Relative path: lib/index.js
    */
   entry?: string;
 
   /**
-   * npm包名
-   * 形如:
+   * npm package name
+   * Examples:
    *   react-color
    */
   name: string;
 
   /**
-   * npm包版本号
-   * 形如:
+   * npm package version
+   * Examples:
    *   latest/1.0.0/1.x.0
    * @default latest
    */
@@ -104,8 +112,9 @@ export type IMaterializeOnlineOptions = Expand<
     IMaterializeOnlineCommonOptions &
     (IMaterializeOnlineEntryOptions | IMaterializeOnlinePackageAndVersionOptions)
 >;
+
 /**
- * 入料配置项
+ * Materialization options
  * @interface IMaterializeOptions
  */
 export type IMaterializeOptions = Expand<IMaterializeLocalOptions | IMaterializeOnlineOptions>;

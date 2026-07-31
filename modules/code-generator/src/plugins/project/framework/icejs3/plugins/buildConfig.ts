@@ -11,7 +11,7 @@ import { getThemeInfo } from '../../../../../utils/theme';
 
 export interface BuildConfigPluginConfig {
 
-  /** 包名 */
+  /** Package name */
   themePackage?: string;
 }
 
@@ -29,9 +29,9 @@ interface PluginOptions {
 }
 
 const plugin: Plugin<PluginOptions> = (options) => ({
-  // name 可选，插件名称
+  // name is optional: plugin name
   name: 'plugin-name',
-  // setup 必选，用于定制工程构建配置
+  // setup is required: customize project build config
   setup: ({ onGetConfig, modifyUserConfig }) => {
     modifyUserConfig('codeSplitting', 'page');
 
@@ -63,7 +63,7 @@ const plugin: Plugin<PluginOptions> = (options) => ({
         }
       });
 
-      // 解决 webpack publicPath 问题
+      // Fix webpack publicPath issue
       config.transforms = config.transforms || [];
       config.transforms.push((source: string, id: string) => {
         if (id.includes('.ice/entry.client.tsx')) {

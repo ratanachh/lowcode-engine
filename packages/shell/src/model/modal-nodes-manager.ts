@@ -23,14 +23,14 @@ export class ModalNodesManager implements IPublicModelModalNodesManager {
   }
 
   /**
-   * 设置模态节点，触发内部事件
+   * Set modal node(s); triggers internal events
    */
   setNodes(): void {
     this[modalNodesManagerSymbol].setNodes();
   }
 
   /**
-   * 获取模态节点（们）
+   * Get modal node(s)
    */
   getModalNodes(): IPublicModelNode[] {
     const innerNodes = this[modalNodesManagerSymbol].getModalNodes();
@@ -45,21 +45,21 @@ export class ModalNodesManager implements IPublicModelModalNodesManager {
   }
 
   /**
-   * 获取当前可见的模态节点
+   * Get currently visible modal node
    */
   getVisibleModalNode(): IPublicModelNode | null {
     return ShellNode.create(this[modalNodesManagerSymbol].getVisibleModalNode());
   }
 
   /**
-   * 隐藏模态节点（们）
+   * Hide modal node(s)
    */
   hideModalNodes(): void {
     this[modalNodesManagerSymbol].hideModalNodes();
   }
 
   /**
-   * 设置指定节点为可见态
+   * Set the given node visible
    * @param node Node
    */
   setVisible(node: IPublicModelNode): void {
@@ -67,7 +67,7 @@ export class ModalNodesManager implements IPublicModelModalNodesManager {
   }
 
   /**
-   * 设置指定节点为不可见态
+   * Set the given node invisible
    * @param node Node
    */
    setInvisible(node: IPublicModelNode): void {

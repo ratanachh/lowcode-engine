@@ -24,7 +24,7 @@ const pluginFactory: BuilderComponentPluginFactory<unknown> = () => {
 
     const ir = next.ir as IContainerInfo;
 
-    // 将模块名转换成 PascalCase 的格式，并添加特定后缀，防止命名冲突
+    // Convert module name to PascalCase and add a suffix to avoid naming conflicts
     const componentClassName = ensureValidClassName(
       `${changeCase.pascalCase(ir.moduleName)}$$${ir.containerType}`,
     );

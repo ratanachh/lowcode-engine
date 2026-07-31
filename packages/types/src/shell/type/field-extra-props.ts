@@ -7,7 +7,7 @@ import { IPublicTypeLiveTextEditingConfig } from './';
 export interface IPublicTypeFieldExtraProps {
 
   /**
-   * 是否必填参数
+   * Whether the parameter is required
    */
   isRequired?: boolean;
 
@@ -33,7 +33,7 @@ export interface IPublicTypeFieldExtraProps {
   condition?: (target: IPublicModelSettingField) => boolean;
 
   /**
-   * 配置当前 prop 是否忽略默认值处理逻辑，如果返回值是 true 引擎不会处理默认值
+   * Whether to skip default-value handling for this prop; if true the engine will not process defaults
    * @returns boolean
    */
   ignoreDefaultValue?: (target: IPublicModelSettingField) => boolean;
@@ -59,7 +59,7 @@ export interface IPublicTypeFieldExtraProps {
   forceInline?: number;
 
   /**
-   * 是否支持变量配置
+   * Whether variable binding is supported
    */
   supportVariable?: boolean;
 
@@ -68,14 +68,14 @@ export interface IPublicTypeFieldExtraProps {
    */
   display?: 'accordion' | 'inline' | 'block' | 'plain' | 'popup' | 'entry';
 
-  // @todo 这个 omit 是否合理？
+  // @todo is this omit reasonable?
   /**
-   * @todo 待补充文档
+   * @todo documentation pending
    */
   liveTextEditing?: Omit<IPublicTypeLiveTextEditingConfig, 'propTarget'>;
 
   /**
-   * onChange 事件
+   * onChange event
    */
   onChange?: (value: any, field: IPublicModelSettingField) => void;
 }

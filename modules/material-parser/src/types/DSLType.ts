@@ -1,4 +1,4 @@
 /**
- * DSL类型
+ * DSL type
  */
 export type DSLType = 'react' | 'rax';

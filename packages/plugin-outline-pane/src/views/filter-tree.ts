@@ -26,12 +26,12 @@ export const matchTreeNode = (
   keywords: string,
   filterOps: string[],
 ): boolean => {
-  // 无效节点
+  // Invalid node
   if (!treeNode || !treeNode.node) {
     return false;
   }
 
-  // 过滤条件为空，重置过滤结果
+  // Empty filter: reset filter results
   if (!keywords && filterOps.length === 0) {
     treeNode.setFilterReult({
       filterWorking: false,
@@ -49,7 +49,7 @@ export const matchTreeNode = (
 
   const { node } = treeNode;
 
-  // 命中过滤选项
+  // Matched filter option
   const matchFilterOps = filterOps.length === 0 || !!filterOps.find((op: string) => {
     switch (op) {
       case FilterType.CONDITION:
@@ -65,19 +65,19 @@ export const matchTreeNode = (
     }
   });
 
-  // 命中节点名
+  // Matched node name
   const matchKeywords = typeof treeNode.titleLabel === 'string' && treeNode.titleLabel.indexOf(keywords) > -1;
 
-  // 同时命中才展示（根结点永远命中）
+  // Show only when both conditions match (root always matches)
   const matchSelf = treeNode.isRoot() || (matchFilterOps && matchKeywords);
 
-  // 命中子节点
+  // Matched a child node
   const matchChild = !!(treeNode.children || []).concat(treeNode.slots || [])
     .map((childNode: TreeNode) => {
       return matchTreeNode(childNode, keywords, filterOps);
     }).find(Boolean);
 
-  // 如果命中了子节点，需要将该节点展开
+  // If a child matches, expand this node
   if (matchChild && treeNode.expandable) {
     treeNode.setExpanded(true);
   }

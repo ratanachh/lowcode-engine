@@ -302,7 +302,7 @@ definitions:
           - RadioGroup
       props:
         type: object
-        properties: {} # 暂未校验每个控件的props，待控件入料后获取真实属性
+        properties: {} # props of each control are not validated yet; real attributes will be obtained after material ingestion
   ConfigureGroupProp:
     type: object
     required:

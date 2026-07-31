@@ -1,5 +1,5 @@
 /**
- * 获取错误信息
+ * Get error message
  */
 export function getErrorMessage(error: unknown): string | null {
   if (!error) {

@@ -2,29 +2,29 @@ import { Asset } from '../../assets';
 import { IPublicTypeComponentMetadata, IPublicTypeReference } from './';
 
 /**
- * 远程物料描述
+ * Remote material description
  */
 export interface IPublicTypeRemoteComponentDescription extends IPublicTypeComponentMetadata {
 
   /**
-   * 组件描述导出名字，可以通过 window[exportName] 获取到组件描述的 Object 内容；
+   * Component description export name; access via window[exportName]
    */
   exportName?: string;
 
   /**
-   * 组件描述的资源链接；
+   * Resource URL of the component description;
    */
   url?: Asset;
 
   /**
-   * 组件 (库) 的 npm 信息；
+   * npm info of the component (library);
    */
   package?: {
     npm?: string;
   };
 
   /**
-   * 替代 npm 字段的升级版本
+   * Upgraded replacement for the npm field
    */
   reference?: IPublicTypeReference;
 }

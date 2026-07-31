@@ -25,7 +25,7 @@ function propConfigToFieldConfig(propConfig: IPublicTypePropConfig): IPublicType
   return {
     title,
     ...propConfig,
-    // TODO 这边直接用propConfig，将setter丢在propconfig里，需要确认是否在PropConfig扩展还是换实现
+    // TODO: currently putting setter on propConfig; confirm whether to extend PropConfig or change the approach
     setter: propConfig.setter ? propConfig.setter : propTypeToSetter(propConfig.propType),
   };
 }
@@ -170,14 +170,14 @@ const EVENT_RE = /^on|after|before[A-Z][\w]*$/;
 
 export default function (metadata: IPublicTypeTransformedComponentMetadata): IPublicTypeTransformedComponentMetadata {
   const { configure = {} } = metadata;
-  // TODO types后续补充
+  // TODO: fill in types later
   let extendsProps: any = null;
   if (configure.props) {
     if (Array.isArray(configure.props)) {
       return metadata;
     }
     const { isExtends, override = [] } = configure.props;
-    // 不开启继承时，直接返回configure配置
+    // Without inheritance, return configure as-is
     if (!isExtends) {
       return {
         ...metadata,
@@ -189,7 +189,7 @@ export default function (metadata: IPublicTypeTransformedComponentMetadata): IPu
     }
 
     extendsProps = {};
-    // 开启继承后，缓存重写内容的配置
+    // With inheritance enabled, cache the overridden configure
     override.forEach((prop: any) => {
       extendsProps[prop.name] = prop;
     });
@@ -246,7 +246,7 @@ export default function (metadata: IPublicTypeTransformedComponentMetadata): IPu
       return;
     }
 
-    // 存在覆盖配置时
+    // When override config exists
     if (extendsProps) {
       if (name in extendsProps) {
         prop = extendsProps[name];

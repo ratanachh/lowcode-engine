@@ -11,12 +11,12 @@ export default async function (
 ): Promise<ComponentMeta[]> {
   const containerList = [];
   for (const matParsedModel of matParsedModels) {
-    // 默认排除掉 defaultExportName 为空的组件
+    // By default, exclude components whose defaultExportName is empty
     if (!matParsedModel.componentName) {
       log('skip');
       continue;
     }
-    // 组装 manifest
+    // Assemble manifest
     const manifest: any = await genManifest(matScanModel, matParsedModel, options);
 
     containerList.push(manifest);
@@ -26,11 +26,11 @@ export default async function (
 }
 
 /**
- * 生成 manifest
+ * Generate manifest
  *
  * @param {IMaterialParsedModel} matParsedModel
  * @returns {Promise<
- *     manifestObj: ComponentMeta, // 组件描述
+ *     manifestObj: ComponentMeta, // component description
  *   >}
  * @memberof LocalGenerator
  */
@@ -44,7 +44,7 @@ export async function genManifest(
     title: matScanModel.pkgName,
     docUrl: '',
     screenshot: '',
-    devMode: 'proCode', // 需要入料的组件都是源码模式，低代码组件在平台上即可直接生成描述
+    devMode: 'proCode', // components to materialize are all in pro-code mode; low-code components can generate descriptions directly on the platform
     npm: {
       package: matScanModel.pkgName,
       version: matScanModel.pkgVersion,
@@ -58,8 +58,8 @@ export async function genManifest(
     },
   };
 
-  // 填充 props
+  // Fill props
   manifestObj.props = matParsedModel.props;
-  // 执行扩展点
+  // Run extension points
   return manifestObj as ComponentMeta;
 }

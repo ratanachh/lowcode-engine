@@ -9,13 +9,13 @@ export interface IPublicTypeTipConfig {
   className?: string;
 
   /**
-   * tip 的内容
+   * Tip content
    */
   children?: IPublicTypeI18nData | ReactNode;
   theme?: string;
 
   /**
-   * tip 的方向
+   * Tip direction
    */
   direction?: 'top' | 'bottom' | 'left' | 'right';
 }

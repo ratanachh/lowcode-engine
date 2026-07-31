@@ -23,7 +23,7 @@ export class LowCodePluginRuntime implements ILowCodePluginRuntime {
   meta: IPublicTypePluginMeta;
 
   /**
-   * 标识插件状态，是否被 disabled
+   * Plugin state flag: whether disabled
    */
   private _disabled: boolean;
 

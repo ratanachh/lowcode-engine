@@ -2,37 +2,40 @@
 title: Selection
 sidebar_position: 6
 ---
-> **@types** [IPublicModelSelection](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/selection.ts)<br/>
-> **@since** v1.0.0
 
-## 基本介绍
+> **@types** [IPublicModelSelection](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/selection.ts)<br/> > **@since** v1.0.0
 
-画布节点选中模型
+## Overview
 
-## 属性
+Canvas node selection model
+
+## Properties
+
 ### selected
 
-返回选中的节点 id
+Returns the ids of selected nodes
 
 `@type {string[]}`
 
 ### node
-返回选中的节点（如多个节点只返回第一个）
+
+Returns the selected node (if multiple nodes are selected, only the first is returned)
 
 `@type {IPublicModelNode | null}`
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 **@since v1.1.0**
 
-## 方法
+## Methods
+
 ### select
 
-选中指定节点（覆盖方式）
+Select the specified node (replace mode)
 
 ```typescript
 /**
-* 选中指定节点（覆盖方式）
+* Select the specified node (overwrite)
 * select node with id, this will override current selection
 * @param id
 */
@@ -41,11 +44,11 @@ select(id: string): void;
 
 ### selectAll
 
-批量选中指定节点们
+Select multiple specified nodes in batch
 
 ```typescript
 /**
-* 批量选中指定节点们
+* Select the specified nodes in batch
 * select node with ids, this will override current selection
 *
 * @param ids
@@ -55,11 +58,11 @@ selectAll(ids: string[]): void;
 
 ### remove
 
-**取消选中**选中的指定节点，不会删除组件
+**Deselect** the specified selected node; does not delete the component
 
 ```typescript
 /**
-* 移除选中的指定节点
+* Remove the specified selected node
 * remove node from selection with node id
 * @param id
 */
@@ -68,11 +71,11 @@ remove(id: string): void;
 
 ### clear
 
-**取消选中**所有选中节点，不会删除组件
+**Deselect** all selected nodes; does not delete components
 
 ```typescript
 /**
-* 清除所有选中节点
+* Clear all selected nodes
 * clear current selection
 */
 clear(): void;
@@ -80,11 +83,11 @@ clear(): void;
 
 ### has
 
-判断是否选中了指定节点
+Check whether the specified node is selected
 
 ```typescript
 /**
-* 判断是否选中了指定节点
+* Check whether the specified node is selected
 * check if node with specific id is selected
 * @param id
 */
@@ -93,11 +96,11 @@ has(id: string): boolean;
 
 ### add
 
-选中指定节点（增量方式）
+Select the specified node (additive mode)
 
 ```typescript
 /**
-* 选中指定节点（增量方式）
+* Select the specified node (incremental)
 * add node with specific id to selection
 * @param id
 */
@@ -106,31 +109,32 @@ add(id: string): void;
 
 ### getNodes
 
-获取选中的节点实例
+Get selected node instances
 
 ```typescript
 /**
-* 获取选中的节点实例
+* Get selected node instances
 * get selected nodes
 */
 getNodes(): IPublicModelNode[];
 ```
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### getTopNodes
-获取选区的顶层节点
-例如选中的节点为：
+
+Get top-level nodes in the selection.
+For example, if the selected nodes are:
 
 - DivA
-   - ChildrenA
+  - ChildrenA
 - DivB
 
-getNodes 返回的是 [DivA、ChildrenA、DivB]，getTopNodes 返回的是 [DivA、DivB]，其中 ChildrenA 由于是二层节点，getTopNodes 不会返回
+getNodes returns [DivA, ChildrenA, DivB], while getTopNodes returns [DivA, DivB]. ChildrenA is a second-level node and is not returned by getTopNodes.
 
 ```typescript
 /**
-* 获取选区的顶层节点
+* Get top-level nodes of the selection
 * get seleted top nodes
 * for example:
 *  getNodes() returns [A, subA, B], then
@@ -142,20 +146,21 @@ getTopNodes(includeRoot?: boolean): IPublicModelNode[];
 
 **@since v1.0.16**
 
-## 事件
+## Events
+
 ### onSelectionChange
 
-注册 selection 变化事件回调
+Register a callback for selection change events
 
 ```typescript
 /**
-* 注册 selection 变化事件回调
+* Register selection change callback
 * set callback which will be called when selection is changed
 * @since v1.1.0
 */
 onSelectionChange(fn: (ids: string[]) => void): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+Related types: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 **@since v1.1.0**

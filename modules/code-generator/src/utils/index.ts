@@ -1,4 +1,4 @@
-// 本文件是要导出到外面的，注意只导出比较稳定的东西
+// This file is publicly exported; only export relatively stable APIs
 import * as common from './common';
 import * as compositeType from './compositeType';
 import * as jsExpression from './jsExpression';

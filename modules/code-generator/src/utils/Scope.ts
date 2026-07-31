@@ -2,17 +2,17 @@ import { IScope } from '../types/core';
 import { IScopeBindings, ScopeBindings } from './ScopeBindings';
 
 export class Scope implements IScope {
+  bindings?: IScopeBindings;
+
+  constructor(readonly parent: IScope | null = null) {
+    this.bindings = undefined;
+  }
+
   /**
-   * 创建根部 Scope，根据需要被上溯的作用域链决定是否开启新的
+   * Create root Scope; decide whether to open a new one based on the scope chain to walk
    */
   static createRootScope(): IScope {
     return new Scope();
-  }
-
-  bindings?: IScopeBindings;
-
-  constructor(public readonly parent: IScope | null = null) {
-    this.bindings = undefined;
   }
 
   createSubScope(ownIdentifiers: string[]): IScope {

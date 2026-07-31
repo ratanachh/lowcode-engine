@@ -5,7 +5,7 @@ describe('isDragNodeDataObject', () => {
   test('should return true for valid IPublicTypeDragNodeDataObject', () => {
     const obj: IPublicTypeDragNodeDataObject = {
       type: IPublicEnumDragObjectType.NodeData,
-      // 其他属性...
+      // other props...
     };
 
     expect(isDragNodeDataObject(obj)).toBe(true);
@@ -14,7 +14,7 @@ describe('isDragNodeDataObject', () => {
   test('should return false for invalid IPublicTypeDragNodeDataObject', () => {
     const obj: any = {
       type: 'InvalidType',
-      // 其他属性...
+      // other props...
     };
 
     expect(isDragNodeDataObject(obj)).toBe(false);
@@ -25,5 +25,5 @@ describe('isDragNodeDataObject', () => {
     expect(isDragNodeDataObject(undefined)).toBe(false);
   });
 
-  // 可以添加更多测试用例...
+  // more test cases can be added...
 });

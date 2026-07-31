@@ -12,59 +12,59 @@ export interface IPublicModelProp<
   get id(): string;
 
   /**
-   * key 值
+   * key value
    * get key of prop
    */
   get key(): string | number | undefined;
 
   /**
-   * 返回当前 prop 的路径
+   * Returns the path of the current prop
    * get path of current prop
    */
   get path(): string[];
 
   /**
-   * 返回所属的节点实例
+   * Returns the node instance it belongs to
    * get node instance, which this prop belongs to
    */
   get node(): Node | null;
 
   /**
-   * 当本 prop 代表一个 Slot 时，返回对应的 slotNode
+   * When this prop represents a Slot, return the corresponding slotNode
    * return the slot node (only if the current prop represents a slot)
    * @since v1.1.0
    */
   get slotNode(): Node | undefined | null;
 
   /**
-   * 是否是 Prop , 固定返回 true
+   * Whether it is Prop, always returns true
    * check if it is a prop or not, and of course always return true
    * @experimental
    */
   get isProp(): boolean;
 
   /**
-   * 设置值
+   * Set value
    * set value for this prop
    * @param val
    */
   setValue(val: IPublicTypeCompositeValue): void;
 
   /**
-   * 获取值
+   * Get value
    * get value of this prop
    */
   getValue(): any;
 
   /**
-   * 移除值
+   * Remove value
    * remove value of this prop
    * @since v1.0.16
    */
   remove(): void;
 
   /**
-   * 导出值
+   * export value
    * export schema
    * @param stage
    */

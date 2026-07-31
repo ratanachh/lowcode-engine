@@ -4,7 +4,7 @@ import { cursor } from '@rchh/lowcode-utils';
 import { makeEventsHandler } from '../../utils/misc';
 import { createModuleEventBus, IEventBus } from '@rchh/lowcode-editor-core';
 
-// 拖动缩放
+// Drag to resize
 export default class DragResizeEngine {
   private emitter: IEventBus;
 

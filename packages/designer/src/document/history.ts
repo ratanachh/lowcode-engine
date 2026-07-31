@@ -186,7 +186,7 @@ export class History<T = IPublicTypeNodeSchema> implements IHistory {
   }
 
   /**
-   * 监听 state 变更事件
+   * Listen for state change events
    * @param func
    * @returns
    */
@@ -202,7 +202,7 @@ export class History<T = IPublicTypeNodeSchema> implements IHistory {
   }
 
   /**
-   * 监听历史记录游标位置变更事件
+   * Listen for history cursor position change events
    * @param func
    * @returns
    */

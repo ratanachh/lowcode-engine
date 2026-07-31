@@ -140,7 +140,7 @@ export class DropLocation implements IDropLocation {
 
   /**
    * @deprecated
-   * 兼容 vision
+   * Compatible with vision
    */
   getContainer() {
     return this.target;
@@ -148,7 +148,7 @@ export class DropLocation implements IDropLocation {
 
   /**
    * @deprecated
-   * 兼容 vision
+   * Compatible with vision
    */
   getInsertion() {
     if (!this.detail) {

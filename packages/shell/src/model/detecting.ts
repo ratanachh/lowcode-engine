@@ -17,37 +17,37 @@ export class Detecting implements IPublicModelDetecting {
   }
 
   /**
-   * 控制大纲树 hover 时是否出现悬停效果
+   * Control whether outline-tree hover shows a hover effect
    */
   get enable(): boolean {
     return this[detectingSymbol].enable;
   }
 
   /**
-   * 当前 hover 的节点
+   * Currently hovered node
    */
   get current() {
     return ShellNode.create(this[detectingSymbol].current);
   }
 
   /**
-   * hover 指定节点
-   * @param id 节点 id
+   * Hover the given node
+   * @param id Node id
    */
   capture(id: string) {
     this[detectingSymbol].capture(this[documentSymbol].getNode(id));
   }
 
   /**
-   * hover 离开指定节点
-   * @param id 节点 id
+   * Leave hover on the given node
+   * @param id Node id
    */
   release(id: string) {
     this[detectingSymbol].release(this[documentSymbol].getNode(id));
   }
 
   /**
-   * 清空 hover 态
+   * Clear hover state
    */
   leave() {
     this[detectingSymbol].leave(this[documentSymbol]);

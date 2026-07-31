@@ -4,41 +4,41 @@ import { IPublicTypeDisposable } from '../type';
 export interface IPublicModelDetecting<Node = IPublicModelNode> {
 
   /**
-   * 是否启用
+   * Whether to enable
    * check if current detecting is enabled
    * @since v1.1.0
    */
   get enable(): boolean;
 
   /**
-   * 当前 hover 的节点
+   * The currently hovered node
    * get current hovering node
    * @since v1.0.16
    */
   get current(): Node | null;
 
   /**
-   * hover 指定节点
+   * hover specified node
    * capture node with nodeId
-   * @param id 节点 id
+   * @param id node id
    */
   capture(id: string): void;
 
   /**
-   * hover 离开指定节点
+   * hover leaves the specified node
    * release node with nodeId
-   * @param id 节点 id
+   * @param id node id
    */
   release(id: string): void;
 
   /**
-   * 清空 hover 态
+   * Clear hover state
    * clear all hover state
    */
   leave(): void;
 
   /**
-   * hover 节点变化事件
+   * hover node change event
    * set callback which will be called when hovering object changed.
    * @since v1.1.0
    */

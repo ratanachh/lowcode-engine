@@ -1,35 +1,35 @@
 ---
-title: 接入运行时
+title: Integrating the Runtime
 sidebar_position: 1
 ---
 
-低代码引擎的编辑器将产出两份数据：
+The low-code engine editor produces two pieces of data:
 
-- 资产包数据 assets：包含物料名称、包名及其获取方式，对应协议中的[《低代码引擎资产包协议规范》](/site/docs/specs/assets-spec)
-- 页面数据 schema：包含页面结构信息、生命周期和代码信息，对应协议中的[《低代码引擎搭建协议规范》](/site/docs/specs/lowcode-spec)
+- Asset bundle data (`assets`): includes material names, package names, and how to obtain them, corresponding to the [Low-Code Engine Asset Bundle Protocol Specification](/site/docs/specs/assets-spec) in the protocol docs.
+- Page data (`schema`): includes page structure, lifecycle, and code information, corresponding to the [Low-Code Engine Building Protocol Specification](/site/docs/specs/lowcode-spec) in the protocol docs.
 
-经过上述两份数据，可以直接交由渲染模块或者出码模块来运行，二者的区别在于：
+With these two pieces of data, you can hand them to either the renderer module or the code generation module. The difference is:
 
-- 渲染模块：使用资产包数据、页面数据和低代码运行时，并且允许维护者在低代码编辑器中用 `低代码（LowCode）`的方式继续维护；
-- 出码模块：不依赖低代码运行时和页面数据，直接生成可直接运行的代码，并且允许维护者用 `源码（ProCode）` 的方式继续维护，但无法再利用低代码编辑器；
+- Renderer module: uses asset bundle data, page data, and the low-code runtime, and lets maintainers continue maintaining in the low-code editor using the **LowCode** approach;
+- Code generation module: does not depend on the low-code runtime or page data; it generates runnable code directly, and lets maintainers continue maintaining in **ProCode** (source code), but the low-code editor can no longer be used;
 
-> 渲染和出码的详细阐述可参考此文：[低代码技术在研发团队的应用模式探讨](https://mp.weixin.qq.com/s/Ynk_wjJbmNw7fEG6UtGZbQ)
+> For a detailed discussion of rendering vs. code generation, see: [Exploring Application Patterns of Low-Code Technology in R&D Teams](https://mp.weixin.qq.com/s/Ynk_wjJbmNw7fEG6UtGZbQ)
 
-## 渲染模块
+## Renderer module
 
-[在 Demo 中](https://lowcode-engine.cn/demo/demo-general/index.html)，右上角有渲染模块的示例使用方式：
+[In the Demo](https://lowcode-engine.cn/demo/demo-general/index.html), the top-right corner shows example usage of the renderer module:
 ![Mar-13-2022 16-52-49.gif](https://img.alicdn.com/imgextra/i2/O1CN01PRsEl61o7Zct5fJML_!!6000000005178-1-tps-1534-514.gif)
 
-基于官方提供的渲染模块 [@alifd/lowcode-react-renderer](https://github.com/alibaba/lowcode-engine/tree/main/packages/react-renderer)，你可以在 React 上下文渲染低代码编辑器产出的页面。
+Based on the official renderer module [@alifd/lowcode-react-renderer](https://github.com/alibaba/lowcode-engine/tree/main/packages/react-renderer), you can render pages produced by the low-code editor in a React context.
 
-### 构造渲染模块所需数据
+### Build data required by the renderer module
 
-渲染模块所需要的数据需要通过编辑器产出的数据进行一定的转换，规则如下：
+Data required by the renderer module must be transformed from editor output as follows:
 
-- schema：从编辑器产出的 projectSchema 中拿到 componentsTree 中的首项，即 `projectSchema.componentsTree[0]`；
-- components：需要根据编辑器产出的资产包 assets 中，根据页面 projectSchema 中声明依赖的 componentsMap，来加载所有依赖的资产包，最后获取资产包的实例并生成物料 - 资产包的键值对 components。
+- `schema`: take the first item from `componentsTree` in the editor's `projectSchema`, i.e. `projectSchema.componentsTree[0]`;
+- `components`: based on the asset bundle `assets` produced by the editor, load all dependent asset bundles according to the `componentsMap` declared in `projectSchema`, then obtain asset bundle instances and build a material-to-asset-bundle key-value map `components`.
 
-这个过程可以参考 demo 项目中的 `src/preview.tsx`：
+You can refer to `src/preview.tsx` in the demo project:
 
 ```typescript
 async function getSchemaAndComponents() {
@@ -66,41 +66,35 @@ async function getSchemaAndComponents() {
 }
 ```
 
-### 进行渲染
+### Render
 
-拿到 schema 和 components 以后，您可以借由资产包数据和页面数据来完成页面的渲染：
+After you have `schema` and `components`, you can render the page with asset bundle data and page data:
+
 ```tsx
 import React from 'react';
 import ReactRenderer from '@rchh/lowcode-react-renderer';
 
 const SamplePreview = () => {
-  return (
-    <ReactRenderer
-      schema={schema}
-      components={components}
-    />
-  );
-}
+  return <ReactRenderer schema={schema} components={components} />;
+};
 ```
 
-> 注 1：您可以注意到，此处是依赖了 React 进行渲染的，对于 Vue 形态的渲染或编辑器支持，详见[对应公告](https://github.com/alibaba/lowcode-engine/issues/236)。
+> Note 1: Rendering here depends on React. For Vue-based rendering or editor support, see the [related announcement](https://github.com/alibaba/lowcode-engine/issues/236).
 >
-> 注 2：本节示例可在 Demo 代码里找到更完整的版本：[https://github.com/alibaba/lowcode-demo/blob/main/demo-general/src/preview.tsx](https://github.com/alibaba/lowcode-demo/blob/main/demo-general/src/preview.tsx)
+> Note 2: A more complete version of this example is in the Demo code: [https://github.com/alibaba/lowcode-demo/blob/main/demo-general/src/preview.tsx](https://github.com/alibaba/lowcode-demo/blob/main/demo-general/src/preview.tsx)
 
+## Code generation module
 
-## 出码模块
-
-[在 Demo 中](https://lowcode-engine.cn/demo/demo-general/index.html)，右上角有出码模块的示例使用方式：
+[In the Demo](https://lowcode-engine.cn/demo/demo-general/index.html), the top-right corner shows example usage of the code generation module:
 
 ![Mar-13-2022 16-55-56.gif](https://img.alicdn.com/imgextra/i3/O1CN017CVeka27p3vwrGI1D_!!6000000007845-1-tps-1536-514.gif)
 
-> 本节示例可在出码插件里找到：[https://github.com/alibaba/lowcode-code-generator-demo](https://github.com/alibaba/lowcode-code-generator-demo)
+> A more complete version of this example is in the code generation plugin: [https://github.com/alibaba/lowcode-code-generator-demo](https://github.com/alibaba/lowcode-code-generator-demo)
 
+## Overview of low-code production and consumption
 
-## 低代码的生产和消费流程总览
-
-经过“接入编辑器” - “接入运行时”这两节的介绍，我们已经可以了解到低代码所构建的生产和消费流程了，梳理如下图：
+After "Integrating the Editor" and "Integrating the Runtime", we can see the production and consumption flow built by low-code. It is summarized below:
 
 ![image.png](https://img.alicdn.com/imgextra/i3/O1CN01yiFiUc1rT32o9HpnW_!!6000000005631-2-tps-3206-1786.png)
 
-如上述流程所示，您一般需要一个后端项目来保存页面数据信息，如果资产包信息是动态的，也需要保存资产包信息。
+As shown above, you generally need a backend project to persist page data. If asset bundle information is dynamic, you also need to persist asset bundle information.

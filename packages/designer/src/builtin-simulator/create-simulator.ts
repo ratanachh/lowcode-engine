@@ -1,4 +1,4 @@
-// NOTE: 仅用作类型标注，切勿作为实体使用
+// NOTE: for type annotation only; do not use as a concrete instance
 import { BuiltinSimulatorHost } from './host';
 import {
   AssetLevel,

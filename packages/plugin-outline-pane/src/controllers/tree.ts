@@ -56,7 +56,7 @@ export class Tree {
   }
 
   setNodeSelected(nodeId: string): void {
-    // 目标节点选中，其他节点展开
+    // Select the target node and expand the others along the path
     const treeNode = this.treeNodesMap.get(nodeId);
     if (!treeNode) {
       return;

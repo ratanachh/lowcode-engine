@@ -2,7 +2,7 @@ import { setNativeSelection, nativeSelectionEnabled } from '../../src/navtive-se
 
 describe('setNativeSelection', () => {
   beforeEach(() => {
-    // 在每个测试运行之前重置nativeSelectionEnabled的值
+    // reset nativeSelectionEnabled before each test
     setNativeSelection(true);
   });
 

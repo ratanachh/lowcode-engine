@@ -1,10 +1,10 @@
 export interface INpmPackage {
-  package: string; // 组件包的名称
-  version: string; // 组件包的版本
+  package: string; // Component package name
+  version: string; // Component package version
 }
 
 /**
- * 外部依赖描述
+ * External dependency description
  *
  * @export
  * @interface IExternalDependency
@@ -29,10 +29,10 @@ export interface IInternalDependency extends IDependency {
 }
 
 export interface IDependency {
-  destructuring: boolean; // 组件是否是解构方式方式导出
-  exportName: string; // 导出命名
-  subName?: string; // 下标子组件名称
-  main?: string; // 包导出组件入口文件路径 /lib/input
-  dependencyType?: DependencyType; // 依赖类型 内/外
-  componentName?: string; // 导入后名称
+  destructuring: boolean; // Whether the component is exported via destructuring
+  exportName: string; // Export name
+  subName?: string; // Sub-component name
+  main?: string; // Package component entry path, e.g. /lib/input
+  dependencyType?: DependencyType; // Dependency type: internal/external
+  componentName?: string; // Name after import
 }

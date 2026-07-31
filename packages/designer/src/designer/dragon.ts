@@ -20,7 +20,7 @@ export interface ILocateEvent extends IPublicModelLocateEvent {
   readonly type: 'LocateEvent';
 
   /**
-   * 激活的感应器
+   * Active sensor
    */
   sensor?: IPublicModelSensor;
 }
@@ -103,7 +103,7 @@ export interface IDragon extends IPublicModelDragon<
 }
 
 /**
- * Drag-on 拖拽引擎
+ * Drag-on drag engine
  */
 export class Dragon implements IDragon {
   private sensors: IPublicModelSensor[] = [];
@@ -113,7 +113,7 @@ export class Dragon implements IDragon {
   key = Math.random();
 
   /**
-   * current active sensor, 可用于感应区高亮
+   * current active sensor, can be used to highlight the sensor area
    */
   @obx.ref private _activeSensor: IPublicModelSensor | undefined;
 
@@ -165,10 +165,10 @@ export class Dragon implements IDragon {
   }
 
   /**
-   * boost your dragObject for dragging(flying) 发射拖拽对象
+   * boost your dragObject for dragging(flying) — launch drag object
    *
-   * @param dragObject 拖拽对象
-   * @param boostEvent 拖拽初始时事件
+   * @param dragObject the drag object
+   * @param boostEvent event at drag start
    */
   boost(dragObject: IPublicModelDragObject, boostEvent: MouseEvent | DragEvent, fromRglNode?: INode | IPublicModelNode) {
     const { designer } = this;
@@ -248,13 +248,13 @@ export class Dragon implements IDragon {
 
       /* istanbul ignore next */
       if (isRGL) {
-        // 禁止被拖拽元素的阻断
+        // Prevent the dragged element from blocking events
         const nodeInst = dragObject.nodes[0].getDOMNode();
         if (nodeInst && nodeInst.style) {
           this.nodeInstPointerEvents = true;
           nodeInst.style.pointerEvents = 'none';
         }
-        // 原生拖拽
+        // Native drag
         this.emitter.emit('rgl.sleeping', false);
         if (fromRglNode && fromRglNode.id === rglNode.id) {
           designer.clearLocation();
@@ -339,7 +339,7 @@ export class Dragon implements IDragon {
 
     // end-tail drag process
     const over = (e?: any) => {
-      // 禁止被拖拽元素的阻断
+      // Prevent the dragged element from blocking events
       if (this.nodeInstPointerEvents) {
         const nodeInst = dragObject.nodes[0].getDOMNode();
         if (nodeInst && nodeInst.style) {
@@ -348,14 +348,14 @@ export class Dragon implements IDragon {
         this.nodeInstPointerEvents = false;
       }
 
-      // 发送drop事件
+      // Emit drop event
       if (e) {
         const { isRGL, rglNode } = getRGL(e);
         /* istanbul ignore next */
         if (isRGL && this._canDrop && this._dragging) {
           const tarNode = dragObject.nodes[0];
           if (rglNode.id !== tarNode.id) {
-            // 避免死循环
+            // Avoid infinite loop
             this.emitter.emit('rgl.drop', {
               rglNode,
               node: tarNode,
@@ -366,7 +366,7 @@ export class Dragon implements IDragon {
         }
       }
 
-      // 移除磁帖占位消息
+      // Remove magnet placeholder message
       this.emitter.emit('rgl.remove.placeholder');
 
       /* istanbul ignore next */
@@ -569,7 +569,7 @@ export class Dragon implements IDragon {
   }
 
   /**
-   * 设置拖拽态
+   * Set dragging state
    */
   private setDraggingState(state: boolean) {
     cursor.setDragging(state);
@@ -579,7 +579,7 @@ export class Dragon implements IDragon {
   }
 
   /**
-   * 设置拷贝态
+   * Set copying state
    */
   private setCopyState(state: boolean) {
     cursor.setCopy(state);
@@ -589,7 +589,7 @@ export class Dragon implements IDragon {
   }
 
   /**
-   * 清除所有态：拖拽态、拷贝态
+   * Clear all states: dragging and copying
    */
   private clearState() {
     cursor.release();
@@ -600,14 +600,14 @@ export class Dragon implements IDragon {
   // #endregion
 
   /**
-   * 添加投放感应区
+   * Add drop sensor area
    */
   addSensor(sensor: any) {
     this.sensors.push(sensor);
   }
 
   /**
-   * 移除投放感应
+   * Remove drop sensor
    */
   removeSensor(sensor: any) {
     const i = this.sensors.indexOf(sensor);

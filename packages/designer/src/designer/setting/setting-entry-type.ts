@@ -9,37 +9,37 @@ export interface ISettingEntry {
   readonly id: string;
 
   /**
-   * 同样类型的节点
+   * Nodes of the same type
    */
   readonly isSameComponent: boolean;
 
   /**
-   * 一个
+   * Single
    */
   readonly isSingle: boolean;
 
   /**
-   * 多个
+   * Multiple
    */
   readonly isMultiple: boolean;
 
   /**
-   * 编辑器引用
+   * Editor reference
    */
   readonly editor: IPublicModelEditor;
 
   readonly setters: IPublicApiSetters;
 
   /**
-   * 取得子项
+   * Get child item
    */
   get: (propName: string | number) => ISettingField | null;
 
   readonly nodes: INode[];
 
-  // @todo 补充 node 定义
+  // @todo add node type definition
   /**
-   * 获取 node 中的第一项
+   * Get the first item among nodes
    */
   getNode: () => any;
 }

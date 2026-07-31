@@ -40,7 +40,7 @@ export default class TreeBranches extends PureComponent<{
   render() {
     const { treeNode, isModal, expanded } = this.props;
     const { filterWorking, matchChild } = this.state;
-    // 条件过滤生效时，如果命中了子节点，需要将该节点展开
+    // When filter is active and a descendant matches, expand this node
     const expandInFilterResult = filterWorking && matchChild;
 
     if (!expandInFilterResult && !expanded) {

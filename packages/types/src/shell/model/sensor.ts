@@ -7,39 +7,39 @@ import {
 } from '..';
 
 /**
- * 拖拽敏感板
+ * Drag sensitive board
  */
 export interface IPublicModelSensor<
   Node = IPublicModelNode
 > {
 
   /**
-   * 是否可响应，比如面板被隐藏，可设置该值 false
+   * Whether responsive; e.g. set false when a panel is hidden
    */
   readonly sensorAvailable: boolean;
 
   /**
-   * 给事件打补丁
+   * Get the node instance
+   */
+  getNodeInstanceFromElement?: (e: Element | null) => IPublicTypeNodeInstance<IPublicTypeComponentInstance, Node> | null;
+
+  /**
+   * Patch an event
    */
   fixEvent(e: IPublicModelLocateEvent): IPublicModelLocateEvent;
 
   /**
-   * 定位并激活
+   * Locate and activate
    */
   locate(e: IPublicModelLocateEvent): IPublicModelDropLocation | undefined | null;
 
   /**
-   * 是否进入敏感板区域
+   * Whether entered the sensor region
    */
   isEnter(e: IPublicModelLocateEvent): boolean;
 
   /**
-   * 取消激活
+   * Deactivate
    */
   deactiveSensor(): void;
-
-  /**
-   * 获取节点实例
-   */
-  getNodeInstanceFromElement?: (e: Element | null) => IPublicTypeNodeInstance<IPublicTypeComponentInstance, Node> | null;
 }

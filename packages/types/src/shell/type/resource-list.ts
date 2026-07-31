@@ -2,35 +2,35 @@ import { ReactElement } from 'react';
 
 export interface IPublicResourceData {
 
-  /** 资源名字 */
+  /** Resource name */
   resourceName: string;
 
-  /** 资源扩展配置 */
+  /** Resource extension config */
   config?: {
     [key: string]: any;
   };
 
-  /** 资源标题 */
+  /** Resource title */
   title?: string;
 
-  /** 资源 Id */
+  /** Resource Id */
   id?: string;
 
-  /** 分类 */
+  /** Category */
   category?: string;
 
-  /** 资源视图 */
+  /** Resource views */
   viewName?: string;
 
-  /** 资源 icon */
+  /** Resource icon */
   icon?: ReactElement;
 
-  /** 资源其他配置，资源初始化时的第二个参数 */
+  /** Other resource config; second argument when initializing the resource */
   options: {
     [key: string]: any;
   };
 
-  /** 资源子元素 */
+  /** Resource children */
   children?: IPublicResourceData[];
 }
 

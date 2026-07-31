@@ -1,77 +1,77 @@
 ---
-title: commonUI - UI 组件库
+title: commonUI - UI Component Library
 sidebar_position: 10
 ---
 
-## 简介
-CommonUI API 是一个专为低代码引擎设计的组件 UI 库，使用它开发的插件，可以保证在不同项目和主题切换中能够保持一致性和兼容性。
+## Overview
 
-## 组件列表
+CommonUI API is a component UI library designed for the low-code engine. Plugins built with it stay consistent and compatible across projects and theme switches.
+
+## Component List
 
 ### Tip
 
-提示组件
+Tooltip component
 
-| 参数      | 说明         | 类型                                  | 默认值 |
-|-----------|--------------|---------------------------------------|--------|
-| className | className    | string (optional)                     |        |
-| children  | tip 的内容   | IPublicTypeI18nData \| ReactNode      |        |
-| direction | tip 的方向   | 'top' \| 'bottom' \| 'left' \| 'right' |        |
-
+| Parameter | Description   | Type                                   | Default |
+| --------- | ------------- | -------------------------------------- | ------- |
+| className | className     | string (optional)                      |         |
+| children  | Tip content   | IPublicTypeI18nData \| ReactNode       |         |
+| direction | Tip direction | 'top' \| 'bottom' \| 'left' \| 'right' |         |
 
 ### HelpTip
 
-带 help icon 的提示组件
+Tooltip component with a help icon
 
-| 参数      | 说明   | 类型                              | 默认值 |
-|-----------|--------|-----------------------------------|--------|
-| help      | 描述   | IPublicTypeHelpTipConfig          |        |
-| direction | 方向   | IPublicTypeTipConfig['direction'] | 'top'  |
-| size      | 方向   | IconProps['size']                 | 'small'|
+| Parameter | Description | Type                              | Default |
+| --------- | ----------- | --------------------------------- | ------- |
+| help      | Description | IPublicTypeHelpTipConfig          |         |
+| direction | Direction   | IPublicTypeTipConfig['direction'] | 'top'   |
+| size      | Size        | IconProps['size']                 | 'small' |
 
 ### Title
 
-标题组件
+Title component
 
-| 参数      | 说明       | 类型                        | 默认值 |
-|-----------|------------|-----------------------------|--------|
-| title     | 标题内容   | IPublicTypeTitleContent     |        |
-| className | className  | string (optional)           |        |
-| onClick   | 点击事件   | () => void (optional)       |        |
+| Parameter | Description   | Type                    | Default |
+| --------- | ------------- | ----------------------- | ------- |
+| title     | Title content | IPublicTypeTitleContent |         |
+| className | className     | string (optional)       |         |
+| onClick   | Click handler | () => void (optional)   |         |
 
 ### ContextMenu
 
-| 参数   | 说明                                               | 类型                               | 默认值 |
-|--------|----------------------------------------------------|------------------------------------|--------|
-| menus  | 定义上下文菜单的动作数组                           | IPublicTypeContextMenuAction[]     |        |
-| children | 组件的子元素                                      | React.ReactElement[]               |        |
+| Parameter | Description                   | Type                           | Default |
+| --------- | ----------------------------- | ------------------------------ | ------- |
+| menus     | Array of context menu actions | IPublicTypeContextMenuAction[] |         |
+| children  | Child elements                | React.ReactElement[]           |         |
 
 **IPublicTypeContextMenuAction Interface**
 
-| 参数       | 说明                                                         | 类型                                                                                                           | 默认值                                 |
-|------------|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|----------------------------------------|
-| name       | 动作的唯一标识符<br/>Unique identifier for the action         | string                                                                                                         |                                        |
-| title      | 显示的标题，可以是字符串或国际化数据<br/>Display title, can be a string or internationalized data | string \| IPublicTypeI18nData (optional)                |                                        |
-| type       | 菜单项类型<br/>Menu item type                                 | IPublicEnumContextMenuType (optional)                                                                          | IPublicEnumContextMenuType.MENU_ITEM  |
-| action     | 点击时执行的动作，可选<br/>Action to execute on click, optional | (nodes: IPublicModelNode[]) => void (optional)                                                                 |                                        |
-| items      | 子菜单项或生成子节点的函数，可选，仅支持两级<br/>Sub-menu items or function to generate child node, optional | Omit<IPublicTypeContextMenuAction, 'items'>[] \| ((nodes: IPublicModelNode[]) => Omit<IPublicTypeContextMenuAction, 'items'>[]) (optional) |                                        |
-| condition  | 显示条件函数<br/>Function to determine display condition      | (nodes: IPublicModelNode[]) => boolean (optional)                                                              |                                        |
-| disabled   | 禁用条件函数，可选<br/>Function to determine disabled condition, optional | (nodes: IPublicModelNode[]) => boolean (optional)                                                              |                                        |
+| Parameter | Description                                                                             | Type                                                                                                                                       | Default                              |
+| --------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
+| name      | Unique identifier for the action                                                        | string                                                                                                                                     |                                      |
+| title     | Display title, can be a string or internationalized data                                | string \| IPublicTypeI18nData (optional)                                                                                                   |                                      |
+| type      | Menu item type                                                                          | IPublicEnumContextMenuType (optional)                                                                                                      | IPublicEnumContextMenuType.MENU_ITEM |
+| action    | Action to execute on click, optional                                                    | (nodes: IPublicModelNode[]) => void (optional)                                                                                             |                                      |
+| items     | Sub-menu items or function to generate child nodes, optional; only two levels supported | Omit<IPublicTypeContextMenuAction, 'items'>[] \| ((nodes: IPublicModelNode[]) => Omit<IPublicTypeContextMenuAction, 'items'>[]) (optional) |                                      |
+| condition | Function to determine display condition                                                 | (nodes: IPublicModelNode[]) => boolean (optional)                                                                                          |                                      |
+| disabled  | Function to determine disabled condition, optional                                      | (nodes: IPublicModelNode[]) => boolean (optional)                                                                                          |                                      |
 
-**ContextMenu 示例**
+**ContextMenu Example**
 
 ```typescript
 const App = () => {
   const menuItems: IPublicTypeContextMenuAction[] = [
     {
       name: 'a',
-      title: '选项 1',
-      action: () => console.log('选项 1 被点击'),
+      title: 'Option 1',
+      action: () => console.log('Option 1 clicked'),
     },
     {
       name: 'b',
-      title: '选项 2',
-      action: () => console.log('选项 2 被点击'),
+      title: 'Option 2',
+      action: () => console.log('Option 2 clicked'),
     },
   ];
 
@@ -80,7 +80,7 @@ const App = () => {
   return (
     <div>
       <ContextMenu menus={menuItems}>
-        <div>右键点击这里</div>
+        <div>Right-click here</div>
       </ContextMenu>
     </div>
   );
@@ -89,20 +89,20 @@ const App = () => {
 export default App;
 ```
 
-**ContextMenu.create 示例**
+**ContextMenu.create Example**
 
 ```typescript
 const App = () => {
   const menuItems: IPublicTypeContextMenuAction[] = [
     {
       name: 'a',
-      title: '选项 1',
-      action: () => console.log('选项 1 被点击'),
+      title: 'Option 1',
+      action: () => console.log('Option 1 clicked'),
     },
     {
       name: 'b',
-      title: '选项 2',
-      action: () => console.log('选项 2 被点击'),
+      title: 'Option 2',
+      action: () => console.log('Option 2 clicked'),
     },
   ];
 
@@ -110,9 +110,13 @@ const App = () => {
 
   return (
     <div>
-      <div onClick={(e) => {
-      	ContextMenu.create(menuItems, e);
-      }}>点击这里</div>
+      <div
+        onClick={(e) => {
+          ContextMenu.create(menuItems, e);
+        }}
+      >
+        Click here
+      </div>
     </div>
   );
 };
@@ -122,89 +126,114 @@ export default App;
 
 ### Balloon
 
-详细文档： [Balloon Documentation](https://fusion.design/pc/component/balloon)
+See: [Balloon Documentation](https://fusion.design/pc/component/balloon)
 
 ### Breadcrumb
-详细文档： [Breadcrumb Documentation](https://fusion.design/pc/component/breadcrumb)
+
+See: [Breadcrumb Documentation](https://fusion.design/pc/component/breadcrumb)
 
 ### Button
-详细文档： [Button Documentation](https://fusion.design/pc/component/button)
+
+See: [Button Documentation](https://fusion.design/pc/component/button)
 
 ### Card
-详细文档：[Card Documentation](https://fusion.design/pc/component/card)
+
+See: [Card Documentation](https://fusion.design/pc/component/card)
 
 ### Checkbox
-详细文档：[Checkbox Documentation](https://fusion.design/pc/component/checkbox)
+
+See: [Checkbox Documentation](https://fusion.design/pc/component/checkbox)
 
 ### DatePicker
-详细文档：[DatePicker Documentation](https://fusion.design/pc/component/datepicker)
+
+See: [DatePicker Documentation](https://fusion.design/pc/component/datepicker)
 
 ### Dialog
-详细文档：[Dialog Documentation](https://fusion.design/pc/component/dialog)
+
+See: [Dialog Documentation](https://fusion.design/pc/component/dialog)
 
 ### Dropdown
-详细文档：[Dropdown Documentation](https://fusion.design/pc/component/dropdown)
+
+See: [Dropdown Documentation](https://fusion.design/pc/component/dropdown)
 
 ### Form
-详细文档：[Form Documentation](https://fusion.design/pc/component/form)
+
+See: [Form Documentation](https://fusion.design/pc/component/form)
 
 ### Icon
-详细文档：[Icon Documentation](https://fusion.design/pc/component/icon)
 
-引擎默认主题支持的 icon 列表：https://fusion.design/64063/component/icon?themeid=20133
+See: [Icon Documentation](https://fusion.design/pc/component/icon)
 
+Icons supported by the engine default theme: https://fusion.design/64063/component/icon?themeid=20133
 
 ### Input
-详细文档：[Input Documentation](https://fusion.design/pc/component/input)
+
+See: [Input Documentation](https://fusion.design/pc/component/input)
 
 ### Loading
-详细文档：[Loading Documentation](https://fusion.design/pc/component/loading)
+
+See: [Loading Documentation](https://fusion.design/pc/component/loading)
 
 ### Message
-详细文档：[Message Documentation](https://fusion.design/pc/component/message)
+
+See: [Message Documentation](https://fusion.design/pc/component/message)
 
 ### Overlay
-详细文档：[Overlay Documentation](https://fusion.design/pc/component/overlay)
+
+See: [Overlay Documentation](https://fusion.design/pc/component/overlay)
 
 ### Pagination
-详细文档：[Pagination Documentation](https://fusion.design/pc/component/pagination)
+
+See: [Pagination Documentation](https://fusion.design/pc/component/pagination)
 
 ### Radio
-详细文档：[Radio Documentation](https://fusion.design/pc/component/radio)
+
+See: [Radio Documentation](https://fusion.design/pc/component/radio)
 
 ### Search
-详细文档：[Search Documentation](https://fusion.design/pc/component/search)
+
+See: [Search Documentation](https://fusion.design/pc/component/search)
 
 ### Select
-详细文档：[Select Documentation](https://fusion.design/pc/component/select)
+
+See: [Select Documentation](https://fusion.design/pc/component/select)
 
 ### SplitButton
-详细文档：[SplitButton Documentation](https://fusion.design/pc/component/splitbutton)
+
+See: [SplitButton Documentation](https://fusion.design/pc/component/splitbutton)
 
 ### Step
-详细文档：[Step Documentation](https://fusion.design/pc/component/step)
+
+See: [Step Documentation](https://fusion.design/pc/component/step)
 
 ### Switch
-详细文档：[Switch Documentation](https://fusion.design/pc/component/switch)
+
+See: [Switch Documentation](https://fusion.design/pc/component/switch)
 
 ### Tab
-详细文档：[Tab Documentation](https://fusion.design/pc/component/tab)
+
+See: [Tab Documentation](https://fusion.design/pc/component/tab)
 
 ### Table
-详细文档：[Table Documentation](https://fusion.design/pc/component/table)
+
+See: [Table Documentation](https://fusion.design/pc/component/table)
 
 ### Tree
-详细文档：[Tree Documentation](https://fusion.design/pc/component/tree)
+
+See: [Tree Documentation](https://fusion.design/pc/component/tree)
 
 ### TreeSelect
-详细文档：[TreeSelect Documentation](https://fusion.design/pc/component/treeselect)
+
+See: [TreeSelect Documentation](https://fusion.design/pc/component/treeselect)
 
 ### Upload
-详细文档：[Upload Documentation](https://fusion.design/pc/component/upload)
+
+See: [Upload Documentation](https://fusion.design/pc/component/upload)
 
 ### Divider
-详细文档：[Divider Documentation](https://fusion.design/pc/component/divider)
 
-## 说明
+See: [Divider Documentation](https://fusion.design/pc/component/divider)
 
-如果需要其他组件，可以提 issue 给我们。
+## Notes
+
+If you need other components, please open an issue.

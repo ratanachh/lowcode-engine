@@ -31,16 +31,16 @@ export interface IEditorWindow extends Omit<IPublicModelWindow<IResource>, 'chan
 }
 
 export enum WINDOW_STATE {
-  // 睡眠
+  // Sleeping
   sleep = 'sleep',
 
-  // 激活
+  // Active
   active = 'active',
 
-  // 未激活
+  // Inactive
   inactive = 'inactive',
 
-  // 销毁
+  // Destroyed
   destroyed = 'destroyed'
 }
 

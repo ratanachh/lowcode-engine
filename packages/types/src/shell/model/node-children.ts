@@ -7,26 +7,26 @@ export interface IPublicModelNodeChildren<
 > {
 
   /**
-   * 返回当前 children 实例所属的节点实例
+   * Return the node instance that owns this children instance
    * get owner node of this nodeChildren
    */
   get owner(): Node | null;
 
   /**
-   * children 内的节点实例数
+   * Number of node instances in children
    * get count of child nodes
    */
   get size(): number;
 
   /**
    * @deprecated please use isEmptyNode
-   * 是否为空
+   * Whether empty
    * @returns
    */
   get isEmpty(): boolean;
 
   /**
-   * 是否为空
+   * Whether empty
    *
    * @returns
    */
@@ -44,7 +44,7 @@ export interface IPublicModelNodeChildren<
   get notEmptyNode(): boolean;
 
   /**
-   * 删除指定节点
+   * Remove a specified node
    *
    * delete the node
    * @param node
@@ -52,17 +52,17 @@ export interface IPublicModelNodeChildren<
   delete(node: Node): boolean;
 
   /**
-   * 插入一个节点
+   * Insert a node
    *
    * insert a node at specific position
-   * @param node 待插入节点
-   * @param at 插入下标
+   * @param node node to insert
+   * @param at insert index
    * @returns
    */
   insert(node: Node, at?: number | null): void;
 
   /**
-   * 返回指定节点的下标
+   * Return the index of a specified node
    *
    * get index of node in current children
    * @param node
@@ -71,7 +71,7 @@ export interface IPublicModelNodeChildren<
   indexOf(node: Node): number;
 
   /**
-   * 类似数组 splice 操作
+   * Array-like splice operation
    *
    * provide the same function with {Array.prototype.splice}
    * @param start
@@ -81,7 +81,7 @@ export interface IPublicModelNodeChildren<
   splice(start: number, deleteCount: number, node?: Node): any;
 
   /**
-   * 返回指定下标的节点
+   * Return the node at a specified index
    *
    * get node with index
    * @param index
@@ -90,7 +90,7 @@ export interface IPublicModelNodeChildren<
   get(index: number): Node | null;
 
   /**
-   * 是否包含指定节点
+   * Whether a specified node is included
    *
    * check if node exists in current children
    * @param node
@@ -99,7 +99,7 @@ export interface IPublicModelNodeChildren<
   has(node: Node): boolean;
 
   /**
-   * 类似数组的 forEach
+   * Array-like forEach
    *
    * provide the same function with {Array.prototype.forEach}
    * @param fn
@@ -107,14 +107,14 @@ export interface IPublicModelNodeChildren<
   forEach(fn: (node: Node, index: number) => void): void;
 
   /**
-   * 类似数组的 reverse
+   * Array-like reverse
    *
    * provide the same function with {Array.prototype.reverse}
    */
   reverse(): Node[];
 
   /**
-   * 类似数组的 map
+   * Array-like map
    *
    * provide the same function with {Array.prototype.map}
    * @param fn
@@ -122,35 +122,35 @@ export interface IPublicModelNodeChildren<
   map<T = any>(fn: (node: Node, index: number) => T): T[] | null;
 
   /**
-   * 类似数组的 every
+   * Array-like every
    * provide the same function with {Array.prototype.every}
    * @param fn
    */
   every(fn: (node: Node, index: number) => boolean): boolean;
 
   /**
-   * 类似数组的 some
+   * Array-like some
    * provide the same function with {Array.prototype.some}
    * @param fn
    */
   some(fn: (node: Node, index: number) => boolean): boolean;
 
   /**
-   * 类似数组的 filter
+   * Array-like filter
    * provide the same function with {Array.prototype.filter}
    * @param fn
    */
   filter(fn: (node: Node, index: number) => boolean): any;
 
   /**
-   * 类似数组的 find
+   * Array-like find
    * provide the same function with {Array.prototype.find}
    * @param fn
    */
   find(fn: (node: Node, index: number) => boolean): Node | null | undefined;
 
   /**
-   * 类似数组的 reduce
+   * Array-like reduce
    *
    * provide the same function with {Array.prototype.reduce}
    * @param fn
@@ -158,7 +158,7 @@ export interface IPublicModelNodeChildren<
   reduce(fn: (acc: any, cur: Node) => any, initialValue: any): void;
 
   /**
-   * 导入 schema
+   * import schema
    *
    * import schema
    * @param data
@@ -166,7 +166,7 @@ export interface IPublicModelNodeChildren<
   importSchema(data?: IPublicTypeNodeData | IPublicTypeNodeData[]): void;
 
   /**
-   * 导出 schema
+   * export schema
    *
    * export schema
    * @param stage
@@ -174,7 +174,7 @@ export interface IPublicModelNodeChildren<
   exportSchema(stage: IPublicEnumTransformStage): IPublicTypeNodeSchema;
 
   /**
-   * 执行新增、删除、排序等操作
+   * Perform add, remove, sort, and similar operations
    *
    * excute remove/add/sort operations
    * @param remover

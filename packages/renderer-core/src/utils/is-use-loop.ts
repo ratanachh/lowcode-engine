@@ -1,8 +1,8 @@
 import { IPublicTypeJSExpression } from '@rchh/lowcode-types';
 import { isJSExpression } from '@rchh/lowcode-utils';
 
-// 1.渲染模式下，loop 是数组，则按照数组长度渲染组件
-// 2.设计模式下，loop 需要长度大于 0，按照循环模式渲染，防止无法设计的情况
+// 1. In render mode, if loop is an array, render by array length
+// 2. In design mode, loop must have length > 0 and render in loop mode so the node remains editable
 export default function isUseLoop(loop: null | any[] | IPublicTypeJSExpression, isDesignMode: boolean): boolean {
   if (isJSExpression(loop)) {
     return true;

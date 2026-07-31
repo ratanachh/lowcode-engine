@@ -1,73 +1,74 @@
 import { IPublicTypeNodeData, IPublicTypeCompositeValue, IPublicTypeNodeSchema } from './';
 
 /**
- * 变量表达式
+ * Variable expression
  *
- * 表达式内通过 this 对象获取上下文
+ * Access context via this inside the expression
  */
 export interface IPublicTypeJSExpression {
   type: 'JSExpression';
 
   /**
-   * 表达式字符串
+   * Expression string
    */
   value: string;
 
   /**
-   * 模拟值
+   * Mock value
    *
-   * @todo 待标准描述
+   * @todo standard description pending
    */
   mock?: any;
 
   /**
-   * 源码
+   * Source code
    *
-   * @todo 待标准描述
+   * @todo standard description pending
    */
   compiled?: string;
 }
 
 /**
- * 事件函数类型
+ * Event function type
  * @see https://lowcode-engine.cn/lowcode
  *
- * 保留与原组件属性、生命周期 ( React / 小程序) 一致的输入参数，并给所有事件函数 binding 统一一致的上下文（当前组件所在容器结构的 this 对象）
+ * Keep input params consistent with original component props/lifecycle (React / mini-program), and bind all event functions to a unified context (this of the container)
  */
 export interface IPublicTypeJSFunction {
+
+  /**
+   * Extra extension props, e.g. extType, events
+   *
+   * @todo standard description pending
+   */
+  [key: string]: any;
+
   type: 'JSFunction';
 
   /**
-   * 函数定义，或直接函数表达式
+   * Function definition, or a direct function expression
    */
   value: string;
 
   /**
-   * 源码
+   * Source code
    *
-   * @todo 待标准描述
+   * @todo standard description pending
    */
   compiled?: string;
 
   /**
-   * 模拟值
+   * Mock value
    *
-   * @todo 待标准描述
+   * @todo standard description pending
    */
   mock?: any;
-
-  /**
-   * 额外扩展属性，如 extType、events
-   *
-   * @todo 待标准描述
-   */
-  [key: string]: any;
 }
 
 /**
- * Slot 函数类型
+ * Slot function type
  *
- * 通常用于描述组件的某一个属性为 ReactNode 或 Function return ReactNode 的场景。
+ * Typically used when a component prop is ReactNode or a Function that returns ReactNode.
  */
 export interface IPublicTypeJSSlot {
 
@@ -77,29 +78,29 @@ export interface IPublicTypeJSSlot {
   type: 'JSSlot';
 
   /**
-   * @todo 待标准描述
+   * @todo standard description pending
    */
   title?: string;
 
   /**
-   * @todo 待标准描述
+   * @todo standard description pending
    */
   id?: string;
 
   /**
-   * 组件的某一个属性为 Function return ReactNode 时，函数的入参
+   * Function parameters when a component prop is a Function returning ReactNode
    *
-   * 其子节点可以通过 this[参数名] 来获取对应的参数。
+   * Child nodes can access the corresponding params via this[paramName].
    */
   params?: string[];
 
   /**
-   * 具体的值。
+   * Concrete value.
    */
   value?: IPublicTypeNodeData[] | IPublicTypeNodeData;
 
   /**
-   * @todo 待标准描述
+   * @todo standard description pending
    */
   name?: string;
 }
@@ -107,7 +108,7 @@ export interface IPublicTypeJSSlot {
 /**
  * @deprecated
  *
- * @todo 待文档描述
+ * @todo documentation pending
  */
 export interface IPublicTypeJSBlock {
   type: 'JSBlock';
@@ -115,7 +116,7 @@ export interface IPublicTypeJSBlock {
 }
 
 /**
- * JSON 基本类型
+ * JSON primitive types
  */
 export type IPublicTypeJSONValue =
   | boolean

@@ -50,9 +50,9 @@ export class Transducer {
     }
 
     /**
-     * 两种方式标识是 FC 而不是动态 setter
-     * 1. 物料描述里面 setter 的配置，显式设置为 false
-     * 2. registerSetter 注册 setter 时显式设置为 false
+     * Two ways to mark as FC rather than dynamic setter
+     * 1. Explicitly set false in material setter config
+     * 2. Explicitly set false when registering via registerSetter
      */
 
     let isDynamic = true;
@@ -65,7 +65,7 @@ export class Transducer {
     if (typeof setter === 'string') {
       const { component, isDynamic: dynamicFlag } = context.setters.getSetter(setter) || {};
       setter = component;
-      // 如果在物料配置中声明了，在 registerSetter 没有声明，取物料配置中的声明
+      // If declared in material config but not in registerSetter, use material config
       isDynamic = dynamicFlag === undefined ? isDynamic : dynamicFlag !== false;
     }
     if (isDynamicSetter(setter) && isDynamic) {

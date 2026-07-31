@@ -91,7 +91,7 @@ export class FocusTracker {
 
 export interface FocusableConfig {
   range: HTMLElement | ((e: MouseEvent) => boolean);
-  modal?: boolean; // 模态窗口级别
+  modal?: boolean; // Modal window level
   onEsc?: () => void;
   onBlur?: () => void;
   onSave?: () => void;

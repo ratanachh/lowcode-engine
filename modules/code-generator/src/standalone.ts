@@ -1,8 +1,8 @@
 /**
- * 低代码引擎的出码模块，负责将编排产出的 Schema 转换成实际可执行的代码。
- * 注意：为了保持 API 的稳定性, 这里所有导出的 API 均要显式命名方式导出
- *     （即用 export { xxx } from 'xx' 的方式，不要直接 export * from 'xxx')
- *      而且所有导出的 API 务必在 tests/public 中编写单元测试
+ * Low-code engine code generation module: converts schemas produced by the designer into executable code.
+ * Note: to keep the API stable, all exported APIs must use explicit named exports
+ *     (i.e. use `export { xxx } from 'xx'`, do not use `export * from 'xxx'`)
+ *      and all exported APIs must have unit tests under tests/public
  */
 import './polyfills/buffer';
 import { createProjectBuilder } from './generator/ProjectBuilder';
@@ -12,11 +12,11 @@ import createIceJsProjectBuilder, { plugins as icejsPlugins } from './solutions/
 import createIceJs3ProjectBuilder, { plugins as icejs3Plugins } from './solutions/icejs3';
 import createRaxAppProjectBuilder, { plugins as raxPlugins } from './solutions/rax-app';
 
-// 引入说明
+// Import related constants
 import { REACT_CHUNK_NAME } from './plugins/component/react/const';
 import { COMMON_CHUNK_NAME, CLASS_DEFINE_CHUNK_NAME, DEFAULT_LINK_AFTER } from './const/generator';
 
-// 引入通用插件组
+// Import common plugin groups
 import esmodule from './plugins/common/esmodule';
 import requireUtils from './plugins/common/requireUtils';
 import styleImport from './plugins/common/styleImport';
@@ -27,12 +27,12 @@ import i18n from './plugins/project/i18n';
 import utils from './plugins/project/utils';
 import prettier from './postprocessor/prettier';
 
-// 引入全局常用工具
+// Import common global utilities
 import * as globalUtils from './utils';
 
 import * as CONSTANTS from './const';
 
-// 引入内置解决方案模块
+// Import built-in solution modules
 import icejs from './plugins/project/framework/icejs';
 import icejs3 from './plugins/project/framework/icejs3';
 import rax from './plugins/project/framework/rax';
@@ -57,7 +57,7 @@ export default {
     common: {
 
       /**
-       * 处理 ES Module
+       * Handle ES Module
        * @deprecated please use esModule
        */
       esmodule,
@@ -105,13 +105,13 @@ export default {
   constants: CONSTANTS,
 };
 
-// 一些类型定义
+// Some type definitions
 export * from './types';
 
-// 一些常量定义
+// Some constant definitions
 export * from './const';
 
-// 一些工具函数
+// Some utility functions
 export * from './analyzer/componentAnalyzer';
 export * from './parser/SchemaParser';
 export * from './generator/ChunkBuilder';

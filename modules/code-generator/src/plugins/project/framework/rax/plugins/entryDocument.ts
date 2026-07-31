@@ -11,7 +11,7 @@ import {
 import { RaxFrameworkOptions } from '../types/RaxFrameworkOptions';
 
 /**
- * 这种方式已经不推荐使用了
+ * This approach is no longer recommended
  */
 const pluginFactory: BuilderComponentPluginFactory<RaxFrameworkOptions> = (cfg) => {
   const plugin: BuilderComponentPlugin = async (pre: ICodeStruct) => {

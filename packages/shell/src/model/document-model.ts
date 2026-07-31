@@ -64,12 +64,12 @@ export class DocumentModel implements IPublicModelDocumentModel {
     if (!document) {
       return null;
     }
-    // @ts-ignore 直接返回已挂载的 shell doc 实例
+    // @ts-ignore Return the mounted shell doc instance directly
     if (document[shellDocSymbol]) {
       return (document as any)[shellDocSymbol];
     }
     const shellDoc = new DocumentModel(document);
-    // @ts-ignore 直接返回已挂载的 shell doc 实例
+    // @ts-ignore Return the mounted shell doc instance directly
     document[shellDocSymbol] = shellDoc;
     return shellDoc;
   }
@@ -86,7 +86,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 获取当前文档所属的 project
+   * Get the project that owns this document
    * @returns
    */
   get project(): IPublicApiProject {
@@ -94,7 +94,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 获取文档的根节点
+   * Get the document root node
    * root node of this documentModel
    * @returns
    */
@@ -115,7 +115,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 获取文档下所有节点 Map, key 为 nodeId
+   * Get all nodes Map under the document, keyed by nodeId
    * get map of all nodes , using node.id as key
    */
   get nodesMap(): Map<string, IPublicModelNode> {
@@ -127,7 +127,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 模态节点管理
+   * Modal nodes manager
    */
   get modalNodesManager(): IPublicModelModalNodesManager | null {
     return ModalNodesManager.create(this[documentSymbol].modalNodesManager);
@@ -142,7 +142,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 根据 nodeId 返回 Node 实例
+   * Return Node instance by nodeId
    * get node instance by nodeId
    * @param {string} nodeId
    */
@@ -151,7 +151,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 导入 schema
+   * Import schema
    * @param schema
    */
   importSchema(schema: IPublicTypeRootSchema): void {
@@ -160,7 +160,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 导出 schema
+   * Export schema
    * @param stage
    * @returns
    */
@@ -169,7 +169,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 插入节点
+   * Insert a node
    * @param parent
    * @param thing
    * @param at
@@ -192,7 +192,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 创建一个节点
+   * Create a node
    * @param data
    * @returns
    */
@@ -201,7 +201,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 移除指定节点/节点id
+   * Remove node / node id
    * @param idOrNode
    */
   removeNode(idOrNode: string | IPublicModelNode): void {
@@ -218,10 +218,10 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 检查拖拽放置的目标节点是否可以放置该拖拽对象
-   * @param dropTarget 拖拽放置的目标节点
-   * @param dragObject 拖拽的对象
-   * @returns boolean 是否可以放置
+   * Check whether the drop target can accept the drag object
+   * @param dropTarget Drop target node
+   * @param dragObject Drag object
+   * @returns boolean Whether drop is allowed
    */
   checkNesting(
       dropTarget: IPublicModelNode,
@@ -240,7 +240,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 当前 document 新增节点事件
+   * Document node-add event
    */
   onAddNode(fn: (node: IPublicModelNode) => void): IPublicTypeDisposable {
     return this[documentSymbol].onNodeCreate((node: InnerNode) => {
@@ -249,7 +249,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 当前 document 新增节点事件，此时节点已经挂载到 document 上
+   * Document node-add event; node is already mounted on the document
    */
   onMountNode(fn: (payload: { node: IPublicModelNode }) => void): IPublicTypeDisposable {
     return this[documentSymbol].onMountNode(({
@@ -260,7 +260,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 当前 document 删除节点事件
+   * Document node-remove event
    */
   onRemoveNode(fn: (node: IPublicModelNode) => void): IPublicTypeDisposable {
     return this[documentSymbol].onNodeDestroy((node: InnerNode) => {
@@ -269,7 +269,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 当前 document 的 hover 变更事件
+   * Document hover change event
    */
   onChangeDetecting(fn: (node: IPublicModelNode) => void): IPublicTypeDisposable {
     return this[documentSymbol].designer.detecting.onDetectingChange((node: InnerNode) => {
@@ -278,7 +278,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 当前 document 的选中变更事件
+   * Document selection change event
    */
   onChangeSelection(fn: (ids: string[]) => void): IPublicTypeDisposable {
     return this[documentSymbol].selection.onSelectionChange((ids: string[]) => {
@@ -287,7 +287,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 当前 document 的节点显隐状态变更事件
+   * Document node visibility change event
    * @param fn
    */
   onChangeNodeVisible(fn: (node: IPublicModelNode, visible: boolean) => void): IPublicTypeDisposable {
@@ -297,7 +297,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 当前 document 的节点 children 变更事件
+   * Document node children change event
    * @param fn
    */
   onChangeNodeChildren(fn: (info: IPublicTypeOnChangeOptions) => void): IPublicTypeDisposable {
@@ -313,7 +313,7 @@ export class DocumentModel implements IPublicModelDocumentModel {
   }
 
   /**
-   * 当前 document 节点属性修改事件
+   * Document node prop change event
    * @param fn
    */
   onChangeNodeProp(fn: (info: IPublicTypePropChangeOptions) => void): IPublicTypeDisposable {

@@ -174,11 +174,11 @@ export class Panel implements IWidget {
 
   setActive(flag: boolean) {
     if (flag === this._actived) {
-      // TODO: 如果移动到另外一个 container，会有问题
+      // TODO: moving to another container may be problematic
       return;
     }
     if (flag) {
-      // 对于 Area 的直接 Child，要专门处理 Float & Fixed 分组切换, 其他情况不需要
+      // For Area direct children, specially handle Float & Fixed group switching; not needed otherwise
       if (this.isChildOfFloatArea()) {
         this.skeleton.leftFixedArea.container.unactiveAll();
       } else if (this.isChildOfFixedArea()) {

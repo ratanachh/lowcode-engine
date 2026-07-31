@@ -74,7 +74,7 @@ export * from './modules/designer-types';
 export * from './modules/lowcode-types';
 
 async function registryInnerPlugin(designer: IDesigner, editor: IEditor, plugins: IPublicApiPlugins): Promise<IPublicTypeDisposable> {
-  // 注册一批内置插件
+  // Register a batch of built-in plugins
   const componentMetaParserPlugin = componentMetaParser(designer);
   const defaultPanelRegistryPlugin = defaultPanelRegistry(editor);
   await plugins.register(OutlinePlugin, {}, { autoInit: true });

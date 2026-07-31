@@ -1,37 +1,49 @@
 ---
-title: 8. 数据源面板详解
+title: 8. Data Source Panel Details
 sidebar_position: 4
 ---
-## 🪚 概述
-数据源面板主要负责管理低代码中远程数据源内容，通过可视化编辑的方式操作低代码协议中的数据源 Schema，配合 [数据源引擎](/site/docs/guide/design/datasourceEngine) 即可实现低代码中数据源的生产和消费；
+
+## 🪚 Overview
+
+The data source panel manages remote data sources in low-code. It edits the data source Schema in the low-code protocol visually. Together with the [Data Source Engine](/site/docs/guide/design/datasourceEngine), it supports producing and consuming data sources in low-code.
 
 ![image.png](https://img.alicdn.com/imgextra/i1/O1CN0170HeBg276B7fM9rqh_!!6000000007747-2-tps-2878-1642.png)
 
-数据源面板
-## ❓如何使用
-> 面板内包含了数据源创建、删除、编辑、排序、导入导出、复制以及搜索等能力，内置支持了 `fecth` & `JSONP`两种常用远程请求类型；
+Data source panel
 
-### 三步创建一个数据源
+## ❓ How to use
+
+> The panel supports creating, deleting, editing, sorting, importing/exporting, copying, and searching data sources. Built-in remote request types include `fetch` and `JSONP`.
+
+### Create a data source in three steps
+
 ![image.png](https://img.alicdn.com/imgextra/i2/O1CN01bkgbqj1cOGfwQtEif_!!6000000003590-2-tps-2878-1638.png)
-三步创建数据源
+Create a data source in three steps
 
-### 参数详解
+### Parameter reference
+
 > TODO
 
-## ☠️ 更多介绍
-### 数据源顺序
-> 数据源为何支持排序功能，主要原因是数据源的加载存在先后顺序；接下来我们从协议层以及实现层看数据源之间的顺序关系；
+## ☠️ More details
+
+### Data source order
+
+> Data sources can be ordered because load order matters. See the protocol and implementation layers for how order is defined.
 
 TODO
-### 如何定制数据源
-#### 定制数据源类型（设计态）
-#### 定制数据源请求实现（运行态）
 
-> 当出现以下两种情况的时，我们需要定制数据源请求实现，
-> - 当你默认提供的 `handler`无法满足你的需求
-> - 定制了数据源类型，比如 `GraphQL`，需要实现一个对应的 `handler`
+### Custom data sources
 
-接下来我们来看一个例子，如何实现一个 `handler`
+#### Custom data source types (design time)
+
+#### Custom request handlers (runtime)
+
+> Customize the request handler when:
+>
+> - The default `handler` does not meet your needs
+> - You added a custom type such as `GraphQL` and need a matching `handler`
+
+Example: implementing a `handler`
 
 ```javascript
 import { RuntimeOptionsConfig } from '@rchh/lowcode-datasource-types';
@@ -54,9 +66,11 @@ export function createFetchHandler(config?: Record<string, unknown>) {
   };
 }
 ```
-低代码 fetch-handler 默认实现
 
-以上代码是低代码内置的 fetch-handler 默认实现，内部使用了 `universal-request`，假如你们内部使用的 `axios`，你完全重新实现一个；
+Default low-code fetch-handler implementation
+
+The built-in fetch-handler uses `universal-request`. If your team uses `axios`, you can reimplement it entirely:
+
 ```javascript
 import axios from 'axios';
 export function createAxiosFetchHandler(config?: Record<string, unknown>) {
@@ -75,10 +89,12 @@ export function createAxiosFetchHandler(config?: Record<string, unknown>) {
 }
 ```
 
-##### 注册到 render
-完成一个 Handler 后你可以通过以下方式接入到 render 或者出码中使用
+##### Register with render
 
-###### 渲染 Render
+After implementing a handler, wire it into render or code generation:
+
+###### Render
+
 ```tsx
 import React, { memo } from 'react';
 import ReactRenderer from '@rchh/lowcode-react-renderer';
@@ -91,19 +107,21 @@ const SamplePreview = memo(() => {
       components={components}
       appHelper={{
         requestHandlersMap: {
-          fetch: createAxiosFetchHandler()
-        }
+          fetch: createAxiosFetchHandler(),
+        },
       }}
     />
   );
 });
 ```
-###### 出码
-> 目前自定义只能通过重新定义类型来完成，接下来我们会给出码添加 requestHandlersMap 映射能力；如有需求请联系 荣彬 (github-id:xingmolu)
 
+###### Code generation
 
-###  设计态启用数据源引擎
-> 默认情况下设计态没有开启数据源引擎，我们可以在设计器 init 的时候来传递`requstHandlersMap`来开启；具体代码如下：
+> Custom handlers currently require redefining types. We plan to add `requestHandlersMap` mapping for code generation. Contact Rongbin (github-id: xingmolu) if you need this.
+
+### Enable the data source engine at design time
+
+> By default the data source engine is off in the designer. Pass `requstHandlersMap` when initializing the designer:
 
 ```javascript
 import { init, plugins } from '@rchh/lowcode-engine';
@@ -120,10 +138,10 @@ const preference = new Map();
     // locale: 'zh-CN',
     enableCondition: true,
     enableCanvasLock: true,
-    // 默认绑定变量
+    // Bind variables by default
     supportVariableGlobally: true,
-    // simulatorUrl 在当 engine-core.js 同一个父路径下时是不需要配置的！！！
-    // 这里因为用的是 alifd cdn，在不同 npm 包，engine-core.js 和 react-simulator-renderer.js 是不同路径
+    // simulatorUrl is not required when it shares the same parent path as engine-core.js!!!
+    // Here we use the alifd CDN, so engine-core.js and react-simulator-renderer.js are on different paths
     simulatorUrl: [
       'https://alifd.alicdn.com/npm/@rchh/lowcode-react-simulator-renderer@latest/dist/css/react-simulator-renderer.css',
       'https://alifd.alicdn.com/npm/@rchh/lowcode-react-simulator-renderer@latest/dist/js/react-simulator-renderer.js'
@@ -135,20 +153,24 @@ const preference = new Map();
 })();
 
 ```
-## 🥡 附录
-### 数据源协议
-| **参数** | **说明** | **类型** | **支持变量** | **默认值** | **备注** |
-| --- | --- | --- | --- | --- | --- |
-| id | 数据请求 ID 标识 | String | - | - |  |
-| isInit | 是否为初始数据 | Boolean | ✅ | true | 值为 true 时，将在组件初始化渲染时自动发送当前数据请求 |
-| isSync | 是否需要串行执行 | Boolean | ✅ | false | 值为 true 时，当前请求将被串行执行 |
-| type | 数据请求类型 | String | - | fetch | 支持四种类型：fetch/mtop/jsonp/custom |
-| shouldFetch | 本次请求是否可以正常请求 | (options: ComponentDataSourceItemOptions) => boolean | - | () => true | function 参数参考 [ComponentDataSourceItemOptions 对象描述](/site/docs/specs/lowcode-spec#2315-componentdatasourceitemoptions-对象描述) |
-| willFetch | 单个数据结果请求参数处理函数 | Function | - | options => options | 只接受一个参数（options），返回值作为请求的 options，当处理异常时，使用原 options。也可以返回一个 Promise，resolve 的值作为请求的 options，reject 时，使用原 options |
-| requestHandler | 自定义扩展的外部请求处理器 | Function | - | - | 仅 type=‘custom’时生效 |
-| dataHandler | request 成功后的回调函数 | Function | - | response => response.data | 参数：请求成功后 promise 的 value 值 |
-| errorHandler | request 失败后的回调函数 | Function | - | - | 参数：请求出错 promise 的 error 内容 |
-| options {} | 请求参数 | **ComponentDataSourceItemOptions**| - | - | 每种请求类型对应不同参数，详见见 [ComponentDataSourceItemOptions 对象描述](/site/docs/specs/lowcode-spec#2315-componentdatasourceitemoptions-对象描述) |
 
-### 运行时实现层：数据源引擎设计
-[数据源引擎设计](/site/docs/guide/design/datasourceEngine)
+## 🥡 Appendix
+
+### Data source protocol
+
+| **Parameter**  | **Description**                 | **Type**                                             | **Variable support** | **Default**               | **Notes**                                                                                                                            |
+| -------------- | ------------------------------- | ---------------------------------------------------- | -------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| id             | Request ID                      | String                                               | -                    | -                         |                                                                                                                                      |
+| isInit         | Initial data request            | Boolean                                              | ✅                   | true                      | When true, the request runs automatically on component mount                                                                         |
+| isSync         | Run serially                    | Boolean                                              | ✅                   | false                     | When true, this request runs serially                                                                                                |
+| type           | Request type                    | String                                               | -                    | fetch                     | fetch / mtop / jsonp / custom                                                                                                        |
+| shouldFetch    | Whether this request may run    | (options: ComponentDataSourceItemOptions) => boolean | -                    | () => true                | See [ComponentDataSourceItemOptions](/site/docs/specs/lowcode-spec#2315-componentdatasourceitemoptions-object-description)           |
+| willFetch      | Pre-request options transform   | Function                                             | -                    | options => options        | Single `options` argument; return value becomes request options. On error, original options are used. May return a Promise           |
+| requestHandler | Custom external request handler | Function                                             | -                    | -                         | Only when type='custom'                                                                                                              |
+| dataHandler    | Success callback                | Function                                             | -                    | response => response.data | Receives the resolved promise value                                                                                                  |
+| errorHandler   | Error callback                  | Function                                             | -                    | -                         | Receives the rejected promise error                                                                                                  |
+| options {}     | Request options                 | **ComponentDataSourceItemOptions**                   | -                    | -                         | Per type; see [ComponentDataSourceItemOptions](/site/docs/specs/lowcode-spec#2315-componentdatasourceitemoptions-object-description) |
+
+### Runtime: data source engine design
+
+[Data Source Engine Design](/site/docs/guide/design/datasourceEngine)

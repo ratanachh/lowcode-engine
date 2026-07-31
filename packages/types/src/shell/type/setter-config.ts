@@ -2,18 +2,18 @@ import { IPublicTypeCustomView, IPublicTypeCompositeValue, IPublicTypeTitleConte
 import { IPublicTypeDynamicProps } from './dynamic-props';
 
 /**
- * 设置器配置
+ * Setter configuration
  */
 export interface IPublicTypeSetterConfig {
 
   // if *string* passed must be a registered Setter Name
   /**
-   * 配置设置器用哪一个 setter
+   * Which setter to use
    */
   componentName: string | IPublicTypeCustomView;
 
   /**
-   * 传递给 setter 的属性
+   * Props passed to the setter
    *
    * the props pass to Setter Component
    */
@@ -25,16 +25,16 @@ export interface IPublicTypeSetterConfig {
   children?: any;
 
   /**
-   * 是否必填？
+   * Whether required?
    *
-   * ArraySetter 里有个快捷预览，可以在不打开面板的情况下直接编辑
+   * ArraySetter has a quick preview for editing without opening the panel
    */
   isRequired?: boolean;
 
   /**
-   * Setter 的初始值
+   * Setter initial value
    *
-   * @todo initialValue 可能要和 defaultValue 二选一
+   * @todo initialValue may need to be mutually exclusive with defaultValue
    */
   initialValue?: any | ((target: IPublicModelSettingField) => any);
 
@@ -42,23 +42,23 @@ export interface IPublicTypeSetterConfig {
 
   // for MixedSetter
   /**
-   * 给 MixedSetter 时切换 Setter 展示用的
+   * Used by MixedSetter when switching setter display
    */
   title?: IPublicTypeTitleContent;
 
   // for MixedSetter check this is available
   /**
-   * 给 MixedSetter 用于判断优先选中哪个
+   * Used by MixedSetter to decide which setter is preferred
    */
   condition?: (target: IPublicModelSettingField) => boolean;
 
   /**
-   * 给 MixedSetter，切换值时声明类型
+   * Used by MixedSetter to declare type when switching values
    *
-   * @todo 物料协议推进
+   * @todo advance the material protocol
    */
   valueType?: IPublicTypeCompositeValue[];
 
-  // 标识是否为动态 setter，默认为 true
+  // Whether this is a dynamic setter; default true
   isDynamic?: boolean;
 }

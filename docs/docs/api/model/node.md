@@ -2,278 +2,281 @@
 title: Node
 sidebar_position: 1
 ---
-> **@types** [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)<br/>
-> **@since** v1.0.0
 
-## 基本介绍
+> **@types** [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)<br/> > **@since** v1.0.0
 
-节点模型
+## Overview
 
-## 属性
+Node model
+
+## Properties
+
 ### id
 
-节点 id
+Node id
 
 `@type {string}`
 
 ### title
 
-节点标题
+Node title
 
 `@type {string | IPublicTypeI18nData | ReactElement}`
 
-相关类型：[IPublicTypeI18nData](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/i18n-data.ts)
+Related types: [IPublicTypeI18nData](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/i18n-data.ts)
 
 ### isContainerNode
 
-是否为「容器型」节点
+Whether this is a container node
 
 `@type {boolean}`
 
 **@since v1.1.0**
-> v1.1.0 之前请使用 `isContainer`
+
+> Before v1.1.0, use `isContainer`
 
 ### isRootNode
 
-是否为根节点
+Whether this is the root node
 
 `@type {boolean}`
 
 **@since v1.1.0**
 
-> v1.1.0 之前请使用 `isRoot`
+> Before v1.1.0, use `isRoot`
 
 ### isEmptyNode
 
-是否为空节点（无 children 或者 children 为空）
+Whether this is an empty node (no children or empty children)
 
 `@type {boolean}`
 
 **@since v1.1.0**
 
-> v1.1.0 之前请使用 `isEmpty`
+> Before v1.1.0, use `isEmpty`
 
 ### isPageNode
 
-是否为 Page 节点
+Whether this is a Page node
 
 `@type {boolean}`
 
 **@since v1.1.0**
 
-> v1.1.0 之前请使用 `isPage`
+> Before v1.1.0, use `isPage`
 
 ### isComponentNode
 
-是否为 Component 节点
+Whether this is a Component node
 
 `@type {boolean}`
 
 **@since v1.1.0**
 
-> v1.1.0 之前请使用 `isComponent`
+> Before v1.1.0, use `isComponent`
 
 ### isModalNode
 
-是否为「模态框」节点
+Whether this is a modal node
 
 `@type {boolean}`
 
 **@since v1.1.0**
 
-> v1.1.0 之前请使用 `isModal`
+> Before v1.1.0, use `isModal`
 
 ### isSlotNode
 
-是否为插槽节点
+Whether this is a slot node
 
 `@type {boolean}`
 
 **@since v1.1.0**
 
-> v1.1.0 之前请使用 `isSlot`
+> Before v1.1.0, use `isSlot`
 
 ### isParentalNode
 
-是否为父类/分支节点
+Whether this is a parent/branch node
 
 `@type {boolean}`
 
 **@since v1.1.0**
 
-> v1.1.0 之前请使用 `isParental`
+> Before v1.1.0, use `isParental`
 
 ### isLeafNode
 
-是否为叶子节点
+Whether this is a leaf node
 
 `@type {boolean}`
 
 **@since v1.1.0**
 
-> v1.1.0 之前请使用 `isLeaf`
+> Before v1.1.0, use `isLeaf`
 
 ### isLocked
 
-获取当前节点的锁定状态
+Get the lock state of the current node
 
 **@since v1.0.16**
 
 ### isRGLContainerNode
-设置为磁贴布局节点，使用方式可参考：[磁贴布局在钉钉宜搭报表设计引擎中的实现](https://mp.weixin.qq.com/s/PSTut5ahAB8nlJ9kBpBaxw)
+
+Set as a tile layout node. For usage, see: [Implementation of tile layout in the DingTalk Yida report design engine](https://mp.weixin.qq.com/s/PSTut5ahAB8nlJ9kBpBaxw)
 
 `@type {boolean}`
 
 **@since v1.1.0**
 
-> v1.0.16 - v1.1.0 请使用 `isRGLContainer`
+> v1.0.16 - v1.1.0, use `isRGLContainer`
 
 ### index
 
-下标
+Index
 
 `@type {number}`
 
 ### icon
 
-图标
+Icon
 
 `@type {IPublicTypeIconType}`
 
-相关类型：[IPublicTypeIconType](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/icon-type.ts)
+Related types: [IPublicTypeIconType](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/icon-type.ts)
 
 ### zLevel
 
-节点所在树的层级深度，根节点深度为 0
+Depth of the node in the tree; root node depth is 0
 
 `@type {number}`
 
 ### componentName
 
-节点 componentName
+Node componentName
 
 `@type {string}`
 
 ### componentMeta
 
-节点的物料元数据
+Material metadata of the node
 
 `@type {IPublicModelComponentMeta | null}`
 
-相关类型：[IPublicModelComponentMeta](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/component-meta.ts)
-
+Related types: [IPublicModelComponentMeta](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/component-meta.ts)
 
 ### document
 
-获取节点所属的[文档模型](./document-model)对象
+Get the [Document Model](./document-model) that owns this node
 
 `@type {IPublicModelDocumentModel | null}`
 
-相关类型：[IPublicModelDocumentModel](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/document-model.ts)
+Related types: [IPublicModelDocumentModel](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/document-model.ts)
 
 ### prevSibling
 
-获取当前节点的前一个兄弟节点
+Get the previous sibling node
 
 `@type {IPublicModelNode | null}`
 
 ### nextSibling
 
-获取当前节点的后一个兄弟节点
+Get the next sibling node
 
 `@type {IPublicModelNode | null}`
 
 ### parent
 
-获取当前节点的父亲节点
+Get the parent node
 
 `@type {IPublicModelNode | null}`
 
 ### children
 
-获取当前节点的孩子节点模型
+Get the children model of the current node
 
 `@type {IPublicModelNodeChildren | null}`
 
-相关类型：[IPublicModelNodeChildren](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node-children.ts)
+Related types: [IPublicModelNodeChildren](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node-children.ts)
 
 ### slots
 
-节点上挂载的插槽节点们
+Slot nodes mounted on this node
 
 `@type {IPublicModelNode[]}`
 
 ### slotFor
 
-当前节点为插槽节点时，返回节点对应的属性实例
+When the current node is a slot node, returns the corresponding prop instance
 
 `@type {IPublicModelProp | null}`
 
-相关类型：[IPublicModelProp](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/prop.ts)
+Related types: [IPublicModelProp](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/prop.ts)
 
 ### props
 
-返回节点的属性集
+Returns the node's property collection
 
 `@type {IPublicModelProps | null}`
 
-相关类型：[IPublicModelProps](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/props.ts)
-
+Related types: [IPublicModelProps](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/props.ts)
 
 ### propsData
 
-返回节点的属性集值
+Returns the values of the node's property collection
 
 `@type {IPublicTypePropsMap | IPublicTypePropsList | null}`
 
-相关类型：
+Related types:
+
 - [IPublicTypePropsMap](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/props-map.ts)
 - [IPublicTypePropsList](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/props-list.ts)
 
 ### conditionGroup
 
-获取条件组
+Get the condition group
 
 `@type {IPublicModelExclusiveGroup | null}`
 
-相关类型：[IPublicModelExclusiveGroup](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/exclusive-group.ts)
+Related types: [IPublicModelExclusiveGroup](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/exclusive-group.ts)
 
 **@since v1.1.0**
 
 ### schema
 
-获取符合搭建协议 - 节点 schema 结构
+Get the node schema structure conforming to the low-code protocol
 
 `@type {IPublicTypeNodeSchema | null}`
 
-相关类型：[IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
+Related types: [IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
 
 ### settingEntry
 
-获取对应的 setting entry
+Get the corresponding setting entry
 
 `@type {IPublicModelSettingTopEntry}`
 
-相关章节：[设置器顶层操作对象](./setting-top-entry)
+Related sections: [Setting Top Entry](./setting-top-entry)
 
-相关类型：[IPublicModelSettingTopEntry](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/setting-top-entry.ts)
+Related types: [IPublicModelSettingTopEntry](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/setting-top-entry.ts)
 
 ### visible
-当前节点是否可见
+
+Whether the current node is visible
 
 `@type {boolean}`
 
 **@since v1.1.0**
 
-## 方法
+## Methods
 
 ### getRect
 
-返回节点的尺寸、位置信息
+Return the node's size and position information
 
 ```typescript
 /**
- * 返回节点的尺寸、位置信息
+ * Return node size and position info
  * get rect information for this node
  */
 getRect(): DOMRect | null;
@@ -281,11 +284,11 @@ getRect(): DOMRect | null;
 
 ### hasSlots
 
-是否有挂载插槽节点
+Whether slot nodes are mounted
 
 ```typescript
 /**
- * 是否有挂载插槽节点
+ * Whether there are mounted slot nodes
  * check if current node has slots
  */
 hasSlots(): boolean;
@@ -293,11 +296,11 @@ hasSlots(): boolean;
 
 ### hasCondition
 
-是否设定了渲染条件
+Whether a render condition is set
 
 ```typescript
 /**
- * 是否设定了渲染条件
+ * Whether a render condition is set
  * check if current node has condition value set
  */
 hasCondition(): boolean;
@@ -305,11 +308,11 @@ hasCondition(): boolean;
 
 ### hasLoop
 
-是否设定了循环数据
+Whether loop data is set
 
 ```typescript
 /**
- * 是否设定了循环数据
+ * Whether loop data is set
  * check if loop is set for this node
  */
 hasLoop(): boolean;
@@ -317,63 +320,63 @@ hasLoop(): boolean;
 
 ### getProp
 
-获取指定 path 的属性模型实例
+Get the property model instance at the specified path
 
 ```typescript
 /**
- * 获取指定 path 的属性模型实例
+ * Get the prop model instance at the specified path
  * get prop by path
- * @param path 属性路径，支持 a / a.b / a.0 等格式
+ * @param path prop path; supports a / a.b / a.0 formats
  */
 getProp(path: string, createIfNone: boolean): IPublicModelProp | null;
 ```
 
-相关类型：[IPublicModelProp](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/prop.ts)
+Related types: [IPublicModelProp](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/prop.ts)
 
 ### getPropValue
 
-获取指定 path 的属性模型实例值
+Get the value of the property model instance at the specified path
 
 ```typescript
 /**
- * 获取指定 path 的属性模型实例值
+ * Get the prop model value at the specified path
  * get prop value by path
- * @param path 属性路径，支持 a / a.b / a.0 等格式
+ * @param path prop path; supports a / a.b / a.0 formats
  */
 getPropValue(path: string): any;
 ```
 
 ### getExtraProp
 
-获取指定 path 的属性模型实例，注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
+Get the property model instance at the specified path. Note: when exporting, unlike regular properties, this property is not nested under `props` but is a sibling of `props`.
 
 ```typescript
 /**
- * 获取指定 path 的属性模型实例，
- *  注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
+ * Get the prop model instance at the specified path,
+ *  Note: when exporting, unlike normal props, this field is not under props but at the same level as props
  *
  * get extra prop by path, an extra prop means a prop not exists in the `props`
  * but as siblint of the `props`
- * @param path 属性路径，支持 a / a.b / a.0 等格式
- * @param createIfNone 当没有属性的时候，是否创建一个属性
+ * @param path prop path; supports a / a.b / a.0 formats
+ * @param createIfNone Whether to create a prop when none exists
  */
 getExtraProp(path: string, createIfNone?: boolean): IPublicModelProp | null;
 ```
 
-相关类型：[IPublicModelProp](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/prop.ts)
+Related types: [IPublicModelProp](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/prop.ts)
 
 ### getExtraPropValue
 
-获取指定 path 的属性模型实例，注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
+Get the value of the property model instance at the specified path. Note: when exporting, unlike regular properties, this property is not nested under `props` but is a sibling of `props`.
 
 ```typescript
 /**
- * 获取指定 path 的属性模型实例，
- *  注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
+ * Get the prop model instance at the specified path,
+ *  Note: when exporting, unlike normal props, this field is not under props but at the same level as props
  *
  * get extra prop value by path, an extra prop means a prop not exists in the `props`
  * but as siblint of the `props`
- * @param path 属性路径，支持 a / a.b / a.0 等格式
+ * @param path prop path; supports a / a.b / a.0 formats
  * @returns
  */
 getExtraPropValue(path: string): any;
@@ -383,59 +386,58 @@ getExtraPropValue(path: string): any;
 
 setPropValue(path: string, value: CompositeValue)
 
-设置指定 path 的属性模型实例值
+Set the value of the property model instance at the specified path
 
 ```typescript
 /**
- * 设置指定 path 的属性模型实例值
+ * Set the prop model value at the specified path
  * set value for prop with path
- * @param path 属性路径，支持 a / a.b / a.0 等格式
- * @param value 值
+ * @param path prop path; supports a / a.b / a.0 formats
+ * @param value value
  */
 setPropValue(path: string, value: IPublicTypeCompositeValue): void;
 ```
 
-相关类型：[IPublicTypeCompositeValue](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/composite-value.ts)
-
+Related types: [IPublicTypeCompositeValue](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/composite-value.ts)
 
 ### setExtraPropValue
 
-设置指定 path 的属性模型实例值
+Set the value of the property model instance at the specified path
 
 ```typescript
 /**
- * 设置指定 path 的属性模型实例值
+ * Set the prop model value at the specified path
  * set value for extra prop with path
- * @param path 属性路径，支持 a / a.b / a.0 等格式
- * @param value 值
+ * @param path prop path; supports a / a.b / a.0 formats
+ * @param value value
  */
 setExtraPropValue(path: string, value: IPublicTypeCompositeValue): void;
 ```
 
-相关类型：[IPublicTypeCompositeValue](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/composite-value.ts)
+Related types: [IPublicTypeCompositeValue](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/composite-value.ts)
 
 ### importSchema
 
-导入节点数据
+Import node data
 
 ```typescript
 /**
- * 导入节点数据
+ * Import node data
  * import node schema
  * @param data
  */
 importSchema(data: IPublicTypeNodeSchema): void;
 ```
 
-相关类型：[IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
+Related types: [IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
 
 ### exportSchema
 
-导出节点数据
+Export node data
 
 ```typescript
 /**
- * 导出节点数据
+ * Export node data
  * export schema from this node
  * @param stage
  * @param options
@@ -443,17 +445,18 @@ importSchema(data: IPublicTypeNodeSchema): void;
 exportSchema(stage: IPublicEnumTransformStage, options?: any): IPublicTypeNodeSchema;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicEnumTransformStage](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/enum/transform-stage.ts)
 - [IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
 
 ### insertBefore
 
-在指定位置之前插入一个节点
+Insert a node before the specified position
 
 ```typescript
 /**
- * 在指定位置之前插入一个节点
+ * Insert a node before the specified position
  * insert a node befor current node
  * @param node
  * @param ref
@@ -468,11 +471,11 @@ insertBefore(
 
 ### insertAfter
 
-在指定位置之后插入一个节点
+Insert a node after the specified position
 
 ```typescript
 /**
- * 在指定位置之后插入一个节点
+ * Insert a node after the specified position
  * insert a node after this node
  * @param node
  * @param ref
@@ -487,14 +490,14 @@ insertAfter(
 
 ### replaceChild
 
-替换指定子节点
+Replace the specified child node
 
 ```typescript
 /**
- * 替换指定子节点
+ * Replace the specified child node
  * replace a child node with data provided
- * @param node 待替换的子节点
- * @param data 用作替换的节点对象或者节点描述
+ * @param node child node to replace
+ * @param data replacement node object or node description
  * @returns
  */
 replaceChild(node: IPublicModelNode, data: any): IPublicModelNode | null;
@@ -502,26 +505,26 @@ replaceChild(node: IPublicModelNode, data: any): IPublicModelNode | null;
 
 ### replaceWith
 
-将当前节点替换成指定节点描述
+Replace the current node with the specified node schema
 
 ```typescript
 /**
- * 将当前节点替换成指定节点描述
+ * Replace the current node with the specified node description
  * replace current node with a new node schema
  * @param schema
  */
 replaceWith(schema: IPublicTypeNodeSchema): any;
 ```
 
-相关类型：[IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
+Related types: [IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
 
 ### select
 
-选中当前节点实例
+Select the current node instance
 
 ```typescript
 /**
- * 选中当前节点实例
+ * Select the current node instance
  * select current node
  */
 select(): void;
@@ -529,11 +532,11 @@ select(): void;
 
 ### hover
 
-设置悬停态
+Set hover state
 
 ```typescript
 /**
- * 设置悬停态
+ * Set hover state
  * set hover value for current node
  * @param flag
  */
@@ -541,11 +544,12 @@ hover(flag: boolean): void;
 ```
 
 ### lock
-设置节点锁定状态
+
+Set node lock state
 
 ```typescript
 /**
- * 设置节点锁定状态
+ * Set node locked state
  * set lock value for current node
  * @param flag
  * @since v1.0.16
@@ -557,11 +561,11 @@ lock(flag?: boolean): void;
 
 ### remove
 
-删除当前节点实例
+Remove the current node instance
 
 ```typescript
 /**
- * 删除当前节点实例
+ * Delete the current node instance
  * remove current node
  */
 remove(): void;
@@ -569,11 +573,11 @@ remove(): void;
 
 ### mergeChildren
 
-执行新增、删除、排序等操作
+Perform add, remove, sort, and other operations
 
 ```typescript
 /**
- * 执行新增、删除、排序等操作
+ * Perform add, remove, sort, and related operations
  * excute remove/add/sort operations on node`s children
  *
  * @since v1.1.0
@@ -589,11 +593,11 @@ mergeChildren(
 
 ### contains
 
-当前节点是否包含某子节点
+Whether the current node contains the given child node
 
 ```typescript
 /**
- * 当前节点是否包含某子节点
+ * Whether the current node contains a given child
  * check if current node contains another node as a child
  * @param node
  * @since v1.1.0
@@ -605,13 +609,13 @@ contains(node: IPublicModelNode): boolean;
 
 ### canPerformAction
 
-是否可执行某 action
+Whether the given action can be performed
 
 ```typescript
 /**
- * 是否可执行某 action
+ * Whether a given action can be executed
  * check if current node can perform certain aciton with actionName
- * @param actionName action 名字
+ * @param actionName action name
  * @since v1.1.0
  */
 canPerformAction(actionName: string): boolean;
@@ -621,11 +625,11 @@ canPerformAction(actionName: string): boolean;
 
 ### isConditionalVisible
 
-获取该节点的 ConditionalVisible 值
+Get the ConditionalVisible value of this node
 
 ```typescript
 /**
- * 获取该节点的 ConditionalVisible 值
+ * Get the node's ConditionalVisible value
  * check if current node ConditionalVisible
  * @since v1.1.0
  */
@@ -635,11 +639,12 @@ isConditionalVisible(): boolean | undefined;
 **@since v1.1.0**
 
 ### setConditionalVisible
-设置该节点的 ConditionalVisible 为 true
+
+Set ConditionalVisible to true for this node
 
 ```typescript
 /**
- * 设置该节点的 ConditionalVisible 为 true
+ * Set the node's ConditionalVisible to true
  * make this node as conditionalVisible === true
  * @since v1.1.0
  */
@@ -649,11 +654,12 @@ setConditionalVisible(): void;
 **@since v1.1.0**
 
 ### getDOMNode
-获取节点实例对应的 dom 节点
+
+Get the DOM node corresponding to this node instance
 
 ```typescript
 /**
- * 获取节点实例对应的 dom 节点
+ * Get the DOM node for this node instance
  */
 getDOMNode(): HTMLElement;
 
@@ -661,11 +667,11 @@ getDOMNode(): HTMLElement;
 
 ### getRGL
 
-获取磁贴相关信息
+Get tile layout related information
 
 ```typescript
 /**
- * 获取磁贴相关信息
+ * Get magnet/tile related info
  */
 getRGL(): {
   isContainerNode: boolean;

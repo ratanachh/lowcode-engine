@@ -20,7 +20,7 @@ export default function blockRendererFactory(): IBaseRenderComponent {
       const { __schema, __components } = this.props;
 
       if (this.__checkSchema(__schema, 'Div')) {
-        return '区块 schema 结构异常！';
+        return 'Invalid block schema structure!';
       }
 
       this.__debug(`${BlockRenderer.displayName} render - ${__schema?.fileName}`);

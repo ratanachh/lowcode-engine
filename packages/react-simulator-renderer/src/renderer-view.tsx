@@ -204,7 +204,7 @@ class Renderer extends Component<{
             viewProps._leaf = leaf.internalToShellNode();
           }
           viewProps._componentName = leaf?.componentName;
-          // 如果是容器 && 无children && 高宽为空 增加一个占位容器，方便拖动
+          // If it is a container with no children and empty width/height, add a placeholder for easier dragging
           if (
             !viewProps.dataSource &&
             leaf?.isContainer() &&
@@ -227,7 +227,7 @@ class Renderer extends Component<{
           if (viewProps._componentName === 'a') {
             delete viewProps.href;
           }
-          // FIXME: 渲染仍有问题
+          // FIXME: rendering still has issues
           if (viewProps._componentName === 'Menu') {
             Object.assign(viewProps, {
               _componentName: 'Menu',

@@ -61,14 +61,14 @@ export class SettingTopEntry implements ISettingTopEntry {
   }
 
   /**
-   * 同样的
+   * Same type
    */
   get isSameComponent(): boolean {
     return this._isSame;
   }
 
   /**
-   * 一个
+   * Single
    */
   get isSingle(): boolean {
     return this.nodes.length === 1;
@@ -79,7 +79,7 @@ export class SettingTopEntry implements ISettingTopEntry {
   }
 
   /**
-   * 多个
+   * Multiple
    */
   get isMultiple(): boolean {
     return this.nodes.length > 1;
@@ -158,14 +158,14 @@ export class SettingTopEntry implements ISettingTopEntry {
   }
 
   /**
-   * 获取当前属性值
+   * Get current prop value
    */
   @computed getValue(): any {
     return this.first?.propsData;
   }
 
   /**
-   * 设置当前属性值
+   * Set current prop value
    */
   setValue(val: any) {
     this.setProps(val);
@@ -173,7 +173,7 @@ export class SettingTopEntry implements ISettingTopEntry {
   }
 
   /**
-   * 获取子项
+   * Get child item
    */
   get(propName: string | number): ISettingField | null {
     if (!propName) return null;
@@ -181,7 +181,7 @@ export class SettingTopEntry implements ISettingTopEntry {
   }
 
   /**
-   * 设置子级属性值
+   * Set child prop value
    */
   setPropValue(propName: string | number, value: any) {
     this.nodes.forEach((node) => {
@@ -190,7 +190,7 @@ export class SettingTopEntry implements ISettingTopEntry {
   }
 
   /**
-   * 清除已设置值
+   * Clear set values
    */
   clearPropValue(propName: string | number) {
     this.nodes.forEach((node) => {
@@ -199,21 +199,21 @@ export class SettingTopEntry implements ISettingTopEntry {
   }
 
   /**
-   * 获取子级属性值
+   * Get child prop value
    */
   getPropValue(propName: string | number): any {
     return this.first.getProp(propName.toString(), true)?.getValue();
   }
 
   /**
-   * 获取顶层附属属性值
+   * Get top-level extra prop value
    */
   getExtraPropValue(propName: string) {
     return this.first.getExtraProp(propName, false)?.getValue();
   }
 
   /**
-   * 设置顶层附属属性值
+   * Set top-level extra prop value
    */
   setExtraPropValue(propName: string, value: any) {
     this.nodes.forEach((node) => {
@@ -221,14 +221,14 @@ export class SettingTopEntry implements ISettingTopEntry {
     });
   }
 
-  // 设置多个属性值，替换原有值
+  // Set multiple prop values, replacing existing ones
   setProps(data: object) {
     this.nodes.forEach((node) => {
       node.setProps(data as any);
     });
   }
 
-  // 设置多个属性值，和原有值合并
+  // Set multiple prop values, merging with existing ones
   mergeProps(data: object) {
     this.nodes.forEach((node) => {
       node.mergeProps(data as any);

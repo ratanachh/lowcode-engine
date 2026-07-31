@@ -1,9 +1,9 @@
 import { IPublicModelNode, IPublicModelSettingField } from './shell';
 
 export interface IShellModelFactory {
-  // TODO: 需要给 innerNode 提供一个 interface 并用在这里
+  // TODO: provide an interface for innerNode and use it here
   createNode(node: any | null | undefined): IPublicModelNode | null;
-  // TODO: 需要给 InnerSettingField 提供一个 interface 并用在这里
+  // TODO: provide an interface for InnerSettingField and use it here
 
   createSettingField(prop: any): IPublicModelSettingField;
 }

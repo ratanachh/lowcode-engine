@@ -6,27 +6,27 @@ export interface IPublicModelSelection<
 > {
 
   /**
-   * 返回选中的节点 id
+   * Returns the selected node id
    * get ids of selected nodes
    */
   get selected(): string[];
 
   /**
-   * 返回选中的节点（如多个节点只返回第一个）
+   * Return the selected node (if there are multiple nodes, only the first one is returned)
    * return selected Node instance，return the first one if multiple nodes are selected
    * @since v1.1.0
    */
   get node(): Node | null;
 
   /**
-   * 选中指定节点（覆盖方式）
+   * Select the specified node (overwrite mode)
    * select node with id, this will override current selection
    * @param id
    */
   select(id: string): void;
 
   /**
-   * 批量选中指定节点们
+   * Select specified nodes in batches
    * select node with ids, this will override current selection
    *
    * @param ids
@@ -34,40 +34,40 @@ export interface IPublicModelSelection<
   selectAll(ids: string[]): void;
 
   /**
-   * 移除选中的指定节点
+   * Remove selected specified node
    * remove node from selection with node id
    * @param id
    */
   remove(id: string): void;
 
   /**
-   * 清除所有选中节点
+   * Clear all selected nodes
    * clear current selection
    */
   clear(): void;
 
   /**
-   * 判断是否选中了指定节点
+   * Determine whether the specified node is selected
    * check if node with specific id is selected
    * @param id
    */
   has(id: string): boolean;
 
   /**
-   * 选中指定节点（增量方式）
+   * Select the specified node (incremental mode)
    * add node with specific id to selection
    * @param id
    */
   add(id: string): void;
 
   /**
-   * 获取选中的节点实例
+   * Get the selected node instance
    * get selected nodes
    */
   getNodes(): Node[];
 
   /**
-   * 获取选区的顶层节点
+   * Get the top node of the selection
    * get seleted top nodes
    * for example:
    *  getNodes() returns [A, subA, B], then
@@ -77,7 +77,7 @@ export interface IPublicModelSelection<
   getTopNodes(includeRoot?: boolean): Node[];
 
   /**
-   * 注册 selection 变化事件回调
+   * Register selection change event callback
    * set callback which will be called when selection is changed
    * @since v1.1.0
    */

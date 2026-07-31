@@ -31,7 +31,7 @@ export default class InstanceNodeSelector extends React.Component<IProps, IState
     });
   }
 
-  // 获取节点的父级节点（最多获取 5 层）
+  // Get parent nodes (up to 5 levels)
   getParentNodes = (node: INode) => {
     const parentNodes: any[] = [];
     const focusNode = node.document?.focusNode;

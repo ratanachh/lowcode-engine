@@ -7,7 +7,7 @@
 const getDocsFromDir = require('../scripts/getDocsFromDir');
 
 module.exports = {
-  // 手动配置的导航
+  // Manually configured navigation
   // guide: [
   //   'guide/quickStart/intro',
   //   'guide/quickStart/start',
@@ -19,61 +19,63 @@ module.exports = {
   //   },
   // ],
   /**
-   * 根据当前目录自动生成导航配置
+   * Auto-generate navigation from the current directory
    */
   guide: [
     [
       {
         type: 'category',
-        label: '入门',
+        label: 'Getting Started',
         collapsed: false,
         items: getDocsFromDir('guide/quickStart'),
       },
       {
         type: 'category',
-        label: '创建编辑器',
+        label: 'Create an Editor',
         collapsed: false,
         items: getDocsFromDir('guide/create'),
       },
       {
         type: 'category',
-        label: '扩展编辑器',
+        label: 'Extend the Editor',
         collapsed: false,
-        items: getDocsFromDir('guide/expand/editor', [{ dir: 'guide/expand/editor/parts', label: 'Parts·造物' }]),
+        items: getDocsFromDir('guide/expand/editor', [
+          { dir: 'guide/expand/editor/parts', label: 'Parts' },
+        ]),
       },
       {
         type: 'category',
-        label: '扩展运行时',
+        label: 'Extend Runtime',
         collapsed: false,
         items: getDocsFromDir('guide/expand/runtime'),
       },
       {
         type: 'category',
-        label: '设计原理',
+        label: 'Design Principles',
         collapsed: false,
         items: getDocsFromDir('guide/design'),
       },
       {
         type: 'category',
-        label: '附录',
+        label: 'Appendix',
         collapsed: false,
         items: [
           {
             type: 'link',
-            label: '更新日志',
+            label: 'Changelog',
             href: 'https://github.com/alibaba/lowcode-engine/releases',
           },
           ...getDocsFromDir('guide/appendix'),
           {
             type: 'category',
-            label: '预置设置器详情',
+            label: 'Built-in Setter Details',
             items: getDocsFromDir('guide/appendix/setterDetails'),
           },
         ],
       },
       {
         type: 'link',
-        label: '技术白皮书',
+        label: 'Technical White Paper',
         href: 'https://developer.aliyun.com/ebook/7507',
       },
     ],

@@ -12,10 +12,10 @@ import type { IProjectBuilder } from '..';
 import type { IPublicTypeProjectSchema } from '@rchh/lowcode-types';
 
 /**
- * 执行出码 CLI 命令
- * @param args 入参数组
- * @param options 选项
- * @returns {Promise<number>} 错误码
+ * Run the code-generation CLI command
+ * @param args Argument array
+ * @param options Options
+ * @returns {Promise<number>} Error code
  */
 export async function run(
   args: string[],
@@ -54,20 +54,19 @@ export async function run(
       }
     }
 
-
-    // 读取 Schema
+    // Read schema
     const schema = await loadSchemaFile(schemaFile);
 
-    // 创建一个项目构建器
+    // Create a project builder
     const createProjectBuilder = await getProjectBuilderFactory(options.solution, {
       quiet: options.quiet,
     });
     const builder = createProjectBuilder(solutionOptions);
 
-    // 生成代码
+    // Generate code
     const generatedSourceCodes = await builder.generateProject(schema);
 
-    // 输出到磁盘
+    // Write to disk
     const publisher = CodeGenerator.publishers.disk();
 
     await publisher.publish({
@@ -142,6 +141,6 @@ async function loadSchemaFile(schemaFile: string): Promise<IPublicTypeProjectSch
     return JSON5.parse(schemaFileContent);
   }
 
-  // 默认用 JSONC 的格式解析（兼容 JSON）
+  // Parse as JSONC by default (JSON-compatible)
   return jsonc.parse(schemaFileContent);
 }

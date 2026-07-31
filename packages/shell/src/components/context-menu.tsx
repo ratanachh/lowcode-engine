@@ -40,7 +40,7 @@ export function ContextMenu({ children, menus, pluginContext }: {
     );
   }
 
-  // 克隆 children 并添加 onContextMenu 事件处理器
+  // Clone children and attach an onContextMenu handler
   const childrenWithContextMenu = React.Children.map(children, (child) =>
     React.cloneElement(
       child,

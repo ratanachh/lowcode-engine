@@ -3,7 +3,7 @@ import { IPublicTypeDisposable, IPublicTypeHotkeyCallback, IPublicTypeHotkeyCall
 export interface IPublicApiHotkey {
 
   /**
-   * 获取当前快捷键配置
+   * Get the current shortcut key configuration
    *
    * @experimental
    * @since v1.1.0
@@ -11,10 +11,10 @@ export interface IPublicApiHotkey {
   get callbacks(): IPublicTypeHotkeyCallbacks;
 
   /**
-   * 绑定快捷键
+   * Bind shortcut keys
    * bind hotkey/hotkeys,
-   * @param combos 快捷键，格式如：['command + s'] 、['ctrl + shift + s'] 等
-   * @param callback 回调函数
+   * @param combos shortcut keys, formats such as: ['command + s'], ['ctrl + shift + s'], etc.
+   * @param callback callback function
    * @param action
    */
   bind(

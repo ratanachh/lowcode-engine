@@ -94,19 +94,19 @@ export class DataHelper {
     this.appHelper = appHelper;
   }
 
-  // 更新config，只会更新配置，状态保存；
+  // Updating config only updates configuration; state is preserved;
   updateConfig(config = {}) {
     this.config = config as DataSource;
     this.ajaxList = (config as DataSource)?.list || [];
     const ajaxMap: any = transformArrayToMap(this.ajaxList, 'id');
-    // 删除已经移除的接口
+    // Remove APIs that are no longer present
     Object.keys(this.ajaxMap).forEach((key) => {
       if (!ajaxMap[key]) {
         delete this.dataSourceMap[key];
       }
     });
     this.ajaxMap = ajaxMap;
-    // 添加未加入到dataSourceMap中的接口
+    // Add APIs not yet in dataSourceMap
     this.ajaxList.forEach((item) => {
       if (!this.dataSourceMap[item.id]) {
         this.dataSourceMap[item.id] = {
@@ -168,7 +168,7 @@ export class DataHelper {
    */
   getInitData() {
     const initSyncData = this.getInitDataSourseConfigs();
-    // 所有 datasource 的 datahandler
+    // dataHandler for all dataSources
     return this.asyncDataHandler(initSyncData).then((res) => {
       const { dataHandler } = this.config;
       return this.handleData(null, dataHandler, res, null);
@@ -195,7 +195,7 @@ export class DataHelper {
         ...req,
         options: {
           ...options,
-          // 支持参数为array的情况，当参数为array时，不做参数合并
+          // Support array params; when params are an array, do not merge them
           params:
             Array.isArray(options.params) || Array.isArray(params)
               ? params || options.params
@@ -215,7 +215,7 @@ export class DataHelper {
       try {
         callbackFn && callbackFn(res && res[id]);
       } catch (e) {
-        logger.error('load请求回调函数报错', e);
+        logger.error('load request callback error', e);
       }
       return res && res[id];
     })
@@ -223,7 +223,7 @@ export class DataHelper {
       try {
         callbackFn && callbackFn(null, err);
       } catch (e) {
-        logger.error('load请求回调函数报错', e);
+        logger.error('load request callback error', e);
       }
       return err;
     });
@@ -300,9 +300,9 @@ export class DataHelper {
       return dataHandlerFun.call(this.host, data, error);
     } catch (e) {
       if (id) {
-        logger.error(`[${id}]单个请求数据处理函数运行出错`, e);
+        logger.error(`[${id}]single request data handler error`, e);
       } else {
-        logger.error('请求数据处理函数运行出错', e);
+        logger.error('request data handler error', e);
       }
     }
   }

@@ -80,8 +80,8 @@ function findComponent(libraryMap: LibraryMap, componentName: string, npm?: IPub
 }
 
 /**
- * 判断是否是一个混合组件，即 components 是一个对象，对象值是 React 组件
- * 示例：
+ * Whether this is a mixed components map (object whose values are React components)
+ * Example:
  * {
  *    Button: ReactNode,
  *    Text: ReactNode,

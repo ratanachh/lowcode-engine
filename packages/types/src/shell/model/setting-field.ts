@@ -9,69 +9,69 @@ export interface IBaseModelSettingField<
 > {
 
   /**
-   * 获取设置属性的父设置属性
+   * Get the parent setting field
    */
   readonly parent: SettingTopEntry | SettingField;
 
   /**
-   * 获取设置属性的 isGroup
+   * Get the setting field isGroup
    */
   get isGroup(): boolean;
 
   /**
-   * 获取设置属性的 id
+   * Get the setting field id
    */
   get id(): string;
 
   /**
-   * 获取设置属性的 name
+   * Get the setting field name
    */
   get name(): string | number | undefined;
 
   /**
-   * 获取设置属性的 key
+   * Get the setting field key
    */
   get key(): string | number | undefined;
 
   /**
-   * 获取设置属性的 path
+   * Get the setting field path
    */
   get path(): (string | number)[];
 
   /**
-   * 获取设置属性的 title
+   * Get the setting field title
    */
   get title(): string;
 
   /**
-   * 获取设置属性的 setter
+   * Get the setting field setter
    */
   get setter(): IPublicTypeSetterType | null;
 
   /**
-   * 获取设置属性的 expanded
+   * Get the setting field expanded
    */
   get expanded(): boolean;
 
   /**
-   * 获取设置属性的 extraProps
+   * Get the setting field extraProps
    */
   get extraProps(): IPublicTypeFieldExtraProps;
 
   get props(): SettingTopEntry;
 
   /**
-   * 获取设置属性对应的节点实例
+   * Get the node instance for the setting field
    */
   get node(): Node | null;
 
   /**
-   * 获取顶级设置属性
+   * Get the top-level setting field
    */
   get top(): SettingTopEntry;
 
   /**
-   * 是否是 SettingField 实例
+   * Whether this is a SettingField instance
    */
   get isSettingField(): boolean;
 
@@ -81,107 +81,107 @@ export interface IBaseModelSettingField<
   get componentMeta(): ComponentMeta | null;
 
   /**
-   * 获取设置属性的 items
+   * Get the setting field items
    */
   get items(): Array<SettingField | IPublicTypeCustomView>;
 
   /**
-   * 设置 key 值
+   * Set the key value
    * @param key
    */
   setKey(key: string | number): void;
 
   /**
-   * 设置值
-   * @param val 值
+   * Set value
+   * @param val value
    */
   setValue(val: IPublicTypeCompositeValue, extraOptions?: IPublicTypeSetValueOptions): void;
 
   /**
-   * 设置子级属性值
-   * @param propName 子属性名
-   * @param value 值
+   * Set a child prop value
+   * @param propName child prop name
+   * @param value value
    */
   setPropValue(propName: string | number, value: any): void;
 
   /**
-   * 清空指定属性值
+   * Clear a specified prop value
    * @param propName
    */
   clearPropValue(propName: string | number): void;
 
   /**
-   * 获取配置的默认值
+   * Get the configured default value
    * @returns
    */
   getDefaultValue(): any;
 
   /**
-   * 获取值
+   * Get value
    * @returns
    */
   getValue(): any;
 
   /**
-   * 获取子级属性值
-   * @param propName 子属性名
+   * Get a child prop value
+   * @param propName child prop name
    * @returns
    */
   getPropValue(propName: string | number): any;
 
   /**
-   * 获取顶层附属属性值
+   * Get a top-level extra prop value
    */
   getExtraPropValue(propName: string): any;
 
   /**
-   * 设置顶层附属属性值
+   * Set a top-level extra prop value
    */
   setExtraPropValue(propName: string, value: any): void;
 
   /**
-   * 获取设置属性集
+   * Get the setting props set
    * @returns
    */
   getProps(): SettingTopEntry;
 
   /**
-   * 是否绑定了变量
+   * Whether bound to a variable
    * @returns
    */
   isUseVariable(): boolean;
 
   /**
-   * 设置绑定变量
+   * Set bind variables
    * @param flag
    */
   setUseVariable(flag: boolean): void;
 
   /**
-   * 创建一个设置 field 实例
+   * Create a settings field instance
    * @param config
    * @returns
    */
   createField(config: IPublicTypeFieldConfig): SettingField;
 
   /**
-   * 获取值，当为变量时，返回 mock
+   * Get the value, when it is a variable, return mock
    * @returns
    */
   getMockOrValue(): any;
 
   /**
-   * 销毁当前 field 实例
+   * Destroy the current field instance
    */
   purge(): void;
 
   /**
-   * 移除当前 field 实例
+   * Remove the current field instance
    */
   remove(): void;
 
   /**
-   * 设置 autorun
+   * Set up autorun
    * @param action
    * @returns
    */

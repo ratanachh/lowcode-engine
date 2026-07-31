@@ -5,16 +5,16 @@ export type IPublicTypeHelpTipConfig = string | { url?: string; content?: string
 
 export interface IPublicTypePanelConfigProps extends IPublicTypePanelDockPanelProps {
   title?: IPublicTypeTitleContent;
-  icon?: any; // 冗余字段
+  icon?: any; // Redundant field
   description?: string | IPublicTypeI18nData;
-  help?: IPublicTypeHelpTipConfig; // 显示问号帮助
+  help?: IPublicTypeHelpTipConfig; // Show question-mark help
   hiddenWhenInit?: boolean; //  when this is true, by default will be hidden
   condition?: (widget: any) => any;
   onInit?: (widget: any) => any;
   onDestroy?: () => any;
-  shortcut?: string; // 只有在特定位置，可触发 toggle show
-  enableDrag?: boolean; // 是否开启通过 drag 调整 宽度
-  keepVisibleWhileDragging?: boolean; // 是否在该 panel 范围内拖拽时保持 visible 状态
+  shortcut?: string; // Only at specific positions can toggle show be triggered
+  enableDrag?: boolean; // Whether to enable resizing width via drag
+  keepVisibleWhileDragging?: boolean; // Whether to keep visible while dragging within this panel
 }
 
 export interface IPublicTypePanelConfig extends IPublicTypeWidgetBaseConfig {
@@ -29,10 +29,10 @@ export interface IPublicTypeWidgetBaseConfig {
   name: string;
 
   /**
-   * 停靠位置：
-   * - 当 type 为 'Panel' 时自动为 'leftFloatArea'；
-   * - 当 type 为 'Widget' 时自动为 'mainArea'；
-   * - 其他时候自动为 'leftArea'；
+   * Dock area:
+   * - When type is 'Panel', defaults to 'leftFloatArea';
+   * - When type is 'Widget', defaults to 'mainArea';
+   * - Otherwise defaults to 'leftArea';
    */
   area?: IPublicTypeWidgetConfigArea;
   props?: Record<string, any>;
@@ -40,7 +40,7 @@ export interface IPublicTypeWidgetBaseConfig {
   contentProps?: Record<string, any>;
 
   /**
-   * 优先级，值越小，优先级越高，优先级高的会排在前面
+   * Priority; smaller value means higher priority and appears first
    */
   index?: number;
 }
@@ -52,7 +52,7 @@ export interface IPublicTypePanelDockConfig extends IPublicTypeWidgetBaseConfig 
 
   props?: IPublicTypePanelDockProps;
 
-  /** 面板 name, 当没有 props.title 时, 会使用 name 作为标题 */
+  /** Panel name; used as title when props.title is absent */
   name: string;
 }
 
@@ -63,18 +63,18 @@ export interface IPublicTypePanelDockProps {
 
   className?: string;
 
-  /** 详细描述，hover 时在标题上方显示的 tips 内容 */
+  /** Detailed description; tip content shown above the title on hover */
   description?: TipContent;
 
   onClick?: () => void;
 
   /**
-   * 面板标题前的 icon
+   * Icon before the panel title
    */
   icon?: IPublicTypeIconType;
 
   /**
-   * 面板标题
+   * Panel title
    */
   title?: IPublicTypeTitleContent;
 }
@@ -82,7 +82,7 @@ export interface IPublicTypePanelDockProps {
 export interface IPublicTypePanelDockPanelProps {
   [key: string]: any;
 
-  /** 是否隐藏面板顶部条 */
+  /** Whether to hide the panel top bar */
   hideTitleBar?: boolean;
 
   width?: number;

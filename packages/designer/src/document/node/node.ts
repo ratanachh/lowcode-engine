@@ -55,13 +55,13 @@ export interface IBaseNode<Schema extends IPublicTypeNodeSchema = IPublicTypeNod
   'isParental' |
   'isLeaf' |
   'settingEntry' |
-  // 在内部的 node 模型中不存在
+  // Does not exist on the internal node model
   'getExtraPropValue' |
   'setExtraPropValue' |
   'exportSchema' |
   'visible' |
   'importSchema' |
-  // 内外实现有差异
+  // Internal and external implementations differ
   'isContainer' |
   'isEmpty'
 > {
@@ -82,8 +82,8 @@ export interface IBaseNode<Schema extends IPublicTypeNodeSchema = IPublicTypeNod
   getParent(): INode | null;
 
   /**
-   * 内部方法，请勿使用
-   * @param useMutator 是否触发联动逻辑
+   * Internal method; do not use
+   * @param useMutator whether to trigger mutation/linkage logic
    */
   internalSetParent(parent: INode | null, useMutator?: boolean): void;
 
@@ -96,7 +96,7 @@ export interface IBaseNode<Schema extends IPublicTypeNodeSchema = IPublicTypeNod
   unlinkSlot(slotNode: INode): void;
 
   /**
-   * 导出 schema
+   * Export schema
    */
   export<T = Schema>(stage: IPublicEnumTransformStage, options?: any): T;
 
@@ -160,12 +160,12 @@ export interface IBaseNode<Schema extends IPublicTypeNodeSchema = IPublicTypeNod
 
   mergeProps(props: IPublicTypePropsMap): void;
 
-  /** 是否可以选中 */
+  /** Whether selectable */
   canSelect(): boolean;
 }
 
 /**
- * 基础节点
+ * Base node
  *
  * [Node Properties]
  *  componentName: Page/Block/Component
@@ -184,7 +184,7 @@ export interface IBaseNode<Schema extends IPublicTypeNodeSchema = IPublicTypeNod
  *  hidden         not visible on canvas
  *  slotArgs       like loopArgs, for slot node
  *
- * 根容器节点
+ * Root container node
  *
  * [Node Properties]
  *  componentName: Page/Block/Component
@@ -216,29 +216,29 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   private emitter: IEventBus;
 
   /**
-   * 是节点实例
+   * Is a node instance
    */
   readonly isNode = true;
 
   /**
-   * 节点 id
+   * Node id
    */
   readonly id: string;
 
   /**
-   * 节点组件类型
-   * 特殊节点：
-   *  * Page 页面
-   *  * Block 区块
-   *  * Component 组件/元件
-   *  * Fragment 碎片节点，无 props，有指令
-   *  * Leaf 文字节点 | 表达式节点，无 props，无指令？
-   *  * Slot 插槽节点，无 props，正常 children，有 slotArgs，有指令
+   * Node component type
+   * Special nodes:
+   *  * Page — page
+   *  * Block — block
+   *  * Component — component
+   *  * Fragment — fragment node; no props, has directives
+   *  * Leaf — text or expression node; no props, no directives?
+   *  * Slot — slot node; no props, normal children, has slotArgs and directives
    */
   readonly componentName: string;
 
   /**
-   * 属性抽象
+   * Props abstraction
    */
   props: IProps;
 
@@ -252,21 +252,21 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   @obx.ref private _parent: INode | null = null;
 
   /**
-   * 父级节点
+   * Parent node
    */
   get parent(): INode | null {
     return this._parent;
   }
 
   /**
-   * 当前节点子集
+   * Current node children
    */
   get children(): INodeChildren | null {
     return this._children || null;
   }
 
   /**
-   * 当前节点深度
+   * Current node depth
    */
   @computed get zLevel(): number {
     if (this._parent) {
@@ -277,7 +277,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
 
   @computed get title(): string | IPublicTypeI18nData | ReactElement {
     let t = this.getExtraProp('title');
-    // TODO: 暂时走不到这个分支
+    // TODO: this branch is currently unreachable
     // if (!t && this.componentMeta.descriptor) {
     //   t = this.getProp(this.componentMeta.descriptor, false);
     // }
@@ -347,7 +347,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   private purged = false;
 
   /**
-   * 是否已销毁
+   * Whether destroyed
    */
   get isPurged() {
     return this.purged;
@@ -356,7 +356,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   private purging: boolean = false;
 
   /**
-   * 是否正在销毁
+   * Whether being destroyed
    */
   get isPurging() {
     return this.purging;
@@ -405,7 +405,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 节点初始化期间就把内置的一些 prop 初始化好，避免后续不断构造实例导致 reaction 执行多次
+   * Init built-in props during node init to avoid repeated reaction runs from later construction
    */
   @action
   private initBuiltinProps() {
@@ -508,7 +508,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 是否一个父亲类节点
+   * Whether this is a parental/container node
    */
   isParental(): boolean {
     return this.isParentalNode;
@@ -519,7 +519,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 终端节点，内容一般为 文字 或者 表达式
+   * Terminal node; content is usually text or an expression
    */
   isLeaf(): boolean {
     return this.isLeafNode;
@@ -556,15 +556,15 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 内部方法，请勿使用
-   * @param useMutator 是否触发联动逻辑
+   * Internal method; do not use
+   * @param useMutator whether to trigger mutation/linkage logic
    */
   internalSetParent(parent: INode | null, useMutator = false) {
     if (this._parent === parent) {
       return;
     }
 
-    // 解除老的父子关系，但不需要真的删除节点
+    // Unlink old parent-child relation without actually deleting the node
     if (this._parent) {
       if (this.isSlot()) {
         this._parent.unlinkSlot(this);
@@ -576,7 +576,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
       this._parent?.didDropOut(this);
     }
     if (parent) {
-      // 建立新的父子关系，尤其注意：对于 parent 为 null 的场景，不会赋值，因为 subtreeModified 等事件可能需要知道该 node 被删除前的父子关系
+      // Establish new parent-child relation; note: when parent is null, do not assign — subtreeModified may need prior relation
       this._parent = parent;
       this.document.removeWillPurge(this);
       /* istanbul ignore next */
@@ -603,14 +603,14 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 关联属性
+   * Related props
    */
   get slotFor(): IProp | null | undefined {
     return this._slotFor;
   }
 
   /**
-   * 移除当前节点
+   * Remove current node
    */
   remove(
     useMutator = true,
@@ -634,14 +634,14 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 锁住当前节点
+   * Lock current node
    */
   lock(flag = true) {
     this.setExtraProp('isLocked', flag);
   }
 
   /**
-   * 获取当前节点的锁定状态
+   * Get current node lock state
    */
   get isLocked(): boolean {
     return !!this.getExtraProp('isLocked')?.getValue();
@@ -654,14 +654,14 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 选择当前节点
+   * Select current node
    */
   select() {
     this.document.selection.select(this.id);
   }
 
   /**
-   * 悬停高亮
+   * Hover highlight
    */
   hover(flag = true) {
     if (flag) {
@@ -672,7 +672,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 节点组件描述
+   * Node component meta/description
    */
   @computed get componentMeta(): IComponentMeta {
     return this.document.getComponentMeta(this.componentName);
@@ -766,7 +766,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 替换子节点
+   * Replace child node
    *
    * @param {INode} node
    * @param {object} data
@@ -823,35 +823,35 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 获取单个属性值
+   * Get a single prop value
    */
   getPropValue(path: string): any {
     return this.getProp(path, false)?.value;
   }
 
   /**
-   * 设置单个属性值
+   * Set a single prop value
    */
   setPropValue(path: string, value: any) {
     this.getProp(path, true)!.setValue(value);
   }
 
   /**
-   * 清除已设置的值
+   * Clear the set value
    */
   clearPropValue(path: string): void {
     this.getProp(path, false)?.unset();
   }
 
   /**
-   * 设置多个属性值，和原有值合并
+   * Set multiple prop values, merging with existing
    */
   mergeProps(props: IPublicTypePropsMap) {
     this.props.merge(props);
   }
 
   /**
-   * 设置多个属性值，替换原有值
+   * Set multiple prop values, replacing existing
    */
   setProps(props?: IPublicTypePropsMap | IPublicTypePropsList | Props | null) {
     if (props instanceof Props) {
@@ -862,7 +862,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 获取节点在父容器中的索引
+   * Get node index in parent container
    */
   @computed get index(): number | undefined {
     if (!this.parent) {
@@ -872,7 +872,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 获取下一个兄弟节点
+   * Get next sibling node
    */
   get nextSibling(): INode | null | undefined {
     if (!this.parent) {
@@ -889,7 +889,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 获取上一个兄弟节点
+   * Get previous sibling node
    */
   get prevSibling(): INode | null | undefined {
     if (!this.parent) {
@@ -906,7 +906,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 获取符合搭建协议-节点 schema 结构
+   * Get node schema conforming to the lowcode protocol
    */
   get schema(): Schema {
     return this.export(IPublicEnumTransformStage.Save);
@@ -942,7 +942,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 导出 schema
+   * Export schema
    */
   export<T = IPublicTypeNodeSchema>(stage: IPublicEnumTransformStage = IPublicEnumTransformStage.Save, options: any = {}): T {
     stage = compatStage(stage);
@@ -994,21 +994,21 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 判断是否包含特定节点
+   * Whether this node contains a specific node
    */
   contains(node: INode): boolean {
     return contains(this, node);
   }
 
   /**
-   * 获取特定深度的父亲节点
+   * Get parent node at a specific depth
    */
   getZLevelTop(zLevel: number): INode | null {
     return getZLevelTop(this, zLevel);
   }
 
   /**
-   * 判断与其它节点的位置关系
+   * Compare position relative to another node
    *
    *  16 thisNode contains otherNode
    *  8  thisNode contained_by otherNode
@@ -1028,7 +1028,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 删除一个Slot节点
+   * Delete a Slot node
    */
   removeSlot(slotNode: INode): boolean {
     // if (purge) {
@@ -1048,7 +1048,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
 
   addSlot(slotNode: INode) {
     const slotName = slotNode?.getExtraProp('name')?.getAsString();
-    // 一个组件下的所有 slot，相同 slotName 的 slot 应该是唯一的
+    // Under one component, slots with the same slotName should be unique
     if (includeSlot(this, slotName)) {
       removeSlot(this, slotName);
     }
@@ -1057,7 +1057,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 当前node对应组件是否已注册可用
+   * Whether the component for this node is registered and available
    */
   isValidComponent() {
     const allComponents = this.document?.designer?.componentsMap;
@@ -1068,7 +1068,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 删除一个节点
+   * Delete a node
    * @param node
    */
   removeChild(node: INode) {
@@ -1076,7 +1076,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 销毁
+   * Destroy
    */
   purge() {
     if (this.purged) {
@@ -1094,7 +1094,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 是否可执行某 action
+   * Whether a given action can be executed
    */
   canPerformAction(actionName: string): boolean {
     const availableActions =
@@ -1217,7 +1217,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
   }
 
   /**
-   * 获取磁贴相关信息
+   * Get magnet-related info
    */
   getRGL(): {
     isContainerNode: boolean;
@@ -1241,7 +1241,7 @@ export class Node<Schema extends IPublicTypeNodeSchema = IPublicTypeNodeSchema> 
    */
   getSuitablePlace(node: INode, ref: any): any {
     const focusNode = this.document?.focusNode;
-    // 如果节点是模态框，插入到根节点下
+    // If the node is a modal, insert under the root
     if (node?.componentMeta?.isModal) {
       return { container: focusNode, ref };
     }
@@ -1419,10 +1419,10 @@ export function getZLevelTop(child: INode, zLevel: number): INode | null {
 }
 
 /**
- * 测试两个节点是否为包含关系
- * @param node1 测试的父节点
- * @param node2 测试的被包含节点
- * @returns 是否包含
+ * Test whether two nodes have a contains relationship
+ * @param node1 putative parent node
+ * @param node2 putative contained node
+ * @returns whether contains
  */
 export function contains(node1: INode, node2: INode): boolean {
   if (node1 === node2) {

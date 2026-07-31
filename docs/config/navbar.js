@@ -1,5 +1,5 @@
 /**
- * 此配置的修改，如未生效，可以重新启动下即可
+ * If changes to this config do not take effect, restart the server.
  */
 module.exports = {
   title: '',
@@ -13,7 +13,7 @@ module.exports = {
       type: 'doc',
       docId: 'guide/quickStart/intro',
       position: 'left',
-      label: '文档',
+      label: 'Docs',
     },
     {
       type: 'doc',
@@ -25,7 +25,7 @@ module.exports = {
       type: 'doc',
       docId: 'specs/lowcode-spec',
       position: 'left',
-      label: '协议',
+      label: 'Specs',
     },
     {
       type: 'doc',
@@ -37,27 +37,27 @@ module.exports = {
       type: 'doc',
       docId: 'article/index',
       position: 'left',
-      label: '文章',
+      label: 'Articles',
     },
     {
       type: 'doc',
       docId: 'video/index',
       position: 'left',
-      label: '视频',
+      label: 'Videos',
     },
     {
       type: 'doc',
       docId: 'demoUsage/intro',
       position: 'left',
-      label: 'Demo 使用文档',
+      label: 'Demo Guide',
     },
     {
       to: '/community/issue',
       position: 'left',
-      label: '社区',
+      label: 'Community',
       activeBaseRegex: '/community/',
     },
-    // 版本切换，如需，这里开启即可
+    // Version switcher — enable if needed
     // {
     //   type: 'docsVersionDropdown',
     //   position: 'right',
@@ -74,7 +74,7 @@ module.exports = {
       type: 'doc',
       docId: 'participate/index',
       position: 'right',
-      label: '参与贡献',
+      label: 'Contribute',
     },
     {
       type: 'search',

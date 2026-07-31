@@ -1,16 +1,18 @@
 import { IPublicTypeComponentMetadata, IPublicTypeReference } from './';
 
 /**
- * 本地物料描述
+ * Local material description
  */
 
 export interface IPublicTypeComponentDescription extends IPublicTypeComponentMetadata {
+
   /**
-   * @todo 待补充文档 @jinchan
+   * @todo documentation pending @jinchan
    */
   keywords: string[];
+
   /**
-   * 替代 npm 字段的升级版本
+   * Upgraded replacement for the npm field
    */
   reference?: IPublicTypeReference;
 }

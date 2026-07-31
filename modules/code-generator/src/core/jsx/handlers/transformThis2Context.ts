@@ -4,7 +4,7 @@ import { IScope } from '../../../types';
 import { parseExpressionConvertThis2Context } from '../../../utils/expressionParser';
 
 /**
- * 将所有的 this.xxx 替换为 __$$context.xxx
+ * Replace all this.xxx with __$$context.xxx
  * @param expr
  */
 export function transformThis2Context(
@@ -16,7 +16,7 @@ export function transformThis2Context(
     return typeof expr === 'string' ? expr : generate(expr).code;
   }
 
-  // 下面这种字符串替换的方式虽然简单直接，但是对于复杂场景会误匹配，故后期改成了解析 AST 然后修改 AST 最后再重新生成代码的方式
+  // String replacement is simple but can mis-match complex cases; later switched to parse AST, mutate AST, then regenerate code
   // return expr
   //   .replace(/\bthis\.item\./g, () => 'item.')
   //   .replace(/\bthis\.index\./g, () => 'index.')

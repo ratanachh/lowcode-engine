@@ -3,91 +3,91 @@ import { IPublicTypePropType, IPublicTypeComponentAction } from './';
 import { IPublicModelNode, IPublicModelSettingField } from '../model';
 
 /**
- * 嵌套控制函数
+ * Nesting control function
  */
 export type IPublicTypeNestingFilter = (testNode: any, currentNode: any) => boolean;
 
 /**
- * 嵌套控制
- * 防止错误的节点嵌套，比如 a 嵌套 a, FormField 只能在 Form 容器下，Column 只能在 Table 下等
+ * Nesting control
+ * Prevent invalid nesting, e.g. a nesting a, FormField only under Form, Column only under Table
  */
 export interface IPublicTypeNestingRule {
 
   /**
-   * 子级白名单
+   * Children whitelist
    */
   childWhitelist?: string[] | string | RegExp | IPublicTypeNestingFilter;
 
   /**
-   * 父级白名单
+   * Parent whitelist
    */
   parentWhitelist?: string[] | string | RegExp | IPublicTypeNestingFilter;
 
   /**
-   * 后裔白名单
+   * Descendant whitelist
    */
   descendantWhitelist?: string[] | string | RegExp | IPublicTypeNestingFilter;
 
   /**
-   * 后裔黑名单
+   * Descendant blacklist
    */
   descendantBlacklist?: string[] | string | RegExp | IPublicTypeNestingFilter;
 
   /**
-   * 祖先白名单 可用来做区域高亮
+   * Ancestor whitelist; can be used for region highlighting
    */
   ancestorWhitelist?: string[] | string | RegExp | IPublicTypeNestingFilter;
 }
 
 /**
- * 组件能力配置
+ * Component capability configuration
  */
 export interface IPublicTypeComponentConfigure {
 
   /**
-   * 是否容器组件
+   * Whether this is a container component
    */
   isContainer?: boolean;
 
   /**
-   * 组件是否带浮层，浮层组件拖入设计器时会遮挡画布区域，此时应当辅助一些交互以防止阻挡
+   * Whether the component has an overlay; overlays can block the canvas when dragged in, so helper interactions should prevent blocking
    */
   isModal?: boolean;
 
   /**
-   * 是否存在渲染的根节点
+   * Whether a render root node exists
    */
   isNullNode?: boolean;
 
   /**
-   * 组件树描述信息
+   * Component tree description
    */
   descriptor?: string;
 
   /**
-   * 嵌套控制：防止错误的节点嵌套
-   * 比如 a 嵌套 a, FormField 只能在 Form 容器下，Column 只能在 Table 下等
+   * Nesting control: prevent invalid node nesting
+   * e.g. a nesting a, FormField only under Form, Column only under Table
    */
   nestingRule?: IPublicTypeNestingRule;
 
   /**
-   * 是否是最小渲染单元
-   * 最小渲染单元下的组件渲染和更新都从单元的根节点开始渲染和更新。如果嵌套了多层最小渲染单元，渲染会从最外层的最小渲染单元开始渲染。
+   * Whether this is a minimal render unit
+   * Under a minimal render unit, render/update starts from the unit root. With nested units, rendering starts from the outermost one.
    */
   isMinimalRenderUnit?: boolean;
 
   /**
-   * 组件选中框的 cssSelector
+   * cssSelector for the component selection box
    */
   rootSelector?: string;
 
   /**
-   * 禁用的行为，可以为 `'copy'`, `'move'`, `'remove'` 或它们组成的数组
+   * Disabled behaviors; may be 'copy', 'move', 'remove', or an array of them
    */
   disableBehaviors?: string[] | string;
 
   /**
-   * 用于详细配置上述操作项的内容
+   * Detailed configuration for the operations above
    */
   actions?: IPublicTypeComponentAction[];
 }
@@ -107,28 +107,28 @@ export interface IPublicTypeAutorunItem {
 
 // thinkof Array
 /**
- * Live Text Editing（如果 children 内容是纯文本，支持双击直接编辑）的可配置项目
+ * Configurable options for Live Text Editing (double-click edit when children are plain text)
  */
 export interface IPublicTypeLiveTextEditingConfig {
 
   /**
-   * @todo 待补充文档
+   * @todo documentation pending
    */
   propTarget: string;
 
   /**
-   * @todo 待补充文档
+   * @todo documentation pending
    */
   selector?: string;
 
   /**
-   * 编辑模式 纯文本 | 段落编辑 | 文章编辑（默认纯文本，无跟随工具条）
+   * Edit mode: plain text | paragraph | article (default plain text, no floating toolbar)
    * @default 'plaintext'
    */
   mode?: 'plaintext' | 'paragraph' | 'article';
 
   /**
-   * 从 contentEditable 获取内容并设置到属性
+   * Read content from contentEditable and set it on the prop
    */
   onSaveContent?: (content: string, prop: any) => any;
 }
@@ -143,38 +143,38 @@ export interface ConfigureSupportEventConfig {
 }
 
 /**
- * 通用扩展面板支持性配置
+ * Common extension panel support configuration
  */
 export interface ConfigureSupport {
 
   /**
-   * 支持事件列表
+   * Supported event list
    */
   events?: ConfigureSupportEvent[];
 
   /**
-   * 支持 className 设置
+   * Support className setting
    */
   className?: boolean;
 
   /**
-   * 支持样式设置
+   * Support style setting
    */
   style?: boolean;
 
   /**
-   * 支持生命周期设置
+   * Support lifecycle setting
    */
   lifecycles?: any[];
 
   // general?: boolean;
   /**
-   * 支持循环设置
+   * Support loop setting
    */
   loop?: boolean;
 
   /**
-   * 支持条件式渲染设置
+   * Support conditional render setting
    */
   condition?: boolean;
 }
@@ -184,7 +184,7 @@ export interface ConfigureSupport {
  */
 
 /**
- * 配置 callbacks 可捕获引擎抛出的一些事件，例如 onNodeAdd、onResize 等
+ * Configure callbacks to capture engine events such as onNodeAdd, onResize, etc.
  */
 export interface IPublicTypeCallbacks {
   // hooks
@@ -194,10 +194,10 @@ export interface IPublicTypeCallbacks {
   // onLocateHook?: (e: any, currentNode: any) => any;
   // onAcceptHook?: (currentNode: any, locationData: any) => any;
   onMoveHook?: (currentNode: IPublicModelNode) => boolean;
-  // thinkof 限制性拖拽
+  // thinkof: restrictive dragging
   onHoverHook?: (currentNode: IPublicModelNode) => boolean;
 
-  /** 选中 hook，如果返回值是 false，可以控制组件不可被选中 */
+  /** Selection hook; return false to prevent the component from being selected */
   onSelectHook?: (currentNode: IPublicModelNode) => boolean;
   onChildMoveHook?: (childNode: IPublicModelNode, currentNode: IPublicModelNode) => boolean;
 

@@ -49,7 +49,7 @@ export const nodeSchemaPropType: IPublicTypePropType = {
         type: 'objectOf',
         value: {
           type: 'oneOfType',
-          // 不会强制校验，更多作为提示
+          // Not a hard validation; mostly a hint
           value: [
             'any',
             {

@@ -191,13 +191,13 @@ export class Field extends Component<FieldProps> {
 }
 
 /**
- * **交互专利点**
+ * **Interaction patent notes**
  *
- * -1 多种值
- * 0 | null 无值
- * 1 类似值，比如数组长度一样
- * 2 单一植
- * 10 必填
+ * -1 multiple values
+ * 0 | null no value
+ * 1 similar values, e.g. same array length
+ * 2 single value
+ * 10 required
  *
  * TODO: turn number to enum
  */

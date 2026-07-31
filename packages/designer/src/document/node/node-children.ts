@@ -25,7 +25,7 @@ export interface INodeChildren extends Omit<IPublicModelNodeChildren<INode>,
   unlinkChild(node: INode): void;
 
   /**
-   * 删除一个节点
+   * Delete a node
    */
   internalDelete(
       node: INode,
@@ -35,14 +35,14 @@ export interface INodeChildren extends Omit<IPublicModelNodeChildren<INode>,
     ): boolean;
 
   /**
-   * 插入一个节点，返回新长度
+   * Insert a node; returns new length
    */
   internalInsert(node: INode, at?: number | null, useMutator?: boolean): void;
 
   import(data?: IPublicTypeNodeData | IPublicTypeNodeData[], checkId?: boolean): void;
 
   /**
-   * 导出 schema
+   * Export schema
    */
   export(stage: IPublicEnumTransformStage): IPublicTypeNodeData[];
 
@@ -52,7 +52,7 @@ export interface INodeChildren extends Omit<IPublicModelNodeChildren<INode>,
   forEach(fn: (item: INode, index: number) => void): void;
 
   /**
-   * 根据索引获得节点
+   * Get node by index
    */
   get(index: number): INode | null;
 
@@ -72,7 +72,7 @@ export class NodeChildren implements INodeChildren {
   private emitter: IEventBus = createModuleEventBus('NodeChildren');
 
   /**
-   * 元素个数
+   * Element count
    */
   @computed get size(): number {
     return this.children.length;
@@ -92,7 +92,7 @@ export class NodeChildren implements INodeChildren {
   private purged = false;
 
   get [Symbol.toStringTag]() {
-    // 保证向前兼容性
+    // Keep backward compatibility
     return 'Array';
   }
 
@@ -112,7 +112,7 @@ export class NodeChildren implements INodeChildren {
   }
 
   /**
-   * 导出 schema
+   * Export schema
    */
   export(stage: IPublicEnumTransformStage = IPublicEnumTransformStage.Save): IPublicTypeNodeData[] {
     stage = compatStage(stage);
@@ -174,7 +174,7 @@ export class NodeChildren implements INodeChildren {
   }
 
   /**
-   * 回收销毁
+   * Purge / destroy
    */
   purge(useMutator = true) {
     if (this.purged) {
@@ -199,14 +199,14 @@ export class NodeChildren implements INodeChildren {
   }
 
   /**
-   * 删除一个节点
+   * Delete a node
    */
   delete(node: INode): boolean {
     return this.internalDelete(node);
   }
 
   /**
-   * 删除一个节点
+   * Delete a node
    */
   internalDelete(node: INode, purge = false, useMutator = true, options: NodeRemoveOptions = {}): boolean {
     node.internalPurgeStart();
@@ -226,7 +226,7 @@ export class NodeChildren implements INodeChildren {
         (iterable, idx) => (iterable as [])[idx],
       );
     }
-    // 需要在从 children 中删除 node 前记录下 index，internalSetParent 中会执行删除 (unlink) 操作
+    // Record index before removing node from children; internalSetParent will unlink
     const i = this.children.map(d => d.id).indexOf(node.id);
     if (purge) {
       // should set parent null
@@ -257,7 +257,7 @@ export class NodeChildren implements INodeChildren {
         removeNode: node,
       });
     }
-    // purge 为 true 时，已在 internalSetParent 中删除了子节点
+    // When purge is true, children were already removed in internalSetParent
     if (i > -1 && !purge) {
       this.children.splice(i, 1);
     }
@@ -269,7 +269,7 @@ export class NodeChildren implements INodeChildren {
   }
 
   /**
-   * 插入一个节点，返回新长度
+   * Insert a node; returns new length
    */
   internalInsert(node: INode, at?: number | null, useMutator = true): void {
     const { children } = this;
@@ -341,7 +341,7 @@ export class NodeChildren implements INodeChildren {
   }
 
   /**
-   * 取得节点索引编号
+   * Get node index
    */
   indexOf(node: INode): number {
     return this.children.map(d => d.id).indexOf(node.id);
@@ -358,21 +358,21 @@ export class NodeChildren implements INodeChildren {
   }
 
   /**
-   * 根据索引获得节点
+   * Get node by index
    */
   get(index: number): INode | null {
     return this.children.length > index ? this.children[index] : null;
   }
 
   /**
-   * 是否存在节点
+   * Whether the node exists
    */
   has(node: INode) {
     return this.indexOf(node) > -1;
   }
 
   /**
-   * 迭代器
+   * Iterator
    */
   [Symbol.iterator](): { next(): { value: INode } } {
     let index = 0;
@@ -395,7 +395,7 @@ export class NodeChildren implements INodeChildren {
   }
 
   /**
-   * 遍历
+   * Traverse
    */
   forEach(fn: (item: INode, index: number) => void): void {
     this.children.forEach((child, index) => {
@@ -404,7 +404,7 @@ export class NodeChildren implements INodeChildren {
   }
 
   /**
-   * 遍历
+   * Traverse
    */
   map<T>(fn: (item: INode, index: number) => T): T[] | null {
     return this.children.map((child, index) => {

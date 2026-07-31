@@ -31,7 +31,7 @@ export interface IPublicTypePluginMeta {
   eventPrefix?: string;
 
   /**
-   * 如果要使用 command 注册命令，需要在插件 meta 中定义 commandScope
+   * To register commands via command, define commandScope in plugin meta
    */
   commandScope?: string;
 }

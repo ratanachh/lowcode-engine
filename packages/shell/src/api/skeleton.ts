@@ -23,7 +23,7 @@ export class Skeleton implements IPublicApiSkeleton {
     const workspace = globalContext.get('workspace');
     if (workspace.isActive) {
       if (!workspace.window?.innerSkeleton) {
-        logger.error('skeleton api 调用时机出现问题，请检查');
+        logger.error('skeleton api called at the wrong time, please check');
         return this[innerSkeletonSymbol];
       }
       return workspace.window.innerSkeleton;
@@ -42,7 +42,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * 增加一个面板实例
+   * Add a panel instance
    * @param config
    * @param extraConfig
    * @returns
@@ -59,7 +59,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * 移除一个面板实例
+   * Remove a panel instance
    * @param config
    * @returns
    */
@@ -86,7 +86,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * 显示面板
+   * Show a panel
    * @param name
    */
   showPanel(name: string) {
@@ -94,7 +94,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * 隐藏面板
+   * Hide a panel
    * @param name
    */
   hidePanel(name: string) {
@@ -102,7 +102,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * 显示 widget
+   * Show a widget
    * @param name
    */
   showWidget(name: string) {
@@ -118,7 +118,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * 隐藏 widget
+   * Hide a widget
    * @param name
    */
   hideWidget(name: string) {
@@ -126,7 +126,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * disable widget，不可点击
+   * Disable a widget (not clickable)
    * @param name
    */
   disableWidget(name: string) {
@@ -150,7 +150,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * 监听 panel 显示事件
+   * Listen for panel show events
    * @param listener
    * @returns
    */
@@ -179,7 +179,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * 监听 panel 隐藏事件
+   * Listen for panel hide events
    * @param listener
    * @returns
    */
@@ -192,7 +192,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * 监听 widget 显示事件
+   * Listen for widget show events
    * @param listener
    * @returns
    */
@@ -205,7 +205,7 @@ export class Skeleton implements IPublicApiSkeleton {
   }
 
   /**
-   * 监听 widget 隐藏事件
+   * Listen for widget hide events
    * @param listener
    * @returns
    */

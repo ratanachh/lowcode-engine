@@ -1,35 +1,42 @@
 import { EitherOr } from '../../utils';
 
 /**
- * 资源引用信息，Npm 的升级版本，
+ * Resource reference info; upgraded version of Npm,
  */
 export type IPublicTypeReference = EitherOr<{
+
   /**
-   * 引用资源的 id 标识
+   * Referenced resource id
    */
   id: string;
+
   /**
-   * 引用资源的包名
+   * Referenced resource package name
    */
   package: string;
+
   /**
-   * 引用资源的导出对象中的属性值名称
+   * Property name on the referenced resource's export object
    */
   exportName: string;
+
   /**
-   * 引用 exportName 上的子对象
+   * Sub-object on exportName
    */
   subName: string;
+
   /**
-   * 引用的资源主入口
+   * Main entry of the referenced resource
    */
   main?: string;
+
   /**
-   * 是否从引用资源的导出对象中获取属性值
+   * Whether to get the property value from the referenced resource's export object
    */
   destructuring?: boolean;
+
   /**
-   * 资源版本号
+   * Resource version
    */
   version: string;
 }, 'package', 'id'>;

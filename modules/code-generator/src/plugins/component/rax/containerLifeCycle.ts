@@ -40,14 +40,14 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
       ...pre,
     };
 
-    // Rax 先只支持 didMount 和 willUnmount 吧
+    // For now Rax only supports didMount and willUnmount
 
     const ir = next.ir as IContainerInfo;
     const { lifeCycles } = ir;
 
     if (lifeCycles && !_.isEmpty(lifeCycles)) {
       Object.entries(lifeCycles).forEach(([lifeCycleName, lifeCycleMethodExpr]) => {
-        // 过滤掉非法数据（有些场景下会误传入空字符串或 null)
+        // Filter invalid data (some scenarios incorrectly pass empty string or null)
         if (
           !isJSFunction(lifeCycles[lifeCycleName]) &&
           !isJSExpressionFn(lifeCycles[lifeCycleName]) &&
@@ -122,7 +122,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
         content: `
             });
 
-            // 为所有的方法绑定上下文
+            // Bind context for all methods
             Object.entries(__$$lifeCycles).forEach(([lifeCycleName, lifeCycleMethod]) => {
               if (typeof lifeCycleMethod === 'function') {
                 __$$lifeCycles[lifeCycleName] = (...args) => {

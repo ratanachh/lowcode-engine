@@ -61,12 +61,12 @@ export class Prop implements IProp, IPropParent {
   readonly owner: INode;
 
   /**
-   * 键值
+   * Key
    */
   @obx key: string | number | undefined;
 
   /**
-   * 扩展值
+   * Extra value
    */
   @obx spread: boolean;
 
@@ -79,7 +79,7 @@ export class Prop implements IProp, IPropParent {
   @obx.ref private _type: ValueTypes = 'unset';
 
   /**
-   * 属性类型
+   * Prop type
    */
   get type(): ValueTypes {
     return this._type;
@@ -88,7 +88,7 @@ export class Prop implements IProp, IPropParent {
   @obx private _value: any = UNSET;
 
   /**
-   * 属性值
+   * Prop value
    */
   @computed get value(): IPublicTypeCompositeValue | UNSET {
     return this.export(IPublicEnumTransformStage.Serilize);
@@ -97,7 +97,7 @@ export class Prop implements IProp, IPropParent {
   private _code: string | null = null;
 
   /**
-   * 获得表达式值
+   * Get expression value
    */
   @computed get code() {
     if (isJSExpression(this.value)) {
@@ -111,7 +111,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 设置表达式值
+   * Set expression value
    */
   set code(code: string) {
     if (isJSExpression(this._value)) {
@@ -149,15 +149,15 @@ export class Prop implements IProp, IPropParent {
   @obx.shallow private _items: IProp[] | null = null;
 
   /**
-   * 作为一层缓存机制，主要是复用部分已存在的 Prop，保持响应式关系，比如：
-   * 当前 Prop#_value 值为 { a: 1 }，当调用 setValue({ a: 2 }) 时，所有原来的子 Prop 均被销毁，
-   * 导致假如外部有 mobx reaction（常见于 observer），此时响应式链路会被打断，
-   * 因为 reaction 监听的是原 Prop(a) 的 _value，而不是新 Prop(a) 的 _value。
+   * Cache layer that reuses existing Props to keep reactivity. Example:
+   * if Prop#_value is { a: 1 } and setValue({ a: 2 }) destroys all child Props,
+   * an external mobx reaction (common with observer) would break because it
+   * watches the old Prop(a)._value rather than the new Prop(a)._value.
    */
   @obx.shallow private _maps: Map<string | number, IProp> | null = null;
 
   /**
-   * 构造 items 属性，同时构造 maps 属性
+   * Build items property, and maps at the same time
    */
   private get items(): IProp[] | null {
     if (this._items) return this._items;
@@ -217,7 +217,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 元素个数
+   * Element count
    */
   get size(): number {
     return this.items?.length || 0;
@@ -244,7 +244,7 @@ export class Prop implements IProp, IPropParent {
     this.setupItems();
   }
 
-  // TODO: 先用调用方式触发子 prop 的初始化，后续须重构
+  // TODO: trigger child prop init via call for now; needs refactor later
   @action
   setupItems() {
     return this.items;
@@ -278,7 +278,7 @@ export class Prop implements IProp, IPropParent {
     stage = compatStage(stage);
     const type = this._type;
     if (stage === IPublicEnumTransformStage.Render && this.key === '___condition___') {
-      // 在设计器里，所有组件默认需要展示，除非开启了 enableCondition 配置
+      // In the designer, all components show by default unless enableCondition is on
       if (engineConfig?.get('enableCondition') !== true) {
         return true;
       }
@@ -381,7 +381,7 @@ export class Prop implements IProp, IPropParent {
     }
 
     this.dispose();
-    // setValue 的时候，如果不重新建立 items，items 的 setValue 没有触发，会导致子项的响应式逻辑不能被触发
+    // On setValue, if items are not rebuilt, items.setValue will not run and child reactivity breaks
     this.setupItems();
 
     if (oldValue !== this._value) {
@@ -431,7 +431,7 @@ export class Prop implements IProp, IPropParent {
   setAsSlot(data: IPublicTypeJSSlot) {
     this._type = 'slot';
     let slotSchema: IPublicTypeSlotSchema;
-    // 当 data.value 的结构为 { componentName: 'Slot' } 时，复用部分 slotSchema 数据
+    // When data.value is { componentName: 'Slot' }, reuse part of slotSchema data
     if ((isPlainObject(data.value) && isNodeSchema(data.value) && data.value?.componentName === 'Slot')) {
       const value = data.value as IPublicTypeSlotSchema;
       slotSchema = {
@@ -466,7 +466,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 取消设置值
+   * Unset value
    */
   @action
   unset() {
@@ -479,7 +479,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 是否未设置值
+   * Whether value is unset
    */
   @action
   isUnset() {
@@ -513,8 +513,8 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 获取某个属性
-   * @param createIfNone 当没有的时候，是否创建一个
+   * Get a prop
+   * @param createIfNone whether to create one if missing
    */
   @action
   get(path: string | number, createIfNone = true): IProp | null {
@@ -565,7 +565,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 从父级移除本身
+   * Remove self from parent
    */
   @action
   remove() {
@@ -574,7 +574,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 删除项
+   * Delete item
    */
   @action
   delete(prop: IProp): void {
@@ -592,7 +592,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 删除 key
+   * Delete key
    */
   @action
   deleteKey(key: string): void {
@@ -606,9 +606,9 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 添加值到列表
+   * Add value to list
    *
-   * @param force 强制
+   * @param force force
    */
   @action
   add(value: IPublicTypeCompositeValue, force = false): IProp | null {
@@ -626,9 +626,9 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 设置值到字典
+   * Set value in map
    *
-   * @param force 强制
+   * @param force force
    */
   @action
   set(key: string | number, value: IPublicTypeCompositeValue | Prop, force = false) {
@@ -682,7 +682,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 是否存在 key
+   * Whether key exists
    */
   has(key: string): boolean {
     if (this._type !== 'map') {
@@ -695,7 +695,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 回收销毁
+   * Purge / destroy
    */
   @action
   purge() {
@@ -715,7 +715,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 迭代器
+   * Iterator
    */
   [Symbol.iterator](): { next(): { value: IProp } } {
     let index = 0;
@@ -738,7 +738,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 遍历
+   * Traverse
    */
   @action
   forEach(fn: (item: IProp, key: number | string | undefined) => void): void {
@@ -753,7 +753,7 @@ export class Prop implements IProp, IPropParent {
   }
 
   /**
-   * 遍历
+   * Traverse
    */
   @action
   map<T>(fn: (item: IProp, key: number | string | undefined) => T): T[] | null {

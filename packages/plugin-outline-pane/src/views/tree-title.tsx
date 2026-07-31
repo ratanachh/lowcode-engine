@@ -79,7 +79,7 @@ export default class TreeTitle extends PureComponent<{
     }
     input.focus();
     input.select();
-    // 光标定位最后一个
+    // Place the caret at the end
     // input.selectionStart = input.selectionEnd;
   };
 

@@ -58,7 +58,7 @@ export class Dragon implements IPublicModelDragon {
   }
 
   /**
-   * 绑定 dragstart 事件
+   * Bind dragstart event
    * @param func
    * @returns
    */
@@ -67,7 +67,7 @@ export class Dragon implements IPublicModelDragon {
   }
 
   /**
-   * 绑定 drag 事件
+   * Bind drag event
    * @param func
    * @returns
    */
@@ -76,7 +76,7 @@ export class Dragon implements IPublicModelDragon {
   }
 
   /**
-   * 绑定 dragend 事件
+   * Bind dragend event
    * @param func
    * @returns
    */
@@ -91,19 +91,19 @@ export class Dragon implements IPublicModelDragon {
   }
 
   /**
-   * 设置拖拽监听的区域 shell，以及自定义拖拽转换函数 boost
-   * @param shell 拖拽监听的区域
-   * @param boost 拖拽转换函数
+   * Set drag listen region (shell) and custom boost transform
+   * @param shell Drag listen region
+   * @param boost Drag transform function
    */
   from(shell: Element, boost: (e: MouseEvent) => IPublicTypeDragNodeDataObject | null): any {
     return this[dragonSymbol].from(shell, boost);
   }
 
   /**
-   * boost your dragObject for dragging(flying) 发射拖拽对象
+   * boost your dragObject for dragging(flying)
    *
-   * @param dragObject 拖拽对象
-   * @param boostEvent 拖拽初始时事件
+   * @param dragObject Drag object
+   * @param boostEvent Initial drag event
    */
   boost(dragObject: IPublicTypeDragObject, boostEvent: MouseEvent | DragEvent, fromRglNode?: IPublicModelNode & {
     [nodeSymbol]: INode;
@@ -115,14 +115,14 @@ export class Dragon implements IPublicModelDragon {
   }
 
   /**
-   * 添加投放感应区
+   * Add a drop sensor
    */
   addSensor(sensor: any): void {
     return this[dragonSymbol].addSensor(sensor);
   }
 
   /**
-   * 移除投放感应
+   * Remove a drop sensor
    */
   removeSensor(sensor: any): void {
     return this[dragonSymbol].removeSensor(sensor);

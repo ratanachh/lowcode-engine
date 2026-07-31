@@ -14,19 +14,19 @@ export interface IPublicModelDocumentModel<
 > {
 
   /**
-     * 节点选中区模型实例
+     * Node selected area model example
      * instance of selection
      */
   selection: Selection;
 
   /**
-   * 画布节点 hover 区模型实例
+   * Canvas node hover area model instance
    * instance of detecting
    */
   detecting: IPublicModelDetecting;
 
   /**
-   * 操作历史模型实例
+   * Operation history model example
    * instance of history
    */
   history: History;
@@ -39,14 +39,14 @@ export interface IPublicModelDocumentModel<
   set id(id);
 
   /**
-   * 获取当前文档所属的 project
+   * Get the project to which the current document belongs
    * get project which this documentModel belongs to
    * @returns
    */
   get project(): Project;
 
   /**
-   * 获取文档的根节点
+   * Get the root node of the document
    * root node of this documentModel
    * @returns
    */
@@ -57,19 +57,19 @@ export interface IPublicModelDocumentModel<
   set focusNode(node: Node | null);
 
   /**
-   * 获取文档下所有节点
+   * Get all nodes under the document
    * @returns
    */
   get nodesMap(): Map<string, Node>;
 
   /**
-   * 模态节点管理
+   * Modal node management
    * get instance of modalNodesManager
    */
   get modalNodesManager(): ModalNodesManager | null;
 
   /**
-   * 根据 nodeId 返回 Node 实例
+   * Return Node instance based on nodeId
    * get node by nodeId
    * @param nodeId
    * @returns
@@ -77,14 +77,14 @@ export interface IPublicModelDocumentModel<
   getNodeById(nodeId: string): Node | null;
 
   /**
-   * 导入 schema
+   * import schema
    * import schema data
    * @param schema
    */
   importSchema(schema: IPublicTypeRootSchema): void;
 
   /**
-   * 导出 schema
+   * export schema
    * export schema
    * @param stage
    * @returns
@@ -92,7 +92,7 @@ export interface IPublicModelDocumentModel<
   exportSchema(stage: IPublicEnumTransformStage): IPublicTypeRootSchema | undefined;
 
   /**
-   * 插入节点
+   * Insert node
    * insert a node
    */
   insertNode(
@@ -103,7 +103,7 @@ export interface IPublicModelDocumentModel<
   ): Node | null;
 
   /**
-   * 创建一个节点
+   * Create a node
    * create a node
    * @param data
    * @returns
@@ -111,7 +111,7 @@ export interface IPublicModelDocumentModel<
   createNode<T = Node>(data: IPublicTypeNodeSchema): T | null;
 
   /**
-   * 移除指定节点/节点id
+   * Remove the specified node/node id
    * remove a node by node instance or nodeId
    * @param idOrNode
    */
@@ -125,11 +125,11 @@ export interface IPublicModelDocumentModel<
   getComponentsMap(extraComps?: string[]): any;
 
   /**
-   * 检查拖拽放置的目标节点是否可以放置该拖拽对象
+   * Check whether the target node of drag and drop can place the drag object
    * check if dragOjbect can be put in this dragTarget
-   * @param dropTarget 拖拽放置的目标节点
-   * @param dragObject 拖拽的对象
-   * @returns boolean 是否可以放置
+   * @param dropTarget The target node for dragging and dropping
+   * @param dragObject the dragged object
+   * @returns boolean whether it can be placed
    * @since v1.0.16
    */
   checkNesting(
@@ -138,51 +138,51 @@ export interface IPublicModelDocumentModel<
   ): boolean;
 
   /**
-   * 当前 document 新增节点事件
+   * New node event in current document
    * set callback for event on node is created for a document
    */
   onAddNode(fn: (node: Node) => void): IPublicTypeDisposable;
 
   /**
-   * 当前 document 新增节点事件，此时节点已经挂载到 document 上
+   * A new node event is added to the current document. At this time, the node has been mounted on the document.
    * set callback for event on node is mounted to canvas
    */
   onMountNode(fn: (payload: { node: Node }) => void): IPublicTypeDisposable;
 
   /**
-   * 当前 document 删除节点事件
+   * Current document delete node event
    * set callback for event on node is removed
    */
   onRemoveNode(fn: (node: Node) => void): IPublicTypeDisposable;
 
   /**
-   * 当前 document 的 hover 变更事件
+   * The hover change event of the current document
    *
    * set callback for event on detecting changed
    */
   onChangeDetecting(fn: (node: Node) => void): IPublicTypeDisposable;
 
   /**
-   * 当前 document 的选中变更事件
+   * The selection change event of the current document
    * set callback for event on selection changed
    */
   onChangeSelection(fn: (ids: string[]) => void): IPublicTypeDisposable;
 
   /**
-   * 当前 document 的节点显隐状态变更事件
+   * The node visible and hidden status change event of the current document
    * set callback for event on visibility changed for certain node
    * @param fn
    */
   onChangeNodeVisible(fn: (node: Node, visible: boolean) => void): IPublicTypeDisposable;
 
   /**
-   * 当前 document 的节点 children 变更事件
+   * The node children change event of the current document
    * @param fn
    */
   onChangeNodeChildren(fn: (info: IPublicTypeOnChangeOptions<Node>) => void): IPublicTypeDisposable;
 
   /**
-   * 当前 document 节点属性修改事件
+   * Current document node attribute modification event
    * @param fn
    */
   onChangeNodeProp(fn: (info: IPublicTypePropChangeOptions<Node>) => void): IPublicTypeDisposable;
@@ -195,7 +195,7 @@ export interface IPublicModelDocumentModel<
   onImportSchema(fn: (schema: IPublicTypeRootSchema) => void): IPublicTypeDisposable;
 
   /**
-   * 判断是否当前节点处于被探测状态
+   * Determine whether the current node is in the detected state
    * check is node being detected
    * @param node
    * @since v1.1.0
@@ -203,21 +203,21 @@ export interface IPublicModelDocumentModel<
   isDetectingNode(node: Node): boolean;
 
   /**
-   * 获取当前的 DropLocation 信息
+   * Get current DropLocation information
    * get current drop location
    * @since v1.1.0
    */
   get dropLocation(): DropLocation | null;
 
   /**
-   * 设置当前的 DropLocation 信息
+   * Set current DropLocation information
    * set current drop location
    * @since v1.1.0
    */
   set dropLocation(loc: DropLocation | null);
 
   /**
-   * 设置聚焦节点变化的回调
+   * Set callbacks for changes in the focus node
    * triggered focused node is set mannually from plugin
    * @param fn
    * @since v1.1.0
@@ -227,7 +227,7 @@ export interface IPublicModelDocumentModel<
   ): IPublicTypeDisposable;
 
   /**
-   * 设置 DropLocation 变化的回调
+   * Set the callback for DropLocation changes
    * triggered when drop location changed
    * @param fn
    * @since v1.1.0

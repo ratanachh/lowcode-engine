@@ -11,7 +11,7 @@ export default function (
 ): IPublicTypeTransformedComponentMetadata {
   const { componentName, configure = {} } = metadata;
 
-  // 如果已经处理过，不再重新执行一遍
+  // If already processed, do not run again
   if (configure.combined) {
     return metadata;
   }
@@ -61,19 +61,19 @@ export default function (
     (isRoot
       ? /* [
           {
-            description: '初始化时',
+            description: 'on init',
             name: 'constructor',
           },
           {
-            description: '装载后',
+            description: 'after mount',
             name: 'componentDidMount',
           },
           {
-            description: '更新时',
+            description: 'on update',
             name: 'componentDidUpdate',
           },
           {
-            description: '卸载时',
+            description: 'on unmount',
             name: 'componentWillUnmount',
           },
         ] */ null
@@ -81,18 +81,18 @@ export default function (
   if (supportedLifecycles) {
     eventsDefinition.push({
       type: 'lifeCycleEvent',
-      title: '生命周期',
+      title: 'Lifecycle',
       list: supportedLifecycles.map((event: any) => (typeof event === 'string' ? { name: event } : event)),
     });
   }
   if (supports.events) {
     eventsDefinition.push({
       type: 'events',
-      title: '事件',
+      title: 'Events',
       list: (supports.events || []).map((event: any) => (typeof event === 'string' ? { name: event } : event)),
     });
   }
-  //  通用设置
+  // General settings
   let propsGroup = props ? [...props] : [];
   const basicInfo: any = {};
   if (componentName === 'Slot') {
@@ -113,13 +113,13 @@ export default function (
           'zh-CN': '插槽标题',
         },
         setter: 'StringSetter',
-        defaultValue: '插槽容器',
+        defaultValue: 'Slot Container',
       },
     ];
   }
   // propsGroup.push({
   //   name: '#generals',
-  //   title: { type: 'i18n', 'zh-CN': '通用', 'en-US': 'General' },
+  //   title: { type: 'i18n', 'zh-CN': 'General', 'en-US': 'General' },
   //   items: [
   //     {
   //       name: 'id',
@@ -139,7 +139,7 @@ export default function (
   //     },
   //     {
   //       name: '!more',
-  //       title: '更多',
+  //       title: 'More',
   //       setter: 'PropertiesSetter',
   //     },
   //   ],
@@ -150,7 +150,7 @@ export default function (
     let l = propsGroup.length;
     while (l-- > 0) {
       const item = propsGroup[l];
-      // if (item.type === 'group' && (item.title === '高级' || item.title?.label === '高级')) {
+      // if (item.type === 'group' && (item.title === 'Advanced' || item.title?.label === 'Advanced')) {
       //   advancedGroup = item.items || [];
       //   propsGroup.splice(l, 1);
       // }
@@ -229,7 +229,7 @@ export default function (
               eventDataList.map((item) => {
                 field.parent.setPropValue(item.name, {
                   type: 'JSFunction',
-                  // 需要传下入参
+                  // Need to pass parameters through
                   value: `function(){return this.${
                     item.relatedEventName
                   }.apply(this,Array.prototype.slice.call(arguments).concat([${

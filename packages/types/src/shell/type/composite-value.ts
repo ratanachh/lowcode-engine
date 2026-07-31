@@ -1,7 +1,7 @@
 import { IPublicTypeJSONValue, IPublicTypeJSExpression, IPublicTypeJSFunction, IPublicTypeJSSlot, IPublicTypeCompositeArray, IPublicTypeCompositeObject } from './';
 
 /**
- * 复合类型
+ * Composite type
  */
 export type IPublicTypeCompositeValue = IPublicTypeJSONValue |
   IPublicTypeJSExpression |

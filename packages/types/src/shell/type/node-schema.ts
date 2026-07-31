@@ -1,47 +1,47 @@
 import { IPublicTypeCompositeValue, IPublicTypePropsMap, IPublicTypeNodeData } from './';
 
-// 转换成一个 .jsx 文件内 React Class 类 render 函数返回的 jsx 代码
+// Convert to JSX returned by a React Class render function in a .jsx file
 /**
- * 搭建基础协议 - 单个组件树节点描述
+ * Builder base protocol - single component tree node description
  */
 export interface IPublicTypeNodeSchema {
 
   id?: string;
 
   /**
-   * 组件名称 必填、首字母大写
+   * Component name; required, capitalized
    */
   componentName: string;
 
   /**
-   * 组件属性对象
+   * Component props object
    */
   props?: {
     children?: IPublicTypeNodeData | IPublicTypeNodeData[];
   } & IPublicTypePropsMap; // | PropsList;
 
   /**
-   * 渲染条件
+   * Render condition
    */
   condition?: IPublicTypeCompositeValue;
 
   /**
-   * 循环数据
+   * Loop data
    */
   loop?: IPublicTypeCompositeValue;
 
   /**
-   * 循环迭代对象、索引名称 ["item", "index"]
+   * Loop iteration item and index names ["item", "index"]
    */
   loopArgs?: [string, string];
 
   /**
-   * 子节点
+   * Child nodes
    */
   children?: IPublicTypeNodeData | IPublicTypeNodeData[];
 
   /**
-   * 是否锁定
+   * Whether locked
    */
   isLocked?: boolean;
 
@@ -54,6 +54,6 @@ export interface IPublicTypeNodeSchema {
   hidden?: boolean;
   isTopFixed?: boolean;
 
-  /** @experimental 编辑态内部使用 */
+  /** @experimental for internal editor use */
   __ctx?: any;
 }

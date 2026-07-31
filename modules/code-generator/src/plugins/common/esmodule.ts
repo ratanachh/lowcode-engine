@@ -18,7 +18,7 @@ import {
 
 import { isValidIdentifier } from '../../utils/validate';
 
-// TODO: main 这个信息到底怎么用，是不是外部包不需要使用？
+// TODO: How should main be used — do external packages not need it?
 const DEP_MAIN_BLOCKLIST = ['lib', 'lib/index', 'es', 'es/index', 'main'];
 const DEFAULT_EXPORT_NAME = '__default__';
 
@@ -37,7 +37,7 @@ function groupDepsByPack(deps: IDependency[]): Record<string, IDependency[]> {
       addDep(`${(dep as IInternalDependency).moduleName}${dep.main ? `/${dep.main}` : ''}`, dep);
     } else {
       let depMain = '';
-      // TODO: 部分类型的 main 暂时认为没用
+      // TODO: For some types, main is temporarily considered unused
       if (dep.main && DEP_MAIN_BLOCKLIST.indexOf(dep.main) < 0) {
         depMain = dep.main;
       }
@@ -56,7 +56,7 @@ interface IDependencyItem {
   aliasName?: string;
   isDefault?: boolean;
   subName?: string;
-  nodeIdentifier?: string; // 与使用处的映射关系，理论上是不可变更的，如需变更需要提供额外信息
+  nodeIdentifier?: string; // Mapping to usage sites; theoretically immutable — provide extra info if it must change
   source: IDependency;
 }
 
@@ -108,9 +108,9 @@ function buildPackageImport(
   targetFileType: string,
   useAliasName: boolean,
 ): ICodeChunk[] {
-  // 如果压根没有包，则不生成对应的 import 语句（生成了没有任何意义）
+  // If there is no package at all, do not generate an import (it would be meaningless)
   if (!pkg || pkg === 'undefined' || pkg === 'null') {
-    // TODO: 要不要加个 warning？
+    // TODO: Should we add a warning?
     return [];
   }
 
@@ -128,7 +128,7 @@ function buildPackageImport(
       source: dep,
     };
 
-    // 下面 5 个逻辑是清理不必要的冗余信息，做到数据结构归一化
+    // The next 5 steps clean redundant info and normalize the data structure
     if (info.isDefault) {
       if (defaultExportNames.indexOf(info.exportName) < 0) {
         defaultExportNames.push(info.exportName);
@@ -163,7 +163,7 @@ function buildPackageImport(
     return info;
   });
 
-  // 建立 export 项目的列表
+  // Build the export item list
   depsInfo.forEach((info) => {
     if (!exportItems[info.exportName]) {
       exportItems[info.exportName] = {
@@ -179,7 +179,7 @@ function buildPackageImport(
     }
   });
 
-  // 建立别名字典
+  // Build the alias dictionary
   depsInfo.forEach((info) => {
     if (info.aliasName) {
       const { aliasNames } = exportItems[info.exportName];
@@ -189,7 +189,7 @@ function buildPackageImport(
     }
   });
 
-  // fix: 父组件ImportAliasDefine, 与子组件import的父组件冲突情况
+  // fix: Parent ImportAliasDefine conflicts with parent imported by a child component
   depsInfo.forEach((info) => {
     if (info.nodeIdentifier) {
       const exportItem = exportItems[info.exportName];
@@ -200,7 +200,7 @@ function buildPackageImport(
     }
   });
 
-  // 发现 nodeIdentifier 与 exportName 或者 aliasName 冲突的场景
+  // Detect conflicts between nodeIdentifier and exportName or aliasName
   const nodeIdentifiers = depsInfo.map((info) => info.nodeIdentifier).filter(Boolean);
   const conflictInfos = flatMap(Object.keys(exportItems), (exportName) => {
     const exportItem = exportItems[exportName];
@@ -255,7 +255,7 @@ function buildPackageImport(
     }
   });
 
-  // 判断是否所有依赖都有合法的 Identifier
+  // Check whether all dependencies have a valid Identifier
   depsInfo.forEach((info) => {
     const name = info.aliasName || info.exportName;
     if (!isValidIdentifier(name)) {
@@ -292,9 +292,9 @@ function buildPackageImport(
   }
 
   depsInfo.forEach((info) => {
-    // 如果是子组件，则导出父组件，并且根据自组件命名规则，判断是否需要定义标识符
+    // If it is a sub-component, export the parent and decide whether an identifier is needed per naming rules
     if (info.nodeIdentifier) {
-      // 前提，存在 nodeIdentifier 一定是有 subName 的，不然前面会优化掉
+      // Prerequisite: if nodeIdentifier exists, subName must exist; otherwise it was optimized away earlier
       const ownerName = getDependencyIdentifier(info);
 
       chunks.push({
@@ -310,7 +310,7 @@ function buildPackageImport(
         },
       });
     } else if (info.aliasName) {
-      // default 方式的导入会生成单独de import 语句，无需生成赋值语句
+      // default imports generate a separate import statement; no assignment needed
       if (info.isDefault && defaultExportNames.find((n) => n === info.aliasName)) {
         delete aliasDefineStatements[info.aliasName];
         return;
@@ -337,7 +337,7 @@ function buildPackageImport(
     }
   });
 
-  // 可能会剩余一些存在二次转换的定义
+  // Some definitions that need a second transform may remain
   Object.keys(aliasDefineStatements).forEach((a) => {
     chunks.push({
       type: ChunkType.STRING,
@@ -396,7 +396,7 @@ function buildPackageImport(
     });
   }
 
-  // 处理下一些额外的 default 方式的导入
+  // Handle some extra default imports
   if (defaultExportNames.length > 1) {
     if (deps[0].dependencyType === DependencyType.Internal) {
       defaultExportNames.slice(1).forEach((exportName) => {
@@ -441,9 +441,9 @@ function buildPackageImport(
 }
 
 export interface PluginConfig {
-  fileType?: string; // 导出的文件类型
-  useAliasName?: boolean; // 是否使用 componentName 重命名组件 identifier
-  filter?: (deps: IDependency[]) => IDependency[]; // 支持过滤能力
+  fileType?: string; // Exported file type
+  useAliasName?: boolean; // Whether to rename the component identifier with componentName
+  filter?: (deps: IDependency[]) => IDependency[]; // Supports filtering
 }
 
 const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?: PluginConfig) => {

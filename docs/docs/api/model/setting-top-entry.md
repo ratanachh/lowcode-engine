@@ -2,46 +2,47 @@
 title: SettingTopEntry
 sidebar_position: 6
 ---
+
 > **@types** [IPublicModelSettingTopEntry](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/setting-top-entry.ts)<br/>
 
-## 基本介绍
+## Overview
 
-setter 设置器顶层操作对象
+Setter top-level operation object
 
-## 属性
+## Properties
 
 #### node
 
-返回所属的节点实例
+Returns the owning node instance
 
 `@type {IPublicModelNode | null}`
 
-## 方法
+## Methods
 
 #### get
 
-获取子级属性对象
+Get a child property object
 
 ```
 /**
-  * 获取子级属性对象
+  * Get child prop object
   * @param propName
   * @returns
   */
 get(propName: string | number): IPublicModelSettingField | null;
 ```
-相关章节：[设置器操作对象](./setting-field)
 
-相关类型：[IPublicModelSettingField](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/setting-field.ts)
+Related sections: [Setting Field](./setting-field)
 
+Related types: [IPublicModelSettingField](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/setting-field.ts)
 
 #### getPropValue
 
-获取指定 propName 的值
+Get the value for the specified propName
 
 ```
 /**
-  * 获取指定 propName 的值
+  * Get value of the specified propName
   * @param propName
   * @returns
   */
@@ -50,11 +51,11 @@ getPropValue(propName: string | number): any;
 
 #### setPropValue
 
-设置指定 propName 的值
+Set the value for the specified propName
 
 ```
 /**
-  * 设置指定 propName 的值
+  * Set value of the specified propName
   * @param propName
   * @param value
   */
@@ -63,11 +64,11 @@ setPropValue(propName: string | number, value: any): void;
 
 #### clearPropValue
 
-清除指定 propName 的值
+Clear the value for the specified propName
 
 ```
 /**
-  * 清除指定 propName 的值
+  * Clear value of the specified propName
   * @param propName
   */
 clearPropValue(propName: string | number): void;

@@ -42,8 +42,8 @@ export class DocumentInstance {
   @obx.ref private _components: any = {};
 
   @computed get components(): object {
-    // 根据 device 选择不同组件，进行响应式
-    // 更好的做法是，根据 device 选择加载不同的组件资源，甚至是 simulatorUrl
+    // Pick different components based on device for responsiveness
+    // Better approach: load different component assets (or even simulatorUrl) based on device
     return this._components;
   }
 
@@ -129,13 +129,13 @@ export class DocumentInstance {
     const unmountInstance = this.unmountInstance.bind(this);
     const origId = (instance as any)[SYMBOL_VNID];
     if (origId && origId !== id) {
-      // 另外一个节点的 instance 在此被复用了，需要从原来地方卸载
+      // Another node's instance is reused here; unmount it from the original place
       unmountInstance(origId, instance);
     }
     if (isElement(instance)) {
       cacheReactKey(instance);
     } else if (origId !== id) {
-      // 涵盖 origId == null || origId !== id 的情况
+      // Covers origId == null || origId !== id
       let origUnmount: any = instance.componentWillUnmount;
       if (origUnmount && origUnmount.origUnmount) {
         origUnmount = origUnmount.origUnmount;
@@ -210,8 +210,8 @@ export class SimulatorRendererContainer implements BuiltinSimulatorRenderer {
   private _components: Record<string, React.FC | React.ComponentClass> | null = {};
 
   get components(): Record<string, React.FC | React.ComponentClass> {
-    // 根据 device 选择不同组件，进行响应式
-    // 更好的做法是，根据 device 选择加载不同的组件资源，甚至是 simulatorUrl
+    // Pick different components based on device for responsiveness
+    // Better approach: load different component assets (or even simulatorUrl) based on device
     return this._components || {};
   }
   // context from: utils、constants、history、location、match
@@ -237,12 +237,12 @@ export class SimulatorRendererContainer implements BuiltinSimulatorRenderer {
   }
 
   /**
-   * 是否为画布自动渲染
+   * Whether the canvas auto-renders
    */
   autoRender = true;
 
   /**
-   * 画布是否自动监听事件来重绘节点
+   * Whether the canvas auto-listens to events to redraw nodes
    */
   autoRepaintNode = true;
 
@@ -372,7 +372,7 @@ export class SimulatorRendererContainer implements BuiltinSimulatorRenderer {
   }
 
   /**
-   * 加载资源
+   * Load assets
    */
   load(asset: Asset): Promise<any> {
     return loader.load(asset);
@@ -453,8 +453,8 @@ export class SimulatorRendererContainer implements BuiltinSimulatorRenderer {
       render() {
         const extraProps = getLowCodeComponentProps(this.props);
         return createElement(LowCodeRenderer, {
-          ...extraProps, // 防止覆盖下面内置属性
-          // 使用 _schema 为了使低代码组件在页面设计中使用变量，同 react 组件使用效果一致
+          ...extraProps, // Avoid overriding built-in props below
+          // Use _schema so low-code components can use variables in design mode, consistent with React components
           schema: componentsTreeSchema,
           components: renderer.components,
           designMode: '',
@@ -473,7 +473,7 @@ export class SimulatorRendererContainer implements BuiltinSimulatorRenderer {
             }
 
             const { __id, __designMode, ...viewProps } = props;
-            // mock _leaf，减少性能开销
+            // Mock _leaf to reduce performance cost
             const _leaf = {
               isEmpty: () => false,
               isMock: true,
@@ -510,11 +510,11 @@ export class SimulatorRendererContainer implements BuiltinSimulatorRenderer {
   }
 
   /**
-   * 刷新渲染器
+   * Refresh the renderer
    */
   rerender() {
     this.autoRender = true;
-    // TODO: 不太优雅
+    // TODO: not elegant enough
     this._appContext = { ...this._appContext };
   }
 
@@ -549,7 +549,7 @@ function cacheReactKey(el: Element): Element {
   if (REACT_KEY !== '') {
     return el;
   }
-  // react17 采用 __reactFiber 开头
+  // React 17 uses the __reactFiber prefix
   REACT_KEY = Object.keys(el).find(
     (key) => key.startsWith('__reactInternalInstance$') || key.startsWith('__reactFiber$'),
   ) || '';

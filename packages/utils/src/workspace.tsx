@@ -2,18 +2,18 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { IPublicModelPluginContext, IPublicEnumPluginRegisterLevel, IPublicModelWindow, IPublicModelEditorView } from '@rchh/lowcode-types';
 
 /**
- * 高阶组件（HOC）：为组件提供 view 插件上下文。
+ * HOC: provide view plugin context to a component.
  *
- * @param {React.ComponentType} Component - 需要被封装的组件。
- * @param {string|string[]} viewName - 视图名称或视图名称数组，用于过滤特定的视图插件上下文。
- * @returns {React.ComponentType} 返回封装后的组件。
+ * @param {React.ComponentType} Component - Component to wrap.
+ * @param {string|string[]} viewName - View name or list of names used to filter view plugin context.
+ * @returns {React.ComponentType} Returns the wrapped component.
  *
  * @example
- * // 用法示例（函数组件）:
+ * // Usage example (function component):
  * const EnhancedComponent = ProvideViewPluginContext(MyComponent, "viewName");
  */
 export const ProvideViewPluginContext = (Component: any, viewName?: string | string[]) => {
-  // 创建一个新的函数组件，以便在其中使用 Hooks
+  // Create a function component so Hooks can be used inside
   return function WithPluginContext(props: {
     [key: string]: any;
 

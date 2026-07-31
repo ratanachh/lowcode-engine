@@ -137,7 +137,7 @@ export class SettingsPrimaryPane extends Component<ISettingsPrimaryPaneProps, { 
     const { settings } = this.main;
     const editor = this.props.engineEditor;
     if (!settings) {
-      // 未选中节点，提示选中 或者 显示根节点设置
+      // No node selected: prompt to select, or show root settings
       return (
         <div className="lc-settings-main">
           <div className="lc-settings-notice">
@@ -147,7 +147,7 @@ export class SettingsPrimaryPane extends Component<ISettingsPrimaryPaneProps, { 
       );
     }
 
-    // 当节点被锁定，且未开启锁定后容器可设置属性
+    // Node is locked and locked containers are not allowed to set props
     if (settings.isLocked && !engineConfig.get('enableLockedNodeSetting', false)) {
       return (
         <div className="lc-settings-main">
@@ -168,7 +168,7 @@ export class SettingsPrimaryPane extends Component<ISettingsPrimaryPaneProps, { 
     }
 
     if (!settings.isSameComponent) {
-      // TODO: future support 获取设置项交集编辑
+      // TODO: future support for editing the intersection of setting items
       return (
         <div className="lc-settings-main">
           <div className="lc-settings-notice">

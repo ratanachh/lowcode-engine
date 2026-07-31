@@ -1,34 +1,40 @@
 import { IPublicTypeComponentSort, IPublicTypePackage, IPublicTypeRemoteComponentDescription, IPublicTypeComponentDescription } from './';
 
 /**
- * 资产包协议
+ * Assets package protocol
  */
 
 export interface IPublicTypeAssetsJson {
+
   /**
-   * 资产包协议版本号
+   * Assets package protocol version
    */
   version: string;
+
   /**
-   * 大包列表，external 与 package 的概念相似，融合在一起
+   * Package list; external and package concepts are similar and merged
    */
   packages?: IPublicTypePackage[];
+
   /**
-   * 所有组件的描述协议列表所有组件的列表
+   * List of all component description protocols / all components
    */
   components: Array<IPublicTypeComponentDescription | IPublicTypeRemoteComponentDescription>;
+
   /**
-   * 组件分类列表，用来描述物料面板
-   * @deprecated 最新版物料面板已不需要此描述
+   * Component category list used to describe the materials panel
+   * @deprecated No longer needed by the latest materials panel
    */
   componentList?: any[];
+
   /**
-   * 业务组件分类列表，用来描述物料面板
-   * @deprecated 最新版物料面板已不需要此描述
+   * Business component category list used to describe the materials panel
+   * @deprecated No longer needed by the latest materials panel
    */
   bizComponentList?: any[];
+
   /**
-   * 用于描述组件面板中的 tab 和 category
+   * Describe tabs and categories in the component panel
    */
   sort?: IPublicTypeComponentSort;
 }

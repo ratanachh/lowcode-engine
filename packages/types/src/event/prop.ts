@@ -7,10 +7,10 @@ export interface ChangeOptions {
 }
 
 /**
- * Node Prop 变化事件
+ * Node Prop change event
  * @Deprecated Please Replace With InnerPropChange
  */
 export const Change = 'node.prop.change';
 
-/** Node Prop 变化事件 */
+/** Node Prop change event */
 export const InnerChange = 'node.innerProp.change';

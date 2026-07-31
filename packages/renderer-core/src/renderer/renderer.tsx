@@ -21,7 +21,7 @@ export default function rendererFactory(): IRenderComponent {
 
   class FaultComponent extends PureComponent<IPublicTypeNodeSchema | any> {
     render() {
-      logger.error(`%c${this.props.componentName || ''} 组件渲染异常, 异常原因: ${this.props.error?.message || this.props.error || '未知'}`, 'color: #ff0000;');
+      logger.error(`%c${this.props.componentName || ''} component render error, reason: ${this.props.error?.message || this.props.error || 'unknown'}`, 'color: #ff0000;');
       return createElement(Div, {
         style: {
           width: '100%',
@@ -32,7 +32,7 @@ export default function rendererFactory(): IRenderComponent {
           color: '#ff0000',
           border: '2px solid #ff0000',
         },
-      }, `${this.props.componentName || ''} 组件渲染异常，请查看控制台日志`);
+      }, `${this.props.componentName || ''} component render error; see console logs`);
     }
   }
 
@@ -140,10 +140,10 @@ export default function rendererFactory(): IRenderComponent {
       if (isEmpty(schema)) {
         return null;
       }
-      // 兼容乐高区块模板
+      // Compatible with Legao block templates
       if (schema.componentName !== 'Div' && !isFileSchema(schema)) {
         logger.error('The root component name needs to be one of Page、Block、Component, please check the schema: ', schema);
-        return '模型结构异常';
+        return 'Invalid model structure';
       }
       debug('entry.render');
       const allComponents = { ...RENDERER_COMPS, ...components };

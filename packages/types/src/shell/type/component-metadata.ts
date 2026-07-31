@@ -1,16 +1,16 @@
 import { IPublicTypeIconType, IPublicTypeNpmInfo, IPublicTypeFieldConfig, IPublicTypeI18nData, IPublicTypeComponentSchema, IPublicTypeTitleContent, IPublicTypePropConfig, IPublicTypeConfigure, IPublicTypeAdvanced, IPublicTypeSnippet } from './';
 
 /**
- * 组件 meta 配置
+ * Component meta configuration
  */
 
 export interface IPublicTypeComponentMetadata {
 
-  /** 其他扩展协议 */
+  /** Other extension protocols */
   [key: string]: any;
 
   /**
-   * 组件名
+   * Component name
    */
   componentName: string;
 
@@ -30,42 +30,42 @@ export interface IPublicTypeComponentMetadata {
   icon?: IPublicTypeIconType;
 
   /**
-   * 组件标签
+   * Component tags
    */
   tags?: string[];
 
   /**
-   * 组件描述
+   * Component description
    */
   description?: string;
 
   /**
-   * 组件文档链接
+   * Component documentation URL
    */
   docUrl?: string;
 
   /**
-   * 组件快照
+   * Component snapshot
    */
   screenshot?: string;
 
   /**
-   * 组件研发模式
+   * Component development mode
    */
   devMode?: 'proCode' | 'lowCode';
 
   /**
-   * npm 源引入完整描述对象
+   * Full description object for npm source import
    */
   npm?: IPublicTypeNpmInfo;
 
   /**
-   * 组件属性信息
+   * Component prop information
    */
   props?: IPublicTypePropConfig[];
 
   /**
-   * 编辑体验增强
+   * Editing experience enhancements
    */
   configure?: IPublicTypeFieldConfig[] | IPublicTypeConfigure;
 
@@ -75,27 +75,27 @@ export interface IPublicTypeComponentMetadata {
   experimental?: IPublicTypeAdvanced;
 
   /**
-   * @todo 待补充文档
+   * @todo documentation pending
    */
   schema?: IPublicTypeComponentSchema;
 
   /**
-   * 可用片段
+   * Available snippets
    */
   snippets?: IPublicTypeSnippet[];
 
   /**
-   * 一级分组
+   * Primary group
    */
   group?: string | IPublicTypeI18nData;
 
   /**
-   * 二级分组
+   * Secondary group
    */
   category?: string | IPublicTypeI18nData;
 
   /**
-   * 组件优先级排序
+   * Component priority sort
    */
   priority?: number;
 }

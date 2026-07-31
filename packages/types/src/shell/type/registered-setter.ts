@@ -16,6 +16,6 @@ export interface IPublicTypeRegisteredSetter {
    */
   initialValue?: any | ((field: IPublicModelSettingField) => any);
   recommend?: boolean;
-  // 标识是否为动态 setter，默认为 true
+  // Whether this is a dynamic setter; default true
   isDynamic?: boolean;
 }

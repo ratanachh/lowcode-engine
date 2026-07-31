@@ -61,17 +61,17 @@ export interface ICodeStruct extends IBaseCodeStruct {
   contextData: IContextData;
 }
 
-/** 上下文数据，用来在插件之间共享一些数据 */
+/** Context data shared among plugins */
 export interface IContextData extends IProjectBuilderOptions {
 
   /**
-   * 其他自定义数据
-   * （三方自定义插件也可以在此放一些数据，建议起个长一点的名称，用自己的插件名做前缀，以防冲突）
+   * Other custom data
+   * (third-party plugins may also store data here; use a long name prefixed with your plugin name to avoid conflicts)
    */
   [key: string]: any;
 
   /**
-   * 是否使用了 Ref 的 API (this.$/this.$$)
+   * Whether the Ref API (this.$/this.$$) is used
    * */
   useRefApi?: boolean;
 }
@@ -103,7 +103,7 @@ export interface IModuleBuilder {
 }
 
 /**
- * 引擎对外接口
+ * Engine public interface
  *
  * @export
  * @interface ICodeGenerator
@@ -111,9 +111,9 @@ export interface IModuleBuilder {
 export interface ICodeGenerator {
 
   /**
-   * 出码接口，把 Schema 转换成代码文件系统描述
+   * Code generation API: convert Schema into a code file system description
    *
-   * @param {(IPublicTypeProjectSchema)} schema 传入的 Schema
+   * @param {(IPublicTypeProjectSchema)} schema Input schema
    * @returns {ResultDir}
    * @memberof ICodeGenerator
    */
@@ -141,28 +141,28 @@ export interface IProjectPlugins {
 
 export interface IProjectBuilderOptions {
 
-  /** 是否处于严格模式 (默认：否) */
+  /** Whether in strict mode (default: no) */
   inStrictMode?: boolean;
 
   /**
-   * 是否要容忍对 JSExpression 求值时的异常
-   * 默认：true
-   * 注：如果容忍异常，则会在求值时包裹 try-catch 块，
-   *     catch 到异常时默认会抛出一个 CustomEvent 事件里面包含异常信息和求值的表达式
+   * Whether to tolerate exceptions when evaluating JSExpression
+   * Default: true
+   * Note: if exceptions are tolerated, evaluation is wrapped in a try-catch block;
+   *     when caught, a CustomEvent is thrown containing the error and the expression
    */
   tolerateEvalErrors?: boolean;
 
   /**
-   * 容忍异常的时候的的错误处理语句块
-   * 默认：无
-   * 您可以设置为一个语句块，比如：
+   * Error handling statement block when tolerating exceptions
+   * Default: none
+   * You can set it to a statement block, for example:
    *  window.dispatchEvent(new CustomEvent('lowcode-eval-error', { error, expr }))
    *
-   * 一般可以结合埋点监控模块用来监控求值异常
+   * Typically combined with monitoring to track evaluation exceptions
    *
-   * 其中：
-   * - error: 异常信息
-   * - expr: 求值的表达式
+   * Where:
+   * - error: exception info
+   * - expr: expression being evaluated
    */
   evalErrorsHandler?: string;
 
@@ -177,7 +177,7 @@ export interface IProjectBuilder {
   generateProject: (schema: IPublicTypeProjectSchema | string) => Promise<ResultDir>;
 }
 
-/** 项目级别的前置处理器 */
+/** Project-level pre-processors */
 export type ProjectPreProcessor = (schema: IPublicTypeProjectSchema) =>
   Promise<IPublicTypeProjectSchema> | IPublicTypeProjectSchema;
 
@@ -186,7 +186,7 @@ export interface ProjectPostProcessorOptions {
   template?: IProjectTemplate;
 }
 
-/** 项目级别的后置处理器 */
+/** Project-level post-processors */
 export type ProjectPostProcessor = (
   result: ResultDir,
   schema: IPublicTypeProjectSchema,
@@ -194,10 +194,10 @@ export type ProjectPostProcessor = (
   options: ProjectPostProcessorOptions,
 ) => Promise<ResultDir> | ResultDir;
 
-/** 模块级别的后置处理器的工厂方法 */
+/** Factory for module-level post-processors */
 export type PostProcessorFactory<T> = (config?: T) => PostProcessor;
 
-/** 模块级别的后置处理器 */
+/** Module-level post-processors */
 export type PostProcessor = (content: string, fileType: string, name?: string) => string;
 
 // TODO: temp interface, need modify
@@ -217,9 +217,9 @@ type CompositeTypeGenerator<I, T> =
 
 export type NodeGenerator<T> = (nodeItem: IPublicTypeNodeDataType, scope: IScope) => T;
 
-// FIXME: 在新的实现中，添加了第一参数 this: CustomHandlerSet 作为上下文。究其本质
+// FIXME: In the new implementation, the first parameter this: CustomHandlerSet was added as context. Essentially
 // scopeBindings?: IScopeBindings;
-// 这个组合只用来用来处理 IPublicTypeCompositeValue 类型，不是这个类型的不要放在这里
+// This set is only for IPublicTypeCompositeValue; do not put other types here
 export interface HandlerSet<T> {
   string?: CompositeTypeGenerator<string, T>;
   boolean?: CompositeTypeGenerator<boolean, T>;
@@ -238,15 +238,15 @@ export interface CompositeValueGeneratorOptions {
 }
 
 /**
- * 作用域定义，维护作用域内定义，支持作用域链上溯
+ * Scope definition: maintains in-scope bindings and supports scope-chain lookup
  */
 export interface IScope {
-  // 父级作用域（如果是根作用域则为 null）
+  // Parent scope (null if root)
   readonly parent: IScope | null;
 
-  // 作用域内定义的变量/函数等 bindings
+  // Bindings defined in this scope (variables/functions, etc.)
   readonly bindings?: IScopeBindings;
 
-  // TODO: 需要有上下文信息吗？ 描述什么内容
+  // TODO: Is context info needed? What should it describe?
   createSubScope: (ownIndentifiers: string[]) => IScope;
 }

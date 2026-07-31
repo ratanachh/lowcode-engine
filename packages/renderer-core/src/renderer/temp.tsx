@@ -49,7 +49,7 @@ export default function tempRendererFactory(): IBaseRenderComponent {
     render() {
       const { __schema, __ctx } = this.props;
       if (this.__checkSchema(__schema)) {
-        return '下钻编辑 schema 结构异常！';
+        return 'Invalid drill-down edit schema structure!';
       }
 
       this.__debug(`${TempRenderer.displayName} render - ${__schema?.fileName}`);

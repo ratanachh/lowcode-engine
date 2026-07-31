@@ -8,7 +8,7 @@ import { DockView, WidgetView } from '../components/widget-views';
 import { IWidget } from './widget';
 
 /**
- * 带图标（主要）/标题（次要）的扩展
+ * Extension with icon (primary) / title (secondary)
  */
 export class Dock implements IWidget {
   readonly isWidget = true;

@@ -55,14 +55,14 @@ export function executeLifeCycleMethod(context: any, schema: IPublicTypeNodeSche
   }
 
   if (typeof fn !== 'function') {
-    logger.error(`生命周期${method}类型不符`, fn);
+    logger.error(`lifecycle ${method} has wrong type`, fn);
     return;
   }
 
   try {
     return fn.apply(context, args);
   } catch (e) {
-    logger.error(`[${schema.componentName}]生命周期${method}出错`, e);
+    logger.error(`[${schema.componentName}]lifecycle ${method} error`, e);
   }
 }
 
@@ -311,8 +311,8 @@ export default function baseRendererFactory(): IBaseRenderComponent {
         list: [],
       };
       const dataSource = schema.dataSource || defaultDataSource;
-      // requestHandlersMap 存在才走数据源引擎方案
-      // TODO: 下面if else 抽成独立函数
+      // Use the data-source engine path only when requestHandlersMap exists
+      // TODO: extract the following if/else into a separate function
       const useDataSourceEngine = !!(props.__appHelper?.requestHandlersMap);
       if (useDataSourceEngine) {
         this.__dataHelper = {
@@ -411,7 +411,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
       const { engine } = this.context;
       if (engine) {
         engine.props.onCompGetCtx(schema, this);
-        // 画布场景才需要每次渲染bind自定义方法
+        // Only canvas scenarios need to bind custom methods on every render
         if (this.__designModeIsDesign) {
           this.__bindCustomMethods(this.props);
           this.dataSourceMap = this.__dataHelper?.updateConfig(schema.dataSource);
@@ -452,11 +452,11 @@ export default function baseRendererFactory(): IBaseRenderComponent {
     };
 
     /**
-     * 将模型结构转换成react Element
+     * Convert a schema model into a React Element
      * @param originalSchema schema
      * @param originalScope scope
-     * @param parentInfo 父组件的信息，包含schema和Comp
-     * @param idx 为循环渲染的循环Index
+     * @param parentInfo parent component info, including schema and Comp
+     * @param idx loop index for list rendering
      */
     __createVirtualDom = (originalSchema: IPublicTypeNodeData | IPublicTypeNodeData[] | undefined, originalScope: any, parentInfo: INodeInfo, idx: string | number = ''): any => {
       if (originalSchema === null || originalSchema === undefined) {
@@ -497,7 +497,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
           return schema.map((item, idy) => this.__createVirtualDom(item, scope, parentInfo, (item as IPublicTypeNodeSchema)?.__ctx?.lceKey ? '' : String(idy)));
         }
 
-        // @ts-expect-error 如果直接转换好了，可以返回
+        // @ts-expect-error if already converted, return early
         if (schema.$$typeof) {
           return schema;
         }
@@ -507,7 +507,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
           logger.error('The componentName in the schema is invalid, please check the schema: ', schema);
           return;
         }
-        // 解析占位组件
+        // Resolve placeholder components
         if (schema.componentName === 'Fragment' && _children) {
           const tarChildren = isJSExpression(_children) ? this.__parseExpression(_children, scope) : _children;
           return this.__createVirtualDom(tarChildren, scope, parentInfo);
@@ -524,7 +524,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
         }
         let Comp = components[schema.componentName] || this.props.__container?.components?.[schema.componentName];
 
-        // 容器类组件的上下文通过props传递，避免context传递带来的嵌套问题
+        // Pass container component context via props to avoid nested context issues
         const otherProps: any = isFileSchema(schema)
           ? {
             __schema: schema,
@@ -567,34 +567,34 @@ export default function baseRendererFactory(): IBaseRenderComponent {
         }
         const condition = schema.condition == null ? true : this.__parseData(schema.condition, scope);
 
-        // DesignMode 为 design 情况下，需要进入 leaf Hoc，进行相关事件注册
+        // In design mode, enter the Leaf HOC to register related events
         const displayInHook = this.__designModeIsDesign;
         if (!condition && !displayInHook) {
           return null;
         }
 
         let scopeKey = '';
-        // 判断组件是否需要生成scope，且只生成一次，挂在this.__compScopes上
+        // Decide whether the component needs a scope; create it once and store on this.__compScopes
         if (Comp.generateScope) {
           const key = this.__parseExpression(schema.props?.key, scope);
           if (key) {
-            // 如果组件自己设置key则使用组件自己的key
+            // If the component sets its own key, use that key
             scopeKey = key;
           } else if (!schema.__ctx) {
-            // 在生产环境schema没有__ctx上下文，需要手动生成一个lceKey
+            // Production schemas lack __ctx; generate an lceKey manually
             schema.__ctx = {
               lceKey: `lce${++scopeIdx}`,
             };
             scopeKey = schema.__ctx.lceKey;
           } else {
-            // 需要判断循环的情况
+            // Need to handle loop cases
             scopeKey = schema.__ctx.lceKey + (idx !== undefined ? `_${idx}` : '');
           }
           if (!this.__compScopes[scopeKey]) {
             this.__compScopes[scopeKey] = Comp.generateScope(this, schema);
           }
         }
-        // 如果组件有设置scope，需要为组件生成一个新的scope上下文
+        // If the component defines scope, create a new scope context for it
         if (scopeKey && this.__compScopes[scopeKey]) {
           const compSelf = { ...this.__compScopes[scopeKey] };
           compSelf.__proto__ = scope;
@@ -623,7 +623,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
         });
 
         otherProps.ref = (ref: any) => {
-          this.$(props.fieldId || props.ref, ref); // 收集ref
+          this.$(props.fieldId || props.ref, ref); // Collect refs
           const refProps = props.ref;
           if (refProps && typeof refProps === 'string') {
             this[refProps] = ref;
@@ -631,7 +631,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
           ref && engine.props?.onCompGetRef(schema, ref);
         };
 
-        // scope需要传入到组件上
+        // scope must be passed onto the component
         if (scopeKey && this.__compScopes[scopeKey]) {
           props.__scope = this.__compScopes[scopeKey];
         }
@@ -641,7 +641,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
           }
           props.key = props.key || `${schema.__ctx.lceKey}_${schema.__ctx.idx || 0}_${idx !== undefined ? idx : ''}`;
         } else if ((typeof idx === 'number' || typeof idx === 'string') && !props.key) {
-          // 仅当循环场景走这里
+          // Only loop scenarios go through here
           props.key = idx;
         }
 
@@ -652,9 +652,9 @@ export default function baseRendererFactory(): IBaseRenderComponent {
 
         let child = this.__getSchemaChildrenVirtualDom(schema, scope, Comp, condition);
         const renderComp = (innerProps: any) => engine.createElement(Comp, innerProps, child);
-        // 设计模式下的特殊处理
+        // Special handling in design mode
         if (engine && [DESIGN_MODE.EXTEND, DESIGN_MODE.BORDER].includes(engine.props.designMode)) {
-          // 对于overlay,dialog等组件为了使其在设计模式下显示，外层需要增加一个div容器
+          // For overlay/dialog etc., wrap with a div container so they show in design mode
           if (OVERLAY_LIST.includes(schema.componentName)) {
             const { ref, ...overlayProps } = otherProps;
             return createElement(Div, {
@@ -662,7 +662,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
               __designMode: engine.props.designMode,
             }, renderComp({ ...props, ...overlayProps }));
           }
-          // 虚拟dom显示
+          // Virtual DOM display
           if (componentInfo?.parentRule) {
             const parentList = componentInfo.parentRule.split(',');
             const { schema: parentSchema = { componentName: '' }, Comp: parentComp } = parentInfo;
@@ -673,7 +673,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
               props.__componentName = schema.componentName;
               Comp = VisualDom;
             } else {
-              // 若虚拟dom在正常的渲染上下文中，就不显示设计模式了
+              // If the virtual DOM is in a normal render context, do not show design mode
               props.__disableDesignMode = true;
             }
           }
@@ -713,7 +713,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
     __getSchemaChildrenVirtualDom = (schema: IPublicTypeNodeSchema | undefined, scope: any, Comp: any, condition = true) => {
       let children = condition ? getSchemaChildren(schema) : null;
 
-      // @todo 补完这里的 Element 定义 @承虎
+      // @todo complete Element typing here @ChengHu
       let result: any = [];
       if (children) {
         if (!Array.isArray(children)) {
@@ -777,7 +777,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
             loop: undefined,
             props: {
               ...schema.props,
-              // 循环下 key 不能为常量，这样会造成 key 值重复，渲染异常
+              // Under loop, key must not be a constant or keys collide and rendering breaks
               key: isJSExpression(schema.props?.key) ? schema.props?.key : null,
             },
           },
@@ -797,7 +797,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
       let props = originalProps;
       const { schema, Comp, componentInfo = {} } = info;
       const propInfo = getValue(componentInfo.props, path);
-      // FIXME: 将这行逻辑外置，解耦，线上环境不要验证参数，调试环境可以有，通过传参自定义
+      // FIXME: extract this logic for decoupling; skip param validation in production, allow it in debug via options
       const propType = propInfo?.extra?.propType;
 
       const checkProps = (value: any) => {
@@ -830,7 +830,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
 
       if (isJSExpression(props)) {
         props = this.__parseExpression(props, scope);
-        // 只有当变量解析出来为模型结构的时候才会继续解析
+        // Continue parsing only when the resolved variable is a schema model
         if (!isSchema(props) && !isJSSlot(props)) {
           return checkProps(props);
         }
@@ -838,7 +838,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
 
       const handleI18nData = (innerProps: any) => innerProps[innerProps.use || (this.getLocale && this.getLocale()) || 'zh-CN'];
 
-      // @LEGACY 兼容老平台设计态 i18n 数据
+      // @LEGACY compatible with old platform design-time i18n data
       if (isI18nData(props)) {
         const i18nProp = handleI18nData(props);
         if (i18nProp) {
@@ -848,7 +848,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
         }
       }
 
-      // @LEGACY 兼容老平台设计态的变量绑定
+      // @LEGACY compatible with old platform design-time variable binding
       if (isVariable(props)) {
         props = props.value;
         if (isI18nData(props)) {
@@ -867,7 +867,7 @@ export default function baseRendererFactory(): IBaseRenderComponent {
         return parseReactNode(value, params);
       }
 
-      // 兼容通过componentInfo判断的情况
+      // Compatible with checks via componentInfo
       if (isSchema(props)) {
         const isReactNodeFunction = !!(propInfo?.type === 'ReactNode' && propInfo?.props?.type === 'function');
 

@@ -15,54 +15,65 @@ export interface IPublicTypeExternalUtils {
 
 export type IPublicTypeUtilItem = IPublicTypeInternalUtils | IPublicTypeExternalUtils;
 export type IPublicTypeUtilsMap = IPublicTypeUtilItem[];
+
 /**
- * 应用描述
+ * Application description
  */
 
 export interface IPublicTypeProjectSchema<T = IPublicTypeRootSchema> {
   id?: string;
+
   /**
-   * 当前应用协议版本号
+   * Current application protocol version
    */
   version: string;
+
   /**
-   * 当前应用所有组件映射关系
+   * Component map for the current application
    */
   componentsMap: IPublicTypeComponentsMap;
+
   /**
-   * 描述应用所有页面、低代码组件的组件树
-   * 低代码业务组件树描述
-   * 是长度固定为 1 的数组，即数组内仅包含根容器的描述（低代码业务组件容器类型）
+   * Component trees for all pages and low-code components in the app
+   * Low-code business component tree description
+   * Fixed-length array of 1; contains only the root container description (low-code business component container)
    */
   componentsTree: T[];
+
   /**
-   * 国际化语料
+   * i18n locale messages
    */
   i18n?: IPublicTypeI18nMap;
+
   /**
-   * 应用范围内的全局自定义函数或第三方工具类扩展
+   * App-scoped global custom functions or third-party utility extensions
    */
   utils?: IPublicTypeUtilsMap;
+
   /**
-   * 应用范围内的全局常量
+   * App-scoped global constants
    */
   constants?: IPublicTypeJSONObject;
+
   /**
-   * 应用范围内的全局样式
+   * App-scoped global styles
    */
   css?: string;
+
   /**
-   * 当前应用的公共数据源
+   * Shared data sources of the current application
    */
   dataSource?: DataSource;
+
   /**
-   * 当前应用配置信息
+   * Current application configuration
    *
-   * TODO: 需要在后续版本中移除 `Record<string, unknown>` 类型签名
+   * TODO: remove `Record<string, unknown>` type signature in a later version
    */
   config?: IPublicTypeAppConfig & Record<string, unknown>;
+
   /**
-   * 当前应用元数据信息
+   * Current application metadata
    */
   meta?: Record<string, any>;
 }

@@ -19,31 +19,31 @@ interface IIceJs3PackageJSON extends PackageJSON {
 export type IceJs3PackageJsonPluginConfig = {
 
   /**
-   * 数据源配置
+   * Data source configuration
    */
   datasourceConfig?: {
 
-    /** 数据源引擎的版本 */
+    /** Data source engine version */
     engineVersion?: string;
 
-    /** 数据源引擎的包名 */
+    /** Data source engine package name */
     enginePackage?: string;
 
-    /** 数据源 handlers 的版本 */
+    /** Data source handlers version */
     handlersVersion?: {
       [key: string]: string;
     };
 
-    /** 数据源 handlers 的包名 */
+    /** Data source handlers package name */
     handlersPackages?: {
       [key: string]: string;
     };
   };
 
-  /** 包名 */
+  /** Package name */
   packageName?: string;
 
-  /** 版本 */
+  /** Version */
   packageVersion?: string;
 };
 
@@ -68,7 +68,7 @@ const pluginFactory: BuilderComponentPluginFactory<IceJs3PackageJsonPluginConfig
         'intl-messageformat': '^9.3.6',
         '@alifd/next': '1.26.15',
         '@ice/runtime': '~1.1.0',
-        // 数据源相关的依赖:
+        // Data source related dependencies:
         ...buildDataSourceDependencies(ir, cfg?.datasourceConfig),
       },
       devDependencies: {

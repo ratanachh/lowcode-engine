@@ -1,1 +1,1 @@
-内置模拟器主进程
+Built-in simulator main process

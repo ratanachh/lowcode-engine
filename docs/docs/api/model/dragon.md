@@ -2,27 +2,28 @@
 title: Dragon
 sidebar_position: 99
 ---
-> **@types** [IPublicModelDragon](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/dragon.ts)<br/>
-> **@since** v1.0.0
 
-## 基本介绍
+> **@types** [IPublicModelDragon](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/dragon.ts)<br/> > **@since** v1.0.0
 
-拖拽对象
+## Overview
 
-### 对应接口
+Drag object
+
+### Related Interface
+
 ```typescript
 import { IPublicModelDragon } from '@rchh/lowcode-types';
 ```
 
-### 支持版本
+### Supported Version
 
 **@since** v1.1.0
 
-## 属性
+## Properties
 
 ### dragging
 
-是否正在拖动
+Whether a drag is in progress
 
 ```typescript
 /**
@@ -31,15 +32,15 @@ import { IPublicModelDragon } from '@rchh/lowcode-types';
 get dragging(): boolean;
 ```
 
-## 方法
+## Methods
 
 ### onDragstart
 
-绑定 dragstart 事件
+Bind the dragstart event
 
 ```typescript
 /**
- * 绑定 dragstart 事件
+ * Bind dragstart event
  * bind a callback function which will be called on dragging start
  * @param func
  * @returns
@@ -49,10 +50,11 @@ onDragstart(func: (e: IPublicModelLocateEvent) => any): () => void;
 
 ### onDrag
 
-绑定 drag 事件
+Bind the drag event
+
 ```typescript
 /**
- * 绑定 drag 事件
+ * Bind drag event
  * bind a callback function which will be called on dragging
  * @param func
  * @returns
@@ -62,11 +64,11 @@ onDrag(func: (e: IPublicModelLocateEvent) => any): () => void;
 
 ### onDragend
 
-绑定 dragend 事件
+Bind the dragend event
 
 ```typescript
 /**
- * 绑定 dragend 事件
+ * Bind dragend event
  * bind a callback function which will be called on dragging end
  * @param func
  * @returns
@@ -76,41 +78,42 @@ onDragend(func: (o: { dragObject: IPublicModelDragObject; copy?: boolean }) => a
 
 ### from
 
-设置拖拽监听的区域 shell，以及自定义拖拽转换函数 boost
+Set the shell element for drag monitoring and a custom drag transform function (boost)
 
 ```typescript
 /**
- * 设置拖拽监听的区域 shell，以及自定义拖拽转换函数 boost
+ * Set the drag monitor region shell and custom drag boost function
 * set a html element as shell to dragon as monitoring target, and
 * set boost function which is used to transform a MouseEvent to type
 * IPublicTypeDragNodeDataObject.
- * @param shell 拖拽监听的区域
- * @param boost 拖拽转换函数
+ * @param shell drag monitor region
+ * @param boost drag boost function
  */
 from(shell: Element, boost: (e: MouseEvent) => IPublicTypeDragNodeDataObject | null): any;
 ```
 
 ### boost
 
-发射拖拽对象
+Launch a drag object
+
 ```typescript
 /**
- * 发射拖拽对象
+ * Emit a drag object
  * boost your dragObject for dragging(flying)
  *
- * @param dragObject 拖拽对象
- * @param boostEvent 拖拽初始时事件
+ * @param dragObject drag object
+ * @param boostEvent initial drag event
  */
 boost(dragObject: IPublicTypeDragObject, boostEvent: MouseEvent | DragEvent, fromRglNode?: IPublicModelNode): void;
 ```
 
 ### addSensor
 
-添加投放感应区
+Add a drop sensor area
 
 ```typescript
 /**
- * 添加投放感应区
+ * Add a drop sensor area
  * add sensor area
  */
 addSensor(sensor: any): void;
@@ -118,11 +121,11 @@ addSensor(sensor: any): void;
 
 ### removeSensor
 
-移除投放感应
+Remove a drop sensor area
 
 ```typescript
 /**
- * 移除投放感应
+ * Remove drop sensing
  * remove sensor area
  */
 removeSensor(sensor: any): void;

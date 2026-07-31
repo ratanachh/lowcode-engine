@@ -1,23 +1,25 @@
-export type RaxFrameworkOptions = {
+export interface RaxFrameworkOptions {
+
   /**
-   * 默认的页面标题
+   * Default page title
    */
   title?: string;
 
   /**
-   * 目标环境（默认是仅 web 环境）
+   * Target environment (default: web only)
    */
   targets?: Array<'web' | 'miniapp' | string>;
 
   /**
-   * 小程序引擎选择，默认为运行时引擎。如需启用编译时引擎，则配置为 compile
+   * Mini-program engine choice; default is runtime. Set to compile for compile-time engine
    */
   miniAppBuildType?: MiniAppBuildType;
 
   /**
-   * 构建配置
+   * Build configuration
    */
   buildConfig?: {
+    [key: string]: unknown;
     inlineStyle?: boolean | { forceEnableCSS: boolean };
     alias?: { [key: string]: string };
     publicPath?: string;
@@ -33,49 +35,50 @@ export type RaxFrameworkOptions = {
     browserslist?: string | { [key: string]: string };
     compileDependencies?: string[];
     miniapp?: { [key: string]: unknown };
-    [key: string]: unknown;
   };
 
   /**
-   * 数据源配置
+   * Data source configuration
    */
   datasourceConfig?: {
-    /** 数据源引擎的版本 */
+
+    /** Data source engine version */
     engineVersion?: string;
 
-    /** 数据源引擎的包名 */
+    /** Data source engine package name */
     enginePackage?: string;
 
-    /** 数据源 handlers 的版本 */
+    /** Data source handlers version */
     handlersVersion?: {
       [key: string]: string;
     };
 
-    /** 数据源 handlers 的包名 */
+    /** Data source handlers package name */
     handlersPackages?: {
       [key: string]: string;
     };
   };
 
-  /** 包名 */
+  /** Package name */
   packageName?: string;
 
-  /** 版本 */
+  /** Version */
   packageVersion?: string;
 
-  /** 全局样式文件的类型 */
+  /** Global style file type */
   globalStylesFileType?: 'css' | 'scss' | 'less';
 
-  /** 应用配置 */
+  /** App configuration */
   appConfig?: {
-    /** 路由配置 */
+
+    /** Route configuration */
     router?: {
       type?: 'browser' | 'hash' | string;
       basename?: string;
     };
   };
 
-  // TODO: [p1]支持 MPA 模式？
-};
+  // TODO: [p1]Support MPA mode?
+}
 
 export type MiniAppBuildType = 'compile' | 'runtime';

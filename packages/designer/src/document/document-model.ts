@@ -67,7 +67,7 @@ export interface IDocumentModel extends Omit<IPublicModelDocumentModel<
   'detecting' |
   'checkNesting' |
   'getNodeById' |
-  // 以下属性在内部的 document 中不存在
+  // The following properties do not exist on the internal document
   'exportSchema' |
   'importSchema' |
   'onAddNode' |
@@ -94,7 +94,7 @@ export interface IDocumentModel extends Omit<IPublicModelDocumentModel<
   get nodesMap(): Map<string, INode>;
 
   /**
-   * 是否为非激活状态
+   * Whether in inactive (suspended) state
    */
   get suspensed(): boolean;
 
@@ -105,7 +105,7 @@ export interface IDocumentModel extends Omit<IPublicModelDocumentModel<
   isBlank(): boolean;
 
   /**
-   * 根据 id 获取节点
+   * Get node by id
    */
   getNode(id: string): INode | null;
 
@@ -155,27 +155,27 @@ export interface IDocumentModel extends Omit<IPublicModelDocumentModel<
 
 export class DocumentModel implements IDocumentModel {
   /**
-   * 根节点 类型有：Page/Component/Block
+   * Root node types: Page/Component/Block
    */
   rootNode: IRootNode | null;
 
   /**
-   * 文档编号
+   * Document id
    */
   id: string = uniqueId('doc');
 
   /**
-   * 选区控制
+   * Selection control
    */
   readonly selection: ISelection = new Selection(this);
 
   /**
-   * 操作记录控制
+   * History / operation record control
    */
   readonly history: IHistory;
 
   /**
-   * 模态节点管理
+   * Modal node management
    */
   modalNodesManager: IModalNodesManager;
 
@@ -199,7 +199,7 @@ export class DocumentModel implements IDocumentModel {
   private _addons: Array<{ name: string; exportData: any }> = [];
 
   /**
-   * 模拟器
+   * Simulator
    */
   get simulator(): ISimulatorHost | null {
     return this.project.simulator;
@@ -260,14 +260,14 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 投放插入位置标记
+   * Drop insert location marker
    */
   get dropLocation() {
     return this._dropLocation;
   }
 
   /**
-   * 导出 schema 数据
+   * Export schema data
    */
   get schema(): IPublicTypeRootSchema {
     return this.rootNode?.schema as any;
@@ -278,28 +278,28 @@ export class DocumentModel implements IDocumentModel {
   @obx.ref private _suspensed = false;
 
   /**
-   * 是否为非激活状态
+   * Whether in inactive (suspended) state
    */
   get suspensed(): boolean {
     return this._suspensed || !this._opened;
   }
 
   /**
-   * 与 suspensed 相反，是否为激活状态，这个函数可能用的更多一点
+   * Opposite of suspended: whether active; this helper is used more often
    */
   get active(): boolean {
     return !this._suspensed;
   }
 
   /**
-   * @deprecated 兼容
+   * @deprecated for compatibility
    */
   get actived(): boolean {
     return this.active;
   }
 
   /**
-   * 是否打开
+   * Whether opened
    */
   get opened() {
     return this._opened;
@@ -319,7 +319,7 @@ export class DocumentModel implements IDocumentModel {
       this._blank = true;
     }
 
-    // 兼容 vision
+    // Compatible with vision
     this.id = project.getSchema()?.id || this.id;
 
     this.rootNode = this.createNode(
@@ -380,7 +380,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 生成唯一 id
+   * Generate unique id
    */
   nextId(possibleId: string | undefined): string {
     let id = possibleId;
@@ -392,21 +392,21 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 根据 id 获取节点
+   * Get node by id
    */
   getNode(id: string): INode | null {
     return this._nodesMap.get(id) || null;
   }
 
   /**
-   * 根据 id 获取节点
+   * Get node by id
    */
   getNodeCount(): number {
     return this._nodesMap?.size;
   }
 
   /**
-   * 是否存在节点
+   * Whether the node exists
    */
   hasNode(id: string): boolean {
     const node = this.getNode(id);
@@ -422,7 +422,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 根据 schema 创建一个节点
+   * Create a node from schema
    */
   @action
   createNode<T extends INode = INode, C = undefined>(data: GetDataType<C, T>): T {
@@ -443,7 +443,7 @@ export class DocumentModel implements IDocumentModel {
     /* istanbul ignore next */
     if (schema.id) {
       node = this.getNode(schema.id);
-      // TODO: 底下这几段代码似乎永远都进不去
+      // TODO: the following branches seem unreachable
       if (node && node.componentName === schema.componentName) {
         if (node.parent) {
           node.internalSetParent(null, false);
@@ -473,21 +473,21 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 插入一个节点
+   * Insert a node
    */
   insertNode(parent: INode, thing: INode | IPublicTypeNodeData, at?: number | null, copy?: boolean): INode | null {
     return insertChild(parent, thing, at, copy);
   }
 
   /**
-   * 插入多个节点
+   * Insert multiple nodes
    */
   insertNodes(parent: INode, thing: INode[] | IPublicTypeNodeData[], at?: number | null, copy?: boolean) {
     return insertChildren(parent, thing, at, copy);
   }
 
   /**
-   * 移除一个节点
+   * Remove a node
    */
   removeNode(idOrNode: string | INode) {
     let id: string;
@@ -506,7 +506,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 内部方法，请勿调用
+   * Internal method; do not call
    */
   internalRemoveAndPurgeNode(node: INode, useMutator = false) {
     if (!this.nodes.has(node)) {
@@ -521,7 +521,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 包裹当前选区中的节点
+   * Wrap nodes in the current selection
    */
   wrapWith(schema: IPublicTypeNodeSchema): INode | null {
     const nodes = this.selection.getTopNodes();
@@ -546,7 +546,7 @@ export class DocumentModel implements IDocumentModel {
   import(schema: IPublicTypeRootSchema, checkId = false) {
     const drillDownNodeId = this._drillDownNode?.id;
     runWithGlobalEventOff(() => {
-      // TODO: 暂时用饱和式删除，原因是 Slot 节点并不是树节点，无法正常递归删除
+      // TODO: use saturate delete for now; Slot is not a tree node so recursion fails
       this.nodes.forEach(node => {
         if (node.isRoot()) return;
         this.internalRemoveAndPurgeNode(node, true);
@@ -562,7 +562,7 @@ export class DocumentModel implements IDocumentModel {
 
   export(stage: IPublicEnumTransformStage = IPublicEnumTransformStage.Serilize): IPublicTypeRootSchema | undefined {
     stage = compatStage(stage);
-    // 置顶只作用于 Page 的第一级子节点，目前还用不到里层的置顶；如果后面有需要可以考虑将这段写到 node-children 中的 export
+    // Bring-to-front only applies to Page first-level children; nested not needed yet; may move to node-children export later
     const currentSchema = this.rootNode?.export<IPublicTypeRootSchema>(stage);
     if (Array.isArray(currentSchema?.children) && currentSchema?.children?.length && currentSchema?.children?.length > 0) {
       const FixedTopNodeIndex = currentSchema?.children
@@ -577,7 +577,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 导出节点数据
+   * Export node data
    */
   getNodeSchema(id: string): IPublicTypeNodeData | null {
     const node = this.getNode(id);
@@ -588,7 +588,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 是否已修改
+   * Whether modified
    */
   isModified(): boolean {
     return this.history.isSavePoint();
@@ -607,8 +607,8 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 切换激活，只有打开的才能激活
-   * 不激活，打开之后切换到另外一个时发生，比如 tab 视图，切换到另外一个标签页
+   * Toggle activation; only opened documents can be activated.
+   * Deactivation happens when switching away after open, e.g. switching tabs.
    */
   private setSuspense(flag: boolean) {
     if (!this._opened && !flag) {
@@ -630,7 +630,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 打开，已载入，默认建立时就打开状态，除非手动关闭
+   * Open (loaded); opened by default on create unless closed manually
    */
   open(): DocumentModel {
     const originState = this._opened;
@@ -647,7 +647,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 关闭，相当于 sleep，仍然缓存，停止一切响应，如果有发生的变更没被保存，仍然需要去取数据保存
+   * Close (sleep): still cached, stops responding; unsaved changes still need persisting
    */
   close(): void {
     this.setSuspense(true);
@@ -655,7 +655,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 从项目中移除
+   * Remove from project
    */
   remove() {
     this.designer.postEvent('document.remove', { id: this.id });
@@ -706,7 +706,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 检查对象对父级的要求，涉及配置 parentWhitelist
+   * Check parent requirements for the object; involves parentWhitelist
    */
   checkNestingUp(parent: INode, obj: IPublicTypeNodeSchema | INode): boolean {
     if (isNode(obj) || isNodeSchema(obj)) {
@@ -720,7 +720,7 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 检查投放位置对子级的要求，涉及配置 childWhitelist
+   * Check child requirements at drop location; involves childWhitelist
    */
   checkNestingDown(parent: INode, obj: IPublicTypeNodeSchema | INode): boolean {
     const config = parent.componentMeta;
@@ -824,7 +824,7 @@ export class DocumentModel implements IDocumentModel {
 
   getComponentsMap(extraComps?: string[]) {
     const componentsMap: IPublicTypeComponentsMap = [];
-    // 组件去重
+    // Deduplicate components
     const exsitingMap: { [componentName: string]: boolean } = {};
     for (const node of this._nodesMap.values()) {
       const { componentName } = node || {};
@@ -844,7 +844,7 @@ export class DocumentModel implements IDocumentModel {
         }
       }
     }
-    // 合并外界传入的自定义渲染的组件
+    // Merge externally provided custom render components
     if (Array.isArray(extraComps)) {
       extraComps.forEach((componentName) => {
         if (componentName && !exsitingMap[componentName]) {
@@ -867,14 +867,15 @@ export class DocumentModel implements IDocumentModel {
   }
 
   /**
-   * 获取 schema 中的 utils 节点，当前版本不判断页面中使用了哪些 utils，直接返回资产包中所有的 utils
+   * Get utils from schema; this version returns all utils from the asset pack
+   * without checking which ones the page uses
    * @returns
    */
   getUtilsMap() {
     return this.designer?.editor?.get('assets')?.utils?.map((item: any) => ({
       name: item.name,
       type: item.type || 'npm',
-      // TODO 当前只有 npm 类型，content 直接设置为 item.npm，有 function 类型之后需要处理
+      // TODO only npm type for now; content set to item.npm; handle function type later
       content: item.npm,
     }));
   }

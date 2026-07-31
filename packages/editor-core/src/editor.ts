@@ -144,7 +144,7 @@ export class Editor extends EventEmitter implements IEditor {
       assets.components = componentDescriptions;
       assets.componentList = assets.componentList || [];
 
-      // 如果有远程组件描述协议，则自动加载并补充到资产包中，同时出发 designer.incrementalAssetsReady 通知组件面板更新数据
+      // If a remote component metadata protocol exists, auto-load and merge into assets, then fire designer.incrementalAssetsReady to refresh the component pane
       if (remoteComponentDescriptions && remoteComponentDescriptions.length) {
         await Promise.all(
           remoteComponentDescriptions.map(async (component: IPublicTypeRemoteComponentDescription) => {
@@ -257,8 +257,8 @@ export class Editor extends EventEmitter implements IEditor {
 
     try {
       await init(this);
-      // 注册快捷键
-      // 注册 hooks
+      // Register hotkeys
+      // Register hooks
       this.registerHooks(hooks);
       this.emit('editor.afterInit');
 
@@ -288,7 +288,7 @@ export class Editor extends EventEmitter implements IEditor {
   initHooks = (hooks: HookConfig[]) => {
     this.hooks = hooks.map((hook) => ({
       ...hook,
-      // 指定第一个参数为 editor
+      // Bind the first argument to editor
       handler: hook.handler.bind(this, this),
     }));
 

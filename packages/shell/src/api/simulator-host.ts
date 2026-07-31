@@ -18,14 +18,14 @@ export class SimulatorHost implements IPublicApiSimulatorHost {
   }
 
   /**
-   * 获取 contentWindow
+   * Get contentWindow
    */
   get contentWindow(): Window | undefined {
     return this[simulatorHostSymbol].contentWindow;
   }
 
   /**
-   * 获取 contentDocument
+   * Get contentDocument
    */
   get contentDocument(): Document | undefined {
     return this[simulatorHostSymbol].contentDocument;
@@ -40,7 +40,7 @@ export class SimulatorHost implements IPublicApiSimulatorHost {
   }
 
   /**
-   * 设置 host 配置值
+   * Set a host config value
    * @param key
    * @param value
    */
@@ -49,7 +49,7 @@ export class SimulatorHost implements IPublicApiSimulatorHost {
   }
 
   /**
-   * 获取 host 配置值
+   * Get a host config value
    * @param key
    * @returns
    */
@@ -66,7 +66,7 @@ export class SimulatorHost implements IPublicApiSimulatorHost {
   }
 
   /**
-   * 触发组件构建，并刷新渲染画布
+   * Trigger component build and refresh the render canvas
    */
   rerender(): void {
     this[simulatorHostSymbol].rerender();

@@ -69,8 +69,8 @@ export class SettingsMain {
     if (!this.designer) {
       this.designer = nodes[0].document.designer;
     }
-    // 当节点只有一个时，复用 node 上挂载的 settingEntry，不会产生平行的两个实例，这样在整个系统中对
-    // 某个节点操作的 SettingTopEntry 只有一个实例，后续的 getProp() 也会拿到相同的 SettingField 实例
+    // When only one node is selected, reuse the settingEntry attached to the node so there are not two parallel instances; across the system,
+    // there is only one SettingTopEntry instance per node, and later getProp() calls return the same SettingField instance
     if (nodes.length === 1) {
       this._settings = nodes[0].settingEntry;
     } else {

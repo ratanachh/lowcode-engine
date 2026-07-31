@@ -1,33 +1,39 @@
 ---
-title: common - 通用 API
+title: common - Common API
 sidebar_position: 10
 ---
 
-> **@types** [IPublicApiCommon](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/common.ts)<br/>
-> **@since** v1.0.0
+> **@types** [IPublicApiCommon](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/common.ts)<br/> > **@since** v1.0.0
 
+## Module Overview
 
-## 模块简介
-通用模块里包含除了几大核心模块 API 之外的所有 API，比如通用 utils、面板扩展相关 等。
-> 高能预警：之所以叫 skeletonCabin / designerCabin 跟兼容上一个版本的引擎有关系。若有必要，后面将用更有意义的命名空间来组织这些 API。
+The common module contains APIs outside the core modules, such as shared utils and panel extension helpers.
 
-## 变量
+> Note: `skeletonCabin` / `designerCabin` naming exists for compatibility with an earlier engine version. These may be reorganized under more meaningful namespaces if needed.
+
+## Variables
+
 #### utils
-通用 utils，详见下方方法签名
 
-相关类型：[IPublicApiCommonUtils](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/common.ts)
+Common utils — see method signatures below
+
+Related type: [IPublicApiCommonUtils](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/common.ts)
 
 #### skeletonCabin
-面板扩展相关，详见下方方法签名
 
-## 方法
+Panel extension helpers — see method signatures below
+
+## Methods
+
 ### utils
+
 #### isNodeSchema
-是否为合法的 schema 结构
+
+Whether the data is a valid schema structure
 
 ```typscript
 /**
-  * 是否为合法的 schema 结构
+  * Whether the data is a valid schema structure
   * check if data is valid NodeSchema
   *
   * @param {*} data
@@ -37,11 +43,12 @@ isNodeSchema(data: any): boolean;
 ```
 
 #### isFormEvent
-是否为表单事件类型
+
+Whether the event is a form event type
 
 ```typescript
 /**
- * 是否为表单事件类型
+ * Whether the event is a form event type
  * check if e is a form event
  * @param {(KeyboardEvent | MouseEvent)} e
  * @returns {boolean}
@@ -50,10 +57,12 @@ isFormEvent(e: KeyboardEvent | MouseEvent): boolean;
 ```
 
 #### getNodeSchemaById
-从 schema 结构中查找指定 id 节点
+
+Find a node by id in a schema structure
+
 ```typescript
 /**
- * 从 schema 结构中查找指定 id 节点
+ * Find a node by id in a schema structure
  * get node schema from a larger schema with node id
  * @param {IPublicTypeNodeSchema} schema
  * @param {string} nodeId
@@ -64,14 +73,16 @@ getNodeSchemaById(
     nodeId: string,
   ): IPublicTypeNodeSchema | undefined;
 ```
-相关类型：[IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
+
+Related type: [IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
 
 #### executeTransaction
-批处理事务，用于优化特定场景的性能
+
+Batch transaction for performance optimization in specific scenarios
 
 ```typescript
 /**
- * 批处理事务，用于优化特定场景的性能
+ * Batch transaction for performance optimization in specific scenarios
  * excute something in a transaction for performence
  *
  * @param {() => void} fn
@@ -80,9 +91,11 @@ getNodeSchemaById(
  */
 executeTransaction(fn: () => void, type: IPublicEnumTransitionType): void;
 ```
+
 **@since v1.0.16**
 
-**示例**
+**Example**
+
 ```typescript
 import { common } from '@rchh/lowcode-engine';
 import { IPublicEnumTransitionType } from '@rchh/lowcode-types';
@@ -97,7 +110,7 @@ common.utils.startTransaction(() => {
 
 #### getConvertedExtraKey
 
-props key 转化工具
+Props key conversion utility
 
 ```typescript
 getConvertedExtraKey(key: string): string
@@ -107,10 +120,12 @@ getConvertedExtraKey(key: string): string
 **@since v1.0.17**
 
 #### createIntl
-i18n 相关工具
+
+i18n utilities
+
 ```typescript
 /**
- * i18n 相关工具
+ * i18n utilities
  * i18n tools
  *
  * @param {(string | object)} instance
@@ -132,7 +147,7 @@ createIntl(instance: string | object): {
 
 **@since v1.0.17**
 
-**示例**
+**Example**
 
 ```typescript
 import { common } from '@rchh/lowcode-engine';
@@ -143,32 +158,34 @@ const { intl, getLocale, setLocale } = common.utils.createIntl({
   'en-US': enUS,
   'zh-CN': zhCN,
 });
-
 ```
 
 #### intl
 
-i18n 转换方法
+i18n conversion method
 
 ```typescript
 /**
- * i18n 转换方法
+ * i18n conversion method
  */
 intl(data: IPublicTypeI18nData | string, params?: object): string;
 ```
 
-**示例**
+**Example**
+
 ```
 const title = common.utils.intl(node.title)
 ```
 
 ### skeletonCabin
+
 #### Workbench
-编辑器框架 View
+
+Editor framework View
 
 ```typescript
 /**
- * 编辑器框架 View
+ * Editor framework View
  * get Workbench Component
  */
 get Workbench(): Component;

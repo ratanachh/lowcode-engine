@@ -4,7 +4,7 @@ import { ComponentType } from 'react';
 export interface IPublicTypeEngineOptions {
 
   /**
-   * 是否开启 condition 的能力，默认在设计器中不管 condition 是啥都正常展示
+   * Whether to enable condition capability; by default the designer shows nodes regardless of condition
    * when this is true, node that configured as conditional not renderring
    * will not display in canvas.
    * @default false
@@ -12,9 +12,9 @@ export interface IPublicTypeEngineOptions {
   enableCondition?: boolean;
 
   /**
-   * TODO: designMode 无法映射到文档渲染模块
+   * TODO: designMode cannot be mapped to the document render module
    *
-   * 设计模式，live 模式将会实时展示变量值，默认值：'design'
+   * Design mode; live mode shows variable values in real time. Default: 'design'
    *
    * @default 'design'
    * @experimental
@@ -22,103 +22,103 @@ export interface IPublicTypeEngineOptions {
   designMode?: 'design' | 'live';
 
   /**
-   * 设备类型，默认值：'default'
+   * Device type. Default: 'default'
    * @default 'default'
    */
   device?: 'default' | 'mobile' | string;
 
   /**
-   * 指定初始化的 deviceClassName，挂载到画布的顶层节点上
+   * Initial deviceClassName mounted on the canvas top-level node
    */
   deviceClassName?: string;
 
   /**
-   * 语言，默认值：'zh-CN'
+   * Locale. Default: 'zh-CN'
    * @default 'zh-CN'
    */
   locale?: string;
 
   /**
-   * 渲染器类型，默认值：'react'
+   * Renderer type. Default: 'react'
    */
   renderEnv?: 'react' | string;
 
   /**
-   * 设备类型映射器，处理设计器与渲染器中 device 的映射
+   * Device type mapper between designer and renderer
    */
   deviceMapper?: {
     transform: (originalDevice: string) => string;
   };
 
   /**
-   * 开启严格插件模式，默认值：STRICT_PLUGIN_MODE_DEFAULT , 严格模式下，插件将无法通过 engineOptions 传递自定义配置项
+   * Enable strict plugin mode. Default: STRICT_PLUGIN_MODE_DEFAULT. In strict mode plugins cannot pass custom options via engineOptions
    * enable strict plugin mode, default value: false
    * under strict mode, customed engineOption is not accepted.
    */
   enableStrictPluginMode?: boolean;
 
   /**
-   * 开启拖拽组件时，即将被放入的容器是否有视觉反馈，默认值：false
+   * Whether the drop target container shows visual feedback while dragging. Default: false
    */
   enableReactiveContainer?: boolean;
 
   /**
-   * 关闭画布自动渲染，在资产包多重异步加载的场景有效，默认值：false
+   * Disable canvas auto-render; useful when assets load asynchronously in multiple batches. Default: false
    */
   disableAutoRender?: boolean;
 
   /**
-   * 关闭拖拽组件时的虚线响应，性能考虑，默认值：false
+   * Disable dashed-line feedback while dragging (for performance). Default: false
    */
   disableDetecting?: boolean;
 
   /**
-   * 定制画布中点击被忽略的 selectors，默认值：undefined
+   * Custom selectors whose clicks are ignored on the canvas. Default: undefined
    */
   customizeIgnoreSelectors?: (defaultIgnoreSelectors: string[], e: MouseEvent) => string[];
 
   /**
-   * 禁止默认的设置面板，默认值：false
+   * Disable the default settings panel. Default: false
    */
   disableDefaultSettingPanel?: boolean;
 
   /**
-   * 禁止默认的设置器，默认值：false
+   * Disable default setters. Default: false
    */
   disableDefaultSetters?: boolean;
 
   /**
-   * 打开画布的锁定操作，默认值：false
+   * Enable canvas lock operations. Default: false
    */
   enableCanvasLock?: boolean;
 
   /**
-   * 容器锁定后，容器本身是否可以设置属性，仅当画布锁定特性开启时生效，默认值为：false
+   * Whether a locked container can still set props; only effective when canvas lock is on. Default: false
    */
   enableLockedNodeSetting?: boolean;
 
   /**
-   * 当选中节点切换时，是否停留在相同的设置 tab 上，默认值：false
+   * Stay on the same settings tab when selection changes. Default: false
    */
   stayOnTheSameSettingTab?: boolean;
 
   /**
-   * 是否在只有一个 item 的时候隐藏设置 tabs，默认值：false
+   * Hide settings tabs when there is only one item. Default: false
    */
   hideSettingsTabsWhenOnlyOneItem?: boolean;
 
   /**
-   * 自定义 loading 组件
+   * Custom loading component
    */
   loadingComponent?: ComponentType;
 
   /**
-   * 设置所有属性支持变量配置，默认值：false
+   * Allow variable binding for all props. Default: false
    */
   supportVariableGlobally?: boolean;
 
   /**
-   * 设置 simulator 相关的 url，默认值：undefined
+   * Simulator-related URLs. Default: undefined
    */
   simulatorUrl?: string[];
 
@@ -127,66 +127,66 @@ export interface IPublicTypeEngineOptions {
    * @deprecated this exists for some legacy reasons
    */
   visionSettings?: {
-    // 是否禁用降级 reducer，默认值：false
+    // Whether to disable the fallback reducer. Default: false
     disableCompatibleReducer?: boolean;
-    // 是否开启在 render 阶段开启 filter reducer，默认值：false
+    // Whether to enable the filter reducer during render. Default: false
     enableFilterReducerInRenderStage?: boolean;
   };
 
   /**
-   * 与 react-renderer 的 appHelper 一致，https://lowcode-engine.cn/site/docs/guide/expand/runtime/renderer#apphelper
+   * Same as react-renderer appHelper: https://lowcode-engine.cn/site/docs/guide/expand/runtime/renderer#apphelper
    */
   appHelper?: {
 
-    /** 全局公共函数 */
+    /** Global utility functions */
     utils?: Record<string, any>;
 
-    /** 全局常量 */
+    /** Global constants */
     constants?: Record<string, any>;
   };
 
   /**
-   * 数据源引擎的请求处理器映射
+   * Request handler map for the data source engine
    */
   requestHandlersMap?: RequestHandlersMap;
 
   /**
    * @default true
-   * JSExpression 是否只支持使用 this 来访问上下文变量，假如需要兼容原来的 'state.xxx'，则设置为 false
+   * Whether JSExpression only supports accessing context via this; set false to keep compatibility with 'state.xxx'
    */
   thisRequiredInJSE?: boolean;
 
   /**
    * @default false
-   * 当开启组件未找到严格模式时，渲染模块不会默认给一个容器组件
+   * When component-not-found strict mode is on, the renderer will not fall back to a default container
    */
   enableStrictNotFoundMode?: boolean;
 
   /**
-   * 配置指定节点为根组件
+   * Configure a specified node as the root component
    */
   focusNodeSelector?: (rootNode: Node) => Node;
 
   /**
-   * 开启应用级设计模式
+   * Enable application-level design mode
    */
   enableWorkspaceMode?: boolean;
 
   /**
    * @default true
-   * 应用级设计模式下，自动打开第一个窗口
+   * In application-level design mode, automatically open the first window
    */
   enableAutoOpenFirstWindow?: boolean;
 
   /**
    * @default false
-   * 开启右键菜单能力
+   * Enable context menu capability
    */
   enableContextMenu?: boolean;
 
   /**
    * @default false
-   * 隐藏设计器辅助层
+   * Hide the designer helper layer
    */
   hideComponentAction?: boolean;
 }

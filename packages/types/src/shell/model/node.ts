@@ -15,13 +15,13 @@ export interface IBaseModelNode<
 > {
 
   /**
-   * 节点 id
+   * Node id
    * node id
    */
   id: string;
 
   /**
-   * 节点标题
+   * Node title
    * title of node
    */
   get title(): string | IPublicTypeI18nData | ReactElement;
@@ -32,7 +32,7 @@ export interface IBaseModelNode<
   get isContainer(): boolean;
 
   /**
-   * 是否为「容器型」节点
+   * Whether this is a container node
    * check if node is a container type node
    * @since v1.1.0
    */
@@ -44,7 +44,7 @@ export interface IBaseModelNode<
   get isRoot(): boolean;
 
   /**
-   * 是否为根节点
+   * Whether this is the root node
    * check if node is root in the tree
    * @since v1.1.0
    */
@@ -56,7 +56,7 @@ export interface IBaseModelNode<
   get isEmpty(): boolean;
 
   /**
-   * 是否为空节点（无 children 或者 children 为空）
+   * Whether this is an empty node (no children or children is empty)
    * check if current node is empty, which means no children or children is empty
    * @since v1.1.0
    */
@@ -64,12 +64,12 @@ export interface IBaseModelNode<
 
   /**
    * @deprecated please use isPageNode
-   * 是否为 Page 节点
+   * Whether this is a Page node
    */
   get isPage(): boolean;
 
   /**
-   * 是否为 Page 节点
+   * Whether this is a Page node
    * check if node is Page
    * @since v1.1.0
    */
@@ -81,7 +81,7 @@ export interface IBaseModelNode<
   get isComponent(): boolean;
 
   /**
-   * 是否为 Component 节点
+   * Whether this is a Component node
    * check if node is Component
    * @since v1.1.0
    */
@@ -93,7 +93,7 @@ export interface IBaseModelNode<
   get isModal(): boolean;
 
   /**
-   * 是否为「模态框」节点
+   * Whether this is a modal node
    * check if node is Modal
    * @since v1.1.0
    */
@@ -105,7 +105,7 @@ export interface IBaseModelNode<
   get isSlot(): boolean;
 
   /**
-   * 是否为插槽节点
+   * Whether this is a slot node
    * check if node is a Slot
    * @since v1.1.0
    */
@@ -117,7 +117,7 @@ export interface IBaseModelNode<
   get isParental(): boolean;
 
   /**
-   * 是否为父类/分支节点
+   * Whether this is a parent/branch node
    * check if node a parental node
    * @since v1.1.0
    */
@@ -129,14 +129,14 @@ export interface IBaseModelNode<
   get isLeaf(): boolean;
 
   /**
-   * 是否为叶子节点
+   * Whether this is a leaf node
    * check if node is a leaf node in tree
    * @since v1.1.0
    */
   get isLeafNode(): boolean;
 
   /**
-   * 获取当前节点的锁定状态
+   * Get the lock state of the current node
    * check if current node is locked
    * @since v1.0.16
    */
@@ -154,98 +154,98 @@ export interface IBaseModelNode<
   get isRGLContainer();
 
   /**
-   * 设置为磁贴布局节点
+   * Set as a magnet-layout node
    * @since v1.1.0
    */
   set isRGLContainerNode(flag: boolean);
 
   /**
-   * 获取磁贴布局节点设置状态
+   * Get the magnet-layout node setting state
    * @returns Boolean
    * @since v1.1.0
    */
   get isRGLContainerNode();
 
   /**
-   * 下标
+   * Index
    * index
    */
   get index(): number | undefined;
 
   /**
-   * 图标
+   * Icon
    * get icon of this node
    */
   get icon(): IPublicTypeIconType;
 
   /**
-   * 节点所在树的层级深度，根节点深度为 0
+   * Depth of the node in the tree; root depth is 0
    * depth level of this node, value of root node is 0
    */
   get zLevel(): number;
 
   /**
-   * 节点 componentName
+   * Node componentName
    * componentName
    */
   get componentName(): string;
 
   /**
-   * 节点的物料元数据
+   * Material metadata of the node
    * get component meta of this node
    */
   get componentMeta(): ComponentMeta | null;
 
   /**
-   * 获取节点所属的文档模型对象
+   * Get the document model that owns this node
    * get documentModel of this node
    */
   get document(): Document | null;
 
   /**
-   * 获取当前节点的前一个兄弟节点
+   * Get the previous sibling of the current node
    * get previous sibling of this node
    */
   get prevSibling(): Node | null | undefined;
 
   /**
-   * 获取当前节点的后一个兄弟节点
+   * Get the next sibling of the current node
    * get next sibling of this node
    */
   get nextSibling(): Node | null | undefined;
 
   /**
-   * 获取当前节点的父亲节点
+   * Get the parent of the current node
    * get parent of this node
    */
   get parent(): Node | null;
 
   /**
-   * 获取当前节点的孩子节点模型
+   * Get the children model of the current node
    * get children of this node
    */
   get children(): NodeChildren | null;
 
   /**
-   * 节点上挂载的插槽节点们
+   * Slot nodes mounted on this node
    * get slots of this node
    */
   get slots(): Node[];
 
   /**
-   * 当前节点为插槽节点时，返回节点对应的属性实例
+   * When this is a slot node, return the corresponding prop instance
    * return coresponding prop when this node is a slot node
    */
   get slotFor(): Prop | null | undefined;
 
   /**
-   * 返回节点的属性集
+   * Return the node's props set
    * get props
    */
   get props(): Props | null;
 
   /**
-   * 返回节点的属性集
+   * Return the node's props set
    * get props data
    */
   get propsData(): IPublicTypePropsMap | IPublicTypePropsList | null;
@@ -256,105 +256,105 @@ export interface IBaseModelNode<
   get conditionGroup(): ExclusiveGroup | null;
 
   /**
-   * 获取符合搭建协议 - 节点 schema 结构
+   * Get the node schema structure conforming to the builder protocol
    * get schema of this node
    * @since v1.1.0
    */
   get schema(): IPublicTypeNodeSchema;
 
   /**
-   * 获取对应的 setting entry
+   * Get the corresponding setting entry
    * get setting entry of this node
    * @since v1.1.0
    */
   get settingEntry(): SettingTopEntry;
 
   /**
-   * 返回节点的尺寸、位置信息
+   * Return the node's size and position info
    * get rect information for this node
    */
   getRect(): DOMRect | null;
 
   /**
-   * 是否有挂载插槽节点
+   * Whether slot nodes are mounted
    * check if current node has slots
    */
   hasSlots(): boolean;
 
   /**
-   * 是否设定了渲染条件
+   * Whether a render condition is set
    * check if current node has condition value set
    */
   hasCondition(): boolean;
 
   /**
-   * 是否设定了循环数据
+   * Whether loop data is set
    * check if loop is set for this node
    */
   hasLoop(): boolean;
 
   /**
-   * 获取指定 path 的属性模型实例
+   * Get the prop model instance at a specified path
    * get prop by path
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param createIfNone 如果不存在，是否新建，默认为 true
+   * @param path prop path; supports formats like a / a.b / a.0
+   * @param createIfNone whether to create if missing; default true
    */
   getProp(path: string | number, createIfNone?: boolean): Prop | null;
 
   /**
-   * 获取指定 path 的属性模型实例值
+   * Get the value of the prop model instance at a specified path
    * get prop value by path
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * @param path prop path; supports formats like a / a.b / a.0
    */
   getPropValue(path: string): any;
 
   /**
-   * 获取指定 path 的属性模型实例，
-   *  注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
+   * Get the prop model instance at a specified path;
+   *  Note: on export, unlike normal props, this prop is not under props but at the same level as props
    *
    * get extra prop by path, an extra prop means a prop not exists in the `props`
    * but as siblint of the `props`
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param createIfNone 当没有属性的时候，是否创建一个属性
+   * @param path prop path; supports formats like a / a.b / a.0
+   * @param createIfNone whether to create a prop when none exists
    */
   getExtraProp(path: string, createIfNone?: boolean): Prop | null;
 
   /**
-   * 获取指定 path 的属性模型实例，
-   *  注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
+   * Get the prop model instance at a specified path;
+   *  Note: on export, unlike normal props, this prop is not under props but at the same level as props
    *
    * get extra prop value by path, an extra prop means a prop not exists in the `props`
    * but as siblint of the `props`
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * @param path prop path; supports formats like a / a.b / a.0
    * @returns
    */
   getExtraPropValue(path: string): any;
 
   /**
-   * 设置指定 path 的属性模型实例值
+   * Set the value of the prop model instance at a specified path
    * set value for prop with path
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param value 值
+   * @param path prop path; supports formats like a / a.b / a.0
+   * @param value value
    */
   setPropValue(path: string | number, value: IPublicTypeCompositeValue): void;
 
   /**
-   * 设置指定 path 的属性模型实例值
+   * Set the value of the prop model instance at a specified path
    * set value for extra prop with path
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param value 值
+   * @param path prop path; supports formats like a / a.b / a.0
+   * @param value value
    */
   setExtraPropValue(path: string, value: IPublicTypeCompositeValue): void;
 
   /**
-   * 导入节点数据
+   * Import node data
    * import node schema
    * @param data
    */
   importSchema(data: IPublicTypeNodeSchema): void;
 
   /**
-   * 导出节点数据
+   * Export node data
    * export schema from this node
    * @param stage
    * @param options
@@ -362,7 +362,7 @@ export interface IBaseModelNode<
   exportSchema(stage: IPublicEnumTransformStage, options?: any): IPublicTypeNodeSchema;
 
   /**
-   * 在指定位置之前插入一个节点
+   * Insert a node before the specified position
    * insert a node befor current node
    * @param node
    * @param ref
@@ -375,7 +375,7 @@ export interface IBaseModelNode<
     ): void;
 
   /**
-   * 在指定位置之后插入一个节点
+   * Insert a node after the specified position
    * insert a node after this node
    * @param node
    * @param ref
@@ -388,36 +388,36 @@ export interface IBaseModelNode<
     ): void;
 
   /**
-   * 替换指定节点
+   * Replace a specified node
    * replace a child node with data provided
-   * @param node 待替换的子节点
-   * @param data 用作替换的节点对象或者节点描述
+   * @param node child node to replace
+   * @param data replacement node object or node description
    * @returns
    */
   replaceChild(node: Node, data: any): Node | null;
 
   /**
-   * 将当前节点替换成指定节点描述
+   * Replace the current node with the specified node description
    * replace current node with a new node schema
    * @param schema
    */
   replaceWith(schema: IPublicTypeNodeSchema): any;
 
   /**
-   * 选中当前节点实例
+   * Select the current node instance
    * select current node
    */
   select(): void;
 
   /**
-   * 设置悬停态
+   * Set hover state
    * set hover value for current node
    * @param flag
    */
   hover(flag: boolean): void;
 
   /**
-   * 设置节点锁定状态
+   * Set the node lock state
    * set lock value for current node
    * @param flag
    * @since v1.0.16
@@ -425,13 +425,13 @@ export interface IBaseModelNode<
   lock(flag?: boolean): void;
 
   /**
-   * 删除当前节点实例
+   * Remove the current node instance
    * remove current node
    */
   remove(): void;
 
   /**
-   * 执行新增、删除、排序等操作
+   * Perform add, remove, sort, and similar operations
    * excute remove/add/sort operations on node`s children
    *
    * @since v1.1.0
@@ -443,7 +443,7 @@ export interface IBaseModelNode<
   ): any;
 
   /**
-   * 当前节点是否包含某子节点
+   * Whether the current node contains a given child
    * check if current node contains another node as a child
    * @param node
    * @since v1.1.0
@@ -451,48 +451,48 @@ export interface IBaseModelNode<
   contains(node: Node): boolean;
 
   /**
-   * 是否可执行某 action
+   * Whether a given action can be performed
    * check if current node can perform certain aciton with actionName
-   * @param actionName action 名字
+   * @param actionName action name
    * @since v1.1.0
    */
   canPerformAction(actionName: string): boolean;
 
   /**
-   * 当前节点是否可见
+   * Whether the current node is visible
    * check if current node is visible
    * @since v1.1.0
    */
   get visible(): boolean;
 
   /**
-   * 设置当前节点是否可见
+   * Set whether the current node is visible
    * set visible value for current node
    * @since v1.1.0
    */
   set visible(value: boolean);
 
   /**
-   * 获取该节点的 ConditionalVisible 值
+   * Get the node's ConditionalVisible value
    * check if current node ConditionalVisible
    * @since v1.1.0
    */
   isConditionalVisible(): boolean | undefined;
 
   /**
-   * 设置该节点的 ConditionalVisible 为 true
+   * Set the node's ConditionalVisible to true
    * make this node as conditionalVisible === true
    * @since v1.1.0
    */
   setConditionalVisible(): void;
 
   /**
-   * 获取节点实例对应的 dom 节点
+   * Get the DOM node corresponding to the node instance
    */
   getDOMNode(): HTMLElement;
 
   /**
-   * 获取磁贴相关信息
+   * Get magnet-related info
    */
   getRGL(): {
     isContainerNode: boolean;

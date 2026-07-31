@@ -1,22 +1,23 @@
 ---
-title: config - 配置 API
+title: config - Configuration API
 sidebar_position: 5
 ---
 
-> **@types** [IPublicModelEngineConfig](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/engine-config.ts)<br/>
-> **@since** v1.0.0
+> **@types** [IPublicModelEngineConfig](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/engine-config.ts)<br/> > **@since** v1.0.0
 
+## Module Overview
 
-## 模块简介
-配置模块，负责配置的读、写等操作。
+Configuration module for reading and writing config values.
 
-## 方法
+## Methods
+
 ### get
-获取指定 key 的值
+
+Get the value for a given key
 
 ```typescript
 /**
- * 获取指定 key 的值
+ * Get the value for a given key
  * get value by key
  * @param key
  * @param defaultValue
@@ -24,26 +25,32 @@ sidebar_position: 5
  */
 get(key: string, defaultValue?: any): any;
 ```
-**示例**
+
+**Example**
+
 ```typescript
 import { config } from '@rchh/lowcode-engine';
 
 config.get('keyA', true);
 config.get('keyB', { a: 1 });
 ```
+
 ### set
-设置指定 key 的值
+
+Set the value for a given key
 
 ```typescript
 /**
- * 设置指定 key 的值
+ * Set the value for a given key
  * set value for certain key
  * @param key
  * @param value
  */
 set(key: string, value: any): void;
 ```
-**示例**
+
+**Example**
+
 ```typescript
 import { config } from '@rchh/lowcode-engine';
 
@@ -51,11 +58,12 @@ config.set('keyC', 1);
 ```
 
 ### has
-判断指定 key 是否有值
+
+Check whether a given key has a value
 
 ```typescript
 /**
- * 判断指定 key 是否有值
+ * Check whether a given key has a value
  * check if config has certain key configed
  * @param key
  * @returns
@@ -63,7 +71,8 @@ config.set('keyC', 1);
 has(key: string): boolean;
 ```
 
-**示例**
+**Example**
+
 ```typescript
 import { config } from '@rchh/lowcode-engine';
 
@@ -71,17 +80,20 @@ config.has('keyD');
 ```
 
 ### setConfig
-批量设值，set 的对象版本
+
+Set multiple values at once — object version of `set`
 
 ```typescript
 /**
- * 批量设值，set 的对象版本
+ * Set multiple values at once — object version of set
  * set multiple config key-values
  * @param config
  */
 setConfig(config: { [key: string]: any }): void;
 ```
-**示例**
+
+**Example**
+
 ```typescript
 import { config } from '@rchh/lowcode-engine';
 
@@ -89,11 +101,12 @@ config.setConfig({ keyA: false, keyB: 2 });
 ```
 
 ### getPreference
-获取全局 Preference 管理器，用于管理全局浏览器侧用户 Preference，如 Panel 是否钉住
+
+Get the global Preference manager for browser-side user preferences, such as whether a panel is pinned
 
 ```typescript
 /**
- * 获取全局 Preference, 用于管理全局浏览器侧用户 Preference，如 Panel 是否钉住
+ * Get the global Preference manager for browser-side user preferences, such as whether a panel is pinned
  * get global user preference manager, which can be use to store
  * user`s preference in user localstorage, such as a panel is pinned or not.
  * @returns {IPublicModelPreference}
@@ -101,32 +114,33 @@ config.setConfig({ keyA: false, keyB: 2 });
  */
 getPreference(): IPublicModelPreference;
 ```
-相关类型：[IPublicModelPreference](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/preference.ts)
+
+Related type: [IPublicModelPreference](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/preference.ts)
 
 **@since v1.1.0**
 
-示例
+Example
 
 ```javascript
 import { config } from '@rchh/lowcode-engine';
 
 const panelName = 'outline-master-pane';
 
-// 设置大纲树面板钉住，在大纲树下次重新打开时生效
-config.getPreference().set(`${panelName}-pinned-status-isFloat`, false, 'skeleton')
+// Pin the outline tree panel; takes effect the next time the outline tree is opened
+config.getPreference().set(`${panelName}-pinned-status-isFloat`, false, 'skeleton');
 ```
 
-## 事件
+## Events
 
 ### onceGot
-获取指定 key 的值，若此时还未赋值，则等待，若已有值，则直接返回值
-注：此函数返回 Promise 实例
 
+Get the value for a given key; if not set yet, wait; if already set, return immediately.
+Note: this function returns a Promise.
 
 ```typescript
 /**
- * 获取指定 key 的值，若此时还未赋值，则等待，若已有值，则直接返回值
- *  注：此函数返回 Promise 实例，只会执行（fullfill）一次
+ * Get the value for a given key; if not set yet, wait; if already set, return immediately.
+ * Note: this function returns a Promise that fulfills only once.
  * wait until value of certain key is set, will only be
  * triggered once.
  * @param key
@@ -134,11 +148,13 @@ config.getPreference().set(`${panelName}-pinned-status-isFloat`, false, 'skeleto
  */
 onceGot(key: string): Promise<any>;
 ```
-**示例**
+
+**Example**
+
 ```typescript
 import { config } from '@rchh/lowcode-engine';
 
-config.onceGot('keyA').then(value => {
+config.onceGot('keyA').then((value) => {
   console.log(`The value of keyA is ${value}`);
 });
 
@@ -147,11 +163,12 @@ const value = await config.onceGot('keyA');
 ```
 
 ### onGot
-获取指定 key 的值，函数回调模式，若多次被赋值，回调会被多次调用
+
+Get the value for a given key via callback; if the value is set multiple times, the callback is invoked multiple times
 
 ```typescript
   /**
-   * 获取指定 key 的值，函数回调模式，若多次被赋值，回调会被多次调用
+   * Get the value for a given key via callback; if the value is set multiple times, the callback is invoked multiple times
    * set callback for event of value set for some key
    * this will be called each time the value is set
    * @param key
@@ -160,7 +177,9 @@ const value = await config.onceGot('keyA');
    */
   onGot(key: string, fn: (data: any) => void): () => void;
 ```
-**示例**
+
+**Example**
+
 ```typescript
 import { config } from '@rchh/lowcode-engine';
 

@@ -8,50 +8,59 @@ import {
 } from './';
 
 /**
- * 容器结构描述
+ * Container structure description
  */
 export interface IPublicTypeContainerSchema extends IPublicTypeNodeSchema {
+
   /**
    * 'Block' | 'Page' | 'Component';
    */
   componentName: string;
+
   /**
-   * 文件名称
+   * File name
    */
   fileName: string;
+
   /**
-   * @todo 待文档定义
+   * @todo documentation TBD
    */
   meta?: Record<string, unknown>;
+
   /**
-   * 容器初始数据
+   * Container initial data
    */
   state?: {
     [key: string]: IPublicTypeCompositeValue;
   };
+
   /**
-   * 自定义方法设置
+   * Custom method settings
    */
   methods?: {
     [key: string]: IPublicTypeJSExpression | IPublicTypeJSFunction;
   };
+
   /**
-   * 生命周期对象
+   * Lifecycle object
    */
   lifeCycles?: {
-    // @todo 生命周期对象建议改为闭合集合
+    // @todo lifecycle object should preferably be a closed set
     [key: string]: IPublicTypeJSExpression | IPublicTypeJSFunction;
   };
+
   /**
-   * 样式文件
+   * Style file
    */
   css?: string;
+
   /**
-   * 异步数据源配置
+   * Async data source configuration
    */
   dataSource?: DataSource;
+
   /**
-   * 低代码业务组件默认属性
+   * Default props for low-code business components
    */
   defaultProps?: IPublicTypeCompositeObject;
 }

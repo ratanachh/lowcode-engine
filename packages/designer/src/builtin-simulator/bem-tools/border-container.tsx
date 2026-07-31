@@ -41,7 +41,7 @@ function getTitle(title: string | IPublicTypeI18nData | ReactElement) {
   if (typeof title === 'string') return title;
   if (isI18nData(title)) {
     const locale = globalLocale.getLocale() || 'zh-CN';
-    return `将放入到此${title[locale]}`;
+    return `Will place into ${title[locale]}`;
   }
   return '';
 }

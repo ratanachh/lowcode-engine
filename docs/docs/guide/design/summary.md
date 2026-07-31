@@ -1,56 +1,59 @@
 ---
-title: 架构综述
+title: Architecture Overview
 sidebar_position: 0
 ---
-## 分层架构描述
+
+## Layered architecture
+
 ![image.png](https://img.alicdn.com/imgextra/i4/O1CN016l8gDo1z7zlRlW1P0_!!6000000006668-2-tps-1920-1080.png)
 
-我们设计了这样一套分层架构，自下而上分别是协议 - 引擎 - 生态 - 平台。
+We designed this layered architecture. From bottom to top: Protocol — Engine — Ecosystem — Platform.
 
-- 底层协议栈定义的是标准，**标准的统一让上层产物的互通成为可能**。
-- 引擎是**对协议的实现**，同时通过能力的输出，向上**支撑生态开放体系**，提供各种生态扩展能力。
-- 生态就好理解了，是基于引擎核心能力上扩展出来的，比如物料、设置器、插件等，还有工具链支撑开发体系。
-- 最后，各个平台基于引擎内核以及生态中的产品组合、衔接形成满足其需求的低代码平台。
+- The bottom protocol stack defines standards. **Unified standards make interoperability of upper-layer artifacts possible**.
+- The engine **implements the protocols** and, through capability output, **supports the open ecosystem** above, providing various ecosystem extension capabilities.
+- The ecosystem is easier to understand: it extends the engine core, including materials, setters, plugins, and toolchains that support the development system.
+- Finally, each platform combines engine kernel and ecosystem products to form a low-code platform that meets its needs.
 
-**每一层都明确自身的定位，各司其职，协议不会去思考引擎如何实现，引擎也不会实现具体上层平台功能，上层平台的定制化均通过插件来实现，这些理念将会贯穿我们体系设计、实现的过程。**
+**Each layer has a clear role and stays in its lane. Protocols do not decide how the engine is implemented; the engine does not implement specific upper-layer platform features; platform customization is done through plugins. These principles run through our system design and implementation.**
 
-## 引擎内核简述
+## Engine kernel overview
 
 ![image.png](https://img.alicdn.com/imgextra/i1/O1CN01QUUVu21LjTXqY6H8I_!!6000000001335-2-tps-1920-1080.png)
 
-低代码引擎分为 4 大模块，入料 - 编排 - 渲染 - 出码：
+The low-code engine has four major modules: Material Parser — Editor — Renderer — Code Generator:
 
-- 入料模块就是将外部的物料，比如海量的 npm 组件，按照[《低代码引擎物料协议规范》](/site/docs/specs/material-spec)进行描述。将描述后的数据通过引擎 API 注册后，在编辑器中使用。
-  > **注意，这里仅是增加描述，而非重写一套，这样我们能最大程度复用 ProCode 体系已沉淀的组件。**
-- 编排，本质上来讲，就是**不断在生成符合[《低代码引擎搭建协议规范》](/site/docs/specs/lowcode-spec)的页面描述，将编辑器中的所有物料，进行布局设置、组件 CRUD 操作、以及 JS / CSS 编写/ 逻辑编排 **等，最终转换成页面描述，技术细节后文会展开。
-- 渲染，顾名思义，就是**将编排生成的页面描述结构渲染成视图的过程**，视图是面向用户的，所以必须处理好内部数据流、生命周期、事件绑定、国际化等。
-- 出码，就是**将编排过程产生的符合[《低代码引擎搭建协议规范》](/site/docs/specs/lowcode-spec)的页面描述转换成另一种 DSL 或 编程语言代码的过程**。
+- The material parser module takes external materials, such as a large number of npm components, and describes them according to the [Low-Code Engine Material Protocol Specification](/site/docs/specs/material-spec). After registering the described data through engine APIs, they can be used in the editor.
+  > **Note: this only adds descriptions; it does not rewrite components, so we can reuse components already built in the ProCode system as much as possible.**
+- Editor (orchestration), in essence, **continuously produces page descriptions that conform to the [Low-Code Engine Building Protocol Specification](/site/docs/specs/lowcode-spec)**: layout settings, component CRUD, JS/CSS authoring, logic orchestration, and so on, eventually turning into a page description. Technical details are expanded later.
+- Renderer, as the name suggests, **renders the page description structure produced by orchestration into a view**. Because the view is user-facing, it must handle internal data flow, lifecycle, event binding, internationalization, and more.
+- Code generation **converts page descriptions produced during orchestration that conform to the [Low-Code Engine Building Protocol Specification](/site/docs/specs/lowcode-spec) into another DSL or programming language**.
 
-## 引擎生态简述
+## Engine ecosystem overview
 
 ![image.png](https://img.alicdn.com/imgextra/i2/O1CN01LkRseZ23W31l8DPzS_!!6000000007262-2-tps-1920-1080.png)
 
 ![image.png](https://img.alicdn.com/imgextra/i4/O1CN01PYBVfZ1hL82XPrXzX_!!6000000004260-2-tps-1920-1080.png)
 
-引擎生态主要分为 3 部分，物料、设置器和插件。
+The engine ecosystem has three main parts: materials, setters, and plugins.
 
-### 物料生态
+### Material ecosystem
 
-物料是低代码平台的生产资料，没有物料低代码平台则变成了无源之水无本之木。低代码平台的物料即低代码组件。因此低代码物料生态指的是：
-1. 低代码物料生产能力和规范。
-2. 对低代码物料进行统一管理的物料中心。
-3. 基于 Fusion Next 的低代码基础组件库。
+Materials are the production input of a low-code platform. Without materials, a low-code platform has no foundation. Low-code platform materials are low-code components. Therefore the low-code material ecosystem refers to:
 
-### 设置器生态
+1. Low-code material production capabilities and standards.
+2. A material center that manages low-code materials uniformly.
+3. A Fusion Next-based low-code base component library.
 
-对于已接入物料的属性配置，需要不同的设置器。
+### Setter ecosystem
 
-比如配置数值类型的 age，需要一个数值设置器，配置对象类型的 hobby，需要一个对象设置器，依次类推。
+For properties of integrated materials, different setters are needed.
 
-每个设置器本质上都是一个 React 组件，接受由引擎传入的参数，比如 value 和 onChange，value 是初始传入的值，onChange 是在设置器的值变化时的回传函数，将值写回到引擎中。
+For example, configuring a numeric `age` needs a number setter; configuring an object-type `hobby` needs an object setter, and so on.
+
+Each setter is essentially a React component that receives parameters from the engine, such as `value` and `onChange`. `value` is the initial value; `onChange` is the callback when the setter value changes, writing the value back to the engine.
 
 ```typescript
-// 一个最简单的文本设置器示例
+// A minimal text setter example
 class TextSetter extends Component {
   render() {
     const { value, onChange } = this.props;
@@ -59,11 +62,12 @@ class TextSetter extends Component {
 }
 ```
 
-大多数组件所使用的设置器都是一致或相似的。如同建设低代码基础组件库一样，设置器生态是一组基础的设置器，供大多数组件配置场景使用。
+Most components use the same or similar setters. Like building a low-code base component library, the setter ecosystem is a set of base setters for most component configuration scenarios.
 
-同时提供了设置器的定制功能。
+Custom setter capabilities are also provided.
 
-### 插件生态
-低代码引擎本身只包含了最小的内核，而我们所能看到的设计器上的按钮、面板等都是插件提供的。插件是组成设计器的必要部分。
+### Plugin ecosystem
 
-因此我们提供了一套官方的插件生态，提供最基础的设计器功能。帮助用户通过使用插件，快速完成自己的设计器。
+The low-code engine itself contains only a minimal kernel. Buttons, panels, and other parts of the designer you see are provided by plugins. Plugins are essential parts of the designer.
+
+We therefore provide an official plugin ecosystem that supplies basic designer functionality, helping users quickly build their own designer through plugins.

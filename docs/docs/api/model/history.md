@@ -2,21 +2,22 @@
 title: History
 sidebar_position: 5
 ---
-> **@types** [IPublicModelHistory](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/history.ts)<br/>
-> **@since** v1.0.0
 
-## 基本介绍
+> **@types** [IPublicModelHistory](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/history.ts)<br/> > **@since** v1.0.0
 
-操作历史记录模型
+## Overview
 
-## 方法
+Operation history model
+
+## Methods
+
 ### go
 
-历史记录跳转到指定位置
+Jump to a specific position in the history
 
 ```typescript
 /**
- * 历史记录跳转到指定位置
+ * Jump history to the specified cursor
  * go to a specific history
  * @param cursor
  */
@@ -25,11 +26,11 @@ go(cursor: number): void;
 
 ### back
 
-历史记录后退
+Go back in history
 
 ```typescript
 /**
- * 历史记录后退
+ * Go back in history
  * go backward in history
  */
 back(): void;
@@ -39,11 +40,11 @@ back(): void;
 
 forward()
 
-历史记录前进
+Go forward in history
 
 ```typescript
 /**
- * 历史记录前进
+ * Go forward in history
  * go forward in history
  */
 forward(): void;
@@ -51,11 +52,11 @@ forward(): void;
 
 ### savePoint
 
-保存当前状态
+Save the current state
 
 ```typescript
 /**
- * 保存当前状态
+ * Save the current state
  * do save current change as a record in history
  */
 savePoint(): void;
@@ -63,11 +64,11 @@ savePoint(): void;
 
 ### isSavePoint
 
-当前是否是「保存点」，即是否有状态变更但未保存
+Whether the current state is a save point, i.e. whether there are unsaved changes
 
 ```typescript
 /**
- * 当前是否是「保存点」，即是否有状态变更但未保存
+ * Whether the current state is a save point (has unsaved changes)
  * check if there is unsaved change for history
  */
 isSavePoint(): boolean;
@@ -75,11 +76,11 @@ isSavePoint(): boolean;
 
 ### getState
 
-获取 state，判断当前是否为「可回退」、「可前进」的状态
+Get state flags indicating whether undo and redo are available
 
 ```typescript
 /**
- * 获取 state，判断当前是否为「可回退」、「可前进」的状态
+ * Get state to tell whether undo/redo is available
  * get flags in number which indicat current change state
  *
  *  |    1     |     1    |    1     |
@@ -92,33 +93,34 @@ isSavePoint(): boolean;
 getState(): number;
 ```
 
-## 事件
+## Events
+
 ### onChangeState
 
-监听 state 变更事件
+Listen for state change events
 
 ```typescript
 /**
- * 监听 state 变更事件
+ * Listen for state change events
  * monitor on stateChange event
  * @param func
  */
 onChangeState(func: () => any): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+Related types: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onChangeCursor
 
-监听历史记录游标位置变更事件
+Listen for history cursor position change events
 
 ```typescript
 /**
- * 监听历史记录游标位置变更事件
+ * Listen for history cursor position change events
  * monitor on cursorChange event
  * @param func
  */
 onChangeCursor(func: () => any): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+Related types: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)

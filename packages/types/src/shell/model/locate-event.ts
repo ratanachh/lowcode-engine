@@ -2,21 +2,19 @@ import { IPublicModelDocumentModel, IPublicModelDragObject } from './';
 
 export interface IPublicModelLocateEvent {
 
-  get type(): string;
-
   /**
-   * 浏览器窗口坐标系
+   * Browser window coordinate system
    */
   readonly globalX: number;
   readonly globalY: number;
 
   /**
-   * 原始事件
+   * Original event
    */
   readonly originalEvent: MouseEvent | DragEvent;
 
   /**
-   * 浏览器事件响应目标
+   * Browser event target
    */
   target?: Element | null;
 
@@ -25,14 +23,16 @@ export interface IPublicModelLocateEvent {
   canvasY?: number;
 
   /**
-   * 事件订正标识，初始构造时，从发起端构造，缺少 canvasX,canvasY, 需要经过订正才有
+   * Event correction flag; when first constructed on the initiator side, canvasX/canvasY are missing and need correction
    */
   fixed?: true;
 
   /**
-   * 激活或目标文档
+   * Active or target document
    */
   documentModel?: IPublicModelDocumentModel | null;
+
+  get type(): string;
 
   get dragObject(): IPublicModelDragObject | null;
 }

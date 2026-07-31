@@ -135,11 +135,11 @@ export interface ParseExpressionGetGlobalVariablesOptions {
 const CROSS_THIS_SCOPE_TYPE_NODE: {
   [k in Node['type']]?: boolean;
 } = {
-  ArrowFunctionExpression: false, // 箭头函数不跨越 this 的 scope
+  ArrowFunctionExpression: false, // Arrow functions do not cross this scope
   FunctionExpression: true,
   FunctionDeclaration: true,
-  // FunctionTypeAnnotation: false, // 这是 TS 定义
-  // FunctionTypeParam: false, // 这是 TS 定义
+  // FunctionTypeAnnotation: false, // This is a TS definition
+  // FunctionTypeParam: false, // This is a TS definition
   ClassDeclaration: true,
   ClassExpression: true,
   ClassBody: true,
@@ -293,7 +293,7 @@ export function parseExpressionConvertThis2Context(
           return;
         }
 
-        // 处理局部变量
+        // Handle local variables
         if (!path.node.computed) {
           const prop = path.get('property');
           if (prop.isIdentifier() && localVariablesSet.has(prop.node.name)) {
@@ -302,7 +302,7 @@ export function parseExpressionConvertThis2Context(
           }
         }
 
-        // 替换 this (只在顶层替换)
+        // Replace this (only at top level)
         if (thisScopeLevel <= 0) {
           obj.replaceWith(t.identifier(contextName));
         }
@@ -312,7 +312,7 @@ export function parseExpressionConvertThis2Context(
           return;
         }
 
-        // MemberExpression 中的 this.xxx 已经处理过了
+        // this.xxx in MemberExpression has already been handled
         if (path.parent.type === 'MemberExpression') {
           return;
         }
@@ -363,7 +363,7 @@ export function transformExpressionLocalRef(expr: string, scope: IScope) {
           return;
         }
 
-        // 查看是否存在引用 local 值
+        // Check whether local values are referenced
         const prop = path.get('property');
         let memberName = '';
         if (!path.node.computed && prop.isIdentifier()) {

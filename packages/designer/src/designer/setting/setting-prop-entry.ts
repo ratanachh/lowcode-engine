@@ -142,14 +142,14 @@ export class SettingPropEntry implements ISettingPropEntry {
     }
   }
 
-  // ====== 当前属性读写 =====
+  // ====== Current prop read/write =====
 
   /**
-   * 判断当前属性值是否一致
-   * -1 多种值
-   * 0 无值
-   * 1 类似值，比如数组长度一样
-   * 2 单一植
+   * Check whether current prop values are consistent
+   * -1 mixed values
+   * 0 no value
+   * 1 similar values, e.g. same array length
+   * 2 single value
    */
   /* istanbul ignore next */
   @computed get valueState(): number {
@@ -187,7 +187,7 @@ export class SettingPropEntry implements ISettingPropEntry {
   }
 
   /**
-   * 获取当前属性值
+   * Get current prop value
    */
   getValue(): any {
     let val: any;
@@ -204,7 +204,7 @@ export class SettingPropEntry implements ISettingPropEntry {
   }
 
   /**
-   * 设置当前属性值
+   * Set current prop value
    */
   setValue(val: any, isHotValue?: boolean, force?: boolean, extraOptions?: IPublicTypeSetValueOptions) {
     const oldValue = this.getValue();
@@ -222,14 +222,14 @@ export class SettingPropEntry implements ISettingPropEntry {
       }
     }
     this.notifyValueChange(oldValue, val);
-    // 如果 fromSetHotValue，那么在 setHotValue 中已经调用过 valueChange 了
+    // If fromSetHotValue, valueChange was already called in setHotValue
     if (!extraOptions?.fromSetHotValue) {
       this.valueChange(extraOptions);
     }
   }
 
   /**
-   * 清除已设置的值
+   * Clear the set value
    */
   clearValue() {
     if (this.type === 'field') {
@@ -247,7 +247,7 @@ export class SettingPropEntry implements ISettingPropEntry {
   }
 
   /**
-   * 获取子项
+   * Get child item
    */
   get(propName: string | number) {
     const path = this.path.concat(propName).join('.');
@@ -255,7 +255,7 @@ export class SettingPropEntry implements ISettingPropEntry {
   }
 
   /**
-   * 设置子级属性值
+   * Set child prop value
    */
   setPropValue(propName: string | number, value: any) {
     const path = this.path.concat(propName).join('.');
@@ -263,7 +263,7 @@ export class SettingPropEntry implements ISettingPropEntry {
   }
 
   /**
-   * 清除已设置值
+   * Clear set values
    */
   clearPropValue(propName: string | number) {
     const path = this.path.concat(propName).join('.');
@@ -271,21 +271,21 @@ export class SettingPropEntry implements ISettingPropEntry {
   }
 
   /**
-   * 获取子级属性值
+   * Get child prop value
    */
   getPropValue(propName: string | number): any {
     return this.top.getPropValue(this.path.concat(propName).join('.'));
   }
 
   /**
-   * 获取顶层附属属性值
+   * Get top-level extra prop value
    */
   getExtraPropValue(propName: string) {
     return this.top.getExtraPropValue(propName);
   }
 
   /**
-   * 设置顶层附属属性值
+   * Set top-level extra prop value
    */
   setExtraPropValue(propName: string, value: any) {
     this.top.setExtraPropValue(propName, value);

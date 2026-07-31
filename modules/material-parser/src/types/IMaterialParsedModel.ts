@@ -1,6 +1,7 @@
 import { PropsSection } from '../core';
+
 /**
- * 对应解析器分析出的一些关键信息
+ * Key information analyzed by the parser
  */
 export interface IPropType {
   name: string;

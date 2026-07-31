@@ -33,7 +33,7 @@ export class Project implements IPublicApiProject {
     const workspace = globalContext.get('workspace');
     if (workspace.isActive) {
       if (!workspace.window?.innerProject) {
-        logger.error('project api 调用时机出现问题，请检查');
+        logger.error('project api called at the wrong time, please check');
         return this[innerProjectSymbol];
       }
       return workspace.window.innerProject;
@@ -55,7 +55,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 获取当前的 document
+   * Get the current document
    * @returns
    */
   get currentDocument(): IPublicModelDocumentModel | null {
@@ -63,7 +63,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 获取当前 project 下所有 documents
+   * Get all documents under the current project
    * @returns
    */
   get documents(): IPublicModelDocumentModel[] {
@@ -71,7 +71,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 获取模拟器的 host
+   * Get the simulator host
    */
   get simulatorHost(): IPublicApiSimulatorHost | null {
     return SimulatorHost.create(this[projectSymbol].simulator as any || this[simulatorHostSymbol]);
@@ -85,7 +85,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 打开一个 document
+   * Open a document
    * @param doc
    * @returns
    */
@@ -98,7 +98,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 创建一个 document
+   * Create a document
    * @param data
    * @returns
    */
@@ -108,7 +108,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 删除一个 document
+   * Remove a document
    * @param doc
    */
   removeDocument(doc: IPublicModelDocumentModel) {
@@ -116,7 +116,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 根据 fileName 获取 document
+   * Get a document by fileName
    * @param fileName
    * @returns
    */
@@ -126,7 +126,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 根据 id 获取 document
+   * Get a document by id
    * @param id
    * @returns
    */
@@ -135,7 +135,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 导出 project
+   * Export the project
    * @returns
    */
   exportSchema(stage: IPublicEnumTransformStage = IPublicEnumTransformStage.Render) {
@@ -143,15 +143,15 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 导入 project
-   * @param schema 待导入的 project 数据
+   * Import a project
+   * @param schema Project data to import
    */
   importSchema(schema?: IPublicTypeProjectSchema): void {
     this[projectSymbol].load(schema, true);
   }
 
   /**
-   * 获取当前的 document
+   * Get the current document
    * @returns
    */
   getCurrentDocument(): IPublicModelDocumentModel | null {
@@ -159,7 +159,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 增加一个属性的管道处理函数
+   * Add a props pipeline handler
    * @param transducer
    * @param stage
    */
@@ -171,7 +171,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 绑定删除文档事件
+   * Bind document remove event
    * @param fn
    * @returns
    */
@@ -183,7 +183,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 当前 project 内的 document 变更事件
+   * Document change event within the current project
    */
   onChangeDocument(fn: (doc: IPublicModelDocumentModel) => void): IPublicTypeDisposable {
     const offFn = this[projectSymbol].onCurrentDocumentChange((originalDoc) => {
@@ -196,7 +196,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 当前 project 的模拟器 ready 事件
+   * Simulator ready event for the current project
    */
   onSimulatorHostReady(fn: (host: IPublicApiSimulatorHost) => void): IPublicTypeDisposable {
     const offFn = this[projectSymbol].onSimulatorReady((simulator: BuiltinSimulatorHost) => {
@@ -206,7 +206,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 当前 project 的渲染器 ready 事件
+   * Renderer ready event for the current project
    */
   onSimulatorRendererReady(fn: () => void): IPublicTypeDisposable {
     const offFn = this[projectSymbol].onRendererReady(() => {
@@ -216,8 +216,8 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 设置多语言语料
-   * 数据格式参考 https://github.com/alibaba/lowcode-engine/blob/main/specs/lowcode-spec.md#2434%E5%9B%BD%E9%99%85%E5%8C%96%E5%A4%9A%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8Baa
+   * Set i18n locale messages
+   * Data format: see https://github.com/alibaba/lowcode-engine/blob/main/specs/lowcode-spec.md#2434%E5%9B%BD%E9%99%85%E5%8C%96%E5%A4%9A%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8Baa
    * @param value object
    * @returns
    */
@@ -226,7 +226,7 @@ export class Project implements IPublicApiProject {
   }
 
   /**
-   * 设置项目配置
+   * Set project config
    * @param value object
    * @returns
    */

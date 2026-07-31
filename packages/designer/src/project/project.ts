@@ -73,13 +73,13 @@ export interface IProject extends Omit<IBaseApiProject<
   onRendererReady(fn: () => void): () => void;
 
   /**
-   * 分字段设置储存数据，不记录操作记录
+   * Set stored data by field without recording history
    */
   set<T extends keyof IPublicTypeProjectSchema>(key: T, value: IPublicTypeProjectSchema[T]): void;
   set(key: string, value: unknown): void;
 
   /**
-   * 分字段获取储存数据
+   * Get stored data by field
    */
   get<T extends keyof IPublicTypeProjectSchema>(key: T): IPublicTypeProjectSchema[T];
   get<T>(key: string): T;
@@ -107,7 +107,7 @@ export class Project implements IProject {
   private isRendererReady: boolean = false;
 
   /**
-   * 模拟器
+   * Simulator
    */
   get simulator(): ISimulatorHost | null {
     return this._simulator || null;
@@ -174,7 +174,7 @@ export class Project implements IProject {
   }
 
   /**
-   * 获取项目整体 schema
+   * Get overall project schema
    */
   getSchema(
     stage: IPublicEnumTransformStage = IPublicEnumTransformStage.Save,
@@ -190,20 +190,20 @@ export class Project implements IProject {
   }
 
   /**
-   * 替换当前 document 的 schema，并触发渲染器的 render
+   * Replace current document schema and trigger renderer render
    * @param schema
    */
   setSchema(schema?: IPublicTypeProjectSchema) {
-    // FIXME: 这里的行为和 getSchema 并不对等，感觉不太对
+    // FIXME: behavior here is not equivalent to getSchema; feels wrong
     const doc = this.documents.find((doc) => doc.active);
     doc && schema?.componentsTree[0] && doc.import(schema?.componentsTree[0]);
     this.simulator?.rerender();
   }
 
   /**
-   * 整体设置项目 schema
+   * Set overall project schema
    *
-   * @param autoOpen true 自动打开文档 string 指定打开的文件
+   * @param autoOpen true to auto-open documents; string to open a specific file
    */
   @action
   load(schema?: IPublicTypeProjectSchema, autoOpen?: boolean | string) {
@@ -224,9 +224,9 @@ export class Project implements IProject {
         // auto open first document or open a blank page
         // this.open(this.data.componentsTree[0]);
         const documentInstances = this.data.componentsTree.map((data) => this.createDocument(data));
-        // TODO: 暂时先读 config tabBar 里的值，后面看整个 layout 结构是否能作为引擎规范
+        // TODO: temporarily read config tabBar; later see if full layout can be an engine standard
         if (this.config?.layout?.props?.tabBar?.items?.length > 0) {
-          // slice(1) 这个贼不雅，默认任务 fileName 是类'/fileName'的形式
+          // slice(1) is ugly; assumes fileName looks like '/fileName'
           documentInstances
             .find((i) => i.fileName === this.config.layout.props.tabBar.items[0].path?.slice(1))
             ?.open();
@@ -241,7 +241,7 @@ export class Project implements IProject {
   }
 
   /**
-   * 卸载当前项目数据
+   * Unload current project data
    */
   unload() {
     if (this.documents.length < 1) {
@@ -262,7 +262,7 @@ export class Project implements IProject {
   }
 
   /**
-   * 分字段设置储存数据，不记录操作记录
+   * Set stored data by field without recording history
    */
   set<T extends keyof IPublicTypeProjectSchema>(key: T, value: IPublicTypeProjectSchema[T]): void;
   set(key: string, value: unknown): void;
@@ -277,7 +277,7 @@ export class Project implements IProject {
   }
 
   /**
-   * 分字段设置储存数据
+   * Set stored data by field
    */
   get<T extends keyof IPublicTypeRootSchema>(key: T): IPublicTypeRootSchema[T];
   get<T>(key: string): T;
@@ -293,7 +293,7 @@ export class Project implements IProject {
   }
 
   getDocument(id: string): IDocumentModel | null {
-    // 此处不能使用 this.documentsMap.get(id)，因为在乐高 rollback 场景，document.id 会被改成其他值
+    // Cannot use this.documentsMap.get(id); in Legao rollback, document.id may change
     return this.documents.find((doc) => doc.id === id) || null;
   }
 
@@ -335,7 +335,7 @@ export class Project implements IProject {
       return doc.open();
     }
     //  else if (isPageSchema(doc)) {
-    // 暂时注释掉，影响了 diff 功能
+    // Temporarily commented out; it broke diff
     // const foundDoc = this.documents.find(curDoc => curDoc?.rootNode?.id && curDoc?.rootNode?.id === doc?.id);
     // if (foundDoc) {
     //   foundDoc.remove();
@@ -364,7 +364,7 @@ export class Project implements IProject {
   }
 
   mountSimulator(simulator: ISimulatorHost) {
-    // TODO: 多设备 simulator 支持
+    // TODO: multi-device simulator support
     this._simulator = simulator;
     this.emitter.emit('lowcode_engine_simulator_ready', simulator);
   }

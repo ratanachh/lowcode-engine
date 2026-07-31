@@ -1,6 +1,6 @@
 /**
- * 解析器是对输入的固定格式数据做拆解，使其符合引擎后续步骤预期，完成统一处理逻辑的步骤。
- * 本解析器面向的是标准 schema 协议。
+ * The parser decomposes fixed-format input so it matches what later engine steps expect and enables unified processing.
+ * This parser targets the standard schema protocol.
  */
 import changeCase from 'change-case';
 import {
@@ -128,7 +128,7 @@ export class SchemaParser implements ISchemaParser {
 
     const schema = this.decodeSchema(schemaSrc);
 
-    // 解析三方组件依赖
+    // Parse third-party component dependencies
     schema.componentsMap.forEach((info: any) => {
       if (info.componentName) {
         compDeps[info.componentName] = {
@@ -148,7 +148,7 @@ export class SchemaParser implements ISchemaParser {
       const firstRoot: IPublicTypeContainerSchema = schema.componentsTree[0] as IPublicTypeContainerSchema;
 
       if (!firstRoot.fileName && !isValidContainerType(firstRoot)) {
-        // 整个 schema 描述一个容器，且无根节点定义
+        // The whole schema describes one container with no root node definition
         const container: IContainerInfo = {
           ...firstRoot,
           ...defaultContainer,
@@ -159,7 +159,7 @@ export class SchemaParser implements ISchemaParser {
         };
         containers = [container];
       } else {
-        // 普通带 1 到多个容器的 schema
+        // Ordinary schema with one or more containers
         containers = schema.componentsTree.map((n) => {
           const subRoot = n as IPublicTypeContainerSchema;
           const container: IContainerInfo = {
@@ -176,13 +176,13 @@ export class SchemaParser implements ISchemaParser {
       throw new CodeGeneratorError("Can't find anything to generate.");
     }
 
-    // 分析引用能力的依赖
+    // Analyze reference-capability dependencies
     containers = containers.map((con) => ({
       ...con,
       analyzeResult: componentAnalyzer(con as IPublicTypeContainerSchema),
     }));
 
-    // 建立所有容器的内部依赖索引
+    // Build internal dependency index for all containers
     containers.forEach((container) => {
       let type;
       switch (container.containerType) {
@@ -209,8 +209,8 @@ export class SchemaParser implements ISchemaParser {
     });
 
     const containersDeps = ([] as IDependency[]).concat(...containers.map((c) => c.deps || []));
-    // TODO: 不应该在出码部分解决？
-    // 处理 children 写在了 props 里的情况
+    // TODO: Should this not be solved in code generation?
+    // Handle children written under props
     containers.forEach((container) => {
       if (container.children) {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
@@ -235,14 +235,14 @@ export class SchemaParser implements ISchemaParser {
       // container.deps = Object.keys(compDeps).map((depName) => compDeps[depName]);
     });
 
-    // 分析路由配置
+    // Analyze route configuration
     const routes: IRouterInfo['routes'] = containers
       .filter((container) => container.containerType === 'Page')
       .map((page) => {
         const { meta } = page;
         if (meta) {
           return {
-            path: (meta as IPageMeta).router || `/${page.fileName}`, // 如果无法找到页面路由信息，则用 fileName 做兜底
+            path: (meta as IPageMeta).router || `/${page.fileName}`, // If page route info is missing, fall back to fileName
             fileName: page.fileName,
             componentName: page.moduleName,
           };
@@ -259,7 +259,7 @@ export class SchemaParser implements ISchemaParser {
       .map((r) => internalDeps[r.componentName] || compDeps[r.componentName])
       .filter((dep) => !!dep);
 
-    // 分析 Utils 依赖
+    // Analyze Utils dependencies
     let utils: IPublicTypeUtilItem[];
     if (schema.utils) {
       utils = schema.utils;
@@ -280,7 +280,7 @@ export class SchemaParser implements ISchemaParser {
       utils = [];
     }
 
-    // 分析项目 npm 依赖
+    // Analyze project npm dependencies
     let npms: INpmPackage[] = [];
     containers.forEach((con) => {
       const p = (con.deps || [])
@@ -367,15 +367,15 @@ export class SchemaParser implements ISchemaParser {
   private collectDataSourcesTypes(schema: IPublicTypeProjectSchema): string[] {
     const dataSourcesTypes = new Set<string>();
 
-    // 数据源的默认类型为 fetch
+    // Default data source type is fetch
     const defaultDataSourceType = 'fetch';
 
-    // 收集应用级别的数据源
+    // Collect app-level data sources
     schema.dataSource?.list?.forEach((ds) => {
       dataSourcesTypes.add(ds.type || defaultDataSourceType);
     });
 
-    // 收集容器级别的数据源（页面/组件/区块）
+    // Collect container-level data sources (page/component/block)
     schema.componentsTree.forEach((rootNode) => {
       rootNode.dataSource?.list?.forEach((ds) => {
         dataSourcesTypes.add(ds.type || defaultDataSourceType);

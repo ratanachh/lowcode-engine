@@ -13,7 +13,7 @@ function patchDidCatch(Comp: any, { baseRenderer }: Options) {
   }
   Comp.patchedCatch = true;
   const { PureComponent } = adapter.getRuntime();
-  // Rax 的 getDerivedStateFromError 有 BUG，这里先用 componentDidCatch 来替代
+  // Rax's getDerivedStateFromError has a bug; use componentDidCatch as a workaround
   // @see https://github.com/alibaba/rax/issues/2211
   const originalDidCatch = Comp.prototype.componentDidCatch;
   Comp.prototype.componentDidCatch = function didCatch(this: any, error: Error, errorInfo: any) {

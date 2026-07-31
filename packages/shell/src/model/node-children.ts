@@ -18,14 +18,14 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 返回当前 children 实例所属的节点实例
+   * Return the node that owns this children instance
    */
   get owner(): IPublicModelNode | null {
     return ShellNode.create(this[nodeChildrenSymbol].owner);
   }
 
   /**
-   * children 内的节点实例数
+   * Number of node instances in children
    */
   get size(): number {
     return this[nodeChildrenSymbol].size;
@@ -33,7 +33,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
 
   /**
    * @deprecated
-   * 是否为空
+   * Whether empty
    * @returns
    */
   get isEmpty(): boolean {
@@ -41,7 +41,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 是否为空
+   * Whether empty
    * @returns
    */
   get isEmptyNode(): boolean {
@@ -64,7 +64,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 删除指定节点
+   * Remove the given node
    * delete the node
    * @param node
    */
@@ -73,9 +73,9 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 插入一个节点
-   * @param node 待插入节点
-   * @param at 插入下标
+   * Insert a node
+   * @param node Node to insert
+   * @param at Insert index
    * @returns
    */
   insert(node: IPublicModelNode, at?: number | null): void {
@@ -83,7 +83,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 返回指定节点的下标
+   * Return index of the given node
    * @param node
    * @returns
    */
@@ -92,7 +92,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 类似数组 splice 操作
+   * Array-like splice
    * @param start
    * @param deleteCount
    * @param node
@@ -102,7 +102,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 返回指定下标的节点
+   * Return node at index
    * @param index
    * @returns
    */
@@ -111,7 +111,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 是否包含指定节点
+   * Whether it contains the given node
    * @param node
    * @returns
    */
@@ -120,7 +120,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 类似数组的 forEach
+   * Array-like forEach
    * @param fn
    */
   forEach(fn: (node: IPublicModelNode, index: number) => void): void {
@@ -130,7 +130,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 类似数组的 reverse
+   * Array-like reverse
    */
   reverse(): IPublicModelNode[] {
     return this[nodeChildrenSymbol].reverse().map(d => {
@@ -139,7 +139,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 类似数组的 map
+   * Array-like map
    * @param fn
    */
   map<T = any>(fn: (node: IPublicModelNode, index: number) => T): T[] | null {
@@ -149,7 +149,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 类似数组的 every
+   * Array-like every
    * @param fn
    */
   every(fn: (node: IPublicModelNode, index: number) => boolean): boolean {
@@ -159,7 +159,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 类似数组的 some
+   * Array-like some
    * @param fn
    */
   some(fn: (node: IPublicModelNode, index: number) => boolean): boolean {
@@ -169,7 +169,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 类似数组的 filter
+   * Array-like filter
    * @param fn
    */
   filter(fn: (node: IPublicModelNode, index: number) => boolean): any {
@@ -181,7 +181,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 类似数组的 find
+   * Array-like find
    * @param fn
    */
   find(fn: (node: IPublicModelNode, index: number) => boolean): IPublicModelNode | null {
@@ -193,7 +193,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 类似数组的 reduce
+   * Array-like reduce
    * @param fn
    */
   reduce(fn: (acc: any, cur: IPublicModelNode) => any, initialValue: any): void {
@@ -203,7 +203,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 导入 schema
+   * Import schema
    * @param data
    */
   importSchema(data?: IPublicTypeNodeData | IPublicTypeNodeData[]): void {
@@ -211,7 +211,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 导出 schema
+   * Export schema
    * @param stage
    * @returns
    */
@@ -220,7 +220,7 @@ export class NodeChildren implements IPublicModelNodeChildren {
   }
 
   /**
-   * 执行新增、删除、排序等操作
+   * Perform add / remove / sort operations
    * @param remover
    * @param adder
    * @param sorter

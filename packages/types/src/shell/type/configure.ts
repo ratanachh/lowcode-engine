@@ -1,27 +1,27 @@
 import { IPublicTypeComponentConfigure, ConfigureSupport, IPublicTypeFieldConfig, IPublicTypeAdvanced } from './';
 
 /**
- * 编辑体验配置
+ * Editing experience configuration
  */
 export interface IPublicTypeConfigure {
 
   /**
-   * 属性面板配置
+   * Property panel configuration
    */
   props?: IPublicTypeFieldConfig[];
 
   /**
-   * 组件能力配置
+   * Component capability configuration
    */
   component?: IPublicTypeComponentConfigure;
 
   /**
-   * 通用扩展面板支持性配置
+   * Common extension panel support configuration
    */
   supports?: ConfigureSupport;
 
   /**
-   * 高级特性配置
+   * Advanced feature configuration
    */
   advanced?: IPublicTypeAdvanced;
 }

@@ -1,4 +1,4 @@
-// 仅使用类型
+// Types only
 import { IPublicModelNode } from '@rchh/lowcode-types';
 import { MouseEvent } from 'react';
 
@@ -18,10 +18,10 @@ export const getClosestNode = <Node extends IPublicModelNode = IPublicModelNode>
 };
 
 /**
- * 判断节点是否可被点击
- * @param {Node} node 节点
- * @param {unknown} e 点击事件
- * @returns {boolean} 是否可点击，true表示可点击
+ * Whether the node can be clicked
+ * @param {Node} node Node
+ * @param {unknown} e Click event
+ * @returns {boolean} Whether clickable; true means clickable
  */
 export function canClickNode<Node extends IPublicModelNode = IPublicModelNode>(node: Node, e: MouseEvent): boolean {
   const onClickHook = node.componentMeta?.advanced?.callbacks?.onClickHook;

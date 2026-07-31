@@ -2,14 +2,14 @@
 title: Prop
 sidebar_position: 3
 ---
-> **@types** [IPublicModelProp](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/prop.ts)<br/>
-> **@since** v1.0.0
 
-## 基本介绍
+> **@types** [IPublicModelProp](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/prop.ts)<br/> > **@since** v1.0.0
 
-属性模型
+## Overview
 
-## 属性
+Property model
+
+## Properties
 
 ### id
 
@@ -19,57 +19,56 @@ id
 
 ### key
 
-key 值
+Key value
 
 `@type {string | number | undefined}`
 
 ### path
 
-返回当前 prop 的路径
+Returns the path of the current prop
 
 `@type {string[]}`
 
 ### node
 
-返回所属的节点实例
+Returns the owning node instance
 
 `@type {IPublicModelNode | null}`
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### slotNode
 
-当本 prop 代表一个 Slot 时，返回对应的 slotNode
+When this prop represents a Slot, returns the corresponding slotNode
 
 `@type {IPublicModelNode | undefined | null}`
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
-
-## 方法
+## Methods
 
 ### setValue
 
-设置值
+Set value
 
 ```typescript
 /**
- * 设置值
+ * Set value
  * set value for this prop
  * @param val
  */
 setValue(val: IPublicTypeCompositeValue): void;
 ```
 
-相关类型：[IPublicTypeCompositeValue](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/composite-value.ts)
+Related types: [IPublicTypeCompositeValue](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/composite-value.ts)
 
 ### getValue
 
-获取值
+Get value
 
 ```typescript
 /**
- * 获取值
+ * Get value
  * get value of this prop
  */
 getValue(): any;
@@ -77,11 +76,11 @@ getValue(): any;
 
 ### remove
 
-移除值
+Remove value
 
 ```typescript
 /**
- * 移除值
+ * Remove value
  * remove value of this prop
  * @since v1.0.16
  */
@@ -92,17 +91,18 @@ remove(): void;
 
 ### exportSchema
 
-导出值
+Export value
 
 ```typescript
 /**
- * 导出值
+ * Export value
  * export schema
  * @param stage
  */
 exportSchema(stage: IPublicEnumTransformStage): IPublicTypeCompositeValue;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicEnumTransformStage](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/enum/transform-stage.ts)
 - [IPublicTypeCompositeValue](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/composite-value.ts)

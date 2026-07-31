@@ -2,12 +2,12 @@ import { IPublicTypeJSExpression } from '@rchh/lowcode-types';
 import { isObject } from '../is-object';
 
 /**
- * 为了避免把 { type: 'JSExpression', extType: 'function' } 误判为表达式，故增加如下逻辑。
+ * Extra logic to avoid treating { type: 'JSExpression', extType: 'function' } as an expression.
  *
- * 引擎中关于函数的表达：
- *  开源版本：{ type: 'JSFunction', source: '', value: '' }
- *  内部版本：{ type: 'JSExpression', source: '', value: '', extType: 'function' }
- *  能力是对标的，不过开源的 react-renderer 只认识第一种，而内部只识别第二种（包括 Java 代码、RE）。
+ * How functions are represented in the engine:
+ *  Open-source: { type: 'JSFunction', source: '', value: '' }
+ *  Internal: { type: 'JSExpression', source: '', value: '', extType: 'function' }
+ *  Capabilities are equivalent, but open-source react-renderer only recognizes the first form, while internal (including Java / RE) only recognizes the second.
  * @param data
  * @returns
  */

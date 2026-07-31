@@ -7,22 +7,22 @@ export interface IPublicModelComponentMeta<
 > {
 
   /**
-   * 组件名
+   * Component name
    * component name
    */
   get componentName(): string;
 
   /**
-   * 是否是「容器型」组件
+   * Whether this is a container component
    * is container node or not
    */
   get isContainer(): boolean;
 
   /**
-   * 是否是最小渲染单元。
-   * 当组件需要重新渲染时：
-   *  若为最小渲染单元，则只渲染当前组件，
-   *  若不为最小渲染单元，则寻找到上层最近的最小渲染单元进行重新渲染，直至根节点。
+   * Whether this is a minimal render unit.
+   * When the component needs to re-render:
+   *  If it is a minimal render unit, only the current component is rendered;
+   *  Otherwise, find the nearest ancestor minimal render unit and re-render from there up to the root.
    *
    * check if this is a mininal render unit.
    * when a rerender is needed for a component:
@@ -33,74 +33,74 @@ export interface IPublicModelComponentMeta<
   get isMinimalRenderUnit(): boolean;
 
   /**
-   * 是否为「模态框」组件
+   * Whether this is a modal component
    * check if this is a modal component or not.
    */
   get isModal(): boolean;
 
   /**
-   * 获取用于设置面板显示用的配置
+   * Get configuration used by the settings panel display
    * get configs for Settings Panel
    */
   get configure(): IPublicTypeFieldConfig[];
 
   /**
-   * 标题
+   * Title
    * title for this component
    */
   get title(): string | IPublicTypeI18nData | ReactElement;
 
   /**
-   * 图标
+   * Icon
    * icon config for this component
    */
   get icon(): IPublicTypeIconType;
 
   /**
-   * 组件 npm 信息
+   * Component npm info
    * npm informations
    */
   get npm(): IPublicTypeNpmInfo;
 
   /**
-   * 当前组件的可用 Action
+   * Available actions for the current component
    * available actions
    */
   get availableActions(): IPublicTypeComponentAction[];
 
   /**
-   * 组件元数据中高级配置部分
+   * Advanced configuration section in component metadata
    * configure.advanced
    * @since v1.1.0
    */
   get advanced(): IPublicTypeAdvanced;
 
   /**
-   * 设置 npm 信息
+   * Set npm info
    * set method for npm inforamtion
    * @param npm
    */
   setNpm(npm: IPublicTypeNpmInfo): void;
 
   /**
-   * 获取元数据
+   * Get metadata
    * get component metadata
    */
   getMetadata(): IPublicTypeTransformedComponentMetadata;
 
   /**
-   * 检测当前对应节点是否可被放置在父节点中
+   * Check whether the current node can be placed under the parent
    * check if the current node could be placed in parent node
-   * @param my 当前节点
-   * @param parent 父节点
+   * @param my current node
+   * @param parent parent node
    */
   checkNestingUp(my: Node | IPublicTypeNodeData, parent: any): boolean;
 
   /**
-   * 检测目标节点是否可被放置在父节点中
+   * Check whether the target node can be placed under the parent
    * check if the target node(s) could be placed in current node
-   * @param my 当前节点
-   * @param parent 父节点
+   * @param my current node
+   * @param parent parent node
    */
   checkNestingDown(
       my: Node | IPublicTypeNodeData,
@@ -108,7 +108,7 @@ export interface IPublicModelComponentMeta<
     ): boolean;
 
   /**
-   * 刷新元数据，会触发元数据的重新解析和刷新
+   * Refresh metadata; triggers re-parse and refresh of metadata
    * refresh metadata
    */
   refreshMetadata(): void;

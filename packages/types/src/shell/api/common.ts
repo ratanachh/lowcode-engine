@@ -6,7 +6,7 @@ import { IPublicEnumTransitionType } from '../enum';
 export interface IPublicApiCommonUtils {
 
   /**
-   * 是否为合法的 schema 结构
+   * Whether it is a legal schema structure
    * check if data is valid NodeSchema
    *
    * @param {*} data
@@ -15,7 +15,7 @@ export interface IPublicApiCommonUtils {
   isNodeSchema(data: any): boolean;
 
   /**
-   * 是否为表单事件类型
+   * Whether it is a form event type
    * check if e is a form event
    * @param {(KeyboardEvent | MouseEvent)} e
    * @returns {boolean}
@@ -23,7 +23,7 @@ export interface IPublicApiCommonUtils {
   isFormEvent(e: KeyboardEvent | MouseEvent): boolean;
 
   /**
-   * 从 schema 结构中查找指定 id 节点
+   * Find the specified id node from the schema structure
    * get node schema from a larger schema with node id
    * @param {IPublicTypeNodeSchema} schema
    * @param {string} nodeId
@@ -41,7 +41,7 @@ export interface IPublicApiCommonUtils {
   getOriginalExtraKey(key: string): string;
 
   /**
-   * 批处理事务，用于优化特定场景的性能
+   * Batch transactions to optimize performance for specific scenarios
    * excute something in a transaction for performence
    *
    * @param {() => void} fn
@@ -51,7 +51,7 @@ export interface IPublicApiCommonUtils {
   executeTransaction(fn: () => void, type: IPublicEnumTransitionType): void;
 
   /**
-   * i18n 相关工具
+   * i18n related tools
    * i18n tools
    *
    * @param {(string | object)} instance
@@ -71,14 +71,14 @@ export interface IPublicApiCommonUtils {
   };
 
   /**
-   * i18n 转换方法
+   * i18n conversion method
    */
   intl(data: IPublicTypeI18nData | string, params?: object): string;
 }
 export interface IPublicApiCommonSkeletonCabin {
 
   /**
-   * 编辑器框架 View
+   * Editor frame view
    * get Workbench Component
    */
   get Workbench(): Component;
@@ -87,13 +87,13 @@ export interface IPublicApiCommonSkeletonCabin {
 export interface IPublicApiCommonEditorCabin {
 
   /**
-   * Title 组件
+   * Title component
    * @experimental unstable API, pay extra caution when trying to use this
    */
   get Tip(): React.ComponentClass<{}>;
 
   /**
-   * Tip 组件
+   * Tip component
    * @experimental unstable API, pay extra caution when trying to use this
    */
   get Title(): React.ComponentClass<{

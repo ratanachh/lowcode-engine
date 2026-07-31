@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-// 根据 url 参数设置 debug 选项
+// Set debug options from URL params
 const debugRegRes = /_?debug=(.*?)(&|$)/.exec(location.search);
 if (debugRegRes && debugRegRes[1]) {
   // eslint-disable-next-line no-underscore-dangle
@@ -20,21 +20,21 @@ if (debugRegRes && debugRegRes[1]) {
   store.remove('debug');
 }
 
-// 重要，用于矫正画布执行 new Function 的 window 对象上下文
+// Important: corrects the window context used when the canvas runs new Function
 // eslint-disable-next-line no-underscore-dangle
 window.__newFunc = (funContext: string): ((...args: any[]) => any) => {
   // eslint-disable-next-line no-new-func
   return new Function(funContext) as (...args: any[]) => any;
 };
 
-// 关闭浏览器前提醒，只有产生过交互才会生效
+// Warn before leaving the page; only takes effect after user interaction
 window.onbeforeunload = function (e: Event): string {
   const ev = e || window.event;
-  // 本地调试不生效
+  // Does not take effect in local debug
   if (location.href.indexOf('localhost') > 0) {
     return '';
   }
-  const msg = '您确定要离开此页面吗？';
+  const msg = 'Are you sure you want to leave this page?';
   ev.cancelBubble = true;
   ev.returnValue = true;
   if (e.stopPropagation) {

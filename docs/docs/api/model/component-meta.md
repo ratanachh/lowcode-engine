@@ -3,150 +3,151 @@ title: ComponentMeta
 sidebar_position: 15
 ---
 
-> **@types** [IPublicModelComponentMeta](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/component-meta.ts)<br/>
-> **@since** v1.0.0
+> **@types** [IPublicModelComponentMeta](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/component-meta.ts)<br/> > **@since** v1.0.0
 
-## 基本介绍
+## Overview
 
-组件元数据信息模型
+Component metadata model
 
-## 属性
+## Properties
 
 ### componentName
 
-组件名
+Component name
 
 `@type {string}`
 
 ### isContainer
 
-是否是「容器型」组件
+Whether this is a container component
 
 `@type {boolean}`
 
 ### isMinimalRenderUnit
-是否是最小渲染单元
 
-当组件需要重新渲染时：
-- 若为最小渲染单元，则只渲染当前组件，
-- 若不为最小渲染单元，则寻找到上层最近的最小渲染单元进行重新渲染，直至根节点。
+Whether this is a minimal render unit
+
+When the component needs to re-render:
+
+- If it is a minimal render unit, only the current component is re-rendered.
+- If it is not a minimal render unit, the nearest minimal render unit in the parent hierarchy is re-rendered, up to the root node.
 
 `@type {boolean}`
 
 ### isModal
 
-是否为「模态框」组件
+Whether this is a modal component
 
 `@type {boolean}`
 
 ### configure
 
-获取用于设置面板显示用的配置
+Configuration used for display in the settings panel
 
 `@type {IPublicTypeFieldConfig[]}`
 
-相关类型：[IPublicTypeFieldConfig](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/field-config.ts)
+Related types: [IPublicTypeFieldConfig](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/field-config.ts)
 
 ### title
 
-标题
+Title
 
 `@type {string | IPublicTypeI18nData | ReactElement}`
 
-相关类型：[IPublicTypeI18nData](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/i18n-data.ts)
+Related types: [IPublicTypeI18nData](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/i18n-data.ts)
 
 ### icon
 
-图标
+Icon
 
 `@type {IPublicTypeIconType}`
 
-相关类型：[IPublicTypeIconType](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/icon-type.ts)
+Related types: [IPublicTypeIconType](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/icon-type.ts)
 
 ### npm
 
-组件 npm 信息
+Component npm information
 
 `@type {IPublicTypeNpmInfo}`
 
-相关类型：[IPublicTypeNpmInfo](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/npm-info.ts)
+Related types: [IPublicTypeNpmInfo](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/npm-info.ts)
 
 ### availableActions
 
-获取元数据
+Get metadata
 
 `@type {IPublicTypeTransformedComponentMetadata}`
 
-相关类型：[IPublicTypeTransformedComponentMetadata](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/transformed-component-metadata.ts)
+Related types: [IPublicTypeTransformedComponentMetadata](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/transformed-component-metadata.ts)
 
 ### advanced
 
-组件元数据中高级配置部分
+Advanced configuration section in component metadata
 
 `@type {IPublicTypeAdvanced}`
 
-相关类型：[IPublicTypeAdvanced](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/advanced.ts)
+Related types: [IPublicTypeAdvanced](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/advanced.ts)
 
-## 方法
+## Methods
 
 ### setNpm
 
-设置 npm 信息
+Set npm information
 
 ```typescript
 /**
- * 设置 npm 信息
+ * Set npm info
  * set method for npm inforamtion
  * @param npm
  */
 setNpm(npm: IPublicTypeNpmInfo): void;
 ```
 
-相关类型：[IPublicTypeNpmInfo](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/npm-info.ts)
+Related types: [IPublicTypeNpmInfo](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/npm-info.ts)
 
 ### getMetadata
 
-获取元数据
+Get metadata
 
 ```typescript
 /**
- * 获取元数据
+ * Get metadata
  * get component metadata
  */
 getMetadata(): IPublicTypeTransformedComponentMetadata;
 ```
 
-相关类型：[IPublicTypeTransformedComponentMetadata](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/transformed-component-metadata.ts)
+Related types: [IPublicTypeTransformedComponentMetadata](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/transformed-component-metadata.ts)
 
 ### checkNestingUp
 
-检测当前对应节点是否可被放置在父节点中
+Check whether the current node can be placed in the parent node
 
 ```typescript
 /**
- * 检测当前对应节点是否可被放置在父节点中
+ * Check whether the current node can be placed under the parent
  * check if the current node could be placed in parent node
- * @param my 当前节点
- * @param parent 父节点
+ * @param my current node
+ * @param parent parent node
  */
 checkNestingUp(my: IPublicModelNode | IPublicTypeNodeData, parent: any): boolean;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 - [IPublicTypeNodeData](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-data.ts)
 
-
 ### checkNestingDown
 
-检测目标节点是否可被放置在父节点中
+Check whether the target node(s) can be placed in the current node
 
 ```typescript
 /**
- * 检测目标节点是否可被放置在父节点中
+ * Check whether the target node can be placed under the parent node
  * check if the target node(s) could be placed in current node
- * @param my 当前节点
- * @param parent 父节点
+ * @param my current node
+ * @param parent parent node
  */
 checkNestingDown(
     my: IPublicModelNode | IPublicTypeNodeData,
@@ -154,19 +155,19 @@ checkNestingDown(
   ): boolean;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 - [IPublicTypeNodeData](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-data.ts)
 - [IPublicTypeNodeSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/node-schema.ts)
 
-
 ### refreshMetadata
 
-刷新元数据，会触发元数据的重新解析和刷新
+Refresh metadata; triggers re-parsing and refresh of metadata
 
 ```typescript
 /**
- * 刷新元数据，会触发元数据的重新解析和刷新
+ * Refresh metadata; triggers re-parse and refresh of metadata
  * refresh metadata
  */
 refreshMetadata(): void;

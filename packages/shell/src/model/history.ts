@@ -14,7 +14,7 @@ export class History implements IPublicModelHistory {
   }
 
   /**
-   * 历史记录跳转到指定位置
+   * Jump history to a specific position
    * @param cursor
    */
   go(cursor: number): void {
@@ -22,28 +22,28 @@ export class History implements IPublicModelHistory {
   }
 
   /**
-   * 历史记录后退
+   * History back
    */
   back(): void {
     this[historySymbol].back();
   }
 
   /**
-   * 历史记录前进
+   * History forward
    */
   forward(): void {
     this[historySymbol].forward();
   }
 
   /**
-   * 保存当前状态
+   * Save current state
    */
   savePoint(): void {
     this[historySymbol].savePoint();
   }
 
   /**
-   * 当前是否是「保存点」，即是否有状态变更但未保存
+   * Whether current is a save point (has unsaved changes)
    * @returns
    */
   isSavePoint(): boolean {
@@ -51,7 +51,7 @@ export class History implements IPublicModelHistory {
   }
 
   /**
-   * 获取 state，判断当前是否为「可回退」、「可前进」的状态
+   * Get state flags for whether back/forward are available
    * @returns
    */
   getState(): number {
@@ -59,7 +59,7 @@ export class History implements IPublicModelHistory {
   }
 
   /**
-   * 监听 state 变更事件
+   * Listen for state change events
    * @param func
    * @returns
    */
@@ -68,7 +68,7 @@ export class History implements IPublicModelHistory {
   }
 
   /**
-   * 监听历史记录游标位置变更事件
+   * Listen for history cursor position change events
    * @param func
    * @returns
    */

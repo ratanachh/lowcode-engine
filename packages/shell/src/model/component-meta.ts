@@ -23,59 +23,59 @@ export class ComponentMeta implements IPublicModelComponentMeta {
   }
 
   /**
-   * 组件名
+   * Component name
    */
   get componentName(): string {
     return this[componentMetaSymbol].componentName;
   }
 
   /**
-   * 是否是「容器型」组件
+   * Whether this is a container component
    */
   get isContainer(): boolean {
     return this[componentMetaSymbol].isContainer;
   }
 
   /**
-   * 是否是最小渲染单元。
-   * 当组件需要重新渲染时：
-   *  若为最小渲染单元，则只渲染当前组件，
-   *  若不为最小渲染单元，则寻找到上层最近的最小渲染单元进行重新渲染，直至根节点。
+   * Whether this is a minimum render unit.
+   * When the component needs re-render:
+   *  if it is a minimum render unit, only this component is re-rendered;
+   *  otherwise walk up to the nearest minimum render unit (up to root) and re-render that.
    */
   get isMinimalRenderUnit(): boolean {
     return this[componentMetaSymbol].isMinimalRenderUnit;
   }
 
   /**
-   * 是否为「模态框」组件
+   * Whether this is a modal component
    */
   get isModal(): boolean {
     return this[componentMetaSymbol].isModal;
   }
 
   /**
-   * 元数据配置
+   * Metadata config
    */
   get configure(): IPublicTypeFieldConfig[] {
     return this[componentMetaSymbol].configure;
   }
 
   /**
-   * 标题
+   * Title
    */
   get title(): string | IPublicTypeI18nData | ReactElement {
     return this[componentMetaSymbol].title;
   }
 
   /**
-   * 图标
+   * Icon
    */
   get icon(): IPublicTypeIconType {
     return this[componentMetaSymbol].icon;
   }
 
   /**
-   * 组件 npm 信息
+   * Component npm info
    */
   get npm(): IPublicTypeNpmInfo {
     return this[componentMetaSymbol].npm;
@@ -97,7 +97,7 @@ export class ComponentMeta implements IPublicModelComponentMeta {
   }
 
   /**
-   * 设置 npm 信息
+   * Set npm info
    * @param npm
    */
   setNpm(npm: IPublicTypeNpmInfo): void {
@@ -105,7 +105,7 @@ export class ComponentMeta implements IPublicModelComponentMeta {
   }
 
   /**
-   * 获取元数据
+   * Get metadata
    * @returns
    */
   getMetadata(): IPublicTypeTransformedComponentMetadata {

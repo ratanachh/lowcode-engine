@@ -6,6 +6,14 @@ export default class Viewport implements IViewport {
   @obx.ref private rect?: DOMRect;
 
   private _bounds?: DOMRect;
+  private viewportElement?: HTMLElement;
+  @obx.ref private _scale = 1;
+  @obx.ref private _contentWidth: number | AutoFit = AutoFit;
+  @obx.ref private _contentHeight: number | AutoFit = AutoFit;
+  @obx.ref private _scrollX = 0;
+  @obx.ref private _scrollY = 0;
+  private _scrollTarget?: ScrollTarget;
+  @obx private _scrolling = false;
 
   get bounds(): DOMRect {
     if (this._bounds) {
@@ -22,8 +30,6 @@ export default class Viewport implements IViewport {
     const { bounds, scale } = this;
     return new DOMRect(0, 0, bounds.width / scale, bounds.height / scale);
   }
-
-  private viewportElement?: HTMLElement;
 
   constructor() {
     makeObservable(this);
@@ -73,10 +79,8 @@ export default class Viewport implements IViewport {
     }
   }
 
-  @obx.ref private _scale = 1;
-
   /**
-   * 缩放比例
+   * Scale ratio
    */
   @computed get scale(): number {
     return this._scale;
@@ -91,10 +95,6 @@ export default class Viewport implements IViewport {
     this._contentWidth = this.width / this.scale;
     this._contentHeight = this.height / this.scale;
   }
-
-  @obx.ref private _contentWidth: number | AutoFit = AutoFit;
-
-  @obx.ref private _contentHeight: number | AutoFit = AutoFit;
 
   @computed get contentHeight(): number | AutoFit {
     return this._contentHeight;
@@ -112,10 +112,6 @@ export default class Viewport implements IViewport {
     this._contentWidth = val;
   }
 
-  @obx.ref private _scrollX = 0;
-
-  @obx.ref private _scrollY = 0;
-
   get scrollX() {
     return this._scrollX;
   }
@@ -124,16 +120,12 @@ export default class Viewport implements IViewport {
     return this._scrollY;
   }
 
-  private _scrollTarget?: ScrollTarget;
-
   /**
-   * 滚动对象
+   * Scroll object
    */
   get scrollTarget(): ScrollTarget | undefined {
     return this._scrollTarget;
   }
-
-  @obx private _scrolling = false;
 
   get scrolling(): boolean {
     return this._scrolling;

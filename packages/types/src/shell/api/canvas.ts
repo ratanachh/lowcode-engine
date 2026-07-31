@@ -2,13 +2,13 @@ import { IPublicModelDragon, IPublicModelDropLocation, IPublicModelScrollTarget,
 import { IPublicTypeLocationData, IPublicTypeScrollable } from '../type';
 
 /**
- * canvas - 画布 API
+ * canvas - Canvas API
  * @since v1.1.0
  */
 export interface IPublicApiCanvas {
 
   /**
-   * 创一个滚动控制器 Scroller，赋予一个视图滚动的基本能力，
+   * Create a scroll controller Scroller and give a view the basic ability to scroll.
    *
    * a Scroller is a controller that gives a view (IPublicTypeScrollable) the ability scrolling
    * to some cordination by api scrollTo.
@@ -21,7 +21,7 @@ export interface IPublicApiCanvas {
   createScroller(scrollable: IPublicTypeScrollable): IPublicModelScroller;
 
   /**
-   * 创建一个 ScrollTarget，与 Scroller 一起发挥作用，详见 createScroller 中的描述
+   * Create a ScrollTarget to work with Scroller, as described in createScroller
    *
    * this works with Scroller, refer to createScroller`s description
    * @since v1.1.0
@@ -29,7 +29,7 @@ export interface IPublicApiCanvas {
   createScrollTarget(shell: HTMLDivElement): IPublicModelScrollTarget;
 
   /**
-   * 创建一个文档插入位置对象，该对象用来描述一个即将插入的节点在文档中的位置
+   * Create a document insertion position object, which is used to describe the position of a node to be inserted in the document.
    *
    * create a drop location for document, drop location describes a location in document
    * @since v1.1.0
@@ -37,7 +37,7 @@ export interface IPublicApiCanvas {
   createLocation(locationData: IPublicTypeLocationData): IPublicModelDropLocation;
 
   /**
-   * 获取拖拽操作对象的实例
+   * Get the instance of the drag operation object
    *
    * get dragon instance, you can use this to obtain draging related abilities and lifecycle hooks
    * @since v1.1.0
@@ -45,7 +45,7 @@ export interface IPublicApiCanvas {
   get dragon(): IPublicModelDragon | null;
 
   /**
-   * 获取活动追踪器实例
+   * Get activity tracker instance
    *
    * get activeTracker instance, which is a singleton running in engine.
    * it tracks document`s current focusing node/node[], and notify it`s subscribers that when
@@ -55,7 +55,7 @@ export interface IPublicApiCanvas {
   get activeTracker(): IPublicModelActiveTracker | null;
 
   /**
-   * 是否处于 LiveEditing 状态
+   * Whether in LiveEditing state
    *
    * check if canvas is in liveEditing state
    * @since v1.1.0
@@ -63,7 +63,7 @@ export interface IPublicApiCanvas {
   get isInLiveEditing(): boolean;
 
   /**
-   * 获取全局剪贴板实例
+   * Get global clipboard instance
    *
    * get clipboard instance
    *

@@ -1,9 +1,11 @@
 /**
- * 物料接入渠道
+ * Material access channel
  */
 export enum ChannelType {
-  /** 本地 */
+
+  /** Local */
   LOCAL = 'local',
-  /** 在线 */
+
+  /** Online */
   ONLINE = 'online',
 }

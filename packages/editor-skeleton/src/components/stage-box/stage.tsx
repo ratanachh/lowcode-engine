@@ -1,4 +1,4 @@
-// @todo 改成 hooks
+// @todo convert to hooks
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import { IconArrow } from '../../icons/arrow';

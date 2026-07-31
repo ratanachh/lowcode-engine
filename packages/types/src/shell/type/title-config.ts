@@ -4,7 +4,7 @@ import { IPublicTypeI18nData, IPublicTypeIconType, IPublicTypeTitleContent, TipC
 export interface IPublicTypeTitleProps {
 
   /**
-   * 标题内容
+   * Title content
    */
   title: IPublicTypeTitleContent;
 
@@ -14,7 +14,7 @@ export interface IPublicTypeTitleProps {
   className?: string;
 
   /**
-   * 点击事件
+   * Click event
    */
   onClick?: () => void;
   match?: boolean;
@@ -22,32 +22,32 @@ export interface IPublicTypeTitleProps {
 }
 
 /**
- * 描述 props 的 setter title
+ * Describe the setter title for props
  */
 export interface IPublicTypeTitleConfig {
 
   /**
-   * 文字描述
+   * Text description
    */
   label?: IPublicTypeI18nData | ReactNode;
 
   /**
-   * hover 后的展现内容
+   * Content shown on hover
    */
   tip?: TipContent;
 
   /**
-   * 文档链接，暂未实现
+   * Documentation link; not implemented yet
    */
   docUrl?: string;
 
   /**
-   * 图标
+   * Icon
    */
   icon?: IPublicTypeIconType;
 
   /**
-   * CSS 类
+   * CSS class
    */
   className?: string;
 }

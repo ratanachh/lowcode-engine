@@ -3,18 +3,18 @@ import type { IProjectInfo } from '../types/intermediate';
 
 export interface DataSourceDependenciesConfig {
 
-  /** 数据源引擎的版本 */
+  /** Data source engine version */
   engineVersion?: string;
 
-  /** 数据源引擎的包名 */
+  /** Data source engine package name */
   enginePackage?: string;
 
-  /** 数据源 handlers 的版本 */
+  /** Data source handlers version */
   handlersVersion?: {
     [key: string]: string;
   };
 
-  /** 数据源 handlers 的包名 */
+  /** Data source handlers package name */
   handlersPackages?: {
     [key: string]: string;
   };
@@ -25,10 +25,10 @@ export function buildDataSourceDependencies(
   cfg: DataSourceDependenciesConfig = {},
 ): Record<string, string> {
   return {
-    // 数据源引擎的依赖包
+    // Data source engine dependency packages
     [cfg.enginePackage || '@rchh/lowcode-datasource-engine']: cfg.engineVersion || '^1.0.0',
 
-    // 各种数据源的 handlers 的依赖包
+    // Dependency packages for various data source handlers
     ...(ir.dataSourcesTypes || []).reduce(
       (acc, dsType) => ({
         ...acc,

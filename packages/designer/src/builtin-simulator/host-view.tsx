@@ -6,11 +6,14 @@ import { Project } from '../project';
 import './host.less';
 
 /*
-  Simulator 模拟器，可替换部件，有协议约束，包含画布的容器，使用场景：当 Canvas 大小变化时，用来居中处理 或 定位 Canvas
-  Canvas(DeviceShell) 设备壳层，通过背景图片来模拟，通过设备预设样式改变宽度、高度及定位 CanvasViewport
-  CanvasViewport 页面编排场景中宽高不可溢出 Canvas 区
-  Content(Shell) 内容外层，宽高紧贴 CanvasViewport，禁用边框，禁用 margin
-  BemTools 辅助显示层，初始相对 Content 位置 0,0，紧贴 Canvas, 根据 Content 滚动位置，改变相对位置
+  Simulator: swappable component with protocol constraints; canvas container.
+  Used to center or position the Canvas when its size changes.
+  Canvas(DeviceShell): device chrome simulated via background image; preset styles
+  change width/height and position CanvasViewport.
+  CanvasViewport: in page-editing mode, width/height must not overflow the Canvas area.
+  Content(Shell): content outer layer, sized to CanvasViewport; no border, no margin.
+  BemTools: overlay helpers; initially at Content (0,0), flush with Canvas; offset
+  changes with Content scroll position.
 */
 
 type SimulatorHostProps = BuiltinSimulatorProps & {

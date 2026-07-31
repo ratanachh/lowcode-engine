@@ -17,10 +17,10 @@ export default class LeftFloatPane extends Component<{ area: Area<IPublicTypePan
     const { area } = this.props;
     const triggerClose = (e: any) => {
       if (!area.visible) return;
-      // 当 MouseEvent 的 target 为「插入占位符」时，不关闭当前 panel
+      // Do not close the panel when the MouseEvent target is the insert placeholder
       if (e.originalEvent?.target?.classList.contains('insertion')) return;
-      // 假如当前操作 target 祖先节点中有属性 data-keep-visible-while-dragging="true" 代表该 target 所属 panel
-      // 不希望 target 在 panel 范围内拖拽时关闭 panel
+      // If an ancestor of the target has data-keep-visible-while-dragging="true", it belongs to that panel
+      // Do not close the panel while dragging within the panel
       const panelElem = e.originalEvent?.target.closest('div[data-keep-visible-while-dragging="true"]');
       if (panelElem) return;
       area.setVisible(false);
@@ -42,22 +42,22 @@ export default class LeftFloatPane extends Component<{ area: Area<IPublicTypePan
         if (this.shell?.contains(target)) {
           return true;
         }
-        // 点击了 iframe 内容，算失焦
+        // Clicking iframe content counts as blur
         if ((document.querySelector('.lc-simulator-content-frame') as HTMLIFrameElement)?.contentWindow?.document.documentElement.contains(target)) {
           return false;
         }
         if (project?.simulatorHost?.contentWindow?.document.documentElement.contains(target)) {
           return false;
         }
-        // 点击设置区
+        // Click on the settings area
         if (document.querySelector('.lc-right-area')?.contains(target)) {
           return false;
         }
-        // 点击非编辑区域的popup/dialog,插件栏左侧等不触发失焦
+        // Clicks on non-editor popup/dialog, left plugin bar, etc. do not trigger blur
         if (!document.querySelector('.lc-workbench')?.contains(target)) {
           return true;
         }
-        // 排除设置区，iframe 之后，都不算失焦
+        // Excluding settings and iframe, other areas do not count as blur
         if (document.querySelector('.lc-workbench-body')?.contains(target)) {
           return true;
         }
@@ -82,8 +82,8 @@ export default class LeftFloatPane extends Component<{ area: Area<IPublicTypePan
     const { area } = this.props;
     if (area.visible) {
       this.focusing?.active();
-      // 关闭当前fixed区域的面板
-      // TODO: 看看有没有更合适的地方
+      // Close the current fixed-area panel
+      // TODO: look for a more suitable place
       const fixedContainer = area?.skeleton?.leftFixedArea?.container;
       const currentFixed = fixedContainer?.current;
       if (currentFixed) {

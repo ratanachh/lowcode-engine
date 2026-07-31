@@ -10,16 +10,16 @@ import { Tree } from './tree';
 import { IOutlinePanelPluginContext } from './tree-master';
 
 /**
- * 大纲树过滤结果
+ * Outline tree filter result
  */
 export interface FilterResult {
-  // 过滤条件是否生效
+  // Whether the filter is active
   filterWorking: boolean;
-  // 命中子节点
+  // Matched a child node
   matchChild: boolean;
-  // 命中本节点
+  // Matched this node
   matchSelf: boolean;
-  // 关键字
+  // keywords
   keywords: string;
 }
 
@@ -55,8 +55,8 @@ export default class TreeNode {
   };
 
   /**
-   * 默认为折叠状态
-   * 在初始化根节点时，设置为展开状态
+   * Collapsed by default
+   * Set to expanded when initializing the root node
    */
   private _expanded = false;
 
@@ -67,7 +67,7 @@ export default class TreeNode {
   }
 
   /**
-   * 是否可以展开
+   * Whether the node can expand
    */
   get expandable(): boolean {
     if (this.locked) return false;
@@ -79,7 +79,7 @@ export default class TreeNode {
   }
 
   /**
-   * 插入"线"位置信息
+   * Insert-line position info
    */
   get dropDetail(): IPublicTypeLocationChildrenDetail | undefined | null {
     const loc = this.pluginContext.project.getCurrentDocument()?.dropLocation;
@@ -230,7 +230,7 @@ export default class TreeNode {
   }
 
   /**
-   * 触发 onExpandableChanged 回调
+   * Trigger the onExpandableChanged callback
    */
   notifyExpandableChanged(): void {
     this.event.emit(EVENT_NAMES.expandableChanged, this.expandable);
@@ -275,7 +275,7 @@ export default class TreeNode {
   }
 
   /**
-   * 是否是响应投放区
+   * Whether this is a drop-response zone
    */
   isResponseDropping(): boolean {
     const loc = this.pluginContext.project.getCurrentDocument()?.dropLocation;
@@ -299,14 +299,14 @@ export default class TreeNode {
   }
 
   /**
-   * 是否是容器，允许子节点拖入
+   * Whether this is a container that allows children to be dropped in
    */
   isContainer(): boolean {
     return this.node.isContainerNode;
   }
 
   /**
-   * 判断是否有"插槽"
+   * Whether the node has "slots"
    */
   hasSlots(): boolean {
     return this.node.hasSlots();
@@ -328,11 +328,11 @@ export default class TreeNode {
   }
 
   /**
-   * 展开节点，支持依次展开父节点
+   * Expand the node, optionally expanding parents in order
    */
   expand(tryExpandParents = false) {
-    // 这边不能直接使用 expanded，需要额外判断是否可以展开
-    // 如果只使用 expanded，会漏掉不可以展开的情况，即在不可以展开的情况下，会触发展开
+    // Do not rely on expanded alone; also check whether the node can expand
+    // Using only expanded would miss non-expandable cases and still trigger expand
     if (this.expandable && !this._expanded) {
       this.setExpanded(true);
     }

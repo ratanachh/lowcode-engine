@@ -2,14 +2,14 @@
 title: Markdown page example
 --- -->
 
-# 文档能力介绍
+# Docs Capabilities
 
-这是一个使用 Markdown 编写的任意页面，访问地址为 /markdown-page
+This is an arbitrary page written in Markdown. It is available at /markdown-page
 
 Product Docs Capability Introduction.
 
-## 功能
+## Features
 
-- ✅ 支持本地离线搜搜
-- ✅ 版本化文档管理
-- ✅ 离线静态部署
+- ✅ Local offline search
+- ✅ Versioned docs
+- ✅ Offline static deployment

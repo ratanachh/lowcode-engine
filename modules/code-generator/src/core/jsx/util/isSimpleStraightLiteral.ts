@@ -1,6 +1,6 @@
 import { Expression } from '@babel/types';
 
-/** 判断是非是一些简单直接的字面值 */
+/** Whether the value is a simple straight literal */
 export function isSimpleStraightLiteral(expr: Expression): boolean {
   switch (expr.type) {
     case 'BigIntLiteral':

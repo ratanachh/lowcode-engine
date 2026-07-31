@@ -1,4 +1,4 @@
-import type { IPublicTypeJSExpression, IPublicTypeJSFunction } from '@rchh/lowcode-types';
+import type { IPublicTypeJSFunction } from '@rchh/lowcode-types';
 import changeCase from 'change-case';
 import short from 'short-uuid';
 import { DependencyType, IDependency, IExternalDependency, IInternalDependency } from '../types';
@@ -10,7 +10,7 @@ export function camel2dash(input: string): string {
 }
 
 /**
- * 转为驼峰
+ * Convert to camelCase
  */
 export function camelize(str: string): string {
   return changeCase.camelCase(str);
@@ -29,7 +29,7 @@ export function uniqueArray<T>(arr: T[], by: (i: T) => string) {
   arr.forEach((item) => {
     map[by(item)] = item;
   });
-  // FIXME: Babel 编译存在问题，暂时替换实现
+  // FIXME: Babel compilation issue; temporary alternate implementation
   // const uniqueKeys = [...new Set<string>(Object.keys(map))];
   const uniqueKeys = Array.from(new Set<string>(Object.keys(map)));
   const uniqueItems = uniqueKeys.map((key) => map[key]);
@@ -37,7 +37,7 @@ export function uniqueArray<T>(arr: T[], by: (i: T) => string) {
 }
 
 export function getStaticExprValue<T>(expr: string): T {
-  // TODO: 需要安全性检查
+  // TODO: Needs security checks
   // eslint-disable-next-line no-new-func
   return Function(`"use strict";return (${expr})`)();
 }

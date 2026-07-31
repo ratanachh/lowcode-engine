@@ -22,7 +22,7 @@ const pluginFactory: BuilderComponentPluginFactory<unknown> = () => {
       fileType: FileType.SCSS,
       name: COMMON_CHUNK_NAME.StyleDepsImport,
       content: `
-        // 引入默认全局样式
+        // Import default global styles
         @import '@alifd/next/reset.scss';
       `,
       linkAfter: [],

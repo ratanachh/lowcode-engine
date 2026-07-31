@@ -1,145 +1,143 @@
 ---
-title: 主题色扩展
+title: Theme Color Extension
 sidebar_position: 9
 ---
 
-## 简介
+## Introduction
 
-主题色扩展允许用户定制多样的设计器主题，增加界面的个性化和品牌识别度。
+Theme color extension allows users to customize diverse designer themes, increasing interface personalization and brand recognition.
 
-## 设计器主题色定制
+## Designer Theme Customization
 
-在 CSS 的根级别定义主题色变量可以确保这些变量在整个应用中都可用。例如：
+Defining theme color variables at the CSS root level ensures they are available throughout the application. For example:
 
 ```css
 :root {
-  --color-brand: rgba(0, 108, 255, 1); /* 主品牌色 */
-  --color-brand-light: rgba(25, 122, 255, 1); /* 浅色品牌色 */
-  --color-brand-dark: rgba(0, 96, 229, 1); /* 深色品牌色 */
+  --color-brand: rgba(0, 108, 255, 1); /* Primary brand color */
+  --color-brand-light: rgba(25, 122, 255, 1); /* Light brand color */
+  --color-brand-dark: rgba(0, 96, 229, 1); /* Dark brand color */
 }
-
 ```
 
-将样式文件引入到你的设计器中，定义的 CSS 变量就可以改变设计器的主题色了。
+Import the stylesheet into your designer, and the defined CSS variables will change the designer's theme colors.
 
-### 主题色变量
+### Theme Color Variables
 
-以下是低代码引擎设计器支持的主题色变量列表，以及它们的用途说明：
+The following is the list of theme color variables supported by the low-code engine designer and their usage:
 
-#### 品牌相关颜色
+#### Brand Colors
 
-- `--color-brand`: 主品牌色
-- `--color-brand-light`: 浅色品牌色
-- `--color-brand-dark`: 深色品牌色
+- `--color-brand`: Primary brand color
+- `--color-brand-light`: Light brand color
+- `--color-brand-dark`: Dark brand color
 
-#### Icon 相关颜色
+#### Icon Colors
 
-- `--color-icon-normal`: 默认状态
-- `--color-icon-light`: icon light 状态
-- `--color-icon-hover`: 鼠标悬停状态
-- `--color-icon-active`: 激活状态
-- `--color-icon-reverse`: 反色状态
-- `--color-icon-disabled`: 禁用状态
-- `--color-icon-pane`: 面板颜色
+- `--color-icon-normal`: Default state
+- `--color-icon-light`: Icon light state
+- `--color-icon-hover`: Hover state
+- `--color-icon-active`: Active state
+- `--color-icon-reverse`: Reverse state
+- `--color-icon-disabled`: Disabled state
+- `--color-icon-pane`: Panel color
 
-#### 线条和文本颜色
+#### Line and Text Colors
 
-- `--color-line-normal`: 线条颜色
-- `--color-line-darken`: 线条颜色(darken)
-- `--color-title`: 标题颜色
-- `--color-text`: 文字颜色
-- `--color-text-dark`: 文字颜色(dark)
-- `--color-text-light`: 文字颜色(light)
-- `--color-text-reverse`: 反色情况下，文字颜色
-- `--color-text-disabled`: 禁用态文字颜色
+- `--color-line-normal`: Line color
+- `--color-line-darken`: Line color (darken)
+- `--color-title`: Title color
+- `--color-text`: Text color
+- `--color-text-dark`: Text color (dark)
+- `--color-text-light`: Text color (light)
+- `--color-text-reverse`: Text color in reverse scenarios
+- `--color-text-disabled`: Disabled text color
 
-#### 菜单颜色
-- `--color-context-menu-text`: 菜单项颜色
-- `--color-context-menu-text-hover`: 菜单项 hover 颜色
-- `--color-context-menu-text-disabled`: 菜单项 disabled 颜色
+#### Menu Colors
 
-#### 字段和边框颜色
+- `--color-context-menu-text`: Menu item color
+- `--color-context-menu-text-hover`: Menu item hover color
+- `--color-context-menu-text-disabled`: Menu item disabled color
 
-- `--color-field-label`: field 标签颜色
-- `--color-field-text`: field 文本颜色
-- `--color-field-placeholder`: field placeholder 颜色
-- `--color-field-border`: field 边框颜色
-- `--color-field-border-hover`: hover 态下，field 边框颜色
-- `--color-field-border-active`: active 态下，field 边框颜色
-- `--color-field-background`: field 背景色
+#### Field and Border Colors
 
-#### 状态颜色
+- `--color-field-label`: Field label color
+- `--color-field-text`: Field text color
+- `--color-field-placeholder`: Field placeholder color
+- `--color-field-border`: Field border color
+- `--color-field-border-hover`: Field border color on hover
+- `--color-field-border-active`: Field border color when active
+- `--color-field-background`: Field background color
 
-- `--color-success`: success 颜色
-- `--colo-success-dark`: success 颜色(dark)
-- `--color-success-light`: success 颜色(light)
-- `--color-warning`: warning 颜色
-- `--color-warning-dark`: warning 颜色(dark)
-- `--color-warning-light`: warning 颜色(light)
-- `--color-information`: information 颜色
-- `--color-information-dark`: information 颜色(dark)
-- `--color-information-light`: information 颜色(light)
-- `--color-error`: error 颜色
-- `--color-error-dark`: error 颜色(dark)
-- `--color-error-light`: error 颜色(light)
-- `--color-purple`: purple 颜色
-- `--color-brown`: brown 颜色
+#### Status Colors
 
-#### 区块背景色
+- `--color-success`: Success color
+- `--colo-success-dark`: Success color (dark)
+- `--color-success-light`: Success color (light)
+- `--color-warning`: Warning color
+- `--color-warning-dark`: Warning color (dark)
+- `--color-warning-light`: Warning color (light)
+- `--color-information`: Information color
+- `--color-information-dark`: Information color (dark)
+- `--color-information-light`: Information color (light)
+- `--color-error`: Error color
+- `--color-error-dark`: Error color (dark)
+- `--color-error-light`: Error color (light)
+- `--color-purple`: Purple color
+- `--color-brown`: Brown color
 
-- `--color-block-background-normal`: 区块背景色
-- `--color-block-background-light`: 区块背景色(light)。
-- `--color-block-background-shallow`: 区块背景色 shallow
-- `--color-block-background-dark`: 区块背景色(dark)
-- `--color-block-background-disabled`: 区块背景色(disabled)
-- `--color-block-background-active`: 区块背景色(active)
-- `--color-block-background-active-light`: 区块背景色(active light)
-- `--color-block-background-warning`: 区块背景色(warning)
-- `--color-block-background-error`: 区块背景色(error)
-- `--color-block-background-success`: 区块背景色(success)
-- `--color-block-background-deep-dark`: 区块背景色(deep-dark)，作用于多个组件同时拖拽的背景色。
+#### Block Background Colors
 
-#### 引擎相关颜色
+- `--color-block-background-normal`: Block background color
+- `--color-block-background-light`: Block background color (light)
+- `--color-block-background-shallow`: Block background color (shallow)
+- `--color-block-background-dark`: Block background color (dark)
+- `--color-block-background-disabled`: Block background color (disabled)
+- `--color-block-background-active`: Block background color (active)
+- `--color-block-background-active-light`: Block background color (active light)
+- `--color-block-background-warning`: Block background color (warning)
+- `--color-block-background-error`: Block background color (error)
+- `--color-block-background-success`: Block background color (success)
+- `--color-block-background-deep-dark`: Block background color (deep-dark), used when dragging multiple components simultaneously.
 
-- `--color-canvas-detecting-background`: 画布组件 hover 时遮罩背景色。
+#### Engine-Related Colors
 
-#### 其他区域背景色
+- `--color-canvas-detecting-background`: Canvas component hover overlay background color.
 
-- `--color-layer-mask-background`: 拖拽元素时，元素原来位置的遮罩背景色
-- `--color-layer-tooltip-background`: tooltip 背景色
-- `--color-pane-background`: 面板背景色
-- `--color-background`: 设计器主要背景色
-- `--color-top-area-background`: topArea 背景色，优先级大于 `--color-pane-background`
-- `--color-left-area-background`: leftArea 背景色，优先级大于 `--color-pane-background`
-- `--color-toolbar-background`: toolbar 背景色，优先级大于 `--color-pane-background`
-- `--color-workspace-left-area-background`: 应用级 leftArea 背景色，优先级大于 `--color-pane-background`
-- `--color-workspace-top-area-background`: 应用级 topArea 背景色，优先级大于 `--color-pane-background`
-- `--color-workspace-sub-top-area-background`: 应用级二级 topArea 背景色，优先级大于 `--color-pane-background`
+#### Other Area Background Colors
 
-#### 其他变量
+- `--color-layer-mask-background`: Mask background at the original position when dragging elements
+- `--color-layer-tooltip-background`: Tooltip background color
+- `--color-pane-background`: Panel background color
+- `--color-background`: Main designer background color
+- `--color-top-area-background`: topArea background color; takes precedence over `--color-pane-background`
+- `--color-left-area-background`: leftArea background color; takes precedence over `--color-pane-background`
+- `--color-toolbar-background`: toolbar background color; takes precedence over `--color-pane-background`
+- `--color-workspace-left-area-background`: Application-level leftArea background color; takes precedence over `--color-pane-background`
+- `--color-workspace-top-area-background`: Application-level topArea background color; takes precedence over `--color-pane-background`
+- `--color-workspace-sub-top-area-background`: Application-level secondary topArea background color; takes precedence over `--color-pane-background`
 
-- `--workspace-sub-top-area-height`: 应用级二级 topArea 高度
-- `--top-area-height`: 顶部区域的高度
-- `--workspace-sub-top-area-margin`: 应用级二级 topArea margin
-- `--workspace-sub-top-area-padding`: 应用级二级 topArea padding
-- `--workspace-left-area-width`: 应用级 leftArea width
+#### Other Variables
+
+- `--workspace-sub-top-area-height`: Application-level secondary topArea height
+- `--top-area-height`: Top area height
+- `--workspace-sub-top-area-margin`: Application-level secondary topArea margin
+- `--workspace-sub-top-area-padding`: Application-level secondary topArea padding
+- `--workspace-left-area-width`: Application-level leftArea width
 - `--left-area-width`: leftArea width
-- `--simulator-top-distance`: simulator 距离容器顶部的距离
-- `--simulator-bottom-distance`:  simulator 距离容器底部的距离
-- `--simulator-left-distance`: simulator 距离容器左边的距离
-- `--simulator-right-distance`: simulator 距离容器右边的距离
-- `--toolbar-padding`: toolbar 的 padding
-- `--toolbar-height`: toolbar 的高度
-- `--pane-title-height`: 面板标题高度
-- `--pane-title-font-size`: 面板标题字体大小
-- `--pane-title-padding`: 面板标题边距
-- `--context-menu-item-height`: 右键菜单项高度
+- `--simulator-top-distance`: Simulator distance from container top
+- `--simulator-bottom-distance`: Simulator distance from container bottom
+- `--simulator-left-distance`: Simulator distance from container left
+- `--simulator-right-distance`: Simulator distance from container right
+- `--toolbar-padding`: toolbar padding
+- `--toolbar-height`: toolbar height
+- `--pane-title-height`: Panel title height
+- `--pane-title-font-size`: Panel title font size
+- `--pane-title-padding`: Panel title padding
+- `--context-menu-item-height`: Context menu item height
 
+### Low-Code Engine Ecosystem Theme Customization
 
-
-### 低代码引擎生态主题色定制
-
-插件、物料、设置器等生态为了支持主题色需要对样式进行改造，需要对生态中的样式升级为 css 变量。例如：
+Plugins, materials, setters, and other ecosystem components must upgrade styles to CSS variables to support theme colors. For example:
 
 ```css
 /* before */
@@ -147,11 +145,10 @@ background: #006cff;
 
 /* after */
 background: var(--color-brand, #006cff);
-
 ```
 
-这里 `var(--color-brand, #默认色)` 表示使用 `--color-brand` 变量，如果该变量未定义，则使用默认颜色（#默认色）。
+Here `var(--color-brand, #default-color)` uses the `--color-brand` variable; if undefined, the default color is used.
 
-### fusion 物料进行主题色扩展
+### Theme Extension for Fusion Materials
 
-如果使用了 fusion 组件时，可以通过 [fusion 平台](https://fusion.design/) 进行主题色定制。在平台上，您可以选择不同的主题颜色，并直接应用于您的 fusion 组件，这样可以无缝地集成到您的应用设计中。
+When using Fusion components, you can customize theme colors through the [Fusion platform](https://fusion.design/). On the platform, you can select different theme colors and apply them directly to your Fusion components for seamless integration into your application design.

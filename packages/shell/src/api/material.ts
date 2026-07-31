@@ -34,7 +34,7 @@ export class Material implements IPublicApiMaterial {
     const workspace: InnerWorkspace = globalContext.get('workspace');
     if (workspace.isActive) {
       if (!workspace.window.editor) {
-        logger.error('Material api 调用时机出现问题，请检查');
+        logger.error('Material api called at the wrong time, please check');
         return this[innerEditorSymbol];
       }
       return workspace.window.editor;
@@ -52,14 +52,14 @@ export class Material implements IPublicApiMaterial {
   }
 
   /**
-   * 获取组件 map 结构
+   * Get the components map
    */
   get componentsMap(): { [key: string]: IPublicTypeNpmInfo | ComponentType<any> | object } {
     return this[designerSymbol].componentsMap;
   }
 
   /**
-   * 设置「资产包」结构
+   * Set the assets package structure
    * @param assets
    * @returns
    */
@@ -68,7 +68,7 @@ export class Material implements IPublicApiMaterial {
   }
 
   /**
-   * 获取「资产包」结构
+   * Get the assets package structure
    * @returns
    */
   getAssets(): IPublicTypeAssetsJson | undefined {
@@ -76,7 +76,7 @@ export class Material implements IPublicApiMaterial {
   }
 
   /**
-   * 加载增量的「资产包」结构，该增量包会与原有的合并
+   * Load an incremental assets package; it will be merged with the existing one
    * @param incrementalAssets
    * @returns
    */
@@ -85,7 +85,7 @@ export class Material implements IPublicApiMaterial {
   }
 
   /**
-   * 注册物料元数据管道函数
+   * Register a material metadata pipeline function
    * @param transducer
    * @param level
    * @param id
@@ -99,7 +99,7 @@ export class Material implements IPublicApiMaterial {
   };
 
   /**
-   * 获取所有物料元数据管道函数
+   * Get all material metadata pipeline functions
    * @returns
    */
   getRegisteredMetadataTransducers() {
@@ -107,7 +107,7 @@ export class Material implements IPublicApiMaterial {
   }
 
   /**
-   * 获取指定名称的物料元数据
+   * Get material metadata by name
    * @param componentName
    * @returns
    */
@@ -135,7 +135,7 @@ export class Material implements IPublicApiMaterial {
   }
 
   /**
-   * 获取所有已注册的物料元数据
+   * Get all registered material metadata
    * @returns
    */
   getComponentMetasMap(): Map<string, IPublicModelComponentMeta> {
@@ -148,7 +148,7 @@ export class Material implements IPublicApiMaterial {
   }
 
   /**
-   * 在设计器辅助层增加一个扩展 action
+   * Add an extension action to the designer assist layer
    * @param action
    */
   addBuiltinComponentAction = (action: IPublicTypeComponentAction) => {
@@ -156,14 +156,14 @@ export class Material implements IPublicApiMaterial {
   };
 
   /**
-   * 刷新 componentMetasMap，可触发模拟器里的 components 重新构建
+   * Refresh componentMetasMap; may trigger simulator components rebuild
    */
   refreshComponentMetasMap = () => {
     this[designerSymbol].refreshComponentMetasMap();
   };
 
   /**
-   * 移除设计器辅助层的指定 action
+   * Remove a specified action from the designer assist layer
    * @param name
    */
   removeBuiltinComponentAction(name: string) {
@@ -171,7 +171,7 @@ export class Material implements IPublicApiMaterial {
   }
 
   /**
-   * 修改已有的设计器辅助层的指定 action
+   * Modify an existing action on the designer assist layer
    * @param actionName
    * @param handle
    */
@@ -183,14 +183,14 @@ export class Material implements IPublicApiMaterial {
   }
 
   /**
-   * 监听 assets 变化的事件
+   * Listen for assets change events
    * @param fn
    */
   onChangeAssets(fn: () => void): IPublicTypeDisposable {
     const dispose = [
-      // 设置 assets，经过 setAssets 赋值
+      // Set assets via setAssets
       this[editorSymbol].onChange('assets', fn),
-      // 增量设置 assets，经过 loadIncrementalAssets 赋值
+      // Incrementally set assets via loadIncrementalAssets
       this[editorSymbol].eventBus.on('designer.incrementalAssetsReady', fn),
     ];
 

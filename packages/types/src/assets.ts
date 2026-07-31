@@ -1,15 +1,15 @@
 export enum AssetLevel {
-  // 环境依赖库 比如 react, react-dom
+  // Environment dependent libraries such as react, react-dom
   Environment = 1,
-  // 基础类库，比如 lodash deep fusion antd
+  // Basic class libraries, such as lodash deep fusion antd
   Library = 2,
-  // 主题
+  // theme
   Theme = 3,
-  // 运行时
+  // runtime
   Runtime = 4,
-  // 业务组件
+  // business components
   Components = 5,
-  // 应用 & 页面
+  // Apps & Pages
   App = 6,
 }
 

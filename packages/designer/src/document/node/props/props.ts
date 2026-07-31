@@ -40,7 +40,7 @@ export interface IPropParent {
 export interface IProps extends Omit<IBaseModelProps<IProp>, | 'getExtraProp' | 'getExtraPropValue' | 'setExtraPropValue' | 'node'>, IPropParent {
 
   /**
-   * 获取 props 对应的 node
+   * Get the node corresponding to props
    */
   getNode(): INode;
 
@@ -86,7 +86,7 @@ export class Props implements IProps, IPropParent {
   readonly owner: INode;
 
   /**
-   * 元素个数
+   * Element count
    */
   @computed get size() {
     return this.items.length;
@@ -225,9 +225,9 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 根据 path 路径查询属性
+   * Query prop by path
    *
-   * @param createIfNone 当没有的时候，是否创建一个
+   * @param createIfNone whether to create one if missing
    */
   @action
   query(path: string, createIfNone = true): IProp | null {
@@ -235,8 +235,8 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 获取某个属性，如果不存在，临时获取一个待写入
-   * @param createIfNone 当没有的时候，是否创建一个
+   * Get a prop; if missing, temporarily get one pending write
+   * @param createIfNone whether to create one if missing
    */
   @action
   get(path: string, createIfNone = false): IProp | null {
@@ -264,7 +264,7 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 删除项
+   * Delete item
    */
   @action
   delete(prop: IProp): void {
@@ -276,7 +276,7 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 删除 key
+   * Delete key
    */
   @action
   deleteKey(key: string): void {
@@ -291,7 +291,7 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 添加值
+   * Add value
    */
   @action
   add(
@@ -306,14 +306,14 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 是否存在 key
+   * Whether key exists
    */
   has(key: string): boolean {
     return this.maps.has(key);
   }
 
   /**
-   * 迭代器
+   * Iterator
    */
   [Symbol.iterator](): { next(): { value: IProp } } {
     let index = 0;
@@ -336,7 +336,7 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 遍历
+   * Traverse
    */
   @action
   forEach(fn: (item: IProp, key: number | string | undefined) => void): void {
@@ -346,7 +346,7 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 遍历
+   * Traverse
    */
   @action
   map<T>(fn: (item: IProp, key: number | string | undefined) => T): T[] | null {
@@ -363,7 +363,7 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 回收销毁
+   * Purge / destroy
    */
   @action
   purge() {
@@ -375,8 +375,8 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 获取某个属性, 如果不存在，临时获取一个待写入
-   * @param createIfNone 当没有的时候，是否创建一个
+   * Get a prop; if missing, temporarily get one pending write
+   * @param createIfNone whether to create one if missing
    */
   @action
   getProp(path: string, createIfNone = true): IProp | null {
@@ -384,7 +384,7 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 获取单个属性值
+   * Get a single prop value
    */
   @action
   getPropValue(path: string): any {
@@ -392,7 +392,7 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 设置单个属性值
+   * Set a single prop value
    */
   @action
   setPropValue(path: string, value: any) {
@@ -400,7 +400,7 @@ export class Props implements IProps, IPropParent {
   }
 
   /**
-   * 获取 props 对应的 node
+   * Get the node corresponding to props
    */
   getNode() {
     return this.owner;
@@ -408,7 +408,7 @@ export class Props implements IProps, IPropParent {
 
   /**
    * @deprecated
-   * 获取 props 对应的 node
+   * Get the node corresponding to props
    */
   @action
   toData() {

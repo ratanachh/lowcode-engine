@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { IPublicTypeActionContentObject } from './';
 
 /**
- * @todo 工具条动作
+ * @todo toolbar action
  */
 
 export interface IPublicTypeComponentAction {
@@ -13,23 +13,23 @@ export interface IPublicTypeComponentAction {
   name: string;
 
   /**
-   * 菜单名称
+   * Menu name
    */
   content: string | ReactNode | IPublicTypeActionContentObject;
 
   /**
-   * 子集
+   * Children
    */
   items?: IPublicTypeComponentAction[];
 
   /**
-   * 显示与否
-   * always: 无法禁用
+   * Whether to show
+   * always: cannot be disabled
    */
   condition?: boolean | ((currentNode: any) => boolean) | 'always';
 
   /**
-   * 显示在工具条上
+   * Show on the toolbar
    */
   important?: boolean;
 }

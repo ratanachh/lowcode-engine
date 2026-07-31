@@ -1,123 +1,124 @@
-# 出码
+# Code generation
 
-所谓出码，即将低代码编排出的 schema 进行解析并转换成最终可执行的代码的过程。本模块提供有 Icejs 和 Rax 两套框架的出码方案，并提供了强大而灵活的扩展机制。
+Code generation parses a low-code schema and converts it into executable application code. This module ships Icejs and Rax solutions, plus a flexible extension mechanism.
 
-## 使用方法
+## Usage
 
-### 1) 通过命令行快速体验
+### 1) Try quickly via CLI
 
-欢迎使用命令行工具快速体验：`npx @rchh/lowcode-code-generator -i example-schema.json -o generated -s icejs`
+```bash
+npx @rchh/lowcode-code-generator -i example-schema.json -o generated -s icejs
+```
 
---其中 example-schema.json 可以从[这里下载](https://unpkg.com/@rchh/lowcode-code-generator@beta/example-schema.json)
+You can download `example-schema.json` from [here](https://unpkg.com/@rchh/lowcode-code-generator@beta/example-schema.json).
 
-### 2) 通过设计器插件快速体验
+### 2) Try quickly via designer plugin
 
-1. 安装依赖: `npm install --save @alilc/lowcode-plugin-code-generator`
-2. 注册插件:
+1. Install: `npm install --save @alilc/lowcode-plugin-code-generator`
+2. Register the plugin:
 
 ```ts
 import { plugins } from '@rchh/lowcode-engine';
 import CodeGenPlugin from '@alilc/lowcode-plugin-code-generator';
 
-// 在你的初始化函数中：
+// In your init function:
 await plugins.register(CodeGenPlugin);
 
-// 如果您不希望自动加上出码按钮，则可以这样注册
+// If you do not want the codegen button added automatically:
 await plugins.register(CodeGenPlugin, { disableCodeGenActionBtn: true });
 ```
 
-然后运行你的低代码编辑器项目即可 -- 在设计器的右上角会出现一个“出码”按钮，点击即可在浏览器中出码并预览。
+Then run your low-code editor — a **Codegen** button appears in the designer toolbar. Click it to generate and preview in the browser.
 
-### 3）服务端出码接入
+### 3) Server-side codegen
 
-此代码生成器一开始就是为服务端出码设计的，你可以直接这样来在 node.js 环境中使用：
+This generator was designed for Node.js. Use it like this:
 
-1. 安装依赖: `npm install --save @rchh/lowcode-code-generator`
-2. 引入代码生成器:
+1. Install: `npm install --save @rchh/lowcode-code-generator`
+2. Import:
 
 ```js
 import CodeGenerator from '@rchh/lowcode-code-generator';
 ```
 
-3. 创建项目构建器:
+3. Create a project builder:
 
 ```js
 const projectBuilder = CodeGenerator.solutions.icejs();
 ```
 
-4. 生成代码
+4. Generate code:
 
 ```js
 const project = await projectBuilder.generateProject(
-  schema, // 编排搭建出来的 schema
+  schema, // schema produced by the designer
 );
 ```
 
-5. 将生成的代码写入到磁盘中(也可以生成一个 zip 包)
+5. Write output to disk (or a zip):
 
 ```js
-// 写入磁盘
+// Write to disk
 await CodeGenerator.publishers.disk().publish({
-  project, // 上一步生成的 project
-  outputPath: '/path/to/your/output/dir', // 输出目录
-  projectSlug: 'your-project-slug', // 项目标识
+  project, // from the previous step
+  outputPath: '/path/to/your/output/dir',
+  projectSlug: 'your-project-slug',
 });
 
-// 写入到 zip 包
+// Write a zip
 await CodeGenerator.publishers.zip().publish({
-  project, // 上一步生成的 project
-  outputPath: '/path/to/your/output/dir', // 输出目录
-  projectSlug: 'your-project-slug', // 项目标识 -- 对应生成 your-project-slug.zip 文件
+  project,
+  outputPath: '/path/to/your/output/dir',
+  projectSlug: 'your-project-slug', // produces your-project-slug.zip
 });
 ```
 
-注：一般来说在服务端出码可以跟 github/gitlab, CI 和 CD 流程等一起串起来使用，通常用于优化性能。
+Note: server-side codegen often pairs with GitHub/GitLab, CI, and CD for performance.
 
-### 4）浏览器中出码接入
+### 4) Browser-side codegen
 
-随着现在电脑性能和浏览器技术的发展，出码其实已经不必非得在服务端做了，借助于 Web Worker 特性，可以在浏览器中进行出码：
+With modern browsers and Web Workers, codegen can run in the browser:
 
-1. 安装依赖: `npm install --save @rchh/lowcode-code-generator`
-2. 引入代码生成器:
+1. Install: `npm install --save @rchh/lowcode-code-generator`
+2. Import:
 
 ```js
 import * as CodeGenerator from '@rchh/lowcode-code-generator/standalone-loader';
 ```
 
-3. 【可选】提前初始化代码生成器:
+3. (Optional) warm up the generator:
 
 ```js
-// 提前初始化下，这样后面用的时候更快(这个 init 内部会提前准备好创建 worker 的一些资源)
+// Init early so later calls are faster (prepares worker resources)
 await CodeGenerator.init();
 ```
 
-4. 出码
+4. Generate:
 
 ```js
 const project = await CodeGenerator.generateCode({
-  solution: 'icejs', // 出码方案 (目前内置有 icejs 和 rax )
-  schema, // 编排搭建出来的 schema
+  solution: 'icejs', // built-in: icejs | rax
+  schema, // designer schema
 });
 
-console.log(project); // 出码结果(默认是递归结构描述的，可以传 flattenResult: true 以生成扁平结构的结果)
+console.log(project); // recursive by default; pass flattenResult: true for a flat result
 ```
 
-注：一般来说在浏览器中出码适合做即时预览功能。
+Note: browser codegen is a good fit for instant preview.
 
-5. 下载 zip 包
+5. Download a zip:
 
 ```js
-// 写入到 zip 包
 await CodeGenerator.publishers.zip().publish({
-  project, // 上一步生成的 project
-  projectSlug: 'your-project-slug', // 项目标识 -- 对应下载 your-project-slug.zip 文件
+  project,
+  projectSlug: 'your-project-slug', // downloads your-project-slug.zip
 });
 ```
 
-### 5）自定义出码
+### 5) Custom codegen
 
-前端框架灵活多变，默认内置的出码方案很难满足所有人的需求，好在此代码生成器支持非常灵活的插件机制 -- 欢迎参考 ./src/plugins/xxx 来编写您自己的出码插件，然后参考 ./src/solutions/xxx 将各种插件组合成一套适合您的业务场景的出码方案。
+Frontend frameworks vary, so built-in solutions may not fit every case. This generator supports plugins — see `./src/plugins/xxx` for examples, then compose them in `./src/solutions/xxx` into a solution for your product.
 
-## 参与共建
+## Contributing
 
-欢迎参与共建，如何共建请参阅：[./CONTRIBUTING.md](https://github.com/alibaba/lowcode-engine/blob/main/modules/code-generator/CONTRIBUTING.md)
+See [./CONTRIBUTING.md](https://github.com/alibaba/lowcode-engine/blob/main/modules/code-generator/CONTRIBUTING.md).

@@ -1,7 +1,7 @@
 import { IPublicTypeContainerSchema } from './';
 
 /**
- * 区块容器
+ * Block container
  * @see https://lowcode-engine.cn/lowcode
  */
 

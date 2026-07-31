@@ -2,54 +2,65 @@ import { EitherOr } from '../../utils';
 import { IPublicTypeComponentSchema, IPublicTypeProjectSchema } from './';
 
 /**
- * 定义组件大包及 external 资源的信息
- * 应该被编辑器默认加载
+ * Define component package and external resource info
+ * Should be loaded by the editor by default
  */
 export type IPublicTypePackage = EitherOr<{
+
   /**
-   * npm 包名
+   * npm package name
    */
   package: string;
+
   /**
-   * 包唯一标识
+   * Package unique id
    */
   id: string;
+
   /**
-   * 包版本号
+   * Package version
    */
   version: string;
+
   /**
-   * 组件渲染态视图打包后的 CDN url 列表，包含 js 和 css
+   * CDN URL list for the runtime view bundle (js and css)
    */
   urls?: string[] | any;
+
   /**
-   * 组件编辑态视图打包后的 CDN url 列表，包含 js 和 css
+   * CDN URL list for the edit-time view bundle (js and css)
    */
   editUrls?: string[] | any;
+
   /**
-   * 作为全局变量引用时的名称，和webpack output.library字段含义一样，用来定义全局变量名
+   * Global variable name when referenced globally; same meaning as webpack output.library
    */
   library: string;
+
   /**
    * @experimental
    *
-   * TODO: 需推进提案 @度城
+   * TODO: proposal needed @ducheng
    */
   async?: boolean;
+
   /**
-   * 标识当前 package 从其他 package 的导出方式
+   * How the current package is exported from another package
    */
   exportMode?: 'functionCall';
+
   /**
-   * 标识当前 package 是从 window 上的哪个属性导出来的
+   * Which window property the current package is exported from
    */
   exportSourceLibrary?: any;
+
   /**
-   * 组件描述导出名字，可以通过 window[exportName] 获取到组件描述的 Object 内容；
+   * Component description export name; access via window[exportName]
    */
   exportName?: string;
+
   /**
-   * 低代码组件 schema 内容
+   * Low-code component schema content
    */
   schema?: IPublicTypeProjectSchema<IPublicTypeComponentSchema>;
 }, 'package', 'id'>;

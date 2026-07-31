@@ -16,15 +16,15 @@ function isStandardComponent(componentMeta: IComponentMeta | null) {
 }
 
 /**
- * 判断 initialValue 是否为非空，非空条件：
- *  1. 当为 slot 结构时，value 为有长度的数组且 visible 不为 false
- *  2. 不为 slot 结构，为非 undefined / null 值
+ * Check whether initialValue is non-empty. Non-empty when:
+ *  1. For slot structures, value is a non-empty array and visible is not false
+ *  2. For non-slot structures, value is not undefined / null
  * @param initialValue
  * @returns
  */
 function isInitialValueNotEmpty(initialValue: any) {
   if (isJSSlot(initialValue)) {
-    // @ts-ignore visible 为 false 代表默认不展示
+    // @ts-ignore visible === false means hidden by default
     return initialValue.visible !== false && Array.isArray(initialValue.value) && initialValue.value.length > 0;
   }
   return (initialValue !== undefined && initialValue !== null);
@@ -56,7 +56,7 @@ class SettingFieldView extends Component<SettingFieldViewProps, SettingFieldView
     if (display === 'entry') {
       runInAction(() => {
         stageName = `${field.getNode().id}_${field.name?.toString()}`;
-        // 清除原 stage，不然 content 引用的一直是老的 field，导致数据无法得到更新
+        // Clear the previous stage; otherwise content keeps referencing the old field and data cannot update
         stages.container.remove(stageName);
         stages.add({
           type: 'Widget',
@@ -151,9 +151,9 @@ class SettingFieldView extends Component<SettingFieldViewProps, SettingFieldView
       }
     }
 
-    // 根据是否支持变量配置做相应的更改
+    // Adjust based on whether variable configuration is supported
     const supportVariable = this.field.extraProps?.supportVariable;
-    // supportVariableGlobally 只对标准组件生效，vc 需要单独配置
+    // supportVariableGlobally only applies to standard components; VC components need separate config
     const supportVariableGlobally = engineConfig.get('supportVariableGlobally', false) && isStandardComponent(componentMeta);
     const isUseVariableSetter = shouldUseVariableSetter(supportVariable, supportVariableGlobally);
     if (isUseVariableSetter === false) {
@@ -165,7 +165,7 @@ class SettingFieldView extends Component<SettingFieldViewProps, SettingFieldView
     }
 
     if (setterType === 'MixedSetter') {
-      // VariableSetter 不单独使用
+      // VariableSetter is not used standalone
       if (Array.isArray(setterProps.setters) && !setterProps.setters.includes('VariableSetter')) {
         setterProps.setters.push('VariableSetter');
       }
@@ -198,8 +198,8 @@ class SettingFieldView extends Component<SettingFieldViewProps, SettingFieldView
     ) {
       return;
     }
-    // 当前 field 没有 value 值时，将 initialValue 写入 field
-    // 之所以用 initialValue，而不是 defaultValue 是为了保持跟 props.onInitial 的逻辑一致
+    // When the field has no value, write initialValue into the field
+    // Use initialValue instead of defaultValue to stay consistent with props.onInitial
     const _initialValue = typeof initialValue === 'function' ? initialValue(this.field.internalToShellField()) : initialValue;
     this.field.setValue(_initialValue);
   }
@@ -306,7 +306,7 @@ class SettingGroupView extends Component<SettingGroupViewProps> {
     if (display === 'entry') {
       runInAction(() => {
         stageName = `${field.getNode().id}_${field.name?.toString()}`;
-        // 清除原 stage，不然 content 引用的一直是老的 field，导致数据无法得到更新
+        // Clear the previous stage; otherwise content keeps referencing the old field and data cannot update
         stages.container.remove(stageName);
         stages.add({
           type: 'Widget',

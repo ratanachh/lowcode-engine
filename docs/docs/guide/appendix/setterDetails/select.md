@@ -1,20 +1,25 @@
 ---
 title: SelectSetter
 ---
-## 简介
-用来选择组件。在限定的可选性内进行选择，核心能力是选择
-## 展示
+
+## Overview
+
+Used to select a value from a limited set of options. The core capability is selection.
+
+## Display
 
 <img src="https://img.alicdn.com/imgextra/i4/O1CN013arqCy1f1JfwdTGQo_!!6000000003946-2-tps-574-602.png" width="300"/>
 
-## setter 配置
-| 属性名 | 说明 |
-| --- | --- |
-| mode | 选择器模式 可选值: 'single', 'multiple', 'tag' |
-| defaultValue | 默认值 |
-| options | 传入的数据源，**参数格式**: [ {label/title: '文字', value: 'text'}, ...] |
+## Setter Configuration
 
-## 返回类型
+| Property     | Description                                                           |
+| ------------ | --------------------------------------------------------------------- |
+| mode         | Selector mode. Allowed values: 'single', 'multiple', 'tag'            |
+| defaultValue | Default value                                                         |
+| options      | Data source. **Format**: [ {label/title: 'text', value: 'text'}, ...] |
+
+## Return Type
 
 String | Number | Boolean
-会返回 options 中的 value 值
+
+Returns the `value` from the selected option in `options`.

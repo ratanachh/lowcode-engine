@@ -1,20 +1,20 @@
 ---
-title: logger - 日志 API
+title: logger - Logging API
 sidebar_position: 10
 ---
 
-> **@types** [IPublicApiLogger](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/logger.ts)<br/>
-> **@since** v1.0.0
+> **@types** [IPublicApiLogger](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/logger.ts)<br/> > **@since** v1.0.0
 
+## Module Overview
 
-## 模块简介
-引擎日志模块，可以按照 **日志级别 **和** 业务类型 **两个维度来定制日志。
-> 注：日志级别可以通过 url query 动态调整，详见下方[查看示例](#查看示例)。<br/>
-> 参考 [zen-logger](https://web.npm.alibaba-inc.com/package/zen-logger) 实现进行封装
+Engine logging module. Customize logs by **log level** and **business type**.
 
-## 方法
+> Note: Log level can be adjusted dynamically via URL query — see [Viewing examples](#viewing-examples) below.<br/>
+> Wrapped around [zen-logger](https://web.npm.alibaba-inc.com/package/zen-logger)
 
-日志记录方法
+## Methods
+
+Logging methods
 
 ```typescript
 /**
@@ -43,7 +43,7 @@ error(...args: any | any[]): void;
 log(...args: any | any[]): void;
 ```
 
-## 输出示例
+## Output Example
 
 ```typescript
 import { Logger } from '@rchh/lowcode-utils';
@@ -51,30 +51,30 @@ const logger = new Logger({ level: 'warn', bizName: 'myPlugin:moduleA' });
 logger.log('Awesome Low-Code Engine');
 ```
 
-## 查看示例
+## Viewing Examples
 
-开启查看方式：
+How to enable viewing:
 
-- 方式 1：所有 logger 创建时会有默认输出的 level, 默认为 warn , 即只展示 warn , error
-- 方式 2：url 上追加 __logConf__进行开启，示例如下
+- Method 1: Each logger has a default output level on creation, default `warn` — only `warn` and `error` are shown
+- Method 2: Append `__logConf__` to the URL, for example:
 
 ```
 https://lowcode-engine.cn/demo/demo-general/index.html?__logConf__=warn
-// 开启所有 bizName的 warn 和 error
+// Enable warn and error for all bizNames
 
 https://lowcode-engine.cn/demo/demo-general/index.html?__logConf__=debug
-// 开启所有 bizName的 debug, log, info, warn 和 error
+// Enable debug, log, info, warn, and error for all bizNames
 
 https://lowcode-engine.cn/demo/demo-general/index.html?__logConf__=log
-// 开启所有 bizName的 log, info, warn 和 error
+// Enable log, info, warn, and error for all bizNames
 
 https://lowcode-engine.cn/demo/demo-general/index.html?__logConf__=warn|*
-// 同 __logConf__=warn
+// Same as __logConf__=warn
 
 https://lowcode-engine.cn/demo/demo-general/index.html?__logConf__=warn|bizName
-// 开启 bizName 的 debug, log, info, warn 和 error
+// Enable debug, log, info, warn, and error for bizName
 
 https://lowcode-engine.cn/demo/demo-general/index.html?__logConf__=warn|partOfBizName
-// 开启 bizName like '%partOfBizName%' 的 debug, log, info, warn 和 error
+// Enable debug, log, info, warn, and error for bizNames matching '%partOfBizName%'
 
 ```

@@ -1,14 +1,10 @@
 import { CLASS_DEFINE_CHUNK_NAME } from '../../../const/generator';
-
-import { Scope } from '../../../utils/Scope';
-
 import {
   BuilderComponentPlugin,
   BuilderComponentPluginFactory,
   ChunkType,
   FileType,
   ICodeStruct,
-  IContainerInfo,
 } from '../../../types';
 import { DEFAULT_LINK_AFTER } from '../../../const';
 
@@ -27,12 +23,9 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
       ...pre,
     };
 
-    const ir = next.ir as IContainerInfo;
-    const scope = Scope.createRootScope();
-
     const { inStrictMode } = next.contextData;
     if (!inStrictMode) {
-      // 非严格模式下，上下文就是自己
+      // In non-strict mode, context is itself
       next.chunks.push({
         type: ChunkType.STRING,
         fileType: cfg.fileType,
@@ -43,7 +36,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
         linkAfter: [CLASS_DEFINE_CHUNK_NAME.Start],
       });
     } else {
-      // 严格模式下的上下文只保留协议中规定的那些
+      // In strict mode, context only keeps what the protocol specifies
       next.chunks.push({
         type: ChunkType.STRING,
         fileType: cfg.fileType,

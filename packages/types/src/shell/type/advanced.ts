@@ -1,33 +1,33 @@
 import { ComponentType, ReactElement } from 'react';
 import { IPublicTypeNodeData, IPublicTypeSnippet, IPublicTypeInitialItem, IPublicTypeFilterItem, IPublicTypeAutorunItem, IPublicTypeCallbacks, IPublicTypeLiveTextEditingConfig } from './';
-import { IPublicModelNode, IPublicModelSettingField } from '../model';
+import { IPublicModelNode } from '../model';
 
 /**
- * 高级特性配置
+ * Advanced feature configuration
  */
 export interface IPublicTypeAdvanced {
 
   /**
-   * 配置 callbacks 可捕获引擎抛出的一些事件，例如 onNodeAdd、onResize 等
+   * Configure callbacks to capture engine events such as onNodeAdd, onResize, etc.
    * callbacks/hooks which can be used to do
    * things on some special ocations like onNodeAdd or onResize
    */
   callbacks?: IPublicTypeCallbacks;
 
   /**
-   * 拖入容器时，自动带入 children 列表
+   * When dropped into a container, automatically bring in the children list
    */
   initialChildren?: IPublicTypeNodeData[] | ((target: IPublicModelNode) => IPublicTypeNodeData[]);
 
   /**
-   * 样式 及 位置，handle 上必须有明确的标识以便事件路由判断，或者主动设置事件独占模式
-   * NWSE 是交给引擎计算放置位置，ReactElement 必须自己控制初始位置
+   * Style and position; handles must have clear markers for event routing, or enable exclusive event mode
+   * NWSE lets the engine compute placement; ReactElement must control its own initial position
    *
-   * 用于配置设计器中组件 resize 操作工具的样式和内容
-   * - hover 时控制柄高亮
-   * - mousedown 时请求独占
-   * - dragstart 请求通用 resizing 控制 请求 hud 显示
-   * - drag 时 计算并设置效果，更新控制柄位置
+   * Configure style and content of the component resize tools in the designer
+   * - Highlight handle on hover
+   * - Request exclusive mode on mousedown
+   * - On dragstart, request generic resizing control and HUD display
+   * - On drag, compute and apply effects, update handle positions
    */
   getResizingHandlers?: (
     currentNode: any
@@ -40,17 +40,17 @@ export interface IPublicTypeAdvanced {
     ReactElement[]);
 
   /**
-   * @deprecated 用于动态初始化拖拽到设计器里的组件的 prop 的值
+   * @deprecated Dynamically initialize prop values of components dragged into the designer
    */
   initials?: IPublicTypeInitialItem[];
 
   /**
-   * @deprecated 使用组件 metadata 上的 snippets 字段即可
+   * @deprecated Use the snippets field on component metadata instead
    */
   snippets?: IPublicTypeSnippet[];
 
   /**
-   * 是否绝对布局容器，还未进入协议
+   * Whether this is an absolute-layout container; not yet in the protocol
    * @experimental not in spec yet
    */
   isAbsoluteLayoutContainer?: boolean;
@@ -62,13 +62,13 @@ export interface IPublicTypeAdvanced {
   hideSelectTools?: boolean;
 
   /**
-   * Live Text Editing：如果 children 内容是纯文本，支持双击直接编辑
+   * Live Text Editing: if children are plain text, support double-click to edit
    * @experimental not in spec yet
    */
   liveTextEditing?: IPublicTypeLiveTextEditingConfig[];
 
   /**
-   * TODO: 补充文档
+   * TODO: add documentation
    * @experimental not in spec yet
    */
   view?: ComponentType<any>;
@@ -80,7 +80,7 @@ export interface IPublicTypeAdvanced {
   isTopFixed?: boolean;
 
   /**
-   * TODO: 补充文档 或 删除
+   * TODO: add documentation or remove
    * @deprecated not used anywhere, dont know what is it for
    */
   context?: { [contextInfoName: string]: any };

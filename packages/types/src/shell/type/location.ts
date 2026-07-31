@@ -24,7 +24,7 @@ export interface IPublicTypeLocationChildrenDetail {
   index?: number | null;
 
   /**
-   * 是否有效位置
+   * Whether the location is valid
    */
   valid?: boolean;
   edge?: DOMRect;
@@ -38,7 +38,7 @@ export interface IPublicTypeLocationChildrenDetail {
 }
 
 export interface IPublicTypeLocationPropDetail {
-  // cover 形态，高亮 domNode，如果 domNode 为空，取 container 的值
+  // Cover mode: highlight domNode; if empty, use container
   type: IPublicTypeLocationDetailType.Prop;
   name: string;
   domNode?: HTMLElement;

@@ -25,10 +25,10 @@ export interface IComponentHocState {
   nodeChildren: any;
   nodeCacheProps: any;
 
-  /** 控制是否显示隐藏 */
+  /** Controls show/hide */
   visible: boolean;
 
-  /** 控制是否渲染 */
+  /** Controls whether to render */
   condition: boolean;
   nodeProps: any;
 }
@@ -64,19 +64,19 @@ enum RerenderType {
   MinimalRenderUnit = 'MinimalRenderUnit',
 }
 
-// 缓存 Leaf 层组件，防止重新渲染问题
+// Cache Leaf-layer components to avoid remount/rerender issues
 class LeafCache {
 
-  /** 组件缓存 */
+  /** Component cache */
   component = new Map();
 
   /**
-   * 状态缓存，场景：属性变化后，改组件被销毁，state 为空，没有展示修改后的属性
+   * State cache: after props change the component may be destroyed and state emptied, so updated props would not show
    */
   state = new Map();
 
   /**
-   * 订阅事件缓存，导致 rerender 的订阅事件
+   * Cached subscription events that trigger rerender
    */
   event = new Map();
 
@@ -88,7 +88,7 @@ class LeafCache {
 
 let cache: LeafCache;
 
-/** 部分没有渲染的 node 节点进行兜底处理 or 渲染方式没有渲染 LeafWrapper */
+/** Fallback for nodes that were not rendered, or when the render path did not wrap with LeafWrapper */
 function initRerenderEvent({
   schema,
   __debug,
@@ -135,7 +135,7 @@ function initRerenderEvent({
   });
 }
 
-/** 渲染的 node 节点全局注册事件清除 */
+/** Clear globally registered events for rendered nodes */
 function clearRerenderEvent(id: string): void {
   if (cache.event.get(id)?.clear) {
     return;
@@ -147,7 +147,7 @@ function clearRerenderEvent(id: string): void {
   });
 }
 
-// 给每个组件包裹一个 HOC Leaf，支持组件内部属性变化，自响应渲染
+// Wrap each component with a Leaf HOC so internal prop changes trigger self-updating renders
 export function leafWrapper(Comp: types.IBaseRenderComponent, {
   schema,
   baseRenderer,
@@ -219,7 +219,7 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
       singleRender?: boolean;
     };
 
-    // 最小渲染单元做防抖处理
+    // Debounce minimum render unit updates
     makeUnitRenderDebounced = debounce(() => {
       this.beforeRender(RerenderType.MinimalRenderUnit);
       const schema = this.leaf?.export?.(IPublicEnumTransformStage.Render);
@@ -243,7 +243,7 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
 
     constructor(props: IProps, context: any) {
       super(props, context);
-      // 监听以下事件，当变化时更新自己
+      // Subscribe to the following events and update self on change
       __debug(`${schema.componentName}[${this.props.componentId}] leaf render in SimulatorRendererView`);
       clearRerenderEvent(componentCacheId);
       this.curEventLeaf = this.leaf;
@@ -320,7 +320,7 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
       super.setState(state);
     }
 
-    /** 由于内部属性变化，在触发渲染前，会执行该函数 */
+    /** Called before render when internal props change */
     beforeRender(type: string, node?: INode): void {
       this.recordInfo.startTime = Date.now();
       this.recordInfo.type = type;
@@ -353,7 +353,7 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
     }
 
     getRenderUnitInfo(leaf = this.leaf) {
-      // leaf 在低代码组件中存在 mock 的情况，退出最小渲染单元判断
+      // Leaf may be mocked inside low-code components; skip minimum render unit checks
       if (!leaf || typeof leaf.isRoot !== 'function') {
         return;
       }
@@ -372,7 +372,7 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
         };
       }
       if (leaf.hasLoop()) {
-        // 含有循环配置的元素，父元素是最小渲染单元
+        // For elements with loop config, the parent is the minimum render unit
         this.renderUnitInfo = {
           minimalUnitId: leaf?.parent?.id,
           minimalUnitName: leaf?.parent?.componentName,
@@ -407,7 +407,7 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
       this.setState(resetState);
     }
 
-    /** 监听参数变化 */
+    /** Listen for prop changes */
     initOnPropsChangeEvent(leaf = this.leaf): void {
       const handlePropsChange = debounce((propChangeInfo: IPublicTypePropChangeOptions) => {
         const {
@@ -420,19 +420,19 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
           const { condition = true } = this.leaf?.export(IPublicEnumTransformStage.Render) || {};
           const conditionValue = __parseData?.(condition, scope);
           __debug(`key is ___condition___, change condition value to [${condition}]`);
-          // 条件表达式改变
+          // Condition expression changed
           this.setState({
             condition: conditionValue,
           });
           return;
         }
 
-        // 如果循坏条件变化，从根节点重新渲染
-        // 目前多层循坏无法判断需要从哪一层开始渲染，故先粗暴解决
+        // If loop conditions change, re-render from the root
+        // Multi-level loops cannot yet determine which layer to start from; use a blunt fix for now
         if (key === '___loop___') {
           __debug('key is ___loop___, render a page!');
           container?.rerender();
-          // 由于 scope 变化，需要清空缓存，使用新的 scope
+          // Scope changed; clear cache and use the new scope
           cache.component.delete(componentCacheId);
           return;
         }
@@ -441,7 +441,7 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
         const { nodeCacheProps } = state;
         const nodeProps = getProps(node?.export?.(IPublicEnumTransformStage.Render) as IPublicTypeNodeSchema, scope, Comp, componentInfo);
         if (key && !(key in nodeProps) && (key in this.props)) {
-          // 当 key 在 this.props 中时，且不存在在计算值中，需要用 newValue 覆盖掉 this.props 的取值
+          // When key exists on this.props but not in computed values, override this.props with newValue
           nodeCacheProps[key] = newValue;
         }
         __debug(`${leaf?.componentName}[${this.props.componentId}] component trigger onPropsChange!`, nodeProps, nodeCacheProps, key, newValue);
@@ -468,7 +468,7 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
     }
 
     /**
-     * 监听显隐变化
+     * Listen for visibility changes
      */
     initOnVisibleChangeEvent(leaf = this.leaf) {
       const dispose = leaf?.onVisibleChange?.((flag: boolean) => {
@@ -491,7 +491,7 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
     }
 
     /**
-     * 监听子元素变化（拖拽，删除...）
+     * Listen for children changes (drag, delete, ...)
      */
     initOnChildrenChangeEvent(leaf = this.leaf) {
       const dispose = leaf?.onChildrenChange?.((param): void => {
@@ -503,9 +503,9 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
           node,
         } = param || {};
         this.beforeRender(`${RerenderType.ChildChanged}-${type}`, node);
-        // TODO: 缓存同级其他元素的 children。
-        // 缓存二级 children Next 查询筛选组件有问题
-        // 缓存一级 children Next Tab 组件有问题
+        // TODO: cache siblings' children.
+        // Caching second-level children breaks Next filter components
+        // Caching first-level children breaks Next Tab components
         const nextChild = getChildren(leaf?.export?.(IPublicEnumTransformStage.Render) as types.ISchema, scope, Comp);
         __debug(`${schema.componentName}[${this.props.componentId}] component trigger onChildrenChange event`, nextChild);
         this.setState({
@@ -544,7 +544,7 @@ export function leafWrapper(Comp: types.IBaseRenderComponent, {
 
     get leaf(): INode | undefined {
       if (this.props._leaf?.isMock) {
-        // 低代码组件作为一个整体更新，其内部的组件不需要监听相关事件
+        // Low-code components update as a whole; inner components need not listen to related events
         return undefined;
       }
 

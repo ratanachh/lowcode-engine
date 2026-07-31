@@ -1,4 +1,5 @@
-十分感谢参与贡献过低代码引擎的小伙伴们，下面名单按字母排序：
+Many thanks to everyone who has contributed to the LowCode Engine. Names are listed alphabetically:
+
 - [albertxiao1994](https://github.com/albertxiao1994)
 - [alex-mm](https://github.com/alex-mm)
 - [alvarto](https://github.com/alvarto)
@@ -26,4 +27,4 @@
 - [youluna](https://github.com/youluna)
 - [ibreathebsb](https://github.com/ibreathebsb)
 
-如果您贡献过低代码引擎，但是没有看到您的名字，为我们的疏忽感到抱歉。欢迎您通过 PR 补充上自己的名字。
+If you have contributed but do not see your name here, we apologize for the omission. Please open a PR to add yourself.

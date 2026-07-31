@@ -192,7 +192,7 @@ export class BasicContext implements IBasicContext {
     editor.set('innerPlugins' as any, innerPlugins);
     this.plugins = plugins;
 
-    // 注册一批内置插件
+    // Register a set of builtin plugins
     this.registerInnerPlugins = async function registerPlugins() {
       await innerWorkspace?.registryInnerPlugin(designer, editor, plugins);
     };

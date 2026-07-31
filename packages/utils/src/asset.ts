@@ -4,7 +4,7 @@ import { isCSSUrl } from './is-css-url';
 import { createDefer } from './create-defer';
 import { load, evaluate } from './script';
 
-// API 向下兼容
+// API backward compatibility
 export { AssetType, AssetLevels, AssetLevel } from '@rchh/lowcode-types';
 export type { AssetItem, Asset, AssetList, AssetBundle, IPublicTypeAssetsJson } from '@rchh/lowcode-types';
 
@@ -68,7 +68,7 @@ export function mergeAssets(assets: IPublicTypeAssetsJson, incrementalAssets: IP
 function mergeAssetsComponentList(assets: IPublicTypeAssetsJson, incrementalAssets: IPublicTypeAssetsJson, listName: keyof IPublicTypeAssetsJson): void {
   if (incrementalAssets[listName]) {
     if (assets[listName]) {
-      // 根据title进行合并
+      // Merge by title
       incrementalAssets[listName]?.map((item) => {
         let matchFlag = false;
         assets[listName]?.map((assetItem) => {
@@ -266,13 +266,13 @@ export class AssetLoader {
     return isUrl ? load(content, scriptType) : evaluate(content, scriptType);
   }
 
-  // todo 补充类型
+  // todo: add types
   async loadAsyncLibrary(asyncLibraryMap: Record<string, any>) {
     const promiseList: any[] = [];
     const libraryKeyList: any[] = [];
     const pkgs: any[] = [];
     for (const key in asyncLibraryMap) {
-      // 需要异步加载
+      // Needs async loading
       if (asyncLibraryMap[key].async) {
         promiseList.push(window[asyncLibraryMap[key].library]);
         libraryKeyList.push(asyncLibraryMap[key].library);

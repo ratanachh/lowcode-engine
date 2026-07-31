@@ -38,7 +38,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
       linkAfter: [COMMON_CHUNK_NAME.ExternalDepsImport],
     });
 
-    // TODO: i18n 是可选的，如果没有 i18n 这个文件怎么办？该怎么判断？
+    // TODO: i18n is optional; what if there is no i18n file? How to detect?
     next.chunks.push({
       type: ChunkType.STRING,
       fileType: cfg.fileType,
@@ -67,8 +67,8 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
       linkAfter: [CLASS_DEFINE_CHUNK_NAME.Start],
     });
 
-    // TODO: 按照目前的实现方案，代码的插拔能力太弱了，需要有一些变化。
-    //   Step 1: 增加前置的分析器
+    // TODO: With the current design, pluggability is too weak; some changes are needed.
+    //   Step 1: add a front-end analyzer
     next.chunks.push({
       type: ChunkType.STRING,
       fileType: cfg.fileType,

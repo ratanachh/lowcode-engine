@@ -55,17 +55,18 @@ export function flattenResult(dir: ResultDir, cwd = ''): FlattenFile[] {
   ].concat(...dir.dirs.map((subDir) => flattenResult(subDir, joinPath(cwd, subDir.name))));
 }
 
-export type GlobOptions = {
-  /** 是否查找 ".xxx" 文件, 默认: 否 */
+export interface GlobOptions {
+
+  /** Whether to match ".xxx" files; default: no */
   dot?: boolean;
-};
+}
 
 /**
- * 查找文件
- * @param result 出码结果
- * @param fileGlobExpr 文件名匹配表达式
- * @param resultDirPath 出码结果的路径（默认是 '.'）
- * @returns 匹配的第一个文件或 null （找不到）
+ * Find a file
+ * @param result Code generation result
+ * @param fileGlobExpr File name match expression
+ * @param resultDirPath Path of the code generation result (default: '.')
+ * @returns First matching file or null if not found
  */
 export function findFile(
   result: ResultDir,
@@ -73,7 +74,7 @@ export function findFile(
   options: GlobOptions = {},
   resultDirPath = getResultNameOrDefault(result, ''),
 ): ResultFile | null {
-  const maxDepth = !/\/|\*\*/.test(fileGlobExpr) ? 1 : undefined; // 如果 glob 表达式里面压根不会匹配子目录，则深度限制为 1
+  const maxDepth = !/\/|\*\*/.test(fileGlobExpr) ? 1 : undefined; // If the glob never matches subdirectories, limit depth to 1
   const files = scanFiles(result, resultDirPath, maxDepth);
 
   for (let [filePath, file] of files) {
@@ -86,11 +87,11 @@ export function findFile(
 }
 
 /**
- * 使用 glob 语法查找多个文件
- * @param result 出码结果
- * @param fileGlobExpr 文件名匹配表达式
- * @param resultDirPath 出码结果的路径（默认是 '.'）
- * @returns 找到的文件列表的迭代器 [ [文件路径, 文件信息], ... ]
+ * Find multiple files with glob syntax
+ * @param result Code generation result
+ * @param fileGlobExpr File name match expression
+ * @param resultDirPath Path of the code generation result (default: '.')
+ * @returns Iterator of found files: [ [filePath, fileInfo], ... ]
  */
 export function* globFiles(
   result: ResultDir,
@@ -108,7 +109,7 @@ export function* globFiles(
 }
 
 /**
- * 遍历所有的文件
+ * Traverse all files
  */
 export function* scanFiles(
   result: ResultDir,
@@ -186,11 +187,11 @@ export function findDir(
 }
 
 /**
- * 从结果中移除一些文件
- * @param result 出码结果目录
- * @param filePathGlobExpr 要移除的文件路径（glob 表达式）
- * @param globOptions glob 参数
- * @returns 移除了多少文件
+ * Remove some files from the result
+ * @param result Code generation result directory
+ * @param filePathGlobExpr File paths to remove (glob expression)
+ * @param globOptions glob options
+ * @returns Number of files removed
  */
 export function removeFilesFromResult(
   result: ResultDir,
@@ -213,11 +214,11 @@ export function removeFilesFromResult(
 }
 
 /**
- * 从结果中移除一些目录
- * @param result 出码结果目录
- * @param dirPathGlobExpr 要移除的目录路径（glob 表达式）
- * @param globOptions glob 参数
- * @returns 移除了多少文件
+ * Remove some directories from the result
+ * @param result Code generation result directory
+ * @param dirPathGlobExpr Directory paths to remove (glob expression)
+ * @param globOptions glob options
+ * @returns Number of files removed
  */
 export function removeDirsFromResult(
   result: ResultDir,
@@ -240,7 +241,7 @@ export function removeDirsFromResult(
 }
 
 /**
- * 将文件路径拆分为目录路径和文件名
+ * Split a file path into directory path and file name
  * @param filePath
  * @returns [fileDirPath, fileName]
  */

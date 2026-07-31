@@ -20,7 +20,7 @@ interface DesignerPluginState {
   designMode?: string;
   deviceClassName?: string;
   simulatorUrl: Asset | null;
-  // @TODO 类型定义
+  // @TODO typing
   requestHandlersMap: any;
 }
 
@@ -57,7 +57,7 @@ export default class DesignerPlugin extends PureComponent<PluginProps, DesignerP
       const designMode = engineConfig.get('designMode') || editor.get('designMode');
       const deviceClassName = engineConfig.get('deviceClassName') || editor.get('deviceClassName');
       const simulatorUrl = engineConfig.get('simulatorUrl') || editor.get('simulatorUrl');
-      // @TODO setupAssets 里设置 requestHandlersMap 不太合适
+      // @TODO setting requestHandlersMap inside setupAssets is not ideal
       const requestHandlersMap = engineConfig.get('requestHandlersMap') || editor.get('requestHandlersMap');
       if (!this._mounted) {
         return;

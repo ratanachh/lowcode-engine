@@ -21,7 +21,7 @@ interface InsertionData {
 }
 
 /**
- * 处理拖拽子节点(INode)情况
+ * Handle dragging child nodes (INode)
  */
 function processChildrenDetail(sim: ISimulatorHost, container: INode, detail: IPublicTypeLocationChildrenDetail): InsertionData {
   let edge = detail.edge || null;
@@ -92,7 +92,7 @@ function processChildrenDetail(sim: ISimulatorHost, container: INode, detail: IP
 }
 
 /**
- * 将 detail 信息转换为页面"坐标"信息
+ * Convert detail info into page "coordinate" info
  */
 function processDetail({ target, detail, document }: DropLocation): InsertionData {
   const sim = document.simulator;
@@ -120,7 +120,7 @@ export class InsertionView extends Component<{ host: BuiltinSimulatorHost }> {
     if (!loc) {
       return null;
     }
-    // 如果是个绝对定位容器，不需要渲染插入标记
+    // Absolute-positioned containers do not need an insertion marker
     if (loc.target?.componentMeta?.advanced.isAbsoluteLayoutContainer) {
       return null;
     }

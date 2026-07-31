@@ -5,7 +5,7 @@ describe('isLocationChildrenDetail', () => {
   it('should return true when obj is IPublicTypeLocationChildrenDetail', () => {
     const obj: IPublicTypeLocationChildrenDetail = {
       type: IPublicTypeLocationDetailType.Children,
-      // 添加其他必要的属性
+      // add other required props
     };
 
     expect(isLocationChildrenDetail(obj)).toBe(true);
@@ -14,7 +14,7 @@ describe('isLocationChildrenDetail', () => {
   it('should return false when obj is not IPublicTypeLocationChildrenDetail', () => {
     const obj = {
       type: 'other',
-      // 添加其他必要的属性
+      // add other required props
     };
 
     expect(isLocationChildrenDetail(obj)).toBe(false);

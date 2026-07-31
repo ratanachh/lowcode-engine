@@ -19,7 +19,7 @@ function getNodesSchema(nodes: IPublicModelNode[]) {
 
 async function getClipboardText(): Promise<IPublicTypeNodeSchema[]> {
   return new Promise((resolve, reject) => {
-    // 使用 Clipboard API 读取剪贴板内容
+    // Read clipboard content via the Clipboard API
     navigator.clipboard.readText().then(
       (text) => {
         try {
@@ -137,7 +137,7 @@ export const defaultContextMenu = (ctx: IPublicModelPluginContext) => {
                 return doc?.checkNesting(parent, dragNodeObject);
               });
               if (canAddNodes.length === 0) {
-                Message.error(`${nodeSchema.map(d => utilsIntl(d.title || d.componentName)).join(',')}等组件无法放置到${utilsIntl(parent.title || parent.componentName as any)}内`);
+                Message.error(`${nodeSchema.map(d => utilsIntl(d.title || d.componentName)).join(',')} cannot be placed into ${utilsIntl(parent.title || parent.componentName as any)}`);
                 return;
               }
               const nodes: IPublicModelNode[] = [];
@@ -160,7 +160,7 @@ export const defaultContextMenu = (ctx: IPublicModelPluginContext) => {
           return nodes?.length === 1;
         },
         disabled: (nodes = []) => {
-          // 获取粘贴数据
+          // Get paste data
           const node = nodes?.[0];
           return !node.isContainerNode;
         },
@@ -185,7 +185,7 @@ export const defaultContextMenu = (ctx: IPublicModelPluginContext) => {
               return doc?.checkNesting(node, dragNodeObject);
             });
             if (canAddNodes.length === 0) {
-              Message.error(`${nodeSchema.map(d => utilsIntl(d.title || d.componentName)).join(',')}等组件无法放置到${utilsIntl(node.title || node.componentName as any)}内`);
+              Message.error(`${nodeSchema.map(d => utilsIntl(d.title || d.componentName)).join(',')} cannot be placed into ${utilsIntl(node.title || node.componentName as any)}`);
               return;
             }
 

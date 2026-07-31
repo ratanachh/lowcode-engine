@@ -6,33 +6,33 @@ export interface IPublicModelSettingTopEntry<
 > {
 
   /**
-   * 返回所属的节点实例
+   * Returns the node instance it belongs to
    */
   get node(): Node | null;
 
   /**
-   * 获取子级属性对象
+   * Get child attribute object
    * @param propName
    * @returns
    */
   get(propName: string | number): SettingField | null;
 
   /**
-   * 获取指定 propName 的值
+   * Get the value of the specified propName
    * @param propName
    * @returns
    */
   getPropValue(propName: string | number): any;
 
   /**
-   * 设置指定 propName 的值
+   * Sets the value of the specified propName
    * @param propName
    * @param value
    */
   setPropValue(propName: string | number, value: any): void;
 
   /**
-   * 清除指定 propName 的值
+   * Clear the value of a specified propName
    * @param propName
    */
   clearPropValue(propName: string | number): void;

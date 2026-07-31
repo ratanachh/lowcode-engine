@@ -1,41 +1,45 @@
 ---
-title: 低代码生态脚手架 & 调试机制
+title: Low-Code Ecosystem Scaffolding & Debug Mechanism
 sidebar_position: 10
 ---
-## 脚手架简述
 
-在 fork 低代码编辑器 demo 项目后，您可以直接在项目中任意扩展低代码编辑器。如果您想要将自己的组件/插件/设置器封装成一个独立的 npm 包并提供给社区，您可以使用我们的低代码脚手架建立低代码扩展。
+## Scaffolding Overview
 
-> Windows 开发者请在 WSL 环境下使用开发工具
+After forking the low-code editor demo project, you can extend the low-code editor directly in the project. If you want to package your components/plugins/setters as independent npm packages for the community, you can use our low-code scaffolding to create low-code extensions.
+
+> Windows developers should use development tools in a WSL environment.
 >
-> WSL 中文 doc：[https://docs.microsoft.com/zh-cn/windows/wsl/install](https://docs.microsoft.com/zh-cn/windows/wsl/install)
+> WSL documentation: [https://docs.microsoft.com/zh-cn/windows/wsl/install](https://docs.microsoft.com/zh-cn/windows/wsl/install)
 >
-> 中文教程：[https://blog.csdn.net/weixin_45027467/article/details/106862520](https://blog.csdn.net/weixin_45027467/article/details/106862520)
+> Chinese tutorial: [https://blog.csdn.net/weixin_45027467/article/details/106862520](https://blog.csdn.net/weixin_45027467/article/details/106862520)
 
+## Scaffolding Features
 
-## 脚手架功能
-### 脚手架初始化
+### Scaffolding Initialization
 
 ```bash
 npm init @rchh/element your-element-name
 ```
-不写 your-element-name 的情况下，则在当前目录创建。
 
-> 注 1：如遇错误提示 `sh: create-element: command not found` 可先执行下述命令
+If you omit `your-element-name`, the project is created in the current directory.
+
+> Note 1: If you see the error `sh: create-element: command not found`, run the following first:
+
 ```bash
 npm install -g @rchh/create-element
 ```
 
-> 注 2：觉得安装速度比较慢的同学，可以设置 npm 国内镜像，如
+> Note 2: If installation is slow, you can set an npm mirror, e.g.:
+
 ```bash
 npm init @rchh/element your-element-name --registry=https://registry.npmmirror.com
 ```
 
-选择对应的元素类型，并填写对应的问题，即可完成创建。
+Select the corresponding element type and fill in the prompts to complete creation.
 
 ![image.png](https://img.alicdn.com/imgextra/i3/O1CN01LAaw2R1veHDYUzGB1_!!6000000006197-2-tps-676-142.png)
 
-### 脚手架本地环境调试
+### Local Scaffolding Debug
 
 ```bash
 cd your-element-name
@@ -43,156 +47,161 @@ npm install
 npm start
 ```
 
-### 脚手架构建
+### Scaffolding Build
 
 ```bash
 npm run build
 ```
 
-### 脚手架发布
+### Scaffolding Publish
 
-修改版本号后，执行如下指令即可：
+After updating the version number, run:
 
 ```bash
 npm publish
 ```
 
-## 🔥🔥🔥 在低代码项目中调试物料/插件/设置器
+## 🔥🔥🔥 Debugging Materials/Plugins/Setters in a Low-Code Project
 
-> 📢📢📢 低代码生态脚手架提供的调试利器，在启动 setter/插件/物料 项目后，直接在已有的低代码平台就可以调试，不需要 npm link / 手改 npm main 入口等传统方式，轻松上手，强烈推荐使用！！
+> 📢📢📢 The debug tool provided by the low-code ecosystem scaffolding lets you debug directly on an existing low-code platform after starting a setter/plugin/material project—no npm link or manually changing npm main entry required. Easy to get started; highly recommended!!
 
-### 组件/插件/Setter 侧
+### Component/Plugin/Setter Side
 
-1. 插件/setter 在原有 alt 的配置中添加相关的调试配置
-  ```json
-  // build.json 中
-  {
-    "plugins": [
-      [
-        "@rchh/build-plugin-alt",
-        {
-          "type": "plugin",
-          "inject": true, // 开启注入调试
-          // 配置要打开的页面，在注入调试模式下，不配置此项的话不会打开浏览器
-          // 支持直接使用官方 demo 项目：https://lowcode-engine.cn/demo/index.html
-          "openUrl": "https://lowcode-engine.cn/demo/index.html?debug"
-        }
-      ],
+1. Add debug configuration to the existing alt config for plugins/setters
+
+```json
+// In build.json
+{
+  "plugins": [
+    [
+      "@rchh/build-plugin-alt",
+      {
+        "type": "plugin",
+        "inject": true, // Enable inject debugging
+        // Page to open; in inject debug mode the browser will not open if omitted
+        // You can point at the official demo: https://lowcode-engine.cn/demo/index.html
+        "openUrl": "https://lowcode-engine.cn/demo/index.html?debug"
+      }
     ]
-  }
-  ```
+  ]
+}
+```
 
-2. 组件需先安装 @rchh/build-plugin-alt，再将组件内的 `build.lowcode.js`文件修改如下
-  ```javascript
-  const { library } = require('./build.json');
+2. For components, first install `@rchh/build-plugin-alt`, then modify the component's `build.lowcode.js` as follows:
 
-  module.exports = {
-    alias: {
-      '@': './src',
-    },
-    plugins: [
-      [
-        // lowcode 的配置保持不变，这里仅为示意。
-        '@alifd/build-plugin-lowcode',
-        {
-          library,
-          engineScope: "@alilc"
-        },
-      ],
-      [
-        '@rchh/build-plugin-alt',
-        {
-          type: 'component',
-          inject: true,
-          library,
-          // 配置要打开的页面，在注入调试模式下，不配置此项的话不会打开浏览器
-          // 支持直接使用官方 demo 项目：https://lowcode-engine.cn/demo/index.html
-          openUrl: "https://lowcode-engine.cn/demo/index.html?debug"
-        }
-      ]],
-  };
-  ```
+```javascript
+const { library } = require('./build.json');
 
-3. 本地组件/插件/Setter正常启动调试，在项目的访问地址增加 debug，即可开启注入调试。
-  ```url
-  https://lowcode-engine.cn/demo/demo-general/index.html?debug
-  ```
+module.exports = {
+  alias: {
+    '@': './src',
+  },
+  plugins: [
+    [
+      // lowcode config stays unchanged; shown here for illustration only.
+      '@alifd/build-plugin-lowcode',
+      {
+        library,
+        engineScope: '@alilc',
+      },
+    ],
+    [
+      '@rchh/build-plugin-alt',
+      {
+        type: 'component',
+        inject: true,
+        library,
+        // Page to open; in inject debug mode the browser will not open if omitted
+        // You can point at the official demo: https://lowcode-engine.cn/demo/index.html
+        openUrl: 'https://lowcode-engine.cn/demo/index.html?debug',
+      },
+    ],
+  ],
+};
+```
 
-### 项目侧的准备
+3. Start local component/plugin/setter debugging normally. Add `debug` to the project URL to enable inject debugging.
 
-> 如果你的低代码项目 fork 自官方 demo，那么项目侧的准备已经就绪，不用再看以下内容~
+```url
+https://lowcode-engine.cn/demo/demo-general/index.html?debug
+```
 
-1. 安装 @rchh/lowcode-plugin-inject
-  ```bash
-  npm i @rchh/lowcode-plugin-inject  --save-dev
-  ```
+### Project-Side Preparation
 
-2. 在引擎初始化侧引入插件
-  ```typescript
-  import Inject, { injectAssets } from '@rchh/lowcode-plugin-inject';
-  import { IPublicModelPluginContext } from '@rchh/lowcode-types';
+> If your low-code project is forked from the official demo, project-side preparation is already done—you can skip the rest.
 
-  export default async () => {
-    // 注意 Inject 插件必须在其他插件前注册，且所有插件的注册必须 await
-    await plugins.register(Inject);
-    await plugins.register(OtherPlugin);
-    await plugins.register((ctx: IPublicModelPluginContext) => {
-      return {
-        name: "editor-init",
-        async init() {
-          // 设置物料描述前，使用插件提供的 injectAssets 进行处理
-          const { material, project } = ctx;
-          material.setAssets(await injectAssets(assets));
-        },
-      };
-    });
-  }
-  ```
+1. Install `@rchh/lowcode-plugin-inject`
 
-3. 在 saveSchema 时过滤掉插入的 url，避免影响渲染态
-  ```typescript
-  import { filterPackages } from '@rchh/lowcode-plugin-inject';
-  export const saveSchema = async () => {
-    // ...
-    const packages = await filterPackages(editor.get('assets').packages);
-    window.localStorage.setItem(
-      'packages',
-      JSON.stringify(packages),
-    );
-    // ...
-  };
-  ```
+```bash
+npm i @rchh/lowcode-plugin-inject  --save-dev
+```
 
-4. 如果希望预览态也可以注入调试组件，则需要在 preview 逻辑里插入组件
-  ```javascript
-  import { injectComponents } from '@rchh/lowcode-plugin-inject';
+2. Register the plugin during engine initialization
 
-  async function init() {
-    // 在传递给 ReactRenderer 前，先通过 injectComponents 进行处理
-    const components = await injectComponents(buildComponents(libraryMap, componentsMap));
-    // ...
-  }
-  ```
+```typescript
+import Inject, { injectAssets } from '@rchh/lowcode-plugin-inject';
+import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 
-注：若控制台出现如下错误，直接访问一次该 url 即可~
+export default async () => {
+  // Note: the Inject plugin must register before other plugins, and all plugin registration must be awaited
+  await plugins.register(Inject);
+  await plugins.register(OtherPlugin);
+  await plugins.register((ctx: IPublicModelPluginContext) => {
+    return {
+      name: 'editor-init',
+      async init() {
+        // Before setting material descriptions, process them with injectAssets from the plugin
+        const { material, project } = ctx;
+        material.setAssets(await injectAssets(assets));
+      },
+    };
+  });
+};
+```
+
+3. Filter out injected URLs when saving schema to avoid affecting the render state
+
+```typescript
+import { filterPackages } from '@rchh/lowcode-plugin-inject';
+export const saveSchema = async () => {
+  // ...
+  const packages = await filterPackages(editor.get('assets').packages);
+  window.localStorage.setItem('packages', JSON.stringify(packages));
+  // ...
+};
+```
+
+4. If you want the preview state to also inject debug components, insert components in the preview logic
+
+```javascript
+import { injectComponents } from '@rchh/lowcode-plugin-inject';
+
+async function init() {
+  // Before passing to ReactRenderer, process with injectComponents
+  const components = await injectComponents(buildComponents(libraryMap, componentsMap));
+  // ...
+}
+```
+
+Note: If the console shows the following error, visit the URL once directly.
 
 ![image.png](https://img.alicdn.com/imgextra/i1/O1CN01cvKmeK1saCqpIxbLW_!!6000000005782-2-tps-1418-226.png)
 
+## Meta Information
 
-## Meta 信息
-meta 信息是放在生态元素 package.json 中的一小段 json，用户可以通过 meta 了解到这个元素的一些基本信息，如元素类型，一些入口信息等。
+Meta information is a small JSON block in the ecosystem element's `package.json`. Users can learn basic information about the element through meta, such as element type and entry information.
 
 ```typescript
 interface LcMeta {
-  type: 'plugin' | 'setter' | 'component';  // 元素类型，尚未实现
-  pluginName: string;                       // 插件名，仅插件包含
+  type: 'plugin' | 'setter' | 'component'; // element type; not implemented yet
+  pluginName: string; // plugin name; plugins only
   meta: {
-    dependencies: string[];                 // 插件依赖的其他插件列表，仅插件包含
+    dependencies: string[]; // dependent plugins; plugins only
     engines: {
-      lowcodeEngine: string;                // 适配的引擎版本
-    }
-    prototype: string;                      // 物料描述入口，仅组件包含，尚未实现
-    prototypeView: string;                  // 物料设计态入口，仅组件包含，尚未实现
-  }
+      lowcodeEngine: string; // compatible engine version
+    };
+    prototype: string; // material description entry; components only; not implemented yet
+    prototypeView: string; // material design-time entry; components only; not implemented yet
+  };
 }
 ```

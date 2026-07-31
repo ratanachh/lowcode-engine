@@ -2,10 +2,10 @@ import { IPublicEditorViewConfig } from './editor-view-config';
 
 export interface IPublicTypeEditorView {
 
-  /** 资源名字 */
+  /** Resource name */
   viewName: string;
 
-  /** 资源类型 */
+  /** Resource type */
   viewType?: 'editor' | 'webview';
 
   (ctx: any, options: any): IPublicEditorViewConfig;

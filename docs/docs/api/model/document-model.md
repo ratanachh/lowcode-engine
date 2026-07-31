@@ -2,107 +2,106 @@
 title: DocumentModel
 sidebar_position: 0
 ---
-> **@types** [IPublicModelDocumentModel](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/document-model.ts)<br/>
-> **@since** v1.0.0
 
-## 基本介绍
+> **@types** [IPublicModelDocumentModel](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/document-model.ts)<br/> > **@since** v1.0.0
 
-文档模型
+## Overview
 
-## 属性
+Document model
+
+## Properties
 
 ### id
 
-唯一 ID
+Unique ID
 
 `@type {string}`
 
 ### selection
 
-画布节点选中区模型实例
+Canvas node selection model instance
 
 `@type {IPublicModelSelection}`
 
-相关章节：[节点选中区模型](./selection)
+Related sections: [Node Selection Model](./selection)
 
-相关类型：[IPublicModelSelection](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/selection.ts)
+Related types: [IPublicModelSelection](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/selection.ts)
 
 ### detecting
 
-画布节点 hover 区模型实例
+Canvas node hover model instance
 
 `@type {IPublicModelDetecting}`
 
-相关章节：[画布节点悬停模型](./detecting)
+Related sections: [Canvas Node Hover Model](./detecting)
 
-相关类型：[IPublicModelDetecting](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/detecting.ts)
+Related types: [IPublicModelDetecting](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/detecting.ts)
 
 ### history
 
-操作历史模型实例
+Operation history model instance
 
 `@type {IPublicModelHistory}`
 
-相关章节：[操作历史模型](./history)
+Related sections: [Operation History Model](./history)
 
-相关类型：[IPublicModelHistory](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/history.ts)
+Related types: [IPublicModelHistory](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/history.ts)
 
 ### project
 
-获取当前文档模型所属的 project
+Get the project that owns the current document model
 
 `@type {IPublicApiProject}`
 
-相关类型：[IPublicApiProject](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/project.ts)
+Related types: [IPublicApiProject](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/api/project.ts)
 
 ### root
 
-获取文档的根节点
+Get the root node of the document
 
 `@type {IPublicModelNode | null}`
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### nodesMap
 
-获取文档下所有节点 Map, key 为 nodeId
+Get a Map of all nodes in the document, keyed by nodeId
 
 `@type {Map<string, IPublicModelNode>} `
 
+Related sections: [Node Model](./node)
 
-相关章节：[节点模型](./node)
-
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### modalNodesManager
 
-模态节点管理器
+Modal nodes manager
 
 `@type {IPublicModelModalNodesManager | null}`
 
-相关章节：[模态节点管理](./modal-nodes-manager)
+Related sections: [Modal Nodes Manager](./modal-nodes-manager)
 
-相关类型：[IPublicModelModalNodesManager](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/modal-nodes-manager.ts)
+Related types: [IPublicModelModalNodesManager](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/modal-nodes-manager.ts)
 
 ### dropLocation
 
-文档的 dropLocation
+The document's dropLocation
 
 `@type {IPublicModelDropLocation | null}`
 
-
-相关类型：[IPublicModelDropLocation](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/drop-location.ts)
+Related types: [IPublicModelDropLocation](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/drop-location.ts)
 
 **@since v1.1.0**
 
-## 方法
+## Methods
+
 ### getNodeById
 
-根据 nodeId 返回 [Node](./node) 实例
+Return a [Node](./node) instance by nodeId
 
 ```typescript
 /**
- * 根据 nodeId 返回 Node 实例
+ * Return Node instance by nodeId
  * get node by nodeId
  * @param nodeId
  * @returns
@@ -110,31 +109,30 @@ sidebar_position: 0
 getNodeById(nodeId: string): IPublicModelNode | null;
 ```
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
-
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### importSchema
 
-导入 schema
+Import schema
 
 ```typescript
 /**
- * 导入 schema
+ * Import schema
  * import schema data
  * @param schema
  */
 importSchema(schema: IPublicTypeRootSchema): void;
 ```
 
-相关类型：[IPublicTypeRootSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/root-schema.ts)
-
+Related types: [IPublicTypeRootSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/root-schema.ts)
 
 ### exportSchema
-导出 schema
+
+Export schema
 
 ```typescript
 /**
- * 导出 schema
+ * Export schema
  * export schema
  * @param stage
  * @returns
@@ -142,17 +140,18 @@ importSchema(schema: IPublicTypeRootSchema): void;
 exportSchema(stage: IPublicEnumTransformStage): IPublicTypeRootSchema | undefined;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicEnumTransformStage](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/enum/transform-stage.ts)
 - [IPublicTypeRootSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/root-schema.ts)
 
 ### insertNode
 
-插入节点
+Insert a node
 
 ```typescript
 /**
- * 插入节点
+ * Insert a node
  * insert a node
  */
 insertNode(
@@ -163,15 +162,15 @@ insertNode(
 ): IPublicModelNode | null;
 ```
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### createNode
 
-创建一个节点
+Create a node
 
 ```typescript
 /**
- * 创建一个节点
+ * Create a node
  * create a node
  * @param data
  * @returns
@@ -179,33 +178,34 @@ insertNode(
 createNode(data: any): IPublicModelNode | null;
 ```
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### removeNode
 
-移除指定节点/节点id
+Remove the specified node or node id
 
 ```typescript
 /**
- * 移除指定节点/节点id
+ * Remove the specified node / node id
  * remove a node by node instance or nodeId
  * @param idOrNode
  */
 removeNode(idOrNode: string | IPublicModelNode): void;
 ```
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### checkNesting
-检查拖拽放置的目标节点是否可以放置该拖拽对象
+
+Check whether the drop target node can accept the dragged object
 
 ```typescript
 /**
- * 检查拖拽放置的目标节点是否可以放置该拖拽对象
+ * Check whether the drop target can accept the drag object
  * check if dragOjbect can be put in this dragTarget
- * @param dropTarget 拖拽放置的目标节点
- * @param dragObject 拖拽的对象
- * @returns boolean 是否可以放置
+ * @param dropTarget drop target node
+ * @param dragObject drag object
+ * @returns boolean whether drop is allowed
  * @since v1.0.16
  */
 checkNesting(
@@ -214,7 +214,8 @@ checkNesting(
 ): boolean;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 - [IPublicTypeDragNodeObject](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/drag-node-object.ts)
 - [IPublicTypeDragNodeDataObject](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/drag-node-object-data.ts)
@@ -222,140 +223,148 @@ checkNesting(
 **@since v1.0.16**
 
 ### isDetectingNode
-判断是否当前节点处于被探测状态
+
+Check whether the given node is currently being detected (hovered)
 
 ```typescript
 /**
- * 判断是否当前节点处于被探测状态
+ * Check whether the current node is being detected
  * check is node being detected
  * @param node
  * @since v1.1.0
  */
 isDetectingNode(node: IPublicModelNode): boolean;
 ```
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 **@since v1.1.0**
 
+## Events
 
-## 事件
 ### onAddNode
 
-当前 document 新增节点事件
+Event fired when a new node is added to the current document
 
 ```typescript
 /**
- * 当前 document 新增节点事件
+ * Current document node-added event
  * set callback for event on node is created for a document
  */
 onAddNode(fn: (node: IPublicModelNode) => void): IPublicTypeDisposable;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 - [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onMountNode
 
-当前 document 新增节点事件，此时节点已经挂载到 document 上
+Event fired when a new node is added to the current document and has been mounted to the document
 
 ```typescript
 /**
- * 当前 document 新增节点事件，此时节点已经挂载到 document 上
+ * Current document node-added event; node is already mounted on the document
  * set callback for event on node is mounted to canvas
  */
 onMountNode(fn: (payload: { node: IPublicModelNode }) => void): IPublicTypeDisposable;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 - [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onRemoveNode
-当前 document 删除节点事件
+
+Event fired when a node is removed from the current document
 
 ```typescript
 /**
- * 当前 document 删除节点事件
+ * Current document node-removed event
  * set callback for event on node is removed
  */
 onRemoveNode(fn: (node: IPublicModelNode) => void): IPublicTypeDisposable;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 - [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
-
 ### onChangeDetecting
 
-当前 document 的 hover 变更事件
+Event fired when hover state changes in the current document
 
 ```typescript
 /**
- * 当前 document 的 hover 变更事件
+ * Current document hover change event
  *
  * set callback for event on detecting changed
  */
 onChangeDetecting(fn: (node: IPublicModelNode) => void): IPublicTypeDisposable;
 ```
 
-相关类型：
+Related types:
+
 - [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 - [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onChangeSelection
 
-当前 document 的选中变更事件
+Event fired when selection changes in the current document
 
 ```typescript
 /**
- * 当前 document 的选中变更事件
+ * Current document selection change event
  * set callback for event on selection changed
  */
 onChangeSelection(fn: (ids: string[]) => void): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+Related types: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onChangeNodeVisible
 
-当前 document 的节点显隐状态变更事件
+Event fired when a node's visibility changes in the current document
 
 ```typescript
 /**
- * 当前 document 的节点显隐状态变更事件
+ * Current document node visibility change event
  * set callback for event on visibility changed for certain node
  * @param fn
  */
 onChangeNodeVisible(fn: (node: IPublicModelNode, visible: boolean) => void): IPublicTypeDisposable;
 ```
 
-- 相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
-- 相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+- Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+- Related types: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onChangeNodeChildren
 
-当前 document 的节点 children 变更事件
+Event fired when a node's children change in the current document
 
 ```typescript
 onChangeNodeChildren(fn: (info?: IPublicTypeOnChangeOptions) => void): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+Related types: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onChangeNodeProp
-当前 document 节点属性修改事件
+
+Event fired when a node property is modified in the current document
 
 ```typescript
 onChangeNodeProp(fn: (info: IPublicTypePropChangeOptions) => void): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+Related types: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 ### onImportSchema
-当前 document 导入新的 schema 事件
+
+Event fired when a new schema is imported into the current document
+
 ```typescript
 /**
  * import schema event
@@ -364,18 +373,21 @@ onChangeNodeProp(fn: (info: IPublicTypePropChangeOptions) => void): IPublicTypeD
  */
 onImportSchema(fn: (schema: IPublicTypeRootSchema) => void): IPublicTypeDisposable;
 ```
-相关类型：
+
+Related types:
+
 - [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 - [IPublicTypeRootSchema](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/root-schema.ts)
 
 **@since v1.0.15**
 
 ### onFocusNodeChanged
-设置聚焦节点变化的回调
+
+Set a callback for when the focused node changes
 
 ```typescript
 /**
- * 设置聚焦节点变化的回调
+ * Set callback for focus node changes
  * triggered focused node is set mannually from plugin
  * @param fn
  * @since v1.1.0
@@ -384,18 +396,21 @@ onFocusNodeChanged(
   fn: (doc: IPublicModelDocumentModel, focusNode: IPublicModelNode) => void,
 ): IPublicTypeDisposable;
 ```
-相关类型：
+
+Related types:
+
 - [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 - [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 **@since v1.1.0**
 
 ### onDropLocationChanged
-设置 DropLocation 变化的回调
+
+Set a callback for when DropLocation changes
 
 ```typescript
 /**
- * 设置 DropLocation 变化的回调
+ * Set callback for DropLocation changes
  * triggered when drop location changed
  * @param fn
  * @since v1.1.0
@@ -403,6 +418,6 @@ onFocusNodeChanged(
 onDropLocationChanged(fn: (doc: IPublicModelDocumentModel) => void): IPublicTypeDisposable;
 ```
 
-相关类型：[IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
+Related types: [IPublicTypeDisposable](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/disposable.ts)
 
 **@since v1.1.0**

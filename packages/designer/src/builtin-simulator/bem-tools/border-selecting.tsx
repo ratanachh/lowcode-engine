@@ -73,9 +73,9 @@ class Toolbar extends Component<{ observed: OffsetObserver }> {
     const MARGIN = 1;
     const BORDER = 2;
     const SPACE_HEIGHT = BAR_HEIGHT + MARGIN + BORDER;
-    const SPACE_MINIMUM_WIDTH = 160; // magic number，大致是 toolbar 的宽度
+    const SPACE_MINIMUM_WIDTH = 160; // magic number, roughly the toolbar width
     let style: any;
-    // 计算 toolbar 的上/下位置
+    // Compute toolbar top/bottom position
     if (observed.top > SPACE_HEIGHT) {
       style = {
         top: -SPACE_HEIGHT,
@@ -92,7 +92,7 @@ class Toolbar extends Component<{ observed: OffsetObserver }> {
         top: Math.max(MARGIN, MARGIN - observed.top),
       };
     }
-    // 计算 toolbar 的左/右位置
+    // Compute toolbar left/right position
     if (SPACE_MINIMUM_WIDTH > observed.left + observed.width) {
       style.left = Math.max(-BORDER, observed.left - width - BORDER);
     } else {

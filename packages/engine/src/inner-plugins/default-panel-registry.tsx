@@ -2,7 +2,7 @@ import { IPublicModelPluginContext } from '@rchh/lowcode-types';
 import { SettingsPrimaryPane } from '@rchh/lowcode-editor-skeleton';
 import DesignerPlugin from '@rchh/lowcode-plugin-designer';
 
-// 注册默认的面板
+// Register default panels
 export const defaultPanelRegistry = (editor: any) => {
   const fun = (ctx: IPublicModelPluginContext) => {
     return {

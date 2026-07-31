@@ -1,5 +1,5 @@
 /**
- * 以下 symbol 均用于在 shell 层对外暴露的模型中存储相应内部模型的 key
+ * The following symbols are keys used on shell-layer public models to store the corresponding internal models
  */
 export const projectSymbol = Symbol('project');
 export const designerSymbol = Symbol('designer');

@@ -19,8 +19,8 @@ const pluginFactory: BuilderComponentPluginFactory<unknown> = () => {
       fileType: FileType.JSX,
       name: COMMON_CHUNK_NAME.ExternalDepsImport,
       content: `
-        // 注意: 出码引擎注入的临时变量默认都以 "__$$" 开头，禁止在搭建的代码中直接访问。
-        // 例外：rax 框架的导出名和各种组件名除外。
+        // Note: temporary variables injected by the code generator start with "__$$"; do not access them directly in designer code.
+        // Exception: rax framework export names and component names.
         import { createElement, Component } from 'rax';
         import { getSearchParams as __$$getSearchParams } from 'rax-app';
       `,

@@ -1,18 +1,21 @@
 ---
 title: StringSetter
 ---
-## 简介
 
-用来展示和修改字符串类型的属性值，不可换行
-## 展示
+## Overview
+
+Displays and edits string property values. Does not support line breaks.
+
+## Display
 
 <img src="https://img.alicdn.com/imgextra/i4/O1CN0102tNBy1eEJIMDVZju_!!6000000003839-2-tps-714-88.png" width="300"/>
 
-## setter 配置
+## Setter Configuration
 
-| 属性名 | 说明 |
-| --- | --- |
-| placeholder | 输入提示 |
+| Property    | Description            |
+| ----------- | ---------------------- |
+| placeholder | Input placeholder text |
 
-## 返回类型
+## Return Type
+
 String

@@ -4,7 +4,7 @@ import { IPublicModelPreference } from './';
 export interface IPublicModelEngineConfig {
 
   /**
-   * 判断指定 key 是否有值
+   * Check whether a specified key has a value
    * check if config has certain key configed
    * @param key
    * @returns
@@ -12,7 +12,7 @@ export interface IPublicModelEngineConfig {
   has(key: string): boolean;
 
   /**
-   * 获取指定 key 的值
+   * Get the value of a specified key
    * get value by key
    * @param key
    * @param defaultValue
@@ -21,7 +21,7 @@ export interface IPublicModelEngineConfig {
   get(key: string, defaultValue?: any): any;
 
   /**
-   * 设置指定 key 的值
+   * Set the value of a specified key
    * set value for certain key
    * @param key
    * @param value
@@ -29,15 +29,15 @@ export interface IPublicModelEngineConfig {
   set(key: string, value: any): void;
 
   /**
-   * 批量设值，set 的对象版本
+   * Batch set values; object form of set
    * set multiple config key-values
    * @param config
    */
   setConfig(config: { [key: string]: any }): void;
 
   /**
-   * 获取指定 key 的值，若此时还未赋值，则等待，若已有值，则直接返回值
-   *  注：此函数返回 Promise 实例，只会执行（fullfill）一次
+   * Get the value of a key; wait if not yet set, otherwise return immediately
+   *  Note: returns a Promise that fulfills only once
    * wait until value of certain key is set, will only be
    * triggered once.
    * @param key
@@ -46,7 +46,7 @@ export interface IPublicModelEngineConfig {
   onceGot(key: string): Promise<any>;
 
   /**
-   * 获取指定 key 的值，函数回调模式，若多次被赋值，回调会被多次调用
+   * Get the value of a key in callback mode; called again on each assignment
    * set callback for event of value set for some key
    * this will be called each time the value is set
    * @param key
@@ -56,7 +56,7 @@ export interface IPublicModelEngineConfig {
   onGot(key: string, fn: (data: any) => void): IPublicTypeDisposable;
 
   /**
-   * 获取全局 Preference, 用于管理全局浏览器侧用户 Preference，如 Panel 是否钉住
+   * Get global Preference for browser-side user preferences, e.g. whether a Panel is pinned
    * get global user preference manager, which can be use to store
    * user`s preference in user localstorage, such as a panel is pinned or not.
    * @returns {IPublicModelPreference}

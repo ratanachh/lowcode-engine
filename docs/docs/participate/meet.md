@@ -1,55 +1,55 @@
 ---
-title: 开源社区例会
+title: Open Source Community Meetings
 sidebar_position: 0
 ---
 
-## **简介**
+## **Introduction**
 
-低代码引擎开源社区致力于共同推动低代码技术的发展和创新。本社区汇集了低代码技术领域的开发者、技术专家和行业观察者，通过定期的例会来交流思想、分享经验、讨论新技术，并探索低代码技术的未来发展方向。
+The Low-Code Engine open source community is dedicated to advancing low-code technology through collaboration. The community brings together developers, technical experts, and industry observers in low-code. Regular meetings are used to exchange ideas, share experience, discuss new technology, and explore the future of low-code.
 
-## 参与要求
+## Participation Requirements
 
-为了确保例会的质量和效果，我们建议以下人员参加：
+To keep meetings productive, we suggest the following people attend:
 
-- **已参与低代码引擎贡献的成员**：那些对低代码引擎有实际贡献的社区成员。
-- **参考贡献指南**：可查阅[贡献指南](https://lowcode-engine.cn/site/docs/participate/)获取更多信息。
-- **提供过优秀建议的成员**：那些在过去为低代码引擎提供过有价值建议的成员。
+- **Members who have contributed to the Low-Code Engine**: Community members with hands-on contributions to the engine.
+- **Refer to the contribution guide**: See the [contribution guide](https://lowcode-engine.cn/site/docs/participate/) for more information.
+- **Members who have provided valuable suggestions**: Those who have offered useful feedback or ideas for the Low-Code Engine in the past.
 
-## **时间周期**
+## **Schedule**
 
-- **周期性**：月例会
+- **Frequency**: Monthly meetings
 
-### **特别说明**
+### **Notes**
 
-- 例会周期可根据成员反馈进行调整。如果讨论的议题较多，可增加例会频率；若议题较少，单次例会可能取消。若多次取消，可能会暂停例会。
+- Meeting frequency may change based on member feedback. If there are many topics, meetings may be held more often; if there are few, a meeting may be canceled. Repeated cancellations may pause the series.
 
-## **例会流程**
+## **Meeting Process**
 
-### **准备阶段**
+### **Preparation**
 
-- **定期确定议题**：会前一周确定下一次会议的议题。
-- **分发会议通知**：提前发送会议时间、议程和参与方式。
+- **Set topics in advance**: Topics for the next meeting are decided one week ahead.
+- **Send meeting notices**: Share time, agenda, and how to join before the meeting.
 
-### **会议阶段**
+### **During the Meeting**
 
-- **开场和介绍**：简短开场和自我介绍，特别是新成员加入时。
-- **议题讨论**：按照议程进行议题讨论，每个议题分配一定时间，并留足够时间供讨论和提问。
-- **记录要点和决定**：记录讨论要点、决策和任何行动事项。
+- **Opening and introductions**: Brief opening and self-introductions, especially when new members join.
+- **Topic discussion**: Follow the agenda; allocate time per topic and leave room for discussion and questions.
+- **Record key points and decisions**: Capture discussion highlights, decisions, and action items.
 
-### **后续阶段**
+### **Follow-Up**
 
-- **分享会议纪要**：会后将会议纪要和行动计划分发给所有成员。
-- **执行和跟进**：根据会议中的讨论和决策执行相关任务，并在下次会议中进行跟进汇报。
+- **Share meeting notes**: Distribute notes and action plans to all members after the meeting.
+- **Execute and follow up**: Carry out tasks from the meeting and report progress at the next meeting.
 
-## **开源例会议题**
+## **Open Meeting Topics**
 
-开源例会议题包括但不限于：
+Open meeting topics include, but are not limited to:
 
-- **共建低代码行业发展**：探讨通过开源社区合作加速低代码行业发展。
-- **改进建议和反馈收集**：讨论社区成员对低代码引擎的使用体验和改进建议。
-- **前端技术与低代码的结合**：针对前端开发者，讨论将前端技术与低代码引擎结合的方式。
-- **低代码业务场景和经验分享**：邀请社区成员分享低代码引擎的实际应用经验。
-- **低代码技术原理介绍**：深入理解低代码引擎的技术原理和实现方式。
-- **低代码引擎的最新进展**：分享低代码引擎的最新进展，包括新版本发布和新功能实现等。
-- **低代码技术的未来展望**：讨论低代码技术的未来发展方向。
-- **最新低代码平台功能和趋势分析**：分享和讨论当前低代码平台的新功能、趋势和发展方向。
+- **Building the low-code industry together**: How open source collaboration can accelerate low-code development.
+- **Improvement suggestions and feedback**: Community experience with the Low-Code Engine and ideas for improvement.
+- **Frontend technology and low-code**: For frontend developers, how to combine frontend tech with the Low-Code Engine.
+- **Low-code use cases and experience sharing**: Community members sharing real-world applications of the engine.
+- **Low-code technical principles**: Deeper understanding of how the Low-Code Engine works.
+- **Latest progress on the Low-Code Engine**: New releases, features, and other updates.
+- **Future of low-code technology**: Directions for low-code development.
+- **Latest low-code platform features and trends**: New capabilities, trends, and directions on current low-code platforms.

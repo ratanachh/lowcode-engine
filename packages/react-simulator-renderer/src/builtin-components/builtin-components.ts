@@ -5,150 +5,150 @@ const supportedEvents = [
   // MouseEvents
   {
     name: 'onClick',
-    description: '点击时',
+    description: 'On click',
   },
   {
     name: 'onDoubleClick',
-    description: '双击时',
+    description: 'On double click',
   },
   {
     name: 'onMouseDown',
-    description: '鼠标按下',
+    description: 'Mouse down',
   },
   {
     name: 'onMouseEnter',
-    description: '鼠标进入',
+    description: 'Mouse enter',
   },
   {
     name: 'onMouseMove',
-    description: '鼠标移动',
+    description: 'Mouse move',
   },
   {
     name: 'onMouseOut',
-    description: '鼠标移出',
+    description: 'Mouse out',
   },
   {
     name: 'onMouseOver',
-    description: '鼠标悬停',
+    description: 'Mouse over',
   },
   {
     name: 'onMouseUp',
-    description: '鼠标松开',
+    description: 'Mouse up',
   },
   // Focus Events
   {
     name: 'onFocus',
-    description: '获得焦点',
+    description: 'On focus',
     snippet: '',
   },
   {
     name: 'onBlur',
-    description: '失去焦点',
+    description: 'On blur',
     snippet: '',
   },
   // Form Events
   {
     name: 'onChange',
-    description: '值改变时',
+    description: 'On change',
     snippet: '',
   },
   {
     name: 'onSelect',
-    description: '选择',
+    description: 'On select',
   },
   {
     name: 'onInput',
-    description: '输入',
+    description: 'On input',
     snippet: '',
   },
   {
     name: 'onReset',
-    description: '重置',
+    description: 'On reset',
     snippet: '',
   },
   {
     name: 'onSubmit',
-    description: '提交',
+    description: 'On submit',
     snippet: '',
   },
   // Clipboard Events
   {
     name: 'onCopy',
-    description: '复制',
+    description: 'On copy',
     snippet: '',
   },
   {
     name: 'onCut',
-    description: '剪切',
+    description: 'On cut',
     snippet: '',
   },
   {
     name: 'onPaste',
-    description: '粘贴',
+    description: 'On paste',
     snippet: '',
   },
 
   // Keyboard Events
   {
     name: 'onKeyDown',
-    description: '键盘按下',
+    description: 'Key down',
     snippet: '',
   },
   {
     name: 'onKeyPress',
-    description: '键盘按下并释放',
+    description: 'Key press',
     snippet: '',
   },
   {
     name: 'onKeyUp',
-    description: '键盘松开',
+    description: 'Key up',
     snippet: '',
   },
   // Touch Events
   {
     name: 'onTouchCancel',
-    description: '触摸退出',
+    description: 'Touch cancel',
     snippet: '',
   },
   {
     name: 'onTouchEnd',
-    description: '触摸结束',
+    description: 'Touch end',
     snippet: '',
   },
   {
     name: 'onTouchMove',
-    description: '触摸移动',
+    description: 'Touch move',
     snippet: '',
   },
   {
     name: 'onTouchStart',
-    description: '触摸开始',
+    description: 'Touch start',
     snippet: '',
   },
   // UI Events
   {
     name: 'onScroll',
-    description: '滚动',
+    description: 'On scroll',
     snippet: '',
   },
   {
     name: 'onLoad',
-    description: '加载完毕',
+    description: 'On load',
     snippet: '',
   },
   {
     name: 'onWheel',
-    description: '滚轮事件',
+    description: 'On wheel',
     snippet: '',
   },
   // Animation Events
   {
     name: 'onAnimationStart',
-    description: '动画开始',
+    description: 'Animation start',
   },
   {
     name: 'onAnimationEnd',
-    description: '动画结束',
+    description: 'Animation end',
   },
 ];
 

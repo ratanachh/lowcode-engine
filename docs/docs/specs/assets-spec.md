@@ -1,108 +1,109 @@
 ---
-title: 《低代码引擎资产包协议规范》
+title: Low-Code Engine Assets Package Protocol Specification
 sidebar_position: 2
 ---
-## 1 介绍
 
-### 1.1 本协议规范涉及的问题域
+## 1 Introduction
 
-- 定义本协议版本号规范
-- 定义本协议中每个子规范需要被支持的 Level
-- 定义本协议相关的领域名词
-- 定义低代码资产包协议版本号规范（A）
-- 定义低代码资产包协议组件及依赖资源描述规范（A）
-- 定义低代码资产包协议组件描述资源加载规范（A）
-- 定义低代码资产包协议组件在面板展示规范（AA）
+### 1.1 Problem Domain Covered by This Protocol Specification
 
-### 1.2 协议草案起草人
+- Define the version numbering convention for this protocol
+- Define the Level that each sub-specification in this protocol must support
+- Define domain terminology related to this protocol
+- Define the low-code assets package protocol version numbering specification (A)
+- Define the low-code assets package protocol component and dependency resource description specification (A)
+- Define the low-code assets package protocol component description resource loading specification (A)
+- Define the low-code assets package protocol component panel display specification (AA)
 
-- 撰写：金禅、璿玑、彼洋
-- 审阅：力皓、絮黎、光弘、戊子、潕量、游鹿
+### 1.2 Protocol Draft Authors
 
-### 1.3 版本号
+- Authors: Jinchán, Xuánjī, Bǐyáng
+- Reviewers: Lìhào, Xùlí, Guānghóng, Wùzǐ, Wǔliàng, Yóulù
+
+### 1.3 Version Number
 
 1.1.0
 
-### 1.4 协议版本号规范（A）
+### 1.4 Protocol Version Numbering Specification (A)
 
-本协议采用语义版本号，版本号格式为 `major.minor.patch` 的形式。
+This protocol uses semantic versioning. The version number format is `major.minor.patch`.
 
-- major 是大版本号：用于发布不向下兼容的协议格式修改
-- minor 是小版本号：用于发布向下兼容的协议功能新增
-- patch 是补丁号：用于发布向下兼容的协议问题修正
+- major is the major version number: used to release protocol format changes that are not backward compatible
+- minor is the minor version number: used to release backward-compatible protocol feature additions
+- patch is the patch number: used to release backward-compatible protocol bug fixes
 
-### 1.5 协议中子规范 Level 定义
+### 1.5 Sub-Specification Level Definitions in the Protocol
 
-| 规范等级 | 实现要求                                                     |
-| -------- | ------------------------------------------------------------ |
-| A        | 基础规范，低代码引擎核心层支持；                             |
-| AA       | 推荐规范，由低代码引擎官方插件、setter 支持。                |
-| AAA      | 参考规范，需由基于引擎的上层搭建平台支持，实现可参考该规范。 |
+| Specification Level | Implementation Requirements                                                                                                                      |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| A                   | Basic specification; supported by the low-code engine core layer                                                                                 |
+| AA                  | Recommended specification; supported by official low-code engine plugins and setters                                                             |
+| AAA                 | Reference specification; must be supported by upper-layer building platforms based on the engine; implementation may refer to this specification |
 
-### 1.6 名词术语
+### 1.6 Terminology
 
-- **资产包**: 低代码引擎加载资源的动态数据集合，主要包含组件及其依赖的资源、组件低代码描述、动态插件/设置器资源等。
+- **Assets package**: A dynamic data collection of resources loaded by the low-code engine, mainly including components and their dependent resources, low-code component descriptions, dynamic plugin/setter resources, etc.
 
-### 1.7 背景
+### 1.7 Background
 
-根据低代码引擎的实现，一个组件要在引擎上渲染和配置，需要提供组件的 umd 资源以及组件的`低代码描述`，并且组件通常都是以集合的形式被引擎消费的；除了组件之外，还有组件的依赖资源、引擎的动态插件/设置器等资源也需要注册到引擎中；因此我们定义了“低代码资产包”这个数据结构，来描述引擎所需加载的动态资源的集合。
+Based on the implementation of the low-code engine, for a component to be rendered and configured on the engine, it needs to provide the component's UMD resources and the component's `low-code description`. Components are usually consumed by the engine as a collection. In addition to components, dependent resources of components, dynamic plugins/setters of the engine, and other resources also need to be registered in the engine. Therefore, we define the "low-code assets package" data structure to describe the collection of dynamic resources that the engine needs to load.
 
-### 1.8 受众
+### 1.8 Audience
 
-本协议适用于使用“低代码引擎”构建搭建平台的开发者，通过本协议的定义来进行资源的分类和加载。阅读及使用本协议，需要对低代码搭建平台的交互和实现有一定的了解，对前端开发相关技术栈的熟悉也会有帮助，协议中对通用的前端相关术语不会做进一步的解释说明。
+This protocol is intended for developers building building platforms using the "low-code engine". Through the definitions in this protocol, resources are categorized and loaded. Reading and using this protocol requires a certain understanding of the interaction and implementation of low-code building platforms. Familiarity with frontend development technology stacks will also be helpful. This protocol does not provide further explanation of common frontend-related terminology.
 
-## 2 协议结构
+## 2 Protocol Structure
 
-协议最顶层结构如下，包含 7 方面的描述内容：
+The top-level structure of the protocol is as follows, containing 7 aspects of descriptive content:
 
-- version { String } 当前协议版本号
-- packages { Array } 低代码编辑器中加载的资源列表
-- components { Array } 所有组件的描述协议列表
-- sort { Object } 用于描述组件面板中的 tab 和 category
-- plugins { Array } 设计器插件描述协议列表
-- setters { Array } 设计器中设置器描述协议列表
-- extConfig { Object } 平台自定义扩展字段
+- version { String } Current protocol version number
+- packages { Array } List of resources loaded in the low-code editor
+- components { Array } List of description protocols for all components
+- sort { Object } Used to describe tabs and categories in the component panel
+- plugins { Array } List of designer plugin description protocols
+- setters { Array } List of designer setter description protocols
+- extConfig { Object } Platform custom extension fields
 
 ### 2.1 version (A)
 
-定义当前协议 schema 的版本号；
+Defines the version number of the current protocol schema;
 
-| 根属性名称 | 类型   | 说明       | 变量支持 | 默认值 |
-| ---------- | ------ | ---------- | -------- | ------ |
-| version    | String | 协议版本号 | -        | 1.1.0  |
+| Root Property Name | Type   | Description             | Variable Support | Default Value |
+| ------------------ | ------ | ----------------------- | ---------------- | ------------- |
+| version            | String | Protocol version number | -                | 1.1.0         |
 
 ### 2.2 packages (A)
 
-定义低代码编辑器中加载的资源列表，包含公共库和组件 (库) cdn 资源等；
+Defines the list of resources loaded in the low-code editor, including common libraries and component (library) CDN resources, etc.;
 
-| 字段                 | 字段描述                                                        | 字段类型      | 规范等级 | 备注                                                                                                     |
-| -------------------- | --------------------------------------------------------------- | ------------- | -------- | -------------------------------------------------------------------------------------------------------- |
-| packages[].id?       | 资源唯一标识                                                    | String        | A        | 资源唯一标识，如果为空，则以 package 为唯一标识                                                          |
-| packages[].title?    | 资源标题                                                        | String        | A        | 资源标题                                                                                                 |
-| packages[].package   | npm 包名                                                        | String        | A        | 组件资源唯一标识                                                                                         |
-| packages[].version   | npm 包版本号                                                    | String        | A        | 组件资源版本号                                                                                           |
-| packages[].type      | 资源包类型                                                      | String        | AA       | 取值为: proCode（源码）、lowCode（低代码，默认为 proCode                                                 |
-| packages[].schema    | 低代码组件 schema 内容                                          | object        | AA       | 取值为: proCode（源码）、lowCode（低代码）                                                               |
-| packages[].deps      | 当前资源包的依赖资源的唯一标识列表                              | Array<String\> | A        | 唯一标识为 id 或者 package 对应的值                                                                      |
-| packages[].library   | 作为全局变量引用时的名称，用来定义全局变量名                    | String        | A        | 低代码引擎通过该字段获取组件实例                                                                         |
-| packages[].editUrls  | 组件编辑态视图打包后的 CDN url 列表，包含 js 和 css             | Array<String\> | A        | 低代码引擎编辑器会加载这些 url                                                                           |
-| packages[].urls      | 组件渲染态视图打包后的 CDN url 列表，包含 js 和 css             | Array<String\> | AA       | 低代码引擎渲染模块会加载这些 url                                                                         |
-| packages[].advancedEditUrls | 组件多个编辑态视图打包后的 CDN url 列表集合，包含 js 和 css     | Object        | AAA      | 上层平台根据特定标识提取某个编辑态的资源，低代码引擎编辑器会加载这些资源，优先级高于 packages[].editUrls |
-| packages[].advancedUrls     | 组件多个端的渲染态视图打包后的 CDN url 列表集合，包含 js 和 css | Object        | AAA      | 上层平台根据特定标识提取某个渲染态的资源， 低代码引擎渲染模块会加载这些资源，优先级高于 packages[].urls  |
-| packages[].external  | 当前资源在作为其他资源的依赖，在其他依赖打包时时是否被排除了(同 webpack 中 external 概念)                            | Boolean       | AAA      | 某些资源会被单独提取出来，是其他依赖的前置依赖，根据这个字段决定是否提前加载该资源                       |
-| packages[].loadEnv   | 指定当前资源加载的环境                                          | Array<String\> | AAA      | 主要用于指定 external 资源加载的环境，取值为 design(设计态)、runtime(预览态) 中的一个或多个               |
-| packages[].exportSourceId     | 标识当前 package 内容是从哪个 package 导出来的   | String | AAA       | 此时 urls 无效 |
-| packages[].exportSourceLibrary     | 标识当前 package 是从 window 上的哪个属性导出来的   | String | AAA       | exportSourceId 的优先级高于exportSourceLibrary ,此时 urls 无效 |
-| packages[].async     | 标识当前 package 资源加载在 window.library 上的是否是一个异步对象   | Boolean | A       | async 为 true 时，需要通过 await 才能拿到真正内容 |
-| packages[].exportMode     | 标识当前 package 从其他 package 的导出方式   | String | A       | 目前只支持 `"functionCall"`, exportMode等于 `"functionCall"` 时，当前package 的内容以函数的方式从其他 package 中导出，具体导出接口如: (library: string, packageName: string, isRuntime?: boolean) => any | Promise<any\>, library 为当前 package 的 library, packageName 为当前的包名，返回值为当前 package 的导出内容  |
+| Field                          | Field Description                                                                                                                                            | Field Type     | Specification Level | Notes                                                                                                                                                                                                                                                              |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| packages[].id?                 | Unique resource identifier                                                                                                                                   | String         | A                   | Unique resource identifier; if empty, package is used as the unique identifier                                                                                                                                                                                     |
+| packages[].title?              | Resource title                                                                                                                                               | String         | A                   | Resource title                                                                                                                                                                                                                                                     |
+| packages[].package             | npm package name                                                                                                                                             | String         | A                   | Unique identifier for component resources                                                                                                                                                                                                                          |
+| packages[].version             | npm package version number                                                                                                                                   | String         | A                   | Component resource version number                                                                                                                                                                                                                                  |
+| packages[].type                | Resource package type                                                                                                                                        | String         | AA                  | Values: proCode (source code), lowCode (low-code; default is proCode)                                                                                                                                                                                              |
+| packages[].schema              | Low-code component schema content                                                                                                                            | object         | AA                  | Values: proCode (source code), lowCode (low-code)                                                                                                                                                                                                                  |
+| packages[].deps                | List of unique identifiers of dependency resources for the current resource package                                                                          | Array<String\> | A                   | Unique identifier is the value corresponding to id or package                                                                                                                                                                                                      |
+| packages[].library             | Name when referenced as a global variable; used to define the global variable name                                                                           | String         | A                   | The low-code engine obtains the component instance through this field                                                                                                                                                                                              |
+| packages[].editUrls            | List of CDN URLs for the component edit-mode view bundle, including js and css                                                                               | Array<String\> | A                   | The low-code engine editor loads these URLs                                                                                                                                                                                                                        |
+| packages[].urls                | List of CDN URLs for the component render-mode view bundle, including js and css                                                                             | Array<String\> | AA                  | The low-code engine rendering module loads these URLs                                                                                                                                                                                                              |
+| packages[].advancedEditUrls    | Collection of CDN URL lists for multiple edit-mode view bundles of the component, including js and css                                                       | Object         | AAA                 | The upper-layer platform extracts edit-mode resources by specific identifier; the low-code engine editor loads these resources, with higher priority than packages[].editUrls                                                                                      |
+| packages[].advancedUrls        | Collection of CDN URL lists for multi-end render-mode view bundles of the component, including js and css                                                    | Object         | AAA                 | The upper-layer platform extracts render-mode resources by specific identifier; the low-code engine rendering module loads these resources, with higher priority than packages[].urls                                                                              |
+| packages[].external            | Whether the current resource is excluded when used as a dependency of other resources during other dependency bundling (same concept as external in webpack) | Boolean        | AAA                 | Some resources are extracted separately as prerequisite dependencies of other dependencies; this field determines whether to load the resource in advance                                                                                                          |
+| packages[].loadEnv             | Specifies the environment in which the current resource is loaded                                                                                            | Array<String\> | AAA                 | Mainly used to specify the loading environment for external resources; values are one or more of design (design mode) and runtime (preview mode)                                                                                                                   |
+| packages[].exportSourceId      | Identifies which package the current package content is exported from                                                                                        | String         | AAA                 | urls is invalid in this case                                                                                                                                                                                                                                       |
+| packages[].exportSourceLibrary | Identifies which property on window the current package is exported from                                                                                     | String         | AAA                 | exportSourceId has higher priority than exportSourceLibrary; urls is invalid in this case                                                                                                                                                                          |
+| packages[].async               | Indicates whether the resource loaded on window.library for the current package is an asynchronous object                                                    | Boolean        | A                   | When async is true, the actual content must be obtained via await                                                                                                                                                                                                  |
+| packages[].exportMode          | Indicates the export mode of the current package from other packages                                                                                         | String         | A                   | Currently only supports `"functionCall"`. When exportMode equals `"functionCall"`, the current package content is exported from other packages as a function. The specific export interface is: (library: string, packageName: string, isRuntime?: boolean) => any | Promise<any\>, where library is the library of the current package, packageName is the current package name, and the return value is the exported content of the current package |
 
-描述举例：
+Example:
 
 ```json
 {
   "packages": [
     {
-      "title": "fusion 组件库",
+      "title": "Fusion component library",
       "package": "@alifd/next",
       "version": "1.23.0",
       "urls": [
@@ -112,7 +113,7 @@ sidebar_position: 2
       "library": "Next"
     },
     {
-      "title": "Fusion 精品组件库",
+      "title": "Fusion premium component library",
       "package": "@alife/fusion-ui",
       "version": "0.1.5",
       "editUrls": [
@@ -126,7 +127,7 @@ sidebar_position: 2
       "library": "FusionUI"
     },
     {
-      "title": "低代码组件 A",
+      "title": "Low-code component A",
       "id": "lcc-a",
       "version": "0.1.5",
       "type": "lowCode",
@@ -152,7 +153,7 @@ sidebar_position: 2
         "componentsTree": [
           {
             "defaultProps": {
-              "content": "这是默认值"
+              "content": "This is the default value"
             },
             "methods": {
               "__initMethods__": {
@@ -181,7 +182,7 @@ sidebar_position: 2
                         "behavior": "NORMAL",
                         "content": {
                           "en-US": "Title",
-                          "zh-CN": "页面标题",
+                          "zh-CN": "Page title",
                           "type": "i18n"
                         },
                         "__style__": {},
@@ -192,7 +193,7 @@ sidebar_position: 2
                   "componentName": "Slot",
                   "props": {
                     "slotName": "mobileSlot",
-                    "slotTitle": "mobile 容器"
+                    "slotTitle": "mobile container"
                   }
                 }
               },
@@ -217,7 +218,7 @@ sidebar_position: 2
                     "value": {
                       "use": "zh-CN",
                       "en-US": "Tips content",
-                      "zh-CN": "这是一个低代码组件",
+                      "zh-CN": "This is a low-code component",
                       "type": "i18n"
                     }
                   },
@@ -227,9 +228,9 @@ sidebar_position: 2
             ],
             "propTypes": [
               {
-                "defaultValue": "这是默认值",
+                "defaultValue": "This is the default value",
                 "name": "content",
-                "title": "文本内容",
+                "title": "Text content",
                 "type": "string"
               }
             ],
@@ -242,7 +243,7 @@ sidebar_position: 2
       "library": "LCCA"
     },
     {
-      "title": "多端组件库",
+      "title": "Multi-end component library",
       "package": "@ali/atest1",
       "version": "1.23.0",
       "advancedUrls": {
@@ -272,25 +273,25 @@ sidebar_position: 2
       "library": "Atest1"
     },
     {
-      "library":"UiPaaSServerless3",
-      "advancedUrls":{
-          "default":[
-              "https://g.alicdn.com/legao-comp/serverless3/1.1.0/env-staging-d224466e-0614-497d-8cd5-e4036dc50b70/main.js"
-          ]
+      "library": "UiPaaSServerless3",
+      "advancedUrls": {
+        "default": [
+          "https://g.alicdn.com/legao-comp/serverless3/1.1.0/env-staging-d224466e-0614-497d-8cd5-e4036dc50b70/main.js"
+        ]
       },
-      "id":"UiPaaSServerless3-view",
-      "type":"procode",
-      "version":"1.0.0"
+      "id": "UiPaaSServerless3-view",
+      "type": "procode",
+      "version": "1.0.0"
     },
     {
-      "package":"react-color",
-      "library":"ReactColor",
-      "id":"react-color",
-      "type":"procode",
-      "version":"2.19.3",
-      "async":true,
-      "exportMode":"functionCall",
-      "exportSourceId":"UiPaaSServerless3-view"
+      "package": "react-color",
+      "library": "ReactColor",
+      "id": "react-color",
+      "type": "procode",
+      "version": "2.19.3",
+      "async": true,
+      "exportMode": "functionCall",
+      "exportSourceId": "UiPaaSServerless3-view"
     }
   ]
 }
@@ -298,90 +299,90 @@ sidebar_position: 2
 
 ### 2.3 components (A)
 
-定义资产包中包含的所有组件的低代码描述的集合，分为“ComponentDescription”和“RemoteComponentDescription”(详见 2.6 TypeScript 定义)：
+Defines the collection of low-code descriptions for all components included in the assets package, divided into "ComponentDescription" and "RemoteComponentDescription" (see Section 2.6 TypeScript definitions for details):
 
-- ComponentDescription: 符合“组件描述协议”的数据，详见物料规范中`2.2.2 组件描述协议`部分；
-- RemoteComponentDescription 是将一个或多个 ComponentDescription 构建打包的 js 资源的描述，在浏览器中加载该资源后可获取到其中包含的每个组件的 ComponentDescription 的具体内容；
+- ComponentDescription: Data conforming to the "component description protocol"; see the `2.2.2 Component Description Protocol` section in the material specification for details;
+- RemoteComponentDescription: A description of js resources that bundle one or more ComponentDescriptions. After loading this resource in the browser, the specific content of each ComponentDescription contained therein can be obtained;
 
 ### 2.4 sort (AA)
 
-定义组件列表分组
+Defines component list grouping
 
-| 根属性名称        | 类型     | 说明                                                                                         | 变量支持 | 默认值                                   |
-| ----------------- | -------- | -------------------------------------------------------------------------------------------- | -------- | ---------------------------------------- |
-| sort.groupList    | String[] | 组件分组，用于组件面板 tab 展示                                                              | -        | ['精选组件', '原子组件']                 |
-| sort.categoryList | String[] | 组件面板中同一个 tab 下的不同区间用 category 区分，category 的排序依照 categoryList 顺序排列 | -        | ['通用', '数据展示', '表格类', '表单类'] |
+| Root Property Name | Type     | Description                                                                                                                                  | Variable Support | Default Value                                    |
+| ------------------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------ |
+| sort.groupList     | String[] | Component groups, used for component panel tab display                                                                                       | -                | `['Featured Components', 'Atomic Components']`   |
+| sort.categoryList  | String[] | Different sections under the same tab in the component panel are distinguished by category; category ordering follows the categoryList order | -                | `['General', 'Data Display', 'Tables', 'Forms']` |
 
 ### 2.5 plugins (AAA)
 
-自定义设计器插件列表
+Custom designer plugin list
 
-| 根属性名称            | 类型      | 说明                 | 变量支持 | 默认值 |
-| --------------------- | --------- | -------------------- | -------- | ------ |
-| plugins[].name        | String    | 插件名称             | -        | -      |
-| plugins[].title       | String    | 插件标题             | -        | -      |
-| plugins[].description | String    | 插件描述             | -        | -      |
-| plugins[].docUrl      | String    | 插件文档地址         | -        | -      |
-| plugins[].screenshot  | String    | 插件截图地址         | -        | -      |
-| plugins[].tags        | String[]  | 插件标签分类         | -        | -      |
-| plugins[].keywords    | String[]  | 插件检索关键字       | -        | -      |
-| plugins[].reference   | Reference | 插件引用的资源包信息 | -        | -      |
+| Root Property Name    | Type      | Description                                           | Variable Support | Default Value |
+| --------------------- | --------- | ----------------------------------------------------- | ---------------- | ------------- |
+| plugins[].name        | String    | Plugin name                                           | -                | -             |
+| plugins[].title       | String    | Plugin title                                          | -                | -             |
+| plugins[].description | String    | Plugin description                                    | -                | -             |
+| plugins[].docUrl      | String    | Plugin documentation URL                              | -                | -             |
+| plugins[].screenshot  | String    | Plugin screenshot URL                                 | -                | -             |
+| plugins[].tags        | String[]  | Plugin tag categories                                 | -                | -             |
+| plugins[].keywords    | String[]  | Plugin search keywords                                | -                | -             |
+| plugins[].reference   | Reference | Resource package information referenced by the plugin | -                | -             |
 
 ### 2.6 setters (AAA)
 
-自定义设置器列表
+Custom setter list
 
-| 根属性名称            | 类型      | 说明                   | 变量支持 | 默认值 |
-| --------------------- | --------- | ---------------------- | -------- | ------ |
-| setters[].name        | String    | 设置器组件名称         | -        | -      |
-| setters[].title       | String    | 设置器标题             | -        | -      |
-| setters[].description | String    | 设置器描述             | -        | -      |
-| setters[].docUrl      | String    | 设置器文档地址         | -        | -      |
-| setters[].screenshot  | String    | 设置器截图地址         | -        | -      |
-| setters[].tags        | String[]  | 设置器标签分类         | -        | -      |
-| setters[].keywords    | String[]  | 设置器检索关键字       | -        | -      |
-| setters[].reference   | Reference | 设置器引用的资源包信息 | -        | -      |
+| Root Property Name    | Type      | Description                                           | Variable Support | Default Value |
+| --------------------- | --------- | ----------------------------------------------------- | ---------------- | ------------- |
+| setters[].name        | String    | Setter component name                                 | -                | -             |
+| setters[].title       | String    | Setter title                                          | -                | -             |
+| setters[].description | String    | Setter description                                    | -                | -             |
+| setters[].docUrl      | String    | Setter documentation URL                              | -                | -             |
+| setters[].screenshot  | String    | Setter screenshot URL                                 | -                | -             |
+| setters[].tags        | String[]  | Setter tag categories                                 | -                | -             |
+| setters[].keywords    | String[]  | Setter search keywords                                | -                | -             |
+| setters[].reference   | Reference | Resource package information referenced by the setter | -                | -             |
 
 ### 2.7 extConfig (AAA)
 
-定义平台相关的扩展内容，用于存放平台自身实现的一些私有协议，以允许存量平台能够平滑地迁移至标准协议。extConfig 是一个 key-value 结构的对象，协议不会规定 extConfig 中的字段名称以及类型，完全自定义
+Defines platform-related extension content, used to store private protocols implemented by the platform itself, allowing existing platforms to migrate smoothly to the standard protocol. extConfig is a key-value object structure. The protocol does not specify field names or types in extConfig; they are fully customizable.
 
-### 2.8 TypeScript 定义
+### 2.8 TypeScript Definitions
 
-_组件低代码描述相关部分字段含义详见物料规范中`2.2.2 组件描述协议`部分；_
+_For the meaning of fields related to component low-code descriptions, see the `2.2.2 Component Description Protocol` section in the material specification;_
 
 ```TypeScript
 
 /**
- * 资产包协议
+ * Assets package protocol
  */
 export interface Assets {
   /**
-   * 资产包协议版本号
+   * Assets package protocol version number
    */
   version: string;
   /**
-   * 资源列表
+   * Resource list
    */
   packages?: Array<Package>;
   /**
-   * 所有组件的描述协议集合
+   * Collection of description protocols for all components
    */
   components: Array<ComponentDescription|RemoteComponentDescription>;
   /**
-   * 低代码编辑器插件集合
+   * Low-code editor plugin collection
    */
   plugins?: Array<PluginDescription>;
   /**
-   * 低代码设置器集合
+   * Low-code setter collection
    */
   setters?: Array<SetterDescription>;
   /**
-   * 平台扩展配置
+   * Platform extension configuration
    */
   extConfig?: AssetsExtConfig;
   /**
-   * 用于描述组件面板中的 tab 和 category
+   * Used to describe tabs and categories in the component panel
    */
   sort: ComponentSort;
 }
@@ -391,218 +392,218 @@ export interface AssetsExtConfig{
 }
 
 /**
- * 描述组件面板中的 tab 和 category 排布
+ * Describes tab and category layout in the component panel
  */
 export interface ComponentSort {
   /**
-   * 用于描述组件面板的 tab 项及其排序，例如：["精选组件", "原子组件"]
+   * Describes tab items and their ordering in the component panel, e.g.: ["Featured Components", "Atomic Components"]
    */
   groupList?: String[];
   /**
-   * 组件面板中同一个 tab 下的不同区间用 category 区分，category 的排序依照 categoryList 顺序排列；
+   * Different sections under the same tab in the component panel are distinguished by category; category ordering follows the categoryList order;
    */
   categoryList?: String[];
 }
 
 /**
- * 定义资产包依赖信息
+ * Defines assets package dependency information
  */
 export interface Package {
   /**
-   * 唯一标识
+   * Unique identifier
    */
   id: string;
   /**
-   * 包名
+   * Package name
    */
   package: string;
   /**
-   * 包版本号
+   * Package version number
    */
   version: string;
   /**
-   * 资源类型
+   * Resource type
    */
   type: string;
   /**
-   * 组件渲染态视图打包后的 CDN url 列表，包含 js 和 css
+   * List of CDN URLs for the component render-mode view bundle, including js and css
    */
   urls?: string[] | any;
   /**
-   * 组件多个渲染态视图打包后的 CDN url 列表，包含 js 和 css，优先级高于 urls
+   * List of CDN URLs for multiple render-mode view bundles of the component, including js and css; higher priority than urls
    */
   advancedUrls?: ComplexUrls;
   /**
-   * 组件编辑态视图打包后的 CDN url 列表，包含 js 和 css
+   * List of CDN URLs for the component edit-mode view bundle, including js and css
    */
   editUrls?: string[] | any;
   /**
-   * 组件多个编辑态视图打包后的 CDN url 列表，包含 js 和 css，优先级高于 editUrls
+   * List of CDN URLs for multiple edit-mode view bundles of the component, including js and css; higher priority than editUrls
    */
   advancedEditUrls?: ComplexUrls;
   /**
-   * 低代码组件的 schema 内容
+   * Schema content of the low-code component
    */
   schema?: ComponentSchema;
   /**
-   * 当前资源所依赖的其他资源包的 id 列表
+   * List of ids of other resource packages that the current resource depends on
    */
   deps?: string[];
   /**
-   * 指定当前资源加载的环境
+   * Specifies the environment in which the current resource is loaded
    */
   loadEnv?: LoadEnv[];
   /**
-   * 当前资源是否是 external 资源
+   * Whether the current resource is an external resource
    */
   external?: boolean;
   /**
-   * 作为全局变量引用时的名称，和 webpack output.library 字段含义一样，用来定义全局变量名
+   * Name when referenced as a global variable; same meaning as the webpack output.library field; used to define the global variable name
    */
   library: string;
   /**
-   * 组件描述导出名字，可以通过 window[exportName] 获取到组件描述的 Object 内容；
+   * Component description export name; the Object content of the component description can be obtained via window[exportName];
    */
   exportName?: string;
   /**
-   * 标识当前 package 资源加载在 window.library 上的是否是一个异步对象
+   * Indicates whether the resource loaded on window.library for the current package is an asynchronous object
    */
   async?: boolean;
   /**
-   * 标识当前 package 从其他 package 的导出方式
+   * Indicates the export mode of the current package from other packages
    */
   exportMode?: string;
   /**
-   * 标识当前 package 内容是从哪个 package 导出来的
+   * Identifies which package the current package content is exported from
    */
   exportSourceId?: string;
   /**
-   * 标识当前 package 是从 window 上的哪个属性导出来的
+   * Identifies which property on window the current package is exported from
    */
   exportSourceLibrary?: string;
 }
 
 
 /**
- * 复杂 urls 结构，同时兼容简单结构和多模态结构
+ * Complex urls structure; compatible with both simple and multi-modal structures
  */
 export type ComplexUrls = string[] | MultiModeUrls;
 
 /**
- * 多模态资源
+ * Multi-modal resources
  */
 export interface MultiModeUrls {
   /**
-   * 默认的资源 url
+   * Default resource URLs
    */
   default: string[];
   /**
-   * 其他模态资源的 url
+   * URLs for other modal resources
    */
   [index: string]: string[];
 }
 
 
 /**
- * 资源加载环境种类
+ * Resource loading environment types
  */
 export enum LoadEnv {
   /**
-   * 设计态
+   * Design mode
    */
 	design = "design",
   /**
-   * 运行态
+   * Runtime mode
    */
   runtime = "runtime"
 }
 
 /**
- * 低代码设置器描述
+ * Low-code setter description
  */
 export type SetterDescription = PluginDescription;
 
 /**
- * 低代码插件器描述
+ * Low-code plugin description
  */
 export interface PluginDescription {
   /**
-   * 插件名称
+   * Plugin name
    */
   name: string;
   /**
-   * 插件标题
+   * Plugin title
    */
   title: string;
   /**
-   * 插件类型
+   * Plugin type
    */
   type?: string;
   /**
-   * 插件描述
+   * Plugin description
    */
   description?: string;
   /**
-   * 插件文档地址
+   * Plugin documentation URL
    */
   docUrl: string;
   /**
-   * 插件截图
+   * Plugin screenshot
    */
   screenshot: string;
   /**
-   * 插件相关的标签
+   * Plugin-related tags
    */
   tags?: string[];
   /**
-   * 插件关键字
+   * Plugin keywords
    */
   keywords?: string[];
   /**
-   * 插件引用的资源信息
+   * Resource information referenced by the plugin
    */
   reference: Reference;
 }
 
 /**
- * 资源引用信息，Npm 的升级版本，
+ * Resource reference information; upgraded version of Npm
  */
 export interface Reference {
   /**
-   * 引用资源的 id 标识
+   * Id identifier of the referenced resource
    */
   id?: string;
   /**
-   * 引用资源的包名
+   * Package name of the referenced resource
    */
   package?: string;
   /**
-   * 引用资源的导出对象中的属性值名称
+   * Property name in the export object of the referenced resource
    */
   exportName: string;
   /**
-   * 引用 exportName 上的子对象
+   * Sub-object on the referenced exportName
    */
   subName: string;
   /**
-   * 引用的资源主入口
+   * Main entry of the referenced resource
    */
   main?: string;
   /**
-   * 是否从引用资源的导出对象中获取属性值
+   * Whether to obtain the property value from the export object of the referenced resource
    */
   destructuring: boolean;
   /**
-   * 资源版本号
+   * Resource version number
    */
   version: string;
 }
 
 
 /**
- * 低代码片段
+ * Low-code snippet
  *
- * 内容为组件不同状态下的低代码 schema (可以有多个)，用户从组件面板拖入组件到设计器时会向页面 schema 中插入 snippets 中定义的组件低代码 schema
+ * Contains low-code schema for different component states (may be multiple). When the user drags a component from the component panel into the designer, the component low-code schema defined in snippets is inserted into the page schema
  */
 export interface Snippet {
   title: string;
@@ -611,7 +612,7 @@ export interface Snippet {
 }
 
 /**
- * 组件低代码描述
+ * Component low-code description
  */
 export interface ComponentDescription {
   componentName: string;
@@ -627,7 +628,7 @@ export interface ComponentDescription {
   props: Prop[];
   configure: Configure;
   /**
-   * 多模态下的组件描述, 优先级高于 configure
+   * Component description under multi-modal mode; higher priority than configure
    */
   advancedConfigures: MultiModeConfigures;
   snippets: Snippet[];
@@ -635,7 +636,7 @@ export interface ComponentDescription {
   category: string;
   priority: number;
   /**
-   * 组件引用的资源信息
+   * Resource information referenced by the component
    */
   reference: Reference;
 }
@@ -646,23 +647,23 @@ export interface MultiModeConfigures {
 }
 
 /**
- * 远程物料描述
+ * Remote material description
  */
 export interface RemoteComponentDescription {
   /**
-   * 组件描述导出名字，可以通过 window[exportName] 获取到组件描述的 Object 内容；
+   * Component description export name; the Object content of the component description can be obtained via window[exportName];
    */
   exportName?: string;
   /**
-   * 组件描述的资源链接；
+   * Resource URL for the component description;
    */
   url?: string;
   /**
-   * 组件多模态描述的资源信息，优先级高于 url
+   * Resource information for multi-modal component descriptions; higher priority than url
    */
   advancedUrls?: ComplexUrl;
   /**
-   * 组件(库)的 npm 信息；
+   * npm information for the component (library);
    */
   package?: {
     npm?: string;
@@ -686,4 +687,4 @@ export interface ComponentSchema {
 
 ```
 
-`ComponentSchema` 的定义见[低代码业务组件描述](./material-spec.md#221-组件规范)
+The definition of `ComponentSchema` can be found in [Low-Code Business Component Description](./material-spec.md#221-component-specification)

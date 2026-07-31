@@ -1,26 +1,29 @@
 /**
- * 导出内容结构，文件夹
+ * Export content structure, folders
  *
  * @export
  * @interface ResultDir
  */
 export interface ResultDir {
+
   /**
-   * 文件夹名称，Root 名称默认为 .
+   * Folder name, Root name defaults to .
    *
    * @type {string}
    * @memberof ResultDir
    */
   name: string;
+
   /**
-   * 子目录
+   * subdirectory
    *
    * @type {ResultDir[]}
    * @memberof ResultDir
    */
   dirs: ResultDir[];
+
   /**
-   * 文件夹内文件
+   * Files in folder
    *
    * @type {ResultFile[]}
    * @memberof ResultDir
@@ -29,28 +32,31 @@ export interface ResultDir {
 }
 
 /**
- * 导出内容，对文件的描述
+ * Export content, description of the file
  *
  * @export
  * @interface ResultFile
  */
 export interface ResultFile {
+
   /**
-   * 文件名
+   * file name
    *
    * @type {string}
    * @memberof ResultFile
    */
   name: string;
+
   /**
-   * 文件类型扩展名，例如 .js .less
+   * File type extension, such as .js .less
    *
    * @type {string}
    * @memberof ResultFile
    */
   ext: string;
+
   /**
-   * 文件内容
+   * File content
    *
    * @type {string}
    * @memberof ResultFile

@@ -43,12 +43,12 @@ import { transformJsExpr } from '../../../core/jsx/handlers/transformJsExpressio
 export interface PluginConfig {
   fileType: string;
 
-  /** 是否要忽略小程序 */
+  /** Whether to ignore mini-programs */
   ignoreMiniApp?: boolean;
 }
 
-// TODO: componentName 若并非大写字符打头，甚至并非是一个有效的 JS 标识符怎么办？？
-// FIXME: 我想了下，这块应该放到解析阶段就去做掉，对所有 componentName 做 identifier validate，然后对不合法的做统一替换。
+// TODO: What if componentName does not start with an uppercase letter, or is not a valid JS identifier??
+// FIXME: This should be done in the parse stage: validate all componentNames as identifiers and replace invalid ones uniformly.
 const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => {
   const cfg: PluginConfig = {
     fileType: FileType.JSX,
@@ -64,8 +64,8 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
     const rootScope = Scope.createRootScope();
     const { tolerateEvalErrors = true, evalErrorsHandler = '' } = next.contextData;
 
-    // Rax 构建到小程序的时候，不能给组件起起别名，得直接引用，故这里将所有的别名替换掉
-    // 先收集下所有的 alias 的映射
+    // When Rax builds for mini-programs, components cannot be aliased and must be referenced directly; replace all aliases here
+    // First collect all alias mappings
     const componentsNameAliasMap = new Map<string, string>();
     next.chunks.forEach((chunk) => {
       if (isImportAliasDefineChunk(chunk)) {
@@ -73,17 +73,17 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
       }
     });
 
-    // 注意：这里其实隐含了一个假设：schema 中的 componentName 应该是一个有效的 JS 标识符，而且是大写字母打头的
-    // FIXME: 为了快速修复临时加的逻辑，需要用 pre-process 的方式替代处理。
+    // Note: this assumes schema componentName is a valid JS identifier starting with an uppercase letter
+    // FIXME: Temporary quick-fix logic; should be replaced with pre-processing.
     const mapComponentNameToAliasOrKeepIt = (componentName: string) => componentsNameAliasMap.get(componentName) || componentName;
 
-    // 然后过滤掉所有的别名 chunks
+    // Then filter out all alias chunks
     next.chunks = next.chunks.filter((chunk) => !isImportAliasDefineChunk(chunk));
 
-    // 如果直接按目前的 React 的方式之间出码 JSX 的话，会有 3 个问题：
-    // 1. 小程序出码的时候，循环变量没法拿到
-    // 2. 小程序出码的时候，很容易出现 Uncaught TypeError: Cannot read property 'avatar' of undefined 这样的异常(如下图的 50 行) -- 因为若直接出码，Rax 构建到小程序的时候会立即计算所有在视图中用到的变量
-    // 3. 通过 this.xxx 能拿到的东西太多了，而且自定义的 methods 可能会无意间破坏 Rax 框架或小程序框架在页面 this 上的东东
+    // If we emit JSX the same way as React today, there are 3 problems:
+    // 1. When generating for mini-programs, loop variables cannot be accessed
+    // 2. Mini-program codegen often hits Uncaught TypeError: Cannot read property 'avatar' of undefined (e.g. line 50 below) — direct emission makes Rax evaluate all view variables immediately when building for mini-programs
+    // 3. Too much is reachable via this.xxx, and custom methods may accidentally break Rax or mini-program framework fields on page this
     const customHandlers: HandlerSet<string> = {
       expression(input: IPublicTypeJSExpression, scope: IScope) {
         return transformJsExpr(generateExpression(input, scope), scope, {
@@ -95,7 +95,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
       },
     };
 
-    // 创建代码生成器
+    // Create code generator
     const commonNodeGenerator = createNodeGenerator({
       handlers: customHandlers,
       tagMapping: mapComponentNameToAliasOrKeepIt,
@@ -103,7 +103,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
       attrPlugins: [generateNodeAttrForRax.bind({ cfg })],
     });
 
-    // 生成 JSX 代码
+    // Generate JSX code
     const jsxContent = commonNodeGenerator(ir, rootScope);
 
     if (!cfg.ignoreMiniApp) {
@@ -120,7 +120,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
       type: ChunkType.STRING,
       fileType: cfg.fileType,
       name: RAX_CHUNK_NAME.ClassRenderPre,
-      // TODO: setState, dataSourceMap, reloadDataSource, utils, i18n, i18nFormat, getLocale, setLocale 这些在 Rax 的编译模式下不能在视图中直接访问，需要转化成 this.xxx
+      // TODO: setState, dataSourceMap, reloadDataSource, utils, i18n, i18nFormat, getLocale, setLocale cannot be accessed directly in the view under Rax compile mode; convert to this.xxx
       content: `
         const __$$context = this._context;
         const { state, setState, dataSourceMap, reloadDataSource, utils, constants, i18n, i18nFormat, getLocale, setLocale } = __$$context;
@@ -237,7 +237,7 @@ function generateNodeAttrForRax(
   next?: AttrPlugin,
 ): CodePiece[] {
   if (!this.cfg.ignoreMiniApp && /^on/.test(attrData.attrName)) {
-    // else: onXxx 的都是事件处理函数需要特殊处理下
+    // else: onXxx handlers need special handling
     return generateEventHandlerAttrForRax(attrData.attrName, attrData.attrValue, scope, config);
   }
 
@@ -260,7 +260,7 @@ function generateEventHandlerAttrForRax(
   scope: IScope,
   config?: NodeGeneratorConfig,
 ): CodePiece[] {
-  // -- 事件处理函数中 JSExpression 转成 JSFunction 来处理，避免当 JSExpression 处理的时候多包一层 eval 而导致 Rax 转码成小程序的时候出问题
+  // -- convert JSExpression in event handlers to JSFunction to avoid an extra eval wrap that breaks Rax mini-program transform
   const valueExpr = generateCompositeType(
     isJSExpression(attrValue) ? { type: 'JSFunction', value: attrValue.value } : attrValue,
     scope,
@@ -269,7 +269,7 @@ function generateEventHandlerAttrForRax(
     },
   );
 
-  // 查询当前作用域下的变量
+  // Look up variables in the current scope
   const currentScopeVariables = scope.bindings?.getAllBindings() || [];
   if (currentScopeVariables.length <= 0) {
     return [
@@ -281,7 +281,7 @@ function generateEventHandlerAttrForRax(
     ];
   }
 
-  // 提取出所有的未定义的全局变量
+  // Extract all undefined global variables
   const undeclaredVariablesInValueExpr = parseExpressionGetGlobalVariables(valueExpr);
   const referencedLocalVariables = _.intersection(
     undeclaredVariablesInValueExpr,

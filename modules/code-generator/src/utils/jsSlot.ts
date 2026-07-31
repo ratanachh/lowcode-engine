@@ -10,9 +10,9 @@ export function generateJsSlot(slot: any, scope: IScope, generator: NodeGenerato
   if (isJSSlot(slot)) {
     const { title, params, value } = slot as IPublicTypeJSSlot;
 
-    // slot 也是分有参数和无参数的
-    // - 有参数的 slot 就是类似一个 render 函数，需要创建子作用域
-    // - 无参数的 slot 就是类似一个 JSX 节点，不需要创建子作用域
+    // Slots can be with or without parameters
+    // - A parameterized slot is like a render function and needs a child scope
+    // - A parameterless slot is like a JSX node and needs no child scope
     const slotScope = params ? scope.createSubScope(params || []) : scope;
     const contentExpr = !value
       ? 'null'

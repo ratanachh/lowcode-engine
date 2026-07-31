@@ -68,7 +68,7 @@ export function arrShallowEquals(arr1: any[], arr2: any[]): boolean {
 }
 
 /**
- * 判断当前 meta 是否从 vc prototype 转换而来
+ * Whether current meta was converted from a vc prototype
  * @param meta
  */
  export function isFromVC(meta: IPublicModelComponentMeta) {
@@ -89,13 +89,13 @@ const stageList = [
 ];
 
 /**
- * 兼容原来的数字版本的枚举对象
+ * Compat for legacy numeric enum values
  * @param stage
  * @returns
  */
 export function compatStage(stage: IPublicEnumTransformStage | number): IPublicEnumTransformStage {
   if (typeof stage === 'number') {
-    console.warn('stage 直接指定为数字的使用方式已经过时，将在下一版本移除，请直接使用 IPublicEnumTransformStage.Render|Serilize|Save|Clone|Init|Upgrade');
+    console.warn('Specifying stage as a number is deprecated and will be removed next version; use IPublicEnumTransformStage.Render|Serilize|Save|Clone|Init|Upgrade');
     return stageList[stage - 1] as IPublicEnumTransformStage;
   }
   return stage as IPublicEnumTransformStage;

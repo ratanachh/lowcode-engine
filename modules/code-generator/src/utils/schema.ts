@@ -37,7 +37,7 @@ const handleChildrenDefaultOptions = {
 const DEFAULT_MAX_DEPTH = 100000;
 
 /**
- * 遍历并处理所有的子节点
+ * Traverse and process all child nodes
  * @param children
  * @param handlers
  * @param options
@@ -52,7 +52,7 @@ export function handleSubNodes<T>(
   },
   options?: {
     rerun?: boolean;
-    maxDepth?: number; // 防止出现死循环无穷递归
+    maxDepth?: number; // Prevent infinite recursion
   },
 ): T[] {
   const opt = {

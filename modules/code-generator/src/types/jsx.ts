@@ -19,7 +19,7 @@ export interface AttrData {
   attrName: string;
   attrValue: IPublicTypeCompositeValue;
 }
-// 对 JSX 出码的理解，目前定制点包含【包装】【标签名】【属性】
+// JSX code generation customization points currently include [wrapper], [tag name], and [attributes]
 export type AttrPlugin = BaseGenerator<AttrData, CodePiece[], NodeGeneratorConfig>;
 export type NodePlugin = BaseGenerator<IPublicTypeNodeSchema, CodePiece[], NodeGeneratorConfig>;
 
@@ -31,10 +31,10 @@ export interface NodeGeneratorConfig {
   self?: NodeGenerator<string>;
 
   /**
-   * 是否要容忍对 JSExpression 求值时的异常
-   * 默认：true
-   * 注：如果容忍异常，则会在求值时包裹 try-catch 块 -- 通过 __$$eval / __$$evalArray
-   *     catch 到异常时默认会抛出一个 CustomEvent 事件里面包含异常信息和求值的表达式
+   * Whether to tolerate exceptions when evaluating JSExpression
+   * Default: true
+   * Note: if exceptions are tolerated, evaluation is wrapped in a try-catch via __$$eval / __$$evalArray
+   *     when caught, a CustomEvent is thrown containing the error and the expression
    */
   tolerateEvalErrors?: boolean;
 }

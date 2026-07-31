@@ -1,138 +1,132 @@
 ---
-title: 《低代码引擎搭建协议规范》
+title: Low-Code Engine Building Protocol Specification
 sidebar_position: 0
 ---
 
-## 1 介绍
+## 1 Introduction
 
-### 1.1 本协议规范涉及的问题域
+### 1.1 Problem Domains Covered by This Protocol Specification
 
-- 定义本协议版本号规范
-- 定义本协议中每个子规范需要被支持的 Level
-- 定义本协议相关的领域名词
-- 定义搭建基础协议版本号规范（A）
-- 定义搭建基础协议组件映射关系规范（A）
-- 定义搭建基础协议组件树描述规范（A）
-- 定义搭建基础协议国际化多语言支持规范（AA）
-- 定义搭建基础协议无障碍访问规范（AAA）
+- Define the version numbering specification for this protocol
+- Define the Level that each sub-specification in this protocol must support
+- Define domain terminology related to this protocol
+- Define the building foundation protocol version numbering specification (A)
+- Define the building foundation protocol component mapping specification (A)
+- Define the building foundation protocol component tree description specification (A)
+- Define the building foundation protocol internationalization and multi-language support specification (AA)
+- Define the building foundation protocol accessibility specification (AAA)
 
+### 1.2 Protocol Draft Authors
 
-### 1.2 协议草案起草人
+- Authors: Yuefei, Kangwei, Lin Yi
+- Reviewers: Daguo, Wuliang, Jiushen, Yuanyan, Wuzi, Yifan, Jinchan, Qiandao, Tiansheng, Wuzi, Youlu, Guanghong, Lihao
 
-- 撰写：月飞、康为、林熠
-- 审阅：大果、潕量、九神、元彦、戊子、屹凡、金禅、前道、天晟、戊子、游鹿、光弘、力皓
-
-
-### 1.3 版本号
+### 1.3 Version Number
 
 1.1.0
 
-### 1.4 协议版本号规范（A）
+### 1.4 Protocol Version Numbering Specification (A)
 
-本协议采用语义版本号，版本号格式为 `major.minor.patch` 的形式。
+This protocol uses semantic versioning. The version number format is `major.minor.patch`.
 
-- major 是大版本号：用于发布不向下兼容的协议格式修改
-- minor 是小版本号：用于发布向下兼容的协议功能新增
-- patch 是补丁号：用于发布向下兼容的协议问题修正
+- **major** is the major version number: used to release protocol format changes that are not backward compatible
+- **minor** is the minor version number: used to release backward-compatible protocol feature additions
+- **patch** is the patch number: used to release backward-compatible protocol bug fixes
 
+### 1.5 Sub-Specification Level Definitions in the Protocol
 
-### 1.5 协议中子规范 Level 定义
+| Specification Level | Implementation Requirement                                                                                                                                                                     |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A                   | Mandatory specification; must be implemented. Protocol description data that violates such specifications cannot be written to the material center and is not supported for circulation.       |
+| AA                  | Recommended specification; recommended for implementation. Complying with such specifications helps improve future business extensibility and cross-team collaborative development efficiency. |
+| AAA                 | Reference specification; implement according to actual business scenario requirements; technical implementation guidance encouraged at the group level.                                        |
 
-| 规范等级 | 实现要求                                                                           |
-| -------- | ---------------------------------------------------------------------------------- |
-| A        | 强制规范，必须实现；违反此类规范的协议描述数据将无法写入物料中心，不支持流通。     |
-| AA       | 推荐规范，推荐实现；遵守此类规范有助于业务未来的扩展性和跨团队合作研发效率的提升。 |
-| AAA      | 参考规范，根据业务场景实际诉求实现；是集团层面鼓励的技术实现引导。                 |
+### 1.6 Terminology
 
+#### 1.6.1 Material System Terminology
 
-### 1.6 名词术语
+- **Basic Component**: A general-purpose basic component in the frontend domain. The basic component library officially designated by the Alibaba Frontend Committee is Fusion Next/AntD.
+- **Chart Component**: A general-purpose chart component in the frontend domain. Representative chart component libraries include BizCharts.
+- **Business Component**: A component defined on top of basic components within a business domain. It may include interactions or business data specific to a particular business domain, exposes only configurable properties externally, and must be published to the public domain (e.g., Alibaba NPM). It can circulate within the same business domain, but cross-business-domain reusability is not required.
+  - **Low-Code Business Component**: Built through a low-code editor, distinct from source-code-developed business components. It is a type of business component and follows the business component definition. Low-code business components can also be edited multiple times through the low-code editor.
+- **Layout Component**: A general-purpose component in the frontend domain used to implement various layout relationships among basic components, chart components, and business components, such as a three-column layout component.
+- **Block**: Composed by nesting and combining a series of business components and layout components through low-code building. It does not expose configurable properties externally. By wrapping with a block container group, the block internally has complete style, event, lifecycle management, state management, and data flow mechanisms. It can exist and run independently, and can be quickly reused across pages and applications by copying the schema, ensuring normal functionality and data.
+- **Page**: Composed of components + blocks. Wrapped by a page container component, it can describe page-level state management and common functions.
+- **Template**: Business components and blocks within a specific vertical business domain can be combined into a single page, or combined with routing into a set of multiple pages, collectively referred to as a template.
 
-#### 1.6.1 物料系统名词
+#### 1.6.2 Low-Code Building System Terminology
 
-- **基础组件（Basic Component）**：前端领域通用的基础组件，阿里巴巴前端委员会官方指定的基础组件库是 Fusion Next/AntD。
-- **图表组件（Chart Component）**：前端领域通用的图表组件，有代表性的图表组件库有 BizCharts。
-- **业务组件（Business Component）**：业务领域内基于基础组件之上定义的组件，可能会包含特定业务域的交互或者是业务数据，对外仅暴露可配置的属性，且必须发布到公域（如阿里 NPM）；在同一个业务域内可以流通，但不需要确保可以跨业务域复用。
-  - **低代码业务组件（Low-Code Business Component）**：通过低代码编辑器搭建而来，有别于源码开发的业务组件，属于业务组件中的一种类型，遵循业务组件的定义；同时低代码业务组件还可以通过低代码编辑器继续多次编辑。
-- **布局组件（Layout Component）**：前端领域通用的用于实现基础组件、图表组件、业务组件之间各类布局关系的组件，如三栏布局组件。
-- **区块（Block）**：通过低代码搭建的方式，将一系列业务组件、布局组件进行嵌套组合而成，不对外提供可配置的属性。可通过 区块容器组的包裹，实现区块内部具备有完整的样式、事件、生命周期管理、状态管理、数据流转机制。能独立存在和运行，可通过复制 schema 实现跨页面、跨应用的快速复用，保障功能和数据的正常。
-- **页面（Page）**：由组件 + 区块组合而成。由页面容器组件包裹，可描述页面级的状态管理和公共函数。
-- **模板（Template）**：特定垂直业务领域内的业务组件、区块可组合为单个页面，或者是再配合路由组合为多个页面集，统称为模板。
+- **Building Editor**: Uses a visual approach to implement page building, supporting component UI arrangement, property editing, event binding, and data binding, ultimately producing data that conforms to the building foundation protocol specification.
+  - **Property Panel**: An operation panel inside the low-code editor used for property editing, event binding, and data binding of components, blocks, and pages.
+  - **Canvas Panel**: An operation panel inside the low-code editor used for UI arrangement.
+  - **Outline Panel**: A panel inside the low-code editor used to display the page component tree.
+- **Editor Framework**: The foundational framework of the building editor, including theme configuration mechanisms, plugin mechanisms, setter control mechanisms, shortcut key management, extension point management, and other underlying infrastructure.
+- **Material Import Module**: Focuses on material integration. It can automatically scan and parse source-code components, and ultimately produce a Schema JSON that conforms to the _Low-Code Engine Material Protocol Specification_.
+- **Arrangement Module**: Focuses on Schema visual arrangement. It provides page structure arrangement services through visual interactions, and ultimately produces a Schema JSON that conforms to the _Low-Code Building Foundation Protocol Specification_.
+- **Rendering Module**: Focuses on rendering Schema JSON into a UI interface, ultimately presenting an interactive page.
+- **Code Generation Module (Schema2Code)**: Focuses on generating high-quality source code through Schema JSON, transforming Schema JSON data that conforms to the _Low-Code Building Foundation Protocol Specification_ into code renderable on terminals such as React / Rax / Alibaba Mini Programs.
+- **Event Binding**: Refers to binding relevant event handling actions to a specific event of a component, such as binding **a handler function** or **a response action** (e.g., opening a dialog) to a component's **click event**. The events that each component can bind are defined by the component itself.
+- **Data Binding**: Refers to binding data used by a specific property to that property of a component.
+- **Lifecycle**: Generally refers to the birth, life, and death of an object. In this document, it refers collectively to key life stages of an entity (component, container, block, etc.), such as creation, loading, display, and destruction.
 
+### 1.7 Background
 
-#### 1.6.2 低代码搭建系统名词
+- **Protocol Goal**: By constraining the building protocol specification of the low-code engine, ensure that the outputs of upper-layer low-code editors (low-code business components, blocks, applications) remain consistent, can circulate across low-code development platforms to improve efficiency, and do not hinder the development of integration among group businesses.
+- **Protocol Interoperability**:
+  - Unified top-level protocol structure
+    - The protocol schema has complete descriptive capability, including version, internationalization, component tree, component mapping relationships, etc.;
+    - Top-level property keys and value formats must remain consistent;
+  - Unified component tree description
+    - Source-code component description;
+    - Description of the three container component types: page, block, and low-code business component;
+    - Data flow description, including data requests, data state management, and data binding description;
+    - Event description, including unified event context and unified building APIs;
+- **Material Interoperability**: Refers to materials that can be used directly across different building products within the same domain, such as templates, blocks, and components;
 
-- **搭建编辑器**：使用可视化的方式实现页面搭建，支持组件 UI 编排、属性编辑、事件绑定、数据绑定，最终产出符合搭建基础协议规范的数据。
-   - **属性面板**：低代码编辑器内部用于组件、区块、页面的属性编辑、事件绑定、数据绑定的操作面板。
-   - **画布面板**：低代码编辑器内部用于 UI 编排的操作面板。
-   - **大纲面板**：低代码编辑器内部用于页面组件树展示的面板。
-- **编辑器框架**：搭建编辑器的基础框架，包含主题配置机制、插件机制、setter 控件机制、快捷键管理、扩展点管理等底层基础设施。
-- **入料模块**：专注于物料接入，能自动扫描、解析源码组件，并最终产出一份符合《低代码引擎物料协议规范》的 Schema JSON。
-- **编排模块**：专注于 Schema 可视化编排，以可视化的交互方式提供页面结构编排服务，并最终产出一份符合《低代码搭建基础协议规范》的 Schema JSON。
-- **渲染模块**：专注于将 Schema JSON 渲染为 UI 界面，最终呈现一个可交互的页面。
-- **出码模块 Schema2Code**：专注于通过 Schema JSON 生成高质量源代码，将符合《低代码搭建基础协议规范》的 Schema JSON 数据分别转化为面向 React / Rax / 阿里小程序等终端可渲染的代码。
-- **事件绑定**：是指为某个组件的某个事件绑定相关的事件处理动作，比如为某个组件的**点击事件**绑定**一段处理函数**或**响应动作**（比如弹出对话框），每个组件可绑定的事件由该组件自行定义。
-- **数据绑定**：是指为某个组件的某个属性绑定用于该属性使用的数据。
-- **生命周期**: 一般指某个对象的生老病死，本文中指某个实体（组件、容器、区块等等）的创建、加载、显示、销毁等关键生命阶段的统称。
+### 1.8 Audience
 
-### 1.7 背景
+This protocol applies to all developers who use low-code building platforms to develop pages or components, as well as developers of related tools or engineering solutions built around this protocol. Reading and using this protocol requires a certain understanding of the interactions and implementation of low-code building platforms. Familiarity with relevant frontend development technology stacks will also be helpful. The protocol does not provide further explanation of general frontend-related terminology.
 
-- **协议目标**：通过约束低代码引擎的搭建协议规范，让上层低代码编辑器的产出物（低代码业务组件、区块、应用）保持一致性，可跨低代码研发平台进行流通而提效，亦不阻碍集团业务间融合的发展。 
-- **协议通**：
-  - 协议顶层结构统一
-    - 协议 schema 具备有完整的描述能力，包含版本、国际化、组件树、组件映射关系等；
-    - 顶层属性 key、value 值的格式，必须保持一致；
-  - 组件树描述统一
-    - 源码组件描述；
-    - 页面、区块、低代码业务组件这三种容器组件的描述；
-    - 数据流描述，包含数据请求、数据状态管理、数据绑定描述；
-    - 事件描述，包含统一事件上下文、统一搭建 API；
-- **物料通**：指在相同领域内的不同搭建产品，可直接使用的物料。比如模版、区块、组件；
+### 1.9 Scope of Use
 
-### 1.8 受众
+This protocol describes the schema structure of low-code building platform outputs (applications, pages, blocks, components), and provides completeness in areas such as data state updates (built-in APIs), capability extension, and internationalization. It is only available in low-code building scenarios.
 
-本协议适用于所有使用低代码搭建平台来开发页面或组件的开发者，以及围绕此协议的相关工具或工程化方案的开发者。阅读及使用本协议，需要对低代码搭建平台的交互和实现有一定的了解，对前端开发相关技术栈的熟悉也会有帮助，协议中对通用的前端相关术语不会做进一步的解释说明。
+### 1.10 Protocol Goal
 
-### 1.9 使用范围
+A schema specification oriented toward developers, used to standardize and constrain the output of building editors and the input of rendering modules and code generation modules, decoupling building editors, rendering modules, and code generation modules to ensure their independent upgrades.
 
-本协议描述的是低代码搭建平台产物（应用、页面、区块、组件）的 schema 结构，以及实现其数据状态更新（内置 api)、能力扩展、国际化等方面完整，只在低代码搭建场景下可用；
+### 1.11 Design Notes
 
-### 1.10 协议目标
+- **Semantic clarity**: Clear semantics, concise and easy to understand, with strong readability.
+- **Progressive description**: The essence of building is nesting and combining **source-code components**, progressively combining from small to large to generate **components, blocks, pages**, and ultimately generating **applications** through cloud build. Therefore, in the building foundation protocol, we need to know how to progressively describe the four entity concepts: component, block, page, and application.
+- **Generate standard source code**: Clearly define the conversion relationship between each property and source code, enabling generation of high-quality standard source code indistinguishable from hand-written code.
+- **Circulability**: Outputs can circulate across different building products without involving any private-domain data storage.
+- **Multi-terminal oriented**: Must not target only React; must also support mini programs and other terminals.
+- **Support implementation of internationalization and accessibility standards**
 
-一套面向开发者的 schema 规范，用于规范化约束搭建编辑器的输出，以及渲染模块和出码模块的输入，将搭建编辑器、渲染模块、出码模块解耦，保障搭建编辑器、渲染模块、出码模块的独立升级。
+## 2 Protocol Structure
 
-### 1.11 设计说明
+The top-level protocol structure is as follows:
 
-- **语义化**：语义清晰，简明易懂，可读性强。
-- **渐进性描述**：搭建的本质是通过 源码组件 进行嵌套组合，从小往大、依次组合生成 组件、区块、页面，最终通过云端构建生成 应用 的过程。因此在搭建基础协议中，我们需要知道如何去渐进性的描述组件、区块、页面、应用这 4 个实体概念。
-- **生成标准源码**：明确每一个属性与源码对应的转换关系，可生成跟手写无差异的高质量标准源代码。
-- **可流通性**：产物能在不同搭建产品中流通，不涉及任何私域数据存储。
-- **面向多端**：不能仅面向 React，还有小程序等多端。
-- **支持国际化&无障碍访问标准的实现**
+- version { String } Current protocol version number
+- componentsMap { Array } Component mapping relationships
+- componentsTree { Array } Component tree describing templates/pages/blocks/low-code business components
+- utils { Array } Utility extension mapping relationships
+- i18n { Object } Internationalization corpus
+- constants { Object } Global constants within the application scope
+- css { string } Global styles within the application scope
+- config: { Object } Current application configuration information
+- meta: { Object } Current application metadata information
+- dataSource: { Array } Public data sources of the current application
+- router: { Object } Routing configuration information of the current application
+- pages: { Array } All page information of the current application
 
-
-## 2 协议结构
-
-协议最顶层结构如下：
-
-- version { String } 当前协议版本号
-- componentsMap { Array } 组件映射关系
-- componentsTree { Array } 描述模版/页面/区块/低代码业务组件的组件树
-- utils { Array } 工具类扩展映射关系
-- i18n { Object } 国际化语料
-- constants { Object } 应用范围内的全局常量
-- css { string } 应用范围内的全局样式
-- config: { Object } 当前应用配置信息
-- meta: { Object } 当前应用元数据信息
-- dataSource: { Array } 当前应用的公共数据源
-- router: { Object } 当前应用的路由配置信息
-- pages: { Array } 当前应用的所有页面信息
-
-描述举例：
+Description example:
 
 ```json
 {
-  "version": "1.0.0",                  // 当前协议版本号
-  "componentsMap": [{                  // 组件描述
+  "version": "1.0.0",                  // Current protocol version number
+  "componentsMap": [{                  // Component description
     "componentName": "Button",
     "package": "@alifd/next",
     "version": "1.0.0",
@@ -163,9 +157,9 @@ sidebar_position: 0
       "main": ""
     }
   }],
-  "componentsTree": [{                 // 描述内容，值类型 Array
+  "componentsTree": [{                 // Description content, value type Array
     "id": "page1",
-    "componentName": "Page",           // 单个页面，枚举类型 Page|Block|Component
+    "componentName": "Page",           // Single page, enum type Page|Block|Component
     "fileName": "Page1",
     "props": {},
     "css": "body {font-size: 12px;} .table { width: 100px;}",
@@ -177,12 +171,12 @@ sidebar_position: 0
       "children": [{
         "componentName": "Button",
         "props": {
-          "prop1": 1234,               // 简单 json 数据
-          "prop2": [{                  // 简单 json 数据
-            "label": "选项 1",
+          "prop1": 1234,               // Simple JSON data
+          "prop2": [{                  // Simple JSON data
+            "label": "Option 1",
             "value": 1
           }, {
-            "label": "选项 2",
+            "label": "Option 2",
             "value": 2
           }],
           "prop3": [{
@@ -192,15 +186,15 @@ sidebar_position: 0
               "value": "/\w+/i"
             }
           }],
-          "valueBind": {               // 变量绑定
+          "valueBind": {               // Variable binding
             "type": "JSExpression",
             "value": "this.state.user.name"
           },
-          "onClick": {                 // 动作绑定
+          "onClick": {                 // Action binding
             "type": "JSFunction",
             "value": "function(e) { console.log(e.target.innerText) }"
           },
-          "onClick2": {                // 动作绑定 2
+          "onClick2": {                // Action binding 2
             "type": "JSExpression",
             "value": "this.submit"
           }
@@ -213,15 +207,15 @@ sidebar_position: 0
     "DOMAIN": "xxx.com"
   },
   "css": "body {font-size: 12px;} .table { width: 100px;}",
-  "config": {                                          // 当前应用配置信息
-    "sdkVersion": "1.0.3",                             // 渲染模块版本
-    "historyMode": "hash",                             // 不推荐，推荐在 router 字段中配置
+  "config": {                                          // Current application configuration information
+    "sdkVersion": "1.0.3",                             // Rendering module version
+    "historyMode": "hash",                             // Not recommended; prefer configuring in the router field
     "targetRootID": "J_Container",
     "layout": {
       "componentName": "BasicLayout",
       "props": {
         "logo": "...",
-        "name": "测试网站"
+        "name": "Test Website"
       },
     },
     "theme": {
@@ -232,21 +226,21 @@ sidebar_position: 0
       "primary": "#ff9966"
     }
   },
-  "meta": {                                           // 应用元数据信息，key 为业务自定义
-    "name": "demo 应用",                               // 应用中文名称，
-    "git_group": "appGroup",                          // 应用对应 git 分组名
-    "project_name": "app_demo",                       // 应用对应 git 的 project 名称
-    "description": "这是一个测试应用",                   // 应用描述
-    "spma": "spa23d",                                 // 应用 spm A 位信息
-    "creator": "月飞",
-    "gmt_create": "2020-02-11 00:00:00",              // 创建时间
-    "gmt_modified": "2020-02-11 00:00:00",            // 修改时间
+  "meta": {                                           // Application metadata information, keys are business-defined
+    "name": "demo application",                        // Application display name
+    "git_group": "appGroup",                          // Git group name corresponding to the application
+    "project_name": "app_demo",                       // Git project name corresponding to the application
+    "description": "This is a test application",      // Application description
+    "spma": "spa23d",                                 // Application SPM A-position information
+    "creator": "Yuefei",
+    "gmt_create": "2020-02-11 00:00:00",              // Creation time
+    "gmt_modified": "2020-02-11 00:00:00",            // Modification time
     ...
   },
   "i18n": {
     "zh-CN": {
-      "i18n-jwg27yo4": "你好",
-      "i18n-jwg27yo3": "中国"
+      "i18n-jwg27yo4": "Hello",
+      "i18n-jwg27yo3": "China"
     },
     "en-US": {
       "i18n-jwg27yo4": "Hello",
@@ -255,7 +249,7 @@ sidebar_position: 0
   },
   "router": {
     "baseUrl": "/",
-    "historyMode": "hash",                             // 浏览器路由：browser  哈希路由：hash
+    "historyMode": "hash",                             // Browser routing: browser  Hash routing: hash
     "routes": [
       {
         "path": "home",
@@ -272,17 +266,15 @@ sidebar_position: 0
 }
 ```
 
-### 2.1 协议版本号（A）
+### 2.1 Protocol Version Number (A)
 
-定义当前协议 schema 的版本号，不同的版本号对应不同的渲染 SDK，以保障不同版本搭建协议产物的正常渲染；
+Defines the version number of the current protocol schema. Different version numbers correspond to different rendering SDKs to ensure normal rendering of building protocol outputs across versions.
 
+| Root Property Name | Type   | Description             | Variable Support | Default Value |
+| ------------------ | ------ | ----------------------- | ---------------- | ------------- |
+| version            | String | Protocol version number | -                | 1.0.0         |
 
-| 根属性名称 | 类型   | 说明       | 变量支持 | 默认值 |
-| ---------- | ------ | ---------- | -------- | ------ |
-| version    | String | 协议版本号 | -        | 1.0.0  |
-
-
-描述示例：
+Description example:
 
 ```javascript
 {
@@ -290,134 +282,136 @@ sidebar_position: 0
 }
 ```
 
-### 2.2 组件映射关系（A）
+### 2.2 Component Mapping Relationships (A)
 
-协议中用于描述 componentName 到公域组件映射关系的规范。
+Specification in the protocol used to describe the mapping relationship from componentName to public-domain components.
 
+| Parameter       | Description                                           | Type               | Variable Support | Default Value |
+| --------------- | ----------------------------------------------------- | ------------------ | ---------------- | ------------- |
+| componentsMap[] | Collection describing component mapping relationships | **ComponentMap**[] | -                | null          |
 
-| 参数            | 说明                   | 类型                      | 变量支持 | 默认值 |
-| --------------- | ---------------------- | ------------------------- | -------- | ------ |
-| componentsMap[] | 描述组件映射关系的集合 | **ComponentMap**[] | -        | null   |
+**ComponentMap structure description** is as follows:
 
-**ComponentMap 结构描述**如下：
+| Parameter     | Description                                                                                                                                                                    | Type    | Variable Support | Default Value |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | ---------------- | ------------- |
+| componentName | Component name in the protocol; must be unique; corresponds to the component name exported by the package; must be a valid **JS identifier** starting with an uppercase letter | String  | -                | -             |
+| package       | npm public-domain package name                                                                                                                                                 | String  | -                | -             |
+| version       | package version                                                                                                                                                                | String  | -                | -             |
+| destructuring | Export the module using destructuring                                                                                                                                          | Boolean | -                | -             |
+| exportName    | Component name exported by the package                                                                                                                                         | String  | -                | -             |
+| subName       | Sub-component name by index                                                                                                                                                    | String  | -                |               |
+| main          | Entry file path of the package-exported component                                                                                                                              | String  | -                | -             |
 
-| 参数          | 说明                                                                                                   | 类型    | 变量支持 | 默认值 |
-| ------------- | ------------------------------------------------------------------------------------------------------ | ------- | -------- | ------ |
-| componentName | 协议中的组件名，唯一性，对应包导出的组件名，是一个有效的 **JS 标识符**，而且是大写字母打头 | String  | -        | -      |
-| package       | npm 公域的 package name                                                                                  | String  | -        | -      |
-| version       | package version                                                                                        | String  | -        | -      |
-| destructuring | 使用解构方式对模块进行导出                                                                                                   | Boolean | -        | -      |
-| exportName    | 包导出的组件名                                                                                         | String  | -        | -      |
-| subName       | 下标子组件名称                                                                                         | String  | -        |        |
-| main          | 包导出组件入口文件路径                                                                                 | String  | -        | -      |
-
-
-描述示例：
+Description example:
 
 ```json
 {
-  "componentsMap": [{
-    "componentName": "Button",
-    "package": "@alifd/next",
-    "version": "1.0.0",
-    "destructuring": true
-  }, {
-    "componentName": "MySelect",
-    "package": "@alifd/next",
-    "version": "1.0.0",
-    "destructuring": true,
-    "exportName": "Select"
-  }, {
-    "componentName": "ButtonGroup",
-    "package": "@alifd/next",
-    "version": "1.0.0",
-    "destructuring": true,
-    "exportName": "Button",
-    "subName": "Group"
-  }, {
-    "componentName": "RadioGroup",
-    "package": "@alifd/next",
-    "version": "1.0.0",
-    "destructuring": true,
-    "exportName": "Radio",
-    "subName": "Group"
-  }, {
-    "componentName": "CustomCard",
-    "package": "@ali/custom-card",
-    "version": "1.0.0"
-  }, {
-    "componentName": "CustomInput",
-    "package": "@ali/custom",
-    "version": "1.0.0",
-    "main": "/lib/input",
-    "destructuring": true,
-    "exportName": "Input"
-  }]
+  "componentsMap": [
+    {
+      "componentName": "Button",
+      "package": "@alifd/next",
+      "version": "1.0.0",
+      "destructuring": true
+    },
+    {
+      "componentName": "MySelect",
+      "package": "@alifd/next",
+      "version": "1.0.0",
+      "destructuring": true,
+      "exportName": "Select"
+    },
+    {
+      "componentName": "ButtonGroup",
+      "package": "@alifd/next",
+      "version": "1.0.0",
+      "destructuring": true,
+      "exportName": "Button",
+      "subName": "Group"
+    },
+    {
+      "componentName": "RadioGroup",
+      "package": "@alifd/next",
+      "version": "1.0.0",
+      "destructuring": true,
+      "exportName": "Radio",
+      "subName": "Group"
+    },
+    {
+      "componentName": "CustomCard",
+      "package": "@ali/custom-card",
+      "version": "1.0.0"
+    },
+    {
+      "componentName": "CustomInput",
+      "package": "@ali/custom",
+      "version": "1.0.0",
+      "main": "/lib/input",
+      "destructuring": true,
+      "exportName": "Input"
+    }
+  ]
 }
 ```
 
-出码结果：
+Code generation result:
 
 ```javascript
-// 使用解构方式，destructuring is true.
+// Using destructuring, destructuring is true.
 import { Button } from '@alifd/next';
 
-// 使用解构方式，且 exportName 和 componentName 不同
+// Using destructuring, and exportName differs from componentName
 import { Select as MySelect } from '@alifd/next';
 
-// 使用解构方式，并导出其子组件
+// Using destructuring and exporting its sub-component
 import { Button } from '@alifd/next';
 const ButtonGroup = Button.Group;
 
 import { Radio } from '@alifd/next';
 const RadioGroup = Radio.Group;
 
-// 不使用解构方式进行导出
+// Export without destructuring
 import CustomCard from '@ali/custom-card';
 
-// 使用特定路径进行导出
+// Export using a specific path
 import { Input as CustomInput } from '@ali/custom/lib/input';
-
 ```
 
+### 2.3 Component Tree Description (A)
 
-### 2.3 组件树描述（A）
+Specification in the protocol used to describe the structure of the built component tree. The entire component tree description is composed of nested **component structures** and **container structures**.
 
+- Component structure: Describes the structure of a single component's name, properties, and children;
+- Container structure: Describes the structure of a single container's data, custom methods, and lifecycle, used to modularly split a complete page.
 
-协议中用于描述搭建出来的组件树结构的规范，整个组件树的描述由**组件结构**&**容器结构**两种结构嵌套构成。
+The conversion relationship corresponding to source code is as follows:
 
-- 组件结构：描述单个组件的名称、属性、子集的结构；
-- 容器结构：描述单个容器的数据、自定义方法、生命周期的结构，用于将完整页面进行模块化拆分。
+- Component structure: Converts to **jsx** code returned by the render function of a React Class in a .jsx file.
+- Container structure: Converts to a standard file, such as a React jsx file, exporting a React Class that includes lifecycle definitions, custom methods, event property bindings, asynchronous data requests, etc.
 
-与源码对应的转换关系如下：
+#### 2.3.1 Basic Structure Description (A)
 
-- 组件结构：转换成一个 .jsx 文件内 React Class 类 render 函数返回的 **jsx** 代码。
-- 容器结构：将转换成一个标准文件，如 React 的 jsx 文件，export 一个 React Class，包含生命周期定义、自定义方法、事件属性绑定、异步数据请求等。
+This section defines the common basic fields of component structures and container structures.
 
-#### 2.3.1 基础结构描述 (A)
+> When reading, you may skip ahead to later sections first and return here for reference when needed
 
-此部分定义了组件结构、容器结构的公共基础字段。
+##### 2.3.1.1 Props Structure Description
 
-> 阅读时可先跳到后续章节，待需要时回来参考阅读
+| Parameter   | Description                    | Type     | Variable Support | Default Value | Notes                                                                        |
+| ----------- | ------------------------------ | -------- | ---------------- | ------------- | ---------------------------------------------------------------------------- |
+| id          | Component ID                   | String   | ✅               | -             | System property                                                              |
+| className   | Component style class name     | String   | ✅               | -             | System property; supports variable expressions                               |
+| style       | Component inline style         | Object   | ✅               | -             | System property; single inline style property value                          |
+| ref         | Component ref name             | String   | ✅               | -             | Component instance can be obtained via `this.$(ref)`                         |
+| extendProps | Component inherited properties | Variable | ✅               | -             | Supports variable binding only; commonly used for inherited property objects |
+| ...         | Component private properties   | -        | -                | -             |                                                                              |
 
-##### 2.3.1.1 Props 结构描述
+##### 2.3.1.2 css/less/scss Style Description
 
-| 参数        | 说明         | 类型   | 支持变量 | 默认值 | 备注                                  |
-| ----------- | ------------ | ------ | -------- | ------ | ------------------------------------- |
-| id          | 组件 ID       | String | ✅        | -      | 系统属性                              |
-| className   | 组件样式类名 | String | ✅        | -      | 系统属性，支持变量表达式              |
-| style       | 组件内联样式 | Object | ✅        | -      | 系统属性，单个内联样式属性值          |
-| ref         | 组件 ref 名称  | String | ✅        | -      | 可通过 `this.$(ref)` 获取组件实例 |
-| extendProps | 组件继承属性 | 变量   | ✅        | -      | 仅支持变量绑定，常用于继承属性对象    |
-| ...         | 组件私有属性 | -      | -        | -      |                                       |
+| Parameter     | Description                                                                                                                                      | Type   | Variable Support | Default Value |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ---------------- | ------------- |
+| css/less/scss | Used to describe styles of internal nodes of container components; corresponds to generating an independent style file; does not support @import | String | -                | null          |
 
-##### 2.3.1.2 css/less/scss 样式描述
-
-| 参数          | 说明                                                                       | 类型   | 支持变量 | 默认值 |
-| ------------- | -------------------------------------------------------------------------- | ------ | -------- | ------ |
-| css/less/scss | 用于描述容器组件内部节点的样式，对应生成一个独立的样式文件，不支持 @import | String | -        | null   |
-
-描述示例：
+Description example:
 
 ```json
 {
@@ -425,34 +419,34 @@ import { Input as CustomInput } from '@ali/custom/lib/input';
 }
 ```
 
-##### 2.3.1.3 ComponentDataSource 对象描述
+##### 2.3.1.3 ComponentDataSource Object Description
 
-| 参数        | 说明                   | 类型                                   | 支持变量 | 默认值 | 备注                                                                                                        |
-| ----------- | ---------------------- | -------------------------------------- | -------- | ------ | ----------------------------------------------------------------------------------------------------------- |
-| list[]     | 数据源列表             | **ComponentDataSourceItem**[] | -        | -      | 成为为单个请求配置, 内容定义详见 [ComponentDataSourceItem 对象描述](#2314-componentdatasourceitem-对象描述) |
-| dataHandler | 所有请求数据的处理函数 | Function                               | -        | -      | 详见 [dataHandler Function 描述](#2317-datahandler-function 描述)                                           |
+| Parameter   | Description                           | Type                          | Variable Support | Default Value | Notes                                                                                                                                                        |
+| ----------- | ------------------------------------- | ----------------------------- | ---------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| list[]      | Data source list                      | **ComponentDataSourceItem**[] | -                | -             | Each entry is a single request configuration; see [ComponentDataSourceItem Object Description](#2314-componentdatasourceitem-object-description) for details |
+| dataHandler | Handler function for all request data | Function                      | -                | -             | See [dataHandler Function Description](#2317-datahandler-function-description)                                                                               |
 
-##### 2.3.1.4 ComponentDataSourceItem 对象描述
+##### 2.3.1.4 ComponentDataSourceItem Object Description
 
-| 参数           | 说明                         | 类型                                                 | 支持变量 | 默认值                      | 备注                                                                                                                                                                 |
-| -------------- | ---------------------------- | ---------------------------------------------------- | -------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id             | 数据请求 ID 标识               | String                                               | -        | -                           |                                                                                                                                                                      |
-| isInit         | 是否为初始数据               | Boolean                                              | ✅        | true                        | 值为 true 时，将在组件初始化渲染时自动发送当前数据请求                                                                                                                 |
-| isSync         | 是否需要串行执行             | Boolean                                              | ✅        | false                       | 值为 true 时，当前请求将被串行执行                                                                                                                                     |
-| type           | 数据请求类型                 | String                                               | -        | fetch                       | 支持四种类型：fetch/mtop/jsonp/custom                                                                                                                                |
-| shouldFetch    | 本次请求是否可以正常请求     | (options: ComponentDataSourceItemOptions) => boolean | -        | ```() => true```            | function 参数参考 [ComponentDataSourceItemOptions 对象描述](#2315-componentdatasourceitemoptions-对象描述)                                                           |
-| willFetch      | 单个数据结果请求参数处理函数 | Function                                             | -        | options => options          | 只接受一个参数（options），返回值作为请求的 options，当处理异常时，使用原 options。也可以返回一个 Promise，resolve 的值作为请求的 options，reject 时，使用原 options |
-| requestHandler | 自定义扩展的外部请求处理器   | Function                                             | -        | -                           | 仅 type='custom' 时生效                                                                                                                                               |
-| dataHandler    | request 成功后的回调函数     | Function                                             | -        | `response => response.data`| 参数：请求成功后 promise 的 value 值                                                                                                                                 ||
-| errorHandler   | request 失败后的回调函数     | Function                                             | -        | -                           | 参数：请求出错 promise 的 error 内容                                                                                                                                 |
-| options {}     | 请求参数                     | **ComponentDataSourceItemOptions**| -        | -                           | 每种请求类型对应不同参数，详见 | 每种请求类型对应不同参数，详见 [ComponentDataSourceItemOptions 对象描述](#2315-componentdatasourceitemoptions-对象描述)                                              |
+| Parameter      | Description                                           | Type                                                 | Variable Support | Default Value               | Notes                                                                                                                                                                                                                                                             |
+| -------------- | ----------------------------------------------------- | ---------------------------------------------------- | ---------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| id             | Data request ID identifier                            | String                                               | -                | -                           |                                                                                                                                                                                                                                                                   |
+| isInit         | Whether it is initial data                            | Boolean                                              | ✅               | true                        | When true, the current data request will be sent automatically during component initialization rendering                                                                                                                                                          |
+| isSync         | Whether serial execution is required                  | Boolean                                              | ✅               | false                       | When true, the current request will be executed serially                                                                                                                                                                                                          |
+| type           | Data request type                                     | String                                               | -                | fetch                       | Supports four types: fetch/mtop/jsonp/custom                                                                                                                                                                                                                      |
+| shouldFetch    | Whether this request can be sent normally             | (options: ComponentDataSourceItemOptions) => boolean | -                | `() => true`                | Function parameter reference: [ComponentDataSourceItemOptions Object Description](#2315-componentdatasourceitemoptions-object-description)                                                                                                                        |
+| willFetch      | Single data result request parameter handler function | Function                                             | -                | options => options          | Accepts only one parameter (options); the return value is used as the request options. On processing error, the original options are used. May also return a Promise; the resolved value is used as the request options; on reject, the original options are used |
+| requestHandler | Custom extended external request handler              | Function                                             | -                | -                           | Only effective when type='custom'                                                                                                                                                                                                                                 |
+| dataHandler    | Callback function after request success               | Function                                             | -                | `response => response.data` | Parameter: the promise value after successful request                                                                                                                                                                                                             |     |
+| errorHandler   | Callback function after request failure               | Function                                             | -                | -                           | Parameter: the promise error content after request failure                                                                                                                                                                                                        |
+| options {}     | Request parameters                                    | **ComponentDataSourceItemOptions**                   | -                | -                           | Each request type corresponds to different parameters; see [ComponentDataSourceItemOptions Object Description](#2315-componentdatasourceitemoptions-object-description)                                                                                           |
 
-**关于 dataHandler 于 errorHandler 的细节说明：**
+**Detailed notes on dataHandler and errorHandler:**
 
-request 返回的是一个 promise，dataHandler 和 errorHandler 遵循 Promise 对象的 then 方法，实际使用方式如下：
+The request returns a promise. dataHandler and errorHandler follow the Promise object's then method. Actual usage is as follows:
 
 ```ts
-// 伪代码
+// Pseudocode
 try {
   const result = await request(fetchConfig).then(dataHandler, errorHandler);
   dataSourceItem.data = result;
@@ -462,51 +456,50 @@ try {
   dataSourceItem.status = 'error';
 }
 ```
-**注意：**
-- dataHandler 和 errorHandler 只会走其中的一个回调
-- 它们都有修改 promise 状态的机会，意味着可以修改当前数据源最终状态
-- 最后返回的结果会被认为是当前数据源的最终结果，如果被 catch 了，那么会认为数据源请求出错
-- dataHandler 会有默认值，考虑到返回结果入参都是 response 完整对象，默认值会返回 `response.data`，errorHandler 没有默认值
 
+**Note:**
 
-##### 2.3.1.5 ComponentDataSourceItemOptions 对象描述
+- Only one of dataHandler and errorHandler callbacks will be invoked
+- Both have the opportunity to modify the promise state, meaning they can modify the final state of the current data source
+- The final returned result is considered the final result of the current data source; if caught, the data source request is considered failed
+- dataHandler has a default value. Considering that the input parameter is the complete response object, the default returns `response.data`. errorHandler has no default value
 
-| 参数    | 说明         | 类型    | 支持变量 | 默认值 | 备注                                                                                                        |
-| ------- | ------------ | ------- | -------- | ------ | ----------------------------------------------------------------------------------------------------------- |
-| uri     | 请求地址     | String  | ✅        | -      |                                                                                                             |
-| params  | 请求参数     | Object  | ✅        | {}     | 当前数据源默认请求参数（在运行时会被实际的 load 方法的参数替换，如果 load 的 params 没有则会使用当前 params) |
-| method  | 请求方法     | String  | ✅        | GET    |                                                                                                             |
-| isCors  | 是否支持跨域 | Boolean | ✅        | true   | 对应 `credentials = 'include'`                                                                              |
-| timeout | 超时时长     | Number  | ✅        | 5000   | 单位 ms                                                                                                      |
-| headers | 请求头信息   | Object  | ✅        | -      | 自定义请求头                                                                                                |
+##### 2.3.1.5 ComponentDataSourceItemOptions Object Description
 
+| Parameter | Description                       | Type    | Variable Support | Default Value | Notes                                                                                                                                                                    |
+| --------- | --------------------------------- | ------- | ---------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| uri       | Request URL                       | String  | ✅               | -             |                                                                                                                                                                          |
+| params    | Request parameters                | Object  | ✅               | {}            | Default request parameters of the current data source (replaced at runtime by the actual load method parameters; if load params are absent, the current params are used) |
+| method    | Request method                    | String  | ✅               | GET           |                                                                                                                                                                          |
+| isCors    | Whether cross-origin is supported | Boolean | ✅               | true          | Corresponds to `credentials = 'include'`                                                                                                                                 |
+| timeout   | Timeout duration                  | Number  | ✅               | 5000          | Unit: ms                                                                                                                                                                 |
+| headers   | Request header information        | Object  | ✅               | -             | Custom request headers                                                                                                                                                   |
 
+##### 2.3.1.6 ComponentLifeCycles Object Description
 
-##### 2.3.1.6 ComponentLifeCycles 对象描述
+Lifecycle object. The schema is multi-terminal oriented; different DSLs have different lifecycle methods:
 
-生命周期对象，schema 面向多端，不同 DSL 有不同的生命周期方法：
-
-- React：对于中后台 PC 物料，已明确使用 React 作为最终渲染框架，因此提案采用 [React16 标准生命周期方法](https://reactjs.org/docs/react-component.html)标准来定义生命周期方法，降低理解成本，支持生命周期如下：
-  - constructor(props, context) 
-    - 说明：初始化渲染时执行，常用于设置 state 值。
-  - render() 
-    - 说明：执行于容器组件 React Class 的 render 方法最前，常用于计算变量挂载到 this 对象上，供 props 上属性绑定。此 render() 方法不需要设置 return 返回值。
+- React: For mid/back-office PC materials, React has been confirmed as the final rendering framework. Therefore, this proposal adopts [React 16 standard lifecycle methods](https://reactjs.org/docs/react-component.html) to define lifecycle methods, reducing understanding cost. Supported lifecycles are as follows:
+  - constructor(props, context)
+    - Description: Executed during initialization rendering; commonly used to set state values.
+  - render()
+    - Description: Executed at the beginning of the container component React Class render method; commonly used to compute variables and attach them to the this object for property binding on props. This render() method does not need to set a return value.
   - componentDidMount()
-    - 说明：组件已加载
+    - Description: Component has loaded
   - componentDidUpdate(prevProps, prevState, snapshot)
-    - 说明：组件已更新
+    - Description: Component has updated
   - componentWillUnmount()
-    - 说明：组件即将从 DOM 中移除
+    - Description: Component is about to be removed from the DOM
   - componentDidCatch(error, info)
-    - 说明：组件捕获到异常
+    - Description: Component caught an exception
 
-该对象由一系列 key-value 组成，key 为生命周期方法名，value 为 JSFunction 的描述，详见下方示例：
+This object consists of a series of key-value pairs. The key is the lifecycle method name, and the value is a JSFunction description. See the example below:
 
 ```json
 {
-  "componentDidMount": {              // key 为上文中 React 的生命周期方法名
-    "type": "JSFunction",             // type 目前仅支持 JSFunction
-    "value": "function() {\           // value 为 javascript 函数
+  "componentDidMount": {              // key is the React lifecycle method name from above
+    "type": "JSFunction",             // type currently supports JSFunction only
+    "value": "function() {\           // value is a javascript function
       console.log('did mount');\
     }"
   },
@@ -520,24 +513,24 @@ try {
 },
 ```
 
+##### 2.3.1.7 dataHandler Function Description
 
-##### 2.3.1.7 dataHandler Function 描述
+- Parameters: a dataMap object containing the following fields:
+  - key: data id
+  - value: single request result
+- Return value: data object. In the rendering engine and schemaToCode, the returned data object is applied to state by calling `this.setState(...)`. Supports returning a Promise; resolve with the returned data. Commonly used in serial request scenarios.
 
-- 参数：为 dataMap 对象，包含字段如下：
-  - key: 数据 id
-  - value: 单个请求结果
-- 返回值：数据对象 data，将会在渲染引擎和 schemaToCode 中通过调用 `this.setState(...)` 将返回的数据对象生效到 state 中；支持返回一个 Promise，通过 `resolve（返回数据）`，常用于串行发送请求场景。
+##### 2.3.1.8 ComponentPropDefinition Object Description
 
-##### 2.3.1.8 ComponentPropDefinition 对象描述
+| Parameter    | Description            | Type           | Variable Support | Default Value | Notes                                                                                                                                                                                        |
+| ------------ | ---------------------- | -------------- | ---------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name         | Property name          | String         | -                | -             |                                                                                                                                                                                              |
+| propType     | Property type          | String\|Object | -                | -             | For value content structure, refer to **basic types** and **composite types** described in "2.2.2.3 Component Property Information" in the _Low-Code Engine Material Protocol Specification_ |
+| description  | Property description   | String         | -                | ''            |                                                                                                                                                                                              |
+| defaultValue | Property default value | Any            | -                | undefined     | When defaultValue and defaultProps both contain a default value for the same prop, defaultValue takes precedence.                                                                            |
 
-| 参数         | 说明       | 类型           | 支持变量 | 默认值    | 备注                                                                                                              |
-| ------------ | ---------- | -------------- | -------- | --------- | ----------------------------------------------------------------------------------------------------------------- |
-| name         | 属性名称   | String         | -        | -         |                                                                                                                   |
-| propType     | 属性类型   | String\|Object | -        | -         | 具体值内容结构，参考《低代码引擎物料协议规范》内的“2.2.2.3 组件属性信息”中描述的**基本类型**和**复合类型** |
-| description  | 属性描述   | String         | -        | ''        |                                                                                                                   |
-| defaultValue | 属性默认值 | Any            | -        | undefined | 当 defaultValue 和 defaultProps 中存在同一个 prop 的默认值时，优先使用 defaultValue。                             |
+Example:
 
-范例：
 ```json
 {
   "propDefinitions": [{
@@ -552,23 +545,21 @@ try {
 },
 ```
 
-#### 2.3.2 组件结构描述（A）
+#### 2.3.2 Component Structure Description (A)
 
-对应生成源码开发体系中 render 函数返回的 jsx 代码，主要描述有以下属性：
+Corresponds to jsx code returned by the render function in the source-code development system. Main properties described are as follows:
 
+| Parameter     | Description                           | Type             | Variable Support | Default Value     | Notes                                                                                                                                                                                                     |
+| ------------- | ------------------------------------- | ---------------- | ---------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id            | Unique component identifier           | String           | -                |                   | Optional. Component id is randomly generated by the engine (UUID) and guaranteed unique. Consumer is the upper-layer application platform. The id must remain unchanged when the component is moved, etc. |
+| componentName | Component name                        | String           | -                | Div               | Required. First letter uppercase; same requirement as in [componentsMap](#22-component-mapping-relationships-a)                                                                                           |
+| props {}      | Component property object             | **Props**        | -                | {}                | Required. See [Props Structure Description](#2311-props-structure-description)                                                                                                                            |
+| condition     | Render condition                      | Boolean          | ✅               | true              | Optional. Determines whether to render the material based on expression result; supports variable expressions                                                                                             |
+| loop          | Loop data                             | Array            | ✅               | -                 | Optional. No loop rendering by default; supports variable expressions                                                                                                                                     |
+| loopArgs      | Loop iteration object and index names | [String, String] |                  | ["item", "index"] | Optional. Supports strings only                                                                                                                                                                           |
+| children      | Child components                      | Array            |                  |                   | Optional. Supports variable expressions                                                                                                                                                                   |
 
-| 参数          | 说明                   | 类型             | 支持变量 | 默认值            | 备注                                                                                                       |
-| ------------- | ---------------------- | ---------------- | -------- | ----------------- | ---------------------------------------------------------------------------------------------------------- |
-| id            | 组件唯一标识           | String           | -        |                   | 可选，组件 id 由引擎随机生成（UUID），并保证唯一性，消费方为上层应用平台，在组件发生移动等场景需保持 id 不变 |
-| componentName | 组件名称               | String           | -        | Div               | 必填，首字母大写，同 [componentsMap](#22-组件映射关系 a) 中的要求                                           |
-| props {}      | 组件属性对象           | **Props**| -        | {}                | 必填，详见 | 必填，详见 [Props 结构描述](#2311-props-结构描述)                                                          |
-| condition     | 渲染条件               | Boolean          | ✅        | true              | 选填，根据表达式结果判断是否渲染物料；支持变量表达式                                                       |
-| loop          | 循环数据               | Array            | ✅        | -                 | 选填，默认不进行循环渲染；支持变量表达式                                                                   |
-| loopArgs      | 循环迭代对象、索引名称 | [String, String] |          | ["item", "index"] | 选填，仅支持字符串                                                                                         |
-| children      | 子组件                 | Array            |          |                   | 选填，支持变量表达式                                                                                       |
-
-
-描述举例：
+Description example:
 
 ```json
 {
@@ -597,45 +588,41 @@ try {
 }
 ```
 
+#### 2.3.3 Container Structure Description (A)
 
-#### 2.3.3 容器结构描述 (A) 
+Containers are a special type of component. On top of component capabilities, they add descriptions of lifecycle objects, custom methods, style files, data sources, and other information. There are three types: **Low-Code Business Component Container (Component)**, **Block Container (Block)**, and **Page Container (Page)**. Main properties described are as follows:
 
-容器是一类特殊的组件，在组件能力基础上增加了对生命周期对象、自定义方法、样式文件、数据源等信息的描述。包含**低代码业务组件容器 Component**、**区块容器 Block**、**页面容器 Page** 3 种。主要描述有以下属性：
+- Component type: componentName
+- File name: fileName
+- Component properties: props
+- State management: state
+- Lifecycle hook methods: lifeCycles
+- Custom method settings: methods
+- Asynchronous data source configuration: dataSource
+- Conditional rendering: condition
+- Style file: css/less/scss
 
-- 组件类型：componentName
-- 文件名称：fileName
-- 组件属性：props
-- state 状态管理：state
-- 生命周期 Hook 方法：lifeCycles
-- 自定义方法设置：methods
-- 异步数据源配置：dataSource
-- 条件渲染：condition
-- 样式文件：css/less/scss
+Detailed description:
 
+| Parameter       | Description                                                  | Type                                                                                                                               | Variable Support | Default Value | Notes                                                                                                                                                                                 |
+| --------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| componentName   | Component name                                               | Enum type, including `'Page'` (page container), `'Block'` (block container), `'Component'` (low-code business component container) | -                | 'Div'         | Required. First letter uppercase                                                                                                                                                      |
+| fileName        | File name                                                    | String                                                                                                                             | -                | -             | Required. English only                                                                                                                                                                |
+| props { }       | Component property object                                    | **Props**                                                                                                                          | -                | {}            | Required. See [Props Structure Description](#2311-props-structure-description)                                                                                                        |
+| static          | Static object of the low-code business component class       |                                                                                                                                    |                  |               |                                                                                                                                                                                       |
+| defaultProps    | Default properties of the low-code business component        | Object                                                                                                                             | -                | -             | Optional. Used only to define default properties of low-code business components                                                                                                      |
+| propDefinitions | Property type definitions of the low-code business component | **ComponentPropDefinition**[]                                                                                                      | -                | -             | Optional. Used only to define property data types of low-code business components. See [ComponentPropDefinition Object Description](#2318-componentpropdefinition-object-description) |
+| condition       | Render condition                                             | Boolean                                                                                                                            | ✅               | true          | Optional. Determines whether to render the material based on expression result; supports variable expressions                                                                         |
+| state           | Container initial data                                       | Object                                                                                                                             | ✅               | -             | Optional. Supports variable expressions                                                                                                                                               |
+| children        | Child components                                             | Array                                                                                                                              | -                |               | Optional. Supports variable expressions                                                                                                                                               |
+| css/less/scss   | Style properties                                             | String                                                                                                                             | ✅               | -             | Optional. See [css/less/scss Style Description](#2312-csslessscss-style-description)                                                                                                  |
+| lifeCycles      | Lifecycle object                                             | **ComponentLifeCycles**                                                                                                            | -                | -             | See [ComponentLifeCycles Object Description](#2316-componentlifecycles-object-description)                                                                                            |
+| methods         | Custom method object                                         | Object                                                                                                                             | -                | -             | Optional. Object members are function types                                                                                                                                           |
+| dataSource {}   | Data source object                                           | **ComponentDataSource**                                                                                                            | -                | -             | Optional. Asynchronous data source. See [ComponentDataSource Object Description](#2313-componentdatasource-object-description)                                                        |
 
-详细描述：
+#### Complete Description Examples
 
-| 参数            | 说明                       | 类型                                                                                                       | 支持变量 | 默认值 | 备注                                                                                                                          |
-| --------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------- | -------- | ------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| componentName   | 组件名称                   | 枚举类型，包括`'Page'` （代表页面容器）、`'Block'` （代表区块容器）、`'Component'` （代表低代码业务组件容器） | -        | 'Div'    | 必填，首字母大写                                                                                                              |
-| fileName        | 文件名称                   | String                                                                                                     | -        | -      | 必填，英文                                                                                                                    |
-| props { }       | 组件属性对象               | **Props**                                                                                                  | -        | {}     | 必填，详见 [Props 结构描述](#2311-props-结构描述)                                                                             |
-| static          | 低代码业务组件类的静态对象 |                                                                                                            |          |        |                                                                                                                               |
-| defaultProps    | 低代码业务组件默认属性     | Object                                                                                                     | -        | -      | 选填，仅用于定义低代码业务组件的默认属性                                                                                      |
-| propDefinitions | 低代码业务组件属性类型定义 | **ComponentPropDefinition**[]                                                                       | -        | -      | 选填，仅用于定义低代码业务组件的属性数据类型。详见 [ComponentPropDefinition 对象描述](#2318-componentpropdefinition-对象描述) |
-| condition       | 渲染条件                   | Boolean                                                                                                    | ✅        | true   | 选填，根据表达式结果判断是否渲染物料；支持变量表达式                                                                          |
-| state           | 容器初始数据               | Object                                                                                                     | ✅        | -      | 选填，支持变量表达式                                                                                                          |
-| children        | 子组件                     | Array                                                                                                      | -        |        | 选填，支持变量表达式                                                                                                          |
-| css/less/scss   | 样式属性                   | String                                                                                                     | ✅        | -      | 选填，详见 [css/less/scss 样式描述](#2312-csslessscss 样式描述)                                                               |
-| lifeCycles      | 生命周期对象               | **ComponentLifeCycles**                                                                                    | -        | -      | 详见 [ComponentLifeCycles 对象描述](#2316-componentlifecycles-对象描述)                                                       |
-| methods         | 自定义方法对象             | Object                                                                                                     | -        | -      | 选填，对象成员为函数类型                                                                                                      |
-| dataSource {}   | 数据源对象                 | **ComponentDataSource**| -        | -      | 选填，异步数据源，详见                                                  | -        | -      | 选填，异步数据源，详见 [ComponentDataSource 对象描述](#2313-componentdatasource-对象描述)                                     |
-
-
-
-#### 完整描述示例
-
-描述示例 1：（正常 fetch/mtop/jsonp 请求）：
+Description example 1 (normal fetch/mtop/jsonp requests):
 
 ```json
 {
@@ -647,15 +634,17 @@ try {
       "background": "#dd2727"
     }
   },
-  "children": [{
-    "componentName": "Button",
-    "props": {
-      "text": {
-        "type": "JSExpression",
-        "value": "this.state.btnText"
+  "children": [
+    {
+      "componentName": "Button",
+      "props": {
+        "text": {
+          "type": "JSExpression",
+          "value": "this.state.btnText"
+        }
       }
     }
-  }],
+  ],
   "state": {
     "btnText": "submit"
   },
@@ -683,23 +672,25 @@ try {
     }
   },
   "dataSource": {
-    "list": [{
-      "id": "list",
-      "isInit": true,
-      "type": "fetch/mtop/jsonp",
-      "options": {
-        "uri": "",
-        "params": {},
-        "method": "GET",
-        "isCors": true,
-        "timeout": 5000,
-        "headers": {}
-      },
-      "dataHandler": {
-        "type": "JSFunction",
-        "value": "function(data, err) {}"
+    "list": [
+      {
+        "id": "list",
+        "isInit": true,
+        "type": "fetch/mtop/jsonp",
+        "options": {
+          "uri": "",
+          "params": {},
+          "method": "GET",
+          "isCors": true,
+          "timeout": 5000,
+          "headers": {}
+        },
+        "dataHandler": {
+          "type": "JSFunction",
+          "value": "function(data, err) {}"
+        }
       }
-    }],
+    ],
     "dataHandler": {
       "type": "JSFunction",
       "value": "function(dataMap) { }"
@@ -712,7 +703,7 @@ try {
 }
 ```
 
-描述示例 2：（自定义扩展请求处理器类型）：
+Description example 2 (custom extended request handler type):
 
 ```json
 {
@@ -753,23 +744,22 @@ try {
 }
 ```
 
-#### 2.3.4 属性值类型描述（A）
+#### 2.3.4 Property Value Type Description (A)
 
-在上述**组件结构**和**容器结构**描述中，每一个属性所对应的值，除了传统的 JS 值类型（String、Number、Object、Array、Boolean）外，还包含有**节点类型**、**事件函数类型**、**变量类型**等多种复杂类型；接下来将对于复杂类型的详细描述方式进行详细介绍。
+In the **component structure** and **container structure** descriptions above, the value corresponding to each property, in addition to traditional JS value types (String, Number, Object, Array, Boolean), also includes complex types such as **node types**, **event function types**, and **variable types**. The following sections provide detailed descriptions of these complex types.
 
-##### 2.3.4.1 节点类型（A）
+##### 2.3.4.1 Node Type (A)
 
-通常用于描述组件的某一个属性为 **ReactNode** 或 **Function-Return-ReactNode** 的场景。该类属性的描述均以 **JSSlot** 的方式进行描述，详细描述如下：
+Commonly used to describe scenarios where a component property is **ReactNode** or **Function-Return-ReactNode**. Such properties are all described using **JSSlot**. Detailed description is as follows:
 
-**ReactNode** 描述：
+**ReactNode** description:
 
-| 参数  | 说明       | 值类型                | 默认值   | 备注                                                           |
-| ----- | ---------- | --------------------- | -------- | -------------------------------------------------------------- |
-| type  | 值类型描述 | String                | 'JSSlot' | 固定值                                                         |
-| value | 具体的值   | NodeSchema \| NodeSchema[] | null     | 内容为 NodeSchema 类型，详见[组件结构描述](#232-组件结构描述（A）) |
+| Parameter | Description            | Value Type                 | Default Value | Notes                                                                                                     |
+| --------- | ---------------------- | -------------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
+| type      | Value type description | String                     | 'JSSlot'      | Fixed value                                                                                               |
+| value     | Specific value         | NodeSchema \| NodeSchema[] | null          | Content is NodeSchema type; see [Component Structure Description](#232-component-structure-description-a) |
 
-
-举例描述：如 **Card** 的 **title** 属性
+Description example: e.g., the **title** property of **Card**
 
 ```json
 {
@@ -791,17 +781,15 @@ try {
 
 ```
 
+**Function-Return-ReactNode** description:
 
-**Function-Return-ReactNode** 描述：
+| Parameter | Description            | Value Type                 | Default Value | Notes                                                                                                     |
+| --------- | ---------------------- | -------------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
+| type      | Value type description | String                     | 'JSSlot'      | Fixed value                                                                                               |
+| value     | Specific value         | NodeSchema \| NodeSchema[] | null          | Content is NodeSchema type; see [Component Structure Description](#232-component-structure-description-a) |
+| params    | Function parameters    | String[]                   | null          | Function input parameters. Child nodes can obtain corresponding parameters via `this[parameterName]`.     |
 
-| 参数   | 说明       | 值类型                | 默认值   | 备注                                                           |
-| ------ | ---------- | --------------------- | -------- | -------------------------------------------------------------- |
-| type   | 值类型描述 | String                | 'JSSlot' | 固定值                                                         |
-| value  | 具体的值   | NodeSchema \| NodeSchema[] | null     | 内容为 NodeSchema 类型，详见[组件结构描述](#232-组件结构描述 a) |
-| params | 函数的参数 | String[]     | null     | 函数的入参，其子节点可以通过 `this[参数名]` 来获取对应的参数。 |
-
-
-举例描述：如 **Table.Column** 的 **cell** 属性
+Description example: e.g., the **cell** property of **Table.Column**
 
 ```json
 {
@@ -821,11 +809,11 @@ try {
 
 ```
 
-##### 2.3.4.2 事件函数类型（A）
+##### 2.3.4.2 Event Function Type (A)
 
-协议内的事件描述，主要包含**容器结构**的**生命周期**和**自定义方法**，以及**组件结构**的**事件函数类属性**三类。所有事件函数的描述，均以 **JSFunction** 的方式进行描述，保留与原组件属性、生命周期（React / 小程序）一致的输入参数，并给所有事件函数 binding 统一一致的上下文（当前组件所在容器结构的 **this** 对象）。
+Event descriptions within the protocol mainly include three categories: **lifecycle** and **custom methods** in **container structures**, and **event function class properties** in **component structures**. All event functions are described using **JSFunction**, preserving input parameters consistent with the original component properties and lifecycles (React / mini programs), and binding all event functions to a unified context (the **this** object of the container structure where the current component resides).
 
-**事件函数类型**的属性值描述如下：
+**Event function type** property value description is as follows:
 
 ```json
 {
@@ -836,7 +824,7 @@ try {
 }
 ```
 
-描述举例：
+Description example:
 
 ```json
 {
@@ -864,33 +852,34 @@ try {
     "getNum": {
       "type": "JSFunction",
       "value": "function() {\
-        console.log('名称是：' + this.state.name)\
+        console.log('Name is: ' + this.state.name)\
       }"
     }
   },
-  "children": [{
-    "componentName": "Button",
-    "props": {
-      "text": "按钮",
-      "onClick": {
-        "type": "JSFunction",
-        "value": "function(e) {\
+  "children": [
+    {
+      "componentName": "Button",
+      "props": {
+        "text": "Button",
+        "onClick": {
+          "type": "JSFunction",
+          "value": "function(e) {\
           console.log(e.target.innerText);\
         }"
+        }
       }
     }
-  }]
+  ]
 }
 ```
 
-##### 2.3.4.3 变量类型（A）
+##### 2.3.4.3 Variable Type (A)
 
-在上述**组件结构** 或**容器结构**中，有多个属性的值类型是支持变量类型的，通常会通过变量形式来绑定某个数据，所有的变量表达式均通过 JSExpression 表达式，上下文与事件函数描述一致，表达式内通过 **this** 对象获取上下文；
+In the **component structure** or **container structure** above, multiple property value types support variable types. Data is typically bound through variable form. All variable expressions use JSExpression. The context is consistent with event function descriptions. The **this** object is used within expressions to obtain context.
 
-变量**类型**的属性值描述如下：
+**Variable type** property value descriptions are as follows:
 
-
-- return 数字类型
+- return number type
 
   ```json
   {
@@ -898,7 +887,8 @@ try {
     "value": "this.state.num"
   }
   ```
-- return 数字类型
+
+- return number type
 
   ```json
   {
@@ -906,23 +896,26 @@ try {
     "value": "this.state.num - this.state.num2"
   }
   ```
-- return "8 万" 字符串类型
+
+- return "80 thousand" string type
 
   ```json
   {
     "type": "JSExpression",
-    "value": "`${this.state.num}万`"
+    "value": "`${this.state.num}0k`"
   }
   ```
-- return "8 万" 字符串类型
+
+- return "80 thousand" string type
 
   ```json
   {
     "type": "JSExpression",
-    "value": "this.state.num + '万'"
+    "value": "this.state.num + '0k'"
   }
   ```
-- return 13 数字类型
+
+- return 13 number type
 
   ```json
   {
@@ -930,7 +923,8 @@ try {
     "value": "getNum(this.state.num, this.state.num2)"
   }
   ```
-- return true 布尔类型
+
+- return true boolean type
 
   ```json
   {
@@ -939,7 +933,7 @@ try {
   }
   ```
 
-描述举例：
+Description example:
 
 ```json
 {
@@ -958,45 +952,48 @@ try {
       }"
     }
   },
-  "children": [{
-    "componentName": "Button",
-    "props": {
-      "text": {
+  "children": [
+    {
+      "componentName": "Button",
+      "props": {
+        "text": {
+          "type": "JSExpression",
+          "value": "this.getNum(this.state.num, this.state.num2) + '0k'"
+        }
+      },
+      "condition": {
         "type": "JSExpression",
-        "value": "this.getNum(this.state.num, this.state.num2) + '万'"
+        "value": "this.state.num > this.state.num2"
       }
-    },
-    "condition": {
-      "type": "JSExpression",
-      "value": "this.state.num > this.state.num2"
     }
-  }]
+  ]
 }
 ```
 
-##### 2.3.4.4 国际化多语言类型（AA）
+##### 2.3.4.4 Internationalization Multi-Language Type (AA)
 
-协议内的一些文本值内容，我们希望是和协议全局的国际化多语言语料是关联的，会按照全局国际化语言环境的不同使用对应的语料。所有国际化多语言值均以 **i18n** 结构描述。这样可以更为清晰且结构化得表达使用场景。
+For some text value content within the protocol, we want it to be associated with the protocol's global internationalization corpus, using the corresponding corpus according to the global internationalization language environment. All internationalization multi-language values are described using the **i18n** structure. This expresses usage scenarios more clearly and structurally.
 
-**国际化多语言类型**的属性值类型描述如下：
+**Internationalization multi-language type** property value type description is as follows:
 
 ```typescript
 type Ti18n = {
   type: 'i18n';
-  key: string; // i18n 结构中字段的 key 标识符
-  params?: Record<string, JSDataType | JSExpression>; // 模版型 i18n 文案的入参，JSDataType 指代传统 JS 值类型
-}
+  key: string; // key identifier of the field in the i18n structure
+  params?: Record<string, JSDataType | JSExpression>; // input parameters for template-type i18n copy; JSDataType refers to traditional JS value types
+};
 ```
 
-其中 `key` 对应协议 `i18n` 内容的语料键值，`params` 为语料为字符串模板时的变量内容。
+Where `key` corresponds to the corpus key in the protocol `i18n` content, and `params` provides variable content when the corpus is a string template.
 
-假设协议已加入如下 i18n 内容：
+Assuming the protocol has the following i18n content:
+
 ```json
 {
   "i18n": {
     "zh-CN": {
-      "i18n-jwg27yo4": "你好",
-      "i18n-jwg27yo3": "{name}博士"
+      "i18n-jwg27yo4": "Hello",
+      "i18n-jwg27yo3": "Dr. {name}"
     },
     "en-US": {
       "i18n-jwg27yo4": "Hello",
@@ -1006,7 +1003,7 @@ type Ti18n = {
 }
 ```
 
-**国际化多语言类型**简单范例：
+**Internationalization multi-language type** simple example:
 
 ```json
 {
@@ -1015,7 +1012,7 @@ type Ti18n = {
 }
 ```
 
-**国际化多语言类型**模板范例：
+**Internationalization multi-language type** template example:
 
 ```json
 {
@@ -1027,7 +1024,7 @@ type Ti18n = {
 }
 ```
 
-描述举例：
+Description example:
 
 ```json
 {
@@ -1041,129 +1038,130 @@ type Ti18n = {
 }
 ```
 
+#### 2.3.5 Context API Description (A)
 
-#### 2.3.5 上下文 API 描述（A）
+In the **event type description** and **variable type description** above, within functions or JS expressions, the instantiated object of the container (React Class) where the current component resides can be obtained through the **this** object. In rendering module and code generation module implementations in building scenarios, a minimum API set mounted on this instantiated **this** object is uniformly agreed upon to ensure the building protocol has consistent **data flow** and **event context**.
 
-在上述**事件类型描述**和**变量类型描述**中，在函数或 JS 表达式内，均可以通过 **this** 对象获取当前组件所在容器（React Class）的实例化对象，在搭建场景下的渲染模块和出码模块实现上，统一约定了该实例化 **this** 对象下所挂载的最小 API 集合，以保障搭建协议具备有一致的**数据流**和**事件上下文**。 
+##### 2.3.5.1 Container API:
 
-##### 2.3.5.1 容器 API：
-
-| 参数                                | 说明                                    | 类型                         | 备注                                                                                                           |
-| ----------------------------------- | --------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| **this {}**                         | 当前区块容器的实例对象                  | Class Instance               | -                                                                                                              |
-| *this*.state                        | 三种容器实例的数据对象 state            | Object                       | -                                                                                                              |
-| *this*.setState(newState, callback) | 三种容器实例更新数据的方法              | Function                     | 这个 setState 通常会异步执行，详见下文 [setState](#setstate)                                                   |
-| *this*.customMethod()               | 三种容器实例的自定义方法                | Function                     | -                                                                                                              |
-| *this*.dataSourceMap {}             | 三种容器实例的数据源对象 Map             | Object                       | 单个请求的 id 为 key, value 详见下文 [DataSourceMapItem 结构描述](#datasourcemapitem-结构描述)                     |
-| *this*.reloadDataSource()           | 三种容器实例的初始化异步数据请求重载    | Function                     | 返回 \<Promise\>                                                                                               |
-| **this.page {}**                    | 当前页面容器的实例对象                  | Class Instance               |                                                                                                                |
-| *this.page*.props                   | 读取页面路由，参数等相关信息            | Object                       | query 查询参数 { key: value } 形式；path 路径；uri 页面唯一标识；其它扩展字段                            |
-| *this.page*.xxx                     | 继承 this 对象所有 API                     |                              | 此处 `xxx` 代指 `this.page` 中的其他 API                                                                          |
-| **this.component {}**               | 当前低代码业务组件容器的实例对象        | Class Instance               |                                                                                                                |
-| *this.component*.props              | 读取低代码业务组件容器的外部传入的 props | Object                       |                                                                                                                |
-| *this.component*.xxx                | 继承 this 对象所有 API                     |                              | 此处 `xxx` 代指 `this.component` 中的其他 API                                                                     |
-| **this.$(ref)**                     | 获取组件的引用（单个）                    | Component Instance           | `ref` 对应组件上配置的 `ref` 属性，用于唯一标识一个组件；若有同名的，则会返回第一个匹配的。                    |
-| **this.$$(ref)**                    | 获取组件的引用（所有同名的）              | Array of Component Instances | `ref` 对应组件上配置的 `ref` 属性，用于唯一标识一个组件；总是返回一个数组，里面是所有匹配 `ref` 的组件的引用。 |
+| Parameter                           | Description                                                                     | Type                         | Notes                                                                                                                                                                                       |
+| ----------------------------------- | ------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **this {}**                         | Instance object of the current block container                                  | Class Instance               | -                                                                                                                                                                                           |
+| _this_.state                        | State data object of the three container instance types                         | Object                       | -                                                                                                                                                                                           |
+| _this_.setState(newState, callback) | Method to update data of the three container instance types                     | Function                     | This setState is typically executed asynchronously; see [setState](#setstate) below                                                                                                         |
+| _this_.customMethod()               | Custom methods of the three container instance types                            | Function                     | -                                                                                                                                                                                           |
+| _this_.dataSourceMap {}             | Data source object Map of the three container instance types                    | Object                       | Single request id as key; value see [DataSourceMapItem Structure Description](#datasourcemapitem-structure-description) below                                                               |
+| _this_.reloadDataSource()           | Reload initial asynchronous data requests of the three container instance types | Function                     | Returns \<Promise\>                                                                                                                                                                         |
+| **this.page {}**                    | Instance object of the current page container                                   | Class Instance               |                                                                                                                                                                                             |
+| _this.page_.props                   | Read page routing, parameters, and related information                          | Object                       | Query parameters in { key: value } form; path; uri page unique identifier; other extension fields                                                                                           |
+| _this.page_.xxx                     | Inherits all APIs of the this object                                            |                              | Here `xxx` refers to other APIs on `this.page`                                                                                                                                              |
+| **this.component {}**               | Instance object of the current low-code business component container            | Class Instance               |                                                                                                                                                                                             |
+| _this.component_.props              | Read externally passed props of the low-code business component container       | Object                       |                                                                                                                                                                                             |
+| _this.component_.xxx                | Inherits all APIs of the this object                                            |                              | Here `xxx` refers to other APIs on `this.component`                                                                                                                                         |
+| **this.$(ref)**                     | Get component reference (single)                                                | Component Instance           | `ref` corresponds to the `ref` property configured on the component, used to uniquely identify a component; if duplicates exist, returns the first match.                                   |
+| **this.$$(ref)**                    | Get component references (all with the same name)                               | Array of Component Instances | `ref` corresponds to the `ref` property configured on the component, used to uniquely identify a component; always returns an array containing references to all components matching `ref`. |
 
 ##### setState
 
-`setState()` 将对容器 `state` 的更改排入队列，并通知低代码引擎需要使用更新后的 `state` 重新渲染此组件及其子组件。这是用于更新用户界面以响应事件处理器和处理服务器数据的主要方式。
+`setState()` enqueues changes to the container `state` and notifies the low-code engine that this component and its children need to be re-rendered with the updated `state`. This is the primary way to update the user interface in response to event handlers and server data processing.
 
-请将 `setState()` 视为请求而不是立即更新组件的命令。为了更好的感知性能，低代码引擎会延迟调用它，然后通过一次传递更新多个组件。低代码引擎并不会保证 state 的变更会立即生效。
+Treat `setState()` as a request rather than an immediate command to update the component. For better perceived performance, the low-code engine delays calling it and then updates multiple components in a single pass. The low-code engine does not guarantee that state changes take effect immediately.
 
-`setState()`并不总是立即更新组件，它会批量推迟更新。这使得在调用用 `setState()` 后立即读取 `this.state` 成为了隐患。为了消除隐患，请使用 `setState` 的回调函数（`setState(updater, callback)`），`callback` 将在应用更新后触发。即，如下例所示：
+`setState()` does not always update the component immediately. It batches and defers updates. This makes reading `this.state` immediately after calling `setState()` risky. To eliminate this risk, use the `setState` callback function (`setState(updater, callback)`). The `callback` is triggered after the update is applied. Example:
 
 ```js
 this.setState(newState, () => {
-  // 在这里更新已经生效了
-  // 可以通过 this.state 拿到更新后的状态
+  // The update has taken effect here
+  // You can get the updated state via this.state
   console.log(this.state);
 });
 
-// ⚠注意：这里拿到的并不是更新后的状态，这里还是之前的状态
+// ⚠ Note: This is NOT the updated state; it is still the previous state
 console.log(this.state);
 ```
 
-如需基于之前的 `state` 来设置当前的 `state`，则可以将传递一个 `updater` 函数：`(state, props) => newState`，例如：
+To set the current `state` based on the previous `state`, pass an `updater` function: `(state, props) => newState`, for example:
 
 ```js
 this.setState((prevState) => ({ count: prevState.count + 1 }));
 ```
 
-为了方便更新部分状态，`setState` 会将 `newState` 浅合并到新的 `state` 上。
+To conveniently update partial state, `setState` shallow-merges `newState` into the new `state`.
 
+##### DataSourceMapItem Structure Description
 
-##### DataSourceMapItem 结构描述
+| Parameter    | Description                                         | Type         | Notes                                                                                                                                                     |
+| ------------ | --------------------------------------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| load(params) | Invoke a single data source                         | Function     | Current params replace the params content in [ComponentDataSourceItemOptions Object Description](#2315-componentdatasourceitemoptions-object-description) |
+| status       | Get the last request status of a single data source | String       | loading, loaded, error, init                                                                                                                              |
+| data         | Get data after the last successful request          | Any          |                                                                                                                                                           |
+| error        | Get the error object after the last failed request  | Error object |                                                                                                                                                           |
 
-| 参数         | 说明                       | 类型      | 备注                                                                                                                           |
-| ------------ | -------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| load(params) | 调用单个数据源             | Function  | 当前参数 params 会替换 [ComponentDataSourceItemOptions 对象描述](#2315-componentdatasourceitemoptions-对象描述)中的 params 内容 |
-| status       | 获取单个数据源上次请求状态 | String    | loading、loaded、error、init                                                                                                   |
-| data         | 获取上次请求成功后的数据   | Any       |                                                                                                                                |
-| error        | 获取上次请求失败的错误对象 | Error 对象 |                                                                                                                                |
+Note: If the component is not inside a block container but directly inside a page, then `this === this.page`
 
-备注：如果组件没有在区块容器内，而是直接在页面内，那么 `this === this.page`
+##### 2.3.5.2 Loop Data API
 
+Obtain data objects in loop scenarios. Example: An upper-level component sets loop data and sets `loopArgs: ["item", "index"]`. In property expressions or bound event functions of the current component, the loop data environment can be obtained through the this context. Default value is `['item','index']`. For multi-level loops, customize different loopArgs and obtain corresponding loop data and index via `this[customLoopAlias]`.
 
-##### 2.3.5.2 循环数据 API
+| Parameter  | Description                                            | Type   | Optional Values |
+| ---------- | ------------------------------------------------------ | ------ | --------------- |
+| this.item  | Get loop body data corresponding to the current index; | Any    | -               |
+| this.index | Index of the current material in the loop body         | Number | -               |
 
-获取在循环场景下的数据对象。举例：上层组件设置了 loop 循环数据，且设置了 `loopArgs：["item", "index"]`，当前组件的属性表达式或绑定的事件函数中，可以通过 this 上下文获取所在循环的数据环境；默认值为 `['item','index']` ，如有多层循环，需要自定义不同 loopArgs，同样通过 `this[自定义循环别名]` 获取对应的循环数据和序号；
+### 2.4 Utility Extension Description (AA)
 
+Used to describe custom extensions or third-party utility classes (e.g., lodash and moment) introduced during material development, enhancing the extensibility of the building foundation protocol and providing a configuration scheme and invocation API for common utility methods.
 
-| 参数       | 说明                              | 类型   | 可选值 |
-| ---------- | --------------------------------- | ------ | ------ |
-| this.item  | 获取当前 index 对应的循环体数据； | Any    | -      |
-| this.index | 当前物料在循环体中的 index        | Number | -      |
+| Parameter          | Description                             | Type                                                                                                             | Variable Support | Default Value |
+| ------------------ | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------- | ------------- |
+| utils[]            | Utility extension mapping relationships | **UtilItem**[]                                                                                                   | -                |               |
+| _UtilItem_.name    | Utility extension item name             | String                                                                                                           | -                |               |
+| _UtilItem_.type    | Utility extension item type             | Enum: `'npm'` (public npm type) / `'tnpm'` (Alibaba internal npm type) / `'function'` (Javascript function type) | -                |               |
+| _UtilItem_.content | Utility extension item content          | [ComponentMap type](#22-component-mapping-relationships-a) or [JSFunction](#2432-event-function-type-a)          | -                |               |
 
-### 2.4 工具类扩展描述（AA）
-
-用于描述物料开发过程中，自定义扩展或引入的第三方工具类（例如：lodash 及 moment），增强搭建基础协议的扩展性，提供通用的工具类方法的配置方案及调用 API。
-
-| 参数               | 说明               | 类型                                                                                                             | 支持变量 | 默认值 |
-| ------------------ | ------------------ | ---------------------------------------------------------------------------------------------------------------- | -------- | ------ |
-| utils[]           | 工具类扩展映射关系 | **UtilItem**[]                                                                                          | -        |        |
-| *UtilItem*.name    | 工具类扩展项名称   | String                                                                                                           | -        |        |
-| *UtilItem*.type    | 工具类扩展项类型   | 枚举， `'npm'` （代表公网 npm 类型） / `'tnpm'` （代表阿里巴巴内部 npm 类型） / `'function'` （代表 Javascript 函数类型） | -        |        |
-| *UtilItem*.content | 工具类扩展项内容   | [ComponentMap 类型](#22-组件映射关系 a) 或 [JSFunction](#2432事件函数类型 a)                                        | -        |        |
-
-描述示例：
+Description example:
 
 ```javascript
 {
-  utils: [{
-    name: 'clone',
-    type: 'npm',
-    content: {
-      package: 'lodash',
-      version: '0.0.1',
-      exportName: 'clone',
-      subName: '',
-      destructuring: false,
-      main: '/lib/clone'
-    }
-  }, {
-    name: 'moment',
-    type: 'npm',
-    content: {
-      package: '@alifd/next',
-      version: '0.0.1',
-      exportName: 'Moment',
-      subName: '',
-      destructuring: true,
-      main: ''
-    }
-  }, {
-    name: 'recordEvent',
-    type: 'function',
-    content: {
-      type: 'JSFunction',
-      value: "function(logkey, gmkey, gokey, reqMethod) {\n  goldlog.record('/xxx.event.' + logkey, gmkey, gokey, reqMethod);\n}"
-    }
-  }]
+  utils: [
+    {
+      name: 'clone',
+      type: 'npm',
+      content: {
+        package: 'lodash',
+        version: '0.0.1',
+        exportName: 'clone',
+        subName: '',
+        destructuring: false,
+        main: '/lib/clone',
+      },
+    },
+    {
+      name: 'moment',
+      type: 'npm',
+      content: {
+        package: '@alifd/next',
+        version: '0.0.1',
+        exportName: 'Moment',
+        subName: '',
+        destructuring: true,
+        main: '',
+      },
+    },
+    {
+      name: 'recordEvent',
+      type: 'function',
+      content: {
+        type: 'JSFunction',
+        value:
+          "function(logkey, gmkey, gokey, reqMethod) {\n  goldlog.record('/xxx.event.' + logkey, gmkey, gokey, reqMethod);\n}",
+      },
+    },
+  ];
 }
 ```
 
-出码结果：
+Code generation result:
 
 ```javascript
 import clone from 'lodash/lib/clone';
@@ -1176,7 +1174,7 @@ export const recordEvent = function(logkey, gmkey, gokey, reqMethod) {
 ...
 ```
 
-扩展的工具类，用户可以通过统一的上下文 this.utils 方法获取所有扩展的工具类或自定义函数，例如：this.utils.moment、this.utils.clone。搭建协议中的使用方式如下所示：
+Extended utility classes can be obtained by users through the unified context this.utils method for all extended utility classes or custom functions, e.g., this.utils.moment, this.utils.clone. Usage in the building protocol is as follows:
 
 ```javascript
 {
@@ -1190,24 +1188,22 @@ export const recordEvent = function(logkey, gmkey, gokey, reqMethod) {
 }
 ```
 
-### 2.5 国际化多语言支持（AA）
+### 2.5 Internationalization Multi-Language Support (AA)
 
-协议中用于描述国际化语料和组件引用国际化语料的规范，遵循集团国际化中台关于国际化语料规范定义。
+Specification in the protocol used to describe internationalization corpus and component references to internationalization corpus, following the group internationalization platform's internationalization corpus specification definition.
 
+| Parameter | Description                             | Type   | Optional Values | Default Value |
+| --------- | --------------------------------------- | ------ | --------------- | ------------- |
+| i18n      | Internationalization corpus information | Object | -               | null          |
 
-| 参数 | 说明           | 类型   | 可选值 | 默认值 |
-| ---- | -------------- | ------ | ------ | ------ |
-| i18n | 国际化语料信息 | Object | -      | null   |
-
-
-描述示例：
+Description example:
 
 ```json
 {
   "i18n": {
     "zh-CN": {
-      "i18n-jwg27yo4": "你好",
-      "i18n-jwg27yo3": "中国"
+      "i18n-jwg27yo4": "Hello",
+      "i18n-jwg27yo3": "China"
     },
     "en-US": {
       "i18n-jwg27yo4": "Hello",
@@ -1217,7 +1213,7 @@ export const recordEvent = function(logkey, gmkey, gokey, reqMethod) {
 }
 ```
 
-使用举例：
+Usage example:
 
 ```json
 {
@@ -1235,7 +1231,7 @@ export const recordEvent = function(logkey, gmkey, gokey, reqMethod) {
 {
   "componentName": "Button",
   "props": {
-    "text": "按钮",
+    "text": "Button",
     "onClick": {
       "type": "JSFunction",
       "value": "function() {\
@@ -1246,7 +1242,8 @@ export const recordEvent = function(logkey, gmkey, gokey, reqMethod) {
 }
 ```
 
-使用举例（已废弃）
+Usage example (deprecated)
+
 ```json
 {
   "componentName": "Button",
@@ -1259,72 +1256,72 @@ export const recordEvent = function(logkey, gmkey, gokey, reqMethod) {
 }
 ```
 
-### 2.6 应用范围内的全局常量（AA）
+### 2.6 Global Constants Within Application Scope (AA)
 
-用于描述在整个应用内通用的全局常量，比如请求 API 的域名、环境等。
+Used to describe global constants common throughout the application, such as API request domains, environments, etc.
 
-### 2.7 应用范围内的全局样式（AA）
+### 2.7 Global Styles Within Application Scope (AA)
 
-用于描述在应用范围内的全局样式，比如 reset.css 等。
+Used to describe global styles within the application scope, such as reset.css, etc.
 
-### 2.8 当前应用配置信息（AA）
+### 2.8 Current Application Configuration Information (AA)
 
-用于描述当前应用的配置信息，比如当前应用的 Shell/Layout、主题等。
+Used to describe current application configuration information, such as the application's Shell/Layout, theme, etc.
 
-> 注意：该字段为扩展字段，消费方式由各自场景自己决定，包括运行时和出码。
+> Note: This field is an extension field. Consumption is determined by each scenario, including runtime and code generation.
 
-### 2.9 当前应用元数据信息（AA）
+### 2.9 Current Application Metadata Information (AA)
 
-用于描述当前应用的元数据信息，比如当前应用的名称、Git 信息、版本号等等。
+Used to describe current application metadata information, such as application name, Git information, version number, etc.
 
-> 注意：该字段为扩展字段，消费方式由各自场景自己决定，包括运行时和出码。
+> Note: This field is an extension field. Consumption is determined by each scenario, including runtime and code generation.
 
-### 2.10 当前应用的公共数据源（AA）
+### 2.10 Public Data Sources of the Current Application (AA)
 
-用于描述当前应用的公共数据源，数据结构跟容器结构里的 ComponentDataSource 保持一致。
-在运行时 / 出码使用时，API 和应用级数据源 API 保持一致，都是 `this.dataSourceMap['globalDSName'].load()`
+Used to describe public data sources of the current application. The data structure is consistent with ComponentDataSource in container structures.
+At runtime / code generation, the API is consistent with application-level data source APIs: `this.dataSourceMap['globalDSName'].load()`
 
-### 2.11 当前应用的路由信息（AA）
+### 2.11 Routing Information of the Current Application (AA)
 
-用于描述当前应用的路径 - 页面的关系。通过声明路由信息，应用能够在不同的路径里显示对应的页面。
+Used to describe the relationship between application paths and pages. By declaring routing information, the application can display the corresponding page at different paths.
 
-##### 2.11.1 Router （应用路由配置）结构描述
+##### 2.11.1 Router (Application Routing Configuration) Structure Description
 
-路由配置的结构说明：
+Routing configuration structure description:
 
-| 参数        | 说明                   | 类型                            | 可选值 | 默认值    | 备注   |
-| ----------- | ---------------------- | ------------------------------- | ------ | --------- | ------ |
-| baseName    | 应用根路径             | String                          | -      | '/'       | 选填｜ |
-| historyMode | history 模式           | 枚举类型，包括'browser'、'hash' | -      | 'browser' | 选填｜ |
-| routes      | 路由对象组，路径与页面的关系对照组 | Route[]                         | -      | -         | 必填｜ |
+| Parameter   | Description                                    | Type                                   | Optional Values | Default Value | Notes    |
+| ----------- | ---------------------------------------------- | -------------------------------------- | --------------- | ------------- | -------- |
+| baseName    | Application root path                          | String                                 | -               | '/'           | Optional |
+| historyMode | history mode                                   | Enum type, including 'browser', 'hash' | -               | 'browser'     | Optional |
+| routes      | Route object group; path-to-page mapping group | Route[]                                | -               | -             | Required |
 
+##### 2.11.2 Route (Route Record) Structure Description
 
-##### 2.11.2 Route （路由记录）结构描述
+Route record; path-to-page mapping. Route structure description:
 
-路由记录，路径与页面的关系对照。Route 的结构说明：
+| Parameter | Description                                    | Type                         | Optional Values | Default Value | Notes                                                                |
+| --------- | ---------------------------------------------- | ---------------------------- | --------------- | ------------- | -------------------------------------------------------------------- |
+| name      | Name of this path entry                        | String                       | -               | -             | Optional                                                             |
+| path      | Path                                           | String                       | -               | -             | Required. See path rules below                                       |
+| query     | Query parameters of the path                   | Object                       | -               | -             | Optional                                                             |
+| page      | Page ID corresponding to the path              | String                       | -               | -             | Optional. Either page or redirect must exist                         |
+| redirect  | Route information this path should redirect to | String \| Object \| Function | -               | -             | Optional. Either page or redirect must exist. See **redirect** below |
+| meta      | Route metadata                                 | Object                       | -               | -             | Optional                                                             |
+| children  | Child routes                                   | Route[]                      | -               | -             | Optional                                                             |
 
-| 参数     | 说明                         | 类型                         | 可选值 | 默认值 | 备注                                                                   |
-| -------- | ---------------------------- | ---------------------------- | ------ | ------ | ---------------------------------------------------------------------- |
-| name     | 该路径项的名称               | String                       | -      | -      | 选填                                                                   |
-| path     | 路径                         | String                       | -      | -      | 必填，路径规则详见下面说明                                                                   |
-| query    | 路径的 query 参数            | Object                       | -      | -      | 选填                                                                   |
-| page     | 路径对应的页面 ID            | String                       | -      | -      | 选填，page 与 redirect 字段中必须要有有一个存在                        |
-| redirect | 此路径需要重定向到的路由信息 | String \| Object \| Function | -      | -      | 选填，page 与 redirect 字段中必须要有有一个存在，详见下文 **redirect** |
-| meta     | 路由元数据                   | Object                       | -      | -      | 选填                                                                   |
-| children | 子路由                       | Route[]                      | -      | -      | 选填                                                                   |
+The above structure only describes required fields for route records. Additional information fields can be implemented as needed.
 
-以上结构仅说明了路由记录需要的必需字段，如果需要更多的信息字段可以自行实现。
+Detailed description of the **path** field:
 
-关于 **path** 字段的详细说明：
+Route records typically declare the path field to match the corresponding browser URL to determine whether matching conditions are met. For example, `path=abc` can match the URL `/abc`.
 
-路由记录通常通过声明 path 字段来匹配对应的浏览器 URL 来确认是否满足匹配条件，如 `path=abc` 能匹配到 `/abc` 这个 URL。
+> When declaring the path field, the leading `/` can be omitted; only the characters after it need to be declared. For example, `/abc` can be declared as `abc`.
 
-> 在声明 path 字段的时候，可省略 `/`，只声明后面的字符，如 `/abc` 可声明为 `abc`。
+path (page path) is part of the browser URL. Most website URLs are also influenced by RESTful principles, so we use a similar form as the basis for path rules.
+Path rules are an important part of routing configuration. Basic path configuration capabilities need to support concrete paths (/xxx) and path parameters (/:abc).
 
-path（页面路径）是浏览器URL的组成部分，同时大部分网站的 URL 也都受到了 Restful 思想的影响，所以我们也是用类似的形式作为路径的规则基底。
-路径规则是路由配置的重要组成部分，我们希望一个路径配置的基本能力需要支持具体的路径（/xxx）与路径参数 (/:abc）。
+Using `/one/:two?/three/:four?/:five?` as an example, it can parse the following paths:
 
-以一个 `/one/:two?/three/:four?/:five?` 路径为例，它能够解析以下路径：
 - `/one/three`
 - `/one/:two/three`
 - `/one/three/:four`
@@ -1334,27 +1331,28 @@ path（页面路径）是浏览器URL的组成部分，同时大部分网站的 
 - `/one/three/:four/:five`
 - `/one/:two/three/:four/:five`
 
-更多的路径规则，如路径中的通配符、多次匹配等能力如有需要可自行实现。
+Additional path rules, such as wildcards in paths and multiple matching capabilities, can be implemented as needed.
 
-关于 **redirect** 字段的详细说明：
+Detailed description of the **redirect** field:
 
-**redirect** 字段有三种填入类型，分别是 `String`、`Object`、`Function`：
-1. 字符串(`String`)格式下默认处理为重定向到路径，支持传入 '/xxx'、'/xxx?ab=c'。
-2. 对象(`String`)格式下可传入路由对象，如 { name: 'xxx' }、{ path: '/xxx' }，可重定向到对应的路由对象。
-3. 函数`Function`格式为`(to) => Route`，它的入参为当前路由项信息，支持返回一个 Route 对象或者字符串，存在一些特殊情况，在重定向的时候需要对重定向之后的路径进行处理的情况下，需要使用函数声明。
+The **redirect** field has three input types: `String`, `Object`, and `Function`:
+
+1. In string (`String`) format, it defaults to redirecting to a path. Supports input such as '/xxx', '/xxx?ab=c'.
+2. In object (`Object`) format, a route object can be passed, such as { name: 'xxx' }, { path: '/xxx' }, to redirect to the corresponding route object.
+3. In function (`Function`) format: `(to) => Route`. Its input is the current route item information. Supports returning a Route object or string. In special cases where the redirected path needs processing, a function declaration is required.
 
 ```json
 {
   "redirect": {
     "type": "JSFunction",
-    "value": "(to) => { return { path: '/a', query: { fromPath: to.path } } }",
+    "value": "(to) => { return { path: '/a', query: { fromPath: to.path } } }"
   }
 }
 ```
 
-##### 完整描述示例
+##### Complete Description Example
 
-``` json
+```json
 {
   "router": {
     "baseName": "/",
@@ -1383,34 +1381,34 @@ path（页面路径）是浏览器URL的组成部分，同时大部分网站的 
 }
 ```
 
-### 2.12 当前应用的页面信息（AA）
+### 2.12 Page Information of the Current Application (AA)
 
-用于描述当前应用的页面信息，比如页面对应的低代码搭建内容、页面标题、页面配置等。
-在一些比较复杂的场景下，允许声明一层页面映射关系，以支持页面声明更多信息与配置，同时能够支持不同类型的产物。
+Used to describe page information of the current application, such as the low-code building content corresponding to the page, page title, page configuration, etc.
+In more complex scenarios, a page mapping layer is allowed to support declaring more page information and configuration, while supporting different types of outputs.
 
-| 参数    | 说明                  | 类型   | 可选值 | 默认值 | 备注                                                     |
-| ------- | --------------------- | ------ | ------ | ------ | -------------------------------------------------------- |
-| id      | 页面 id               | String | -      | -      | 必填                                                     |
-| type    | 页面类型              | String | -      | -      | 选填，可用来区分页面的类型                            |
-| treeId  | 对应的低代码树中的 id | String | -      | -      | 选填，页面对应的 componentsTree 中的子项 id            |
-| packageId | 对应的资产包对象      | String | -      | -      | 选填，页面对应的资产包对象，一般用于微应用场景下，当路由匹配到当前页面的时候，会加载 `packageId` 对应的微应用进行渲染。 |
-| meta    | 页面元信息            | Object | -      | -      | 选填，用于描述当前应用的配置信息                      |
-| config  | 页面配置              | Object | -      | -      | 选填，用于描述当前应用的元数据信息                     |
+| Parameter | Description                           | Type   | Optional Values | Default Value | Notes                                                                                                                                                                                                                    |
+| --------- | ------------------------------------- | ------ | --------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id        | Page id                               | String | -               | -             | Required                                                                                                                                                                                                                 |
+| type      | Page type                             | String | -               | -             | Optional. Can be used to distinguish page types                                                                                                                                                                          |
+| treeId    | Corresponding id in the low-code tree | String | -               | -             | Optional. id of the corresponding child item in componentsTree                                                                                                                                                           |
+| packageId | Corresponding asset package object    | String | -               | -             | Optional. Asset package object corresponding to the page. Generally used in micro-frontend scenarios. When routing matches the current page, the micro-application corresponding to `packageId` is loaded for rendering. |
+| meta      | Page metadata                         | Object | -               | -             | Optional. Used to describe configuration information of the current application                                                                                                                                          |
+| config    | Page configuration                    | Object | -               | -             | Optional. Used to describe metadata information of the current application                                                                                                                                               |
 
+#### 2.12.1 Micro-Application (Low-Code+) Related Notes
 
-#### 2.12.1 微应用（低代码+）相关说明
+During development, we often encounter special situations, such as a low-code application wanting to integrate pages from other systems, or some pages in a system that can only be developed with source code (pure engineering code form, as opposed to low-code). To satisfy more usage scenarios, the application-level rendering engine introduces the concept of micro-applications (micro-frontends), making it possible to combine low-code pages with other pages.
 
-在开发过程中，我们经常会遇到一些特殊的情况，比如一个低代码应用想要集成一些别的系统的页面或者系统中的一些页面只能是源码开发（与低代码相对的纯工程代码形式），为了满足更多的使用场景，应用级渲染引擎引入了微应用（微前端）的概念，使低代码页面与其他的页面结合成为可能。
+Micro-application objects are loaded through asset packages and must expose two lifecycle methods:
 
-微应用对象通过资产包加载，需要暴露两个生命周期方法：
 - mount(container: HTMLElement, props: any)
-  - 说明：微应用挂载到 container（dom 节点）的调用方法，会在渲染微应用时调用
+  - Description: Method called when the micro-application is mounted to container (DOM node); invoked when rendering the micro-application
 - unmout(container: HTMLElement, props: any)
-  - 说明：微应用从容器节点（container）卸载的调用方法，会在卸载微应用时调用
+  - Description: Method called when the micro-application is unmounted from the container node; invoked when unloading the micro-application
 
-> 在微应用的场景下，可能会存在多个页面路由到同一个应用，应用可通过资产包加载，所以需要将对应的页面配置指向对应的微应用（资产包）对象。
+> In micro-application scenarios, multiple pages may route to the same application. The application can be loaded through asset packages, so the corresponding page configuration must point to the corresponding micro-application (asset package) object.
 
-**描述示例**
+**Description Example**
 
 ```json
 {
@@ -1437,14 +1435,14 @@ path（页面路径）是浏览器URL的组成部分，同时大部分网站的 
       "id": "home",
       "treeId": "home",
       "meta": {
-        "title": "首页"
+        "title": "Home"
       }
     },
     {
       "id": "notFound",
       "treeId": "notFound",
       "meta": {
-        "title": "404页面"
+        "title": "404 Page"
       }
     },
     {
@@ -1454,7 +1452,7 @@ path（页面路径）是浏览器URL的组成部分，同时大部分网站的 
   ]
 }
 
-// 资产包
+// Asset package
 [
   {
     "id": "microApp",
@@ -1469,180 +1467,176 @@ path（页面路径）是浏览器URL的组成部分，同时大部分网站的 
 ]
 ```
 
+## 3 Application Description
 
-## 3 应用描述
+### 3.1 File Directory
 
-### 3.1 文件目录
-
-以下是推荐的应用目录结构，与标准源码 build-scripts 对齐，这里的目录结构是帮助理解应用级协议的设计，不做强约束
+The following is the recommended application directory structure, aligned with standard source-code build-scripts. This directory structure helps understand the design of application-level protocol and is not strictly enforced.
 
 ```html
-├── META/                          # 低代码元数据信息，用于多分支冲突解决、数据回滚等功能
-├── public/                        # 静态文件，构建时会 copy 到 build/ 目录
-│   ├── index.html                 # 应用入口 HTML
-│   └── favicon.png                # Favicon
-├── src/
-│   ├── components/                # 应用内的低代码业务组件
-│   │   └── guide-component/
-│   │       ├── index.js           # 组件入口
-│   │       ├── components.js      # 组件依赖的其他组件
-│   │       ├── schema.js          # schema 描述
-│   │       └── index.scss         # css 样式
-│   ├── pages/                     # 页面
-│   │   └── home/                  # Home 页面
-│   │       ├── index.js           # 页面入口
-│   │       └── index.scss         # css 样式
-│   ├── layouts/
-│   │   └── basic-layout/          # layout 组件名称
-│   │       ├── index.js           # layout 入口
-│   │       ├── components.js      # layout 组件依赖的其他组件
-│   │       ├── schema.js          # layout schema 描述
-│   │       └── index.scss         # layout css 样式
-│   ├── config/                    # 配置信息
-│   │   ├── components.js          # 应用上下文所有组件
-│   │   ├── routes.js              # 页面路由列表
-│   │   └── app.js                 # 应用配置文件
-│   ├── utils/                     # 工具库
-│   │   └── index.js               # 应用第三方扩展函数
-│   ├── locales/                   # [可选] 国际化资源
-│   │   ├── en-US
-│   │   └── zh-CN
-│   ├── global.scss                # 全局样式
-│   └── index.jsx                  # 应用入口脚本，依赖 config/routes.js 的路由配置动态生成路由；
-├── webpack.config.js              # 项目工程配置，包含插件配置及自定义 webpack 配置等
-├── README.md
-├── package.json
-├── .editorconfig
-├── .eslintignore
-├── .eslintrc.js
-├── .gitignore
-├── .stylelintignore
-└── .stylelintrc.js
+├── META/ # Low-code metadata information, used for multi-branch conflict resolution, data rollback,
+etc. ├── public/ # Static files; copied to build/ directory during build │ ├── index.html #
+Application entry HTML │ └── favicon.png # Favicon ├── src/ │ ├── components/ # Low-code business
+components within the application │ │ └── guide-component/ │ │ ├── index.js # Component entry │ │
+├── components.js # Other components depended on by the component │ │ ├── schema.js # Schema
+description │ │ └── index.scss # CSS styles │ ├── pages/ # Pages │ │ └── home/ # Home page │ │ ├──
+index.js # Page entry │ │ └── index.scss # CSS styles │ ├── layouts/ │ │ └── basic-layout/ # Layout
+component name │ │ ├── index.js # Layout entry │ │ ├── components.js # Other components depended on
+by the layout component │ │ ├── schema.js # Layout schema description │ │ └── index.scss # Layout
+CSS styles │ ├── config/ # Configuration information │ │ ├── components.js # All components in the
+application context │ │ ├── routes.js # Page route list │ │ └── app.js # Application configuration
+file │ ├── utils/ # Utility libraries │ │ └── index.js # Application third-party extension functions
+│ ├── locales/ # [Optional] Internationalization resources │ │ ├── en-US │ │ └── zh-CN │ ├──
+global.scss # Global styles │ └── index.jsx # Application entry script; dynamically generates routes
+based on config/routes.js routing configuration ├── webpack.config.js # Project engineering
+configuration, including plugin configuration and custom webpack configuration, etc. ├── README.md
+├── package.json ├── .editorconfig ├── .eslintignore ├── .eslintrc.js ├── .gitignore ├──
+.stylelintignore └── .stylelintrc.js
 ```
 
-### 3.2 应用级别 APIs
-> 下文中 `xxx` 代指任意 API
-#### 3.2.1 路由 Router API
-  - this.location.`xxx` 「不推荐，推荐统一通过 this.router api」
-  - this.history.`xxx` 「不推荐，推荐统一通过 this.router api」
-  - this.match.`xxx` 「不推荐，推荐统一通过 this.router api」
-  - this.router.`xxx`
+### 3.2 Application-Level APIs
 
-##### Router 结构说明
+> In the following, `xxx` refers to any API
 
-| API            | 函数签名                                                                | 说明    |
-| -------------- | ---------------------------------------------------------- | -------------------------------------------------------------- |
-| getCurrentRoute | () => RouteLocation | 获取当前解析后的路由信息，RouteLocation 结构详见下面说明 |
-| push | (target: string \| Route) => void | 路由跳转方法，跳转到指定的路径或者 Route |
-| replace | (target: string \| Route) => void | 路由跳转方法，与 `push` 的区别在于不会增加一条历史记录而是替换当前的历史记录 |
-| beforeRouteLeave | (guard: (to: RouteLocation, from: RouteLocation) => boolean \| Route) => void | 路由跳转前的守卫方法，详见下面说明 |
-| afterRouteChange | (fn: (to: RouteLocation, from: RouteLocation) => void) => void | 路由跳转后的钩子函数，会在每次路由改变后执行 |
+#### 3.2.1 Routing Router API
 
-##### 3.2.1.1 RouteLocation（路由信息）结构说明
+- this.location.`xxx` 「Not recommended; prefer using the this.router API uniformly」
+- this.history.`xxx` 「Not recommended; prefer using the this.router API uniformly」
+- this.match.`xxx` 「Not recommended; prefer using the this.router API uniformly」
+- this.router.`xxx`
 
-**RouteLocation** 是路由控制器匹配到对应的路由记录后进行解析产生的对象，它的结构如下：
+##### Router Structure Description
 
-| 参数           | 说明                   | 类型   | 可选值 | 默认值 | 备注   |
-| -------------- | ---------------------- | ------ | ------ | ------ | ------ |
-| path           | 当前解析后的路径       | String | -      | -      | 必填  |
-| hash           | 当前路径的 hash 值，以 # 开头  | String | -      | -      | 必填   |
-| href           | 当前的全部路径         | String | -      | -      | 必填   |
-| params         | 匹配到的路径参数       | Object | -      | -      | 必填   |
-| query          | 当前的路径 query 对象  | Object | -      | -      | 必填，代表当前地址的 search 属性的对象   |
-| name           | 匹配到的路由记录名     | String | -      | -      | 选填   |
-| meta           | 匹配到的路由记录元数据 | Object | -      | -      | 选填   |
-| redirectedFrom | 原本指向向的路由记录         | Route  |  -      | -     | 选填，在重定向到当前地址之前，原先想访问的地址   |
-| fullPath       | 包括 search 和 hash 在内的完整地址 | String | - | - | 选填 |
+| API              | Function Signature                                                            | Description                                                                                                     |
+| ---------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| getCurrentRoute  | () => RouteLocation                                                           | Get the current parsed routing information. See RouteLocation structure below                                   |
+| push             | (target: string \| Route) => void                                             | Routing navigation method; navigates to the specified path or Route                                             |
+| replace          | (target: string \| Route) => void                                             | Routing navigation method; unlike `push`, does not add a history record but replaces the current history record |
+| beforeRouteLeave | (guard: (to: RouteLocation, from: RouteLocation) => boolean \| Route) => void | Route guard method before navigation; see below                                                                 |
+| afterRouteChange | (fn: (to: RouteLocation, from: RouteLocation) => void) => void                | Hook function after route navigation; executed after each route change                                          |
 
+##### 3.2.1.1 RouteLocation (Routing Information) Structure Description
+
+**RouteLocation** is an object produced by parsing after the routing controller matches the corresponding route record. Its structure is as follows:
+
+| Parameter      | Description                                     | Type   | Optional Values | Default Value | Notes                                                                                             |
+| -------------- | ----------------------------------------------- | ------ | --------------- | ------------- | ------------------------------------------------------------------------------------------------- |
+| path           | Current parsed path                             | String | -               | -             | Required                                                                                          |
+| hash           | Hash value of the current path, starting with # | String | -               | -             | Required                                                                                          |
+| href           | Full current path                               | String | -               | -             | Required                                                                                          |
+| params         | Matched path parameters                         | Object | -               | -             | Required                                                                                          |
+| query          | Current path query object                       | Object | -               | -             | Required. Object representing the search property of the current address                          |
+| name           | Matched route record name                       | String | -               | -             | Optional                                                                                          |
+| meta           | Matched route record metadata                   | Object | -               | -             | Optional                                                                                          |
+| redirectedFrom | Route record originally pointed to              | Route  | -               | -             | Optional. The address originally intended to be visited before redirecting to the current address |
+| fullPath       | Full address including search and hash          | String | -               | -             | Optional                                                                                          |
 
 ##### beforeRouteLeave
-通过 beforeRouteLeave 注册的路由守卫方法会在每次路由跳转前执行。该方法一般会在应用鉴权，路由重定向等场景下使用。
 
-> `beforeRouteLeave` 只在 `router.push/replace` 的方法调用时生效。
+Route guard methods registered through beforeRouteLeave are executed before each route navigation. This method is commonly used in scenarios such as application authentication and route redirection.
 
-传入守卫的入参为：
-* to: 即将要进入的目标路由(RouteLocation)
-* from: 当前导航正要离开的路由(RouteLocation)
+> `beforeRouteLeave` only takes effect when `router.push/replace` methods are called.
 
-该守卫返回一个 `boolean` 或者路由对象来告知路由控制器接下来的行为。
-* 如果返回 `false`， 则停止跳转
-* 如果返回 `true`，则继续跳转
-* 如果返回路由对象，则重定向至对应的路由
+Parameters passed to the guard:
 
-**使用范例：**
+- to: Target route about to be entered (RouteLocation)
+- from: Route currently being left (RouteLocation)
+
+The guard returns a `boolean` or route object to inform the routing controller of the next action.
+
+- If `false` is returned, navigation stops
+- If `true` is returned, navigation continues
+- If a route object is returned, redirect to the corresponding route
+
+**Usage Example:**
 
 ```json
 {
-  "componentsTree": [{
-    "componentName": "Page",
-    "fileName": "Page1",
-    "props": {},
-    "children": [{
-      "componentName": "Div",
+  "componentsTree": [
+    {
+      "componentName": "Page",
+      "fileName": "Page1",
       "props": {},
-      "children": [{
-        "componentName": "Button",
-        "props": {
-          "text": "跳转到首页",
-          "onClick": {
-            "type": "JSFunction",
-            "value": "function () { this.router.push('/home'); }"
-          }
-        },
-      }]
-    }],
-  }]
+      "children": [
+        {
+          "componentName": "Div",
+          "props": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "text": "Go to Home",
+                "onClick": {
+                  "type": "JSFunction",
+                  "value": "function () { this.router.push('/home'); }"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
+#### 3.2.2 Application-Level Common Functions or Third-Party Extensions
 
-#### 3.2.2 应用级别的公共函数或第三方扩展
-   - this.utils.`xxx`
+- this.utils.`xxx`
 
-#### 3.2.3 国际化相关 API
-| API            | 函数签名                                                                | 说明                                                                |
-| -------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| this.i18n      | (i18nKey: string, params?: { [paramName: string]: string; }) => string | i18nKey 是语料的标识符，params 可选，是用来做模版字符串替换的。返回语料字符串 |
-| this.getLocale | () => string                                                           | 返回当前环境语言 code                                                 |
-| this.setLocale | (locale: string) => void                                               | 设置当前环境语言 code                                                 |
+#### 3.2.3 Internationalization-Related APIs
 
-**使用范例：**
+| API            | Function Signature                                                     | Description                                                                                                              |
+| -------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| this.i18n      | (i18nKey: string, params?: { [paramName: string]: string; }) => string | i18nKey is the corpus identifier. params is optional and used for template string replacement. Returns the corpus string |
+| this.getLocale | () => string                                                           | Returns the current environment language code                                                                            |
+| this.setLocale | (locale: string) => void                                               | Sets the current environment language code                                                                               |
+
+**Usage Example:**
+
 ```json
 {
-  "componentsTree": [{
-    "componentName": "Page",
-    "fileName": "Page1",
-    "props": {},
-    "children": [{
-      "componentName": "Div",
+  "componentsTree": [
+    {
+      "componentName": "Page",
+      "fileName": "Page1",
       "props": {},
-      "children": [{
-        "componentName": "Button",
-        "props": {
-          "children": {
-            "type": "JSExpression",
-            "value": "this.i18n('i18n-hello')"
-          },
-          "onClick": {
-            "type": "JSFunction",
-            "value": "function () { this.setLocale('en-US'); }"
-          }
-        },
-      }, {
-        "componentName": "Button",
-        "props": {
-          "children": {
-            "type": "JSExpression",
-            "value": "this.i18n('i18n-chicken', { count: this.state.count })"
-          },
-        },
-      }]
-    }],
-  }],
+      "children": [
+        {
+          "componentName": "Div",
+          "props": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "children": {
+                  "type": "JSExpression",
+                  "value": "this.i18n('i18n-hello')"
+                },
+                "onClick": {
+                  "type": "JSFunction",
+                  "value": "function () { this.setLocale('en-US'); }"
+                }
+              }
+            },
+            {
+              "componentName": "Button",
+              "props": {
+                "children": {
+                  "type": "JSExpression",
+                  "value": "this.i18n('i18n-chicken', { count: this.state.count })"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "i18n": {
     "zh-CN": {
-      "i18n-hello": "你好",
-      "i18n-chicken": "我有{count}只鸡"
+      "i18n-hello": "Hello",
+      "i18n-chicken": "I have {count} chickens"
     },
     "en-US": {
       "i18n-hello": "Hello",

@@ -88,14 +88,14 @@ export interface DeviceStyleProps {
 }
 
 export interface BuiltinSimulatorProps {
-  // 从 documentModel 上获取
+  // Obtain from documentModel
   // suspended?: boolean;
   designMode?: 'live' | 'design' | 'preview' | 'extend' | 'border';
   device?: 'mobile' | 'iphone' | string;
   deviceClassName?: string;
   environment?: Asset;
-  // @TODO 补充类型
-  /** @property 请求处理器配置 */
+  // @TODO add types
+  /** @property request handler config */
   requestHandlersMap?: any;
   extraEnvironment?: Asset;
   library?: LibraryItem[];
@@ -159,7 +159,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
   readonly i18nConsumer: ResourceConsumer;
 
   /**
-   * 是否为画布自动渲染
+   * Whether canvas auto-renders
    */
   autoRender = true;
 
@@ -184,14 +184,14 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
   }
 
   @computed get designMode(): 'live' | 'design' | 'preview' {
-    // renderer 依赖
-    // TODO: 需要根据 design mode 不同切换鼠标响应情况
+    // renderer dependency
+    // TODO: switch mouse handling based on design mode
     return this.get('designMode') || 'design';
   }
 
   @computed get requestHandlersMap(): any {
-    // renderer 依赖
-    // TODO: 需要根据 design mode 不同切换鼠标响应情况
+    // renderer dependency
+    // TODO: switch mouse handling based on design mode
     return this.get('requestHandlersMap') || null;
   }
 
@@ -224,7 +224,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
   }
 
   @computed get componentsMap() {
-    // renderer 依赖
+    // renderer dependency
     return this.designer.componentsMap;
   }
 
@@ -298,7 +298,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
     });
 
     engineConfig.onGot('appHelper', (data) => {
-      // appHelper被config.set修改后触发injectionConsumer.consume回调
+      // After appHelper is updated via config.set, trigger injectionConsumer.consume
       this._appHelper = data;
     });
 
@@ -307,7 +307,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
     transactionManager.onStartTransaction(() => {
       this.stopAutoRepaintNode();
     }, IPublicEnumTransitionType.REPAINT);
-    // 防止批量调用 transaction 时，执行多次 rerender
+    // Avoid multiple rerenders when transactions are batched
     const rerender = debounce(this.rerender.bind(this), 28);
     transactionManager.onEndTransaction(() => {
       rerender();
@@ -348,7 +348,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
   }
 
   /**
-   * 有 Renderer 进程连接进来，设置同步机制
+   * A Renderer process connected; set up sync mechanism
    */
   connect(
     renderer: BuiltinSimulatorRenderer,
@@ -387,11 +387,12 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
    *   ],
    *   "library":"BizCharts"
    * }
-   * package：String 资源 npm 包名
-   * exportName：String umd 包导出名字，用于适配部分物料包 define name 不一致的问题，例如把 BizCharts 改成 bizcharts，用来兼容物料用 define 声明的 bizcharts
-   * version：String 版本号
-   * urls：Array 资源 cdn 地址，必须是 umd 类型，可以是.js 或者.css
-   * library：String umd 包直接导出的 name
+   * package: String npm package name of the asset
+   * exportName: String UMD export name, for materials whose define name differs
+   *   (e.g. map BizCharts to bizcharts when materials declare bizcharts via define)
+   * version: String version
+   * urls: Array CDN URLs; must be UMD (.js or .css)
+   * library: String name exported directly by the UMD bundle
    */
   buildLibrary(library?: LibraryItem[]) {
     const _library = library || (this.get('library') as LibraryItem[]);
@@ -470,19 +471,19 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
       ),
     ];
 
-    // wait 准备 iframe 内容、依赖库注入
+    // wait: prepare iframe content and inject dependencies
     const renderer = await createSimulator(this, iframe, vendors);
 
     // TODO: !!! thinkof reload onloa
 
-    // wait 业务组件被第一次消费，否则会渲染出错
+    // wait: business components are consumed once, otherwise rendering fails
     await this.componentsConsumer.waitFirstConsume();
 
-    // wait 运行时上下文
+    // wait: runtime context
     await this.injectionConsumer.waitFirstConsume();
 
     if (Object.keys(this.asyncLibraryMap).length > 0) {
-      // 加载异步 Library
+      // Load async Library
       await renderer.loadAsyncLibrary(this.asyncLibraryMap);
       Object.keys(this.asyncLibraryMap).forEach((key) => {
         delete this.asyncLibraryMap[key];
@@ -510,7 +511,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
     const libraryAsset: AssetList = this.buildLibrary(library);
     await this.renderer?.load(libraryAsset);
     if (Object.keys(this.asyncLibraryMap).length > 0) {
-      // 加载异步 Library
+      // Load async Library
       await this.renderer?.loadAsyncLibrary(this.asyncLibraryMap);
       Object.keys(this.asyncLibraryMap).forEach((key) => {
         delete this.asyncLibraryMap[key];
@@ -537,7 +538,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
     const doc = this.contentDocument!;
 
     // TODO: think of lock when edit a node
-    // 事件路由
+    // Event routing
     doc.addEventListener(
       'mousedown',
       (downEvent: MouseEvent) => {
@@ -559,11 +560,11 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
         const nodeInst = this.getNodeInstanceFromElement(downEvent.target);
         const { focusNode } = documentModel;
         const node = getClosestClickableNode(nodeInst?.node || focusNode, downEvent);
-        // 如果找不到可点击的节点，直接返回
+        // If no clickable node is found, return early
         if (!node) {
           return;
         }
-        // 触发 onMouseDownHook 钩子
+        // Trigger onMouseDownHook
         const onMouseDownHook = node.componentMeta.advanced.callbacks?.onMouseDownHook;
         if (onMouseDownHook) {
           onMouseDownHook(downEvent, node.internalToShellNode());
@@ -571,9 +572,9 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
         const rglNode = node?.getParent();
         const isRGLNode = rglNode?.isRGLContainer;
         if (isRGLNode) {
-          // 如果拖拽的是磁铁块的右下角 handle，则直接跳过
+          // Skip if dragging the magnet block bottom-right resize handle
           if (downEvent.target?.classList.contains('react-resizable-handle')) return;
-          // 禁止多选
+          // Disable multi-select
           isMulti = false;
           designer.dragon.emitter.emit('rgl.switch', {
             action: 'start',
@@ -581,30 +582,30 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
           });
         } else {
           // stop response document focus event
-          // 禁止原生拖拽
+          // Disable native drag
           downEvent.stopPropagation();
           downEvent.preventDefault();
         }
         // if (!node?.isValidComponent()) {
-        //   // 对于未注册组件直接返回
+        //   // Return early for unregistered components
         //   return;
         // }
         const isLeftButton = downEvent.which === 1 || downEvent.button === 0;
         const checkSelect = (e: MouseEvent) => {
           doc.removeEventListener('mouseup', checkSelect, true);
-          // 取消移动;
+          // Cancel move;
           designer.dragon.emitter.emit('rgl.switch', {
             action: 'end',
             rglNode,
           });
-          // 鼠标是否移动 ? - 鼠标抖动应该也需要支持选中事件，偶尔点击不能选中，磁帖块移除 shaken 检测
+          // Did the mouse move? - jitter should still allow select; magnet blocks drop shaken check
           if (!isShaken(downEvent, e) || isRGLNode) {
             let { id } = node;
             designer.activeTracker.track({ node, instance: nodeInst?.instance });
             if (isMulti && focusNode && !node.contains(focusNode) && selection.has(id)) {
               selection.remove(id);
             } else {
-              // TODO: 避免选中 Page 组件，默认选中第一个子节点；新增规则 或 判断 Live 模式
+              // TODO: avoid selecting Page; default to first child; add rule or check Live mode
               if (node.isPage() && node.getChildren()?.notEmpty() && this.designMode === 'live') {
                 const firstChildId = node.getChildren()?.get(0)?.getId();
                 if (firstChildId) id = firstChildId;
@@ -638,7 +639,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
               ignoreUpSelected = true;
             }
             focusNode?.id && selection.remove(focusNode.id);
-            // 获得顶层 nodes
+            // Get top-level nodes
             nodes = selection.getTopNodes();
           } else if (selection.containsNode(node, true)) {
             nodes = selection.getTopNodes();
@@ -695,11 +696,11 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
           '.next-breadcrumb-item',
           '.next-calendar-header',
           '.next-calendar-table',
-          '.editor-container', // 富文本组件
+          '.editor-container', // Rich text component
         ];
         const ignoreSelectors = customizeIgnoreSelectors?.(defaultIgnoreSelectors, e) || defaultIgnoreSelectors;
         const ignoreSelectorsString = ignoreSelectors.join(',');
-        // 提供了 customizeIgnoreSelectors 的情况下，忽略 isFormEvent() 判断
+        // When customizeIgnoreSelectors is provided, skip isFormEvent() check
         if ((!customizeIgnoreSelectors && isFormEvent(e)) || target?.closest(ignoreSelectorsString)) {
           e.preventDefault();
           e.stopPropagation();
@@ -712,7 +713,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
   }
 
   /**
-   * 设置悬停处理
+   * Set up hover handling
    */
   setupDetecting() {
     const doc = this.contentDocument!;
@@ -788,7 +789,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
           node.componentMeta.rootSelector,
         )?.find(
           (item) =>
-            // 可能是 [null];
+            // May be [null];
             item && item.contains(targetElement),
         ) as HTMLElement;
         if (!rootElement) {
@@ -1049,7 +1050,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
   }
 
   /**
-   * 通过 DOM 节点获取节点，依赖 simulator 的接口
+   * Get node from DOM element; depends on simulator APIs
    */
   getNodeInstanceFromElement(target: Element | null): IPublicTypeNodeInstance<IPublicTypeComponentInstance, INode> | null {
     if (!target) {
@@ -1138,7 +1139,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
     }
 
     const notMyEvent = e.originalEvent.view?.document !== this.contentDocument;
-    // fix canvasX canvasY : 当前激活文档画布坐标系
+    // fix canvasX canvasY: active document canvas coordinates
     if (notMyEvent || !('canvasX' in e) || !('canvasY' in e)) {
       const l = this.viewport.toLocalPoint({
         clientX: e.globalX,
@@ -1148,14 +1149,14 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
       e.canvasY = l.clientY;
     }
 
-    // fix target : 浏览器事件响应目标
+    // fix target: browser event target
     if (!e.target || notMyEvent) {
       if (!isNaN(e.canvasX!) && !isNaN(e.canvasY!)) {
         e.target = this.contentDocument?.elementFromPoint(e.canvasX!, e.canvasY!);
       }
     }
 
-    // 事件已订正
+    // Event has been corrected
     e.fixed = true;
     return e;
   }
@@ -1318,11 +1319,11 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
         break;
       }
 
-      // 标记子节点最顶
+      // Mark child as topmost
       if (minTop === null || rect.top < minTop) {
         minTop = rect.top;
       }
-      // 标记子节点最底
+      // Mark child as bottommost
       if (maxBottom === null || rect.bottom > maxBottom) {
         maxBottom = rect.bottom;
       }
@@ -1381,7 +1382,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
   }
 
   /**
-   * 查找合适的投放容器
+   * Find a suitable drop container
    */
   getDropContainer(e: ILocateEvent): DropContainer | null {
     const { target, dragObject } = e;
@@ -1489,7 +1490,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
   }
 
   /**
-   * 控制接受
+   * Control acceptance
    */
   handleAccept({ container }: DropContainer, e: ILocateEvent): boolean {
     const { dragObject } = e;
@@ -1512,7 +1513,7 @@ export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProp
   }
 
   /**
-   * 查找邻近容器
+   * Find nearby container
    */
   getNearByContainer(
     { container, instance }: DropContainer,

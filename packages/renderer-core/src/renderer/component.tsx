@@ -21,7 +21,7 @@ export default function componentRendererFactory(): IBaseRenderComponent {
     render() {
       const { __schema, __components } = this.props;
       if (this.__checkSchema(__schema)) {
-        return '自定义组件 schema 结构异常！';
+        return 'Invalid custom component schema structure!';
       }
       this.__debug(`${CompRenderer.displayName} render - ${__schema.fileName}`);
 

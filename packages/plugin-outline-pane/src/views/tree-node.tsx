@@ -20,7 +20,7 @@ class ModalTreeNodeView extends PureComponent<{
   }) {
     super(props);
 
-    // 模态管理对象
+    // Modal manager object
     this.pluginContext = props.treeNode.pluginContext;
     const { project } = this.pluginContext;
     this.modalNodesManager = project.currentDocument?.modalNodesManager;
@@ -44,7 +44,7 @@ class ModalTreeNodeView extends PureComponent<{
 
   get rootTreeNode() {
     const { treeNode } = this.props;
-    // 当指定了新的根节点时，要从原始的根节点去获取模态节点
+    // When a new root is specified, modal nodes must still be fetched from the original root
     const { project } = this.pluginContext;
     const rootNode = project.currentDocument?.root;
     const rootTreeNode = treeNode.tree.getTreeNode(rootNode!);
@@ -130,7 +130,7 @@ export default class TreeNodeView extends PureComponent<{
       locked: treeNode.locked,
       detecting: treeNode.detecting,
       isRoot: treeNode.isRoot(),
-      // 是否投放响应
+      // Whether it is drop-responsive
       dropping: treeNode.dropDetail?.index != null,
       conditionFlow: treeNode.node.conditionGroup != null,
       highlight: treeNode.isFocusingNode(),
@@ -190,11 +190,11 @@ export default class TreeNodeView extends PureComponent<{
   shouldShowModalTreeNode(): boolean {
     const { treeNode, isRootNode } = this.props;
     if (!isRootNode) {
-      // 只在 当前树 的根节点展示模态节点
+      // Show modal nodes only under the current tree's root
       return false;
     }
 
-    // 当指定了新的根节点时，要从原始的根节点去获取模态节点
+    // When a new root is specified, modal nodes must still be fetched from the original root
     const { project } = treeNode.pluginContext;
     const rootNode = project.currentDocument?.root;
     const rootTreeNode = treeNode.tree.getTreeNode(rootNode!);
@@ -207,17 +207,17 @@ export default class TreeNodeView extends PureComponent<{
   render() {
     const { treeNode, isModal, isRootNode } = this.props;
     const className = classNames('tree-node', {
-      // 是否展开
+      // Whether expanded
       expanded: this.state.expanded,
-      // 是否选中的
+      // Whether selected
       selected: this.state.selected,
-      // 是否隐藏的
+      // Whether hidden
       hidden: this.state.hidden,
-      // 是否锁定的
+      // Whether locked
       locked: this.state.locked,
-      // 是否悬停中
+      // Whether hovered
       detecting: this.state.detecting,
-      // 是否投放响应
+      // Whether it is drop-responsive
       dropping: this.state.dropping,
       'is-root': this.state.isRoot,
       'condition-flow': this.state.conditionFlow,
@@ -225,11 +225,11 @@ export default class TreeNodeView extends PureComponent<{
     });
     let shouldShowModalTreeNode: boolean = this.shouldShowModalTreeNode();
 
-    // filter 处理
+    // Filter handling
     const { filterWorking, matchChild, matchSelf } = this.state;
     if (!isRootNode && filterWorking && !matchChild && !matchSelf) {
-      // 条件过滤生效时，如果未命中本节点或子节点，则不展示该节点
-      // 根节点始终展示
+      // When filter is active, hide the node if neither it nor its descendants match
+      // Root node is always shown
       return null;
     }
     return (

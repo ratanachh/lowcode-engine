@@ -3,52 +3,50 @@ title: DropLocation
 sidebar_position: 13
 ---
 
-> **@types** [IPublicModelDropLocation](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/drop-location.ts)<br/>
-> **@since** v1.1.0
+> **@types** [IPublicModelDropLocation](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/drop-location.ts)<br/> > **@since** v1.1.0
 
+## Overview
 
-## 基本介绍
+Drag-and-drop placement location model
 
-拖拽放置位置模型
-
-## 属性
+## Properties
 
 ### target
 
-拖拽放置位置目标
+Drop target node
 
 `@type {IPublicModelNode | null}`
 
-相关类型：[IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
+Related types: [IPublicModelNode](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/node.ts)
 
 ### detail
 
-拖拽放置位置详情
+Drop location details
 
 `@type {IPublicTypeLocationDetail}`
 
-相关类型：[IPublicTypeLocationDetail](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/location-detail.ts)
+Related types: [IPublicTypeLocationDetail](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/location-detail.ts)
 
 ### event
 
-拖拽放置位置对应的事件
+Event associated with the drop location
 
 `@type {IPublicTypeLocationDetail}`
 
-相关类型：[IPublicModelLocateEvent](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/location-event.ts)
+Related types: [IPublicModelLocateEvent](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/location-event.ts)
 
-## 方法
+## Methods
 
 ### clone
 
-获取一份当前对象的克隆
+Get a clone of the current object
 
 ```typescript
 /**
- * 获取一份当前对象的克隆
+ * Get a clone of the current object
  * get a clone object of current dropLocation
  */
 clone(event: IPublicModelLocateEvent): IPublicModelDropLocation;
 ```
 
-相关类型：[IPublicModelLocateEvent](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/location-event.ts)
+Related types: [IPublicModelLocateEvent](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/location-event.ts)

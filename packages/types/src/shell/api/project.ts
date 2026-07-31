@@ -8,26 +8,26 @@ export interface IBaseApiProject<
 > {
 
   /**
-   * 获取当前的 document
+   * Get the current document
    * get current document
    */
   get currentDocument(): DocumentModel | null;
 
   /**
-   * 获取当前 project 下所有 documents
+   * Get all documents under the current project
    * get all documents of this project
    * @returns
    */
   get documents(): DocumentModel[];
 
   /**
-   * 获取模拟器的 host
+   * Get the emulator host
    * get simulator host
    */
   get simulatorHost(): IPublicApiSimulatorHost | null;
 
   /**
-   * 打开一个 document
+   * Open a document
    * open a document
    * @param doc
    * @returns
@@ -35,7 +35,7 @@ export interface IBaseApiProject<
   openDocument(doc?: string | IPublicTypeRootSchema | undefined): DocumentModel | null;
 
   /**
-   * 创建一个 document
+   * Create a document
    * create a document
    * @param data
    * @returns
@@ -43,14 +43,14 @@ export interface IBaseApiProject<
   createDocument(data?: IPublicTypeRootSchema): DocumentModel | null;
 
   /**
-   * 删除一个 document
+   * Delete a document
    * remove a document
    * @param doc
    */
   removeDocument(doc: DocumentModel): void;
 
   /**
-   * 根据 fileName 获取 document
+   * Get document based on fileName
    * get a document by filename
    * @param fileName
    * @returns
@@ -58,7 +58,7 @@ export interface IBaseApiProject<
   getDocumentByFileName(fileName: string): DocumentModel | null;
 
   /**
-   * 根据 id 获取 document
+   * Get document based on id
    * get a document by id
    * @param id
    * @returns
@@ -66,28 +66,28 @@ export interface IBaseApiProject<
   getDocumentById(id: string): DocumentModel | null;
 
   /**
-   * 导出 project
+   * Export project
    * export project to schema
    * @returns
    */
   exportSchema(stage: IPublicEnumTransformStage): IPublicTypeProjectSchema;
 
   /**
-   * 导入 project schema
+   * Import project schema
    * import schema to project
-   * @param schema 待导入的 project 数据
+   * @param schema project data to be imported
    */
   importSchema(schema?: IPublicTypeProjectSchema): void;
 
   /**
-   * 获取当前的 document
+   * Get the current document
    * get current document
    * @returns
    */
   getCurrentDocument(): DocumentModel | null;
 
   /**
-   * 增加一个属性的管道处理函数
+   * Add a property pipeline processing function
    * add a transducer to process prop
    * @param transducer
    * @param stage
@@ -98,7 +98,7 @@ export interface IBaseApiProject<
     ): void;
 
   /**
-   * 绑定删除文档事件
+   * Bind delete document event
    * set callback for event onDocumentRemoved
    * @param fn
    * @since v1.0.16
@@ -106,26 +106,26 @@ export interface IBaseApiProject<
   onRemoveDocument(fn: (data: { id: string }) => void): IPublicTypeDisposable;
 
   /**
-   * 当前 project 内的 document 变更事件
+   * Document change events in the current project
    * set callback for event onDocumentChanged
    */
   onChangeDocument(fn: (doc: DocumentModel) => void): IPublicTypeDisposable;
 
   /**
-   * 当前 project 的模拟器 ready 事件
+   * The simulator ready event of the current project
    * set callback for event onSimulatorHostReady
    */
   onSimulatorHostReady(fn: (host: IPublicApiSimulatorHost) => void): IPublicTypeDisposable;
 
   /**
-   * 当前 project 的渲染器 ready 事件
+   * The renderer ready event of the current project
    * set callback for event onSimulatorRendererReady
    */
   onSimulatorRendererReady(fn: () => void): IPublicTypeDisposable;
 
   /**
-   * 设置多语言语料
-   * 数据格式参考 https://github.com/alibaba/lowcode-engine/blob/main/specs/lowcode-spec.md#2434%E5%9B%BD%E9%99%85%E5%8C%96%E5%A4%9A%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8Baa
+   * Set up multilingual corpus
+   * Data format reference https://github.com/alibaba/lowcode-engine/blob/main/specs/lowcode-spec.md#2434%E5%9B%BD%E9%99%85%E5%8C%96%E5%A4%9A%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8Baa
    *
    * set I18n data for this project
    * @param value object
@@ -134,7 +134,7 @@ export interface IBaseApiProject<
   setI18n(value: object): void;
 
   /**
-   * 设置当前项目配置
+   * Set current project configuration
    *
    * set config data for this project
    * @param value object

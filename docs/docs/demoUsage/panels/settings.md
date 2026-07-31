@@ -1,68 +1,74 @@
 ---
-title: 6. 设置面板详解
+title: 6. Settings Panel Details
 sidebar_position: 2
 ---
-# 设置器介绍
-## 展示区域
-设置器，又称为 Setter，主要展示在编辑器的右边区域，如下图：
+
+# Setters overview
+
+## Display area
+
+Setters appear on the right side of the editor:
 ![image.png](https://img.alicdn.com/imgextra/i4/O1CN01jN0toi1OknXWrPuYt_!!6000000001744-2-tps-3836-1730.png)
-其中包含 属性、样式、事件、高级
+Tabs include Properties, Style, Events, and Advanced.
 
-- 属性：展示该物料常规的属性
-- 样式：展示该物料样式的属性
-- 事件：如果该物料有声明事件，则会出现事件面板，用于绑定事件。
-- 高级：两个逻辑相关的属性，**条件渲染**和**循环**
+- **Properties:** common material properties
+- **Style:** style-related properties
+- **Events:** when the material declares events, bind them here
+- **Advanced:** **conditional rendering** and **loop**
 
+## Setters
 
-
-## 设置器
-上述区域中是有多项设置器的，对于一个组件来说，每一项配置都对应一个设置器，比如我们的配置是一个文本，我们需要的是文本设置器，我们需要配置的是数字，我们需要的就是数字设置器。
-下图中的标题和按钮类型配置就分别是文本设置器和下拉框设置器。
+Each configuration field uses a setter—for text use a string setter, for numbers a number setter, and so on.
+The title and button type fields below use a string setter and a select setter.
 ![image.png](https://img.alicdn.com/imgextra/i4/O1CN01Bl2hgm1GiUcXD3TOO_!!6000000000656-2-tps-2120-1460.png)
-我们提供了常用的设置器作为内置设置器，也提供了定制能力帮助大家开发特定需求的设置器。
-# 内置设置器
-| **预置 Setter** | **用途** |
-| --- | --- |
-| StringSetter | 短文本型数据设置器，不可换行 |
-| NumberSetter | 数值型数据设置器， |
-| BoolSetter | 布尔型数据设置器， |
-| SelectSetter | 枚举型数据设置器，采用下拉的形式展现 |
-| VariableSetter | 变量型数据设置器， |
-| RadioGroupSetter | 枚举型数据设置器，采用 tab 选择的形式展现 |
-| TextAreaSetter | 长文本型数据设置器，可换行 |
-| DateSetter | 日期型数据设置器 |
-| TimePicker | 时间型数据设置器 |
-| DateYearSetter | 日期型 - 年数据设置器 |
-| DateMonthSetter | 日期型 - 月数据设置器 |
-| DateRangeSetter | 日期型数据设置器，可选择时间区间 |
-| EventsSetter | 事件绑定设置器 |
-| ColorSetter | 颜色设置器 |
-| JsonSetter | json 型数据设置器 |
-| StyleSetter | 样式设置器 |
-| ClassNameSetter | 样式名设置器 |
-| FunctionSetter | 函数型数据设置器 |
-| MixedSetter | 混合型数据设置器 |
-| SlotSetter | 节点型数据设置器 |
-| ArraySetter | 列表数组行数据设置器 |
-| ObjectSetter | 对象数据设置器，一般内嵌在 ArraySetter 中 |
+Built-in setters cover common cases; you can also build custom setters.
 
+# Built-in setters
 
-# 设置器定制
-## 编写 AltStringSetter
-我们编写一个简单的 Setter，这里我们编写的 Setter 是 AltStringSetter。代码如下：
+| **Preset Setter** | **Purpose**                                |
+| ----------------- | ------------------------------------------ |
+| StringSetter      | Short single-line text                     |
+| NumberSetter      | Numeric values                             |
+| BoolSetter        | Boolean values                             |
+| SelectSetter      | Enum via dropdown                          |
+| VariableSetter    | Variable binding                           |
+| RadioGroupSetter  | Enum via tab/radio group                   |
+| TextAreaSetter    | Multi-line text                            |
+| DateSetter        | Date                                       |
+| TimePicker        | Time                                       |
+| DateYearSetter    | Year                                       |
+| DateMonthSetter   | Month                                      |
+| DateRangeSetter   | Date range                                 |
+| EventsSetter      | Event binding                              |
+| ColorSetter       | Color                                      |
+| JsonSetter        | JSON                                       |
+| StyleSetter       | CSS styles                                 |
+| ClassNameSetter   | Class names                                |
+| FunctionSetter    | Functions                                  |
+| MixedSetter       | Mixed types                                |
+| SlotSetter        | Node/slot content                          |
+| ArraySetter       | Array/list rows                            |
+| ObjectSetter      | Object fields; often nested in ArraySetter |
+
+# Custom setters
+
+## Writing AltStringSetter
+
+A simple custom setter example:
+
 ```javascript
-import * as React from "react";
-import { Input } from "@alifd/next";
+import * as React from 'react';
+import { Input } from '@alifd/next';
 
-import "./index.scss";
+import './index.scss';
 interface AltStringSetterProps {
-  // 当前值
+  // current value
   value: string;
-  // 默认值
+  // default value
   defaultValue: string;
-  // setter 唯一输出
+  // setter sole output
   onChange: (val: string) => void;
-  // AltStringSetter 特殊配置
+  // AltStringSetter special config
   placeholder: string;
 }
 export default class AltStringSetter extends React.PureComponent<AltStringSetterProps> {
@@ -73,15 +79,15 @@ export default class AltStringSetter extends React.PureComponent<AltStringSetter
     }
   }
 
-  // 声明 Setter 的 title
- 	static displayName = 'AltStringSetter';
+  // Declare Setter title
+  static displayName = 'AltStringSetter';
 
   render() {
     const { onChange, value, placeholder } = this.props;
     return (
       <Input
         value={value}
-        placeholder={placeholder || ""}
+        placeholder={placeholder || ''}
         onChange={(val: any) => onChange(val)}
       ></Input>
     );
@@ -89,13 +95,15 @@ export default class AltStringSetter extends React.PureComponent<AltStringSetter
 }
 ```
 
-### setter 和 setter/plugin 之间的联动
-我们采用 emit 来进行相互之前的通信，首先我们在 A setter 中进行事件注册：
+### Setter and plugin communication
+
+Use `emit` for cross-setter communication. Register in setter A:
+
 ```javascript
 import { event } from '@ali/lowcode-engine';
 
 componentDidMount() {
-		// 这里由于面板上会有多个 setter，这里我用 field.id 来标记 setter 名
+		// Because the panel may have multiple setters, use field.id to mark the setter name
     this.emitEventName = `${SETTER_NAME}-${this.props.field.id}`;
     event.on(`${this.emitEventName}.bindEvent`, this.bindEvent)
 }
@@ -105,46 +113,57 @@ bindEvent = (eventName) => {
 }
 
 componentWillUnmount() {
-  // setter 是以实例为单位的，每个 setter 注销的时候需要把事件也注销掉，避免事件池过多
+  // Setters are instance-based; unregister events when a setter is disposed to avoid event pool growth
   event.off(`${this.emitEventName}.bindEvent`, this.bindEvent)
 }
 ```
-在 B setter 中触发事件，来完成通信：
+
+Trigger from setter B:
+
 ```javascript
 import { event } from '@ali/lowcode-engine';
 
 bindFunction = () => {
   const { field, value } = this.props;
-  // 这里展示的和插件进行通信，事件规则是插件名 + 方法
+  // Shows communicating with a plugin; event naming is pluginName + method
   event.emit('eventBindDialog.openDialog', field.name, this.emitEventName);
-}
+};
 ```
-### 修改同级 props 的其他属性值
-setter 本身只影响其中一个 props 的值，如果需要影响其他组件的 props 的值，需要使用 field 的 props：
+
+### Updating sibling props
+
+A setter only updates one prop. To change siblings, use the field's parent:
+
 ```javascript
 bindFunction = () => {
-    const { field, value } = this.props;
-    const propsField = field.parent;
-		// 获取同级其他属性 showJump 的值
-    const otherValue = propsField.getPropValue('showJump');
-    // set 同级其他属性 showJump 的值
-    propsField.setPropValue('showJump', false);
-}
+  const { field, value } = this.props;
+  const propsField = field.parent;
+  // Get sibling prop showJump value
+  const otherValue = propsField.getPropValue('showJump');
+  // Set sibling prop showJump value
+  propsField.setPropValue('showJump', false);
+};
 ```
-## 注册 AltStringSetter
-我们需要在低代码引擎中注册 Setter，这样就可以通过 AltStringSetter 的名字在物料中使用了。
+
+## Register AltStringSetter
+
+Register the setter with the engine so materials can reference it by name:
+
 ```javascript
 import AltStringSetter from './AltStringSetter';
 import { setters } from '@rchh/lowcode-engine';
 setters.registerSetter({
-	AltStringSetter: {
-		component: AltStringSetter,
-	}
+  AltStringSetter: {
+    component: AltStringSetter,
+  },
 });
 ```
-## 物料中使用
-我们需要将目标组件的属性值类型值配置到物料资源配置文件中，例如 `packages/demo/public/assets.json` 
-其中核心配置如下：
+
+## Use in materials
+
+Point the prop to the setter in the asset config, e.g. `packages/demo/public/assets.json`:
+Core configuration:
+
 ```json
 {
   "props": {
@@ -158,7 +177,9 @@ setters.registerSetter({
   }
 }
 ```
-在物料中的完整配置如下：
+
+Full material example:
+
 ```json
 {
   "componentName": "Message",
@@ -177,26 +198,18 @@ setters.registerSetter({
     {
       "name": "title",
       "propType": "string",
-      "description": "标题",
-      "defaultValue": "标题"
+      "description": "Title",
+      "defaultValue": "Title"
     },
     {
       "name": "type",
       "propType": {
         "type": "oneOf",
-        "value": [
-          "success",
-          "warning",
-          "error",
-          "notice",
-          "help",
-          "loading"
-        ]
+        "value": ["success", "warning", "error", "notice", "help", "loading"]
       },
-      "description": "反馈类型",
+      "description": "Feedback type",
       "defaultValue": "success"
     }
-
   ],
 
   "configure": {
@@ -212,6 +225,9 @@ setters.registerSetter({
   }
 }
 ```
+
 ###
-# 小结
-本章介绍了设置器是什么，我们有哪些内置的设置器。以及当不满足设置器诉求时，我们如何定制一个设置器。
+
+# Summary
+
+This chapter covered what setters are, built-in setters, and how to build a custom setter when built-ins are not enough.

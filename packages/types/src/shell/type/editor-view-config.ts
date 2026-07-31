@@ -1,11 +1,11 @@
 export interface IPublicEditorViewConfig {
 
-  /** 视图初始化钩子 */
+  /** View init hook */
   init?: () => Promise<void>;
 
-  /** 资源保存时，会调用视图的钩子 */
+  /** View hook called when the resource is saved */
   save?: () => Promise<void>;
 
-  /** viewType 类型为 'webview' 时渲染的地址 */
+  /** URL rendered when viewType is 'webview' */
   url?: () => Promise<string>;
 }

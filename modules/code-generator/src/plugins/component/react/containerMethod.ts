@@ -35,7 +35,7 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
       return next;
     }
 
-    // 将这些 methods 都定义到 class 上
+    // Define these methods on the class
     const { methods } = ir;
     const chunks = Object.keys(methods).map<ICodeChunk>((methodName) => ({
       type: ChunkType.STRING,
@@ -46,16 +46,14 @@ const pluginFactory: BuilderComponentPluginFactory<PluginConfig> = (config?) => 
     }));
     next.chunks.push(...chunks);
 
-    // 严格模式下需要将这些方法都挂到上下文中
+    // In strict mode, hang these methods onto the context
     if (inStrictMode) {
       next.chunks.push({
         type: ChunkType.STRING,
         fileType: cfg.fileType,
         name: CLASS_DEFINE_CHUNK_NAME.ConstructorContent,
         content: Object.keys(ir.methods)
-          .map((methodName) =>
-            isValidIdentifier(methodName) ? `.${methodName}` : `[${JSON.stringify(methodName)}]`,
-          )
+          .map((methodName) => (isValidIdentifier(methodName) ? `.${methodName}` : `[${JSON.stringify(methodName)}]`))
           .map((method) => `this._context${method} = this${method};`)
           .join('\n'),
         linkAfter: [...DEFAULT_LINK_AFTER[CLASS_DEFINE_CHUNK_NAME.ConstructorContent]],

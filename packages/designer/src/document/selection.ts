@@ -17,14 +17,14 @@ export class Selection implements ISelection {
   }
 
   /**
-   * 选中的节点 id
+   * Selected node ids
    */
   get selected(): string[] {
     return this._selected;
   }
 
   /**
-   * 选中
+   * Select
    */
   select(id: string) {
     if (this._selected.length === 1 && this._selected.indexOf(id) > -1) {
@@ -43,7 +43,7 @@ export class Selection implements ISelection {
   }
 
   /**
-   * 批量选中
+   * Batch select
    */
   selectAll(ids: string[]) {
     const selectIds: string[] = [];
@@ -62,7 +62,7 @@ export class Selection implements ISelection {
   }
 
   /**
-   * 清除选中
+   * Clear selection
    */
   clear() {
     if (this._selected.length < 1) {
@@ -73,7 +73,7 @@ export class Selection implements ISelection {
   }
 
   /**
-   * 整理选中
+   * Normalize selection
    */
   dispose() {
     const l = this._selected.length;
@@ -90,7 +90,7 @@ export class Selection implements ISelection {
   }
 
   /**
-   * 添加选中
+   * Add to selection
    */
   add(id: string) {
     if (this._selected.indexOf(id) > -1) {
@@ -102,14 +102,14 @@ export class Selection implements ISelection {
   }
 
   /**
-   * 是否选中
+   * Whether selected
    */
   has(id: string) {
     return this._selected.indexOf(id) > -1;
   }
 
   /**
-   * 移除选中
+   * Remove from selection
    */
   remove(id: string) {
     const i = this._selected.indexOf(id);
@@ -120,7 +120,7 @@ export class Selection implements ISelection {
   }
 
   /**
-   * 选区是否包含节点
+   * Whether selection contains the node
    */
   containsNode(node: INode, excludeRoot = false) {
     for (const id of this._selected) {
@@ -136,7 +136,7 @@ export class Selection implements ISelection {
   }
 
   /**
-   * 获取选中的节点
+   * Get selected nodes
    */
   getNodes(): INode[] {
     const nodes: INode[] = [];
@@ -150,13 +150,13 @@ export class Selection implements ISelection {
   }
 
   /**
-   * 获取顶层选区节点，场景：拖拽时，建立蒙层，只蒙在最上层
+   * Get top-level selected nodes; e.g. when dragging, overlay only the topmost
    */
   getTopNodes(includeRoot = false) {
     const nodes = [];
     for (const id of this._selected) {
       const node = this.doc.getNode(id);
-      // 排除根节点
+      // Exclude root node
       if (!node || (!includeRoot && node.contains(this.doc.focusNode))) {
         continue;
       }

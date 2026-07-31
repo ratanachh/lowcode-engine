@@ -26,22 +26,22 @@ export class Props implements IPublicModelProps {
   }
 
   /**
-   * 返回当前 props 的路径
+   * Return path of current props
    */
   get path(): string[] {
     return this[propsSymbol].path;
   }
 
   /**
-   * 返回所属的 node 实例
+   * Return the owning node instance
    */
   get node(): IPublicModelNode | null {
     return ShellNode.create(this[propsSymbol].getNode());
   }
 
   /**
-   * 获取指定 path 的属性模型实例
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * Get prop model instance at path
+   * @param path Prop path, supports a / a.b / a.0, etc.
    * @returns
    */
   getProp(path: string): IPublicModelProp | null {
@@ -49,8 +49,8 @@ export class Props implements IPublicModelProps {
   }
 
   /**
-   * 获取指定 path 的属性模型实例值
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * Get prop model value at path
+   * @param path Prop path, supports a / a.b / a.0, etc.
    * @returns
    */
   getPropValue(path: string): any {
@@ -58,9 +58,9 @@ export class Props implements IPublicModelProps {
   }
 
   /**
-   * 获取指定 path 的属性模型实例，
-   *  注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * Get prop model instance at path;
+   *  Note: on export, unlike normal props, this is not under props but sibling to props
+   * @param path Prop path, supports a / a.b / a.0, etc.
    * @returns
    */
   getExtraProp(path: string): IPublicModelProp | null {
@@ -68,9 +68,9 @@ export class Props implements IPublicModelProps {
   }
 
   /**
-   * 获取指定 path 的属性模型实例值
-   *  注：导出时，不同于普通属性，该属性并不挂载在 props 之下，而是与 props 同级
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
+   * Get prop model value at path
+   *  Note: on export, unlike normal props, this is not under props but sibling to props
+   * @param path Prop path, supports a / a.b / a.0, etc.
    * @returns
    */
   getExtraPropValue(path: string): any {
@@ -78,9 +78,9 @@ export class Props implements IPublicModelProps {
   }
 
   /**
-   * 设置指定 path 的属性模型实例值
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param value 值
+   * Set prop model value at path
+   * @param path Prop path, supports a / a.b / a.0, etc.
+   * @param value Value
    * @returns
    */
   setPropValue(path: string, value: IPublicTypeCompositeValue): void {
@@ -88,9 +88,9 @@ export class Props implements IPublicModelProps {
   }
 
   /**
-   * 设置指定 path 的属性模型实例值
-   * @param path 属性路径，支持 a / a.b / a.0 等格式
-   * @param value 值
+   * Set prop model value at path
+   * @param path Prop path, supports a / a.b / a.0, etc.
+   * @param value Value
    * @returns
    */
   setExtraPropValue(path: string, value: IPublicTypeCompositeValue): void {

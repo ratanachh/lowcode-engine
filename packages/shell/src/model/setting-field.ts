@@ -30,63 +30,63 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 获取设置属性的 isGroup
+   * Get setting field isGroup
    */
   get isGroup(): boolean {
     return this[settingFieldSymbol].isGroup;
   }
 
   /**
-   * 获取设置属性的 id
+   * Get setting field id
    */
   get id(): string {
     return this[settingFieldSymbol].id;
   }
 
   /**
-   * 获取设置属性的 name
+   * Get setting field name
    */
   get name(): string | number | undefined {
     return this[settingFieldSymbol].name;
   }
 
   /**
-   * 获取设置属性的 key
+   * Get setting field key
    */
   get key(): string | number | undefined {
     return this[settingFieldSymbol].getKey();
   }
 
   /**
-   * 获取设置属性的 path
+   * Get setting field path
    */
   get path(): any[] {
     return this[settingFieldSymbol].path;
   }
 
   /**
-   * 获取设置属性的 title
+   * Get setting field title
    */
   get title(): any {
     return this[settingFieldSymbol].title;
   }
 
   /**
-   * 获取设置属性的 setter
+   * Get setting field setter
    */
   get setter(): IPublicTypeSetterType | null {
     return this[settingFieldSymbol].setter;
   }
 
   /**
-   * 获取设置属性的 expanded
+   * Get setting field expanded
    */
   get expanded(): boolean {
     return this[settingFieldSymbol].expanded;
   }
 
   /**
-   * 获取设置属性的 extraProps
+   * Get setting field extraProps
    */
   get extraProps(): IPublicTypeFieldExtraProps {
     return this[settingFieldSymbol].extraProps;
@@ -97,14 +97,14 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 获取设置属性对应的节点实例
+   * Get the node instance for this setting field
    */
   get node(): IPublicModelNode | null {
     return ShellNode.create(this[settingFieldSymbol].getNode());
   }
 
   /**
-   * 获取设置属性的父设置属性
+   * Get parent setting field
    */
   get parent(): IPublicModelSettingField | IPublicModelSettingTopEntry {
     if (isSettingField(this[settingFieldSymbol].parent)) {
@@ -115,14 +115,14 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 获取顶级设置属性
+   * Get top-level setting entry
    */
   get top(): IPublicModelSettingTopEntry {
     return ShellSettingTopEntry.create(this[settingFieldSymbol].top);
   }
 
   /**
-   * 是否是 SettingField 实例
+   * Whether this is a SettingField instance
    */
   get isSettingField(): boolean {
     return this[settingFieldSymbol].isSettingField;
@@ -136,7 +136,7 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 获取设置属性的 items
+   * Get setting field items
    */
   get items(): Array<IPublicModelSettingField | IPublicTypeCustomView> {
     return this[settingFieldSymbol].items?.map((item) => {
@@ -148,7 +148,7 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 设置 key 值
+   * Set key
    * @param key
    */
   setKey(key: string | number): void {
@@ -170,24 +170,24 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 设置值
-   * @param val 值
+   * Set value
+   * @param val Value
    */
   setValue(val: IPublicTypeCompositeValue, extraOptions?: IPublicTypeSetValueOptions): void {
     this[settingFieldSymbol].setValue(val, false, false, extraOptions);
   }
 
   /**
-   * 设置子级属性值
-   * @param propName 子属性名
-   * @param value 值
+   * Set child prop value
+   * @param propName Child prop name
+   * @param value Value
    */
   setPropValue(propName: string | number, value: any): void {
     this[settingFieldSymbol].setPropValue(propName, value);
   }
 
   /**
-   * 清空指定属性值
+   * Clear the given prop value
    * @param propName
    */
   clearPropValue(propName: string | number): void {
@@ -195,7 +195,7 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 获取配置的默认值
+   * Get configured default value
    * @returns
    */
   getDefaultValue(): any {
@@ -203,7 +203,7 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 获取值
+   * Get value
    * @returns
    */
   getValue(): any {
@@ -211,8 +211,8 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 获取子级属性值
-   * @param propName 子属性名
+   * Get child prop value
+   * @param propName Child prop name
    * @returns
    */
   getPropValue(propName: string | number): any {
@@ -220,21 +220,21 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 获取顶层附属属性值
+   * Get top-level extra prop value
    */
   getExtraPropValue(propName: string): any {
     return this[settingFieldSymbol].getExtraPropValue(propName);
   }
 
   /**
-   * 设置顶层附属属性值
+   * Set top-level extra prop value
    */
   setExtraPropValue(propName: string, value: any): void {
     this[settingFieldSymbol].setExtraPropValue(propName, value);
   }
 
   /**
-   * 获取设置属性集
+   * Get setting props
    * @returns
    */
   getProps(): IPublicModelSettingTopEntry {
@@ -242,7 +242,7 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 是否绑定了变量
+   * Whether bound to a variable
    * @returns
    */
   isUseVariable(): boolean {
@@ -250,7 +250,7 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 设置绑定变量
+   * Set variable binding
    * @param flag
    */
   setUseVariable(flag: boolean): void {
@@ -258,7 +258,7 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 创建一个设置 field 实例
+   * Create a setting field instance
    * @param config
    * @returns
    */
@@ -267,7 +267,7 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 获取值，当为变量时，返回 mock
+   * Get value; when it is a variable, return mock
    * @returns
    */
   getMockOrValue(): any {
@@ -275,21 +275,21 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 销毁当前 field 实例
+   * Destroy current field instance
    */
   purge(): void {
     this[settingFieldSymbol].purge();
   }
 
   /**
-   * 移除当前 field 实例
+   * Remove current field instance
    */
   remove(): void {
     this[settingFieldSymbol].remove();
   }
 
   /**
-   * 设置 autorun
+   * Set autorun
    * @param action
    * @returns
    */
@@ -298,7 +298,7 @@ export class SettingField implements IPublicModelSettingField {
   }
 
   /**
-   * 返回 shell 模型，兼容某些场景下 field 已经是 shell field 了
+   * Return shell model; handles cases where field is already a shell field
    * @returns
    */
   internalToShellField() {

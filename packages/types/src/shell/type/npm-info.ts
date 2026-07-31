@@ -1,33 +1,40 @@
 /**
- * npm 源引入完整描述对象
+ * Full description object for npm source import
  */
 export interface IPublicTypeNpmInfo {
+
   /**
-   * 源码组件名称
+   * Source component name
    */
   componentName?: string;
+
   /**
-   * 源码组件库名
+   * Source component package name
    */
   package: string;
+
   /**
-   * 源码组件版本号
+   * Source component version
    */
   version?: string;
+
   /**
-   * 是否解构
+   * Whether destructured
    */
   destructuring?: boolean;
+
   /**
-   * 源码组件名称
+   * Source component name
    */
   exportName?: string;
+
   /**
-   * 子组件名
+   * Sub-component name
    */
   subName?: string;
+
   /**
-   * 组件路径
+   * Component path
    */
   main?: string;
 }

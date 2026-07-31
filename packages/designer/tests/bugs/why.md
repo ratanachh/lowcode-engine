@@ -1,6 +1,7 @@
-背景：
-在 UT 的基础上，希望借助一些 Bug 修复来完成场景测试，从而进一步增强稳定性。
-至少在真正的 E2E 测试来临之前，我们保证不会重复犯两次相同的错误。
+Background:
 
-做法：
-Bugs 文件夹每个文件记录一个 bug 修复的场景测试~
+On top of unit tests, we use bug-fix scenario tests to improve stability. Until full E2E coverage exists, these ensure the same bug is not repeated.
+
+Approach:
+
+Each file under `bugs/` records a scenario test for one bug fix.

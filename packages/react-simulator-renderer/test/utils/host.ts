@@ -66,7 +66,7 @@ class Host {
     consume() {}
   }
 
-  /** 下列的函数或者方法是方便测试用 */
+  /** Helpers below make testing easier */
   mockSchema = (schema: any) => {
     this.schema = schema;
   };

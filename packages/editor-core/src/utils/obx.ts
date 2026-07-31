@@ -3,7 +3,7 @@ import { configure } from 'mobx';
 
 configure({ enforceActions: 'never' });
 
-// 常用的直接导出，其他的以 mobx 命名空间导出
+// Export common APIs directly; export the rest under the mobx namespace
 export {
   observable as obx,
   observable,

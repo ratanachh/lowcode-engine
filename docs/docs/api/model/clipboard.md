@@ -3,18 +3,17 @@ title: Clipboard
 sidebar_position: 14
 ---
 
-> **@types** [IPublicModelClipboard](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/clipboard.ts)<br/>
-> **@since** v1.1.0
+> **@types** [IPublicModelClipboard](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/model/clipboard.ts)<br/> > **@since** v1.1.0
 
-## 方法
+## Methods
 
 ### setData
 
-给剪贴板赋值
+Set clipboard data
 
 ```typescript
 /**
- * 给剪贴板赋值
+ * Set clipboard value
  * set data to clipboard
  *
  * @param {*} data
@@ -25,11 +24,11 @@ setData(data: any): void;
 
 ### waitPasteData
 
-设置剪贴板数据设置的回调
+Set a callback for when clipboard paste data is provided
 
 ```typescript
 /**
- * 设置剪贴板数据设置的回调
+ * Set the callback for clipboard data
  * set callback for clipboard provide paste data
  *
  * @param {KeyboardEvent} keyboardEvent

@@ -188,7 +188,7 @@ export class SettingField extends SettingPropEntry implements ISettingField {
     this._items = [];
   }
 
-  // 创建子配置项，通常用于 object/array 类型数据
+  // Create child setting items, typically for object/array data
   createField(config: IPublicTypeFieldConfig): ISettingField {
     this.settingFieldCollector?.(getSettingFieldCollectorKey(this.parent, config), this);
     return new SettingField(this, config, this.settingFieldCollector);

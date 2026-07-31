@@ -22,7 +22,7 @@ import {
 
 const logger = getLogger({ level: 'warn', bizName: 'designer:pluginManager' });
 
-// 保留的事件前缀
+// Reserved event prefixes
 const RESERVED_EVENT_PREFIX = ['designer', 'editor', 'skeleton', 'renderer', 'render', 'utils', 'plugin', 'engine', 'editor-core', 'engine-core', 'plugins', 'event', 'events', 'log', 'logger', 'ctx', 'context'];
 
 export class LowCodePluginManager implements ILowCodePluginManager {
@@ -199,7 +199,7 @@ export class LowCodePluginManager implements ILowCodePluginManager {
     return new Proxy(this, {
       get(target, prop, receiver) {
         if (target.pluginsMap.has(prop as string)) {
-          // 禁用态的插件，直接返回 undefined
+          // Disabled plugins return undefined
           if (target.pluginsMap.get(prop as string)!.disabled) {
             return undefined;
           }

@@ -6,17 +6,17 @@ const UNSET = Symbol('unset');
 export type MasterProvider = (master: BuiltinSimulatorHost) => any;
 export type RendererConsumer<T> = (renderer: BuiltinSimulatorRenderer, data: T) => Promise<any>;
 
-// master 进程
-//  0. 初始化该对象，因为需要响应变更发生在 master 进程
-//  1. 提供消费数据或数据提供器，比如 Asset 资源，如果不是数据提供器，会持续提供
-//  2. 收到成功通知
-// renderer 进程
-//  1. 持续消费，并持续监听数据
-//  2. 消费
+// master process
+//  0. init this object; change responses happen in the master process
+//  1. provide consumable data or a data provider (e.g. Asset); non-providers keep providing
+//  2. receive success notification
+// renderer process
+//  1. continuously consume and watch data
+//  2. consume
 
-// 这里涉及俩个自定义项
-//  1. 被消费数据协议
-//  2. 消费机制（渲染进程自定 + 传递进入）
+// Two customization points here
+//  1. consumed data protocol
+//  2. consumption mechanism (renderer-defined + passed in)
 
 export default class ResourceConsumer<T = any> {
   private emitter: IEventBus = createModuleEventBus('ResourceConsumer');

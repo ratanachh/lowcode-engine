@@ -1,1 +1,1 @@
-内置拖拽替身
+Built-in drag ghost
