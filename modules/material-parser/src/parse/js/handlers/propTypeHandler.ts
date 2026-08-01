@@ -8,35 +8,18 @@
  */
 
 import { namedTypes as t, visit } from 'ast-types';
-import fs from 'fs';
-import path from 'path';
 import getRoot from '../utils/getRoot';
-import findJSFilePath from '../utils/findJSFilePath';
 import getComposedPath from '../utils/getComposedPath';
-const buildParser = require('react-docgen/dist/babelParser').default;
 
 const {
   resolveToValue,
-  isExportsOrModuleAssignment,
   getPropType,
   getPropertyName,
   getMemberValuePath,
-  isReactModuleName,
-  printValue,
-  resolveToModule,
 } = require('react-docgen').utils;
 
-const expressionTo = require('react-docgen/dist/utils/expressionTo');
 const isRequiredPropType = require('react-docgen/dist/utils/isRequiredPropType')
   .default;
-
-function isPropTypesExpression(path: any) {
-  const moduleName = resolveToModule(path);
-  if (moduleName) {
-    return isReactModuleName(moduleName) || moduleName === 'ReactPropTypes';
-  }
-  return false;
-}
 
 function amendPropTypes(getDescriptor: any, path: any, documentation, propName: string) {
   if (!t.ObjectExpression.check(path.node)) {

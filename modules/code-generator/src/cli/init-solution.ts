@@ -6,7 +6,6 @@ import * as changeCase from 'change-case';
 import { getErrorMessage } from '../utils/errors';
 import { getLowcodeSolutionTemplateFiles } from './solutions/example-solution';
 
-
 export async function initSolution(args: string[], options: {
   quiet?: boolean;
   verbose?: boolean;
@@ -20,8 +19,7 @@ export async function initSolution(args: string[], options: {
       solutionPath = cwd;
     }
 
-    const modifyFileContent = (content: string) =>
-      content
+    const modifyFileContent = (content: string) => content
         .replace(/hello-world/g, changeCase.paramCase(solutionName))
         .replace(/HelloWorld/g, changeCase.pascalCase(solutionName))
         .replace(/Hello World/g, changeCase.titleCase(solutionName));

@@ -298,8 +298,7 @@ function getDocgenTypeHelper(
     return makeResult({
       name: 'union',
       // @ts-ignore
-      value: type.types.map((t) =>
-        getDocgenTypeHelper(checker, t, true, getNextParentIds(parentIds, type))),
+      value: type.types.map((t) => getDocgenTypeHelper(checker, t, true, getNextParentIds(parentIds, type))),
     });
   } else if (isComplexType(type)) {
     return makeResult({
@@ -402,7 +401,7 @@ class MyParser extends Parser {
   }
 
   // override the builtin method, to avoid the false positive
-  public extractPropsFromTypeIfStatelessComponent(type: ts.Type): ts.Symbol | null {
+  extractPropsFromTypeIfStatelessComponent(type: ts.Type): ts.Symbol | null {
     const callSignatures = type.getCallSignatures();
 
     if (callSignatures.length) {
@@ -439,24 +438,6 @@ class MyParser extends Parser {
   }
 }
 
-const getCompilerOptions = (reactTypePath, originalReactTypePath) => {
-  const options: any = {
-    jsx: ts.JsxEmit.React,
-    module: ts.ModuleKind.CommonJS,
-    target: ts.ScriptTarget.Latest,
-    allowSyntheticDefaultImports: true,
-  };
-  // if (reactTypePath) {
-  //   options.paths = {
-  //     react: [reactTypePath],
-  //   };
-  //   options.exclude = [path.dirname(originalReactTypePath)];
-  //   options.types = [];
-  //   options.skipLibCheck = true;
-  // }
-  return options;
-};
-
 interface SymbolWithMeta extends ts.Symbol {
   meta?: {
     exportName: string;
@@ -492,8 +473,7 @@ export default function parseTS(filePath: string, args: IParseArgs): ComponentDo
   }
 
   log('ts config path is', tsConfigPath);
-  const { config, error } = ts.readConfigFile(tsConfigPath, (filename) =>
-    readFileSync(filename, 'utf8'));
+  const { config, error } = ts.readConfigFile(tsConfigPath, (filename) => readFileSync(filename, 'utf8'));
 
   if (error !== undefined) {
     const errorText = `Cannot load custom tsconfig.json from provided path: ${tsConfigPath}, with error code: ${error.code}, message: ${error.messageText}`;

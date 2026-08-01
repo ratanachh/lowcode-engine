@@ -32,7 +32,7 @@ export function resolveToImport(initialPath) {
 
   while (pathBuffer.length) {
     let path = pathBuffer.shift();
-    const node = path.node;
+    const { node } = path;
     switch (node.type) {
       case 'VariableDeclarator':
         if (node.init) {

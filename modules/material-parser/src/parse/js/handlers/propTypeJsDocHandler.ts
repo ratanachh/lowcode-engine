@@ -18,12 +18,12 @@ function getType(type = 'void') {
 }
 
 function generateRaw(params = [], returns = { type: 'void' }): string {
-  const raw = `(${params.filter(x => !!x).map(x => `${x.name}: ${getType(x.type)}`).join(', ')}) => ${returns ? getType(returns.type) : 'void'}`;
+  const raw = `(${params.filter((x) => !!x).map((x) => `${x.name}: ${getType(x.type)}`).join(', ')}) => ${returns ? getType(returns.type) : 'void'}`;
   return raw;
 }
 
 function resolveDocumentation(documentation) {
-  documentation._props.forEach(propDescriptor => {
+  documentation._props.forEach((propDescriptor) => {
     const { description } = propDescriptor;
     if (description.includes('@') && propDescriptor?.type?.name === 'func') {
       const jsDoc = parseJsDoc(description);

@@ -2,6 +2,7 @@ import checkIsIIFE from './checkIsIIFE';
 
 const resolveFunctionDefinitionToReturnValue = require('react-docgen/dist/utils/resolveFunctionDefinitionToReturnValue')
   .default;
+
 /**
  * If the path is a call expression, it recursively resolves to the
  * rightmost argument, stopping if it finds a React.createClass call expression

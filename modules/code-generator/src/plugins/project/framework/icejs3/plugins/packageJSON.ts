@@ -16,7 +16,7 @@ interface IIceJs3PackageJSON extends PackageJSON {
   originTemplate: string;
 }
 
-export type IceJs3PackageJsonPluginConfig = {
+export interface IceJs3PackageJsonPluginConfig {
 
   /**
    * Data source configuration
@@ -45,7 +45,7 @@ export type IceJs3PackageJsonPluginConfig = {
 
   /** Version */
   packageVersion?: string;
-};
+}
 
 const pluginFactory: BuilderComponentPluginFactory<IceJs3PackageJsonPluginConfig> = (cfg) => {
   const plugin: BuilderComponentPlugin = async (pre: ICodeStruct) => {

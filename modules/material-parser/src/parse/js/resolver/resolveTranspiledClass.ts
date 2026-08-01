@@ -1,4 +1,5 @@
 import { builders, NodePath, visit } from 'ast-types';
+
 /**
  * If the path is a call expression, it recursively resolves to the
  * rightmost argument, stopping if it finds a React.createClass call expression

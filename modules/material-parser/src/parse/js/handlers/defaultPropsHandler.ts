@@ -1,14 +1,14 @@
 import getComposedPath from '../utils/getComposedPath';
 import evaluate from '../utils/evaluate';
 
-const { namedTypes: t, NodePath, visit } = require('ast-types');
+const { namedTypes: t, NodePath } = require('ast-types');
+
 type NodePathType = typeof NodePath;
 const {
   getPropertyName,
   isReactComponentClass,
   getMemberValuePath,
   isReactForwardRefCall,
-  printValue,
   resolveToValue,
 } = require('react-docgen').utils;
 const resolveFunctionDefinitionToReturnValue = require('react-docgen/dist/utils/resolveFunctionDefinitionToReturnValue');
@@ -115,6 +115,7 @@ function getDefaultValuesFromProps(properties: any[], documentation: any, isStat
 export default function defaultPropsHandler(documentation: any, componentDefinition: any) {
   let statelessProps = null;
   let defaultPropsPath = getDefaultPropsPath(componentDefinition);
+
   /**
    * function, lazy, memo, forwardRef etc components can resolve default props as well
    */
