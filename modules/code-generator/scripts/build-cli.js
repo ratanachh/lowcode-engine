@@ -3,7 +3,7 @@
 const esbuild = require('esbuild');
 const ignorePlugin = require('esbuild-plugin-ignore');
 
-// 执行脚本
+// Run the script
 (async () => {
   try {
     console.log('building...');
@@ -18,7 +18,7 @@ const ignorePlugin = require('esbuild-plugin-ignore');
       sourcesContent: true,
       plugins: [
         ignorePlugin([
-          // @rchh/lowcode-types 中误依赖了 react，这里忽略下
+          // @rchh/lowcode-types mistakenly depends on react, so it's ignored here
           {
             resourceRegExp: /^react$/,
             contextRegExp: /./,

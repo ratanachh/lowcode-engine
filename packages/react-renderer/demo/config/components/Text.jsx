@@ -13,7 +13,7 @@ export default class TextView extends PureComponent {
   render() {
     const { text, ...restProps } = this.props;
     let textNode = text;
-    // 强制类型转换
+    // Force type conversion
     try {
       textNode = text.toString();
     } catch (e) {

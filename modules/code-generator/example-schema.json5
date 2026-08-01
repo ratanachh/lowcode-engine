@@ -58,7 +58,7 @@
       componentName: 'Page',
       id: 'node$1',
       meta: {
-        title: '测试',
+        title: 'Test',
         router: '/',
       },
       props: {
@@ -132,16 +132,16 @@
               componentName: 'Form.Item',
               id: 'node$3',
               props: {
-                label: '姓名：',
+                label: 'Name:',
                 name: 'name',
-                initValue: '李雷',
+                initValue: 'John',
               },
               children: [
                 {
                   componentName: 'Input',
                   id: 'node$4',
                   props: {
-                    placeholder: '请输入',
+                    placeholder: 'Please enter',
                     size: 'medium',
                     style: {
                       width: 320,
@@ -154,7 +154,7 @@
               componentName: 'Form.Item',
               id: 'node$5',
               props: {
-                label: '年龄：',
+                label: 'Age:',
                 name: 'age',
                 initValue: '22',
               },
@@ -173,7 +173,7 @@
               componentName: 'Form.Item',
               id: 'node$7',
               props: {
-                label: '职业：',
+                label: 'Profession:',
                 name: 'profession',
               },
               children: [
@@ -183,15 +183,15 @@
                   props: {
                     dataSource: [
                       {
-                        label: '教师',
+                        label: 'Teacher',
                         value: 't',
                       },
                       {
-                        label: '医生',
+                        label: 'Doctor',
                         value: 'd',
                       },
                       {
-                        label: '歌手',
+                        label: 'Singer',
                         value: 's',
                       },
                     ],
@@ -256,7 +256,7 @@
       componentName: 'BasicLayout',
       props: {
         logo: '...',
-        name: '测试网站',
+        name: 'Test Site',
       },
     },
     theme: {
@@ -266,10 +266,10 @@
     },
   },
   meta: {
-    name: 'demo应用',
+    name: 'demo App',
     git_group: 'appGroup',
     project_name: 'app_demo',
-    description: '这是一个测试应用',
+    description: 'This is a test application',
     spma: 'spa23d',
     creator: 'Test',
   },

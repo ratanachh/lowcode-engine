@@ -6,12 +6,12 @@ export default function getFile(): [string[], ResultFile] {
     '.stylelintignore',
     '',
     `
-# 忽略目录
+# Ignored directories
 build/
 tests/
 demo/
 
-# node 覆盖率文件
+# node coverage files
 coverage/
     `,
   );

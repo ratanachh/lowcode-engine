@@ -17,96 +17,96 @@ export default {
         dataSource: [
           {
             id: 1,
-            title: '2017秋冬新款背带裙复古格子连衣裙清新背心裙a字裙短裙子',
+            title: '2017 Autumn/Winter New Suspender Dress Retro Plaid Dress Vest Skirt A-line Short Skirt',
             url: 'https://item.taobao.com/item.htm?id=558559528377',
-            type: '清单',
+            type: 'List',
             publishTime: '17-04-28 20:29:20',
-            publishStatus: '已发布',
-            pushStatus: '已推送至订阅号',
+            publishStatus: 'Published',
+            pushStatus: 'Pushed to subscription',
             operation: {
               edit: true
             }
           },
           {
             id: 2,
-            title: '2017秋冬新款 高质感特定纱线欧美宽松马海毛羊毛毛衣',
+            title: '2017 Autumn/Winter New High-Quality Mohair Wool Sweater',
             url: 'https://item.taobao.com/item.htm?id=558559528377',
-            type: '清单',
+            type: 'List',
             publishTime: '17-04-28 20:29:20',
-            publishStatus: '已发布',
-            pushStatus: '已推送至订阅号',
+            publishStatus: 'Published',
+            pushStatus: 'Pushed to subscription',
             operation: {
               edit: true
             }
           },
           {
             id: 3,
-            title: '日式天然玉米皮草编碗垫锅垫隔热垫茶垫加厚餐垫GD-29',
+            title: 'Japanese Style Natural Corn Husk Woven Bowl Mat Pot Mat Insulation Mat Thick Placemat GD-29',
             url: 'https://item.taobao.com/item.htm?id=558559528377',
-            type: '清单',
+            type: 'List',
             publishTime: '17-04-28 20:29:20',
-            publishStatus: '已发布',
-            pushStatus: '已推送至订阅号',
+            publishStatus: 'Published',
+            pushStatus: 'Pushed to subscription',
             operation: {
               edit: true
             }
           },
           {
             id: 4,
-            title: '2017秋冬新款 绑带腰封设计感超顺滑质感落肩铜氨丝连衣裙',
+            title: '2017 Autumn/Winter New Belted Waist Design Smooth Cupro Silk Dress',
             url: 'https://item.taobao.com/item.htm?id=558559528377',
-            type: '清单',
+            type: 'List',
             publishTime: '17-04-28 20:29:20',
-            publishStatus: '已发布',
-            pushStatus: '已推送至订阅号',
+            publishStatus: 'Published',
+            pushStatus: 'Pushed to subscription',
             operation: {
               edit: true
             }
           },
           {
             id: 5,
-            title: '日式糖果色陶瓷柄不锈钢餐具西餐牛扒刀叉勺子咖啡勺',
+            title: 'Japanese Style Candy Color Ceramic Handle Stainless Steel Tableware Steak Knife Fork Spoon',
             url: 'https://item.taobao.com/item.htm?id=558559528377',
-            type: '清单',
+            type: 'List',
             publishTime: '17-04-28 20:29:20',
-            publishStatus: '已发布',
-            pushStatus: '已推送至订阅号',
+            publishStatus: 'Published',
+            pushStatus: 'Pushed to subscription',
             operation: {
               edit: true
             }
           },
           {
             id: 6,
-            title: '日式和风深蓝素色文艺餐巾餐垫围裙锅垫隔热手套厨房桌布',
+            title: 'Japanese Style Deep Blue Plain Art Napkin Placemat Apron Pot Mat Insulated Glove Kitchen Tablecloth',
             url: 'https://item.taobao.com/item.htm?id=558559528377',
-            type: '清单',
+            type: 'List',
             publishTime: '17-04-28 20:29:20',
-            publishStatus: '已发布',
-            pushStatus: '已推送至订阅号',
+            publishStatus: 'Published',
+            pushStatus: 'Pushed to subscription',
             operation: {
               edit: true
             }
           },
           {
             id: 7,
-            title: '日式雪点樱花手绘陶瓷餐具米饭碗拉面碗寿司盘子汤碗',
+            title: 'Japanese Style Snow Point Cherry Blossom Hand-Painted Ceramic Tableware Rice Bowl Ramen Bowl Sushi Plate Soup Bowl',
             url: 'https://item.taobao.com/item.htm?id=558559528377',
-            type: '清单',
+            type: 'List',
             publishTime: '17-04-28 20:29:20',
-            publishStatus: '已发布',
-            pushStatus: '已推送至订阅号',
+            publishStatus: 'Published',
+            pushStatus: 'Pushed to subscription',
             operation: {
               edit: true
             }
           },
           {
             id: 8,
-            title: '川岛屋 釉下彩复古日式陶瓷盘子菜盘圆盘调味碟 米饭碗日式餐具',
+            title: 'Kawashimaya Underglaze Retro Japanese Ceramic Plate Dish Round Plate Seasoning Saucer Rice Bowl Japanese Tableware',
             url: 'https://item.taobao.com/item.htm?id=558559528377',
-            type: '清单',
+            type: 'List',
             publishTime: '17-04-28 20:29:20',
-            publishStatus: '已发布',
-            pushStatus: '已推送至订阅号',
+            publishStatus: 'Published',
+            pushStatus: 'Pushed to subscription',
             operation: {
               edit: true
             }
@@ -118,28 +118,28 @@ export default {
           componentName: 'TableColumn',
           props: {
             dataIndex: 'title',
-            title: '问题描述',
+            title: 'Description',
             resizable: false
           }
         },
         {
           componentName: 'TableColumn',
           props: {
-            title: '问题分类',
+            title: 'Category',
             dataIndex: 'type'
           }
         },
         {
           componentName: 'TableColumn',
           props: {
-            title: '发布时间',
+            title: 'Publish Time',
             dataIndex: 'publishTime'
           }
         },
         {
           componentName: 'TableColumn',
           props: {
-            title: '状态',
+            title: 'Status',
             dataIndex: 'publishStatus',
             cell: [
               {
@@ -158,13 +158,13 @@ export default {
                     background: '#f7f8fa'
                   }
                 },
-                children: '已发布',
+                children: 'Published',
                 condition: false
               },
               {
                 componentName: 'Text',
                 props: {
-                  text: '已发布',
+                  text: 'Published',
                   style: {
                     paddingTop: 2,
                     paddingRight: 5,
@@ -184,7 +184,7 @@ export default {
         {
           componentName: 'TableColumn',
           props: {
-            title: '操作',
+            title: 'Action',
             cell: [
               {
                 componentName: 'Button',
@@ -200,7 +200,7 @@ export default {
                     color: '#2077ff'
                   }
                 },
-                children: '解决'
+                children: 'Resolve'
               },
               {
                 componentName: 'Button',
@@ -214,7 +214,7 @@ export default {
                     color: '#2077ff'
                   }
                 },
-                children: '详情'
+                children: 'Details'
               },
               {
                 componentName: 'Button',
@@ -228,7 +228,7 @@ export default {
                     color: '#2077ff'
                   }
                 },
-                children: '分类'
+                children: 'Category'
               }
             ]
           }
@@ -263,96 +263,96 @@ export default {
       let dataSource = [
         {
           id: 1,
-          title: '2017秋冬新款背带裙复古格子连衣裙清新背心裙a字裙短裙子',
+          title: '2017 Autumn/Winter New Suspender Dress Retro Plaid Dress Vest Skirt A-line Short Skirt',
           url: 'https://item.taobao.com/item.htm?id=558559528377',
-          type: '清单',
+          type: 'List',
           publishTime: '17-04-28 20:29:20',
-          publishStatus: '已发布',
-          pushStatus: '已推送至订阅号',
+          publishStatus: 'Published',
+          pushStatus: 'Pushed to subscription',
           operation: {
             edit: true
           }
         },
         {
           id: 2,
-          title: '2017秋冬新款 高质感特定纱线欧美宽松马海毛羊毛毛衣',
+          title: '2017 Autumn/Winter New High-Quality Mohair Wool Sweater',
           url: 'https://item.taobao.com/item.htm?id=558559528377',
-          type: '清单',
+          type: 'List',
           publishTime: '17-04-28 20:29:20',
-          publishStatus: '已发布',
-          pushStatus: '已推送至订阅号',
+          publishStatus: 'Published',
+          pushStatus: 'Pushed to subscription',
           operation: {
             edit: true
           }
         },
         {
           id: 3,
-          title: '日式天然玉米皮草编碗垫锅垫隔热垫茶垫加厚餐垫GD-29',
+          title: 'Japanese Style Natural Corn Husk Woven Bowl Mat Pot Mat Insulation Mat Thick Placemat GD-29',
           url: 'https://item.taobao.com/item.htm?id=558559528377',
-          type: '清单',
+          type: 'List',
           publishTime: '17-04-28 20:29:20',
-          publishStatus: '已发布',
-          pushStatus: '已推送至订阅号',
+          publishStatus: 'Published',
+          pushStatus: 'Pushed to subscription',
           operation: {
             edit: true
           }
         },
         {
           id: 4,
-          title: '2017秋冬新款 绑带腰封设计感超顺滑质感落肩铜氨丝连衣裙',
+          title: '2017 Autumn/Winter New Belted Waist Design Smooth Cupro Silk Dress',
           url: 'https://item.taobao.com/item.htm?id=558559528377',
-          type: '清单',
+          type: 'List',
           publishTime: '17-04-28 20:29:20',
-          publishStatus: '已发布',
-          pushStatus: '已推送至订阅号',
+          publishStatus: 'Published',
+          pushStatus: 'Pushed to subscription',
           operation: {
             edit: true
           }
         },
         {
           id: 5,
-          title: '日式糖果色陶瓷柄不锈钢餐具西餐牛扒刀叉勺子咖啡勺',
+          title: 'Japanese Style Candy Color Ceramic Handle Stainless Steel Tableware Steak Knife Fork Spoon',
           url: 'https://item.taobao.com/item.htm?id=558559528377',
-          type: '清单',
+          type: 'List',
           publishTime: '17-04-28 20:29:20',
-          publishStatus: '已发布',
-          pushStatus: '已推送至订阅号',
+          publishStatus: 'Published',
+          pushStatus: 'Pushed to subscription',
           operation: {
             edit: true
           }
         },
         {
           id: 6,
-          title: '日式和风深蓝素色文艺餐巾餐垫围裙锅垫隔热手套厨房桌布',
+          title: 'Japanese Style Deep Blue Plain Art Napkin Placemat Apron Pot Mat Insulated Glove Kitchen Tablecloth',
           url: 'https://item.taobao.com/item.htm?id=558559528377',
-          type: '清单',
+          type: 'List',
           publishTime: '17-04-28 20:29:20',
-          publishStatus: '已发布',
-          pushStatus: '已推送至订阅号',
+          publishStatus: 'Published',
+          pushStatus: 'Pushed to subscription',
           operation: {
             edit: true
           }
         },
         {
           id: 7,
-          title: '日式雪点樱花手绘陶瓷餐具米饭碗拉面碗寿司盘子汤碗',
+          title: 'Japanese Style Snow Point Cherry Blossom Hand-Painted Ceramic Tableware Rice Bowl Ramen Bowl Sushi Plate Soup Bowl',
           url: 'https://item.taobao.com/item.htm?id=558559528377',
-          type: '清单',
+          type: 'List',
           publishTime: '17-04-28 20:29:20',
-          publishStatus: '已发布',
-          pushStatus: '已推送至订阅号',
+          publishStatus: 'Published',
+          pushStatus: 'Pushed to subscription',
           operation: {
             edit: true
           }
         },
         {
           id: 8,
-          title: '川岛屋 釉下彩复古日式陶瓷盘子菜盘圆盘调味碟 米饭碗日式餐具',
+          title: 'Kawashimaya Underglaze Retro Japanese Ceramic Plate Dish Round Plate Seasoning Saucer Rice Bowl Japanese Tableware',
           url: 'https://item.taobao.com/item.htm?id=558559528377',
-          type: '清单',
+          type: 'List',
           publishTime: '17-04-28 20:29:20',
-          publishStatus: '已发布',
-          pushStatus: '已推送至订阅号',
+          publishStatus: 'Published',
+          pushStatus: 'Pushed to subscription',
           operation: {
             edit: true
           }

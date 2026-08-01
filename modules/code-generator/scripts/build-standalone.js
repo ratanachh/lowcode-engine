@@ -24,7 +24,7 @@ const buildConfig = {
         resourceRegExp: /^fs$/,
         contextRegExp: /./,
       },
-      // @rchh/lowcode-types 中误依赖了 react，这里忽略下
+      // @rchh/lowcode-types mistakenly depends on react, so it's ignored here
       {
         resourceRegExp: /^react$/,
         contextRegExp: /./,
@@ -46,7 +46,7 @@ const buildConfig = {
   treeShaking: true,
 };
 
-// 执行脚本
+// Run the script
 (async () => {
   try {
     console.log('building...');
@@ -108,7 +108,7 @@ const buildConfig = {
   }
 })();
 
-// esbuild 没有直接提供 UMD 格式，所以这里我们自行包装转换下
+// esbuild doesn't provide the UMD format directly, so we wrap and transform it ourselves
 function transformCjsToUmdFile(file) {
   const globalName = UMD_GLOBAL_NAME;
   const fileContent = fs.readFileSync(file, { encoding: 'utf-8' });

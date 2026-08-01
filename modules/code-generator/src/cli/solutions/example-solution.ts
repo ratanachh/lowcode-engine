@@ -19,7 +19,7 @@ trim_trailing_whitespace = false
     },
     {
       file: '.eslintignore',
-      content: `# 忽略目录
+      content: `# Ignored directories
 node_modules/
 build/
 dist/
@@ -31,7 +31,7 @@ es/
 lib/
 coverage/
 
-# 忽略文件
+# Ignored files
 **/*.min.js
 **/*-min.js
 **/*.bundle.js
@@ -176,21 +176,21 @@ codealike.json
     },
     {
       file: 'CONTRIBUTING.md',
-      content: `# 欢迎共建
+      content: `# Welcome to Contribute
 
-# 注意
+# Notes
 
-- 注意解决 eslint 问题
-- 注意代码格式化 -- 建议安装 prettier 插件
-- 发布前注意要跑通 demo 和所有的单测
+- Make sure to resolve any eslint issues
+- Make sure to format your code -- installing the prettier plugin is recommended
+- Make sure the demo and all unit tests pass before publishing
 
-## 本地调试运行 Demo
+## Run the Demo Locally
 
 \`\`\`sh
 > npm run demo
 \`\`\`
 
-## 本地跑单测
+## Run Unit Tests Locally
 
 \`\`\`sh
 > npm test
@@ -199,15 +199,15 @@ codealike.json
     },
     {
       file: 'README.md',
-      content: `# 低代码出码自定义方案之 Hello World
+      content: `# Low-Code Custom Codegen Solution: Hello World
 
-## 直接执行
+## Run Directly
 
 \`\`\`sh
 > npx ali-lowcode-solution-hello-world demo-schema.json
 \`\`\`
 
-## 本地调试运行 Demo
+## Run the Demo Locally
 
 \`\`\`sh
 > npm run demo
@@ -276,7 +276,7 @@ codealike.json
       "componentName": "Page",
       "id": "node$1",
       "meta": {
-        "title": "测试",
+        "title": "Test",
         "router": "/"
       },
       "props": {
@@ -354,16 +354,16 @@ codealike.json
               "componentName": "Form.Item",
               "id": "node$3",
               "props": {
-                "label": "姓名：",
+                "label": "Name:",
                 "name": "name",
-                "initValue": "李雷"
+                "initValue": "John"
               },
               "children": [
                 {
                   "componentName": "Input",
                   "id": "node$4",
                   "props": {
-                    "placeholder": "请输入",
+                    "placeholder": "Please enter",
                     "size": "medium",
                     "style": {
                       "width": 320
@@ -376,7 +376,7 @@ codealike.json
               "componentName": "Form.Item",
               "id": "node$5",
               "props": {
-                "label": "年龄：",
+                "label": "Age:",
                 "name": "age",
                 "initValue": "22"
               },
@@ -395,7 +395,7 @@ codealike.json
               "componentName": "Form.Item",
               "id": "node$7",
               "props": {
-                "label": "职业：",
+                "label": "Profession:",
                 "name": "profession"
               },
               "children": [
@@ -405,15 +405,15 @@ codealike.json
                   "props": {
                     "dataSource": [
                       {
-                        "label": "教师",
+                        "label": "Teacher",
                         "value": "t"
                       },
                       {
-                        "label": "医生",
+                        "label": "Doctor",
                         "value": "d"
                       },
                       {
-                        "label": "歌手",
+                        "label": "Singer",
                         "value": "s"
                       }
                     ]
@@ -478,7 +478,7 @@ codealike.json
       "componentName": "BasicLayout",
       "props": {
         "logo": "...",
-        "name": "测试网站"
+        "name": "Test Site"
       }
     },
     "theme": {
@@ -488,12 +488,12 @@ codealike.json
     }
   },
   "meta": {
-    "name": "demo应用",
+    "name": "demo App",
     "git_group": "appGroup",
     "project_name": "app_demo",
-    "description": "这是一个测试应用",
+    "description": "This is a test application",
     "spma": "spa23d",
-    "creator": "月飞"
+    "creator": "Test"
   }
 }
 `,

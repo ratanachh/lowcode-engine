@@ -58,7 +58,7 @@ const pluginFactory: BuilderComponentPluginFactory<IceJs3PackageJsonPluginConfig
     const packageJson: IIceJs3PackageJSON = {
       name: cfg?.packageName || 'icejs3-demo-app',
       version: cfg?.packageVersion || '0.1.5',
-      description: 'icejs 3 轻量级模板，使用 JavaScript，仅包含基础的 Layout。',
+      description: 'icejs 3 lightweight template using JavaScript, containing only a basic Layout.',
       dependencies: {
         moment: '^2.24.0',
         react: '^18.2.0',

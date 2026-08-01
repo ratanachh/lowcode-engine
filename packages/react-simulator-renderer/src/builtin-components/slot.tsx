@@ -15,7 +15,7 @@ class Slot extends Component {
             'zh-CN': '插槽标题',
           },
           setter: 'StringSetter',
-          defaultValue: '插槽容器',
+          defaultValue: 'Slot Container',
         },
         {
           name: '___params',

@@ -6,16 +6,16 @@ export default function getFile(): [string[], ResultFile] {
     '.eslintignore',
     '',
     `
-# 忽略目录
+# Ignored directories
 build/
 tests/
 demo/
 .ice/
 
-# node 覆盖率文件
+# node coverage files
 coverage/
 
-# 忽略文件
+# Ignored files
 **/*-min.js
 **/*.min.js
 

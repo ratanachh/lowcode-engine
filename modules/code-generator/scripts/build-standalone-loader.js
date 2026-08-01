@@ -33,7 +33,7 @@ const buildConfig = {
   treeShaking: true,
 };
 
-// 执行脚本
+// Run the script
 (async () => {
   try {
     console.log('building cjs...');

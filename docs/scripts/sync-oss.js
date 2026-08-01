@@ -38,7 +38,7 @@ const postData = JSON.stringify({
       version,
     },
   ],
-  // 可以发布指定源的 npm 包，默认公网 npm
+  // Allows publishing an npm package from a specific registry; defaults to the public npm registry
   useTnpm: true,
 });
 

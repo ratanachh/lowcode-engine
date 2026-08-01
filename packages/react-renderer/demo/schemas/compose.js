@@ -14,7 +14,7 @@ export default {
             "props": {
               "type": "primary"
             },
-            "children": "确定"  
+            "children": "Confirm"  
           }
         ],  
         "triggerType": "click"

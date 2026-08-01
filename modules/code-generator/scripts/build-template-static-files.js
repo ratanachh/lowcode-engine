@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-require-imports */
 // @ts-check
-// 这个文件是用来构建模板中的静态文件的
+// This file is used to build the static files in the template
 const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
@@ -30,7 +30,7 @@ try {
 function buildTemplateStaticFiles({ sourceDir, outputDir }) {
   console.log('processing %s template...', path.dirname(sourceDir));
 
-  // 扫描所有的目录
+  // Scan all directories
   const sourceFiles = glob.sync('**/*', {
     nodir: true,
     dot: true,
@@ -44,7 +44,7 @@ function buildTemplateStaticFiles({ sourceDir, outputDir }) {
     runs: [],
   };
 
-  // 生成对应的文件
+  // Generate the corresponding files
   sourceFiles.forEach((sourceFileName, index) => {
     console.log('processing %s', sourceFileName);
     const sourceFileContent = fs.readFileSync(path.join(sourceDir, sourceFileName), 'utf-8');
@@ -55,10 +55,10 @@ function buildTemplateStaticFiles({ sourceDir, outputDir }) {
     const sourceFileExtName = path.extname(sourceFileRealName);
     const sourceFileBaseName = path.basename(sourceFileRealName, sourceFileExtName);
 
-    // 确保目录存在
+    // Ensure the directory exists
     fs.mkdirSync(path.dirname(outputFileFullPath), { recursive: true });
 
-    // 写入文件
+    // Write the file
     fs.writeFileSync(
       outputFileFullPath,
       [
@@ -72,9 +72,9 @@ function buildTemplateStaticFiles({ sourceDir, outputDir }) {
         '',
         `export default function getFile(): [string[], ResultFile] {`,
         `  return ${JSON5.stringify([
-          // 文件目录：
+          // File directory:
           path.dirname(sourceFileRealName).split(path.sep).filter(Boolean),
-          // 文件名和内容:
+          // File name and content:
           {
             name: sourceFileBaseName,
             ext: sourceFileExtName.replace(/^\./, ''),
@@ -114,7 +114,7 @@ function buildTemplateStaticFiles({ sourceDir, outputDir }) {
     { encoding: 'utf-8' },
   );
 
-  // prettier 一把
+  // Run prettier once
   console.log('run prettier...');
   spawnSync('npx', ['prettier', '--write', `${outputDir}`], {
     stdio: 'inherit',

@@ -31,7 +31,7 @@ const jestConfig = {
   ],
 };
 
-// 只对本仓库内的 pkg 做 mapping
+// Only map packages within this repository
 jestConfig.moduleNameMapper = {};
 jestConfig.moduleNameMapper[`^@rchh/lowcode\\-(${pkgNames.join('|')})$`] = '<rootDir>/../$1/src';
 

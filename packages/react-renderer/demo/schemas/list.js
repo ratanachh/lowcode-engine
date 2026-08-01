@@ -104,7 +104,7 @@ export default {
                       float: 'none'
                     }
                   },
-                  children: '{{"点赞："+this.item.star}}'
+                  children: '{{"Likes: "+this.item.star}}'
                 },
                 {
                   componentName: 'Div',
@@ -119,7 +119,7 @@ export default {
                       float: 'none'
                     }
                   },
-                  children: '{{"喜爱："+this.item.like}}'
+                  children: '{{"Favorites: "+this.item.like}}'
                 },
                 {
                   componentName: 'Div',
@@ -134,7 +134,7 @@ export default {
                       float: 'none'
                     }
                   },
-                  children: '{{"评论："+this.item.comment}}'
+                  children: '{{"Comments: "+this.item.comment}}'
                 }
               ]
             }
@@ -155,9 +155,9 @@ export default {
           textAlign: 'right'
         },
         onChange: function onChange(current, e) {
-          //页码发生改变时的回调函数
-          //@param {Number} current 改变后的页码数
-          //@param {Object} e 点击事件对象
+          // Callback function triggered when the page number changes
+          // @param {Number} current the new page number
+          // @param {Object} e the click event object
           this.page.reloadDataSource();
         }
       }
@@ -167,51 +167,51 @@ export default {
     dataHandler: function dataHandler(dataMap) {
       const dataSource = [
         {
-          title: '越夏越嗨皮-7月官方营销活动-技能提升方向',
+          title: 'Summer Vibes - July Official Marketing Campaign - Skill Improvement Track',
           description:
-            '商家通过V任务选择主播并达成合作，费用按照商品链接计算，一个商品为一个价格，建议主播在一场直播里最多接60个商品，并提供不少于两个小时的直播服务，每个商品讲解时间不少于5分钟。 ',
-          tags: ['直播', '大促', '简介'],
-          datetime: '2017年12月12日 18:00',
+            'Merchants select streamers via V-Task and reach an agreement; fees are calculated per product link, with one price per product. Streamers are advised to feature at most 60 products per livestream, provide at least two hours of streaming, and spend at least 5 minutes introducing each product.',
+          tags: ['Livestream', 'Promotion', 'Overview'],
+          datetime: 'Dec 12, 2017 18:00',
           star: Math.floor(Math.random() * 100) + 100,
           like: Math.floor(Math.random() * 100) + 200,
           comment: Math.floor(Math.random() * 100) + 100
         },
         {
-          title: '越夏越嗨皮-7月官方营销活动-技能提升方向',
+          title: 'Summer Vibes - July Official Marketing Campaign - Skill Improvement Track',
           description:
-            '商家通过V任务选择主播并达成合作，费用按照商品链接计算，一个商品为一个价格，建议主播在一场直播里最多接60个商品，并提供不少于两个小时的直播服务，每个商品讲解时间不少于5分钟。 ',
-          tags: ['直播', '大促', '简介'],
-          datetime: '2017年12月12日 18:00',
+            'Merchants select streamers via V-Task and reach an agreement; fees are calculated per product link, with one price per product. Streamers are advised to feature at most 60 products per livestream, provide at least two hours of streaming, and spend at least 5 minutes introducing each product.',
+          tags: ['Livestream', 'Promotion', 'Overview'],
+          datetime: 'Dec 12, 2017 18:00',
           star: Math.floor(Math.random() * 100) + 100,
           like: Math.floor(Math.random() * 100) + 200,
           comment: Math.floor(Math.random() * 100) + 100
         },
         {
-          title: '越夏越嗨皮-7月官方营销活动-技能提升方向',
+          title: 'Summer Vibes - July Official Marketing Campaign - Skill Improvement Track',
           description:
-            '商家通过V任务选择主播并达成合作，费用按照商品链接计算，一个商品为一个价格，建议主播在一场直播里最多接60个商品，并提供不少于两个小时的直播服务，每个商品讲解时间不少于5分钟。 ',
-          tags: ['直播', '大促', '简介'],
-          datetime: '2017年12月12日 18:00',
+            'Merchants select streamers via V-Task and reach an agreement; fees are calculated per product link, with one price per product. Streamers are advised to feature at most 60 products per livestream, provide at least two hours of streaming, and spend at least 5 minutes introducing each product.',
+          tags: ['Livestream', 'Promotion', 'Overview'],
+          datetime: 'Dec 12, 2017 18:00',
           star: Math.floor(Math.random() * 100) + 100,
           like: Math.floor(Math.random() * 100) + 200,
           comment: Math.floor(Math.random() * 100) + 100
         },
         {
-          title: '越夏越嗨皮-7月官方营销活动-技能提升方向',
+          title: 'Summer Vibes - July Official Marketing Campaign - Skill Improvement Track',
           description:
-            '商家通过V任务选择主播并达成合作，费用按照商品链接计算，一个商品为一个价格，建议主播在一场直播里最多接60个商品，并提供不少于两个小时的直播服务，每个商品讲解时间不少于5分钟。 ',
-          tags: ['直播', '大促', '简介'],
-          datetime: '2017年12月12日 18:00',
+            'Merchants select streamers via V-Task and reach an agreement; fees are calculated per product link, with one price per product. Streamers are advised to feature at most 60 products per livestream, provide at least two hours of streaming, and spend at least 5 minutes introducing each product.',
+          tags: ['Livestream', 'Promotion', 'Overview'],
+          datetime: 'Dec 12, 2017 18:00',
           star: Math.floor(Math.random() * 100) + 100,
           like: Math.floor(Math.random() * 100) + 200,
           comment: Math.floor(Math.random() * 100) + 100
         },
         {
-          title: '越夏越嗨皮-7月官方营销活动-技能提升方向',
+          title: 'Summer Vibes - July Official Marketing Campaign - Skill Improvement Track',
           description:
-            '商家通过V任务选择主播并达成合作，费用按照商品链接计算，一个商品为一个价格，建议主播在一场直播里最多接60个商品，并提供不少于两个小时的直播服务，每个商品讲解时间不少于5分钟。 ',
-          tags: ['直播', '大促', '简介'],
-          datetime: '2017年12月12日 18:00',
+            'Merchants select streamers via V-Task and reach an agreement; fees are calculated per product link, with one price per product. Streamers are advised to feature at most 60 products per livestream, provide at least two hours of streaming, and spend at least 5 minutes introducing each product.',
+          tags: ['Livestream', 'Promotion', 'Overview'],
+          datetime: 'Dec 12, 2017 18:00',
           star: Math.floor(Math.random() * 100) + 100,
           like: Math.floor(Math.random() * 100) + 200,
           comment: Math.floor(Math.random() * 100) + 100

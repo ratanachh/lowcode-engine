@@ -13,8 +13,8 @@ export default {
     }, {
       componentName: 'Switch',
       props: {
-        checkedChildren: '开',
-        unCheckedChildren: '关',
+        checkedChildren: 'On',
+        unCheckedChildren: 'Off',
         checked: '{{this.item.done}}',
       },
     }],
