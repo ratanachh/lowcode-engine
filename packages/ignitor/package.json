@@ -1,6 +1,6 @@
 {
   "name": "@rchh/lowcode-ignitor",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Ignitor, bootstrap lce project",
   "main": "lib/index.js",
   "private": true,
