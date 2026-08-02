@@ -5,7 +5,7 @@ sidebar_position: 4
 
 ## 🪚 Overview
 
-The data source panel manages remote data sources in low-code. It edits the data source Schema in the low-code protocol visually. Together with the [Data Source Engine](/site/docs/guide/design/datasourceEngine), it supports producing and consuming data sources in low-code.
+The data source panel manages remote data sources in low-code. It edits the data source Schema in the low-code protocol visually. Together with the [Data Source Engine](/lowcode-engine/docs/guide/design/datasourceEngine), it supports producing and consuming data sources in low-code.
 
 ![image.png](https://img.alicdn.com/imgextra/i1/O1CN0170HeBg276B7fM9rqh_!!6000000007747-2-tps-2878-1642.png)
 
@@ -164,13 +164,13 @@ const preference = new Map();
 | isInit         | Initial data request            | Boolean                                              | ✅                   | true                      | When true, the request runs automatically on component mount                                                                         |
 | isSync         | Run serially                    | Boolean                                              | ✅                   | false                     | When true, this request runs serially                                                                                                |
 | type           | Request type                    | String                                               | -                    | fetch                     | fetch / mtop / jsonp / custom                                                                                                        |
-| shouldFetch    | Whether this request may run    | (options: ComponentDataSourceItemOptions) => boolean | -                    | () => true                | See [ComponentDataSourceItemOptions](/site/docs/specs/lowcode-spec#2315-componentdatasourceitemoptions-object-description)           |
+| shouldFetch    | Whether this request may run    | (options: ComponentDataSourceItemOptions) => boolean | -                    | () => true                | See [ComponentDataSourceItemOptions](/lowcode-engine/docs/specs/lowcode-spec#2315-componentdatasourceitemoptions-object-description)           |
 | willFetch      | Pre-request options transform   | Function                                             | -                    | options => options        | Single `options` argument; return value becomes request options. On error, original options are used. May return a Promise           |
 | requestHandler | Custom external request handler | Function                                             | -                    | -                         | Only when type='custom'                                                                                                              |
 | dataHandler    | Success callback                | Function                                             | -                    | response => response.data | Receives the resolved promise value                                                                                                  |
 | errorHandler   | Error callback                  | Function                                             | -                    | -                         | Receives the rejected promise error                                                                                                  |
-| options {}     | Request options                 | **ComponentDataSourceItemOptions**                   | -                    | -                         | Per type; see [ComponentDataSourceItemOptions](/site/docs/specs/lowcode-spec#2315-componentdatasourceitemoptions-object-description) |
+| options {}     | Request options                 | **ComponentDataSourceItemOptions**                   | -                    | -                         | Per type; see [ComponentDataSourceItemOptions](/lowcode-engine/docs/specs/lowcode-spec#2315-componentdatasourceitemoptions-object-description) |
 
 ### Runtime: data source engine design
 
-[Data Source Engine Design](/site/docs/guide/design/datasourceEngine)
+[Data Source Engine Design](/lowcode-engine/docs/guide/design/datasourceEngine)

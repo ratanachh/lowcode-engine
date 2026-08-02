@@ -166,4 +166,4 @@ init(document.getElementById('lce-container'), {
 
 ## Configure the low-code editor
 
-See the [Low-Code Extension Overview](/site/docs/guide/expand/editor/summary) chapter for details.
+See the [Low-Code Extension Overview](/lowcode-engine/docs/guide/expand/editor/summary) chapter for details.

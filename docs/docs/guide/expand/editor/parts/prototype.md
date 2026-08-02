@@ -7,14 +7,14 @@ sidebar_position: 3
 
 When building low-code application platforms with the [Low-Code Engine](https://lowcode-engine.cn/), a main challenge is how to quickly and cost-effectively integrate existing React components. This breaks down into two sub-problems:
 
-1. How to [configure material descriptions](/site/docs/specs/material-spec) for existing components,
+1. How to [configure material descriptions](/lowcode-engine/docs/specs/material-spec) for existing components,
 2. How to build an asset bundle (Assets) that the low-code engine can recognize.
 
 Our product [Parts](https://parts.lowcode-engine.cn/) helps solve this problem. We complete material description configuration through an online visual interface and provide one-click packaging to generate asset bundles the engine can recognize.
 
 ## Import Materials
 
-First, import materials for online material description configuration on the [Material Management](/site/docs/specs/material-spec) page.
+First, import materials for online material description configuration on the [Material Management](/lowcode-engine/docs/specs/material-spec) page.
 ![image.png](https://img.alicdn.com/imgextra/i1/O1CN01IyZdZf1L1VWWU3dnp_!!6000000001239-2-tps-1399-342.png)
 
 - Click the **Import Existing Material** button at the top-left of the list
@@ -26,7 +26,7 @@ First, import materials for online material description configuration on the [Ma
 
 ## Configuration Management
 
-Step 2: After importing materials, you can add [material description configuration](/site/docs/specs/material-spec) for imported materials. Click **Component Configuration** on the right to start configuring.
+Step 2: After importing materials, you can add [material description configuration](/lowcode-engine/docs/specs/material-spec) for imported materials. Click **Component Configuration** on the right to start configuring.
 
 ![image.png](https://img.alicdn.com/imgextra/i3/O1CN01kqymdB1nkDQclPk7F_!!6000000005127-2-tps-965-261.png)
 
@@ -61,7 +61,7 @@ If automatic code parsing fails during new configuration, or the parsed componen
 
 - Open the left Setter panel
 - Drag the required Setter type for each component property (e.g., for the `width` property in the image, drag in Number Setter)
-- See [Built-in Setter List](/site/docs/guide/appendix/setters) for Setter introductions
+- See [Built-in Setter List](/lowcode-engine/docs/guide/appendix/setters) for Setter introductions
 - Configure basic property information (as shown)
 - Click **Save** at the top-right when done
 

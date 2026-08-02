@@ -72,7 +72,7 @@ material.setAssets(assets);
 > - Start the material
 > - Visit: [https://lowcode-engine.cn/demo/demo-general/index.html?debug](https://lowcode-engine.cn/demo/demo-general/index.html)
 >
-> See also: [Low-Code Ecosystem Scaffolding & Debug Mechanism](https://lowcode-engine.cn/site/docs/guide/expand/editor/cli)
+> See also: [Low-Code Ecosystem Scaffolding & Debug Mechanism](/lowcode-engine/docs/guide/expand/editor/cli)
 
 ```typescript
 import { material } from '@rchh/lowcode-engine';
@@ -106,7 +106,7 @@ In a low-code platform, users vary—they may be developers, testers, operators,
 2. **Component property information**: Describes component properties, usually including parameter, description, type, and default value.
 3. **Capability configuration / experience enhancement**: Recommended for optimizing the editing experience of the building product and customizing editing capabilities.
 
-Therefore, we designed the [**《Low-Code Component Description Protocol for Admin Applications》**](/site/docs/specs/material-spec) to describe what can be configured in a low-code editor.
+Therefore, we designed the [**《Low-Code Component Description Protocol for Admin Applications》**](/lowcode-engine/docs/specs/material-spec) to describe what can be configured in a low-code editor.
 
 ### Material Descriptions in the Demo
 

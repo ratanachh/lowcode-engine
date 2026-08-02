@@ -5,8 +5,8 @@ sidebar_position: 1
 
 The low-code engine editor produces two pieces of data:
 
-- Asset bundle data (`assets`): includes material names, package names, and how to obtain them, corresponding to the [Low-Code Engine Asset Bundle Protocol Specification](/site/docs/specs/assets-spec) in the protocol docs.
-- Page data (`schema`): includes page structure, lifecycle, and code information, corresponding to the [Low-Code Engine Building Protocol Specification](/site/docs/specs/lowcode-spec) in the protocol docs.
+- Asset bundle data (`assets`): includes material names, package names, and how to obtain them, corresponding to the [Low-Code Engine Asset Bundle Protocol Specification](/lowcode-engine/docs/specs/assets-spec) in the protocol docs.
+- Page data (`schema`): includes page structure, lifecycle, and code information, corresponding to the [Low-Code Engine Building Protocol Specification](/lowcode-engine/docs/specs/lowcode-spec) in the protocol docs.
 
 With these two pieces of data, you can hand them to either the renderer module or the code generation module. The difference is:
 

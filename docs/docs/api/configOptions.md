@@ -70,7 +70,7 @@ Initial `deviceClassName` applied to the canvas root node
 
 #### appHelper
 
-Same as react-renderer `appHelper`: https://lowcode-engine.cn/site/docs/guide/expand/runtime/renderer#apphelper
+Same as react-renderer `appHelper`: /lowcode-engine/docs/guide/expand/runtime/renderer#apphelper
 
 #### enableCondition
 

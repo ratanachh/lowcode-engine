@@ -7,8 +7,8 @@ sidebar_position: 8
 
 ### Prerequisites
 
-1. See https://lowcode-engine.cn/site/docs/guide/quickStart/start
-2. Follow through to Demo download https://lowcode-engine.cn/site/docs/guide/quickStart/start#%E4%B8%8B%E8%BD%BD-demo
+1. See /lowcode-engine/docs/guide/quickStart/start
+2. Follow through to Demo download /lowcode-engine/docs/guide/quickStart/start#%E4%B8%8B%E8%BD%BD-demo
 
 ### Choose demo-graph-x6
 
@@ -132,7 +132,7 @@ pluginX6DesignerExtension.pluginName = 'plugin-x6-designer-extension';
 export default pluginX6DesignerExtension;
 ```
 
-`x6Designer` exposes interfaces for the graph instance. You can build necessary graph plugins on top of them. Plugin packaging fully follows the low-code engine plugin pattern. See https://lowcode-engine.cn/site/docs/guide/expand/editor/pluginWidget for details.
+`x6Designer` exposes interfaces for the graph instance. You can build necessary graph plugins on top of them. Plugin packaging fully follows the low-code engine plugin pattern. See /lowcode-engine/docs/guide/expand/editor/pluginWidget for details.
 
 ## Developing Materials
 
@@ -187,6 +187,6 @@ npm run lowcode:dev
 #### Project Side
 
 Loading materials through `@rchh/lce-graph-core` natively supports debug, so no special handling is needed.
-If the project loads materials itself, see https://lowcode-engine.cn/site/docs/guide/expand/editor/cli
+If the project loads materials itself, see /lowcode-engine/docs/guide/expand/editor/cli
 Append the query `?debug` to the project URL to enter material debugging.
 ![image.png](https://img.alicdn.com/imgextra/i2/O1CN01ke58hT1aRoYJzkutk_!!6000000003327-2-tps-5120-2790.png)

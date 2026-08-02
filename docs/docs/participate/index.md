@@ -91,9 +91,9 @@ If you edit with VS Code, install the [huacnlee.autocorrect](https://github.com/
 
 ### Contributing to the Low-Code Engine Ecosystem
 
-See [NPM package source locations](/site/docs/guide/appendix/npms) for related source code.
+See [NPM package source locations](/lowcode-engine/docs/guide/appendix/npms) for related source code.
 
-See [Low-code ecosystem scaffolding & debugging](/site/docs/guide/expand/editor/cli) for development and debugging.
+See [Low-code ecosystem scaffolding & debugging](/lowcode-engine/docs/guide/expand/editor/cli) for development and debugging.
 
 ### Release
 
@@ -117,4 +117,4 @@ To help you get started quickly and learn the contribution workflow, see [good f
 - If you fix a bug or add code that needs tests, please add tests!
 - Make sure the test suite passes (`yarn test`).
 - Please sign the Contributor License Agreement (CLA).
-  > If you have already signed the CLA but are still prompted to sign, see [the solution](/site/docs/faq/faq021).
+  > If you have already signed the CLA but are still prompted to sign, see [the solution](/lowcode-engine/docs/faq/faq021).

@@ -27,7 +27,7 @@ Related types:
 - [IPublicTypePlugin](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/plugin.ts)
 - [IPublicTypePluginRegisterOptions](https://github.com/alibaba/lowcode-engine/blob/main/packages/types/src/shell/type/plugin-register-options.ts)
 
-The first `plugin` parameter is typically authored from the low-code toolchain plugin scaffold template. See [this section](/site/docs/guide/expand/editor/cli) for creation.
+The first `plugin` parameter is typically authored from the low-code toolchain plugin scaffold template. See [this section](/lowcode-engine/docs/guide/expand/editor/cli) for creation.
 
 #### Simple example
 

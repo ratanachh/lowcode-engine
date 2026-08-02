@@ -5,19 +5,27 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const navbar = require('./config/navbar');
 
+const ORGANIZATION_NAME = 'ratanachh';
+const PROJECT_NAME = 'lowcode-engine';
+const GITHUB_PAGES_URL = `https://${ORGANIZATION_NAME}.github.io`;
+const BASE_URL = `/${PROJECT_NAME}/`;
+const REPO_URL = `https://github.com/${ORGANIZATION_NAME}/${PROJECT_NAME}`;
+const RAW_STATIC_IMG = `https://raw.githubusercontent.com/${ORGANIZATION_NAME}/${PROJECT_NAME}/main/docs/static/img`;
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Low-Code Engine',
   tagline: 'Low-Code Engine is awesome!',
-  url: 'https://lowcode-engine.cn',
-  baseUrl: '/site/',
+  url: GITHUB_PAGES_URL,
+  baseUrl: BASE_URL,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon:
-    'https://img.alicdn.com/imgextra/i2/O1CN01TNJDDg20pKniPOkN4_!!6000000006898-2-tps-66-78.png',
+  favicon: `${RAW_STATIC_IMG}/logo.svg`,
 
-  organizationName: 'alibaba', // Usually your GitHub org/user name.
-  projectName: 'lowcode-engine', // Usually your repo name.
+  // GitHub Pages deployment config
+  organizationName: ORGANIZATION_NAME,
+  projectName: PROJECT_NAME,
+  trailingSlash: false,
 
   i18n: {
     defaultLocale: 'en',
@@ -42,8 +50,7 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./config/sidebars.js'),
-          // lastVersion: 'current',
-          editUrl: 'https://github.com/alibaba/lowcode-engine/tree/develop/docs/',
+          editUrl: `${REPO_URL}/tree/main/docs/`,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -60,10 +67,8 @@ const config = {
     },
     navbar,
     footer: {
-      // style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} Alibaba Group, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ${ORGANIZATION_NAME}. Built with Docusaurus.`,
     },
-    // Theme switcher
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
@@ -81,10 +86,7 @@ const config = {
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
         hashed: true,
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // ```
         language: ['en', 'zh'],
-        // ```
       },
     ],
   ],

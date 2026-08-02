@@ -49,7 +49,11 @@
     ]
   },
   "engines": {
-    "node": ">=24"
+    "node": ">=18"
+  },
+  "overrides": {
+    "webpack": "5.88.2",
+    "cheerio": "1.0.0-rc.12"
   },
   "publishConfig": {
     "access": "public",
@@ -57,7 +61,7 @@
   },
   "repository": {
     "type": "http",
-    "url": "https://github.com/alibaba/lowcode-engine/tree/main"
+    "url": "https://github.com/ratanachh/lowcode-engine/tree/main/docs"
   },
   "gitHead": "2669f179e6f899d395ce1942d0fe04f9c5ed48a6",
   "private": true

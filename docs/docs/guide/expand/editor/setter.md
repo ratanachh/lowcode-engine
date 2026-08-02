@@ -31,7 +31,7 @@ We provide commonly used setters as built-in setters and also provide customizat
 
 ## Configuring Setters for Materials
 
-We provide [commonly used setters](/site/docs/guide/appendix/setters) as built-in setters.
+We provide [commonly used setters](/lowcode-engine/docs/guide/appendix/setters) as built-in setters.
 
 You can configure the target component's property value types in the material resource configuration file:
 

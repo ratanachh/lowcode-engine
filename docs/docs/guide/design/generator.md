@@ -3,7 +3,7 @@ title: Code Generation Module Design
 sidebar_position: 5
 ---
 
-This article explains the basic ideas and concepts behind the code generation module. To integrate code generation or customize a code generation solution, see [Using Code Generation](/site/docs/guide/expand/runtime/codeGeneration).
+This article explains the basic ideas and concepts behind the code generation module. To integrate code generation or customize a code generation solution, see [Using Code Generation](/lowcode-engine/docs/guide/expand/runtime/codeGeneration).
 
 ## npm packages and repositories
 

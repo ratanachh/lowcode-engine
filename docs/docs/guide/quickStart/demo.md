@@ -57,4 +57,4 @@ The Low-Code Engine Demo ships with built-in product usage docs that guide commo
 
 ![image.png](https://img.alicdn.com/imgextra/i3/O1CN01YU2LYS29YEbuLTtLL_!!6000000008079-2-tps-3070-1650.png)
 
-If you do not see the product usage docs yet, open this permanent link: [https://lowcode-engine.cn/site/docs/demoUsage/intro](https://lowcode-engine.cn/site/docs/demoUsage/intro)
+If you do not see the product usage docs yet, open this permanent link: [/lowcode-engine/docs/demoUsage/intro](/lowcode-engine/docs/demoUsage/intro)

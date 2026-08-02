@@ -44,7 +44,7 @@ await plugins.register(addHelloAction);
 
 ![image.png](https://img.alicdn.com/imgextra/i2/O1CN01O8W2H61ybw2b7K5nV_!!6000000006598-2-tps-1315-343.png)
 
-See API reference: [API Documentation](/site/docs/api/material#addbuiltincomponentaction)
+See API reference: [API Documentation](/lowcode-engine/docs/api/material#addbuiltincomponentaction)
 
 ### Remove Node Actions
 
@@ -67,7 +67,7 @@ await plugins.register(removeCopyAction);
 
 ![image.png](https://img.alicdn.com/imgextra/i2/O1CN01Gfnu8J1O7PTRdoFQZ_!!6000000001658-2-tps-1319-290.png)
 
-See API reference: [API Documentation](/site/docs/api/material#removebuiltincomponentaction)
+See API reference: [API Documentation](/lowcode-engine/docs/api/material#removebuiltincomponentaction)
 
 ## Real-World Examples
 

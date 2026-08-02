@@ -23,7 +23,7 @@ How do we render a page from Schema and material components? This section descri
 
 ![image.png](https://img.alicdn.com/imgextra/i1/O1CN01i4IiSR1cMtUFXaWQq_!!6000000003587-2-tps-1686-1062.png)
 
-- Protocol layer: Schema produced according to the [Low-Code Engine Building Protocol Specification](/site/docs/specs/lowcode-spec) is our canonical protocol.
+- Protocol layer: Schema produced according to the [Low-Code Engine Building Protocol Specification](/lowcode-engine/docs/specs/lowcode-spec) is our canonical protocol.
 - Capability layer: provides core capabilities for rendering components, blocks, pages, etc., including prop parsing, style injection, conditional rendering, and more.
 - Adapter layer: because runtime frameworks differ, the adapter layer exposes framework differences through interfaces so the renderer layer can register/adapt required methods. This connects the renderer and capability layers independently and extensibly.
 - Renderer layer: provides core rendering methods. Because runtime frameworks expose different rendering APIs, they are injected through the adapter layer by implementing the required adapter interfaces.

@@ -5,13 +5,13 @@ sidebar_position: 2
 
 ## Material Description Overview
 
-In admin front-end systems, there are a large number of components. Developers can learn how to use components by reading documentation. However, a building platform cannot understand README files, and README files often do not include property lists. In this case, we need an additional description to tell the low-code building platform which properties a component accepts and how those properties should be configured. Thus, the [**《Low-Code Component Description Protocol for Admin Applications》**](/site/docs/specs/material-spec) was created. The protocol mainly consists of three parts: basic information, property information (`props`), and capability configuration / experience enhancement (`configure`).
+In admin front-end systems, there are a large number of components. Developers can learn how to use components by reading documentation. However, a building platform cannot understand README files, and README files often do not include property lists. In this case, we need an additional description to tell the low-code building platform which properties a component accepts and how those properties should be configured. Thus, the [**《Low-Code Component Description Protocol for Admin Applications》**](/lowcode-engine/docs/specs/material-spec) was created. The protocol mainly consists of three parts: basic information, property information (`props`), and capability configuration / experience enhancement (`configure`).
 
-Material configuration means producing a JSON Schema that conforms to the [**《Low-Code Component Description Protocol for Admin Applications》**](/site/docs/specs/material-spec). If you need to supplement property descriptions or customize the experience enhancement section (such as modifying setters or adjusting display order), you can do so by modifying this schema. Currently, material description configuration can be generated automatically or configured manually.
+Material configuration means producing a JSON Schema that conforms to the [**《Low-Code Component Description Protocol for Admin Applications》**](/lowcode-engine/docs/specs/material-spec). If you need to supplement property descriptions or customize the experience enhancement section (such as modifying setters or adjusting display order), you can do so by modifying this schema. Currently, material description configuration can be generated automatically or configured manually.
 
 ## Visually Generating Material Descriptions
 
-Use the Parts platform: [Documentation](/site/docs/guide/expand/editor/parts/partsIntro)
+Use the Parts platform: [Documentation](/lowcode-engine/docs/guide/expand/editor/parts/partsIntro)
 
 ## Automatically Generating Material Descriptions
 
@@ -181,7 +181,7 @@ Using the automatically parsed material above as a base, manually add the `size`
 
 #### Component Properties Can Be Fixed Values or Bound to Variables
 
-We know that each property form requires a setter. To allow the `value` property to accept string input, set it to `StringSetter`. To allow variable binding, set it to `VariableSetter`. See the [Built-in Setter List](/site/docs/guide/appendix/setters) for setters.
+We know that each property form requires a setter. To allow the `value` property to accept string input, set it to `StringSetter`. To allow variable binding, set it to `VariableSetter`. See the [Built-in Setter List](/lowcode-engine/docs/guide/appendix/setters) for setters.
 
 What if you want both? Use `MixedSetter`.
 

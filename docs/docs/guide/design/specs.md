@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## What are low-code protocols
 
-The low-code engine system is built on three protocols: the [Low-Code Engine Building Protocol Specification](/site/docs/specs/lowcode-spec), the [Low-Code Engine Material Protocol Specification](/site/docs/specs/material-spec), and the [Low-Code Engine Asset Bundle Protocol Specification](/site/docs/specs/assets-spec). They standardize the low-code domain and become the foundation for ecosystem building and circulation.
+The low-code engine system is built on three protocols: the [Low-Code Engine Building Protocol Specification](/lowcode-engine/docs/specs/lowcode-spec), the [Low-Code Engine Material Protocol Specification](/lowcode-engine/docs/specs/material-spec), and the [Low-Code Engine Asset Bundle Protocol Specification](/lowcode-engine/docs/specs/assets-spec). They standardize the low-code domain and become the foundation for ecosystem building and circulation.
 
 ![image.png](https://img.alicdn.com/imgextra/i3/O1CN01axsOyW1s01YgXnT8z_!!6000000005703-2-tps-1888-1000.png)
 

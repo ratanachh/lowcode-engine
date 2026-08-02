@@ -12,7 +12,7 @@ The Low-Code Engine open source community is dedicated to advancing low-code tec
 To keep meetings productive, we suggest the following people attend:
 
 - **Members who have contributed to the Low-Code Engine**: Community members with hands-on contributions to the engine.
-- **Refer to the contribution guide**: See the [contribution guide](https://lowcode-engine.cn/site/docs/participate/) for more information.
+- **Refer to the contribution guide**: See the [contribution guide](/lowcode-engine/docs/participate/) for more information.
 - **Members who have provided valuable suggestions**: Those who have offered useful feedback or ideas for the Low-Code Engine in the past.
 
 ## **Schedule**

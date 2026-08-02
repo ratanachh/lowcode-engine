@@ -31,7 +31,7 @@ Related type: [IPublicTypeNpmInfo](https://github.com/alibaba/lowcode-engine/blo
 
 #### setAssets
 
-Set the [asset package](/site/docs/specs/lowcode-spec#2-protocol-structure) structure
+Set the [asset package](/lowcode-engine/docs/specs/lowcode-spec#2-protocol-structure) structure
 
 ```typescript
 /**

@@ -22,11 +22,11 @@ We designed this layered architecture. From bottom to top: Protocol — Engine �
 
 The low-code engine has four major modules: Material Parser — Editor — Renderer — Code Generator:
 
-- The material parser module takes external materials, such as a large number of npm components, and describes them according to the [Low-Code Engine Material Protocol Specification](/site/docs/specs/material-spec). After registering the described data through engine APIs, they can be used in the editor.
+- The material parser module takes external materials, such as a large number of npm components, and describes them according to the [Low-Code Engine Material Protocol Specification](/lowcode-engine/docs/specs/material-spec). After registering the described data through engine APIs, they can be used in the editor.
   > **Note: this only adds descriptions; it does not rewrite components, so we can reuse components already built in the ProCode system as much as possible.**
-- Editor (orchestration), in essence, **continuously produces page descriptions that conform to the [Low-Code Engine Building Protocol Specification](/site/docs/specs/lowcode-spec)**: layout settings, component CRUD, JS/CSS authoring, logic orchestration, and so on, eventually turning into a page description. Technical details are expanded later.
+- Editor (orchestration), in essence, **continuously produces page descriptions that conform to the [Low-Code Engine Building Protocol Specification](/lowcode-engine/docs/specs/lowcode-spec)**: layout settings, component CRUD, JS/CSS authoring, logic orchestration, and so on, eventually turning into a page description. Technical details are expanded later.
 - Renderer, as the name suggests, **renders the page description structure produced by orchestration into a view**. Because the view is user-facing, it must handle internal data flow, lifecycle, event binding, internationalization, and more.
-- Code generation **converts page descriptions produced during orchestration that conform to the [Low-Code Engine Building Protocol Specification](/site/docs/specs/lowcode-spec) into another DSL or programming language**.
+- Code generation **converts page descriptions produced during orchestration that conform to the [Low-Code Engine Building Protocol Specification](/lowcode-engine/docs/specs/lowcode-spec) into another DSL or programming language**.
 
 ## Engine ecosystem overview
 

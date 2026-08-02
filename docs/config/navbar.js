@@ -1,12 +1,17 @@
 /**
  * If changes to this config do not take effect, restart the server.
  */
+const ORGANIZATION_NAME = 'ratanachh';
+const PROJECT_NAME = 'lowcode-engine';
+const REPO_URL = `https://github.com/${ORGANIZATION_NAME}/${PROJECT_NAME}`;
+const RAW_STATIC_IMG = `https://raw.githubusercontent.com/${ORGANIZATION_NAME}/${PROJECT_NAME}/main/docs/static/img`;
+
 module.exports = {
   title: '',
   logo: {
     alt: 'LowCode-Engine',
-    src: 'https://img.alicdn.com/imgextra/i2/O1CN01uv6vu822RBCSYLro2_!!6000000007116-55-tps-139-26.svg',
-    srcDark: 'https://tianshu.alicdn.com/052a190e-c961-4afe-aa4c-49ee9722952d.svg',
+    src: `${RAW_STATIC_IMG}/logo.svg`,
+    srcDark: `${RAW_STATIC_IMG}/logo.svg`,
   },
   items: [
     {
@@ -57,15 +62,8 @@ module.exports = {
       label: 'Community',
       activeBaseRegex: '/community/',
     },
-    // Version switcher — enable if needed
-    // {
-    //   type: 'docsVersionDropdown',
-    //   position: 'right',
-    //   dropdownActiveClassDisabled: true,
-    // },
-    // {
     {
-      href: 'https://github.com/alibaba/lowcode-engine',
+      href: REPO_URL,
       position: 'right',
       className: 'header-github-link',
       'aria-label': 'GitHub repository',

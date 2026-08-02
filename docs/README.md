@@ -2,6 +2,8 @@
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
+Published site: **https://ratanachh.github.io/lowcode-engine/**
+
 ### Install
 
 ```
@@ -22,17 +24,19 @@ This command starts a local development server and opens a browser window. Most 
 $ yarn build
 ```
 
-### Deploy
+### Deploy (GitHub Pages)
+
+Docs deploy automatically via GitHub Actions when changes under `docs/` are pushed to `main`.
+
+Manual run:
+
+1. Open **Actions → Deploy Docs to GitHub Pages → Run workflow**
+2. In the repo: **Settings → Pages → Source: GitHub Actions**
+
+Local preview of the production build:
 
 ```bash
-1. npm run build
-2. npm publish # bump the version first, e.g. 1.0.1
-
-# After publish, sync to the uipaas CDN
-3. tnpm syncOss
-
-4. Update the Diamond version to 1.0.1
-5. The lowcode-engine.cn site picks up the new docs
+yarn build && yarn serve
 ```
 
 ## Features
@@ -40,7 +44,7 @@ $ yarn build
 - [x] Offline local search
 - [x] Versioned documentation
 - [x] Offline static deployment
-- [x] Theme (forked from the Yida developer center)
+- [x] GitHub Pages deploy via Actions
 
 ## Docusaurus docs
 

@@ -26,7 +26,7 @@ Click **Develop New Component** → Enter component title → Enter component na
 
 ## Component Development
 
-Overview of low-code component development feature modules. Most features can be referenced in the [Low-Code Engine documentation](https://lowcode-engine.cn/site/docs/guide/quickStart/intro).
+Overview of low-code component development feature modules. Most features can be referenced in the [Low-Code Engine documentation](/lowcode-engine/docs/guide/quickStart/intro).
 
 ![](https://img.alicdn.com/imgextra/i1/O1CN01gx96E121qzv4smV2v_!!6000000007037-2-tps-3456-1930.png)
 
@@ -40,7 +40,7 @@ Dependency management manages the low-code component's own dependencies (similar
 
 Used to define `propTypes` the component receives externally. Inside the component, property values can be obtained via <font color="red">this.props.${propertyName}</font>.
 
-Before defining properties, read [Material Description Details](https://lowcode-engine.cn/site/docs/guide/expand/editor/metaSpec) and [Built-in Setters](https://lowcode-engine.cn/site/docs/guide/appendix/setters).
+Before defining properties, read [Material Description Details](/lowcode-engine/docs/guide/expand/editor/metaSpec) and [Built-in Setters](/lowcode-engine/docs/guide/appendix/setters).
 
 ![](https://img.alicdn.com/imgextra/i2/O1CN01wesIJA1nL1eSPrk7U_!!6000000005072-2-tps-1438-821.png)
 
