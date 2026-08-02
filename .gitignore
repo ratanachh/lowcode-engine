@@ -7,6 +7,7 @@ packages/*/dist/
 packages/*/output/
 packages/demo/
 package-lock.json
+!docs/package-lock.json
 yarn.lock
 pnpm-lock.yaml
 deploy-space/packages
