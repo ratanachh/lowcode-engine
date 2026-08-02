@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://lowcode-engine.cn">
-    <img width="200" src="../../docs/static/img/logo.svg">
+    <img width="200" src="https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/logo.svg">
   </a>
 </p>
 
@@ -34,7 +34,7 @@ An enterprise-class low-code technology stack with scale-out design
 
 </div>
 
-[![](../../docs/static/img/screenshot-editor.png)](http://lowcode-engine.cn)
+[![](https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/screenshot-editor.png)](http://lowcode-engine.cn)
 
 English | [简体中文](./packages/engine/README-zh_CN.md)
 
@@ -54,7 +54,7 @@ English | [简体中文](./packages/engine/README-zh_CN.md)
 
 The engine fully implements the "LowCodeEngine Basic Construction Protocol Specification" and "LowCodeEngine Material Protocol Specification". The protocol stack is a key part of whether materials in the low-code field can be circulated.
 
-![image](../../docs/static/img/screenshot-protocol.png)
+![image](https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/screenshot-protocol.png)
 
 ## 🌰 Usage example
 
@@ -74,7 +74,7 @@ skeleton.add({
   content: YourFantasticLogo,
   contentProps: {
     logo:
-      '../../docs/static/img/logo-widget.png',
+      'https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/logo-widget.png',
     href: '/',
   },
   props: {

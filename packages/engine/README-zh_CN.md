@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://lowcode-engine.cn">
-    <img width="200" src="../../docs/static/img/logo.svg">
+    <img width="200" src="https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/logo.svg">
   </a>
 </p>
 
@@ -34,7 +34,7 @@
 
 </div>
 
-[![](../../docs/static/img/screenshot-editor.png)](https://lowcode-engine.cn)
+[![](https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/screenshot-editor.png)](https://lowcode-engine.cn)
 
 简体中文 | [English](./README.md)
 
@@ -54,7 +54,7 @@
 
 引擎完整实现了《低代码引擎搭建协议规范》和《低代码引擎物料协议规范》，协议栈是低代码领域的物料能否流通的关键部分。
 
-![image](../../docs/static/img/screenshot-protocol_zh.png)
+![image](https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/screenshot-protocol_zh.png)
 
 ## 🌰 使用示例
 
@@ -74,7 +74,7 @@ skeleton.add({
   content: YourFantasticLogo,
   contentProps: {
     logo:
-      '../../docs/static/img/logo-widget.png',
+      'https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/logo-widget.png',
     href: '/',
   },
   props: {
