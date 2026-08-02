@@ -1,27 +1,27 @@
 name: Node CI
 
 on:
- push:
+  push:
     branches:
       - main
- pull_request:
+  pull_request:
     branches:
       - main
 
 env:
   NODE_OPTIONS: --openssl-legacy-provider --no-strip-types
+  NODE_VERSION: '24'
 
 jobs:
   upload-designer-codecov:
     runs-on: ubuntu-latest
-    # if: ${{ github.event.pull_request.head.repo.full_name == 'alibaba/lowcode-engine' }}
     steps:
       - name: checkout
         uses: actions/checkout@v7
 
       - uses: actions/setup-node@v7
         with:
-          node-version: '24'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: install
         run: npm i && npm run setup:skip-build
@@ -30,9 +30,9 @@ jobs:
         run: cd packages/designer && npm run test:cov && cd ../..
 
       - name: Upload designer coverage to Codecov
-        uses: codecov/codecov-action@v3
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
+        uses: codecov/codecov-action@v6
         with:
-          # working-directory: packages/designer
           directory: ./packages/designer/coverage
           token: ${{ secrets.CODECOV_TOKEN }}
           name: designer
@@ -47,7 +47,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: '24'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: install
         run: npm i && npm run setup:skip-build
@@ -56,9 +56,9 @@ jobs:
         run: cd packages/renderer-core && npm run test:cov && cd ../..
 
       - name: Upload renderer-core coverage to Codecov
-        uses: codecov/codecov-action@v3
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
+        uses: codecov/codecov-action@v6
         with:
-          # working-directory: packages/designer
           directory: ./packages/renderer-core/coverage
           token: ${{ secrets.CODECOV_TOKEN }}
           name: renderer-core
@@ -73,7 +73,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: '24'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: install
         run: npm i && npm run setup:skip-build
@@ -82,9 +82,9 @@ jobs:
         run: cd packages/react-simulator-renderer && npm run test:cov && cd ../..
 
       - name: Upload react-simulator-renderer coverage to Codecov
-        uses: codecov/codecov-action@v3
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
+        uses: codecov/codecov-action@v6
         with:
-          # working-directory: packages/designer
           directory: ./packages/react-simulator-renderer/coverage
           token: ${{ secrets.CODECOV_TOKEN }}
           name: react-simulator-renderer
@@ -93,14 +93,13 @@ jobs:
 
   upload-code-generator:
     runs-on: ubuntu-latest
-    # if: ${{ github.event.pull_request.head.repo.full_name == 'alibaba/lowcode-engine' }}
     steps:
       - name: checkout
         uses: actions/checkout@v7
 
       - uses: actions/setup-node@v7
         with:
-          node-version: '24'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: install
         run: npm i && npm run setup:skip-build
@@ -109,9 +108,9 @@ jobs:
         run: cd modules/code-generator && npm i && npm run build && npm run test:cov && cd ../..
 
       - name: Upload code-generator coverage to Codecov
-        uses: codecov/codecov-action@v3
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
+        uses: codecov/codecov-action@v6
         with:
-          # working-directory: packages/designer
           directory: ./modules/code-generator/coverage
           token: ${{ secrets.CODECOV_TOKEN }}
           name: code-generator
