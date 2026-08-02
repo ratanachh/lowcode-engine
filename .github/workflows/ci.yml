@@ -31,7 +31,7 @@ jobs:
 
       - name: Upload designer coverage to Codecov
         if: ${{ secrets.CODECOV_TOKEN != '' }}
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         with:
           directory: ./packages/designer/coverage
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -57,7 +57,7 @@ jobs:
 
       - name: Upload renderer-core coverage to Codecov
         if: ${{ secrets.CODECOV_TOKEN != '' }}
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         with:
           directory: ./packages/renderer-core/coverage
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -83,7 +83,7 @@ jobs:
 
       - name: Upload react-simulator-renderer coverage to Codecov
         if: ${{ secrets.CODECOV_TOKEN != '' }}
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         with:
           directory: ./packages/react-simulator-renderer/coverage
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -109,7 +109,7 @@ jobs:
 
       - name: Upload code-generator coverage to Codecov
         if: ${{ secrets.CODECOV_TOKEN != '' }}
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         with:
           directory: ./modules/code-generator/coverage
           token: ${{ secrets.CODECOV_TOKEN }}
