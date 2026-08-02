@@ -3,8 +3,9 @@
 set -e
 
 # webpack 4 (via @alib/build-scripts) needs OpenSSL legacy provider on Node 17+
-# Node 22+ type-stripping cannot load .ts under node_modules
-export NODE_OPTIONS="${NODE_OPTIONS:+${NODE_OPTIONS} }--openssl-legacy-provider --no-experimental-strip-types"
+# Disable Node type-stripping so .ts under node_modules is not executed as JS
+# (stable flag is --no-strip-types since Node 24.12; old --no-experimental-strip-types is not NODE_OPTIONS-safe)
+export NODE_OPTIONS="${NODE_OPTIONS:+${NODE_OPTIONS} }--openssl-legacy-provider --no-strip-types"
 
 lerna run build \
   --scope @rchh/lowcode-types \

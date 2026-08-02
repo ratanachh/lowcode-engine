@@ -11,7 +11,7 @@ on:
       - '!modules/**.md'
 
 env:
-  NODE_OPTIONS: --openssl-legacy-provider --no-experimental-strip-types
+  NODE_OPTIONS: --openssl-legacy-provider --no-strip-types
 
 jobs:
   lint:
