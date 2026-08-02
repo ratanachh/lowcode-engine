@@ -20,7 +20,6 @@ concurrency:
 
 env:
   NODE_VERSION: '20'
-  NODE_OPTIONS: --openssl-legacy-provider --no-experimental-strip-types
 
 jobs:
   build:
