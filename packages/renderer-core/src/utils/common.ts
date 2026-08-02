@@ -239,7 +239,17 @@ function parseExpression(a: any, b?: any, c = false) {
     const code = `with(${thisRequired ? '{}' : '$scope || {}'}) { ${tarStr} }`;
     return new Function('$scope', code)(self);
   } catch (err) {
-    logger.error(`${logScope || ''} parseExpression.error`, err, str, self?.__self ?? self);
+    // Avoid rethrowing from the logger: Jest/jsdom may brand-check DOM getters
+    // (e.g. HTMLBaseElement.href) while inspecting the renderer scope object.
+    try {
+      logger.error(
+        `${logScope || ''} parseExpression.error`,
+        err instanceof Error ? err.message : err,
+        str?.value ?? str,
+      );
+    } catch (_) {
+      // ignore logging failures
+    }
     return undefined;
   }
 }

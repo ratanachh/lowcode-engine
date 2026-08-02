@@ -69,7 +69,6 @@ exports[`Base Render renderComp 1`] = `
         >
           <li
             className="next-breadcrumb-item"
-            dir={null}
           >
             <span
               __id="node_dockcy8n9xeg"
@@ -94,7 +93,6 @@ exports[`Base Render renderComp 1`] = `
           </li>
           <li
             className="next-breadcrumb-item"
-            dir={null}
           >
             <span
               __id="node_dockcy8n9xei"
@@ -119,7 +117,6 @@ exports[`Base Render renderComp 1`] = `
           </li>
           <li
             className="next-breadcrumb-item"
-            dir={null}
           >
             <span
               __id="node_dockcy8n9xek"
@@ -144,7 +141,6 @@ exports[`Base Render renderComp 1`] = `
           </li>
           <li
             className="next-breadcrumb-item"
-            dir={null}
           >
             <span
               __id="node_dockcy8n9xem"
@@ -194,7 +190,7 @@ exports[`Base Render renderComp 1`] = `
         }
         className="next-form next-inline next-medium"
         onSubmit={[Function]}
-        role="grid"
+        role="form"
         style={
           Object {
             "marginLeft": "12px",
@@ -259,10 +255,11 @@ exports[`Base Render renderComp 1`] = `
                           "hidden": undefined,
                         }
                       }
+                      aria-expanded="false"
+                      aria-label="select"
                       autoComplete="off"
                       disabled={false}
                       height="100%"
-                      maxLength={null}
                       onBlur={[Function]}
                       onChange={[Function]}
                       onCompositionEnd={[Function]}
@@ -378,10 +375,11 @@ exports[`Base Render renderComp 1`] = `
                           "hidden": undefined,
                         }
                       }
+                      aria-expanded="false"
+                      aria-label="select"
                       autoComplete="off"
                       disabled={false}
                       height="100%"
-                      maxLength={null}
                       onBlur={[Function]}
                       onChange={[Function]}
                       onCompositionEnd={[Function]}
@@ -485,7 +483,6 @@ exports[`Base Render renderComp 1`] = `
                 autoComplete="off"
                 disabled={false}
                 height="100%"
-                maxLength={null}
                 onBlur={[Function]}
                 onChange={[Function]}
                 onCompositionEnd={[Function]}
@@ -988,7 +985,6 @@ exports[`Base Render renderComp 1`] = `
                 autoComplete="off"
                 disabled={false}
                 height="100%"
-                maxLength={null}
                 onBlur={[Function]}
                 onChange={[Function]}
                 onCompositionEnd={[Function]}
@@ -1048,10 +1044,11 @@ exports[`Base Render renderComp 1`] = `
                 "hidden": undefined,
               }
             }
+            aria-expanded="false"
+            aria-label="select"
             autoComplete="off"
             disabled={false}
             height="100%"
-            maxLength={null}
             name="error"
             onBlur={[Function]}
             onChange={[Function]}
