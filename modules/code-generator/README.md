@@ -10,7 +10,7 @@ Code generation parses a low-code schema and converts it into executable applica
 npx @rchh/lowcode-code-generator -i example-schema.json -o generated -s icejs
 ```
 
-You can download `example-schema.json` from [here](https://unpkg.com/@rchh/lowcode-code-generator@beta/example-schema.json).
+You can download `example-schema.json` from [here](https://cdn.jsdelivr.net/npm/@rchh/lowcode-code-generator@1.1.7/example-schema.json).
 
 ### 2) Try quickly via designer plugin
 

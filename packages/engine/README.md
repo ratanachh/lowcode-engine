@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://lowcode-engine.cn">
-    <img width="200" src="https://img.alicdn.com/imgextra/i3/O1CN01i8K9cD1d0HU7TjDtv_!!6000000003673-2-tps-500-591.png">
+    <img width="200" src="../../docs/static/img/logo.svg">
   </a>
 </p>
 
@@ -34,7 +34,7 @@ An enterprise-class low-code technology stack with scale-out design
 
 </div>
 
-[![](https://img.alicdn.com/imgextra/i2/O1CN01UhoS7C1sNNhySvfWi_!!6000000005754-2-tps-2878-1588.png)](http://lowcode-engine.cn)
+[![](../../docs/static/img/screenshot-editor.png)](http://lowcode-engine.cn)
 
 English | [简体中文](./packages/engine/README-zh_CN.md)
 
@@ -54,7 +54,7 @@ English | [简体中文](./packages/engine/README-zh_CN.md)
 
 The engine fully implements the "LowCodeEngine Basic Construction Protocol Specification" and "LowCodeEngine Material Protocol Specification". The protocol stack is a key part of whether materials in the low-code field can be circulated.
 
-![image](https://img.alicdn.com/imgextra/i3/O1CN01IisBcy1dNBIg16QFM_!!6000000003723-2-tps-1916-1070.png)
+![image](../../docs/static/img/screenshot-protocol.png)
 
 ## 🌰 Usage example
 
@@ -74,7 +74,7 @@ skeleton.add({
   content: YourFantasticLogo,
   contentProps: {
     logo:
-      'https://img.alicdn.com/tfs/TB1_SocGkT2gK0jSZFkXXcIQFXa-66-66.png',
+      '../../docs/static/img/logo-widget.png',
     href: '/',
   },
   props: {
@@ -98,18 +98,16 @@ init(document.getElementById('lce'));
 
 ### CDN options:
 
-> Alibaba CDNs (`alifd.alicdn.com`, `uipaas-assets.com`) only host the upstream `@alilc/*` packages. For this `@rchh` fork, use unpkg, jsDelivr, or your own CDN.
-
-#### Method 1 (recommended): unpkg
-```html
-<script src="https://unpkg.com/@rchh/lowcode-engine@1.3.4/dist/js/engine-core.js"></script>
-<script src="https://unpkg.com/@rchh/lowcode-react-simulator-renderer@1.3.4/dist/js/react-simulator-renderer.js"></script>
-```
-
-#### Method 2 (recommended): jsDelivr
+#### Method 1 (recommended): jsDelivr
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@rchh/lowcode-engine@1.3.4/dist/js/engine-core.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@rchh/lowcode-react-simulator-renderer@1.3.4/dist/js/react-simulator-renderer.js"></script>
+```
+
+#### Method 2: unpkg
+```html
+<script src="https://unpkg.com/@rchh/lowcode-engine@1.3.4/dist/js/engine-core.js"></script>
+<script src="https://unpkg.com/@rchh/lowcode-react-simulator-renderer@1.3.4/dist/js/react-simulator-renderer.js"></script>
 ```
 
 #### Method 3: Use your own CDN

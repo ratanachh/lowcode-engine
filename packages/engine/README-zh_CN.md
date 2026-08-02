@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://lowcode-engine.cn">
-    <img width="200" src="https://img.alicdn.com/imgextra/i3/O1CN01i8K9cD1d0HU7TjDtv_!!6000000003673-2-tps-500-591.png">
+    <img width="200" src="../../docs/static/img/logo.svg">
   </a>
 </p>
 
@@ -34,7 +34,7 @@
 
 </div>
 
-[![](https://img.alicdn.com/imgextra/i2/O1CN01UhoS7C1sNNhySvfWi_!!6000000005754-2-tps-2878-1588.png)](https://lowcode-engine.cn)
+[![](../../docs/static/img/screenshot-editor.png)](https://lowcode-engine.cn)
 
 简体中文 | [English](./README.md)
 
@@ -54,7 +54,7 @@
 
 引擎完整实现了《低代码引擎搭建协议规范》和《低代码引擎物料协议规范》，协议栈是低代码领域的物料能否流通的关键部分。
 
-![image](https://img.alicdn.com/imgextra/i3/O1CN01IisBcy1dNBIg16QFM_!!6000000003723-2-tps-1916-1070.png)
+![image](../../docs/static/img/screenshot-protocol.png)
 
 ## 🌰 使用示例
 
@@ -74,7 +74,7 @@ skeleton.add({
   content: YourFantasticLogo,
   contentProps: {
     logo:
-      'https://img.alicdn.com/tfs/TB1_SocGkT2gK0jSZFkXXcIQFXa-66-66.png',
+      '../../docs/static/img/logo-widget.png',
     href: '/',
   },
   props: {
@@ -98,18 +98,16 @@ init(document.getElementById('lce'));
 
 ### CDN 可选方式：
 
-> 阿里云 CDN（`alifd.alicdn.com`、`uipaas-assets.com`）仅托管上游 `@alilc/*` 包。本 `@rchh` fork 请使用 unpkg、jsDelivr，或自有 CDN。
-
-#### 方式 1（推荐）：unpkg
-```html
-<script src="https://unpkg.com/@rchh/lowcode-engine@1.3.4/dist/js/engine-core.js"></script>
-<script src="https://unpkg.com/@rchh/lowcode-react-simulator-renderer@1.3.4/dist/js/react-simulator-renderer.js"></script>
-```
-
-#### 方式 2（推荐）：jsDelivr
+#### 方式 1（推荐）：jsDelivr
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@rchh/lowcode-engine@1.3.4/dist/js/engine-core.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@rchh/lowcode-react-simulator-renderer@1.3.4/dist/js/react-simulator-renderer.js"></script>
+```
+
+#### 方式 2：unpkg
+```html
+<script src="https://unpkg.com/@rchh/lowcode-engine@1.3.4/dist/js/engine-core.js"></script>
+<script src="https://unpkg.com/@rchh/lowcode-react-simulator-renderer@1.3.4/dist/js/react-simulator-renderer.js"></script>
 ```
 
 #### 方式 3：使用自有 CDN
