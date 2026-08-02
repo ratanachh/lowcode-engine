@@ -96,37 +96,24 @@ init(document.getElementById('lce'));
 }
 ```
 
-### cdn 可选方式：
-#### 方式 1（推荐）：alifd cdn
-```html
-https://alifd.alicdn.com/npm/@rchh/lowcode-engine@1.0.18/dist/js/engine-core.js
+### CDN 可选方式：
 
-https://alifd.alicdn.com/npm/@rchh/lowcode-react-simulator-renderer@1.0.18/dist/js/react-simulator-renderer.js
+> 阿里云 CDN（`alifd.alicdn.com`、`uipaas-assets.com`）仅托管上游 `@alilc/*` 包。本 `@rchh` fork 请使用 unpkg、jsDelivr，或自有 CDN。
+
+#### 方式 1（推荐）：unpkg
+```html
+<script src="https://unpkg.com/@rchh/lowcode-engine@1.3.4/dist/js/engine-core.js"></script>
+<script src="https://unpkg.com/@rchh/lowcode-react-simulator-renderer@1.3.4/dist/js/react-simulator-renderer.js"></script>
 ```
 
-#### 方式 2（推荐）：uipaas cdn
+#### 方式 2（推荐）：jsDelivr
 ```html
-https://uipaas-assets.com/prod/npm/@rchh/lowcode-engine/1.0.18/dist/js/engine-core.js
-
-https://uipaas-assets.com/prod/npm/@rchh/lowcode-react-simulator-renderer/1.0.18/dist/js/react-simulator-renderer.js
+<script src="https://cdn.jsdelivr.net/npm/@rchh/lowcode-engine@1.3.4/dist/js/engine-core.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@rchh/lowcode-react-simulator-renderer@1.3.4/dist/js/react-simulator-renderer.js"></script>
 ```
 
-#### 方式 3：unpkg
-```html
-https://unpkg.com/@rchh/lowcode-engine@1.0.18/dist/js/engine-core.js
-
-https://unpkg.com/@rchh/lowcode-react-simulator-renderer@1.0.18/dist/js/react-simulator-renderer.js
-```
-
-#### 方式 4：jsdelivr
-```html
-https://cdn.jsdelivr.net/npm/@rchh/lowcode-engine@1.0.18/dist/js/engine-core.js
-
-https://cdn.jsdelivr.net/npm/@rchh/lowcode-react-simulator-renderer@1.0.18/dist/js/react-simulator-renderer.js
-```
-
-#### 方式 5：使用自有 cdn
-将源码中 packages/engine/dist 和 packages/react-simulator-renderer/dist 下的文件传至你的 cdn 提供商
+#### 方式 3：使用自有 CDN
+将源码中 `packages/engine/dist` 和 `packages/react-simulator-renderer/dist` 下的文件上传至你的 CDN 提供商。
 
 ## 🔗 相关链接
 

@@ -96,37 +96,24 @@ init(document.getElementById('lce'));
 }
 ```
 
-### cdn optional method:
-#### Method 1: alifd cdn
-```html
-https://alifd.alicdn.com/npm/@rchh/lowcode-engine@1.0.18/dist/js/engine-core.js
+### CDN options:
 
-https://alifd.alicdn.com/npm/@rchh/lowcode-react-simulator-renderer@1.0.18/dist/js/react-simulator-renderer.js
+> Alibaba CDNs (`alifd.alicdn.com`, `uipaas-assets.com`) only host the upstream `@alilc/*` packages. For this `@rchh` fork, use unpkg, jsDelivr, or your own CDN.
+
+#### Method 1 (recommended): unpkg
+```html
+<script src="https://unpkg.com/@rchh/lowcode-engine@1.3.4/dist/js/engine-core.js"></script>
+<script src="https://unpkg.com/@rchh/lowcode-react-simulator-renderer@1.3.4/dist/js/react-simulator-renderer.js"></script>
 ```
 
-#### Method 2: uipaas cdn
+#### Method 2 (recommended): jsDelivr
 ```html
-https://uipaas-assets.com/prod/npm/@rchh/lowcode-engine/1.0.18/dist/js/engine-core.js
-
-https://uipaas-assets.com/prod/npm/@rchh/lowcode-react-simulator-renderer/1.0.18/dist/js/react-simulator-renderer.js
+<script src="https://cdn.jsdelivr.net/npm/@rchh/lowcode-engine@1.3.4/dist/js/engine-core.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@rchh/lowcode-react-simulator-renderer@1.3.4/dist/js/react-simulator-renderer.js"></script>
 ```
 
-#### Method 3: unpkg
-```html
-https://unpkg.com/@rchh/lowcode-engine@1.0.18/dist/js/engine-core.js
-
-https://unpkg.com/@rchh/lowcode-react-simulator-renderer@1.0.18/dist/js/react-simulator-renderer.js
-```
-
-#### Method 4: jsdelivr
-```html
-https://cdn.jsdelivr.net/npm/@rchh/lowcode-engine@1.0.18/dist/js/engine-core.js
-
-https://cdn.jsdelivr.net/npm/@rchh/lowcode-react-simulator-renderer@1.0.18/dist/js/react-simulator-renderer.js
-```
-
-#### Method 5: Use your own cdn
-Pass the files under packages/engine/dist and packages/react-simulator-renderer/dist in the source code to your cdn provider
+#### Method 3: Use your own CDN
+Upload the files under `packages/engine/dist` and `packages/react-simulator-renderer/dist` to your CDN provider.
 
 ## 🔗 Related Links
 
