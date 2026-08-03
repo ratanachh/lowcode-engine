@@ -4,10 +4,16 @@
 const { spawnSync } = require('child_process');
 
 // Make sure to build first
-spawnSync('npm', ['run', 'build:standalone'], { shell: true, stdio: 'inherit' });
+const buildResult = spawnSync('npm', ['run', 'build:standalone'], {
+  shell: true,
+  stdio: 'inherit',
+});
+if (buildResult.status) {
+  process.exit(buildResult.status);
+}
 
 // Then run only the specified test cases
-spawnSync('npx', ['jest', ...process.argv.slice(2)], {
+const testResult = spawnSync('npx', ['jest', ...process.argv.slice(2)], {
   env: {
     ...process.env,
     TEST_TARGET: 'standalone',
@@ -15,3 +21,4 @@ spawnSync('npx', ['jest', ...process.argv.slice(2)], {
   shell: true,
   stdio: 'inherit',
 });
+process.exit(testResult.status == null ? 1 : testResult.status);

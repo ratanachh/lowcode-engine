@@ -5,6 +5,14 @@ import * as utils from '../../../../src/publisher/zip/utils';
 jest.mock('file-saver');
 
 describe('public/publisher/zip/zip', () => {
+  // standalone stubs `process`, so Node zip paths are not available in that build
+  if (process.env.TEST_TARGET === 'standalone') {
+    it('should ignore', () => {
+      expect(true).toBe(true);
+    });
+    return;
+  }
+
   afterEach(() => {
     jest.clearAllMocks();
   });

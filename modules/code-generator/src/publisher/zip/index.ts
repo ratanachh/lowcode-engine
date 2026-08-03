@@ -2,7 +2,6 @@ import { ResultDir } from '@rchh/lowcode-types';
 import { PublisherFactory, IPublisher, IPublisherFactoryParams, PublisherError } from '../../types';
 import { getErrorMessage } from '../../utils/errors';
 import { isNodeProcess, writeZipToDisk, generateProjectZip } from './utils';
-import { saveAs } from 'file-saver';
 
 export type ZipBuffer = Buffer | Blob;
 
@@ -51,6 +50,8 @@ export const createZipPublisher: PublisherFactory<ZipFactoryParams, ZipPublisher
           await writeZipToDisk(projectOutputPath, zipContent, zipName);
         }
       } else {
+        // Lazy-load browser-only dependency so Node/standalone does not evaluate file-saver
+        const { saveAs } = await import('file-saver');
         // the browser end does not require a path
         // auto download zip files
         saveAs(zipContent as Blob, `${zipName}.zip`);
