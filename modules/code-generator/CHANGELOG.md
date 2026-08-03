@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.9](https://github.com/ratanachh/lowcode-engine/compare/@rchh/lowcode-code-generator@1.1.8...@rchh/lowcode-code-generator@1.1.9) (2026-08-03)
+
+### Bug Fixes
+
+- lazy-load `file-saver` in zip publisher so Node/standalone does not evaluate browser-only DOM APIs
+
 ### [1.0.7-beta.2](https://github.com/alibaba/lowcode-engine/compare/@rchh/lowcode-code-generator@1.0.3...@rchh/lowcode-code-generator@1.0.7-beta.2) (2022-11-24)
 
 ### Bug Fixes
