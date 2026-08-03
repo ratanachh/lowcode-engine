@@ -16,7 +16,7 @@ const isEmptyVariables = (variables) =>
   (typeof variables === 'object' &&
     (!variables || Object.keys(variables).length === 0));
 
-// 按低代码规范里面的要求进行变量替换
+// Perform variable substitution per the low-code spec
 const format = (msg, variables) =>
   typeof msg === 'string'
     ? msg.replace(/\$?\{(\w+)\}/g, (match, key) => variables?.[key] ?? '')
@@ -39,7 +39,7 @@ const i18n = (id, params) => {
   return i18nFormat({ id }, params);
 };
 
-// 将国际化的一些方法注入到目标对象&上下文中
+// Inject i18n methods into the target object and context
 const _inject2 = (target) => {
   target.i18n = i18n;
   target.getLocale = getLocale;
@@ -48,23 +48,23 @@ const _inject2 = (target) => {
     target.forceUpdate();
   };
   target._i18nText = (t) => {
-    // 优先取直接传过来的语料
+    // Prefer corpus passed in directly
     const localMsg = t[locale] ?? t[String(locale).replace('-', '_')];
     if (localMsg != null) {
       return format(localMsg, t.params);
     }
 
-    // 其次用项目级别的
+    // Then fall back to project-level
     const projectMsg = i18nFormat({ id: t.key, fallback: null }, t.params);
     if (projectMsg != null) {
       return projectMsg;
     }
 
-    // 兜底用 use 指定的或默认语言的
+    // Finally fall back to the language from use or the default language
     return format(t[t.use || 'zh-CN'] ?? t.en_US, t.params);
   };
 
-  // 注入到上下文中去
+  // Inject into the context
   if (target._context && target._context !== target) {
     Object.assign(target._context, {
       i18n,

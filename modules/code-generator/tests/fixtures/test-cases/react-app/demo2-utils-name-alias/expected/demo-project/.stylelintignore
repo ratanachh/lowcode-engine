@@ -1,9 +1,9 @@
 
-# 忽略目录
+# Ignored directories
 build/
 tests/
 demo/
 
-# node 覆盖率文件
+# node coverage files
 coverage/
     
