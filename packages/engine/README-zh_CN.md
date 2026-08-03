@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://lowcode-engine.cn">
+  <a href="https://ratanachh.github.io/lowcode-engine/">
     <img width="200" src="https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/logo.svg">
   </a>
 </p>
@@ -34,7 +34,7 @@
 
 </div>
 
-[![](https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/screenshot-editor.png)](https://lowcode-engine.cn)
+[![](https://raw.githubusercontent.com/ratanachh/lowcode-engine/main/docs/static/img/screenshot-editor.png)](https://ratanachh.github.io/lowcode-engine/)
 
 简体中文 | [English](./README.md)
 
@@ -115,14 +115,14 @@ init(document.getElementById('lce'));
 
 ## 🔗 相关链接
 
-- [官网首页](https://lowcode-engine.cn/)
-- [Demo 马上玩](https://lowcode-engine.cn/demo) | [引擎 Demo 仓库](https://github.com/alibaba/lowcode-demo)
+- [官网首页](https://ratanachh.github.io/lowcode-engine/)
+- [Demo 马上玩](https://ratanachh.github.io/lowcode-engine/docs/guide/quickStart/demo) | [引擎 Demo 仓库](https://github.com/alibaba/lowcode-demo)
 - [官方物料](https://github.com/alibaba/lowcode-materials)
 - [官方设置器（setter）](https://github.com/alibaba/lowcode-engine-ext)
 - [官方插件（plugin）](https://github.com/alibaba/lowcode-plugins)
-- [生态元素（物料、setter、插件）工具链](https://lowcode-engine.cn/site/docs/guide/expand/editor/cli)
-- [用户文档](https://lowcode-engine.cn/doc)
-- [API](https://lowcode-engine.cn/site/docs/api/)
+- [生态元素（物料、setter、插件）工具链](https://ratanachh.github.io/lowcode-engine/docs/guide/expand/editor/cli)
+- [用户文档](https://ratanachh.github.io/lowcode-engine/docs/guide/quickStart/start)
+- [API](https://ratanachh.github.io/lowcode-engine/docs/api)
 
 [awesome-lowcode-engine](https://github.com/lowcode-workspace/awesome-lowcode-engine) 中包含了一系列围绕引擎建设的工具、解决方案等，如果你有类似的解决方案或者工具，欢迎提 PR 到该仓库，让更多人了解到
 
@@ -140,14 +140,14 @@ $ npm start
 >
 > 📢 windows 环境必须使用 [WSL](https://docs.microsoft.com/zh-cn/windows/wsl/install)，其他终端不保证能正常运行
 
-lowcode-engine 启动后，提供了几个 umd 文件，可以结合 [lowcode-demo](https://github.com/alibaba/lowcode-demo) 项目做调试，文件代理规则参考[这里](https://lowcode-engine.cn/site/docs/participate/prepare#2-配置资源代理)。
+lowcode-engine 启动后，提供了几个 umd 文件，可以结合 [lowcode-demo](https://github.com/alibaba/lowcode-demo) 项目做调试，文件代理规则参考[这里](https://ratanachh.github.io/lowcode-engine/docs/participate/prepare#2-配置资源代理)。
 
 ## 🤝 参与共建
 
 请先阅读：
-1. [如何配置引擎调试环境？](https://lowcode-engine.cn/site/docs/participate/prepare)
-2. [关于引擎的研发协作流程](https://lowcode-engine.cn/site/docs/participate/flow)
-3. [引擎的工程化配置](https://lowcode-engine.cn/site/docs/participate/config)
+1. [如何配置引擎调试环境？](https://ratanachh.github.io/lowcode-engine/docs/participate/prepare)
+2. [关于引擎的研发协作流程](https://ratanachh.github.io/lowcode-engine/docs/participate/flow)
+3. [引擎的工程化配置](https://ratanachh.github.io/lowcode-engine/docs/participate/config)
 
 > 强烈推荐阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way)、[《如何向开源社区提问题》](https://github.com/seajs/seajs/issues/545) 和 [《如何有效地报告 Bug》](http://www.chiark.greenend.org.uk/%7Esgtatham/bugs-cn.html)、[《如何向开源项目提交无法解答的问题》](https://zhuanlan.zhihu.com/p/25795393)，更好的问题更容易获得帮助。（此段参考 [antd](https://github.com/ant-design/ant-design)）
 

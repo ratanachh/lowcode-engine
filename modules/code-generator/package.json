@@ -1,6 +1,6 @@
 {
   "name": "@rchh/lowcode-code-generator",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Code generation engine for LowCode Engine",
   "license": "MIT",
   "main": "lib/index.js",
@@ -148,9 +148,9 @@
   },
   "repository": {
     "type": "http",
-    "url": "https://github.com/alibaba/lowcode-engine/tree/main/modules/code-generator"
+    "url": "https://github.com/ratanachh/lowcode-engine/tree/main/modules/code-generator"
   },
-  "bugs": "https://github.com/alibaba/lowcode-engine/issues",
-  "homepage": "https://github.com/alibaba/lowcode-engine/#readme",
+  "bugs": "https://github.com/ratanachh/lowcode-engine/issues",
+  "homepage": "https://ratanachh.github.io/lowcode-engine/",
   "peerDependencies": {}
 }

@@ -1,6 +1,6 @@
 {
   "name": "@rchh/lowcode-material-parser",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "material parser for Ali lowCode engine",
   "main": "lib/index.js",
   "files": [
@@ -72,8 +72,8 @@
   },
   "repository": {
     "type": "http",
-    "url": "https://github.com/alibaba/lowcode-engine/tree/main/modules/material-parser"
+    "url": "https://github.com/ratanachh/lowcode-engine/tree/main/modules/material-parser"
   },
-  "bugs": "https://github.com/alibaba/lowcode-engine/issues",
-  "homepage": "https://github.com/alibaba/lowcode-engine/#readme"
+  "bugs": "https://github.com/ratanachh/lowcode-engine/issues",
+  "homepage": "https://ratanachh.github.io/lowcode-engine/"
 }

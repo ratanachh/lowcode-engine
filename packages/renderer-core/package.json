@@ -1,6 +1,6 @@
 {
   "name": "@rchh/lowcode-renderer-core",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "renderer core",
   "license": "MIT",
   "main": "lib/index.js",
@@ -53,9 +53,9 @@
   },
   "repository": {
     "type": "http",
-    "url": "https://github.com/alibaba/lowcode-engine/tree/main/packages/renderer-core"
+    "url": "https://github.com/ratanachh/lowcode-engine/tree/main/packages/renderer-core"
   },
   "gitHead": "22fef37bb07fe7c05679db4d56cbabb0efa485a1",
-  "bugs": "https://github.com/alibaba/lowcode-engine/issues",
-  "homepage": "https://github.com/alibaba/lowcode-engine/#readme"
+  "bugs": "https://github.com/ratanachh/lowcode-engine/issues",
+  "homepage": "https://ratanachh.github.io/lowcode-engine/"
 }
