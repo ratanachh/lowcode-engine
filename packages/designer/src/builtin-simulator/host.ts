@@ -137,6 +137,11 @@ const defaultEnvironment = [
     AssetType.JSText,
     'window.PropTypes=parent.PropTypes;React.PropTypes=parent.PropTypes; window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;',
   ),
+  // Simulator renderer UMD externals expect these on the iframe window.
+  assetItem(
+    AssetType.JSText,
+    'window.Next=parent.Next;window.moment=parent.moment;window._=parent._;',
+  ),
 ];
 
 export class BuiltinSimulatorHost implements ISimulatorHost<BuiltinSimulatorProps> {

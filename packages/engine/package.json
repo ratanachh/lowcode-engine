@@ -1,6 +1,6 @@
 {
   "name": "@rchh/lowcode-engine",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "An enterprise-class low-code technology stack with scale-out design",
   "main": "lib/engine-core.js",
   "module": "es/engine-core.js",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@alifd/next": "^1.19.12",
-    "@rchh/lowcode-designer": "1.3.4",
+    "@rchh/lowcode-designer": "1.3.5",
     "@rchh/lowcode-editor-core": "1.3.4",
     "@rchh/lowcode-editor-skeleton": "1.3.4",
     "@rchh/lowcode-engine-ext": "npm:@alilc/lowcode-engine-ext@^1.0.0",
