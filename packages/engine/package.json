@@ -22,7 +22,7 @@
     "@rchh/lowcode-designer": "1.3.5",
     "@rchh/lowcode-editor-core": "1.3.4",
     "@rchh/lowcode-editor-skeleton": "1.3.4",
-    "@rchh/lowcode-engine-ext": "npm:@alilc/lowcode-engine-ext@^1.0.0",
+    "@rchh/lowcode-engine-ext": "1.0.7",
     "@rchh/lowcode-plugin-command": "1.3.4",
     "@rchh/lowcode-plugin-designer": "1.3.4",
     "@rchh/lowcode-plugin-outline-pane": "1.3.4",
